@@ -1,0 +1,122 @@
+[
+  {
+    "id": "heritage.ancestry.automaton.automato_blindado",
+    "ancestry_id": "ancestry.automaton",
+    "is_versatile": false,
+    "name_pt": "Autômato Blindado",
+    "name_en": "Armored Automaton",
+    "name_es": "Autómata blindado",
+    "description_pt": "Seu chassi de metal é fortificado com placas de liga antiga. Você recebe +1 de bônus circunstancial na CA contra acertos críticos de ataques cortantes e perfurantes.",
+    "description_en": "Your chassis is reinforced with ancient alchemical metal. You gain a +1 circumstance bonus to AC against critical hits from physical attacks.",
+    "description_es": "Tu chasis está reforzado con aleaciones antiguas. Obtienes un bonificador circunstancial de +1 a la CA contra golpes críticos de ataques físicos.",
+    "prerequisite": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (Guns & Gears)",
+    "source_page": 38,
+    "data": {
+      "grants": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:30.68865+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "heritage.ancestry.automaton.automato_de_caca_veloz",
+    "ancestry_id": "ancestry.automaton",
+    "is_versatile": false,
+    "name_pt": "Autômato de Caça Veloz",
+    "name_en": "Hunter Automaton",
+    "name_es": "Autómata cazador",
+    "description_pt": "Engrenagens de precisão nos pistões inferiores aumentam sua agilidade motora. Seu deslocamento terrestre base aumenta de 7,5m para 9 metros (30 pés).",
+    "description_en": "Precision pistons and balanced gyros accelerate your stride. Your base land Speed increases from 25 feet to 30 feet.",
+    "description_es": "Pistones de precisión aceleran tu paso. Tu velocidad terrestre base aumenta de 7,5 m a 9 m (30 pies).",
+    "prerequisite": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (Guns & Gears)",
+    "source_page": 38,
+    "data": {
+      "grants": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:30.68865+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "heritage.ancestry.automaton.automato_do_nucleo_brilhante",
+    "ancestry_id": "ancestry.automaton",
+    "is_versatile": false,
+    "name_pt": "Autômato do Núcleo Brilhante",
+    "name_en": "Bright-Core Automaton",
+    "name_es": "Autómata de núcleo brillante",
+    "description_pt": "Seu núcleo de alma emite feixes concentrados de energia viva. Você recebe um ataque desarmado à distância de Raio de Energia com alcance de 9 metros (30 pés) que causa 1d4 de dano de fogo ou energia.",
+    "description_en": "Your soul core discharges focused beams of radiant light. You gain an Energy Beam ranged unarmed attack (30 ft range) dealing 1d4 fire damage.",
+    "description_es": "Tu núcleo de alma dispara rayos de energía radiante. Obtienes un ataque desarmado a distancia de Rayo de energía (alcance 9 m) que causa 1d4 de daño por fuego.",
+    "prerequisite": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (Guns & Gears)",
+    "source_page": 38,
+    "data": {
+      "grants": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:30.68865+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "heritage.ancestry.automaton.automato_guerreiro",
+    "ancestry_id": "ancestry.automaton",
+    "is_versatile": false,
+    "name_pt": "Autômato Guerreiro",
+    "name_en": "Warrior Automaton",
+    "name_es": "Autómata guerrero",
+    "description_pt": "Forjado para as linhas de frente da guerra de Jistka, seus punhos são maças devastadoras. O dado de dano do seu punho aumenta para 1d6 e você pode infligir dano letal sem penalidades.",
+    "description_en": "Forged for vanguard battle lines, your fists strike with immense force. Your fist damage increases to 1d6 and deals lethal damage with no penalty.",
+    "description_es": "Forjado para la primera línea de combate, tus puños golpean con fuerza devastadora. El daño de tus puños aumenta a 1d6 y causa daño letal sin penalizador.",
+    "prerequisite": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (Guns & Gears)",
+    "source_page": 38,
+    "data": {
+      "grants": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:30.68865+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "heritage.reflection",
+    "ancestry_id": null,
+    "is_versatile": true,
+    "name_pt": "Reflexo",
+    "name_en": "Reflection",
+    "name_es": "Reflejo",
+    "description_pt": "Herança versátil rara para uma duplicata que busca construir identidade própria.",
+    "description_en": "A rare versatile heritage for a duplicate seeking to build an identity of their own.",
+    "description_es": "Una herencia versátil rara para un duplicado que busca construir una identidad propia.",
+    "prerequisite": null,
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 119,
+    "data": {
+      "grants": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:30.941191+00:00",
+    "system_id": "pf2e"
+  }
+]

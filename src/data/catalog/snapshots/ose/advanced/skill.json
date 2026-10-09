@@ -1,0 +1,1397 @@
+[
+  {
+    "id": "ose.skill.acrobat.ccb",
+    "system_id": "ose",
+    "name_pt": "Caminhada na Corda Bamba",
+    "name_en": "Caminhada na Corda Bamba",
+    "name_es": "Caminhada na Corda Bamba",
+    "description_pt": "Caminhada na Corda Bamba: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "description_en": "Caminhada na Corda Bamba: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "description_es": "Caminhada na Corda Bamba: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "key_ability": null,
+    "skill_type": "acrobat",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "ccb",
+      "source": {
+        "book": "Old-School Essentials — Tomo do Jogador",
+        "page": 28
+      },
+      "classId": "acrobata",
+      "ruleset": "advanced",
+      "className": "Acrobata",
+      "skillTable": "acrobat",
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 28,
+      "description": "Caminhada na Corda Bamba: tabela percentual de Acrobata, com valor próprio por nível (1–14)."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.acrobat.es",
+    "system_id": "ose",
+    "name_pt": "Esconder-se nas Sombras",
+    "name_en": "Esconder-se nas Sombras",
+    "name_es": "Esconder-se nas Sombras",
+    "description_pt": "Esconder-se nas Sombras: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "description_en": "Esconder-se nas Sombras: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "description_es": "Esconder-se nas Sombras: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "key_ability": null,
+    "skill_type": "acrobat",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "es",
+      "source": {
+        "book": "Old-School Essentials — Tomo do Jogador",
+        "page": 28
+      },
+      "classId": "acrobata",
+      "ruleset": "advanced",
+      "className": "Acrobata",
+      "skillTable": "acrobat",
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 28,
+      "description": "Esconder-se nas Sombras: tabela percentual de Acrobata, com valor próprio por nível (1–14)."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.acrobat.ms",
+    "system_id": "ose",
+    "name_pt": "Mover Silenciosamente",
+    "name_en": "Mover Silenciosamente",
+    "name_es": "Mover Silenciosamente",
+    "description_pt": "Mover Silenciosamente: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "description_en": "Mover Silenciosamente: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "description_es": "Mover Silenciosamente: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "key_ability": null,
+    "skill_type": "acrobat",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "ms",
+      "source": {
+        "book": "Old-School Essentials — Tomo do Jogador",
+        "page": 28
+      },
+      "classId": "acrobata",
+      "ruleset": "advanced",
+      "className": "Acrobata",
+      "skillTable": "acrobat",
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 28,
+      "description": "Mover Silenciosamente: tabela percentual de Acrobata, com valor próprio por nível (1–14)."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.acrobat.qu",
+    "system_id": "ose",
+    "name_pt": "Queda",
+    "name_en": "Queda",
+    "name_es": "Queda",
+    "description_pt": "Queda: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "description_en": "Queda: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "description_es": "Queda: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "key_ability": null,
+    "skill_type": "acrobat",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "qu",
+      "source": {
+        "book": "Old-School Essentials — Tomo do Jogador",
+        "page": 28
+      },
+      "classId": "acrobata",
+      "ruleset": "advanced",
+      "className": "Acrobata",
+      "skillTable": "acrobat",
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 28,
+      "description": "Queda: tabela percentual de Acrobata, com valor próprio por nível (1–14)."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.acrobat.ssi",
+    "system_id": "ose",
+    "name_pt": "Subir Superfícies Íngremes",
+    "name_en": "Subir Superfícies Íngremes",
+    "name_es": "Subir Superfícies Íngremes",
+    "description_pt": "Subir Superfícies Íngremes: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "description_en": "Subir Superfícies Íngremes: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "description_es": "Subir Superfícies Íngremes: tabela percentual de Acrobata, com valor próprio por nível (1–14).",
+    "key_ability": null,
+    "skill_type": "acrobat",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "ssi",
+      "source": {
+        "book": "Old-School Essentials — Tomo do Jogador",
+        "page": 28
+      },
+      "classId": "acrobata",
+      "ruleset": "advanced",
+      "className": "Acrobata",
+      "skillTable": "acrobat",
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 28,
+      "description": "Subir Superfícies Íngremes: tabela percentual de Acrobata, com valor próprio por nível (1–14)."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.a_ougueiro",
+    "system_id": "ose",
+    "name_pt": "Açougueiro",
+    "name_en": "Açougueiro",
+    "name_es": "Açougueiro",
+    "description_pt": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 21–23 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 21–23 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 21–23 no d100.",
+    "key_ability": null,
+    "skill_type": "Alimentos",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Açougueiro",
+      "range": [
+        21,
+        23
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Alimentos",
+      "description": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 21–23 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.agricultor",
+    "system_id": "ose",
+    "name_pt": "Agricultor",
+    "name_en": "Agricultor",
+    "name_es": "Agricultor",
+    "description_pt": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 36–46 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 36–46 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 36–46 no d100.",
+    "key_ability": null,
+    "skill_type": "Campo",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Agricultor",
+      "range": [
+        36,
+        46
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Campo",
+      "description": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 36–46 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.alfaiate",
+    "system_id": "ose",
+    "name_pt": "Alfaiate",
+    "name_en": "Alfaiate",
+    "name_es": "Alfaiate",
+    "description_pt": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 85–87 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 85–87 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 85–87 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Alfaiate",
+      "range": [
+        85,
+        87
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 85–87 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.armador_navios_",
+    "system_id": "ose",
+    "name_pt": "Armador (Navios)",
+    "name_en": "Armador (Navios)",
+    "name_es": "Armador (Navios)",
+    "description_pt": "Perícia secundária opcional: profissão de Náutica, sorteada pela faixa 82–84 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Náutica, sorteada pela faixa 82–84 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Náutica, sorteada pela faixa 82–84 no d100.",
+    "key_ability": null,
+    "skill_type": "Náutica",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Armador (Navios)",
+      "range": [
+        82,
+        84
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Náutica",
+      "description": "Perícia secundária opcional: profissão de Náutica, sorteada pela faixa 82–84 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.armeiro",
+    "system_id": "ose",
+    "name_pt": "Armeiro",
+    "name_en": "Armeiro",
+    "name_es": "Armeiro",
+    "description_pt": "Perícia secundária opcional: profissão de Metalurgia, sorteada pela faixa 4–5 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Metalurgia, sorteada pela faixa 4–5 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Metalurgia, sorteada pela faixa 4–5 no d100.",
+    "key_ability": null,
+    "skill_type": "Metalurgia",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Armeiro",
+      "range": [
+        4,
+        5
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Metalurgia",
+      "description": "Perícia secundária opcional: profissão de Metalurgia, sorteada pela faixa 4–5 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.arqueiro_flecheiro",
+    "system_id": "ose",
+    "name_pt": "Arqueiro / Flecheiro",
+    "name_en": "Arqueiro / Flecheiro",
+    "name_es": "Arqueiro / Flecheiro",
+    "description_pt": "Perícia secundária opcional: profissão de Armas, sorteada pela faixa 14–16 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Armas, sorteada pela faixa 14–16 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Armas, sorteada pela faixa 14–16 no d100.",
+    "key_ability": null,
+    "skill_type": "Armas",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Arqueiro / Flecheiro",
+      "range": [
+        14,
+        16
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Armas",
+      "description": "Perícia secundária opcional: profissão de Armas, sorteada pela faixa 14–16 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.ca_ador_mateiro",
+    "system_id": "ose",
+    "name_pt": "Caçador / Mateiro",
+    "name_en": "Caçador / Mateiro",
+    "name_es": "Caçador / Mateiro",
+    "description_pt": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 56–59 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 56–59 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 56–59 no d100.",
+    "key_ability": null,
+    "skill_type": "Campo",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Caçador / Mateiro",
+      "range": [
+        56,
+        59
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Campo",
+      "description": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 56–59 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.carpinteiro",
+    "system_id": "ose",
+    "name_pt": "Carpinteiro",
+    "name_en": "Carpinteiro",
+    "name_es": "Carpinteiro",
+    "description_pt": "Perícia secundária opcional: profissão de Construção, sorteada pela faixa 24–26 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Construção, sorteada pela faixa 24–26 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Construção, sorteada pela faixa 24–26 no d100.",
+    "key_ability": null,
+    "skill_type": "Construção",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Carpinteiro",
+      "range": [
+        24,
+        26
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Construção",
+      "description": "Perícia secundária opcional: profissão de Construção, sorteada pela faixa 24–26 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.cart_grafo",
+    "system_id": "ose",
+    "name_pt": "Cartógrafo",
+    "name_en": "Cartógrafo",
+    "name_es": "Cartógrafo",
+    "description_pt": "Perícia secundária opcional: profissão de Erudição, sorteada pela faixa 67–67 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Erudição, sorteada pela faixa 67–67 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Erudição, sorteada pela faixa 67–67 no d100.",
+    "key_ability": null,
+    "skill_type": "Erudição",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Cartógrafo",
+      "range": [
+        67,
+        67
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Erudição",
+      "description": "Perícia secundária opcional: profissão de Erudição, sorteada pela faixa 67–67 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.cervejeiro",
+    "system_id": "ose",
+    "name_pt": "Cervejeiro",
+    "name_en": "Cervejeiro",
+    "name_es": "Cervejeiro",
+    "description_pt": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 17–20 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 17–20 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 17–20 no d100.",
+    "key_ability": null,
+    "skill_type": "Alimentos",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Cervejeiro",
+      "range": [
+        17,
+        20
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Alimentos",
+      "description": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 17–20 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.cordoeiro_la_ador",
+    "system_id": "ose",
+    "name_pt": "Cordoeiro / Laçador",
+    "name_en": "Cordoeiro / Laçador",
+    "name_es": "Cordoeiro / Laçador",
+    "description_pt": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 77–78 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 77–78 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 77–78 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Cordoeiro / Laçador",
+      "range": [
+        77,
+        78
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 77–78 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.curtidor",
+    "system_id": "ose",
+    "name_pt": "Curtidor",
+    "name_en": "Curtidor",
+    "name_es": "Curtidor",
+    "description_pt": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 88–90 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 88–90 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 88–90 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Curtidor",
+      "range": [
+        88,
+        90
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 88–90 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.encadernador",
+    "system_id": "ose",
+    "name_pt": "Encadernador",
+    "name_en": "Encadernador",
+    "name_es": "Encadernador",
+    "description_pt": "Perícia secundária opcional: profissão de Erudição, sorteada pela faixa 13–13 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Erudição, sorteada pela faixa 13–13 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Erudição, sorteada pela faixa 13–13 no d100.",
+    "key_ability": null,
+    "skill_type": "Erudição",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Encadernador",
+      "range": [
+        13,
+        13
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Erudição",
+      "description": "Perícia secundária opcional: profissão de Erudição, sorteada pela faixa 13–13 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.especialista_m_ltiplo_duas_per_cias_",
+    "system_id": "ose",
+    "name_pt": "Especialista Múltiplo (Duas Perícias)",
+    "name_en": "Especialista Múltiplo (Duas Perícias)",
+    "name_es": "Especialista Múltiplo (Duas Perícias)",
+    "description_pt": "Perícia secundária opcional: profissão de Especial, sorteada pela faixa 99–100 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Especial, sorteada pela faixa 99–100 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Especial, sorteada pela faixa 99–100 no d100.",
+    "key_ability": null,
+    "skill_type": "Especial",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Especialista Múltiplo (Duas Perícias)",
+      "range": [
+        99,
+        100
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Especial",
+      "description": "Perícia secundária opcional: profissão de Especial, sorteada pela faixa 99–100 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.ferreiro",
+    "system_id": "ose",
+    "name_pt": "Ferreiro",
+    "name_en": "Ferreiro",
+    "name_es": "Ferreiro",
+    "description_pt": "Perícia secundária opcional: profissão de Metalurgia, sorteada pela faixa 10–12 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Metalurgia, sorteada pela faixa 10–12 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Metalurgia, sorteada pela faixa 10–12 no d100.",
+    "key_ability": null,
+    "skill_type": "Metalurgia",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Ferreiro",
+      "range": [
+        10,
+        12
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Metalurgia",
+      "description": "Perícia secundária opcional: profissão de Metalurgia, sorteada pela faixa 10–12 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.funileiro_ourives",
+    "system_id": "ose",
+    "name_pt": "Funileiro / Ourives",
+    "name_en": "Funileiro / Ourives",
+    "name_es": "Funileiro / Ourives",
+    "description_pt": "Perícia secundária opcional: profissão de Metalurgia, sorteada pela faixa 34–35 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Metalurgia, sorteada pela faixa 34–35 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Metalurgia, sorteada pela faixa 34–35 no d100.",
+    "key_ability": null,
+    "skill_type": "Metalurgia",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Funileiro / Ourives",
+      "range": [
+        34,
+        35
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Metalurgia",
+      "description": "Perícia secundária opcional: profissão de Metalurgia, sorteada pela faixa 34–35 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.lapid_rio_joalheiro",
+    "system_id": "ose",
+    "name_pt": "Lapidário / Joalheiro",
+    "name_en": "Lapidário / Joalheiro",
+    "name_es": "Lapidário / Joalheiro",
+    "description_pt": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 60–62 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 60–62 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 60–62 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Lapidário / Joalheiro",
+      "range": [
+        60,
+        62
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 60–62 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.lenhador",
+    "system_id": "ose",
+    "name_pt": "Lenhador",
+    "name_en": "Lenhador",
+    "name_es": "Lenhador",
+    "description_pt": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 94–96 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 94–96 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 94–96 no d100.",
+    "key_ability": null,
+    "skill_type": "Campo",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Lenhador",
+      "range": [
+        94,
+        96
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Campo",
+      "description": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 94–96 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.lorimer_selaria_",
+    "system_id": "ose",
+    "name_pt": "Lorimer (Selaria)",
+    "name_en": "Lorimer (Selaria)",
+    "name_es": "Lorimer (Selaria)",
+    "description_pt": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 63–66 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 63–66 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 63–66 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Lorimer (Selaria)",
+      "range": [
+        63,
+        66
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 63–66 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.marinheiro",
+    "system_id": "ose",
+    "name_pt": "Marinheiro",
+    "name_en": "Marinheiro",
+    "name_es": "Marinheiro",
+    "description_pt": "Perícia secundária opcional: profissão de Náutica, sorteada pela faixa 79–81 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Náutica, sorteada pela faixa 79–81 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Náutica, sorteada pela faixa 79–81 no d100.",
+    "key_ability": null,
+    "skill_type": "Náutica",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Marinheiro",
+      "range": [
+        79,
+        81
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Náutica",
+      "description": "Perícia secundária opcional: profissão de Náutica, sorteada pela faixa 79–81 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.mercador",
+    "system_id": "ose",
+    "name_pt": "Mercador",
+    "name_en": "Mercador",
+    "name_es": "Mercador",
+    "description_pt": "Perícia secundária opcional: profissão de Comércio, sorteada pela faixa 27–28 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Comércio, sorteada pela faixa 27–28 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Comércio, sorteada pela faixa 27–28 no d100.",
+    "key_ability": null,
+    "skill_type": "Comércio",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Mercador",
+      "range": [
+        27,
+        28
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Comércio",
+      "description": "Perícia secundária opcional: profissão de Comércio, sorteada pela faixa 27–28 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.mineiro",
+    "system_id": "ose",
+    "name_pt": "Mineiro",
+    "name_en": "Mineiro",
+    "name_es": "Mineiro",
+    "description_pt": "Perícia secundária opcional: profissão de Extração, sorteada pela faixa 70–73 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Extração, sorteada pela faixa 70–73 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Extração, sorteada pela faixa 70–73 no d100.",
+    "key_ability": null,
+    "skill_type": "Extração",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Mineiro",
+      "range": [
+        70,
+        73
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Extração",
+      "description": "Perícia secundária opcional: profissão de Extração, sorteada pela faixa 70–73 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.oleiro",
+    "system_id": "ose",
+    "name_pt": "Oleiro",
+    "name_en": "Oleiro",
+    "name_es": "Oleiro",
+    "description_pt": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 74–76 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 74–76 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 74–76 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Oleiro",
+      "range": [
+        74,
+        76
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 74–76 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.padeiro",
+    "system_id": "ose",
+    "name_pt": "Padeiro",
+    "name_en": "Padeiro",
+    "name_es": "Padeiro",
+    "description_pt": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 6–9 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 6–9 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 6–9 no d100.",
+    "key_ability": null,
+    "skill_type": "Alimentos",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Padeiro",
+      "range": [
+        6,
+        9
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Alimentos",
+      "description": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 6–9 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.pedreiro",
+    "system_id": "ose",
+    "name_pt": "Pedreiro",
+    "name_en": "Pedreiro",
+    "name_es": "Pedreiro",
+    "description_pt": "Perícia secundária opcional: profissão de Construção, sorteada pela faixa 68–69 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Construção, sorteada pela faixa 68–69 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Construção, sorteada pela faixa 68–69 no d100.",
+    "key_ability": null,
+    "skill_type": "Construção",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Pedreiro",
+      "range": [
+        68,
+        69
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Construção",
+      "description": "Perícia secundária opcional: profissão de Construção, sorteada pela faixa 68–69 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.peleiro",
+    "system_id": "ose",
+    "name_pt": "Peleiro",
+    "name_en": "Peleiro",
+    "name_es": "Peleiro",
+    "description_pt": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 51–54 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 51–54 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 51–54 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Peleiro",
+      "range": [
+        51,
+        54
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 51–54 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.pescador",
+    "system_id": "ose",
+    "name_pt": "Pescador",
+    "name_en": "Pescador",
+    "name_es": "Pescador",
+    "description_pt": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 47–50 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 47–50 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 47–50 no d100.",
+    "key_ability": null,
+    "skill_type": "Campo",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Pescador",
+      "range": [
+        47,
+        50
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Campo",
+      "description": "Perícia secundária opcional: profissão de Campo, sorteada pela faixa 47–50 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.soprador_de_vidro",
+    "system_id": "ose",
+    "name_pt": "Soprador de Vidro",
+    "name_en": "Soprador de Vidro",
+    "name_es": "Soprador de Vidro",
+    "description_pt": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 55–55 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 55–55 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 55–55 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Soprador de Vidro",
+      "range": [
+        55,
+        55
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 55–55 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.tanoeiro_barris_",
+    "system_id": "ose",
+    "name_pt": "Tanoeiro (Barris)",
+    "name_en": "Tanoeiro (Barris)",
+    "name_es": "Tanoeiro (Barris)",
+    "description_pt": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 29–33 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 29–33 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 29–33 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Tanoeiro (Barris)",
+      "range": [
+        29,
+        33
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional: profissão de Artesanato, sorteada pela faixa 29–33 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.telhador_carpinteiro",
+    "system_id": "ose",
+    "name_pt": "Telhador / Carpinteiro",
+    "name_en": "Telhador / Carpinteiro",
+    "name_es": "Telhador / Carpinteiro",
+    "description_pt": "Perícia secundária opcional: profissão de Construção, sorteada pela faixa 91–93 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Construção, sorteada pela faixa 91–93 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Construção, sorteada pela faixa 91–93 no d100.",
+    "key_ability": null,
+    "skill_type": "Construção",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Telhador / Carpinteiro",
+      "range": [
+        91,
+        93
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Construção",
+      "description": "Perícia secundária opcional: profissão de Construção, sorteada pela faixa 91–93 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.treinador_de_animais",
+    "system_id": "ose",
+    "name_pt": "Treinador de Animais",
+    "name_en": "Treinador de Animais",
+    "name_es": "Treinador de Animais",
+    "description_pt": "Perícia secundária opcional: profissão de Animais, sorteada pela faixa 1–3 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Animais, sorteada pela faixa 1–3 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Animais, sorteada pela faixa 1–3 no d100.",
+    "key_ability": null,
+    "skill_type": "Animais",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Treinador de Animais",
+      "range": [
+        1,
+        3
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Animais",
+      "description": "Perícia secundária opcional: profissão de Animais, sorteada pela faixa 1–3 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.vinicultor",
+    "system_id": "ose",
+    "name_pt": "Vinicultor",
+    "name_en": "Vinicultor",
+    "name_es": "Vinicultor",
+    "description_pt": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 97–98 no d100.",
+    "description_en": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 97–98 no d100.",
+    "description_es": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 97–98 no d100.",
+    "key_ability": null,
+    "skill_type": "Alimentos",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Vinicultor",
+      "range": [
+        97,
+        98
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "advanced",
+      "category": "Alimentos",
+      "description": "Perícia secundária opcional: profissão de Alimentos, sorteada pela faixa 97–98 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.thief.af",
+    "system_id": "ose",
+    "name_pt": "Abrir Fechaduras",
+    "name_en": "Abrir Fechaduras",
+    "name_es": "Abrir Fechaduras",
+    "description_pt": "Abrir Fechaduras: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_en": "Abrir Fechaduras: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_es": "Abrir Fechaduras: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "key_ability": null,
+    "skill_type": "thief",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "af",
+      "source": {
+        "book": "Old-School Essentials — Tomo do Jogador",
+        "page": 28
+      },
+      "classId": "ladrao",
+      "ruleset": "advanced",
+      "className": "Ladrão",
+      "skillTable": "thief",
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 28,
+      "description": "Abrir Fechaduras: tabela percentual de Ladrão, com valor próprio por nível (1–14)."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.thief.es",
+    "system_id": "ose",
+    "name_pt": "Esconder-se nas Sombras",
+    "name_en": "Esconder-se nas Sombras",
+    "name_es": "Esconder-se nas Sombras",
+    "description_pt": "Esconder-se nas Sombras: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_en": "Esconder-se nas Sombras: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_es": "Esconder-se nas Sombras: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "key_ability": null,
+    "skill_type": "thief",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "es",
+      "source": {
+        "book": "Old-School Essentials — Tomo do Jogador",
+        "page": 28
+      },
+      "classId": "ladrao",
+      "ruleset": "advanced",
+      "className": "Ladrão",
+      "skillTable": "thief",
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 28,
+      "description": "Esconder-se nas Sombras: tabela percentual de Ladrão, com valor próprio por nível (1–14)."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.thief.esi",
+    "system_id": "ose",
+    "name_pt": "Escalar Superfícies Íngremes",
+    "name_en": "Escalar Superfícies Íngremes",
+    "name_es": "Escalar Superfícies Íngremes",
+    "description_pt": "Escalar Superfícies Íngremes: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_en": "Escalar Superfícies Íngremes: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_es": "Escalar Superfícies Íngremes: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "key_ability": null,
+    "skill_type": "thief",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "esi",
+      "source": {
+        "book": "Old-School Essentials — Tomo do Jogador",
+        "page": 28
+      },
+      "classId": "ladrao",
+      "ruleset": "advanced",
+      "className": "Ladrão",
+      "skillTable": "thief",
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 28,
+      "description": "Escalar Superfícies Íngremes: tabela percentual de Ladrão, com valor próprio por nível (1–14)."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.thief.et",
+    "system_id": "ose",
+    "name_pt": "Encontrar Armadilhas",
+    "name_en": "Encontrar Armadilhas",
+    "name_es": "Encontrar Armadilhas",
+    "description_pt": "Encontrar Armadilhas: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_en": "Encontrar Armadilhas: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_es": "Encontrar Armadilhas: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "key_ability": null,
+    "skill_type": "thief",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "et",
+      "source": {
+        "book": "Old-School Essentials — Tomo do Jogador",
+        "page": 28
+      },
+      "classId": "ladrao",
+      "ruleset": "advanced",
+      "className": "Ladrão",
+      "skillTable": "thief",
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 28,
+      "description": "Encontrar Armadilhas: tabela percentual de Ladrão, com valor próprio por nível (1–14)."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.thief.ms",
+    "system_id": "ose",
+    "name_pt": "Mover Silenciosamente",
+    "name_en": "Mover Silenciosamente",
+    "name_es": "Mover Silenciosamente",
+    "description_pt": "Mover Silenciosamente: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_en": "Mover Silenciosamente: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_es": "Mover Silenciosamente: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "key_ability": null,
+    "skill_type": "thief",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "ms",
+      "source": {
+        "book": "Old-School Essentials — Tomo do Jogador",
+        "page": 28
+      },
+      "classId": "ladrao",
+      "ruleset": "advanced",
+      "className": "Ladrão",
+      "skillTable": "thief",
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 28,
+      "description": "Mover Silenciosamente: tabela percentual de Ladrão, com valor próprio por nível (1–14)."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.thief.ob",
+    "system_id": "ose",
+    "name_pt": "Operar Mecanismos",
+    "name_en": "Operar Mecanismos",
+    "name_es": "Operar Mecanismos",
+    "description_pt": "Operar Mecanismos: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_en": "Operar Mecanismos: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_es": "Operar Mecanismos: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "key_ability": null,
+    "skill_type": "thief",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "ob",
+      "source": {
+        "book": "Old-School Essentials — Tomo do Jogador",
+        "page": 28
+      },
+      "classId": "ladrao",
+      "ruleset": "advanced",
+      "className": "Ladrão",
+      "skillTable": "thief",
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 28,
+      "description": "Operar Mecanismos: tabela percentual de Ladrão, com valor próprio por nível (1–14)."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.thief.orSkill",
+    "system_id": "ose",
+    "name_pt": "Ouvir Ruídos",
+    "name_en": "Ouvir Ruídos",
+    "name_es": "Ouvir Ruídos",
+    "description_pt": "Ouvir Ruídos: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_en": "Ouvir Ruídos: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_es": "Ouvir Ruídos: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "key_ability": null,
+    "skill_type": "thief",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "orSkill",
+      "source": {
+        "book": "Old-School Essentials — Tomo do Jogador",
+        "page": 28
+      },
+      "classId": "ladrao",
+      "ruleset": "advanced",
+      "className": "Ladrão",
+      "skillTable": "thief",
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 28,
+      "description": "Ouvir Ruídos: tabela percentual de Ladrão, com valor próprio por nível (1–14)."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.thief.pb",
+    "system_id": "ose",
+    "name_pt": "Pungar Bolsos",
+    "name_en": "Pungar Bolsos",
+    "name_es": "Pungar Bolsos",
+    "description_pt": "Pungar Bolsos: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_en": "Pungar Bolsos: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "description_es": "Pungar Bolsos: tabela percentual de Ladrão, com valor próprio por nível (1–14).",
+    "key_ability": null,
+    "skill_type": "thief",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "pb",
+      "source": {
+        "book": "Old-School Essentials — Tomo do Jogador",
+        "page": 28
+      },
+      "classId": "ladrao",
+      "ruleset": "advanced",
+      "className": "Ladrão",
+      "skillTable": "thief",
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 28,
+      "description": "Pungar Bolsos: tabela percentual de Ladrão, com valor próprio por nível (1–14)."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  }
+]

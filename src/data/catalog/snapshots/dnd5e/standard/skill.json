@@ -1,0 +1,596 @@
+[
+  {
+    "id": "dnd5e.skill.acrobacia",
+    "system_id": "dnd5e",
+    "name_pt": "Acrobacia",
+    "name_en": "Acrobacia",
+    "name_es": "Acrobacia",
+    "description_pt": "Manter equilíbrio, realizar acrobacias e escapar de agarrões ou restrições.",
+    "description_en": "Manter equilíbrio, realizar acrobacias e escapar de agarrões ou restrições.",
+    "description_es": "Manter equilíbrio, realizar acrobacias e escapar de agarrões ou restrições.",
+    "key_ability": "dex",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "acrobacia",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "dex"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Manter equilíbrio, realizar acrobacias e escapar de agarrões ou restrições.",
+      "ruleSummary": "Manter equilíbrio, realizar acrobacias e escapar de agarrões ou restrições.",
+      "skillAbility": "dex"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.adestramento",
+    "system_id": "dnd5e",
+    "name_pt": "Adestramento",
+    "name_en": "Adestramento",
+    "name_es": "Adestramento",
+    "description_pt": "Acalmar, controlar, conduzir e interpretar as intenções de animais.",
+    "description_en": "Acalmar, controlar, conduzir e interpretar as intenções de animais.",
+    "description_es": "Acalmar, controlar, conduzir e interpretar as intenções de animais.",
+    "key_ability": "wis",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "adestramento",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "wis"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Acalmar, controlar, conduzir e interpretar as intenções de animais.",
+      "ruleSummary": "Acalmar, controlar, conduzir e interpretar as intenções de animais.",
+      "skillAbility": "wis"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.arcanismo",
+    "system_id": "dnd5e",
+    "name_pt": "Arcanismo",
+    "name_en": "Arcanismo",
+    "name_es": "Arcanismo",
+    "description_pt": "Recordar conhecimento sobre magias, itens mágicos, planos e fenômenos arcanos.",
+    "description_en": "Recordar conhecimento sobre magias, itens mágicos, planos e fenômenos arcanos.",
+    "description_es": "Recordar conhecimento sobre magias, itens mágicos, planos e fenômenos arcanos.",
+    "key_ability": "int",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "arcanismo",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "int"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Recordar conhecimento sobre magias, itens mágicos, planos e fenômenos arcanos.",
+      "ruleSummary": "Recordar conhecimento sobre magias, itens mágicos, planos e fenômenos arcanos.",
+      "skillAbility": "int"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.atletismo",
+    "system_id": "dnd5e",
+    "name_pt": "Atletismo",
+    "name_en": "Atletismo",
+    "name_es": "Atletismo",
+    "description_pt": "Escalar, saltar, nadar e superar obstáculos físicos usando força e impulso.",
+    "description_en": "Escalar, saltar, nadar e superar obstáculos físicos usando força e impulso.",
+    "description_es": "Escalar, saltar, nadar e superar obstáculos físicos usando força e impulso.",
+    "key_ability": "str",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "atletismo",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "str"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Escalar, saltar, nadar e superar obstáculos físicos usando força e impulso.",
+      "ruleSummary": "Escalar, saltar, nadar e superar obstáculos físicos usando força e impulso.",
+      "skillAbility": "str"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.atuacao",
+    "system_id": "dnd5e",
+    "name_pt": "Atuação",
+    "name_en": "Atuação",
+    "name_es": "Atuação",
+    "description_pt": "Entreter por música, dança, atuação, oratória ou outra forma de apresentação.",
+    "description_en": "Entreter por música, dança, atuação, oratória ou outra forma de apresentação.",
+    "description_es": "Entreter por música, dança, atuação, oratória ou outra forma de apresentação.",
+    "key_ability": "cha",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "atuacao",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "cha"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Entreter por música, dança, atuação, oratória ou outra forma de apresentação.",
+      "ruleSummary": "Entreter por música, dança, atuação, oratória ou outra forma de apresentação.",
+      "skillAbility": "cha"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.enganacao",
+    "system_id": "dnd5e",
+    "name_pt": "Enganação",
+    "name_en": "Enganação",
+    "name_es": "Enganação",
+    "description_pt": "Mentir, disfarçar-se, falsificar e enganar por palavras ou atitudes.",
+    "description_en": "Mentir, disfarçar-se, falsificar e enganar por palavras ou atitudes.",
+    "description_es": "Mentir, disfarçar-se, falsificar e enganar por palavras ou atitudes.",
+    "key_ability": "cha",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "enganacao",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "cha"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Mentir, disfarçar-se, falsificar e enganar por palavras ou atitudes.",
+      "ruleSummary": "Mentir, disfarçar-se, falsificar e enganar por palavras ou atitudes.",
+      "skillAbility": "cha"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.furtividade",
+    "system_id": "dnd5e",
+    "name_pt": "Furtividade",
+    "name_en": "Furtividade",
+    "name_es": "Furtividade",
+    "description_pt": "Esconder-se e mover-se sem ser percebido; armadura pode impor desvantagem.",
+    "description_en": "Esconder-se e mover-se sem ser percebido; armadura pode impor desvantagem.",
+    "description_es": "Esconder-se e mover-se sem ser percebido; armadura pode impor desvantagem.",
+    "key_ability": "dex",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "furtividade",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "dex"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Esconder-se e mover-se sem ser percebido; armadura pode impor desvantagem.",
+      "ruleSummary": "Esconder-se e mover-se sem ser percebido; armadura pode impor desvantagem.",
+      "skillAbility": "dex"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.historia",
+    "system_id": "dnd5e",
+    "name_pt": "História",
+    "name_en": "História",
+    "name_es": "História",
+    "description_pt": "Recordar eventos, civilizações, guerras, figuras históricas e legados culturais.",
+    "description_en": "Recordar eventos, civilizações, guerras, figuras históricas e legados culturais.",
+    "description_es": "Recordar eventos, civilizações, guerras, figuras históricas e legados culturais.",
+    "key_ability": "int",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "historia",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "int"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Recordar eventos, civilizações, guerras, figuras históricas e legados culturais.",
+      "ruleSummary": "Recordar eventos, civilizações, guerras, figuras históricas e legados culturais.",
+      "skillAbility": "int"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.intimidacao",
+    "system_id": "dnd5e",
+    "name_pt": "Intimidação",
+    "name_en": "Intimidação",
+    "name_es": "Intimidação",
+    "description_pt": "Influenciar por ameaças, coerção, hostilidade ou demonstração de força.",
+    "description_en": "Influenciar por ameaças, coerção, hostilidade ou demonstração de força.",
+    "description_es": "Influenciar por ameaças, coerção, hostilidade ou demonstração de força.",
+    "key_ability": "cha",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "intimidacao",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "cha"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Influenciar por ameaças, coerção, hostilidade ou demonstração de força.",
+      "ruleSummary": "Influenciar por ameaças, coerção, hostilidade ou demonstração de força.",
+      "skillAbility": "cha"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.intuicao",
+    "system_id": "dnd5e",
+    "name_pt": "Intuição",
+    "name_en": "Intuição",
+    "name_es": "Intuição",
+    "description_pt": "Identificar intenções, emoções, sinceridade e possíveis mentiras de uma criatura.",
+    "description_en": "Identificar intenções, emoções, sinceridade e possíveis mentiras de uma criatura.",
+    "description_es": "Identificar intenções, emoções, sinceridade e possíveis mentiras de uma criatura.",
+    "key_ability": "wis",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "intuicao",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "wis"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Identificar intenções, emoções, sinceridade e possíveis mentiras de uma criatura.",
+      "ruleSummary": "Identificar intenções, emoções, sinceridade e possíveis mentiras de uma criatura.",
+      "skillAbility": "wis"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.investigacao",
+    "system_id": "dnd5e",
+    "name_pt": "Investigação",
+    "name_en": "Investigação",
+    "name_es": "Investigação",
+    "description_pt": "Deduzir pistas, procurar detalhes, encontrar objetos ocultos e interpretar evidências.",
+    "description_en": "Deduzir pistas, procurar detalhes, encontrar objetos ocultos e interpretar evidências.",
+    "description_es": "Deduzir pistas, procurar detalhes, encontrar objetos ocultos e interpretar evidências.",
+    "key_ability": "int",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "investigacao",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "int"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Deduzir pistas, procurar detalhes, encontrar objetos ocultos e interpretar evidências.",
+      "ruleSummary": "Deduzir pistas, procurar detalhes, encontrar objetos ocultos e interpretar evidências.",
+      "skillAbility": "int"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.medicina",
+    "system_id": "dnd5e",
+    "name_pt": "Medicina",
+    "name_en": "Medicina",
+    "name_es": "Medicina",
+    "description_pt": "Diagnosticar doenças, estabilizar feridos e tratar lesões ou condições físicas.",
+    "description_en": "Diagnosticar doenças, estabilizar feridos e tratar lesões ou condições físicas.",
+    "description_es": "Diagnosticar doenças, estabilizar feridos e tratar lesões ou condições físicas.",
+    "key_ability": "wis",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "medicina",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "wis"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Diagnosticar doenças, estabilizar feridos e tratar lesões ou condições físicas.",
+      "ruleSummary": "Diagnosticar doenças, estabilizar feridos e tratar lesões ou condições físicas.",
+      "skillAbility": "wis"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.natureza",
+    "system_id": "dnd5e",
+    "name_pt": "Natureza",
+    "name_en": "Natureza",
+    "name_es": "Natureza",
+    "description_pt": "Recordar informações sobre terreno, clima, fauna, flora e ciclos naturais.",
+    "description_en": "Recordar informações sobre terreno, clima, fauna, flora e ciclos naturais.",
+    "description_es": "Recordar informações sobre terreno, clima, fauna, flora e ciclos naturais.",
+    "key_ability": "int",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "natureza",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "int"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Recordar informações sobre terreno, clima, fauna, flora e ciclos naturais.",
+      "ruleSummary": "Recordar informações sobre terreno, clima, fauna, flora e ciclos naturais.",
+      "skillAbility": "int"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.percepcao",
+    "system_id": "dnd5e",
+    "name_pt": "Percepção",
+    "name_en": "Percepção",
+    "name_es": "Percepção",
+    "description_pt": "Notar criaturas, objetos, sons e detalhes ocultos; usada para perceber perigos.",
+    "description_en": "Notar criaturas, objetos, sons e detalhes ocultos; usada para perceber perigos.",
+    "description_es": "Notar criaturas, objetos, sons e detalhes ocultos; usada para perceber perigos.",
+    "key_ability": "wis",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "percepcao",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "wis"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Notar criaturas, objetos, sons e detalhes ocultos; usada para perceber perigos.",
+      "ruleSummary": "Notar criaturas, objetos, sons e detalhes ocultos; usada para perceber perigos.",
+      "skillAbility": "wis"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.persuasao",
+    "system_id": "dnd5e",
+    "name_pt": "Persuasão",
+    "name_en": "Persuasão",
+    "name_es": "Persuasão",
+    "description_pt": "Convencer, negociar, argumentar, barganhar e conquistar cooperação de forma diplomática.",
+    "description_en": "Convencer, negociar, argumentar, barganhar e conquistar cooperação de forma diplomática.",
+    "description_es": "Convencer, negociar, argumentar, barganhar e conquistar cooperação de forma diplomática.",
+    "key_ability": "cha",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "persuasao",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "cha"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Convencer, negociar, argumentar, barganhar e conquistar cooperação de forma diplomática.",
+      "ruleSummary": "Convencer, negociar, argumentar, barganhar e conquistar cooperação de forma diplomática.",
+      "skillAbility": "cha"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.prestidigitacao",
+    "system_id": "dnd5e",
+    "name_pt": "Prestidigitação",
+    "name_en": "Prestidigitação",
+    "name_es": "Prestidigitação",
+    "description_pt": "Realizar truques manuais, esconder objetos, plantar itens e furtar sem ser notado.",
+    "description_en": "Realizar truques manuais, esconder objetos, plantar itens e furtar sem ser notado.",
+    "description_es": "Realizar truques manuais, esconder objetos, plantar itens e furtar sem ser notado.",
+    "key_ability": "dex",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "prestidigitacao",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "dex"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Realizar truques manuais, esconder objetos, plantar itens e furtar sem ser notado.",
+      "ruleSummary": "Realizar truques manuais, esconder objetos, plantar itens e furtar sem ser notado.",
+      "skillAbility": "dex"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.religiao",
+    "system_id": "dnd5e",
+    "name_pt": "Religião",
+    "name_en": "Religião",
+    "name_es": "Religião",
+    "description_pt": "Recordar divindades, ritos, símbolos, cultos e tradições religiosas.",
+    "description_en": "Recordar divindades, ritos, símbolos, cultos e tradições religiosas.",
+    "description_es": "Recordar divindades, ritos, símbolos, cultos e tradições religiosas.",
+    "key_ability": "int",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "religiao",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "int"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Recordar divindades, ritos, símbolos, cultos e tradições religiosas.",
+      "ruleSummary": "Recordar divindades, ritos, símbolos, cultos e tradições religiosas.",
+      "skillAbility": "int"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "dnd5e.skill.sobrevivencia",
+    "system_id": "dnd5e",
+    "name_pt": "Sobrevivência",
+    "name_en": "Sobrevivência",
+    "name_es": "Sobrevivência",
+    "description_pt": "Rastrear, orientar-se, caçar, procurar alimento e lidar com o ambiente natural.",
+    "description_en": "Rastrear, orientar-se, caçar, procurar alimento e lidar com o ambiente natural.",
+    "description_es": "Rastrear, orientar-se, caçar, procurar alimento e lidar com o ambiente natural.",
+    "key_ability": "wis",
+    "skill_type": "skill",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 177,
+    "data": {
+      "id": "sobrevivencia",
+      "source": {
+        "book": "D&D 5e — Livro do Jogador (2014)",
+        "page": 177
+      },
+      "ruleset": "standard",
+      "keyAbility": [
+        "wis"
+      ],
+      "sourceBook": "D&D 5e — Livro do Jogador (2014)",
+      "sourcePage": 177,
+      "description": "Rastrear, orientar-se, caçar, procurar alimento e lidar com o ambiente natural.",
+      "ruleSummary": "Rastrear, orientar-se, caçar, procurar alimento e lidar com o ambiente natural.",
+      "skillAbility": "wis"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  }
+]

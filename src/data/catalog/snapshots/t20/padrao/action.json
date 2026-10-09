@@ -1,0 +1,126 @@
+[
+  {
+    "id": "t20.action.attack",
+    "name_pt": "Ataque",
+    "name_en": "Ataque",
+    "name_es": "Ataque",
+    "description_pt": "Faça um ataque com uma arma, ataque desarmado ou magia que use uma ação padrão.",
+    "description_en": "Faça um ataque com uma arma, ataque desarmado ou magia que use uma ação padrão.",
+    "description_es": "Faça um ataque com uma arma, ataque desarmado ou magia que use uma ação padrão.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": null,
+    "data": {
+      "id": "t20.action.attack",
+      "source": {
+        "book": "Tormenta20 — Livro Básico"
+      },
+      "ruleset": "padrao",
+      "ruleKind": "action",
+      "systemId": "t20",
+      "system_id": "t20",
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "description": "Escolha o alvo dentro do alcance e faça o teste de ataque usando a proficiência, atributo e modificadores aplicáveis do personagem."
+    },
+    "created_at": "2026-09-13T22:07:08.98402+00:00",
+    "updated_at": "2026-09-13T22:22:12.461293+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.action.full_round",
+    "name_pt": "Ação completa",
+    "name_en": "Ação completa",
+    "name_es": "Ação completa",
+    "description_pt": "Use sua ação padrão e sua ação de movimento em uma atividade única.",
+    "description_en": "Use sua ação padrão e sua ação de movimento em uma atividade única.",
+    "description_es": "Use sua ação padrão e sua ação de movimento em uma atividade única.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": null,
+    "data": {
+      "id": "t20.action.full_round",
+      "source": {
+        "book": "Tormenta20 — Livro Básico"
+      },
+      "ruleset": "padrao",
+      "ruleKind": "action",
+      "systemId": "t20",
+      "system_id": "t20",
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "description": "A ação completa representa uma atividade que exige a rodada inteira, conforme a descrição da habilidade, manobra ou equipamento."
+    },
+    "created_at": "2026-09-13T22:07:08.98402+00:00",
+    "updated_at": "2026-09-13T22:22:12.461293+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.action.move",
+    "name_pt": "Movimento",
+    "name_en": "Movimento",
+    "name_es": "Movimento",
+    "description_pt": "Mova-se até seu deslocamento usando uma ação de movimento.",
+    "description_en": "Mova-se até seu deslocamento usando uma ação de movimento.",
+    "description_es": "Mova-se até seu deslocamento usando uma ação de movimento.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": null,
+    "data": {
+      "id": "t20.action.move",
+      "source": {
+        "book": "Tormenta20 — Livro Básico"
+      },
+      "ruleset": "padrao",
+      "ruleKind": "action",
+      "systemId": "t20",
+      "system_id": "t20",
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "description": "O deslocamento pode ser dividido quando a regra permitir; terreno, condições e armaduras podem modificar o valor efetivo."
+    },
+    "created_at": "2026-09-13T22:07:08.98402+00:00",
+    "updated_at": "2026-09-13T22:22:12.461293+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.action.reaction",
+    "name_pt": "Reação",
+    "name_en": "Reação",
+    "name_es": "Reação",
+    "description_pt": "Responda a um gatilho definido por uma habilidade ou regra.",
+    "description_en": "Responda a um gatilho definido por uma habilidade ou regra.",
+    "description_es": "Responda a um gatilho definido por uma habilidade ou regra.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": null,
+    "data": {
+      "id": "t20.action.reaction",
+      "source": {
+        "book": "Tormenta20 — Livro Básico"
+      },
+      "ruleset": "padrao",
+      "ruleKind": "action",
+      "systemId": "t20",
+      "system_id": "t20",
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "description": "Reações só podem ser usadas quando seu gatilho ocorrer e respeitam os limites de uso e custos da habilidade correspondente."
+    },
+    "created_at": "2026-09-13T22:07:08.98402+00:00",
+    "updated_at": "2026-09-13T22:22:12.461293+00:00",
+    "system_id": "t20"
+  }
+]

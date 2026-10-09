@@ -1,0 +1,2525 @@
+[
+  {
+    "id": "form.alch.alchemists_fire_lesser",
+    "item_id": null,
+    "name_pt": "Fogo Alquímico Menor",
+    "name_en": "Lesser Alchemist's Fire",
+    "name_es": "Fuego alquímico menor",
+    "description_pt": "Fórmula de bomba alquímica que causa dano de fogo e fogo persistente.",
+    "description_en": "Formula for an alchemical bomb that deals fire and persistent fire damage.",
+    "description_es": "Fórmula de una bomba alquímica que causa daño de fuego y fuego persistente.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Bomba",
+      "Consumível",
+      "Fogo",
+      "Espalhar"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 291,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "form.alch.antidote_lesser",
+    "item_id": null,
+    "name_pt": "Antídoto Menor",
+    "name_en": "Lesser Antidote",
+    "name_es": "Antídoto menor",
+    "description_pt": "Fórmula de elixir que protege contra venenos.",
+    "description_en": "Formula for an elixir that protects against poisons.",
+    "description_es": "Fórmula de un elixir que protege contra venenos.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 292,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Elixir)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "form.alch.elixir_of_life_lesser",
+    "item_id": null,
+    "name_pt": "Elixir da Vida Menor",
+    "name_en": "Minor Elixir of Life",
+    "name_es": "Elixir de la vida menor",
+    "description_pt": "Fórmula de elixir alquímico que restaura Pontos de Vida.",
+    "description_en": "Formula for an alchemical elixir that restores Hit Points.",
+    "description_es": "Fórmula de un elixir alquímico que restaura Puntos de Golpe.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir",
+      "Cura"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 292,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Elixir)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "form.alch.silversheen",
+    "item_id": null,
+    "name_pt": "Verniz Prateado",
+    "name_en": "Silversheen",
+    "name_es": "Brillo plateado",
+    "description_pt": "Fórmula de revestimento alquímico que faz uma arma contar como prata.",
+    "description_en": "Formula for an alchemical coating that makes a weapon count as silver.",
+    "description_es": "Fórmula de un recubrimiento alquímico que hace que un arma cuente como plata.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 2,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Óleo"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 294,
+    "data": {
+      "price": "6 PO",
+      "category": "Alquímico (Óleo)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "form.alch.smokestick",
+    "item_id": null,
+    "name_pt": "Bastão de Fumaça",
+    "name_en": "Smokestick",
+    "name_es": "Vara de humo",
+    "description_pt": "Fórmula de consumível que cria uma nuvem de fumaça obscurecedora.",
+    "description_en": "Formula for a consumable that creates an obscuring cloud of smoke.",
+    "description_es": "Fórmula de un consumible que crea una nube de humo que oscurece.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 294,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Consumível)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "form.pot.minor_healing_potion",
+    "item_id": null,
+    "name_pt": "Poção de Cura Menor",
+    "name_en": "Minor Healing Potion",
+    "name_es": "Poción de curación menor",
+    "description_pt": "Fórmula para fabricar uma Poção de Cura Menor.",
+    "description_en": "Formula for crafting a Minor Healing Potion.",
+    "description_es": "Fórmula para fabricar una Poción de curación menor.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Mágico",
+      "Consumível",
+      "Poção",
+      "Cura"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 295,
+    "data": {
+      "price": "4 PO",
+      "category": "Mágico (Poção)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "form.snare.spike_snare",
+    "item_id": null,
+    "name_pt": "Armadilha de Espigões",
+    "name_en": "Spike Snare",
+    "name_es": "Lazo de púas",
+    "description_pt": "Fórmula de armadilha que causa dano perfurante quando acionada.",
+    "description_en": "Formula for a snare that deals piercing damage when triggered.",
+    "description_es": "Fórmula de una trampa que causa daño perforante al activarse.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Armadilha",
+      "Consumível",
+      "Mecânico"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 296,
+    "data": {
+      "price": "3 PO",
+      "category": "Armadilha (Snare)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.acid_flask_greater",
+    "item_id": null,
+    "name_pt": "Frasco de Ácido Maior",
+    "name_en": "Acid Flask Greater",
+    "name_es": "Frasco de ácido Mayor",
+    "description_pt": "Causa 3d6 de ácido persistente e 3 de dano colateral; concede +2 no ataque.",
+    "description_en": "Deals 3d6 persistent acid damage and 3 acid splash damage; grants a +2 item attack bonus.",
+    "description_es": "Inflige 3d6 de daño de ácido persistente y 3 de daño colateral; concede +2 al ataque.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 11,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "250 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.acid_flask_minor",
+    "item_id": null,
+    "name_pt": "Frasco de Ácido Menor",
+    "name_en": "Lesser Acid Flask",
+    "name_es": "Frasco de ácido menor",
+    "description_pt": "Bomba de ácido que causa dano persistente e dano de espalhamento.",
+    "description_en": "Lesser Acid Flask is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Frasco de ácido menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.acid_flask_moderate",
+    "item_id": null,
+    "name_pt": "Frasco de Ácido Moderada",
+    "name_en": "Acid Flask Moderate",
+    "name_es": "Frasco de ácido Moderada",
+    "description_pt": "Causa 2d6 de ácido persistente e 2 de dano colateral; concede +1 no ataque.",
+    "description_en": "Deals 2d6 persistent acid damage and 2 acid splash damage; grants a +1 item attack bonus.",
+    "description_es": "Inflige 2d6 de daño de ácido persistente y 2 de daño colateral; concede +1 al ataque.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 3,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "10 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.acid_flask_superior",
+    "item_id": null,
+    "name_pt": "Frasco de Ácido Superior",
+    "name_en": "Acid Flask Major",
+    "name_es": "Frasco de ácido Superior",
+    "description_pt": "Causa 4d6 de ácido persistente e 4 de dano colateral; concede +3 no ataque.",
+    "description_en": "Deals 4d6 persistent acid damage and 4 acid splash damage; grants a +3 item attack bonus.",
+    "description_es": "Inflige 4d6 de daño de ácido persistente y 4 de daño colateral; concede +3 al ataque.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 17,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "2500 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.aconite",
+    "item_id": null,
+    "name_pt": "Acônito",
+    "name_en": "Aconite",
+    "name_es": "Acónito",
+    "description_pt": "Veneno ingerido com Fortitude CD 30, latência de 10 minutos e duração máxima de 6 minutos. Estágios: 3d10, 4d10 ou 5d10 de dano de veneno por 1 minuto; sobreviver ao estágio 3 cura imediatamente a maldição de um teriantropo.",
+    "description_en": "Ingested poison with Fortitude DC 30, a 10-minute onset, and a 6-minute maximum duration. Stages deal 3d10, 4d10, or 5d10 poison damage for 1 minute; surviving stage 3 immediately cures a lycanthrope curse.",
+    "description_es": "Veneno ingerido con Fortaleza CD 30, latencia de 10 minutos y duración máxima de 6 minutos. Las etapas infligen 3d10, 4d10 o 5d10 de daño de veneno durante 1 minuto; sobrevivir a la etapa 3 cura inmediatamente la maldición de un licántropo.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 10,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 291,
+    "data": {
+      "price": "155 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.alchemists_fire_greater",
+    "item_id": null,
+    "name_pt": "Fogo Alquímico Maior",
+    "name_en": "Alchemist's Fire Greater",
+    "name_es": "Fuego alquímico Mayor",
+    "description_pt": "Causa 3d8 de fogo, 3 de fogo persistente e 3 de dano colateral; concede +2 no ataque.",
+    "description_en": "Deals 3d8 fire damage, 3 persistent fire damage, and 3 fire splash damage; grants a +2 item attack bonus.",
+    "description_es": "Inflige 3d8 de daño de fuego, 3 de fuego persistente y 3 de daño colateral; concede +2 al ataque.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 11,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "price": "250 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.alchemists_fire_minor",
+    "item_id": null,
+    "name_pt": "Fogo Alquímico Menor",
+    "name_en": "Lesser Alchemist's Fire",
+    "name_es": "Fuego alquímico menor",
+    "description_pt": "Bomba de fogo que causa dano persistente e dano de espalhamento.",
+    "description_en": "Lesser Alchemist's Fire is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Fuego alquímico menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.alchemists_fire_moderate",
+    "item_id": null,
+    "name_pt": "Fogo Alquímico Moderada",
+    "name_en": "Alchemist's Fire Moderate",
+    "name_es": "Fuego alquímico Moderada",
+    "description_pt": "Causa 2d8 de fogo, 2 de fogo persistente e 2 de dano colateral; concede +1 no ataque.",
+    "description_en": "Deals 2d8 fire damage, 2 persistent fire damage, and 2 fire splash damage; grants a +1 item attack bonus.",
+    "description_es": "Inflige 2d8 de daño de fuego, 2 de fuego persistente y 2 de daño colateral; concede +1 al ataque.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 3,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "price": "10 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.alchemists_fire_superior",
+    "item_id": null,
+    "name_pt": "Fogo Alquímico Superior",
+    "name_en": "Alchemist's Fire Major",
+    "name_es": "Fuego alquímico Superior",
+    "description_pt": "Causa 4d8 de fogo, 4 de fogo persistente e 4 de dano colateral; concede +3 no ataque.",
+    "description_en": "Deals 4d8 fire damage, 4 persistent fire damage, and 4 fire splash damage; grants a +3 item attack bonus.",
+    "description_es": "Inflige 4d8 de daño de fuego, 4 de fuego persistente y 4 de daño colateral; concede +3 al ataque.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 17,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "price": "2500 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.antidote_minor",
+    "item_id": null,
+    "name_pt": "Antídoto Menor",
+    "name_en": "Lesser Antidote",
+    "name_es": "Antídoto menor",
+    "description_pt": "Elixir que concede bônus de item contra venenos por 6 horas.",
+    "description_en": "Lesser Antidote is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
+    "description_es": "Antídoto menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 286,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Elixir)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.antiplague_minor",
+    "item_id": null,
+    "name_pt": "Antipeste Menor",
+    "name_en": "Lesser Antiplague",
+    "name_es": "Antiplaga menor",
+    "description_pt": "Elixir que concede bônus de item contra doenças por 24 horas.",
+    "description_en": "Lesser Antiplague is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
+    "description_es": "Antiplaga menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 286,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Elixir)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.arsenic",
+    "item_id": null,
+    "name_pt": "Arsênico",
+    "name_en": "Arsenic",
+    "name_es": "Arsénico",
+    "description_pt": "Veneno ingerido com Fortitude CD 18, latência de 10 minutos e duração máxima de 5 minutos. Estágios: 1d4 de veneno e enjoado 1; 1d6 de veneno e enjoado 2; 1d8 de veneno e enjoado 3.",
+    "description_en": "Ingested poison with Fortitude DC 18, a 10-minute onset, and a 5-minute maximum duration. Stages: 1d4 poison and sickened 1; 1d6 poison and sickened 2; 1d8 poison and sickened 3.",
+    "description_es": "Veneno ingerido con Fortaleza CD 18, latencia de 10 minutos y duración máxima de 5 minutos. Etapas: 1d4 de veneno y enfermo 1; 1d6 de veneno y enfermo 2; 1d8 de veneno y enfermo 3.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 291,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.belladonna",
+    "item_id": null,
+    "name_pt": "Beladona",
+    "name_en": "Belladonna",
+    "name_es": "Belladona",
+    "description_pt": "Veneno ingerido com Fortitude CD 19, latência de 10 minutos e duração máxima de 30 minutos. Estágios: ofuscado por 10 minutos; 1d6 de veneno e enjoado 1 por 10 minutos; 1d6 de veneno, confuso e enjoado 1 por 1 minuto.",
+    "description_en": "Ingested poison with Fortitude DC 19, a 10-minute onset, and a 30-minute maximum duration. Stages: dazzled for 10 minutes; 1d6 poison and sickened 1 for 10 minutes; 1d6 poison, confused, and sickened 1 for 1 minute.",
+    "description_es": "Veneno ingerido con Fortaleza CD 19, latencia de 10 minutos y duración máxima de 30 minutos. Etapas: deslumbrado durante 10 minutos; 1d6 de veneno y enfermo 1 durante 10 minutos; 1d6 de veneno, confundido y enfermo 1 durante 1 minuto.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 2,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 291,
+    "data": {
+      "price": "5 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.black_adder_venom",
+    "item_id": null,
+    "name_pt": "Veneno de Víbora Negra",
+    "name_en": "Black Adder Venom",
+    "name_es": "Veneno de víbora negra",
+    "description_pt": "Veneno de ferimento com Fortitude CD 18 e duração máxima de 3 rodadas. Cada estágio dura 1 rodada e causa 1d4, 1d6 ou 1d8 de dano de veneno.",
+    "description_en": "Injury poison with Fortitude DC 18 and a 3-round maximum duration. Each stage lasts 1 round and deals 1d4, 1d6, or 1d8 poison damage.",
+    "description_es": "Veneno de herida con Fortaleza CD 18 y duración máxima de 3 asaltos. Cada etapa dura 1 asalto e inflige 1d4, 1d6 o 1d8 de daño de veneno.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 2,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "price": "6 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.black_lotus_extract",
+    "item_id": null,
+    "name_pt": "Extrato de Lótus Negra",
+    "name_en": "Black Lotus Extract",
+    "name_es": "Extracto de loto negro",
+    "description_pt": "Veneno ingerido com Fortitude CD 42, latência de 1 minuto e duração máxima de 6 rodadas. Estágios: 13d6, 15d6 ou 17d6 de dano de veneno, com drenado 1, drenado 1 ou drenado 2, respectivamente, por 1 rodada.",
+    "description_en": "Ingested poison with Fortitude DC 42, a 1-minute onset, and a 6-round maximum duration. Stages deal 13d6, 15d6, or 17d6 poison damage with drained 1, drained 1, or drained 2 respectively, for 1 round.",
+    "description_es": "Veneno ingerido con Fortaleza CD 42, latencia de 1 minuto y duración máxima de 6 asaltos. Las etapas infligen 13d6, 15d6 o 17d6 de daño de veneno con drenado 1, drenado 1 o drenado 2 respectivamente, durante 1 asalto.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 19,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "price": "6500 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.bottled_lightning_greater",
+    "item_id": null,
+    "name_pt": "Relâmpago Engarrafado Maior",
+    "name_en": "Bottled Lightning Greater",
+    "name_es": "Relámpago embotellado Mayor",
+    "description_pt": "Causa 3d6 de eletricidade e 3 de dano colateral; concede +2 no ataque e deixa o alvo desprevenido até o início do próximo turno.",
+    "description_en": "Deals 3d6 electricity damage and 3 electricity splash damage; grants a +2 item attack bonus and makes the target off-guard until the start of the next turn.",
+    "description_es": "Inflige 3d6 de electricidad y 3 de daño colateral; concede +2 al ataque y deja al objetivo desprevenido hasta el inicio del próximo turno.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 11,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "250 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.bottled_lightning_minor",
+    "item_id": null,
+    "name_pt": "Relâmpago Engarrafado Menor",
+    "name_en": "Lesser Bottled Lightning",
+    "name_es": "Relámpago embotellado menor",
+    "description_pt": "Bomba elétrica que deixa o alvo desprevenido até o próximo turno.",
+    "description_en": "Lesser Bottled Lightning is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Relámpago embotellado menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.bottled_lightning_moderate",
+    "item_id": null,
+    "name_pt": "Relâmpago Engarrafado Moderada",
+    "name_en": "Bottled Lightning Moderate",
+    "name_es": "Relámpago embotellado Moderada",
+    "description_pt": "Causa 2d6 de eletricidade e 2 de dano colateral; concede +1 no ataque e deixa o alvo desprevenido até o início do próximo turno.",
+    "description_en": "Deals 2d6 electricity damage and 2 electricity splash damage; grants a +1 item attack bonus and makes the target off-guard until the start of the next turn.",
+    "description_es": "Inflige 2d6 de electricidad y 2 de daño colateral; concede +1 al ataque y deja al objetivo desprevenido hasta el inicio del próximo turno.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 3,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "10 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.bottled_lightning_superior",
+    "item_id": null,
+    "name_pt": "Relâmpago Engarrafado Superior",
+    "name_en": "Bottled Lightning Major",
+    "name_es": "Relámpago embotellado Superior",
+    "description_pt": "Causa 4d6 de eletricidade e 4 de dano colateral; concede +3 no ataque e deixa o alvo desprevenido até o início do próximo turno.",
+    "description_en": "Deals 4d6 electricity damage and 4 electricity splash damage; grants a +3 item attack bonus and makes the target off-guard until the start of the next turn.",
+    "description_es": "Inflige 4d6 de electricidad y 4 de daño colateral; concede +3 al ataque y deja al objetivo desprevenido hasta el inicio del próximo turno.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 17,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "2500 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.bright_stick",
+    "item_id": null,
+    "name_pt": "Bastão Brilhante",
+    "name_en": "Glow Rod",
+    "name_es": "Bastón luminoso",
+    "description_pt": "Ao ser batido contra uma superfície dura, emite luz forte em 6 metros e luz fraca nos 12 metros seguintes por 6 horas.",
+    "description_en": "When struck against a hard surface, it emits bright light in a 6-meter radius and dim light in the next 12 meters for 6 hours.",
+    "description_es": "Al golpearlo contra una superficie dura, emite luz brillante en un radio de 6 metros y luz tenue en los 12 metros siguientes durante 6 horas.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Ferramenta"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 295,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Ferramenta)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.cave_worm_venom",
+    "item_id": null,
+    "name_pt": "Veneno de Vorme da Caverna",
+    "name_en": "Cave Worm Venom",
+    "name_es": "Veneno de gusano de caverna",
+    "description_pt": "Veneno de ferimento com Fortitude CD 32 e duração máxima de 6 rodadas. Cada estágio dura 1 rodada e causa 5d6, 6d6 ou 8d6 de veneno, sempre com enfraquecido 2.",
+    "description_en": "Injury poison with Fortitude DC 32 and a 6-round maximum duration. Each stage lasts 1 round and deals 5d6, 6d6, or 8d6 poison damage, always with enfeebled 2.",
+    "description_es": "Veneno de herida con Fortaleza CD 32 y duración máxima de 6 asaltos. Cada etapa dura 1 asalto e inflige 5d6, 6d6 u 8d6 de veneno, siempre con debilitado 2.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 12,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 294,
+    "data": {
+      "price": "500 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.cerulean_scourge",
+    "item_id": null,
+    "name_pt": "Flagelo Cerúleo",
+    "name_en": "Cerulean Scourge",
+    "name_es": "Flagelo cerúleo",
+    "description_pt": "Veneno de contato CD 22; causa dano de veneno, desajeitado e estupefato.",
+    "description_en": "Contact poison DC 22; deals poison damage, clumsy, and stupefied.",
+    "description_es": "Veneno de contacto CD 22; inflige daño de veneno, torpe y estupefacto.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 16,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "price": "1450 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.cheetah_elixir_minor",
+    "item_id": null,
+    "name_pt": "Elixir do Guepardo Menor",
+    "name_en": "Lesser Cheetah Elixir",
+    "name_es": "Elixir del guepardo menor",
+    "description_pt": "Elixir que melhora a mobilidade e a velocidade temporariamente.",
+    "description_en": "Lesser Cheetah Elixir is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
+    "description_es": "Elixir del guepardo menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 288,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Elixir)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.cytillesh_oil",
+    "item_id": null,
+    "name_pt": "Óleo de Cytillesh",
+    "name_en": "Cytillesh Oil",
+    "name_es": "Aceite de cytillesh",
+    "description_pt": "Veneno com Fortitude CD 19 e duração máxima de 4 rodadas. Cada estágio dura 1 rodada e causa 1d8, 1d10 ou 2d8 de dano de veneno.",
+    "description_en": "Poison with Fortitude DC 19 and a 4-round maximum duration. Each stage lasts 1 round and deals 1d8, 1d10, or 2d8 poison damage.",
+    "description_es": "Veneno con Fortaleza CD 19 y duración máxima de 4 asaltos. Cada etapa dura 1 asalto e inflige 1d8, 1d10 o 2d8 de daño de veneno.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 3,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "price": "10 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.death_cap_powder",
+    "item_id": null,
+    "name_pt": "Pó de Chapéu-da-Morte",
+    "name_en": "Death Cap Powder",
+    "name_es": "Polvo de sombrerillo de la muerte",
+    "description_pt": "Veneno ingerido com Fortitude CD 33, latência de 10 minutos e duração máxima de 6 minutos. Os estágios causam 7d8 de veneno; 9d6 de veneno e enjoado 2; 8d10 de veneno e enjoado 3.",
+    "description_en": "Ingested poison with Fortitude DC 33, a 10-minute onset, and a 6-minute maximum duration. Stages deal 7d8 poison; 9d6 poison and sickened 2; 8d10 poison and sickened 3.",
+    "description_es": "Veneno ingerido con Fortaleza CD 33, latencia de 10 minutos y duración máxima de 6 minutos. Las etapas infligen 7d8 de veneno; 9d6 de veneno y enfermo 2; 8d10 de veneno y enfermo 3.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 13,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "price": "450 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.death_takings",
+    "item_id": null,
+    "name_pt": "Lágrimas da Morte",
+    "name_en": "Tears of Death",
+    "name_es": "Lágrimas de la muerte",
+    "description_pt": "Veneno ingerido com Fortitude CD 44, latência de 1 minuto e duração máxima de 10 minutos. Estágios: 20d6, 22d6 ou 24d6 de dano de veneno e paralisado por 1 rodada.",
+    "description_en": "Ingested poison with Fortitude DC 44, a 1-minute onset, and a 10-minute maximum duration. Stages deal 20d6, 22d6, or 24d6 poison damage and paralyze for 1 round.",
+    "description_es": "Veneno ingerido con Fortaleza CD 44, latencia de 1 minuto y duración máxima de 10 minutos. Las etapas infligen 20d6, 22d6 o 24d6 de daño de veneno y paralizan durante 1 asalto.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 20,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "price": "12000 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.detonating_stone_greater",
+    "item_id": null,
+    "name_pt": "Pedra Detonante Maior",
+    "name_en": "Detonating Stone Greater",
+    "name_es": "Piedra detonante Mayor",
+    "description_pt": "Causa 3d4 de sônico e 3 de dano colateral; concede +2 no ataque, CD 28, e pode ensurdecer criaturas próximas.",
+    "description_en": "Deals 3d4 sonic damage and 3 sonic splash damage; grants a +2 item attack bonus, DC 28, and can deafen nearby creatures.",
+    "description_es": "Inflige 3d4 de daño sónico y 3 de daño colateral; concede +2 al ataque, CD 28, y puede ensordecer a criaturas cercanas.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 11,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "250 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.detonating_stone_moderate",
+    "item_id": null,
+    "name_pt": "Pedra Detonante Moderada",
+    "name_en": "Detonating Stone Moderate",
+    "name_es": "Piedra detonante Moderada",
+    "description_pt": "Causa 2d4 de sônico e 2 de dano colateral; concede +1 no ataque, CD 20, e pode ensurdecer criaturas próximas.",
+    "description_en": "Deals 2d4 sonic damage and 2 sonic splash damage; grants a +1 item attack bonus, DC 20, and can deafen nearby creatures.",
+    "description_es": "Inflige 2d4 de daño sónico y 2 de daño colateral; concede +1 al ataque, CD 20, y puede ensordecer a criaturas cercanas.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 3,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "10 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.detonating_stone_superior",
+    "item_id": null,
+    "name_pt": "Pedra Detonante Superior",
+    "name_en": "Detonating Stone Major",
+    "name_es": "Piedra detonante Superior",
+    "description_pt": "Causa 4d4 de sônico e 4 de dano colateral; concede +3 no ataque, CD 36, e pode ensurdecer criaturas próximas.",
+    "description_en": "Deals 4d4 sonic damage and 4 sonic splash damage; grants a +3 item attack bonus, DC 36, and can deafen nearby creatures.",
+    "description_es": "Inflige 4d4 de daño sónico y 4 de daño colateral; concede +3 al ataque, CD 36, y puede ensordecer a criaturas cercanas.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 17,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "2500 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.detritus_stone_minor",
+    "item_id": null,
+    "name_pt": "Pedra Detonante Menor",
+    "name_en": "Lesser Detonating Stone",
+    "name_es": "Piedra detonante menor",
+    "description_pt": "Bomba sônica que causa dano colateral a criaturas na área.",
+    "description_en": "Lesser Detonating Stone is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Piedra detonante menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.draining_shadow",
+    "item_id": null,
+    "name_pt": "Sombra Desgastante",
+    "name_en": "Draining Shadow",
+    "name_es": "Sombra agotadora",
+    "description_pt": "Veneno de ferimento CD 26; inflige dano de veneno e drena a vitalidade máxima.",
+    "description_en": "Injury poison DC 26; inflicts poison damage and drains maximum vitality.",
+    "description_es": "Veneno de herida CD 26; causa daño de veneno y drena la vitalidad máxima.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 10,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 293,
+    "data": {
+      "price": "160 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.eagle_eye_elixir_minor",
+    "item_id": null,
+    "name_pt": "Elixir do Olho de Águia Menor",
+    "name_en": "Lesser Eagle-Eye Elixir",
+    "name_es": "Elixir del ojo de águila menor",
+    "description_pt": "Elixir que aguça a visão e melhora a percepção de detalhes.",
+    "description_en": "Lesser Eagle-Eye Elixir is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
+    "description_es": "Elixir del ojo de águila menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 288,
+    "data": {
+      "price": "4 PO",
+      "category": "Alquímico (Elixir)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.fear_flower_nectar",
+    "item_id": null,
+    "name_pt": "Néctar de Flor do Medo",
+    "name_en": "Fearflower Nectar",
+    "name_es": "Néctar de flor del miedo",
+    "description_pt": "Veneno ingerido CD 20; causa amedrontado progressivo, fuga e confusão.",
+    "description_en": "Ingested poison DC 20; causes escalating fear, fleeing, and confusion.",
+    "description_es": "Veneno ingerido CD 20; causa miedo progresivo, huida y confusión.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 4,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "price": "16 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.fogged_mind_mist",
+    "item_id": null,
+    "name_pt": "Bruma de Mente Enevoada",
+    "name_en": "Fogged Mind Mist",
+    "name_es": "Bruma de mente nublada",
+    "description_pt": "Veneno inalado que prejudica faculdades mentais; CD, dano e progressão devem ser conferidos no livro.",
+    "description_en": "Inhaled poison that impairs mental faculties; check the book for DC, damage, and progression.",
+    "description_es": "Veneno inhalado que perjudica las facultades mentales; verifica el libro para CD, daño y progresión.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 15,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 291,
+    "data": {
+      "price": "1000 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.forensic_dye",
+    "item_id": null,
+    "name_pt": "Corante Forense",
+    "name_en": "Forensic Dye",
+    "name_es": "Tinte forense",
+    "description_pt": "Ao receber uma pequena quantidade de outro composto ou material, como sangue ou lama, transforma-se rapidamente em substância marrom-avermelhada e depois volta a ficar transparente.",
+    "description_en": "When given a small amount of another compound or material, such as blood or mud, it quickly turns brown-red and then becomes clear again.",
+    "description_es": "Al añadir una pequeña cantidad de otro compuesto o material, como sangre o barro, se vuelve rápidamente marrón rojizo y luego vuelve a ser transparente.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Ferramenta"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 295,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Ferramenta)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.frightful_ampoule_greater",
+    "item_id": null,
+    "name_pt": "Ampola Pavorosa Maior",
+    "name_en": "Frightful Ampoule Greater",
+    "name_es": "Ampolla pavorosa Mayor",
+    "description_pt": "Dano mental 3d6 e dano colateral mental 3; concede +2 no ataque e deixa o alvo assustado 1 (ou assustado 2 em acerto crítico).",
+    "description_en": "Deals 3d6 mental damage and 3 mental splash damage; grants +2 item bonus to the attack and makes the target frightened 1 (frightened 2 on a critical hit).",
+    "description_es": "Inflige 3d6 de daño mental y 3 de daño colateral mental; concede +2 al ataque y deja al objetivo asustado 1 (asustado 2 con crítico).",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 11,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "price": "250 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.frightful_ampoule_minor",
+    "item_id": null,
+    "name_pt": "Ampola Pavorosa Menor",
+    "name_en": "Minor Frightful Ampoule",
+    "name_es": "Ámpula pavorosa menor",
+    "description_pt": "Bomba mental que causa dano mental e dano colateral de medo.",
+    "description_en": "Minor Frightful Ampoule is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Ámpula pavorosa menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.frightful_ampoule_moderate",
+    "item_id": null,
+    "name_pt": "Ampola Pavorosa Moderada",
+    "name_en": "Frightful Ampoule Moderate",
+    "name_es": "Ampolla pavorosa Moderada",
+    "description_pt": "Dano mental 2d6 e dano colateral mental 2; concede +1 no ataque e deixa o alvo assustado 1 (ou assustado 2 em acerto crítico).",
+    "description_en": "Deals 2d6 mental damage and 2 mental splash damage; grants +1 item bonus to the attack and makes the target frightened 1 (frightened 2 on a critical hit).",
+    "description_es": "Inflige 2d6 de daño mental y 2 de daño colateral mental; concede +1 al ataque y deja al objetivo asustado 1 (asustado 2 con crítico).",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 3,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "price": "10 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.frightful_ampoule_superior",
+    "item_id": null,
+    "name_pt": "Ampola Pavorosa Superior",
+    "name_en": "Frightful Ampoule Major",
+    "name_es": "Ampolla pavorosa Superior",
+    "description_pt": "Dano mental 4d6 e dano colateral mental 4; concede +3 no ataque e deixa o alvo assustado 1 (ou assustado 2 em acerto crítico).",
+    "description_en": "Deals 4d6 mental damage and 4 mental splash damage; grants +3 item bonus to the attack and makes the target frightened 1 (frightened 2 on a critical hit).",
+    "description_es": "Inflige 4d6 de daño mental y 4 de daño colateral mental; concede +3 al ataque y deja al objetivo asustado 1 (asustado 2 con crítico).",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 17,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "price": "2500 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.frost_vial_greater",
+    "item_id": null,
+    "name_pt": "Frasco Congelante Maior",
+    "name_en": "Frost Vial Greater",
+    "name_es": "Vial de escarcha Mayor",
+    "description_pt": "Causa 3d6 de frio e 3 de dano colateral; concede +2 no ataque e impõe –3 metros às Velocidades até o início do próximo turno.",
+    "description_en": "Deals 3d6 cold damage and 3 cold splash damage; grants a +2 item attack bonus and imposes a –10-foot Speed penalty until the start of the next turn.",
+    "description_es": "Inflige 3d6 de frío y 3 de daño colateral; concede +2 al ataque e impone –3 metros a las Velocidades hasta el inicio del próximo turno.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 11,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "250 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.frost_vial_minor",
+    "item_id": null,
+    "name_pt": "Frasco Congelante Menor",
+    "name_en": "Lesser Frost Vial",
+    "name_es": "Vial de escarcha menor",
+    "description_pt": "Bomba de frio que causa dano e reduz a Velocidade do alvo.",
+    "description_en": "Lesser Frost Vial is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Vial de escarcha menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.frost_vial_moderate",
+    "item_id": null,
+    "name_pt": "Frasco Congelante Moderada",
+    "name_en": "Frost Vial Moderate",
+    "name_es": "Vial de escarcha Moderada",
+    "description_pt": "Causa 2d6 de frio e 2 de dano colateral; concede +1 no ataque e impõe –3 metros às Velocidades até o início do próximo turno.",
+    "description_en": "Deals 2d6 cold damage and 2 cold splash damage; grants a +1 item attack bonus and imposes a –10-foot Speed penalty until the start of the next turn.",
+    "description_es": "Inflige 2d6 de frío y 2 de daño colateral; concede +1 al ataque e impone –3 metros a las Velocidades hasta el inicio del próximo turno.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 3,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "10 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.frost_vial_superior",
+    "item_id": null,
+    "name_pt": "Frasco Congelante Superior",
+    "name_en": "Frost Vial Major",
+    "name_es": "Vial de escarcha Superior",
+    "description_pt": "Causa 4d6 de frio e 4 de dano colateral; concede +3 no ataque e impõe –4,5 metros às Velocidades até o início do próximo turno.",
+    "description_en": "Deals 4d6 cold damage and 4 cold splash damage; grants a +3 item attack bonus and imposes a –15-foot Speed penalty until the start of the next turn.",
+    "description_es": "Inflige 4d6 de frío y 4 de daño colateral; concede +3 al ataque e impone –4,5 metros a las Velocidades hasta el inicio del próximo turno.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 17,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "price": "2500 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.gender_transition_minor",
+    "item_id": null,
+    "name_pt": "Elixir de Transição de Gênero Menor",
+    "name_en": "Lesser Gender Transition Elixir",
+    "name_es": "Elixir de transición de género menor",
+    "description_pt": "Elixir de transformação gradual de características secundárias de gênero.",
+    "description_en": "Lesser Gender Transition Elixir is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
+    "description_es": "Elixir de transición de género menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 287,
+    "data": {
+      "price": "1 PO",
+      "category": "Alquímico (Elixir)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.ghost_charge_greater",
+    "item_id": null,
+    "name_pt": "Carga Fantasma Maior",
+    "name_en": "Ghost Charge Greater",
+    "name_es": "Carga fantasmal Mayor",
+    "description_pt": "Causa 3d8 de vitalidade e 3 de dano colateral de vitalidade, deixa o alvo enfraquecido 2 e concede +2 no ataque.",
+    "description_en": "Deals 3d8 vitality damage and 3 vitality splash damage, makes the target enfeebled 2, and grants a +2 item attack bonus.",
+    "description_es": "Inflige 3d8 de daño de vitalidad y 3 de daño colateral de vitalidad, deja al objetivo debilitado 2 y concede +2 al ataque.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 11,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "price": "250 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.ghost_charge_minor",
+    "item_id": null,
+    "name_pt": "Carga Fantasma Menor",
+    "name_en": "Lesser Ghost Charge",
+    "name_es": "Carga fantasmal menor",
+    "description_pt": "Bomba de vitalidade que causa dano colateral a criaturas próximas.",
+    "description_en": "Lesser Ghost Charge is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Carga fantasmal menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.ghost_charge_moderate",
+    "item_id": null,
+    "name_pt": "Carga Fantasma Moderada",
+    "name_en": "Ghost Charge Moderate",
+    "name_es": "Carga fantasmal Moderada",
+    "description_pt": "Causa 2d8 de vitalidade e 2 de dano colateral de vitalidade, deixa o alvo enfraquecido 1 e concede +1 no ataque.",
+    "description_en": "Deals 2d8 vitality damage and 2 vitality splash damage, makes the target enfeebled 1, and grants a +1 item attack bonus.",
+    "description_es": "Inflige 2d8 de daño de vitalidad y 2 de daño colateral de vitalidad, deja al objetivo debilitado 1 y concede +1 al ataque.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 3,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "price": "10 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.ghost_charge_superior",
+    "item_id": null,
+    "name_pt": "Carga Fantasma Superior",
+    "name_en": "Ghost Charge Major",
+    "name_es": "Carga fantasmal Superior",
+    "description_pt": "Causa 4d8 de vitalidade e 4 de dano colateral de vitalidade, deixa o alvo enfraquecido 2 e concede +3 no ataque.",
+    "description_en": "Deals 4d8 vitality damage and 4 vitality splash damage, makes the target enfeebled 2, and grants a +3 item attack bonus.",
+    "description_es": "Inflige 4d8 de daño de vitalidad y 4 de daño colateral de vitalidad, deja al objetivo debilitado 2 y concede +3 al ataque.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 17,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "price": "2500 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.ghost_ink",
+    "item_id": null,
+    "name_pt": "Tinta Fantasma",
+    "name_en": "Ghost Ink",
+    "name_es": "Tinta fantasmal",
+    "description_pt": "Fica transparente por 1 minuto após aplicada e brilha em vermelho quando exposta ao calor. O criador pode escolher luz solar, luz estelar, luz mágica ou luz alquímica sem calor como método de revelação.",
+    "description_en": "It becomes transparent for 1 minute after application and glows red when exposed to heat. The creator can choose sunlight, starlight, magical light, or heatless alchemical light as the revealing method.",
+    "description_es": "Se vuelve transparente durante 1 minuto tras aplicarla y brilla en rojo al exponerse al calor. El creador puede elegir luz solar, luz estelar, luz mágica o luz alquímica sin calor como método de revelación.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Ferramenta"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 296,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Ferramenta)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.giant_centipede_venom",
+    "item_id": null,
+    "name_pt": "Veneno de Centopeia Gigante",
+    "name_en": "Giant Centipede Venom",
+    "name_es": "Veneno de ciempiés gigante",
+    "description_pt": "Veneno de ferimento com Fortitude CD 17 e duração máxima de 6 rodadas. Cada estágio dura 1 rodada: 1d4 de veneno; 1d4 de veneno e fatigado; 1d4 de veneno, desajeitado 1 e fatigado.",
+    "description_en": "Injury poison with Fortitude DC 17 and a 6-round maximum duration. Each stage lasts 1 round: 1d4 poison; 1d4 poison and fatigued; 1d4 poison, clumsy 1, and fatigued.",
+    "description_es": "Veneno de herida con Fortaleza CD 17 y duración máxima de 6 asaltos. Cada etapa dura 1 asalto: 1d4 de veneno; 1d4 de veneno y fatigado; 1d4 de veneno, torpe 1 y fatigado.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 294,
+    "data": {
+      "price": "4 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.giant_scorpion_venom",
+    "item_id": null,
+    "name_pt": "Veneno de Escorpião Gigante",
+    "name_en": "Giant Scorpion Venom",
+    "name_es": "Veneno de escorpión gigante",
+    "description_pt": "Veneno de ferimento com Fortitude CD 22 e duração máxima de 6 rodadas. Cada estágio dura 1 rodada: 2d6 de veneno e enfraquecido 1; 2d8 de veneno e enfraquecido 1; 2d10 de veneno e enfraquecido 2.",
+    "description_en": "Injury poison with Fortitude DC 22 and a 6-round maximum duration. Each stage lasts 1 round: 2d6 poison and enfeebled 1; 2d8 poison and enfeebled 1; 2d10 poison and enfeebled 2.",
+    "description_es": "Veneno de herida con Fortaleza CD 22 y duración máxima de 6 asaltos. Cada etapa dura 1 asalto: 2d6 de veneno y debilitado 1; 2d8 de veneno y debilitado 1; 2d10 de veneno y debilitado 2.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 6,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "price": "40 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.grave_root",
+    "item_id": null,
+    "name_pt": "Raiz do Túmulo",
+    "name_en": "Grave Root",
+    "name_es": "Raíz de tumba",
+    "description_pt": "Veneno de ferimento com Fortitude CD 19 e duração máxima de 4 rodadas. Cada estágio dura 1 rodada: 1d8 de veneno; 1d10 de veneno e estupefato 1; 2d6 de veneno e estupefato 2.",
+    "description_en": "Injury poison with Fortitude DC 19 and a 4-round maximum duration. Each stage lasts 1 round: 1d8 poison; 1d10 poison and stupefied 1; 2d6 poison and stupefied 2.",
+    "description_es": "Veneno de herida con Fortaleza CD 19 y duración máxima de 4 asaltos. Cada etapa dura 1 asalto: 1d8 de veneno; 1d10 de veneno y estupefacto 1; 2d6 de veneno y estupefacto 2.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 3,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 293,
+    "data": {
+      "price": "10 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.hemlock",
+    "item_id": null,
+    "name_pt": "Cicuta",
+    "name_en": "Hemlock",
+    "name_es": "Cicuta",
+    "description_pt": "Veneno ingerido com Fortitude CD 38, latência de 30 minutos e duração máxima de 60 minutos. Cada estágio dura 10 minutos e causa 16d6/17d6/18d6 de veneno e enfraquecido 2/3/4.",
+    "description_en": "Ingested poison with Fortitude DC 38, a 30-minute onset, and a 60-minute maximum duration. Each stage lasts 10 minutes and deals 16d6/17d6/18d6 poison damage with enfeebled 2/3/4.",
+    "description_es": "Veneno ingerido con Fortaleza CD 38, latencia de 30 minutos y duración máxima de 60 minutos. Cada etapa dura 10 minutos e inflige 16d6/17d6/18d6 de veneno con debilitado 2/3/4.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 17,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "price": "2250 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.inert_leg",
+    "item_id": null,
+    "name_pt": "Perna Inerte",
+    "name_en": "Inert Leg",
+    "name_es": "Pierna inerte",
+    "description_pt": "Prótese básica que restaura a mobilidade funcional do usuário.",
+    "description_en": "Basic prosthetic restoring functional mobility to the wearer.",
+    "description_es": "Prótesis básica que restaura la movilidad funcional del usuario.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 4,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "price": "15 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.kings_sleep",
+    "item_id": null,
+    "name_pt": "Sono do Rei",
+    "name_en": "King's Sleep",
+    "name_es": "Sueño del rey",
+    "description_pt": "Veneno ingerido virulento com Fortitude CD 41 e latência de 1 dia. Cada estágio dura 1 dia e causa drenado 1, drenado 1 ou drenado 2; a condição drenado é cumulativa e não pode ser removida enquanto o veneno durar.",
+    "description_en": "Virulent ingested poison with Fortitude DC 41 and a 1-day onset. Each stage lasts 1 day and causes drained 1, drained 1, or drained 2; drained is cumulative and cannot be removed while the poison lasts.",
+    "description_es": "Veneno ingerido virulento con Fortaleza CD 41 y latencia de 1 día. Cada etapa dura 1 día y causa drenado 1, drenado 1 o drenado 2; drenado es acumulativo y no puede eliminarse mientras dure el veneno.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 18,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 293,
+    "data": {
+      "price": "4000 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.lethargy_poison",
+    "item_id": null,
+    "name_pt": "Veneno de Letargia",
+    "name_en": "Lethargy Poison",
+    "name_es": "Veneno de letargo",
+    "description_pt": "Veneno de ferimento com Fortitude CD 18 e duração máxima de 4 horas. Os estágios causam desacelerado 1, desacelerado 1, inconsciente e, no estágio 4, inconsciente por 1d4 horas.",
+    "description_en": "Injury poison with Fortitude DC 18 and a 4-hour maximum duration. Stages cause slowed 1, slowed 1, unconscious, and at stage 4 unconscious for 1d4 hours.",
+    "description_es": "Veneno de herida con Fortaleza CD 18 y duración máxima de 4 horas. Las etapas causan ralentizado 1, ralentizado 1, inconsciente y, en la etapa 4, inconsciente durante 1d4 horas.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 2,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "price": "7 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.life_elixir_minimum",
+    "item_id": null,
+    "name_pt": "Elixir da Vida Mínimo",
+    "name_en": "Minor Elixir of Life",
+    "name_es": "Elixir de la vida mínimo",
+    "description_pt": "Elixir que restaura 1d6 Pontos de Vida e protege contra doenças e venenos.",
+    "description_en": "Minor Elixir of Life is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
+    "description_es": "Elixir de la vida mínimo es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 287,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Elixir)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.nettleseed_residue",
+    "item_id": null,
+    "name_pt": "Resíduo de Urtiga",
+    "name_en": "Nettleweed Residue",
+    "name_es": "Residuo de ortiga",
+    "description_pt": "Veneno de contato com Fortitude CD 27, latência de 1 minuto e duração máxima de 6 minutos. Cada estágio dura 1 minuto e causa 3d6, 4d6 ou 6d6 de dano de veneno.",
+    "description_en": "Contact poison with Fortitude DC 27, a 1-minute onset, and a 6-minute maximum duration. Each stage lasts 1 minute and deals 3d6, 4d6, or 6d6 poison damage.",
+    "description_es": "Veneno de contacto con Fortaleza CD 27, latencia de 1 minuto y duración máxima de 6 minutos. Cada etapa dura 1 minuto e inflige 3d6, 4d6 o 6d6 de daño de veneno.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 8,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 293,
+    "data": {
+      "price": "75 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.phosphor",
+    "item_id": null,
+    "name_pt": "Fósforo",
+    "name_en": "Phosphor",
+    "name_es": "Fósforo",
+    "description_pt": "Ao ser esfregado contra uma superfície áspera, acende. Pode ser aceso e tocado em um objeto inflamável como parte da mesma ação de Interagir; permanece aceso por 1 rodada e então é consumido.",
+    "description_en": "When rubbed against a rough surface, it ignites. It can be lit and touched to a flammable object as part of the same Interact action; it burns for 1 round and is then consumed.",
+    "description_es": "Al frotarlo contra una superficie áspera, se enciende. Puede encenderse y tocar un objeto inflamable como parte de la misma acción de Interactuar; permanece encendido durante 1 asalto y luego se consume.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Ferramenta"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 295,
+    "data": {
+      "price": "2 PL",
+      "category": "Alquímico (Ferramenta)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.pragardent_resin",
+    "item_id": null,
+    "name_pt": "Resina de Pragardente",
+    "name_en": "Pragardent Resin",
+    "name_es": "Resina de pragardente",
+    "description_pt": "Veneno de contato que causa dano persistente; CD e progressão devem ser conferidos na entrada do livro.",
+    "description_en": "Contact poison that deals persistent damage; check the book entry for DC and progression.",
+    "description_es": "Veneno de contacto que causa daño persistente; verifica la entrada para CD y progresión.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 11,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 293,
+    "data": {
+      "price": "225 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.rooting_toxin",
+    "item_id": null,
+    "name_pt": "Toxina de Enraizamento",
+    "name_en": "Rooting Toxin",
+    "name_es": "Toxina de enraizamiento",
+    "description_pt": "Veneno de contato com Fortitude CD 26, latência de 1 minuto e duração máxima de 6 minutos. Os estágios causam desajeitado 1/2/3 e penalidade de 3/6/9 metros em todas as Velocidades por 1 minuto.",
+    "description_en": "Contact poison with Fortitude DC 26, a 1-minute onset, and a 6-minute maximum duration. Stages cause clumsy 1/2/3 and a 10/20/30-foot penalty to all Speeds for 1 minute.",
+    "description_es": "Veneno de contacto con Fortaleza CD 26, latencia de 1 minuto y duración máxima de 6 minutos. Las etapas causan torpe 1/2/3 y una penalización de 3/6/9 metros a todas las Velocidades durante 1 minuto.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 7,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 293,
+    "data": {
+      "price": "55 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.smoke_ball",
+    "item_id": null,
+    "name_pt": "Bola de Fumaça",
+    "name_en": "Smoke Ball",
+    "name_es": "Bola de humo",
+    "description_pt": "Cria uma explosão de fumaça densa: criaturas na área ficam ocultadas, e a fumaça dura 1 minuto ou até ser dispersada por ventos fortes. Raio de 1,5 m; a versão maior tem raio de 3 m.",
+    "description_en": "Creates a burst of dense smoke: creatures in the area are concealed, and the smoke lasts 1 minute or until dispersed by strong winds. The radius is 1.5 meters; the greater version has a 3-meter radius.",
+    "description_es": "Crea una explosión de humo denso: las criaturas en el área quedan ocultas, y el humo dura 1 minuto o hasta que lo dispersen vientos fuertes. El radio es de 1,5 metros; la versión mayor tiene un radio de 3 metros.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Ferramenta"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 295,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Ferramenta)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.snake_oil",
+    "item_id": null,
+    "name_pt": "Óleo de Cobra",
+    "name_en": "Snake Oil",
+    "name_es": "Aceite de serpiente",
+    "description_pt": "Aplicado a um ferimento ou sintoma visível, faz o sintoma desaparecer por 1 hora e impede que a criatura sinta os efeitos da condição, embora eles permaneçam. Percepção CD 17 com Buscar detecta a farsa.",
+    "description_en": "Applied to a wound or visible symptom, it makes the symptom disappear for 1 hour and prevents the creature from feeling the condition's effects, although they remain. Perception DC 17 with Seek detects the deception.",
+    "description_es": "Aplicado a una herida o síntoma visible, hace desaparecer el síntoma durante 1 hora y evita que la criatura sienta los efectos de la condición, aunque permanecen. Percepción CD 17 con Buscar detecta el engaño.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Ferramenta"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 295,
+    "data": {
+      "price": "2 PO",
+      "category": "Alquímico (Ferramenta)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.spider_root",
+    "item_id": null,
+    "name_pt": "Raiz de Aranha",
+    "name_en": "Spider Root",
+    "name_es": "Raíz de araña",
+    "description_pt": "Veneno de contato com Fortitude CD 28, latência de 1 minuto e duração máxima de 6 minutos. Cada estágio dura 1 minuto e causa 3d6/4d6/6d6 de veneno e desajeitado 1/2/3.",
+    "description_en": "Contact poison with Fortitude DC 28, a 1-minute onset, and a 6-minute maximum duration. Each stage lasts 1 minute and deals 3d6/4d6/6d6 poison damage with clumsy 1/2/3.",
+    "description_es": "Veneno de contacto con Fortaleza CD 28, latencia de 1 minuto y duración máxima de 6 minutos. Cada etapa dura 1 minuto e inflige 3d6/4d6/6d6 de veneno con torpe 1/2/3.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 9,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "price": "110 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.spider_venom",
+    "item_id": null,
+    "name_pt": "Veneno de Aranha",
+    "name_en": "Spider Venom",
+    "name_es": "Veneno de araña",
+    "description_pt": "Veneno de ferimento com Fortitude CD 22 e duração máxima de 6 rodadas. Cada estágio dura 1 rodada: 1d10 de veneno e enjoado 1; 1d12 de veneno, desajeitado 1 e enjoado 2; 2d6 de veneno, desajeitado 2 e enjoado 3.",
+    "description_en": "Injury poison with Fortitude DC 22 and a 6-round maximum duration. Each stage lasts 1 round: 1d10 poison and sickened 1; 1d12 poison, clumsy 1, and sickened 2; 2d6 poison, clumsy 2, and sickened 3.",
+    "description_es": "Veneno de herida con Fortaleza CD 22 y duración máxima de 6 asaltos. Cada etapa dura 1 asalto: 1d10 de veneno y enfermo 1; 1d12 de veneno, torpe 1 y enfermo 2; 2d6 de veneno, torpe 2 y enfermo 3.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 5,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 294,
+    "data": {
+      "price": "25 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.sulfur_vapors",
+    "item_id": null,
+    "name_pt": "Vapores de Enxofre",
+    "name_en": "Sulfur Vapors",
+    "name_es": "Vapores de azufre",
+    "description_pt": "Veneno inalado CD 19; causa dano de veneno, ofuscamento e cegueira.",
+    "description_en": "Inhaled poison DC 19; inflicts poison damage, dazzled, and blindness.",
+    "description_es": "Veneno inhalado CD 19; causa daño de veneno, deslumbrado y ceguera.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 16,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 294,
+    "data": {
+      "price": "1500 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.tanglefoot_bag_greater",
+    "item_id": null,
+    "name_pt": "Bomba de Cola Maior",
+    "name_en": "Tanglefoot Bag Greater",
+    "name_es": "Bomba de cola Mayor",
+    "description_pt": "Aplica –4,5 metros às Velocidades, CD de Escapar 28 e concede +2 no ataque; em acerto crítico, prende ou emaranha conforme a regra da bomba.",
+    "description_en": "Applies a –15-foot penalty to Speeds, Escape DC 28, and grants a +2 item attack bonus; critical hits apply the bomb's immobilizing restraint effect.",
+    "description_es": "Aplica –4,5 metros a las Velocidades, CD de Escape 28 y concede +2 al ataque; los críticos aplican el efecto de inmovilización de la bomba.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 11,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "price": "250 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.tanglefoot_bag_minor",
+    "item_id": null,
+    "name_pt": "Bomba de Cola Menor",
+    "name_en": "Lesser Tanglefoot Bag",
+    "name_es": "Bolsa de maraña menor",
+    "description_pt": "Bomba adesiva que reduz a Velocidade do alvo e pode prendê-lo.",
+    "description_en": "Lesser Tanglefoot Bag is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Bolsa de maraña menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.tanglefoot_bag_moderate",
+    "item_id": null,
+    "name_pt": "Bomba de Cola Moderada",
+    "name_en": "Tanglefoot Bag Moderate",
+    "name_es": "Bomba de cola Moderada",
+    "description_pt": "Aplica –4,5 metros às Velocidades, CD de Escapar 19 e concede +1 no ataque; em acerto crítico, prende ou emaranha conforme a regra da bomba.",
+    "description_en": "Applies a –15-foot penalty to Speeds, Escape DC 19, and grants a +1 item attack bonus; critical hits apply the bomb's immobilizing restraint effect.",
+    "description_es": "Aplica –4,5 metros a las Velocidades, CD de Escape 19 y concede +1 al ataque; los críticos aplican el efecto de inmovilización de la bomba.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 3,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "price": "10 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.tanglefoot_bag_superior",
+    "item_id": null,
+    "name_pt": "Bomba de Cola Superior",
+    "name_en": "Tanglefoot Bag Major",
+    "name_es": "Bomba de cola Superior",
+    "description_pt": "Aplica –4,5 metros às Velocidades, CD de Escapar 37 e concede +3 no ataque; em acerto crítico, prende ou emaranha conforme a regra da bomba.",
+    "description_en": "Applies a –15-foot penalty to Speeds, Escape DC 37, and grants a +3 item attack bonus; critical hits apply the bomb's immobilizing restraint effect.",
+    "description_es": "Aplica –4,5 metros a las Velocidades, CD de Escape 37 y concede +3 al ataque; los críticos aplican el efecto de inmovilización de la bomba.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 17,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "price": "2500 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.torpor_wine",
+    "item_id": null,
+    "name_pt": "Vinho de Torpor",
+    "name_en": "Torpor Wine",
+    "name_es": "Vino de sopor",
+    "description_pt": "Veneno ingerido com Fortitude CD 32, latência de 1 hora e duração máxima de 7 dias. Os estágios deixam a criatura inconsciente por 1, 2 ou 3 dias; enquanto durar, ela não pode acordar por nenhum meio.",
+    "description_en": "Ingested poison with Fortitude DC 32, a 1-hour onset, and a 7-day maximum duration. Stages leave the creature unconscious for 1, 2, or 3 days; while it lasts, the creature cannot awaken by any means.",
+    "description_es": "Veneno ingerido con Fortaleza CD 32, latencia de 1 hora y duración máxima de 7 días. Las etapas dejan a la criatura inconsciente durante 1, 2 o 3 días; mientras dure, no puede despertarse por ningún medio.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 12,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 294,
+    "data": {
+      "price": "325 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.weakening_bomb_greater",
+    "item_id": null,
+    "name_pt": "Bomba de Esmorecimento Maior",
+    "name_en": "Weakening Bomb Greater",
+    "name_es": "Bomba debilitante Mayor",
+    "description_pt": "Causa 3d4 de veneno, 3d4 de veneno persistente e 3 de dano colateral; concede +2 no ataque.",
+    "description_en": "Deals 3d4 poison damage, 3d4 persistent poison damage, and 3 poison splash damage; grants a +2 item attack bonus.",
+    "description_es": "Inflige 3d4 de daño de veneno, 3d4 de veneno persistente y 3 de daño colateral; concede +2 al ataque.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 11,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "price": "250 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.weakening_bomb_minor",
+    "item_id": null,
+    "name_pt": "Bomba de Esmorecimento Menor",
+    "name_en": "Lesser Weakening Bomb",
+    "name_es": "Bomba debilitante menor",
+    "description_pt": "Bomba venenosa que causa dano persistente e enfraquece o alvo.",
+    "description_en": "Lesser Weakening Bomb is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Bomba debilitante menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 1,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "price": "3 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.weakening_bomb_moderate",
+    "item_id": null,
+    "name_pt": "Bomba de Esmorecimento Moderada",
+    "name_en": "Weakening Bomb Moderate",
+    "name_es": "Bomba debilitante Moderada",
+    "description_pt": "Causa 2d4 de veneno, 2d4 de veneno persistente e 2 de dano colateral; concede +1 no ataque.",
+    "description_en": "Deals 2d4 poison damage, 2d4 persistent poison damage, and 2 poison splash damage; grants a +1 item attack bonus.",
+    "description_es": "Inflige 2d4 de daño de veneno, 2d4 de veneno persistente y 2 de daño colateral; concede +1 al ataque.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 3,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "price": "10 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.weakening_bomb_superior",
+    "item_id": null,
+    "name_pt": "Bomba de Esmorecimento Superior",
+    "name_en": "Weakening Bomb Major",
+    "name_es": "Bomba debilitante Superior",
+    "description_pt": "Causa 4d4 de veneno, 4d4 de veneno persistente e 4 de dano colateral; concede +3 no ataque.",
+    "description_en": "Deals 4d4 poison damage, 4d4 persistent poison damage, and 4 poison splash damage; grants a +3 item attack bonus.",
+    "description_es": "Inflige 4d4 de daño de veneno, 4d4 de veneno persistente y 4 de daño colateral; concede +3 al ataque.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 17,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "price": "2500 PO",
+      "category": "Alquímico (Bomba)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.weakening_powder",
+    "item_id": null,
+    "name_pt": "Pó Debilitante",
+    "name_en": "Weakening Powder",
+    "name_es": "Polvo debilitante",
+    "description_pt": "Veneno ingerido com Fortitude CD 28, latência de 10 minutos e duração máxima de 6 minutos. Os estágios causam fatigado; depois 5d6 de veneno e fatigado; por fim 6d6 de veneno, fatigado e paralisado.",
+    "description_en": "Ingested poison with Fortitude DC 28, a 10-minute onset, and a 6-minute maximum duration. Stages cause fatigued; then 5d6 poison and fatigued; finally 6d6 poison, fatigued, and paralyzed.",
+    "description_es": "Veneno ingerido con Fortaleza CD 28, latencia de 10 minutos y duración máxima de 6 minutos. Las etapas causan fatigado; luego 5d6 de veneno y fatigado; finalmente 6d6 de veneno, fatigado y paralizado.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 9,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "price": "110 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "formula.pc2.wyvern_poison",
+    "item_id": null,
+    "name_pt": "Veneno de Wyvern",
+    "name_en": "Wyvern Poison",
+    "name_es": "Veneno de wyvern",
+    "description_pt": "Veneno de ferimento com Fortitude CD 26 e duração máxima de 6 rodadas. Cada estágio dura 1 rodada e causa 3d6, 3d8 ou 3d10 de dano de veneno.",
+    "description_en": "Injury poison with Fortitude DC 26 and a 6-round maximum duration. Each stage lasts 1 round and deals 3d6, 3d8, or 3d10 poison damage.",
+    "description_es": "Veneno de herida con Fortaleza CD 26 y duración máxima de 6 asaltos. Cada etapa dura 1 asalto e inflige 3d6, 3d8 o 3d10 de daño de veneno.",
+    "craft_dc": 15,
+    "batch_size": 4,
+    "level": 8,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 294,
+    "data": {
+      "price": "80 PO",
+      "category": "Alquímico (Veneno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:38:07.663119+00:00",
+    "updated_at": "2026-09-23T18:16:43.682329+00:00",
+    "system_id": "pf2e"
+  }
+]

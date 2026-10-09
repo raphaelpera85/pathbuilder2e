@@ -1,0 +1,1196 @@
+[
+  {
+    "id": "dnd35.defensores.domain.defensores-dominio-adivinhacao",
+    "name_pt": "Adivinhação",
+    "name_en": "Adivinhação",
+    "name_es": null,
+    "description_pt": "Suas magias de Adivinhação recebem +2 no nível de conjurador.",
+    "description_en": null,
+    "description_es": null,
+    "item_category": "domain",
+    "level": 1,
+    "price_gp": null,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Boccob",
+      "Obad-Hai",
+      "Pelor",
+      "Vecna"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-defensores",
+    "source_book": "D&D 3.5 — Defensores da Fé",
+    "source_page": 77,
+    "data": {
+      "id": "defensores-dominio-adivinhacao",
+      "name": "Adivinhação",
+      "spells": [
+        {
+          "name": "Identificação",
+          "level": 1,
+          "description": "Determina uma habilidade de um item mágico."
+        },
+        {
+          "name": "Augúrio",
+          "level": 2,
+          "description": "Descobre se uma ação será boa ou ruim."
+        },
+        {
+          "name": "Adivinhação",
+          "level": 3,
+          "description": "Oferece conselhos úteis sobre as ações propostas."
+        },
+        {
+          "name": "Observação",
+          "level": 4,
+          "description": "Espiona um alvo à distância."
+        },
+        {
+          "name": "Comunhão",
+          "level": 5,
+          "description": "Divindade responde uma pergunta por nível (sim ou não)."
+        },
+        {
+          "name": "Lendas e Histórias",
+          "level": 6,
+          "description": "Descubra histórias sobre uma pessoa, local ou objeto."
+        },
+        {
+          "name": "Observação Aprimorada",
+          "level": 7,
+          "description": "Como observação, só que mais rápido e com duração maior."
+        },
+        {
+          "name": "Discernir Localização",
+          "level": 8,
+          "description": "Descobre o local exato de uma criatura ou objeto."
+        },
+        {
+          "name": "Sexto Sentido",
+          "level": 9,
+          "description": "\"Sexto sentido\" lhe avisa sobre um perigo iminente."
+        }
+      ],
+      "deities": [
+        "Boccob",
+        "Obad-Hai",
+        "Pelor",
+        "Vecna"
+      ],
+      "grantedPower": "Suas magias de Adivinhação recebem +2 no nível de conjurador."
+    },
+    "created_at": "2026-10-06T12:42:04.148767+00:00",
+    "updated_at": "2026-10-06T12:42:04.148767+00:00",
+    "system_id": "dnd35"
+  },
+  {
+    "id": "dnd35.defensores.domain.defensores-dominio-comunidade",
+    "name_pt": "Comunidade",
+    "name_en": "Comunidade",
+    "name_es": null,
+    "description_pt": "Você pode conjurar acalmar emoções uma vez por dia, como uma habilidade similar a magia, e ainda recebe +2 de bônus em qualquer teste de Diplomacia.",
+    "description_en": null,
+    "description_es": null,
+    "item_category": "domain",
+    "level": 1,
+    "price_gp": null,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Corellon Larethian",
+      "Garl Glittergold",
+      "Pelor",
+      "St. Cuthbert",
+      "Yondalla"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-defensores",
+    "source_book": "D&D 3.5 — Defensores da Fé",
+    "source_page": 77,
+    "data": {
+      "id": "defensores-dominio-comunidade",
+      "name": "Comunidade",
+      "spells": [
+        {
+          "name": "Benção",
+          "level": 1,
+          "description": "Os aliados recebem +1 para ataques e testes de resistência contra medo."
+        },
+        {
+          "name": "Proteger Outro",
+          "level": 2,
+          "description": "Você sofre metade do dano dirigido ao alvo."
+        },
+        {
+          "name": "Oração",
+          "level": 3,
+          "description": "Os aliados recebem +1 em várias jogadas e os inimigos sofrem -1."
+        },
+        {
+          "name": "Condição",
+          "level": 4,
+          "description": "Monitora a condição e a posição dos aliados."
+        },
+        {
+          "name": "Ligação Telepática de Rary",
+          "level": 5,
+          "description": "Ligação que permite aos aliados se comunicarem."
+        },
+        {
+          "name": "Banquete de Heróis",
+          "level": 6,
+          "description": "Produz comida para 1 criatura/nível, cura e abençoa."
+        },
+        {
+          "name": "Refúgio",
+          "level": 7,
+          "description": "Altera um item para que transporte seu usuário até você."
+        },
+        {
+          "name": "Cura Completa em Massa",
+          "level": 8,
+          "description": "Como cura completa, mas para vários alvos."
+        },
+        {
+          "name": "Milagre",
+          "level": 9,
+          "description": "Pede a intervenção de uma divindade."
+        }
+      ],
+      "deities": [
+        "Corellon Larethian",
+        "Garl Glittergold",
+        "Pelor",
+        "St. Cuthbert",
+        "Yondalla"
+      ],
+      "grantedPower": "Você pode conjurar acalmar emoções uma vez por dia, como uma habilidade similar a magia, e ainda recebe +2 de bônus em qualquer teste de Diplomacia."
+    },
+    "created_at": "2026-10-06T12:42:04.148767+00:00",
+    "updated_at": "2026-10-06T12:42:04.148767+00:00",
+    "system_id": "dnd35"
+  },
+  {
+    "id": "dnd35.defensores.domain.defensores-dominio-criacao",
+    "name_pt": "Criação",
+    "name_en": "Criação",
+    "name_es": null,
+    "description_pt": "Suas magias de Conjuração [criação] recebem +2 no nível de conjurador.",
+    "description_en": null,
+    "description_es": null,
+    "item_category": "domain",
+    "level": 1,
+    "price_gp": null,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Corellon Larethian",
+      "Garl Glittergold",
+      "Moradin",
+      "Obad-Hai",
+      "Pelor",
+      "Vecna",
+      "Yondalla"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-defensores",
+    "source_book": "D&D 3.5 — Defensores da Fé",
+    "source_page": 77,
+    "data": {
+      "id": "defensores-dominio-criacao",
+      "name": "Criação",
+      "spells": [
+        {
+          "name": "Criar Água",
+          "level": 1,
+          "description": "Cria 8 litros/nível de água pura."
+        },
+        {
+          "name": "Imagem Menor",
+          "level": 2,
+          "description": "Cria ilusões visuais e sonoras."
+        },
+        {
+          "name": "Criar Alimentos",
+          "level": 3,
+          "description": "Alimenta três humanos (ou um cavalo)/nível."
+        },
+        {
+          "name": "Criar Itens Efêmeros",
+          "level": 4,
+          "description": "Cria um objeto de tecido ou madeira."
+        },
+        {
+          "name": "Criar Itens Temporários",
+          "level": 5,
+          "description": "Como criar itens efêmeros, mas também pedra e metal."
+        },
+        {
+          "name": "Banquete de Heróis",
+          "level": 6,
+          "description": "Produz comida para 1 criatura/nível, cura e abençoa."
+        },
+        {
+          "name": "Imagem Permanente",
+          "level": 7,
+          "description": "Inclui visão, som e cheiro."
+        },
+        {
+          "name": "Criar Itens Permanentes",
+          "novo": true,
+          "level": 8,
+          "description": "Como criar itens temporários, mas permanente."
+        },
+        {
+          "name": "Gênese",
+          "novo": true,
+          "level": 9,
+          "description": "Cria um semi-plano limitado."
+        }
+      ],
+      "deities": [
+        "Corellon Larethian",
+        "Garl Glittergold",
+        "Moradin",
+        "Obad-Hai",
+        "Pelor",
+        "Vecna",
+        "Yondalla"
+      ],
+      "grantedPower": "Suas magias de Conjuração [criação] recebem +2 no nível de conjurador."
+    },
+    "created_at": "2026-10-06T12:42:04.148767+00:00",
+    "updated_at": "2026-10-06T12:42:04.148767+00:00",
+    "system_id": "dnd35"
+  },
+  {
+    "id": "dnd35.defensores.domain.defensores-dominio-dominacao",
+    "name_pt": "Dominação",
+    "name_en": "Dominação",
+    "name_es": null,
+    "description_pt": "Você recebe o talento Foco em Magia (Encantamento).",
+    "description_en": null,
+    "description_es": null,
+    "item_category": "domain",
+    "level": 1,
+    "price_gp": null,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Gruumsh",
+      "Hextor",
+      "St. Cuthbert",
+      "Wee Jas"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-defensores",
+    "source_book": "D&D 3.5 — Defensores da Fé",
+    "source_page": 77,
+    "data": {
+      "id": "defensores-dominio-dominacao",
+      "name": "Dominação",
+      "spells": [
+        {
+          "name": "Comando",
+          "level": 1,
+          "description": "Um alvo obedece a uma palavra de comando durante 1 rodada."
+        },
+        {
+          "name": "Cativar",
+          "level": 2,
+          "description": "Cativa todos num raio de 30 m + 3 m/nível."
+        },
+        {
+          "name": "Sugestão",
+          "level": 3,
+          "description": "Força o alvo a seguir um curso de ação."
+        },
+        {
+          "name": "Dominar Pessoas",
+          "level": 4,
+          "description": "Controla um humanóide telepaticamente."
+        },
+        {
+          "name": "Comando Aprimorado",
+          "level": 5,
+          "description": "Como comando, mas afeta um alvo/nível."
+        },
+        {
+          "name": "Tarefa/Missão",
+          "level": 6,
+          "description": "Como missão menor, mas afeta qualquer criatura."
+        },
+        {
+          "name": "Sugestionar Multidões",
+          "level": 7,
+          "description": "Como sugestão, mas um alvo/nível."
+        },
+        {
+          "name": "Dominação Verdadeira",
+          "novo": true,
+          "level": 8,
+          "description": "Como dominar pessoas, mas aplica -4 de penalidade no teste."
+        },
+        {
+          "name": "Escravo Monstruoso",
+          "novo": true,
+          "level": 9,
+          "description": "Como dominar pessoas, mas com efeito permanente e afeta qualquer criatura."
+        }
+      ],
+      "deities": [
+        "Gruumsh",
+        "Hextor",
+        "St. Cuthbert",
+        "Wee Jas"
+      ],
+      "grantedPower": "Você recebe o talento Foco em Magia (Encantamento)."
+    },
+    "created_at": "2026-10-06T12:42:04.148767+00:00",
+    "updated_at": "2026-10-06T12:42:04.148767+00:00",
+    "system_id": "dnd35"
+  },
+  {
+    "id": "dnd35.defensores.domain.defensores-dominio-exorcismo",
+    "name_pt": "Exorcismo",
+    "name_en": "Exorcismo",
+    "name_es": null,
+    "description_pt": "Você adquire a habilidade sobrenatural de expulsar espíritos de corpos possuídos. O jogador realiza um teste de Carisma (1d20 + modificador de Carisma) e consulta a tabela 8-16, pág. 140 do Livro do Jogador, mas soma seu nível na classe de prestígio, seu nível de clérigo (se houver), mais seu nível de paladino -2 (se houver). Se o resultado obtido na tabela igualar ou superar os DVs da criatura invasora, ela será obrigada a abandonar o corpo. Caso o espírito pertença a um mago usando recipiente arcano, ele voltará ao recipiente. Caso seja um fantasma, a criatura se tornará etérea e flutuará. Em qualquer caso, a mesma vítima não poderá ser possuída pelo espírito durante um dia inteiro.",
+    "description_en": null,
+    "description_es": null,
+    "item_category": "domain",
+    "level": 1,
+    "price_gp": null,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Corellon Larethian",
+      "Heironeous",
+      "Kord",
+      "Moradin",
+      "Pelor"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-defensores",
+    "source_book": "D&D 3.5 — Defensores da Fé",
+    "source_page": 77,
+    "data": {
+      "id": "defensores-dominio-exorcismo",
+      "name": "Exorcismo",
+      "spells": [
+        {
+          "name": "Proteção Contra o Mal",
+          "level": 1,
+          "description": "+2 na CA e testes de resistência, impede controle mental, isola elementais e seres extra-planares."
+        },
+        {
+          "name": "Círculo Mágico Contra o Mal",
+          "level": 2,
+          "description": "Como proteção contra o mal, mas com 3 m de raio e 10 min/nível."
+        },
+        {
+          "name": "Remover Maldição",
+          "level": 3,
+          "description": "Liberta objeto ou pessoa de qualquer maldição."
+        },
+        {
+          "name": "Expulsão",
+          "level": 4,
+          "description": "Força uma criatura a retornar para seu plano nativo."
+        },
+        {
+          "name": "Dissipar o Mal",
+          "level": 5,
+          "description": "+4 de bônus contra ataques de criaturas malignas."
+        },
+        {
+          "name": "Banimento",
+          "level": 6,
+          "description": "Expulsa 2 DV/nível de criaturas extra-planares."
+        },
+        {
+          "name": "Palavra Sagrada",
+          "level": 7,
+          "description": "Mata, paralisa, cega ou ensurdece alvos neutros ou maus."
+        },
+        {
+          "name": "Aura Sagrada",
+          "level": 8,
+          "description": "+4 na CA, +4 de testes de resistência e RM 25 contra magias malignas."
+        },
+        {
+          "name": "Desatar",
+          "novo": true,
+          "level": 9,
+          "description": "Destrói magias de aprisionamento num raio de 60 m."
+        }
+      ],
+      "deities": [
+        "Corellon Larethian",
+        "Heironeous",
+        "Kord",
+        "Moradin",
+        "Pelor"
+      ],
+      "grantedPower": "Você adquire a habilidade sobrenatural de expulsar espíritos de corpos possuídos. O jogador realiza um teste de Carisma (1d20 + modificador de Carisma) e consulta a tabela 8-16, pág. 140 do Livro do Jogador, mas soma seu nível na classe de prestígio, seu nível de clérigo (se houver), mais seu nível de paladino -2 (se houver). Se o resultado obtido na tabela igualar ou superar os DVs da criatura invasora, ela será obrigada a abandonar o corpo. Caso o espírito pertença a um mago usando recipiente arcano, ele voltará ao recipiente. Caso seja um fantasma, a criatura se tornará etérea e flutuará. Em qualquer caso, a mesma vítima não poderá ser possuída pelo espírito durante um dia inteiro."
+    },
+    "created_at": "2026-10-06T12:42:04.148767+00:00",
+    "updated_at": "2026-10-06T12:42:04.148767+00:00",
+    "system_id": "dnd35"
+  },
+  {
+    "id": "dnd35.defensores.domain.defensores-dominio-gloria",
+    "name_pt": "Glória",
+    "name_en": "Glória",
+    "name_es": null,
+    "description_pt": "+2 de bônus nos testes para Expulsar mortos-vivos e +1d6 no teste para calcular o dano de expulsão.",
+    "description_en": null,
+    "description_es": null,
+    "item_category": "domain",
+    "level": 1,
+    "price_gp": null,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Heironeous",
+      "Pelor"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-defensores",
+    "source_book": "D&D 3.5 — Defensores da Fé",
+    "source_page": 77,
+    "data": {
+      "id": "defensores-dominio-gloria",
+      "name": "Glória",
+      "spells": [
+        {
+          "name": "Romper Mortos-vivos",
+          "level": 1,
+          "description": "Causa 1d6 pontos de dano a um morto-vivo."
+        },
+        {
+          "name": "Arma Mágica",
+          "level": 2,
+          "description": "Uma arma recebe +1 de bônus."
+        },
+        {
+          "name": "Luz Cegante",
+          "level": 3,
+          "description": "Um raio causa 1d8 de dano/2 níveis, ou mais contra mortos-vivos."
+        },
+        {
+          "name": "Destruição Sagrada",
+          "level": 4,
+          "description": "Causa dano e cega criaturas malignas."
+        },
+        {
+          "name": "Espada Sagrada",
+          "level": 5,
+          "description": "Arma se torna +5 e causa dano dobrado contra seres malignos."
+        },
+        {
+          "name": "Raio de Glória",
+          "novo": true,
+          "level": 6,
+          "description": "Um raio causa dano de energia positiva, em especial contra criaturas malignas e mortos-vivos."
+        },
+        {
+          "name": "Raio de Sol",
+          "level": 7,
+          "description": "Luz cega e causa 3d6 pontos de dano."
+        },
+        {
+          "name": "Coroa da Glória",
+          "novo": true,
+          "level": 8,
+          "description": "O alvo recebe +4 Car e cativa os alvos."
+        },
+        {
+          "name": "Portal",
+          "level": 9,
+          "description": "Conecta dois planos para viagens ou invocação."
+        }
+      ],
+      "deities": [
+        "Heironeous",
+        "Pelor"
+      ],
+      "grantedPower": "+2 de bônus nos testes para Expulsar mortos-vivos e +1d6 no teste para calcular o dano de expulsão."
+    },
+    "created_at": "2026-10-06T12:42:04.148767+00:00",
+    "updated_at": "2026-10-06T12:42:04.148767+00:00",
+    "system_id": "dnd35"
+  },
+  {
+    "id": "dnd35.defensores.domain.defensores-dominio-inquisicao",
+    "name_pt": "Inquisição",
+    "name_en": "Inquisição",
+    "name_es": null,
+    "description_pt": "+4 de bônus em qualquer teste de dissipar.",
+    "description_en": null,
+    "description_es": null,
+    "item_category": "domain",
+    "level": 1,
+    "price_gp": null,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Heironeous",
+      "Moradin",
+      "St. Cuthbert"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-defensores",
+    "source_book": "D&D 3.5 — Defensores da Fé",
+    "source_page": 77,
+    "data": {
+      "id": "defensores-dominio-inquisicao",
+      "name": "Inquisição",
+      "spells": [
+        {
+          "name": "Detectar o Mal",
+          "level": 1,
+          "description": "Revela criaturas, magias ou objetos malignos."
+        },
+        {
+          "name": "Zona da Verdade",
+          "level": 2,
+          "description": "Os alvos na área não podem mentir."
+        },
+        {
+          "name": "Detectar Pensamentos",
+          "level": 3,
+          "description": "Permite captar pensamentos superficiais."
+        },
+        {
+          "name": "Discernir Mentiras",
+          "level": 4,
+          "description": "Revela mentiras deliberadas."
+        },
+        {
+          "name": "Visão da Verdade",
+          "level": 5,
+          "description": "Mostra todas as coisas em sua forma verdadeira."
+        },
+        {
+          "name": "Proibição",
+          "level": 6,
+          "description": "Impede que criaturas de outra tendência entrem na área."
+        },
+        {
+          "name": "Ditado",
+          "level": 7,
+          "description": "Mata, paralisa, deixa lento ou ensurdece alvos neutros ou caóticos."
+        },
+        {
+          "name": "Aura Sagrada",
+          "level": 8,
+          "description": "+4 na CA, +4 de testes de resistência e RM 25 contra magias malignas."
+        },
+        {
+          "name": "Aprisionar a Alma",
+          "level": 9,
+          "description": "Aprisiona o alvo dentro de uma gema."
+        }
+      ],
+      "deities": [
+        "Heironeous",
+        "Moradin",
+        "St. Cuthbert"
+      ],
+      "grantedPower": "+4 de bônus em qualquer teste de dissipar."
+    },
+    "created_at": "2026-10-06T12:42:04.148767+00:00",
+    "updated_at": "2026-10-06T12:42:04.148767+00:00",
+    "system_id": "dnd35"
+  },
+  {
+    "id": "dnd35.defensores.domain.defensores-dominio-insanidade",
+    "name_pt": "Insanidade",
+    "name_en": "Insanidade",
+    "name_es": null,
+    "description_pt": "Você adquire um \"valor de Insanidade\" equivalente a metade do seu nível de classe (some os níveis de clérigo ao nível na classe de prestígio). Para conjurar magias, determinar suas magias adicionais e CD de resistência, adicione esse valor à sua Sabedoria e utilize o resultado como Sabedoria efetiva. Para todos os demais propósitos, como testes de perícias e testes de resistência, subtraia esse valor da sua Sabedoria e use o resultado como Sabedoria efetiva. Isso significa que é muito difícil resistir às suas magias, mas em geral você não prestará nenhuma atenção ao seu ambiente e agirá com imprudência — ou mesmo com imprevisibilidade. Uma vez por dia, você poderá enxergar e agir com a clareza da insanidade genuína. Utilize seu valor de insanidade como um bônus numa única jogada que envolva Sabedoria, como um teste de Ouvir ou um teste de resistência de Vontade. É necessário declarar o uso do poder antes da jogada.",
+    "description_en": null,
+    "description_es": null,
+    "item_category": "domain",
+    "level": 1,
+    "price_gp": null,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Boccob",
+      "Erythnul",
+      "Vecna"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-defensores",
+    "source_book": "D&D 3.5 — Defensores da Fé",
+    "source_page": 77,
+    "data": {
+      "id": "defensores-dominio-insanidade",
+      "name": "Insanidade",
+      "spells": [
+        {
+          "name": "Ação Aleatória",
+          "level": 1,
+          "description": "Uma criatura age aleatoriamente durante uma rodada."
+        },
+        {
+          "name": "Toque da Loucura",
+          "novo": true,
+          "level": 2,
+          "description": "Uma criatura fica pasma durante uma rodada/nível."
+        },
+        {
+          "name": "Fúria",
+          "novo": true,
+          "level": 3,
+          "description": "+4 For, +4 Cons, +2 de bônus de moral em testes de resistência de Vontade."
+        },
+        {
+          "name": "Confusão",
+          "level": 4,
+          "description": "Obriga o alvo a agir de modo estranho durante uma rodada/nível."
+        },
+        {
+          "name": "Raios de Malevolência",
+          "novo": true,
+          "level": 5,
+          "description": "Um raio/rodada pasma durante 1d3 rodadas."
+        },
+        {
+          "name": "Assassino Fantasmagórico",
+          "level": 6,
+          "description": "Ilusão temerária mata o alvo ou causa 3d6 pontos de dano."
+        },
+        {
+          "name": "Insanidade",
+          "level": 7,
+          "description": "O alvo sofre confusão contínua."
+        },
+        {
+          "name": "Grito Enlouquecedor",
+          "novo": true,
+          "level": 8,
+          "description": "Alvo sofre -4 na CA, não pode usar escudos e seus testes de Reflexo exigem um resultado 20."
+        },
+        {
+          "name": "Encarnação Fantasmagórica",
+          "level": 9,
+          "description": "Como assassino fantasmagórico, mas afeta todos num raio de 9 m."
+        }
+      ],
+      "deities": [
+        "Boccob",
+        "Erythnul",
+        "Vecna"
+      ],
+      "grantedPower": "Você adquire um \"valor de Insanidade\" equivalente a metade do seu nível de classe (some os níveis de clérigo ao nível na classe de prestígio). Para conjurar magias, determinar suas magias adicionais e CD de resistência, adicione esse valor à sua Sabedoria e utilize o resultado como Sabedoria efetiva. Para todos os demais propósitos, como testes de perícias e testes de resistência, subtraia esse valor da sua Sabedoria e use o resultado como Sabedoria efetiva. Isso significa que é muito difícil resistir às suas magias, mas em geral você não prestará nenhuma atenção ao seu ambiente e agirá com imprudência — ou mesmo com imprevisibilidade. Uma vez por dia, você poderá enxergar e agir com a clareza da insanidade genuína. Utilize seu valor de insanidade como um bônus numa única jogada que envolva Sabedoria, como um teste de Ouvir ou um teste de resistência de Vontade. É necessário declarar o uso do poder antes da jogada."
+    },
+    "created_at": "2026-10-06T12:42:04.148767+00:00",
+    "updated_at": "2026-10-06T12:42:04.148767+00:00",
+    "system_id": "dnd35"
+  },
+  {
+    "id": "dnd35.defensores.domain.defensores-dominio-invocacao",
+    "name_pt": "Invocação",
+    "name_en": "Invocação",
+    "name_es": null,
+    "description_pt": "Suas magias invocar criaturas consideram o dobro do seu nível de conjurador para determinar o alcance e a duração (mas não a quantidade de criaturas).",
+    "description_en": null,
+    "description_es": null,
+    "item_category": "domain",
+    "level": 1,
+    "price_gp": null,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Todos"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-defensores",
+    "source_book": "D&D 3.5 — Defensores da Fé",
+    "source_page": 77,
+    "data": {
+      "id": "defensores-dominio-invocacao",
+      "name": "Invocação",
+      "spells": [
+        {
+          "name": "Invocar Criaturas I",
+          "level": 1,
+          "description": "Invoca um extra-planar para auxiliar o conjurador."
+        },
+        {
+          "name": "Invocar Criaturas II",
+          "level": 2,
+          "description": "Invoca um extra-planar para auxiliar o conjurador."
+        },
+        {
+          "name": "Invocar Criaturas III",
+          "level": 3,
+          "description": "Invoca um extra-planar para auxiliar o conjurador."
+        },
+        {
+          "name": "Aliado Extra-planar Menor",
+          "level": 4,
+          "description": "Negocia serviços com um ser extra-planar de 8 DV."
+        },
+        {
+          "name": "Invocar Criaturas V",
+          "level": 5,
+          "description": "Invoca um extra-planar para auxiliar o conjurador."
+        },
+        {
+          "name": "Aliado Extra-planar",
+          "level": 6,
+          "description": "Como aliado extra-planar menor, mas com até 16 DV."
+        },
+        {
+          "name": "Invocar Criaturas VII",
+          "level": 7,
+          "description": "Invoca um extra-planar para auxiliar o conjurador."
+        },
+        {
+          "name": "Aliado Extra-planar Aprimorado",
+          "level": 8,
+          "description": "Como aliado extra-planar menor, mas com até 24 DV."
+        },
+        {
+          "name": "Portal",
+          "level": 9,
+          "description": "Conecta dois planos para viagens ou invocação."
+        }
+      ],
+      "deities": [
+        "Todos"
+      ],
+      "grantedPower": "Suas magias invocar criaturas consideram o dobro do seu nível de conjurador para determinar o alcance e a duração (mas não a quantidade de criaturas)."
+    },
+    "created_at": "2026-10-06T12:42:04.148767+00:00",
+    "updated_at": "2026-10-06T12:42:04.148767+00:00",
+    "system_id": "dnd35"
+  },
+  {
+    "id": "dnd35.defensores.domain.defensores-dominio-mente",
+    "name_pt": "Mente",
+    "name_en": "Mente",
+    "name_es": null,
+    "description_pt": "+2 de bônus em testes de Blefar, Diplomacia, Mensagens Secretas, Leitura Labial e Sentir Motivação. +2 de bônus em testes de Vontade contra magias e efeitos de encantamento.",
+    "description_en": null,
+    "description_es": null,
+    "item_category": "domain",
+    "level": 1,
+    "price_gp": null,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Boccob",
+      "Vecna",
+      "Wee Jas"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-defensores",
+    "source_book": "D&D 3.5 — Defensores da Fé",
+    "source_page": 77,
+    "data": {
+      "id": "defensores-dominio-mente",
+      "name": "Mente",
+      "spells": [
+        {
+          "name": "Compreensão de Linguagens",
+          "level": 1,
+          "description": "Entenda todos os idiomas falados e escritos."
+        },
+        {
+          "name": "Detectar Pensamentos",
+          "level": 2,
+          "description": "Permite captar pensamentos superficiais."
+        },
+        {
+          "name": "Laço Telepático Menor",
+          "novo": true,
+          "level": 3,
+          "description": "Ligação telepática com um alvo num raio de 9 m, durante 10 min/nível."
+        },
+        {
+          "name": "Discernir Mentiras",
+          "level": 4,
+          "description": "Revela mentiras deliberadas."
+        },
+        {
+          "name": "Ligação Telepática de Rary",
+          "level": 5,
+          "description": "Ligação que permite aos aliados se comunicarem."
+        },
+        {
+          "name": "Examinar Pensamentos",
+          "novo": true,
+          "level": 6,
+          "description": "Revela as memórias do alvo, uma pergunta/rodada."
+        },
+        {
+          "name": "Aracnídeo Mental",
+          "novo": true,
+          "level": 7,
+          "description": "Vasculha os pensamentos de até oito criaturas."
+        },
+        {
+          "name": "Limpar a Mente",
+          "level": 8,
+          "description": "O alvo se torna imune a magias mentais/emocionais e observação."
+        },
+        {
+          "name": "Encarnação Fantasmagórica",
+          "level": 9,
+          "description": "Como assassino fantasmagórico, mas afeta todos num raio de 9 m."
+        }
+      ],
+      "deities": [
+        "Boccob",
+        "Vecna",
+        "Wee Jas"
+      ],
+      "grantedPower": "+2 de bônus em testes de Blefar, Diplomacia, Mensagens Secretas, Leitura Labial e Sentir Motivação. +2 de bônus em testes de Vontade contra magias e efeitos de encantamento."
+    },
+    "created_at": "2026-10-06T12:42:04.148767+00:00",
+    "updated_at": "2026-10-06T12:42:04.148767+00:00",
+    "system_id": "dnd35"
+  },
+  {
+    "id": "dnd35.defensores.domain.defensores-dominio-mestre-das-feras",
+    "name_pt": "Mestre das Feras",
+    "name_en": "Mestre das Feras",
+    "name_es": null,
+    "description_pt": "Você pode lançar falar com animais uma vez por nível a cada dia, com efeitos idênticos à magia. Esta é uma habilidade sobrenatural.",
+    "description_en": null,
+    "description_es": null,
+    "item_category": "domain",
+    "level": 1,
+    "price_gp": null,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Ehlonna",
+      "Obad-Hai"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-defensores",
+    "source_book": "D&D 3.5 — Defensores da Fé",
+    "source_page": 77,
+    "data": {
+      "id": "defensores-dominio-mestre-das-feras",
+      "name": "Mestre das Feras",
+      "spells": [
+        {
+          "name": "Cativar Animais",
+          "level": 1,
+          "description": "Adquire companheiros animais permanentes."
+        },
+        {
+          "name": "Máscara Bestial",
+          "novo": true,
+          "level": 2,
+          "description": "Os animais e as bestas consideram o conjurador um semelhante."
+        },
+        {
+          "name": "Transe Animal",
+          "level": 3,
+          "description": "Fascina 2d6 DV de animais."
+        },
+        {
+          "name": "Coração de Urso",
+          "novo": true,
+          "level": 4,
+          "description": "Um aliado/nível recebe +4 de Força e +1d4/nível pontos de vida."
+        },
+        {
+          "name": "Ampliar Animais",
+          "level": 5,
+          "description": "Um animal/dois níveis dobra de tamanho e DV."
+        },
+        {
+          "name": "Invocar Aliado da Natureza III",
+          "level": 6,
+          "description": "Invoca animais para auxiliar o conjurador."
+        },
+        {
+          "name": "Forma Animal",
+          "level": 7,
+          "description": "Um aliado/nível sofre metamorfose para o animal escolhido."
+        },
+        {
+          "name": "Invocar Aliado da Natureza IV",
+          "level": 8,
+          "description": "Invoca animais para auxiliar o conjurador."
+        },
+        {
+          "name": "Alterar Forma",
+          "level": 9,
+          "description": "Transforma você em qualquer criatura; pode mudar de forma uma vez por rodada."
+        }
+      ],
+      "deities": [
+        "Ehlonna",
+        "Obad-Hai"
+      ],
+      "grantedPower": "Você pode lançar falar com animais uma vez por nível a cada dia, com efeitos idênticos à magia. Esta é uma habilidade sobrenatural."
+    },
+    "created_at": "2026-10-06T12:42:04.148767+00:00",
+    "updated_at": "2026-10-06T12:42:04.148767+00:00",
+    "system_id": "dnd35"
+  },
+  {
+    "id": "dnd35.defensores.domain.defensores-dominio-misticismo",
+    "name_pt": "Misticismo",
+    "name_en": "Misticismo",
+    "name_es": null,
+    "description_pt": "Você aplica o seu modificador de Carisma (caso seja positivo) como bônus em todos os testes de resistência. Caso já tenha essa habilidade (paladinos, por exemplo), você adiciona +1 de bônus.",
+    "description_en": null,
+    "description_es": null,
+    "item_category": "domain",
+    "level": 1,
+    "price_gp": null,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Qualquer deus Bom ou Mau"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-defensores",
+    "source_book": "D&D 3.5 — Defensores da Fé",
+    "source_page": 77,
+    "data": {
+      "id": "defensores-dominio-misticismo",
+      "name": "Misticismo",
+      "spells": [
+        {
+          "name": "Auxílio Divino",
+          "level": 1,
+          "description": "Você recebe +1 de bônus/três níveis para ataques e dano."
+        },
+        {
+          "name": "Arma Espiritual",
+          "level": 2,
+          "description": "Arma mágica ataca sozinha."
+        },
+        {
+          "name": "Aspecto da Divindade Menor",
+          "novo": true,
+          "level": 3,
+          "description": "O personagem se torna mais parecido com a forma de seu deus."
+        },
+        {
+          "name": "Arma da Divindade",
+          "novo": true,
+          "level": 4,
+          "description": "+1 no ataque e dano com a arma do deus, além de uma habilidade especial."
+        },
+        {
+          "name": "Força dos Justos",
+          "level": 5,
+          "description": "Seu tamanho aumenta e você recebe +4 de Força."
+        },
+        {
+          "name": "Aspecto da Divindade",
+          "novo": true,
+          "level": 6,
+          "description": "Como aspecto menor, mas você adquire qualidades celestiais ou abissais."
+        },
+        {
+          "name": "Blasfêmia/Palavra Sagrada",
+          "level": 7,
+          "description": "Mata, paralisa, enfraquece, ensurdece ou confunde criaturas boas/malignas."
+        },
+        {
+          "name": "Aura Sagrada/Aura Profana",
+          "level": 8,
+          "description": "+4 na CA, +4 de testes de resistência e RM 25 contra magias malignas/bondosas."
+        },
+        {
+          "name": "Aspecto da Divindade Maior",
+          "novo": true,
+          "level": 9,
+          "description": "Como aspecto menor, mas adquire asas, valores de habilidade aprimorados, diversas resistências e imunidades."
+        }
+      ],
+      "deities": [
+        "Qualquer deus Bom ou Mau"
+      ],
+      "grantedPower": "Você aplica o seu modificador de Carisma (caso seja positivo) como bônus em todos os testes de resistência. Caso já tenha essa habilidade (paladinos, por exemplo), você adiciona +1 de bônus."
+    },
+    "created_at": "2026-10-06T12:42:04.148767+00:00",
+    "updated_at": "2026-10-06T12:42:04.148767+00:00",
+    "system_id": "dnd35"
+  },
+  {
+    "id": "dnd35.defensores.domain.defensores-dominio-pestilencia",
+    "name_pt": "Pestilência",
+    "name_en": "Pestilência",
+    "name_es": null,
+    "description_pt": "Imunidade aos efeitos de quaisquer doenças, embora os clérigos que tenham esse poder ainda possam transmitir doenças contagiosas.",
+    "description_en": null,
+    "description_es": null,
+    "item_category": "domain",
+    "level": 1,
+    "price_gp": null,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Erythnul",
+      "Hextor",
+      "Nerull",
+      "Wee Jas"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-defensores",
+    "source_book": "D&D 3.5 — Defensores da Fé",
+    "source_page": 77,
+    "data": {
+      "id": "defensores-dominio-pestilencia",
+      "name": "Pestilência",
+      "spells": [
+        {
+          "name": "Desespero",
+          "level": 1,
+          "description": "Um alvo sofre -2 para ataques, dano, testes de resistência e testes."
+        },
+        {
+          "name": "Invocar Criaturas II",
+          "level": 2,
+          "description": "Invoca 1d3 ratos atrozes abissais para auxiliar o conjurador."
+        },
+        {
+          "name": "Praga",
+          "level": 3,
+          "description": "Infecta um alvo com a doença escolhida."
+        },
+        {
+          "name": "Envenenamento",
+          "level": 4,
+          "description": "Toque causa 1d10 pontos de dano de Cons, que se repete após 1 min."
+        },
+        {
+          "name": "Praga dos Ratos",
+          "novo": true,
+          "level": 5,
+          "description": "Convoca uma horda de ratos pestilentos."
+        },
+        {
+          "name": "Maldição da Licantropia",
+          "novo": true,
+          "level": 6,
+          "description": "Causa licantropia temporária ao alvo."
+        },
+        {
+          "name": "Flagelo",
+          "novo": true,
+          "level": 7,
+          "description": "Inflige uma doença que só pode ser curada magicamente, um alvo/nível."
+        },
+        {
+          "name": "Criar Mortos-vivos Aprimorados",
+          "level": 8,
+          "description": "Transforma um cadáver em múmia."
+        },
+        {
+          "name": "Bando de Otyughs",
+          "novo": true,
+          "level": 9,
+          "description": "Cria 3d4 otyughs ou 1d3+1 otyughs Enormes."
+        }
+      ],
+      "deities": [
+        "Erythnul",
+        "Hextor",
+        "Nerull",
+        "Wee Jas"
+      ],
+      "grantedPower": "Imunidade aos efeitos de quaisquer doenças, embora os clérigos que tenham esse poder ainda possam transmitir doenças contagiosas."
+    },
+    "created_at": "2026-10-06T12:42:04.148767+00:00",
+    "updated_at": "2026-10-06T12:42:04.148767+00:00",
+    "system_id": "dnd35"
+  },
+  {
+    "id": "dnd35.defensores.domain.defensores-dominio-velocidade",
+    "name_pt": "Velocidade",
+    "name_en": "Velocidade",
+    "name_es": null,
+    "description_pt": "+2 de bônus de aprimoramento na Destreza, +2 de bônus de aprimoramento na Iniciativa, +3 m de deslocamento, mas apenas se utilizar armaduras leves. Essas são habilidades sobrenaturais.",
+    "description_en": null,
+    "description_es": null,
+    "item_category": "domain",
+    "level": 1,
+    "price_gp": null,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Fharlanghn",
+      "Olidammara"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-defensores",
+    "source_book": "D&D 3.5 — Defensores da Fé",
+    "source_page": 77,
+    "data": {
+      "id": "defensores-dominio-velocidade",
+      "name": "Velocidade",
+      "spells": [
+        {
+          "name": "Nublar",
+          "level": 1,
+          "description": "Os ataques têm 20% de chance de falhar."
+        },
+        {
+          "name": "Agilidade Felina",
+          "level": 2,
+          "description": "O alvo recebe 1d4+1 Des durante 1 hora/nível."
+        },
+        {
+          "name": "Andar no Ar",
+          "level": 3,
+          "description": "O alvo caminha no ar como se fosse sólido (sobe num ângulo de 45°)."
+        },
+        {
+          "name": "Velocidade",
+          "level": 4,
+          "description": "Ação parcial adicional e +4 na CA."
+        },
+        {
+          "name": "Caminhar em Árvores",
+          "level": 5,
+          "description": "Passe através de uma árvore para outra."
+        },
+        {
+          "name": "Caminhar no Vento",
+          "level": 6,
+          "description": "Você e seus aliados se transformam em vapores e viajam rápido."
+        },
+        {
+          "name": "Velocidade em Massa",
+          "level": 7,
+          "description": "Como velocidade, mas afeta 1 alvo/nível."
+        },
+        {
+          "name": "Piscar",
+          "level": 8,
+          "description": "Você desaparece e reaparece aleatoriamente durante 1 rodada/nível."
+        },
+        {
+          "name": "Parar o Tempo",
+          "level": 9,
+          "description": "Você age livremente durante 1d4+1 rodadas."
+        }
+      ],
+      "deities": [
+        "Fharlanghn",
+        "Olidammara"
+      ],
+      "grantedPower": "+2 de bônus de aprimoramento na Destreza, +2 de bônus de aprimoramento na Iniciativa, +3 m de deslocamento, mas apenas se utilizar armaduras leves. Essas são habilidades sobrenaturais."
+    },
+    "created_at": "2026-10-06T12:42:04.148767+00:00",
+    "updated_at": "2026-10-06T12:42:04.148767+00:00",
+    "system_id": "dnd35"
+  }
+]

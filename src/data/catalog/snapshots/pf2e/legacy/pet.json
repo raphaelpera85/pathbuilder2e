@@ -1,0 +1,309 @@
+[
+  {
+    "id": "pet.eidolon.angel",
+    "name_pt": "Anjo",
+    "name_en": "Angel",
+    "name_es": "Ángel",
+    "description_pt": "Eidolon divino formado por essência celestial e poder de cura.",
+    "description_en": "A divine eidolon formed from celestial essence and healing power.",
+    "description_es": "Un eidolon divino formado de esencia celestial y poder curativo.",
+    "pet_type": "eidolon",
+    "size": "[\"Médio\",\"Pequeno\"]",
+    "speed": "7.5 feet",
+    "attacks": [],
+    "traits": [
+      "anjo",
+      "celestial",
+      "eidolon"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 43,
+    "data": {
+      "hp_base": 8,
+      "needs_review": false,
+      "support_benefit": null,
+      "advanced_maneuver": null
+    },
+    "created_at": "2026-09-04T04:54:43.259938+00:00",
+    "updated_at": "2026-09-23T18:16:44.090377+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "pet.eidolon.beast",
+    "name_pt": "Besta",
+    "name_en": "Beast",
+    "name_es": "Bestia",
+    "description_pt": "Eidolon primal de forma animal, adaptável a combate e exploração.",
+    "description_en": "A primal animal eidolon adaptable to combat and exploration.",
+    "description_es": "Un eidolon primal de forma animal, adaptable al combate y la exploración.",
+    "pet_type": "eidolon",
+    "size": "[\"Médio\"]",
+    "speed": "7.5 feet",
+    "attacks": [],
+    "traits": [
+      "besta",
+      "eidolon"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 43,
+    "data": {
+      "hp_base": 8,
+      "needs_review": false,
+      "support_benefit": null,
+      "advanced_maneuver": null
+    },
+    "created_at": "2026-09-04T04:54:43.259938+00:00",
+    "updated_at": "2026-09-23T18:16:44.090377+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "pet.eidolon.construct",
+    "name_pt": "Constructo",
+    "name_en": "Construct",
+    "name_es": "Constructo",
+    "description_pt": "Eidolon arcano construído com matéria e magia vinculadas ao convocador.",
+    "description_en": "An arcane eidolon built from matter and magic bound to its summoner.",
+    "description_es": "Un eidolon arcano construido con materia y magia vinculadas a su convocador.",
+    "pet_type": "eidolon",
+    "size": "[\"Médio\"]",
+    "speed": "7.5 feet",
+    "attacks": [],
+    "traits": [
+      "astral",
+      "construct",
+      "eidolon"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 43,
+    "data": {
+      "hp_base": 8,
+      "needs_review": false,
+      "support_benefit": null,
+      "advanced_maneuver": null
+    },
+    "created_at": "2026-09-04T04:54:43.259938+00:00",
+    "updated_at": "2026-09-23T18:16:44.090377+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "pet.eidolon.demon",
+    "name_pt": "Demônio",
+    "name_en": "Demon",
+    "name_es": "Demonio",
+    "description_pt": "Eidolon divino de essência demoníaca e impulsos destrutivos.",
+    "description_en": "A divine eidolon of demonic essence and destructive impulses.",
+    "description_es": "Un eidolon divino de esencia demoníaca e impulsos destructivos.",
+    "pet_type": "eidolon",
+    "size": "[\"Médio\",\"Pequeno\"]",
+    "speed": "7.5 feet",
+    "attacks": [],
+    "traits": [
+      "demônio",
+      "eidolon",
+      "ínfero"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 43,
+    "data": {
+      "hp_base": 8,
+      "needs_review": false,
+      "support_benefit": null,
+      "advanced_maneuver": null
+    },
+    "created_at": "2026-09-04T04:54:43.259938+00:00",
+    "updated_at": "2026-09-23T18:16:44.090377+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "pet.eidolon.devotion_abomination",
+    "name_pt": "Abantesma da Devoção",
+    "name_en": "Devotion Phantom",
+    "name_es": "Abantesma de devoción",
+    "description_pt": "Eidolon ocultista ligado à devoção e à proteção espiritual.",
+    "description_en": "An occult eidolon tied to devotion and spiritual protection.",
+    "description_es": "Eidolon ocultista ligado a la devoción y la protección espiritual.",
+    "pet_type": "eidolon",
+    "size": "[\"Médio\",\"Pequeno\"]",
+    "speed": "7.5 feet",
+    "attacks": [],
+    "traits": [
+      "abantesma",
+      "eidolon",
+      "etéreo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 43,
+    "data": {
+      "hp_base": 8,
+      "needs_review": false,
+      "support_benefit": null,
+      "advanced_maneuver": null
+    },
+    "created_at": "2026-09-04T04:54:43.259938+00:00",
+    "updated_at": "2026-09-23T18:16:44.090377+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "pet.eidolon.dragon",
+    "name_pt": "Dragão",
+    "name_en": "Dragon",
+    "name_es": "Dragón",
+    "description_pt": "Eidolon arcano que manifesta a herança e o poder de um dragão.",
+    "description_en": "An arcane eidolon manifesting draconic heritage and power.",
+    "description_es": "Un eidolon arcano que manifiesta herencia y poder dracónicos.",
+    "pet_type": "eidolon",
+    "size": "[\"Médio\"]",
+    "speed": "7.5 feet",
+    "attacks": [],
+    "traits": [
+      "astral",
+      "dragão",
+      "eidolon"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 43,
+    "data": {
+      "hp_base": 8,
+      "needs_review": false,
+      "support_benefit": null,
+      "advanced_maneuver": null
+    },
+    "created_at": "2026-09-04T04:54:43.259938+00:00",
+    "updated_at": "2026-09-23T18:16:44.090377+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "pet.eidolon.fey",
+    "name_pt": "Fada",
+    "name_en": "Fey",
+    "name_es": "Hada",
+    "description_pt": "Eidolon primal de essência feérica, astuto e conectado à natureza.",
+    "description_en": "A primal eidolon of fey essence, cunning and connected to nature.",
+    "description_es": "Un eidolon primal de esencia feérica, astuto y conectado con la naturaleza.",
+    "pet_type": "eidolon",
+    "size": "[\"Pequeno\",\"Médio\"]",
+    "speed": "7.5 feet",
+    "attacks": [],
+    "traits": [
+      "eidolon",
+      "fada"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 43,
+    "data": {
+      "hp_base": 8,
+      "needs_review": false,
+      "support_benefit": null,
+      "advanced_maneuver": null
+    },
+    "created_at": "2026-09-04T04:54:43.259938+00:00",
+    "updated_at": "2026-09-23T18:16:44.090377+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "pet.eidolon.plant",
+    "name_pt": "Planta",
+    "name_en": "Plant",
+    "name_es": "Planta",
+    "description_pt": "Eidolon primal de matéria vegetal e vitalidade natural.",
+    "description_en": "A primal eidolon of plant matter and natural vitality.",
+    "description_es": "Un eidolon primal de materia vegetal y vitalidad natural.",
+    "pet_type": "eidolon",
+    "size": "[\"Médio\"]",
+    "speed": "7.5 feet",
+    "attacks": [],
+    "traits": [
+      "eidolon",
+      "planta"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 43,
+    "data": {
+      "hp_base": 8,
+      "needs_review": false,
+      "support_benefit": null,
+      "advanced_maneuver": null
+    },
+    "created_at": "2026-09-04T04:54:43.259938+00:00",
+    "updated_at": "2026-09-23T18:16:44.090377+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "pet.eidolon.psychopomp",
+    "name_pt": "Psicopompo",
+    "name_en": "Psychopomp",
+    "name_es": "Psicopompo",
+    "description_pt": "Eidolon ocultista ligado ao ciclo das almas e à passagem dos mortos.",
+    "description_en": "An occult eidolon tied to the cycle of souls and passage of the dead.",
+    "description_es": "Un eidolon ocultista ligado al ciclo de las almas y al tránsito de los muertos.",
+    "pet_type": "eidolon",
+    "size": "[\"Médio\"]",
+    "speed": "7.5 feet",
+    "attacks": [],
+    "traits": [
+      "eidolon",
+      "monitor",
+      "psicopompo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 43,
+    "data": {
+      "hp_base": 8,
+      "needs_review": false,
+      "support_benefit": null,
+      "advanced_maneuver": null
+    },
+    "created_at": "2026-09-04T04:54:43.259938+00:00",
+    "updated_at": "2026-09-23T18:16:44.090377+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "pet.eidolon.rage_abomination",
+    "name_pt": "Abantesma da Raiva",
+    "name_en": "Rage Phantom",
+    "name_es": "Abantesma de ira",
+    "description_pt": "Abantesma ocultista movido por fúria e emoções intensas.",
+    "description_en": "An occult eidolon driven by rage and intense emotion.",
+    "description_es": "Eidolon ocultista impulsado por la ira y emociones intensas.",
+    "pet_type": "eidolon",
+    "size": "[\"Médio\",\"Pequeno\"]",
+    "speed": "7.5 feet",
+    "attacks": [],
+    "traits": [
+      "abantesma",
+      "eidolon",
+      "etéreo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 43,
+    "data": {
+      "hp_base": 8,
+      "needs_review": false,
+      "support_benefit": null,
+      "advanced_maneuver": null
+    },
+    "created_at": "2026-09-04T04:54:43.259938+00:00",
+    "updated_at": "2026-09-23T18:16:44.090377+00:00",
+    "system_id": "pf2e"
+  }
+]

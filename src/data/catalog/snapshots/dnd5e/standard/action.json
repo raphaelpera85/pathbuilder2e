@@ -1,0 +1,250 @@
+[
+  {
+    "id": "dnd5e.action.attack",
+    "name_pt": "Atacar",
+    "name_en": "Atacar",
+    "name_es": "Atacar",
+    "description_pt": "Faça um ataque corpo a corpo ou à distância usando a ação Ataque.",
+    "description_en": "Faça um ataque corpo a corpo ou à distância usando a ação Ataque.",
+    "description_es": "Faça um ataque corpo a corpo ou à distância usando a ação Ataque.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "Livro do Jogador — D&D 5e 2014",
+    "source_page": null,
+    "data": {
+      "id": "dnd5e.action.attack",
+      "source": {
+        "book": "Livro do Jogador — D&D 5e 2014"
+      },
+      "ruleset": "standard",
+      "ruleKind": "action",
+      "systemId": "dnd5e",
+      "system_id": "dnd5e",
+      "sourceBook": "Livro do Jogador — D&D 5e 2014",
+      "description": "Você realiza um ataque com uma arma ou ataque desarmado. Quando uma classe concede Ataque Extra, a mesma ação pode incluir os ataques adicionais previstos pela característica."
+    },
+    "created_at": "2026-09-13T22:07:08.98402+00:00",
+    "updated_at": "2026-09-13T22:22:12.461293+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.action.dash",
+    "name_pt": "Disparada",
+    "name_en": "Disparada",
+    "name_es": "Disparada",
+    "description_pt": "Ganhe movimento adicional igual ao seu deslocamento na rodada.",
+    "description_en": "Ganhe movimento adicional igual ao seu deslocamento na rodada.",
+    "description_es": "Ganhe movimento adicional igual ao seu deslocamento na rodada.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "Livro do Jogador — D&D 5e 2014",
+    "source_page": null,
+    "data": {
+      "id": "dnd5e.action.dash",
+      "source": {
+        "book": "Livro do Jogador — D&D 5e 2014"
+      },
+      "ruleset": "standard",
+      "ruleKind": "action",
+      "systemId": "dnd5e",
+      "system_id": "dnd5e",
+      "sourceBook": "Livro do Jogador — D&D 5e 2014",
+      "description": "O movimento adicional é igual ao seu deslocamento, depois de considerar os modificadores aplicáveis."
+    },
+    "created_at": "2026-09-13T22:07:08.98402+00:00",
+    "updated_at": "2026-09-13T22:22:12.461293+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.action.disengage",
+    "name_pt": "Desengajar",
+    "name_en": "Desengajar",
+    "name_es": "Desengajar",
+    "description_pt": "Seu movimento não provoca ataques de oportunidade pelo restante do turno.",
+    "description_en": "Seu movimento não provoca ataques de oportunidade pelo restante do turno.",
+    "description_es": "Seu movimento não provoca ataques de oportunidade pelo restante do turno.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "Livro do Jogador — D&D 5e 2014",
+    "source_page": null,
+    "data": {
+      "id": "dnd5e.action.disengage",
+      "source": {
+        "book": "Livro do Jogador — D&D 5e 2014"
+      },
+      "ruleset": "standard",
+      "ruleKind": "action",
+      "systemId": "dnd5e",
+      "system_id": "dnd5e",
+      "sourceBook": "Livro do Jogador — D&D 5e 2014",
+      "description": "Até o fim do turno, seu movimento não provoca ataques de oportunidade das criaturas que você puder ver."
+    },
+    "created_at": "2026-09-13T22:07:08.98402+00:00",
+    "updated_at": "2026-09-13T22:22:12.461293+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.action.dodge",
+    "name_pt": "Esquivar",
+    "name_en": "Esquivar",
+    "name_es": "Esquivar",
+    "description_pt": "Dificulte ataques contra você e favoreça testes de Destreza.",
+    "description_en": "Dificulte ataques contra você e favoreça testes de Destreza.",
+    "description_es": "Dificulte ataques contra você e favoreça testes de Destreza.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "Livro do Jogador — D&D 5e 2014",
+    "source_page": null,
+    "data": {
+      "id": "dnd5e.action.dodge",
+      "source": {
+        "book": "Livro do Jogador — D&D 5e 2014"
+      },
+      "ruleset": "standard",
+      "ruleKind": "action",
+      "systemId": "dnd5e",
+      "system_id": "dnd5e",
+      "sourceBook": "Livro do Jogador — D&D 5e 2014",
+      "description": "Até o início do seu próximo turno, ataques contra você têm desvantagem quando você puder ver o atacante, e você tem vantagem em testes de Destreza. A condição termina se ficar incapacitado ou se o deslocamento chegar a 0."
+    },
+    "created_at": "2026-09-13T22:07:08.98402+00:00",
+    "updated_at": "2026-09-13T22:22:12.461293+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.action.help",
+    "name_pt": "Ajudar",
+    "name_en": "Ajudar",
+    "name_es": "Ajudar",
+    "description_pt": "Dê vantagem ao próximo teste de um aliado ou ajude um ataque contra uma criatura próxima.",
+    "description_en": "Dê vantagem ao próximo teste de um aliado ou ajude um ataque contra uma criatura próxima.",
+    "description_es": "Dê vantagem ao próximo teste de um aliado ou ajude um ataque contra uma criatura próxima.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "Livro do Jogador — D&D 5e 2014",
+    "source_page": null,
+    "data": {
+      "id": "dnd5e.action.help",
+      "source": {
+        "book": "Livro do Jogador — D&D 5e 2014"
+      },
+      "ruleset": "standard",
+      "ruleKind": "action",
+      "systemId": "dnd5e",
+      "system_id": "dnd5e",
+      "sourceBook": "Livro do Jogador — D&D 5e 2014",
+      "description": "Você presta ajuda para conceder vantagem ao próximo teste relevante de um aliado ou para dar vantagem ao próximo ataque contra uma criatura dentro do alcance definido pela regra."
+    },
+    "created_at": "2026-09-13T22:07:08.98402+00:00",
+    "updated_at": "2026-09-13T22:22:12.461293+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.action.hide",
+    "name_pt": "Esconder-se",
+    "name_en": "Esconder-se",
+    "name_es": "Esconder-se",
+    "description_pt": "Faça um teste de Destreza (Furtividade) para tentar ficar oculto.",
+    "description_en": "Faça um teste de Destreza (Furtividade) para tentar ficar oculto.",
+    "description_es": "Faça um teste de Destreza (Furtividade) para tentar ficar oculto.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "Livro do Jogador — D&D 5e 2014",
+    "source_page": null,
+    "data": {
+      "id": "dnd5e.action.hide",
+      "source": {
+        "book": "Livro do Jogador — D&D 5e 2014"
+      },
+      "ruleset": "standard",
+      "ruleKind": "action",
+      "systemId": "dnd5e",
+      "system_id": "dnd5e",
+      "sourceBook": "Livro do Jogador — D&D 5e 2014",
+      "description": "A ação exige atender às condições de cobertura ou ocultação previstas pela regra; armadura que impõe desvantagem em Furtividade continua aplicando essa desvantagem."
+    },
+    "created_at": "2026-09-13T22:07:08.98402+00:00",
+    "updated_at": "2026-09-13T22:22:12.461293+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.action.ready",
+    "name_pt": "Preparar",
+    "name_en": "Preparar",
+    "name_es": "Preparar",
+    "description_pt": "Defina um gatilho e uma reação para executar uma ação depois.",
+    "description_en": "Defina um gatilho e uma reação para executar uma ação depois.",
+    "description_es": "Defina um gatilho e uma reação para executar uma ação depois.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "Livro do Jogador — D&D 5e 2014",
+    "source_page": null,
+    "data": {
+      "id": "dnd5e.action.ready",
+      "source": {
+        "book": "Livro do Jogador — D&D 5e 2014"
+      },
+      "ruleset": "standard",
+      "ruleKind": "action",
+      "systemId": "dnd5e",
+      "system_id": "dnd5e",
+      "sourceBook": "Livro do Jogador — D&D 5e 2014",
+      "description": "Você escolhe uma ação executável e um gatilho perceptível. Ao ocorrer o gatilho, pode usar sua reação para executar a ação ou mover-se até o deslocamento escolhido."
+    },
+    "created_at": "2026-09-13T22:07:08.98402+00:00",
+    "updated_at": "2026-09-13T22:22:12.461293+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.action.search",
+    "name_pt": "Procurar",
+    "name_en": "Procurar",
+    "name_es": "Procurar",
+    "description_pt": "Dedique sua ação a procurar algo usando um teste apropriado.",
+    "description_en": "Dedique sua ação a procurar algo usando um teste apropriado.",
+    "description_es": "Dedique sua ação a procurar algo usando um teste apropriado.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "Livro do Jogador — D&D 5e 2014",
+    "source_page": null,
+    "data": {
+      "id": "dnd5e.action.search",
+      "source": {
+        "book": "Livro do Jogador — D&D 5e 2014"
+      },
+      "ruleset": "standard",
+      "ruleKind": "action",
+      "systemId": "dnd5e",
+      "system_id": "dnd5e",
+      "sourceBook": "Livro do Jogador — D&D 5e 2014",
+      "description": "O Mestre determina o teste de Sabedoria (Percepção) ou Inteligência (Investigação), conforme o que você procura."
+    },
+    "created_at": "2026-09-13T22:07:08.98402+00:00",
+    "updated_at": "2026-09-13T22:22:12.461293+00:00",
+    "system_id": "dnd5e"
+  }
+]

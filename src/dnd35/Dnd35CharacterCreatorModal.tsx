@@ -25,7 +25,6 @@ import {
 import {
   DND35_ALIGNMENTS, dnd35AlignmentAllowedForClass, dnd35ClericAlignmentAllowed, dnd35ParseAlignment, type Dnd35Alignment,
 } from "../data/dnd35/dnd35Alignment";
-import { loadDnd35Catalog } from "../services/dnd35Catalog";
 import "./dnd35Theme.css";
 import { getCatalogVersion } from "../data/catalogVersions";
 
@@ -109,17 +108,6 @@ export function Dnd35CharacterCreatorModal({
   const [charName, setCharName] = useState("Aventureiro");
   const [alignment, setAlignment] = useState<string>("Neutro e Bom");
   const [alignmentNotice, setAlignmentNotice] = useState<string>("");
-
-  // Catálogo do Supabase (system_id dnd35) mesclado sobre os dados locais.
-  const [, setCatalogVersion] = useState(0);
-  useEffect(() => {
-    if (!isOpen) return;
-    let cancelled = false;
-    loadDnd35Catalog().then((result) => {
-      if (!cancelled && result.source === "supabase") setCatalogVersion((v) => v + 1);
-    });
-    return () => { cancelled = true; };
-  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;

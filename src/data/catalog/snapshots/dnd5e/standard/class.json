@@ -1,0 +1,572 @@
+[
+  {
+    "id": "dnd5e.barbaro",
+    "name_pt": "Bárbaro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 6,
+    "key_attributes": [
+      "str"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Força",
+      "Constituição"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 46,
+    "data": {
+      "hitDie": "d12",
+      "proficiencies": "Armas simples e marciais; armaduras leves e médias; escudos",
+      "skillChoiceCount": 2
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.bardo",
+    "name_pt": "Bardo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 4,
+    "key_attributes": [
+      "cha"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "dex",
+      "cha"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 51,
+    "data": {
+      "hitDie": "d8",
+      "proficiencies": "Armas simples e armaduras leves",
+      "skillChoiceCount": 3
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.bruxo",
+    "name_pt": "Bruxo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 4,
+    "key_attributes": [
+      "cha"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "wis",
+      "cha"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 56,
+    "data": {
+      "hitDie": "d8",
+      "proficiencies": "Armas simples e armaduras leves",
+      "skillChoiceCount": 2
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.clerigo",
+    "name_pt": "Clérigo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 4,
+    "key_attributes": [
+      "wis"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "wis",
+      "cha"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 63,
+    "data": {
+      "hitDie": "d8",
+      "proficiencies": "Armas simples, armaduras leves e médias, escudos",
+      "skillChoiceCount": 2
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.druida",
+    "name_pt": "Druida",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 4,
+    "key_attributes": [
+      "wis"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "int",
+      "wis"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 71,
+    "data": {
+      "hitDie": "d8",
+      "proficiencies": "Escudos e armaduras leves/médias não metálicas",
+      "skillChoiceCount": 2
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.feiticeiro",
+    "name_pt": "Feiticeiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 3,
+    "key_attributes": [
+      "cha"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "con",
+      "cha"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 77,
+    "data": {
+      "hitDie": "d6",
+      "classChoices": [
+        {
+          "id": "sorcerer-metamagic",
+          "count": 2,
+          "label": "Metamagia",
+          "classId": "feiticeiro",
+          "options": [
+            "Magia Acelerada",
+            "Magia Cuidadosa",
+            "Magia Distante",
+            "Magia Elevada",
+            "Magia Estendida",
+            "Magia Potencializada",
+            "Magia Sutil",
+            "Magia Transmutada"
+          ],
+          "countByLevel": {
+            "10": 3,
+            "17": 4
+          },
+          "minimumLevel": 3
+        }
+      ],
+      "proficiencies": "Armas simples",
+      "skillChoiceCount": 2
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-23T17:54:17.649619+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.guerreiro",
+    "name_pt": "Guerreiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 5,
+    "key_attributes": [
+      "str",
+      "dex"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "str",
+      "con"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 83,
+    "data": {
+      "hitDie": "d10",
+      "proficiencies": "Todas as armaduras, escudos, armas simples e marciais",
+      "skillChoiceCount": 2
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.ladino",
+    "name_pt": "Ladino",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 4,
+    "key_attributes": [
+      "dex"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "dex",
+      "int"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 89,
+    "data": {
+      "hitDie": "d8",
+      "proficiencies": "Armaduras leves; armas simples e algumas marciais",
+      "skillChoiceCount": 4
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.mago",
+    "name_pt": "Mago",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 3,
+    "key_attributes": [
+      "int"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "int",
+      "wis"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 94,
+    "data": {
+      "hitDie": "d6",
+      "proficiencies": "Armas simples",
+      "skillChoiceCount": 2
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.monge",
+    "name_pt": "Monge",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 4,
+    "key_attributes": [
+      "dex",
+      "wis"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "str",
+      "dex"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 102,
+    "data": {
+      "hitDie": "d8",
+      "proficiencies": "Armas simples e espadas curtas",
+      "skillChoiceCount": 2
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.paladino",
+    "name_pt": "Paladino",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 5,
+    "key_attributes": [
+      "str",
+      "cha"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "wis",
+      "cha"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 108,
+    "data": {
+      "hitDie": "d10",
+      "proficiencies": "Todas as armaduras, escudos, armas simples e marciais",
+      "skillChoiceCount": 2
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.patrulheiro",
+    "name_pt": "Patrulheiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 5,
+    "key_attributes": [
+      "dex",
+      "wis"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "str",
+      "dex"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 115,
+    "data": {
+      "hitDie": "d10",
+      "classChoices": [
+        {
+          "id": "ranger-favored-enemy",
+          "count": 1,
+          "label": "Inimigo Favorecido (1º nível)",
+          "classId": "patrulheiro",
+          "options": [
+            "Aberrações",
+            "Animais",
+            "Celestiais",
+            "Construtos",
+            "Dragões",
+            "Elementais",
+            "Fadas",
+            "Gigantes",
+            "Ínferos",
+            "Monstruosidades",
+            "Gosmas",
+            "Plantas",
+            "Mortos-vivos",
+            "Humanoides"
+          ],
+          "minimumLevel": 1
+        },
+        {
+          "id": "ranger-favored-enemy-6",
+          "count": 1,
+          "label": "Inimigo Favorecido adicional (6º nível)",
+          "classId": "patrulheiro",
+          "options": [
+            "Aberrações",
+            "Animais",
+            "Celestiais",
+            "Construtos",
+            "Dragões",
+            "Elementais",
+            "Fadas",
+            "Gigantes",
+            "Ínferos",
+            "Monstruosidades",
+            "Gosmas",
+            "Plantas",
+            "Mortos-vivos",
+            "Humanoides"
+          ],
+          "minimumLevel": 6
+        },
+        {
+          "id": "ranger-favored-enemy-14",
+          "count": 1,
+          "label": "Inimigo Favorecido adicional (14º nível)",
+          "classId": "patrulheiro",
+          "options": [
+            "Aberrações",
+            "Animais",
+            "Celestiais",
+            "Construtos",
+            "Dragões",
+            "Elementais",
+            "Fadas",
+            "Gigantes",
+            "Ínferos",
+            "Monstruosidades",
+            "Gosmas",
+            "Plantas",
+            "Mortos-vivos",
+            "Humanoides"
+          ],
+          "minimumLevel": 14
+        },
+        {
+          "id": "ranger-favored-terrain",
+          "count": 1,
+          "label": "Terreno Favorecido (1º nível)",
+          "classId": "patrulheiro",
+          "options": [
+            "Ártico",
+            "Costa",
+            "Deserto",
+            "Floresta",
+            "Planície",
+            "Montanha",
+            "Pântano",
+            "Subterrâneo"
+          ],
+          "minimumLevel": 1
+        },
+        {
+          "id": "ranger-favored-terrain-6",
+          "count": 1,
+          "label": "Terreno Favorecido adicional (6º nível)",
+          "classId": "patrulheiro",
+          "options": [
+            "Ártico",
+            "Costa",
+            "Deserto",
+            "Floresta",
+            "Planície",
+            "Montanha",
+            "Pântano",
+            "Subterrâneo"
+          ],
+          "minimumLevel": 6
+        },
+        {
+          "id": "ranger-favored-terrain-10",
+          "count": 1,
+          "label": "Terreno Favorecido adicional (10º nível)",
+          "classId": "patrulheiro",
+          "options": [
+            "Ártico",
+            "Costa",
+            "Deserto",
+            "Floresta",
+            "Planície",
+            "Montanha",
+            "Pântano",
+            "Subterrâneo"
+          ],
+          "minimumLevel": 10
+        },
+        {
+          "id": "ranger-fighting-style",
+          "count": 1,
+          "label": "Estilo de Luta",
+          "classId": "patrulheiro",
+          "options": [
+            "Arquearia",
+            "Defesa",
+            "Duelos",
+            "Luta com Duas Armas"
+          ],
+          "minimumLevel": 2
+        }
+      ],
+      "proficiencies": "Armaduras leves e médias, escudos, armas simples e marciais",
+      "skillChoiceCount": 3
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-23T17:49:13.318122+00:00",
+    "system_id": "dnd5e"
+  }
+]

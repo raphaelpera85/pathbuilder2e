@@ -1,0 +1,646 @@
+[
+  {
+    "id": "ose.race.anao",
+    "name_pt": "Anão",
+    "name_en": "Dwarf",
+    "name_es": null,
+    "description_pt": "Semi-humanos robustos e barbudos, de constituição férrea, mestres da pedra e armas pesadas.",
+    "description_en": "Semi-humanos robustos e barbudos, de constituição férrea, mestres da pedra e armas pesadas.",
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 120,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Alinhamento",
+      "Anão",
+      "Gnomo",
+      "Goblin",
+      "Kobold"
+    ],
+    "traits": [
+      "Detectar Armadilhas de Pedra e Construções: Chance de 2 em 6 de detectar fossos, blocos móveis e alvenaria recente.",
+      "Infravisão: Enxerga no escuro absoluto até 18 metros.",
+      "Resistência Robusta: Ganha bônus substancial em testes de resistência contra Veneno, Varinhas, Paralisia e Magias.",
+      "Armas Grandes: Devido à baixa estatura, não pode empunhar espadas de duas mãos ou arcos longos."
+    ],
+    "rarity": "common",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 78,
+    "data": {
+      "id": "anao",
+      "name": "Anão",
+      "nameEn": "Dwarf",
+      "traits": [
+        "Detectar Armadilhas de Pedra e Construções: Chance de 2 em 6 de detectar fossos, blocos móveis e alvenaria recente.",
+        "Infravisão: Enxerga no escuro absoluto até 18 metros.",
+        "Resistência Robusta: Ganha bônus substancial em testes de resistência contra Veneno, Varinhas, Paralisia e Magias.",
+        "Armas Grandes: Devido à baixa estatura, não pode empunhar espadas de duas mãos ou arcos longos."
+      ],
+      "description": "Semi-humanos robustos e barbudos, de constituição férrea, mestres da pedra e armas pesadas.",
+      "statModifiers": {},
+      "maxClassLevels": {
+        "ladrao": 4,
+        "clerigo": 8,
+        "assassino": 4,
+        "guerreiro": 10
+      },
+      "minRequirements": {
+        "con": 9
+      },
+      "nativeLanguages": [
+        "Comum",
+        "Alinhamento",
+        "Anão",
+        "Gnomo",
+        "Goblin",
+        "Kobold"
+      ]
+    },
+    "created_at": "2026-09-12T14:42:06.790923+00:00",
+    "updated_at": "2026-09-12T14:42:06.790923+00:00",
+    "system_id": "ose"
+  },
+  {
+    "id": "ose.race.drow",
+    "name_pt": "Drow",
+    "name_en": "Drow",
+    "name_es": null,
+    "description_pt": "Elfos negros subterrâneos de cabelos prateados e olhos afiados, hábeis na teia de sombras e venenos.",
+    "description_en": "Elfos negros subterrâneos de cabelos prateados e olhos afiados, hábeis na teia de sombras e venenos.",
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 120,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum Profundo",
+      "Élfico",
+      "Gnoll",
+      "Goblin"
+    ],
+    "traits": [
+      "Infravisão Superior: Enxerga até 27 metros no escuro.",
+      "Detectar Portas Secretas: 2 em 6 ao procurar, 1 em 6 passando perto.",
+      "Magia Inata Drow: Capaz de conjurar Luz das Fadas e Escuridão 1x por dia.",
+      "Sensibilidade à Luz: Sob luz do dia ou tochas muito brilhantes, sofre -1 de penalidade em ataques."
+    ],
+    "rarity": "common",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 78,
+    "data": {
+      "id": "drow",
+      "name": "Drow",
+      "nameEn": "Drow",
+      "traits": [
+        "Infravisão Superior: Enxerga até 27 metros no escuro.",
+        "Detectar Portas Secretas: 2 em 6 ao procurar, 1 em 6 passando perto.",
+        "Magia Inata Drow: Capaz de conjurar Luz das Fadas e Escuridão 1x por dia.",
+        "Sensibilidade à Luz: Sob luz do dia ou tochas muito brilhantes, sofre -1 de penalidade em ataques."
+      ],
+      "description": "Elfos negros subterrâneos de cabelos prateados e olhos afiados, hábeis na teia de sombras e venenos.",
+      "statModifiers": {},
+      "maxClassLevels": {
+        "mago": 9,
+        "ladrao": 10,
+        "ranger": 9,
+        "clerigo": 11,
+        "acrobata": 10,
+        "assassino": 10,
+        "cavaleiro": 9
+      },
+      "minRequirements": {
+        "int": 9
+      },
+      "nativeLanguages": [
+        "Comum Profundo",
+        "Élfico",
+        "Gnoll",
+        "Goblin"
+      ]
+    },
+    "created_at": "2026-09-12T14:42:06.790923+00:00",
+    "updated_at": "2026-09-12T14:42:06.790923+00:00",
+    "system_id": "ose"
+  },
+  {
+    "id": "ose.race.duergar",
+    "name_pt": "Duergar",
+    "name_en": "Duergar",
+    "name_es": null,
+    "description_pt": "Anões cinzentos das profundezas, mestres em emboscadas subterrâneas, poderes mentais e furtividade mineral.",
+    "description_en": "Anões cinzentos das profundezas, mestres em emboscadas subterrâneas, poderes mentais e furtividade mineral.",
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 120,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum Profundo",
+      "Anão",
+      "Gnomo",
+      "Goblin",
+      "Kobold"
+    ],
+    "traits": [
+      "Infravisão das Profundezas: Enxerga até 27 metros no escuro.",
+      "Furtividade Subterrânea: Chance de 4 em 6 de se mover em silêncio e emboscar no subterrâneo.",
+      "Poder Mental de Crescimento: 1x por dia pode aumentar de tamanho, dobrando o dano de armas corpo a corpo.",
+      "Sensibilidade à Luz: Sob luz direta do sol sofre -1 em ataques e testes."
+    ],
+    "rarity": "common",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 78,
+    "data": {
+      "id": "duergar",
+      "name": "Duergar",
+      "nameEn": "Duergar",
+      "traits": [
+        "Infravisão das Profundezas: Enxerga até 27 metros no escuro.",
+        "Furtividade Subterrânea: Chance de 4 em 6 de se mover em silêncio e emboscar no subterrâneo.",
+        "Poder Mental de Crescimento: 1x por dia pode aumentar de tamanho, dobrando o dano de armas corpo a corpo.",
+        "Sensibilidade à Luz: Sob luz direta do sol sofre -1 em ataques e testes."
+      ],
+      "description": "Anões cinzentos das profundezas, mestres em emboscadas subterrâneas, poderes mentais e furtividade mineral.",
+      "statModifiers": {},
+      "maxClassLevels": {
+        "ladrao": 9,
+        "clerigo": 8,
+        "assassino": 9,
+        "guerreiro": 9
+      },
+      "minRequirements": {
+        "con": 9
+      },
+      "nativeLanguages": [
+        "Comum Profundo",
+        "Anão",
+        "Gnomo",
+        "Goblin",
+        "Kobold"
+      ]
+    },
+    "created_at": "2026-09-12T14:42:06.790923+00:00",
+    "updated_at": "2026-09-12T14:42:06.790923+00:00",
+    "system_id": "ose"
+  },
+  {
+    "id": "ose.race.elfo",
+    "name_pt": "Elfo",
+    "name_en": "Elf",
+    "name_es": null,
+    "description_pt": "Semi-humanos esbeltos e feéricos de vida quase imortal, graciosos em combate e mestres arcanos.",
+    "description_en": "Semi-humanos esbeltos e feéricos de vida quase imortal, graciosos em combate e mestres arcanos.",
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 120,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Alinhamento",
+      "Élfico",
+      "Gnoll",
+      "Hobgoblin",
+      "Orc"
+    ],
+    "traits": [
+      "Detectar Portas Secretas: Chance de 2 em 6 de detectar portas secretas procurando ativamente, ou 1 em 6 passando perto.",
+      "Infravisão: Enxerga no escuro absoluto até 18 metros.",
+      "Imunidade a Carniçal: Totalmente imune à paralisia sobrenatural causada por carniçais.",
+      "Sentidos Feéricos: Ouve ruídos com facilidade redobrada (2 em 6)."
+    ],
+    "rarity": "common",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 78,
+    "data": {
+      "id": "elfo",
+      "name": "Elfo",
+      "nameEn": "Elf",
+      "traits": [
+        "Detectar Portas Secretas: Chance de 2 em 6 de detectar portas secretas procurando ativamente, ou 1 em 6 passando perto.",
+        "Infravisão: Enxerga no escuro absoluto até 18 metros.",
+        "Imunidade a Carniçal: Totalmente imune à paralisia sobrenatural causada por carniçais.",
+        "Sentidos Feéricos: Ouve ruídos com facilidade redobrada (2 em 6)."
+      ],
+      "description": "Semi-humanos esbeltos e feéricos de vida quase imortal, graciosos em combate e mestres arcanos.",
+      "statModifiers": {},
+      "maxClassLevels": {
+        "mago": 11,
+        "druida": 8,
+        "ladrao": 10,
+        "ranger": 11,
+        "clerigo": 7,
+        "acrobata": 10,
+        "assassino": 10,
+        "cavaleiro": 11,
+        "guerreiro": 7
+      },
+      "minRequirements": {
+        "int": 9
+      },
+      "nativeLanguages": [
+        "Comum",
+        "Alinhamento",
+        "Élfico",
+        "Gnoll",
+        "Hobgoblin",
+        "Orc"
+      ]
+    },
+    "created_at": "2026-09-12T14:42:06.790923+00:00",
+    "updated_at": "2026-09-12T14:42:06.790923+00:00",
+    "system_id": "ose"
+  },
+  {
+    "id": "ose.race.gnomo",
+    "name_pt": "Gnomo",
+    "name_en": "Gnome",
+    "name_es": null,
+    "description_pt": "Curiosos e inventivos semi-humanos de nariz comprido, primos dos anões e dotados de afinidade com ilusões.",
+    "description_en": "Curiosos e inventivos semi-humanos de nariz comprido, primos dos anões e dotados de afinidade com ilusões.",
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 120,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Alinhamento",
+      "Gnomo",
+      "Anão",
+      "Kobold"
+    ],
+    "traits": [
+      "Infravisão: Enxerga até 27 metros no escuro.",
+      "Afinidade com Ilusões: Vantagem e bônus de proteção contra magias de ilusão.",
+      "Detectar Truques de Construção: Chance de 2 em 6 de perceber desníveis e mecanismos de pedra.",
+      "Resistência Mágica Anã: Bônus de +4 em salvamentos de varinhas e magias."
+    ],
+    "rarity": "common",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 78,
+    "data": {
+      "id": "gnomo",
+      "name": "Gnomo",
+      "nameEn": "Gnome",
+      "traits": [
+        "Infravisão: Enxerga até 27 metros no escuro.",
+        "Afinidade com Ilusões: Vantagem e bônus de proteção contra magias de ilusão.",
+        "Detectar Truques de Construção: Chance de 2 em 6 de perceber desníveis e mecanismos de pedra.",
+        "Resistência Mágica Anã: Bônus de +4 em salvamentos de varinhas e magias."
+      ],
+      "description": "Curiosos e inventivos semi-humanos de nariz comprido, primos dos anões e dotados de afinidade com ilusões.",
+      "statModifiers": {},
+      "maxClassLevels": {
+        "ladrao": 8,
+        "clerigo": 7,
+        "assassino": 6,
+        "guerreiro": 6,
+        "ilusionista": 7
+      },
+      "minRequirements": {
+        "con": 9,
+        "int": 9
+      },
+      "nativeLanguages": [
+        "Comum",
+        "Alinhamento",
+        "Gnomo",
+        "Anão",
+        "Kobold"
+      ]
+    },
+    "created_at": "2026-09-12T14:42:06.790923+00:00",
+    "updated_at": "2026-09-12T14:42:06.790923+00:00",
+    "system_id": "ose"
+  },
+  {
+    "id": "ose.race.halfling",
+    "name_pt": "Halfling",
+    "name_en": "Halfling",
+    "name_es": null,
+    "description_pt": "Pequenos e rotundos com pés peludos, famosos pela pontaria fantástica, furtividade e sorte lendária.",
+    "description_en": "Pequenos e rotundos com pés peludos, famosos pela pontaria fantástica, furtividade e sorte lendária.",
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 120,
+    "attribute_boosts": [
+      "str -1",
+      "dex +1"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Alinhamento",
+      "Halfling"
+    ],
+    "traits": [
+      "Pontaria com Mísseis: +1 em todas as jogadas de ataque à distância.",
+      "Defesa contra Gigantes: Ganha +2 de CA (ou -2 DAC) quando atacado por criaturas maiores que humanos.",
+      "Furtividade Excepcional: 90% de chance de se esconder em áreas selvagens e 2 em 6 em masmorras.",
+      "Resistência Heróica: Bônus de +4 em jogadas de proteção contra Morte, Varinhas, Paralisia e Magias.",
+      "Restrição de Tamanho: Não pode usar armas de duas mãos ou arcos longos."
+    ],
+    "rarity": "common",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 78,
+    "data": {
+      "id": "halfling",
+      "name": "Halfling",
+      "nameEn": "Halfling",
+      "traits": [
+        "Pontaria com Mísseis: +1 em todas as jogadas de ataque à distância.",
+        "Defesa contra Gigantes: Ganha +2 de CA (ou -2 DAC) quando atacado por criaturas maiores que humanos.",
+        "Furtividade Excepcional: 90% de chance de se esconder em áreas selvagens e 2 em 6 em masmorras.",
+        "Resistência Heróica: Bônus de +4 em jogadas de proteção contra Morte, Varinhas, Paralisia e Magias.",
+        "Restrição de Tamanho: Não pode usar armas de duas mãos ou arcos longos."
+      ],
+      "description": "Pequenos e rotundos com pés peludos, famosos pela pontaria fantástica, furtividade e sorte lendária.",
+      "statModifiers": {
+        "dex": 1,
+        "str": -1
+      },
+      "maxClassLevels": {
+        "druida": 6,
+        "ladrao": 8,
+        "ranger": 6,
+        "guerreiro": 6
+      },
+      "minRequirements": {
+        "con": 9,
+        "dex": 9
+      },
+      "nativeLanguages": [
+        "Comum",
+        "Alinhamento",
+        "Halfling"
+      ]
+    },
+    "created_at": "2026-09-12T14:42:06.790923+00:00",
+    "updated_at": "2026-09-12T14:42:06.790923+00:00",
+    "system_id": "ose"
+  },
+  {
+    "id": "ose.race.humano",
+    "name_pt": "Humano",
+    "name_en": "Human",
+    "name_es": null,
+    "description_pt": "A mais numerosa e versátil das raças de aventureiros. Sem restrições de classe e com progressão irrestrita até o 14º nível.",
+    "description_en": "A mais numerosa e versátil das raças de aventureiros. Sem restrições de classe e com progressão irrestrita até o 14º nível.",
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 120,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Alinhamento"
+    ],
+    "traits": [
+      "Versatilidade Ilimitada: Pode escolher qualquer classe de aventureiro.",
+      "Avanço Completo: Progride até o nível máximo (14º nível) em todas as classes."
+    ],
+    "rarity": "common",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 78,
+    "data": {
+      "id": "humano",
+      "name": "Humano",
+      "nameEn": "Human",
+      "traits": [
+        "Versatilidade Ilimitada: Pode escolher qualquer classe de aventureiro.",
+        "Avanço Completo: Progride até o nível máximo (14º nível) em todas as classes."
+      ],
+      "description": "A mais numerosa e versátil das raças de aventureiros. Sem restrições de classe e com progressão irrestrita até o 14º nível.",
+      "statModifiers": {},
+      "maxClassLevels": {
+        "mago": 14,
+        "bardo": 14,
+        "druida": 14,
+        "ladrao": 14,
+        "ranger": 14,
+        "barbaro": 14,
+        "clerigo": 14,
+        "acrobata": 14,
+        "paladino": 14,
+        "assassino": 14,
+        "cavaleiro": 14,
+        "guerreiro": 14,
+        "ilusionista": 14
+      },
+      "minRequirements": {},
+      "nativeLanguages": [
+        "Comum",
+        "Alinhamento"
+      ]
+    },
+    "created_at": "2026-09-12T14:42:06.790923+00:00",
+    "updated_at": "2026-09-12T14:42:06.790923+00:00",
+    "system_id": "ose"
+  },
+  {
+    "id": "ose.race.meio_elfo",
+    "name_pt": "Meio-Elfo",
+    "name_en": "Half-Elf",
+    "name_es": null,
+    "description_pt": "União da beleza feérica élfica com a determinação humana. Carismáticos e com ampla variedade de carreiras.",
+    "description_en": "União da beleza feérica élfica com a determinação humana. Carismáticos e com ampla variedade de carreiras.",
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 120,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Alinhamento",
+      "Élfico"
+    ],
+    "traits": [
+      "Infravisão: Enxerga até 18 metros na escuridão.",
+      "Detectar Portas Secretas: 2 em 6 ao inspecionar ativamente.",
+      "Versatilidade de Carreira: Acesso a classes nobres como Cavaleiro, Paladino e Bardo."
+    ],
+    "rarity": "common",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 78,
+    "data": {
+      "id": "meio_elfo",
+      "name": "Meio-Elfo",
+      "nameEn": "Half-Elf",
+      "traits": [
+        "Infravisão: Enxerga até 18 metros na escuridão.",
+        "Detectar Portas Secretas: 2 em 6 ao inspecionar ativamente.",
+        "Versatilidade de Carreira: Acesso a classes nobres como Cavaleiro, Paladino e Bardo."
+      ],
+      "description": "União da beleza feérica élfica com a determinação humana. Carismáticos e com ampla variedade de carreiras.",
+      "statModifiers": {},
+      "maxClassLevels": {
+        "mago": 8,
+        "bardo": 12,
+        "druida": 12,
+        "ladrao": 12,
+        "ranger": 8,
+        "clerigo": 12,
+        "acrobata": 12,
+        "paladino": 12,
+        "cavaleiro": 12,
+        "guerreiro": 8
+      },
+      "minRequirements": {
+        "cha": 9,
+        "con": 9
+      },
+      "nativeLanguages": [
+        "Comum",
+        "Alinhamento",
+        "Élfico"
+      ]
+    },
+    "created_at": "2026-09-12T14:42:06.790923+00:00",
+    "updated_at": "2026-09-12T14:42:06.790923+00:00",
+    "system_id": "ose"
+  },
+  {
+    "id": "ose.race.meio_orc",
+    "name_pt": "Meio-Orc",
+    "name_en": "Half-Orc",
+    "name_es": null,
+    "description_pt": "Herdeiros da fúria e musculatura orc, formidáveis guerreiros e assassinos temidos.",
+    "description_en": "Herdeiros da fúria e musculatura orc, formidáveis guerreiros e assassinos temidos.",
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 120,
+    "attribute_boosts": [
+      "str +1",
+      "con +1",
+      "cha -2"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Alinhamento",
+      "Orc"
+    ],
+    "traits": [
+      "Infravisão: Enxerga até 18 metros no escuro.",
+      "Constituição Vigorosa: Bônus nato de +1 em Força e Constituição.",
+      "Presença Intimidadora: Penalidade de -2 em Carisma com povos da superfície."
+    ],
+    "rarity": "common",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 78,
+    "data": {
+      "id": "meio_orc",
+      "name": "Meio-Orc",
+      "nameEn": "Half-Orc",
+      "traits": [
+        "Infravisão: Enxerga até 18 metros no escuro.",
+        "Constituição Vigorosa: Bônus nato de +1 em Força e Constituição.",
+        "Presença Intimidadora: Penalidade de -2 em Carisma com povos da superfície."
+      ],
+      "description": "Herdeiros da fúria e musculatura orc, formidáveis guerreiros e assassinos temidos.",
+      "statModifiers": {
+        "cha": -2,
+        "con": 1,
+        "str": 1
+      },
+      "maxClassLevels": {
+        "ladrao": 8,
+        "clerigo": 4,
+        "assassino": 8,
+        "guerreiro": 10
+      },
+      "minRequirements": {},
+      "nativeLanguages": [
+        "Comum",
+        "Alinhamento",
+        "Orc"
+      ]
+    },
+    "created_at": "2026-09-12T14:42:06.790923+00:00",
+    "updated_at": "2026-09-12T14:42:06.790923+00:00",
+    "system_id": "ose"
+  },
+  {
+    "id": "ose.race.svirfneblin",
+    "name_pt": "Svirfneblin",
+    "name_en": "Svirfneblin (Deep Gnome)",
+    "name_es": null,
+    "description_pt": "Gnomos das profundezas, atarracados e de pele cinzenta, peritos em camuflagem e engenhos subterrâneos.",
+    "description_en": "Gnomos das profundezas, atarracados e de pele cinzenta, peritos em camuflagem e engenhos subterrâneos.",
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 120,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum Profundo",
+      "Gnomo",
+      "Anão",
+      "Kobold"
+    ],
+    "traits": [
+      "Camuflagem Rochosa: 2 em 6 de se camuflar em pedras mesmo sob observação direta.",
+      "Infravisão Profunda: Enxerga até 27 metros no escuro.",
+      "Resistência de Pedra: Bônus de +4 em todos os testes de proteção contra veneno e magia.",
+      "Ilusões Naturais: Conhece truques arcanos de distorção de imagem."
+    ],
+    "rarity": "common",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 78,
+    "data": {
+      "id": "svirfneblin",
+      "name": "Svirfneblin",
+      "nameEn": "Svirfneblin (Deep Gnome)",
+      "traits": [
+        "Camuflagem Rochosa: 2 em 6 de se camuflar em pedras mesmo sob observação direta.",
+        "Infravisão Profunda: Enxerga até 27 metros no escuro.",
+        "Resistência de Pedra: Bônus de +4 em todos os testes de proteção contra veneno e magia.",
+        "Ilusões Naturais: Conhece truques arcanos de distorção de imagem."
+      ],
+      "description": "Gnomos das profundezas, atarracados e de pele cinzenta, peritos em camuflagem e engenhos subterrâneos.",
+      "statModifiers": {},
+      "maxClassLevels": {
+        "ladrao": 8,
+        "clerigo": 7,
+        "assassino": 8,
+        "guerreiro": 6,
+        "ilusionista": 7
+      },
+      "minRequirements": {
+        "con": 9
+      },
+      "nativeLanguages": [
+        "Comum Profundo",
+        "Gnomo",
+        "Anão",
+        "Kobold"
+      ]
+    },
+    "created_at": "2026-09-12T14:42:06.790923+00:00",
+    "updated_at": "2026-09-12T14:42:06.790923+00:00",
+    "system_id": "ose"
+  }
+]

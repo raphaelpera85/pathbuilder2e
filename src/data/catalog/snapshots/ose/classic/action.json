@@ -1,0 +1,126 @@
+[
+  {
+    "id": "ose.action.attack.classic",
+    "name_pt": "Ataque (Classic Fantasy)",
+    "name_en": "Ataque (Classic Fantasy)",
+    "name_es": "Ataque (Classic Fantasy)",
+    "description_pt": "Faça uma jogada de ataque usando a tabela e o modificador do personagem.",
+    "description_en": "Faça uma jogada de ataque usando a tabela e o modificador do personagem.",
+    "description_es": "Faça uma jogada de ataque usando a tabela e o modificador do personagem.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": null,
+    "data": {
+      "id": "ose.action.attack",
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras"
+      },
+      "ruleset": "classic",
+      "ruleKind": "action",
+      "systemId": "ose",
+      "system_id": "ose",
+      "sourceBook": "Old-School Essentials — Livro de Regras",
+      "description": "A jogada usa as tabelas de ataque do OSE e considera a classe, o nível, a arma e a Classe de Armadura do alvo."
+    },
+    "created_at": "2026-09-13T22:22:12.461293+00:00",
+    "updated_at": "2026-09-13T22:32:54.941882+00:00",
+    "system_id": "ose"
+  },
+  {
+    "id": "ose.action.cast.classic",
+    "name_pt": "Conjurar magia (Classic Fantasy)",
+    "name_en": "Conjurar magia (Classic Fantasy)",
+    "name_es": "Conjurar magia (Classic Fantasy)",
+    "description_pt": "Conjure uma magia preparada respeitando tempo, alcance e interrupções.",
+    "description_en": "Conjure uma magia preparada respeitando tempo, alcance e interrupções.",
+    "description_es": "Conjure uma magia preparada respeitando tempo, alcance e interrupções.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": null,
+    "data": {
+      "id": "ose.action.cast",
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras"
+      },
+      "ruleset": "classic",
+      "ruleKind": "action",
+      "systemId": "ose",
+      "system_id": "ose",
+      "sourceBook": "Old-School Essentials — Livro de Regras",
+      "description": "A magia deve estar preparada e disponível para a classe; sofrer dano ou perder a concentração durante a conjuração pode interromper o efeito conforme a regra aplicável."
+    },
+    "created_at": "2026-09-13T22:22:12.461293+00:00",
+    "updated_at": "2026-09-13T22:32:54.941882+00:00",
+    "system_id": "ose"
+  },
+  {
+    "id": "ose.action.move.classic",
+    "name_pt": "Movimento (Classic Fantasy)",
+    "name_en": "Movimento (Classic Fantasy)",
+    "name_es": "Movimento (Classic Fantasy)",
+    "description_pt": "Mova-se até o valor de movimento da ficha durante a rodada.",
+    "description_en": "Mova-se até o valor de movimento da ficha durante a rodada.",
+    "description_es": "Mova-se até o valor de movimento da ficha durante a rodada.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": null,
+    "data": {
+      "id": "ose.action.move",
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras"
+      },
+      "ruleset": "classic",
+      "ruleKind": "action",
+      "systemId": "ose",
+      "system_id": "ose",
+      "sourceBook": "Old-School Essentials — Livro de Regras",
+      "description": "O movimento é expresso em metros no jogo de exploração e é afetado por carga, armadura e condições previstas pelo ruleset."
+    },
+    "created_at": "2026-09-13T22:22:12.461293+00:00",
+    "updated_at": "2026-09-13T22:32:54.941882+00:00",
+    "system_id": "ose"
+  },
+  {
+    "id": "ose.action.retreat.classic",
+    "name_pt": "Retirada (Classic Fantasy)",
+    "name_en": "Retirada (Classic Fantasy)",
+    "name_es": "Retirada (Classic Fantasy)",
+    "description_pt": "Recuar de um combate exige seguir a regra de retirada e o risco de perseguição.",
+    "description_en": "Recuar de um combate exige seguir a regra de retirada e o risco de perseguição.",
+    "description_es": "Recuar de um combate exige seguir a regra de retirada e o risco de perseguição.",
+    "action_cost": "1",
+    "action_type": "basic",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": null,
+    "data": {
+      "id": "ose.action.retreat",
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras"
+      },
+      "ruleset": "classic",
+      "ruleKind": "action",
+      "systemId": "ose",
+      "system_id": "ose",
+      "sourceBook": "Old-School Essentials — Livro de Regras",
+      "description": "A retirada é uma decisão de exploração e combate distinta de simplesmente mover-se; o Mestre aplica as regras de perseguição e reação quando pertinentes."
+    },
+    "created_at": "2026-09-13T22:22:12.461293+00:00",
+    "updated_at": "2026-09-13T22:32:54.941882+00:00",
+    "system_id": "ose"
+  }
+]

@@ -1,0 +1,246 @@
+[
+  {
+    "id": "ancestry.android",
+    "name_pt": "Androide",
+    "name_en": "Android",
+    "name_es": "Androide",
+    "description_pt": "Seres biotecnológicos com corpos artificiais e mentes conscientes.",
+    "description_en": "Biotechnological people with artificial bodies and conscious minds.",
+    "description_es": "Seres biotecnológicos con cuerpos artificiales y mentes conscientes.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Destreza",
+      "Inteligência",
+      "Livre"
+    ],
+    "attribute_flaw": "Carisma",
+    "languages": [
+      "Comum",
+      "Androide"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 22,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "needs_review": false,
+      "heritagesList": [
+        "Andróide Artesão",
+        "Andróide Caçador",
+        "Andróide Sombra",
+        "Andróide Guerreiro"
+      ]
+    },
+    "created_at": "2026-09-04T04:37:36.853905+00:00",
+    "updated_at": "2026-09-23T18:16:25.280686+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "ancestry.automaton",
+    "name_pt": "Autômato",
+    "name_en": "Automaton",
+    "name_es": "Autómata",
+    "description_pt": "Constructo consciente criado no antigo Império Jistka e sustentado por uma alma viva.",
+    "description_en": "A sentient construct created in the ancient Jistka Imperium and sustained by a living soul.",
+    "description_es": "Un constructo consciente creado en el antiguo Imperio Jistka y sostenido por un alma viva.",
+    "hp_base": 10,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Força",
+      "Livre"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Utopiano"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 36,
+    "data": {
+      "senses": [],
+      "needs_review": false,
+      "heritagesList": [
+        "Autômato Blindado",
+        "Autômato de Caça Veloz",
+        "Autômato do Núcleo Brilhante",
+        "Autômato Guerreiro"
+      ]
+    },
+    "created_at": "2026-09-04T04:37:36.853905+00:00",
+    "updated_at": "2026-09-23T18:16:25.280686+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "ancestry.azarketi",
+    "name_pt": "Azarketi",
+    "name_en": "Azarketi",
+    "name_es": "Azarketi",
+    "description_pt": "Povo anfíbio adaptado à vida terrestre e aquática.",
+    "description_en": "An amphibious people adapted to life on land and underwater.",
+    "description_es": "Un pueblo anfibio adaptado a la vida terrestre y submarina.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Constituição",
+      "Carisma",
+      "Livre"
+    ],
+    "attribute_flaw": "Sabedoria",
+    "languages": [
+      "Comum",
+      "Aquano"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "senses": [],
+      "needs_review": false,
+      "heritagesList": [
+        "Azarketi dos Mares Profundos",
+        "Azarketi Fluvial",
+        "Azarketi Escamado",
+        "Azarketi Névoa"
+      ]
+    },
+    "created_at": "2026-09-04T04:37:36.853905+00:00",
+    "updated_at": "2026-09-23T18:16:25.280686+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "ancestry.fetchling",
+    "name_pt": "Kayal",
+    "name_en": "Fetchling",
+    "name_es": "Hijo de las sombras",
+    "description_pt": "Descendentes de habitantes do Plano das Sombras, adaptados à penumbra.",
+    "description_en": "Descendants of the Shadow Plane, adapted to dimness and darkness.",
+    "description_es": "Descendientes del Plano de las Sombras, adaptados a la penumbra.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Destreza",
+      "Livre"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Sombrio"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 30,
+    "data": {
+      "senses": [
+        "Visão no Escuro"
+      ],
+      "needs_review": false,
+      "heritagesList": [
+        "Kayal das Sombras Profundas",
+        "Kayal Furtivo",
+        "Kayal Sem Rosto"
+      ]
+    },
+    "created_at": "2026-09-04T04:37:36.853905+00:00",
+    "updated_at": "2026-09-23T18:16:25.280686+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "ancestry.kitsune",
+    "name_pt": "Kitsune",
+    "name_en": "Kitsune",
+    "name_es": "Kitsune",
+    "description_pt": "Humanoides raposinos metamorfos ligados ao mundo espiritual.",
+    "description_en": "Foxlike shapeshifters tied to the spirit world.",
+    "description_es": "Cambiaformas con rasgos de zorro vinculados al mundo espiritual.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Carisma",
+      "Livre"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Silvestre"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 120,
+    "data": {
+      "senses": [],
+      "needs_review": false,
+      "heritagesList": [
+        "Kitsune Celestial",
+        "Kitsune da Terra",
+        "Kitsune Espiritual",
+        "Kitsune Fogo-Fátuo"
+      ]
+    },
+    "created_at": "2026-09-04T04:37:36.853905+00:00",
+    "updated_at": "2026-09-23T18:16:25.280686+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "ancestry.skeleton",
+    "name_pt": "Esqueleto",
+    "name_en": "Skeleton",
+    "name_es": "Esqueleto",
+    "description_pt": "Ancestralidade rara morta-viva com 6 PV, visão no escuro e necessidade de coletar ossos.",
+    "description_en": "A rare undead ancestry with 6 HP, darkvision, and a need to collect bones.",
+    "description_es": "Una ascendencia rara no muerta con 6 PG, visión en la oscuridad y necesidad de recoger huesos.",
+    "hp_base": 6,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Destreza",
+      "Carisma",
+      "Livre"
+    ],
+    "attribute_flaw": "Inteligência",
+    "languages": [
+      "Comum",
+      "Necril"
+    ],
+    "traits": [
+      "Morto-vivo"
+    ],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 48,
+    "data": {
+      "senses": [
+        "Visão no Escuro"
+      ],
+      "needs_review": false,
+      "heritagesList": [
+        "Esqueleto-Bucha",
+        "Esqueleto Compacto",
+        "Esqueleto Monstruoso",
+        "Esqueleto Robusto"
+      ]
+    },
+    "created_at": "2026-09-04T04:37:36.853905+00:00",
+    "updated_at": "2026-09-23T18:16:25.280686+00:00",
+    "system_id": "pf2e"
+  }
+]

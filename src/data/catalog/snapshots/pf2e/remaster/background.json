@@ -1,0 +1,1822 @@
+[
+  {
+    "id": "background.acrobat",
+    "name_pt": "Acróbata",
+    "name_en": "Acrobat",
+    "name_es": "Acróbata",
+    "description_pt": "Você treinou acrobacias, equilíbrio e saltos espetaculares para encantar multidões ou superar obstáculos perigosos.",
+    "description_en": "You practiced acrobatics, balance, and spectacular jumps to delight crowds or overcome dangerous obstacles.",
+    "description_es": "Entrenaste acrobacias, equilibrio y saltos espectaculares para deleitar a las multitudes o superar obstáculos peligrosos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "acrobatics"
+    ],
+    "granted_feat": "Acrobata Felino",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 88,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.aeronaut",
+    "name_pt": "Aeronauta",
+    "name_en": "Aeronaut",
+    "name_es": "Aeronauta",
+    "description_pt": "Você domina balões, dirigíveis e outras máquinas voadoras de exploração e guerra.",
+    "description_en": "You master balloons, dirigibles, and other flying machines used in exploration and war.",
+    "description_es": "Dominas globos, dirigibles y otras máquinas voladoras de exploración y guerra.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Garantia (Pilotagem)",
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "lore": "Saber de Pilotagem",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.alloysmith",
+    "name_pt": "Ferreiro de Ligas",
+    "name_en": "Alloysmith",
+    "name_es": "Forjador de aleaciones",
+    "description_pt": "Você estudou metais, ligas e processos para trabalhar na fronteira da ferraria.",
+    "description_en": "You studied metals, alloys, and processes to work at the cutting edge of smithing.",
+    "description_es": "Estudiaste metales, aleaciones y procesos para trabajar en la vanguardia de la forja.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Manufatura Especializada (Ferraria)",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "lore": "Saber do Plano do Metal",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.arcane_revolutionary",
+    "name_pt": "Revolucionário Arcano",
+    "name_en": "Arcane Revolutionary",
+    "name_es": "Revolucionario arcano",
+    "description_pt": "Magia e sabotagem ajudaram sua comunidade a enfrentar governantes opressores.",
+    "description_en": "Magic and sabotage helped your community resist oppressive rulers.",
+    "description_es": "La magia y el sabotaje ayudaron a tu comunidad a resistir gobernantes opresores.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "arcana"
+    ],
+    "granted_feat": "Identificação Rápida",
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "lore": "Saber do Assentamento Libertado",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.artisan",
+    "name_pt": "Artesão",
+    "name_en": "Artisan",
+    "name_es": "Artesano",
+    "description_pt": "Como aprendiz de uma oficina ou guilda, você aprendeu a forjar, talhar ou tecer artigos úteis e obras de qualidade com ferramentas manuais.",
+    "description_en": "As an apprentice in a workshop or guild, you learned to forge, carve, or weave useful goods and quality craftwork with hand tools.",
+    "description_es": "Como aprendiz en un taller o gremio, aprendiste a forjar, tallar o tejer bienes útiles y obras de calidad con herramientas manuales.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Manufatura Especializada",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 88,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.artist",
+    "name_pt": "Artista",
+    "name_en": "Artist",
+    "name_es": "Artista",
+    "description_pt": "Você expressa sua visão criativa por meio de pintura, escultura, poesia ou música, criando obras que movem corações e mentes.",
+    "description_en": "You express your creative vision through painting, sculpture, poetry, or music, making works that move hearts and minds.",
+    "description_es": "Expresas tu visión creativa a través de la pintura, escultura, poesía o música, creando obras que conmueven corazones y mentes.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Manufatura Especializada",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 88,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.barkeeper",
+    "name_pt": "Taverneiro",
+    "name_en": "Barkeeper",
+    "name_es": "Tabernero",
+    "description_pt": "Servindo canecas atrás do balcão, você ouviu fofocas de viajantes, acalmou brigas bêbadas e desenvolveu um excelente senso de diplomacia prática.",
+    "description_en": "Pouring ales behind the bar, you listened to traveler gossip, calmed drunken brawls, and honed practical diplomacy.",
+    "description_es": "Sirviendo jarras tras la barra, escuchaste cotilleos de viajeros, calmaste peleas de borrachos y afilaste una diplomacia práctica.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacy"
+    ],
+    "granted_feat": "Ouvido Atento",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 88,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.battle_mechanic",
+    "name_pt": "Mecânico de Batalha",
+    "name_en": "Battle Mechanic",
+    "name_es": "Mecánico de batalla",
+    "description_pt": "Você mantém veículos terrestres, aéreos e marítimos operando sob pressão.",
+    "description_en": "You keep land, air, and sea vehicles operating under pressure.",
+    "description_es": "Mantienes vehículos terrestres, aéreos y marítimos funcionando bajo presión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Reparo Rápido",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 16,
+    "data": {
+      "lore": "Saber de Veículos",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.battlefield_scrounger",
+    "name_pt": "Catador do Campo de Batalha",
+    "name_en": "Battlefield Scrounger",
+    "name_es": "Rebuscador del campo de batalla",
+    "description_pt": "Você transforma restos de exércitos derrotados em ferramentas e itens aproveitáveis.",
+    "description_en": "You turn the remains of defeated armies into useful tools and items.",
+    "description_es": "Transformas los restos de ejércitos derrotados en herramientas y objetos útiles.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Improvisar Ferramenta",
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "lore": "Saber de Guerra",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.charlatan",
+    "name_pt": "Charlatão",
+    "name_en": "Charlatan",
+    "name_es": "Charlatán",
+    "description_pt": "Você viajou vendendo elixires falsos, falsas promessas e esquemas astutos, escapando sempre antes que a farsa fosse descoberta.",
+    "description_en": "You learned to charm, tell convincing falsehoods, and sell dubious wonders while staying one step ahead of the law.",
+    "description_es": "Viajaste vendiendo elixires falsos, promesas vanas y astutas estafas, escapando siempre antes de que se descubriera la farsa.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "deception"
+    ],
+    "granted_feat": "Mentiroso Charmoso",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 88,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.combat_carpenter",
+    "name_pt": "Carpinteiro de Combate",
+    "name_en": "Combat Carpenter",
+    "name_es": "Carpintero de combate",
+    "description_pt": "Experiência com madeira permite reforçar construções e localizar seus pontos fracos.",
+    "description_en": "Your experience with wood lets you reinforce structures and find their weak points.",
+    "description_es": "Tu experiencia con madera te permite reforzar estructuras y localizar sus puntos débiles.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Manufatura Especializada",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 16,
+    "data": {
+      "lore": "Saber de Engenharia",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.combat_chaplain",
+    "name_pt": "Capelão de Combate",
+    "name_en": "Combat Chaplain",
+    "name_es": "Capellán de combate",
+    "description_pt": "Você oferece apoio espiritual, mediação e ritos às tropas e suas famílias.",
+    "description_en": "You provide troops and their families with spiritual support, mediation, and rites.",
+    "description_es": "Ofreces apoyo espiritual, mediación y ritos a las tropas y sus familias.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "religion"
+    ],
+    "granted_feat": "Reconhecer Magia",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 16,
+    "data": {
+      "lore": "Saber da Divindade",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.concordance_researcher",
+    "name_pt": "Pesquisador da Concordância",
+    "name_en": "Concordance Researcher",
+    "name_es": "Investigador de la Concordancia",
+    "description_pt": "A Concordância treinou você para pesquisar fenômenos e desequilíbrios planares.",
+    "description_en": "The Concordance trained you to research planar phenomena and imbalances.",
+    "description_es": "La Concordancia te formó para investigar fenómenos y desequilibrios planares.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "elemental plane lore"
+    ],
+    "granted_feat": "Pesquisa Planar",
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "lore": "Quatro Saberes de Planos Elementais",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.concordance_scout",
+    "name_pt": "Batedor da Concordância",
+    "name_en": "Concordance Scout",
+    "name_es": "Explorador de la Concordancia",
+    "description_pt": "Você localiza rumores de rupturas planares e retorna antes que o perigo aumente.",
+    "description_en": "You track rumors of planar breaches and return before the danger escalates.",
+    "description_es": "Rastreas rumores de brechas planares y regresas antes de que aumente el peligro.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacy"
+    ],
+    "granted_feat": "Camarada",
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "lore": "Saber de um Plano Elemental",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.conscript",
+    "name_pt": "Conscrito",
+    "name_en": "Conscript",
+    "name_es": "Recluta",
+    "description_pt": "O serviço obrigatório ensinou a você estratégia suficiente para sobreviver ao campo de batalha.",
+    "description_en": "Mandatory service taught you enough strategy to survive the battlefield.",
+    "description_es": "El servicio obligatorio te enseñó suficiente estrategia para sobrevivir al campo de batalla.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Conhecimento Duvidoso",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 16,
+    "data": {
+      "lore": "Saber de Guerra",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.cook",
+    "name_pt": "Cozinheiro",
+    "name_en": "Cook",
+    "name_es": "Cocinero",
+    "description_pt": "Em tavernas barulhentas, navios ou acampamentos de campanha, você alimentou bocas famintas e aprendeu a identificar ingredientes raros e especiarias.",
+    "description_en": "In bustling taverns, ships, or military camps, you fed hungry mouths and learned to identify rare ingredients and spices.",
+    "description_es": "En tabernas concurridas, barcos o campamentos militares, alimentaste a bocas hambrientas y aprendiste a identificar ingredientes y especias raros.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "survival"
+    ],
+    "granted_feat": "Forrageador",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 88,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.criminal",
+    "name_pt": "Criminoso",
+    "name_en": "Criminal",
+    "name_es": "Criminal",
+    "description_pt": "Você sobreviveu nos becos escuros praticando arrombamento, furto ou contrabando, sempre atento à ronda da guarda urbana.",
+    "description_en": "You survived in dark alleys practicing burglary, theft, or smuggling, always wary of the city guard patrols.",
+    "description_es": "Sobreviviste en callejones oscuros practicando robos, hurtos o contrabando, siempre atento a las patrullas de la guardia urbana.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "thievery"
+    ],
+    "granted_feat": "Pernas Rápidas",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 88,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.crystal_healer",
+    "name_pt": "Curandeiro de Cristais",
+    "name_en": "Crystal Healer",
+    "name_es": "Sanador de cristales",
+    "description_pt": "Você emprega formações minerais como instrumentos naturais de cuidado e cura.",
+    "description_en": "You use mineral formations as natural tools for care and healing.",
+    "description_es": "Empleas formaciones minerales como herramientas naturales de cuidado y curación.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nature"
+    ],
+    "granted_feat": "Medicina Natural",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "lore": "Saber do Plano da Terra",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.deep_sea_diver",
+    "name_pt": "Mergulhador de Águas Profundas",
+    "name_en": "Deep-Sea Diver",
+    "name_es": "Buceador de aguas profundas",
+    "description_pt": "Seu fascínio pelos oceanos levou você a explorar profundezas e seus segredos.",
+    "description_en": "Your fascination with oceans led you to explore the depths and their secrets.",
+    "description_es": "Tu fascinación por los océanos te llevó a explorar las profundidades y sus secretos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Saqueador Subaquático",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "lore": "Saber do Plano da Água",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.dendrologist",
+    "name_pt": "Dendrologista",
+    "name_en": "Dendrologist",
+    "name_es": "Dendrólogo",
+    "description_pt": "O estudo de árvores e florestas conduz suas viagens por novos ambientes.",
+    "description_en": "The study of trees and forests guides your travels through new environments.",
+    "description_es": "El estudio de árboles y bosques guía tus viajes por nuevos entornos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "survival"
+    ],
+    "granted_feat": "Especialidade de Terreno (Florestas)",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "lore": "Saber do Plano da Madeira",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.detective",
+    "name_pt": "Detetive",
+    "name_en": "Detective",
+    "name_es": "Detective",
+    "description_pt": "Você investigou mistérios urbanos, interrogou suspeitos e desvendou tramas criminosas conectando pequenas pistas esquecidas.",
+    "description_en": "You investigated urban mysteries, interrogated suspects, and uncovered criminal plots by linking subtle forgotten clues.",
+    "description_es": "Investigaste misterios urbanos, interrogaste sospechosos y desentrañaste tramas criminales uniendo pequeñas pistas olvidadas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Leitura de Pista",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.dueling_noble",
+    "name_pt": "Duelista de Oppara",
+    "name_en": "Dueling Noble",
+    "name_es": "Noble duelista",
+    "description_pt": "Treinado nos salões e academias de duelo de Taldor, você combina esgrima refinada e insultos afiados para desestabilizar rivais.",
+    "description_en": "Trained in the dueling salons and academies of Taldor, you combine refined swordplay with sharp wit to unbalance rivals.",
+    "description_es": "Entrenado en los salones y academias de duelo de Taldor, combinas esgrima refinada y agudos insultos para desestabilizar rivales.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "deception"
+    ],
+    "granted_feat": "Palavra Mordaz (Bon Mot)",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.elementally_infused",
+    "name_pt": "Infundido Elementalmente",
+    "name_en": "Elementally Infused",
+    "name_es": "Imbuido elementalmente",
+    "description_pt": "Uma descarga planar deixou essência elemental concentrada dentro de você.",
+    "description_en": "A planar surge left concentrated elemental essence within you.",
+    "description_es": "Una descarga planar dejó esencia elemental concentrada en tu interior.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "elemental plane lore"
+    ],
+    "granted_feat": "Truque Elemental Inato",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 45,
+    "data": {
+      "lore": "Saber do Plano Elemental escolhido",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.emissary",
+    "name_pt": "Emissário",
+    "name_en": "Emissary",
+    "name_es": "Emisario",
+    "description_pt": "Você atuou como porta-voz, diplomata ou mensageiro entre governantes e facções, negociando tratados e acordos delicados.",
+    "description_en": "You served as a spokesperson, diplomat, or messenger between rulers and factions, brokering delicate treaties and pacts.",
+    "description_es": "Actuaste como portavoz, diplomático o mensajero entre gobernantes y facciones, negociando tratados y acuerdos delicados.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacy"
+    ],
+    "granted_feat": "Etiqueta da Corte",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.field_medic",
+    "name_pt": "Curandeiro de Campo",
+    "name_en": "Field Medic",
+    "name_es": "Médico de campo",
+    "description_pt": "Em meio ao caos do combate, você estancou sangramentos, estabilizou soldados caídos e tratou ferimentos graves sob fogo cerrado.",
+    "description_en": "Amid the chaos of battle, you stopped bleeding, stabilized fallen soldiers, and treated severe wounds under heavy fire.",
+    "description_es": "En medio del caos del combate, detuviste hemorragias, estabilizaste soldados caídos y trataste heridas graves bajo fuego intenso.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "medicine"
+    ],
+    "granted_feat": "Medicina de Batalha",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.fire_warden",
+    "name_pt": "Guardião Contra Incêndios",
+    "name_en": "Fire Warden",
+    "name_es": "Guardián contra incendios",
+    "description_pt": "Você combateu incêndios e aprendeu a atravessar fumaça para salvar vidas.",
+    "description_en": "You fought fires and learned to move through smoke to save lives.",
+    "description_es": "Combatiste incendios y aprendiste a atravesar el humo para salvar vidas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Controle de Respiração",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "lore": "Saber do Plano do Fogo",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.gladiator",
+    "name_pt": "Gladiador",
+    "name_en": "Gladiator",
+    "name_es": "Gladiador",
+    "description_pt": "Nas arenas e fossos de combate, você lutou pela sobrevivência e pela aclamação do público, aprendendo a transformar a violência em espetáculo.",
+    "description_en": "In arenas and fighting pits, you fought for survival and the crowd's cheers, turning martial combat into grand theatrical showmanship.",
+    "description_es": "En arenas y fosos de combate, luchaste por la supervivencia y el aplauso del público, convirtiendo el combate en un gran espectáculo.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "performance"
+    ],
+    "granted_feat": "Espetáculo Sangrento",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guard",
+    "name_pt": "Guarda da Cidade",
+    "name_en": "Guard",
+    "name_es": "Guardia",
+    "description_pt": "Você patrulhou portões, muralhas e ruas, fazendo cumprir as leis locais, dispersando tumultos e intimidando malfeitores.",
+    "description_en": "You patrolled gates, walls, and streets, enforcing local laws, dispersing brawls, and staring down wrongdoers.",
+    "description_es": "Patrullaste puertas, murallas y calles, haciendo cumplir las leyes locales, disolviendo tumultos e intimidando a maleantes.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intimidation"
+    ],
+    "granted_feat": "Olhar Rápido",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.hermit",
+    "name_pt": "Eremita",
+    "name_en": "Hermit",
+    "name_es": "Eremita",
+    "description_pt": "Isolado em cavernas, picos ou ermos distantes, você dedicou anos à contemplação e à comunhão com segredos esquecidos do mundo.",
+    "description_en": "Isolated in caves, peaks, or remote wilderness, you spent years in contemplation and communion with forgotten secrets of the world.",
+    "description_es": "Aislado en cuevas, cumbres o páramos remotos, dedicaste años a la contemplación y a la comunión con secretos olvidados del mundo.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nature"
+    ],
+    "granted_feat": "Solidão Focada",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.hunter",
+    "name_pt": "Caçador",
+    "name_en": "Hunter",
+    "name_es": "Cazador",
+    "description_pt": "Você perseguiu presas em florestas e montanhas, aprendendo o comportamento da fauna e as técnicas de emboscada e abate.",
+    "description_en": "You tracked prey through forests and mountains, learning animal behavior and ambush and harvesting techniques.",
+    "description_es": "Rastreaste presas por bosques y montañas, aprendiendo el comportamiento animal y las técnicas de emboscada y aprovechamiento.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "survival"
+    ],
+    "granted_feat": "Olhos de Águia",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.laborer",
+    "name_pt": "Trabalhador Braçal",
+    "name_en": "Laborer",
+    "name_es": "Trabajador manual",
+    "description_pt": "Você realizou trabalhos pesados na construção de muralhas, estivagem de cais ou corte de lenha, forjando uma constituição musculosa e incansável.",
+    "description_en": "You performed hard physical labor building walls, loading docks, or felling timber, forging a muscular and tireless constitution.",
+    "description_es": "Realizaste trabajo físico pesado construyendo murallas, cargando muelles o talando árboles, forjando una constitución musculosa e incansable.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Músculo Rústico",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.martial_musician",
+    "name_pt": "Músico Marcial",
+    "name_en": "Martial Musician",
+    "name_es": "Músico marcial",
+    "description_pt": "Ritmos e sinais musicais permitem orientar tropas e sustentar seu avanço.",
+    "description_en": "Rhythm and musical signals let you direct troops and sustain their advance.",
+    "description_es": "El ritmo y las señales musicales te permiten dirigir tropas y sostener su avance.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "performance"
+    ],
+    "granted_feat": "Performance Impressionante",
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "lore": "Saber de Guerra",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.merchant",
+    "name_pt": "Mercador",
+    "name_en": "Merchant",
+    "name_es": "Mercader",
+    "description_pt": "Você comprou e vendeu mercadorias em feiras e bazares, avaliando preços justos, lucros e rotas comerciais lucrativas.",
+    "description_en": "You bought and sold goods at fairs and bazaars, evaluating fair prices, margins, and profitable trade routes.",
+    "description_es": "Compraste y vendiste mercancías en ferias y bazares, evaluando precios justos, márgenes y rutas comerciales rentables.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacy"
+    ],
+    "granted_feat": "Negociador de Barganhas",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.miner",
+    "name_pt": "Mineiro",
+    "name_en": "Miner",
+    "name_es": "Minero",
+    "description_pt": "Você escavou túneis profundos com picareta em busca de minérios preciosos, acostumando-se ao confinamento e aos perigos da rocha.",
+    "description_en": "You excavated deep tunnels with pickaxe seeking precious ores, getting accustomed to close quarters and underground cave-in hazards.",
+    "description_es": "Excavaste túneles profundos con pico en busca de minerales preciosos, acostumbrándote al confinamiento y a los peligros de la roca.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Resistência a Desabamento",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.noble",
+    "name_pt": "Herdeiro Nobre",
+    "name_en": "Noble",
+    "name_es": "Noble",
+    "description_pt": "Criado no privilégio de uma linhagem nobre, você aprendeu política palaciana, genealogia aristocrática e as expectativas do poder.",
+    "description_en": "Raised in the privilege of a noble lineage, you learned courtly politics, aristocratic heraldry, and the obligations of power.",
+    "description_es": "Criado en el privilegio de un linaje noble, aprendiste política cortesana, heráldica aristocrática y las obligaciones del poder.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Etiqueta Nobre",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.nomad",
+    "name_pt": "Nômade",
+    "name_en": "Nomad",
+    "name_es": "Nómada",
+    "description_pt": "Sua tribo ou família viajou constantemente por estepes e desertos, ensinando a você como se orientar pelo sol e pelas estrelas.",
+    "description_en": "Your tribe or clan traveled constantly across steppes and deserts, teaching you how to navigate by sun, stars, and weather.",
+    "description_es": "Tu tribu o clan viajó constantemente por estepas y desiertos, enseñándote a orientarte por el sol, las estrellas y el clima.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "survival"
+    ],
+    "granted_feat": "Sentido Climático",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.plague_doctor",
+    "name_pt": "Médico da Peste",
+    "name_en": "Plague Doctor",
+    "name_es": "Médico de la peste",
+    "description_pt": "Você combate doenças que se espalham entre cercos, fome e mortes em massa.",
+    "description_en": "You fight diseases that spread through sieges, famine, and mass casualties.",
+    "description_es": "Combates enfermedades que se propagan entre asedios, hambre y muertes masivas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "medicine"
+    ],
+    "granted_feat": "Inoculação",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "lore": "Saber de Herbalismo",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.planar_migrant",
+    "name_pt": "Migrante Planar",
+    "name_en": "Planar Migrant",
+    "name_es": "Migrante planar",
+    "description_pt": "Você nasceu em um plano elemental e busca um lugar no Universo ou um caminho de volta.",
+    "description_en": "You were born on an elemental plane and seek a place in the Universe or a way back.",
+    "description_es": "Naciste en un plano elemental y buscas un lugar en el Universo o un camino de regreso.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Carregador Robusto e Planejador Precavido",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 45,
+    "data": {
+      "lore": "Saber de um Plano Elemental",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.common.accountant",
+    "name_pt": "Contador",
+    "name_en": "Accountant",
+    "name_es": "Contable",
+    "description_pt": "Aumentos: Inteligência ou Sabedoria e um aumento livre; treinado em society e Saber de Contabilidade; talento de perícia: Subitizar.",
+    "description_en": "Boosts: Inteligência or Sabedoria and one free boost; trained in society and Saber de Contabilidade; skill feat: Subitizar.",
+    "description_es": "Mejoras: Inteligência o Sabedoria y una mejora libre; entrenado en society y Saber de Contabilidade; dote de habilidad: Subitizar.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Subitizar",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "lore": "Saber de Contabilidade",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.common.barber",
+    "name_pt": "Barbeiro",
+    "name_en": "Barber",
+    "name_es": "Barbero",
+    "description_pt": "Aumentos: Destreza ou Sabedoria e um aumento livre; treinado em medicine e Saber de Cirurgia; talento de perícia: Cirurgia Arriscada.",
+    "description_en": "Boosts: Destreza or Sabedoria and one free boost; trained in medicine and Saber de Cirurgia; skill feat: Cirurgia Arriscada.",
+    "description_es": "Mejoras: Destreza o Sabedoria y una mejora libre; entrenado en medicine y Saber de Cirurgia; dote de habilidad: Cirurgia Arriscada.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "medicine"
+    ],
+    "granted_feat": "Cirurgia Arriscada",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "lore": "Saber de Cirurgia",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.common.driver",
+    "name_pt": "Condutor",
+    "name_en": "Driver",
+    "name_es": "Conductor",
+    "description_pt": "Aumentos: Força ou Destreza e um aumento livre; treinado em acrobatics e Saber de Pilotagem; talento de perícia: Certeza.",
+    "description_en": "Boosts: Força or Destreza and one free boost; trained in acrobatics and Saber de Pilotagem; skill feat: Certeza.",
+    "description_es": "Mejoras: Força o Destreza y una mejora libre; entrenado en acrobatics y Saber de Pilotagem; dote de habilidad: Certeza.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "acrobatics"
+    ],
+    "granted_feat": "Certeza",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "lore": "Saber de Pilotagem",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.common.forerunner",
+    "name_pt": "Precursor",
+    "name_en": "Forerunner",
+    "name_es": "Precursor",
+    "description_pt": "Aumentos: Constituição ou Sabedoria e um aumento livre; treinado em nature e Saber de Planícies; talento de perícia: Cavaleiro Expresso.",
+    "description_en": "Boosts: Constituição or Sabedoria and one free boost; trained in nature and Saber de Planícies; skill feat: Cavaleiro Expresso.",
+    "description_es": "Mejoras: Constituição o Sabedoria y una mejora libre; entrenado en nature y Saber de Planícies; dote de habilidad: Cavaleiro Expresso.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nature"
+    ],
+    "granted_feat": "Cavaleiro Expresso",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "lore": "Saber de Planícies",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.common.hedge_wizard",
+    "name_pt": "Mandingueiro",
+    "name_en": "Hedge Wizard",
+    "name_es": "Mago de seto",
+    "description_pt": "Aumentos: Inteligência ou Sabedoria e um aumento livre; treinado em occultism e Saber de Herbalismo; talento de perícia: Magia das Raízes.",
+    "description_en": "Boosts: Inteligência or Sabedoria and one free boost; trained in occultism and Saber de Herbalismo; skill feat: Magia das Raízes.",
+    "description_es": "Mejoras: Inteligência o Sabedoria y una mejora libre; entrenado en occultism y Saber de Herbalismo; dote de habilidad: Magia das Raízes.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "occultism"
+    ],
+    "granted_feat": "Magia das Raízes",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "lore": "Saber de Herbalismo",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.common.insurgent",
+    "name_pt": "Insurgente",
+    "name_en": "Insurgent",
+    "name_es": "Insurgente",
+    "description_pt": "Aumentos: Força ou Sabedoria e um aumento livre; treinado em deception e Saber de Guerra; talento de perícia: Distração Prolongada.",
+    "description_en": "Boosts: Força or Sabedoria and one free boost; trained in deception and Saber de Guerra; skill feat: Distração Prolongada.",
+    "description_es": "Mejoras: Força o Sabedoria y una mejora libre; entrenado en deception y Saber de Guerra; dote de habilidad: Distração Prolongada.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "deception"
+    ],
+    "granted_feat": "Distração Prolongada",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "lore": "Saber de Guerra",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.common.messenger",
+    "name_pt": "Mensageiro",
+    "name_en": "Messenger",
+    "name_es": "Mensajero",
+    "description_pt": "Aumentos: Destreza ou Inteligência e um aumento livre; treinado em society e Saber da Cidade de Origem; talento de perícia: Olhar Conteúdo.",
+    "description_en": "Boosts: Destreza or Inteligência and one free boost; trained in society and Saber da Cidade de Origem; skill feat: Olhar Conteúdo.",
+    "description_es": "Mejoras: Destreza o Inteligência y una mejora libre; entrenado en society y Saber da Cidade de Origem; dote de habilidad: Olhar Conteúdo.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Olhar Conteúdo",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "lore": "Saber da Cidade de Origem",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.common.pilgrim",
+    "name_pt": "Peregrino",
+    "name_en": "Pilgrim",
+    "name_es": "Peregrino",
+    "description_pt": "Aumentos: Sabedoria ou Carisma e um aumento livre; treinado em religion e Saber da Divindade Patrona; talento de perícia: Amuleto do Peregrino.",
+    "description_en": "Boosts: Sabedoria or Carisma and one free boost; trained in religion and Saber da Divindade Patrona; skill feat: Amuleto do Peregrino.",
+    "description_es": "Mejoras: Sabedoria o Carisma y una mejora libre; entrenado en religion y Saber da Divindade Patrona; dote de habilidad: Amuleto do Peregrino.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "religion"
+    ],
+    "granted_feat": "Amuleto do Peregrino",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "lore": "Saber da Divindade Patrona",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.common.refugee",
+    "name_pt": "Refugiado",
+    "name_en": "Refugee",
+    "name_es": "Refugiado",
+    "description_pt": "Aumentos: Constituição ou Sabedoria e um aumento livre; treinado em society e Saber do Assentamento de Origem; talento de perícia: Manha das Ruas.",
+    "description_en": "Boosts: Constituição or Sabedoria and one free boost; trained in society and Saber do Assentamento de Origem; skill feat: Manha das Ruas.",
+    "description_es": "Mejoras: Constituição o Sabedoria y una mejora libre; entrenado en society y Saber do Assentamento de Origem; dote de habilidad: Manha das Ruas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Manha das Ruas",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "lore": "Saber do Assentamento de Origem",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.common.scavenger",
+    "name_pt": "Catador",
+    "name_en": "Scavenger",
+    "name_es": "Recogedor",
+    "description_pt": "Aumentos: Inteligência ou Sabedoria e um aumento livre; treinado em society e Saber do Assentamento; talento de perícia: Forrageador.",
+    "description_en": "Boosts: Inteligência or Sabedoria and one free boost; trained in society and Saber do Assentamento; skill feat: Forrageador.",
+    "description_es": "Mejoras: Inteligência o Sabedoria y una mejora libre; entrenado en society y Saber do Assentamento; dote de habilidad: Forrageador.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Forrageador",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "lore": "Saber do Assentamento",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.common.servant",
+    "name_pt": "Criado",
+    "name_en": "Servant",
+    "name_es": "Sirviente",
+    "description_pt": "Aumentos: Destreza ou Carisma e um aumento livre; treinado em society e Saber de Trabalho; talento de perícia: Leitura Labial.",
+    "description_en": "Boosts: Destreza or Carisma and one free boost; trained in society and Saber de Trabalho; skill feat: Leitura Labial.",
+    "description_es": "Mejoras: Destreza o Carisma y una mejora libre; entrenado en society y Saber de Trabalho; dote de habilidad: Leitura Labial.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Leitura Labial",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "lore": "Saber de Trabalho",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.common.squire",
+    "name_pt": "Escudeiro",
+    "name_en": "Squire",
+    "name_es": "Escudero",
+    "description_pt": "Aumentos: Força ou Constituição e um aumento livre; treinado em society e Saber de Heráldica ou Guerra; talento de perícia: Assistente de Armadura.",
+    "description_en": "Boosts: Força or Constituição and one free boost; trained in society and Saber de Heráldica ou Guerra; skill feat: Assistente de Armadura.",
+    "description_es": "Mejoras: Força o Constituição y una mejora libre; entrenado en society y Saber de Heráldica ou Guerra; dote de habilidad: Assistente de Armadura.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Assistente de Armadura",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "lore": "Saber de Heráldica ou Guerra",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.common.tax_collector",
+    "name_pt": "Coletor de Impostos",
+    "name_en": "Tax Collector",
+    "name_es": "Recaudador de impuestos",
+    "description_pt": "Aumentos: Força ou Carisma e um aumento livre; treinado em intimidation e Saber do Assentamento; talento de perícia: Coerção Rápida.",
+    "description_en": "Boosts: Força or Carisma and one free boost; trained in intimidation and Saber do Assentamento; skill feat: Coerção Rápida.",
+    "description_es": "Mejoras: Força o Carisma y una mejora libre; entrenado en intimidation y Saber do Assentamento; dote de habilidad: Coerção Rápida.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intimidation"
+    ],
+    "granted_feat": "Coerção Rápida",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "lore": "Saber do Assentamento",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.common.ward",
+    "name_pt": "Tutelado",
+    "name_en": "Ward",
+    "name_es": "Protegido",
+    "description_pt": "Aumentos: Constituição ou Carisma e um aumento livre; treinado em performance e Saber de Genealogia; talento de perícia: Performance Fascinante.",
+    "description_en": "Boosts: Constituição or Carisma and one free boost; trained in performance and Saber de Genealogia; skill feat: Performance Fascinante.",
+    "description_es": "Mejoras: Constituição o Carisma y una mejora libre; entrenado en performance y Saber de Genealogia; dote de habilidad: Performance Fascinante.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "performance"
+    ],
+    "granted_feat": "Performance Fascinante",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "lore": "Saber de Genealogia",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.rare.amnesiac",
+    "name_pt": "Amnésico",
+    "name_en": "Amnesiac",
+    "name_es": "Amnésico",
+    "description_pt": "Seu passado é um mistério, e pistas inesperadas guiam sua descoberta.",
+    "description_en": "Your past is a mystery, and unexpected clues guide your discovery.",
+    "description_es": "Tu pasado es un misterio, y pistas inesperadas guían tu descubrimiento.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "—"
+    ],
+    "granted_feat": "—",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 52,
+    "data": {
+      "lore": "—",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.rare.blessed",
+    "name_pt": "Abençoado",
+    "name_en": "Blessed",
+    "name_es": "Bendecido",
+    "description_pt": "Sua bênção divina oferece intuição e proteção em situações difíceis.",
+    "description_en": "A divine blessing gives you intuition and protection in difficult situations.",
+    "description_es": "Una bendición divina te da intuición y protección en situaciones difíciles.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "religion"
+    ],
+    "granted_feat": "Orientação",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 52,
+    "data": {
+      "lore": "Saber da Divindade",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.rare.cursed",
+    "name_pt": "Amaldiçoado",
+    "name_en": "Cursed",
+    "name_es": "Maldito",
+    "description_pt": "Uma maldição pessoal ou hereditária ensinou você a resistir a efeitos mágicos nocivos.",
+    "description_en": "A personal or inherited curse taught you to resist harmful magical effects.",
+    "description_es": "Una maldición personal o hereditaria te enseñó a resistir efectos mágicos dañinos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "occultism"
+    ],
+    "granted_feat": "Sinal de Proteção",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 52,
+    "data": {
+      "lore": "Saber de Maldições",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.rare.fae_bound",
+    "name_pt": "Ligado às Fadas",
+    "name_en": "Feybound",
+    "name_es": "Vinculado a las hadas",
+    "description_pt": "Um pacto com as fadas concedeu poderes e um anátema que ainda orienta sua vida.",
+    "description_en": "A pact with the fey granted powers and an anathema that still shapes your life.",
+    "description_es": "Un pacto con las hadas te concedió poderes y un anatema que aún moldea tu vida.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nature"
+    ],
+    "granted_feat": "Fortúnio das Fadas",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 53,
+    "data": {
+      "lore": "Saber de Fadas",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.rare.haunted",
+    "name_pt": "Assombrado",
+    "name_en": "Haunted",
+    "name_es": "Embrujado",
+    "description_pt": "Uma entidade acompanha você desde a infância e influencia sua vida de formas sutis.",
+    "description_en": "An entity has followed you since childhood and subtly influences your life.",
+    "description_es": "Una entidad te acompaña desde la infancia e influye sutilmente en tu vida.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "occultism"
+    ],
+    "granted_feat": "—",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 52,
+    "data": {
+      "lore": "Saber da Entidade",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.rare.returned",
+    "name_pt": "Retornado",
+    "name_en": "Returned",
+    "name_es": "Retornado",
+    "description_pt": "Você morreu e voltou com uma ligação incomum com a vida e a morte.",
+    "description_en": "You died and returned with an unusual connection to life and death.",
+    "description_es": "Moriste y regresaste con una conexión inusual con la vida y la muerte.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "religion"
+    ],
+    "granted_feat": "Duro de Matar",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 53,
+    "data": {
+      "lore": "Saber do Ossário",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.rare.royalty",
+    "name_pt": "Realeza",
+    "name_en": "Royalty",
+    "name_es": "Realeza",
+    "description_pt": "Você pertence a uma família real e conhece as responsabilidades e privilégios do poder.",
+    "description_en": "You belong to a royal family and know the responsibilities and privileges of power.",
+    "description_es": "Perteneces a una familia real y conoces las responsabilidades y privilegios del poder.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Gracejos da Corte",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 53,
+    "data": {
+      "lore": "Saber da Corte",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.player_core_2.rare.wild_child",
+    "name_pt": "Criança Selvagem",
+    "name_en": "Wild Child",
+    "name_es": "Niño salvaje",
+    "description_pt": "Você cresceu na natureza entre animais, desenvolvendo instintos e uma conexão mística com eles.",
+    "description_en": "You grew up in the wild among animals, developing instincts and a mystical connection to them.",
+    "description_es": "Creciste en la naturaleza entre animales, desarrollando instintos y una conexión mística con ellos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nature"
+    ],
+    "granted_feat": "Forrageador",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 52,
+    "data": {
+      "lore": "Saber de Animais",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.prisoner",
+    "name_pt": "Prisioneiro",
+    "name_en": "Prisoner",
+    "name_es": "Prisionero",
+    "description_pt": "Trancafiado em masmorras ou colônias penais, você desenvolveu rijeza física e astúcia para resistir ao cárcere e reconquistar a liberdade.",
+    "description_en": "Locked in dungeons or penal colonies, you built physical toughness and cunning to survive imprisonment and reclaim freedom.",
+    "description_es": "Encerrado en mazmorras o colonias penales, desarrollaste dureza física y astucia para sobrevivir al encierro y recuperar la libertad.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Escapar com Vigor",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.quartermaster",
+    "name_pt": "Intendente",
+    "name_en": "Quartermaster",
+    "name_es": "Intendente",
+    "description_pt": "Logística e disciplina permitem manter tropas abastecidas e controlar recursos escassos.",
+    "description_en": "Logistics and discipline let you keep troops supplied and control scarce resources.",
+    "description_es": "La logística y la disciplina te permiten abastecer tropas y controlar recursos escasos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intimidation"
+    ],
+    "granted_feat": "Olhar Intimidante",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "lore": "Saber Jurídico",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.report_runner",
+    "name_pt": "Estafeta de Guerra",
+    "name_en": "Report Runner",
+    "name_es": "Correo de guerra",
+    "description_pt": "Você transporta relatórios urgentes por longas distâncias e conhece bem montarias.",
+    "description_en": "You carry urgent reports across long distances and know mounts well.",
+    "description_es": "Transportas informes urgentes a largas distancias y conoces bien las monturas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nature"
+    ],
+    "granted_feat": "Cavaleiro Expresso",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "lore": "Saber de Estábulos",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.sailor",
+    "name_pt": "Marinheiro",
+    "name_en": "Sailor",
+    "name_es": "Marinero",
+    "description_pt": "Você içou velas em mares tempestuosos, manejou cordames e ancoradouros e conhece o ritmo imprevisível das marés.",
+    "description_en": "You hoisted sails in stormy seas, handled rigging and anchorages, and know the unpredictable rhythm of the open waters.",
+    "description_es": "Izaste velas en mares tempestuosos, manejaste cabos y anclas, y conoces el ritmo impredecible de las aguas abiertas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Equilíbrio no Convés",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.scholar",
+    "name_pt": "Estudante da Academia",
+    "name_en": "Scholar",
+    "name_es": "Erudito",
+    "description_pt": "Você passou noites imerso em arquivos e bibliotecas, dominando teorias arcanas, históricas ou naturais com rigor acadêmico.",
+    "description_en": "You spent countless nights in archives and libraries, mastering arcane, historical, or natural theories with academic rigor.",
+    "description_es": "Pasaste noches inmerso en archivos y bibliotecas, dominando teorías arcanas, históricas o naturales con rigor académico.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "arcana"
+    ],
+    "granted_feat": "Identificação Rápida",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.sky_rider",
+    "name_pt": "Cavaleiro dos Céus",
+    "name_en": "Sky Rider",
+    "name_es": "Jinete de los cielos",
+    "description_pt": "Planadores e voo assistido alimentaram sua busca pela liberdade dos céus.",
+    "description_en": "Gliders and assisted flight fueled your pursuit of freedom in the skies.",
+    "description_es": "Los planeadores y el vuelo asistido alimentaron tu búsqueda de libertad en los cielos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "acrobatics"
+    ],
+    "granted_feat": "Queda Felina",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "lore": "Saber do Plano do Ar",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.squire",
+    "name_pt": "Escudeiro",
+    "name_en": "Squire",
+    "name_es": "Escudero",
+    "description_pt": "A serviço de um cavaleiro ou campeão, você cuidou de armas, armaduras pesadas e montarias, aprendendo o código marcial e a disciplina das armas.",
+    "description_en": "Serving a knight or champion, you tended to weapons, heavy armor, and steeds, learning the martial code and weapons discipline.",
+    "description_es": "Al servicio de un caballero o campeón, cuidaste armas, armaduras pesadas y monturas, aprendiendo el código marcial y la disciplina bélica.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Mover Armadura",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 91,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.veteran",
+    "name_pt": "Veterano",
+    "name_en": "Veteran",
+    "name_es": "Veterano",
+    "description_pt": "Muitas batalhas deram a você resistência, experiência e poucas ilusões sobre a guerra.",
+    "description_en": "Many battles left you resilient, experienced, and under no illusions about war.",
+    "description_es": "Muchas batallas te dejaron resistente, experimentado y sin ilusiones sobre la guerra.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Auxiliar com Armadura",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "lore": "Saber de Guerra",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.war_orphan",
+    "name_pt": "Órfão de Guerra",
+    "name_en": "War Orphan",
+    "name_es": "Huérfano de guerra",
+    "description_pt": "Sobreviver fora da lei após perder sua família deixou habilidades que você nunca esqueceu.",
+    "description_en": "Surviving outside the law after losing your family left skills you never forgot.",
+    "description_es": "Sobrevivir fuera de la ley tras perder a tu familia te dejó habilidades que nunca olvidaste.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "thievery"
+    ],
+    "granted_feat": "Truque Sujo",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "lore": "Saber do Submundo",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.wilderness_scout",
+    "name_pt": "Batedor Selvagem",
+    "name_en": "Wilderness Scout",
+    "name_es": "Explorador de avanzada",
+    "description_pt": "Você guiou caravanas e exércitos por terras inexploradas, reconhecendo perigos naturais e emboscadas antes de todos.",
+    "description_en": "You guided caravans and armies through uncharted lands, spotting natural hazards and ambushes before anyone else.",
+    "description_es": "Guiaste caravanas y ejércitos por tierras inexploradas, detectando peligros naturales y emboscadas antes que nadie.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "survival"
+    ],
+    "granted_feat": "Rastreio Experiente",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "lore": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  }
+]

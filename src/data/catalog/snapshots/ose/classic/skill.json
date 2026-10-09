@@ -1,0 +1,994 @@
+[
+  {
+    "id": "ose.skill.secondary.a_ougueiro.classic",
+    "system_id": "ose",
+    "name_pt": "Açougueiro",
+    "name_en": "Açougueiro",
+    "name_es": "Açougueiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 21–23 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 21–23 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 21–23 no d100.",
+    "key_ability": null,
+    "skill_type": "Alimentos",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Açougueiro",
+      "range": [
+        21,
+        23
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Alimentos",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 21–23 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.agricultor.classic",
+    "system_id": "ose",
+    "name_pt": "Agricultor",
+    "name_en": "Agricultor",
+    "name_es": "Agricultor",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 36–46 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 36–46 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 36–46 no d100.",
+    "key_ability": null,
+    "skill_type": "Campo",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Agricultor",
+      "range": [
+        36,
+        46
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Campo",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 36–46 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.alfaiate.classic",
+    "system_id": "ose",
+    "name_pt": "Alfaiate",
+    "name_en": "Alfaiate",
+    "name_es": "Alfaiate",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 85–87 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 85–87 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 85–87 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Alfaiate",
+      "range": [
+        85,
+        87
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 85–87 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.armador_navios_.classic",
+    "system_id": "ose",
+    "name_pt": "Armador (Navios)",
+    "name_en": "Armador (Navios)",
+    "name_es": "Armador (Navios)",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Náutica, sorteada pela faixa 82–84 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Náutica, sorteada pela faixa 82–84 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Náutica, sorteada pela faixa 82–84 no d100.",
+    "key_ability": null,
+    "skill_type": "Náutica",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Armador (Navios)",
+      "range": [
+        82,
+        84
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Náutica",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Náutica, sorteada pela faixa 82–84 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.armeiro.classic",
+    "system_id": "ose",
+    "name_pt": "Armeiro",
+    "name_en": "Armeiro",
+    "name_es": "Armeiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Metalurgia, sorteada pela faixa 4–5 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Metalurgia, sorteada pela faixa 4–5 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Metalurgia, sorteada pela faixa 4–5 no d100.",
+    "key_ability": null,
+    "skill_type": "Metalurgia",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Armeiro",
+      "range": [
+        4,
+        5
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Metalurgia",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Metalurgia, sorteada pela faixa 4–5 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.arqueiro_flecheiro.classic",
+    "system_id": "ose",
+    "name_pt": "Arqueiro / Flecheiro",
+    "name_en": "Arqueiro / Flecheiro",
+    "name_es": "Arqueiro / Flecheiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Armas, sorteada pela faixa 14–16 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Armas, sorteada pela faixa 14–16 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Armas, sorteada pela faixa 14–16 no d100.",
+    "key_ability": null,
+    "skill_type": "Armas",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Arqueiro / Flecheiro",
+      "range": [
+        14,
+        16
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Armas",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Armas, sorteada pela faixa 14–16 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.ca_ador_mateiro.classic",
+    "system_id": "ose",
+    "name_pt": "Caçador / Mateiro",
+    "name_en": "Caçador / Mateiro",
+    "name_es": "Caçador / Mateiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 56–59 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 56–59 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 56–59 no d100.",
+    "key_ability": null,
+    "skill_type": "Campo",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Caçador / Mateiro",
+      "range": [
+        56,
+        59
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Campo",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 56–59 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.carpinteiro.classic",
+    "system_id": "ose",
+    "name_pt": "Carpinteiro",
+    "name_en": "Carpinteiro",
+    "name_es": "Carpinteiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Construção, sorteada pela faixa 24–26 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Construção, sorteada pela faixa 24–26 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Construção, sorteada pela faixa 24–26 no d100.",
+    "key_ability": null,
+    "skill_type": "Construção",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Carpinteiro",
+      "range": [
+        24,
+        26
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Construção",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Construção, sorteada pela faixa 24–26 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.cart_grafo.classic",
+    "system_id": "ose",
+    "name_pt": "Cartógrafo",
+    "name_en": "Cartógrafo",
+    "name_es": "Cartógrafo",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Erudição, sorteada pela faixa 67–67 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Erudição, sorteada pela faixa 67–67 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Erudição, sorteada pela faixa 67–67 no d100.",
+    "key_ability": null,
+    "skill_type": "Erudição",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Cartógrafo",
+      "range": [
+        67,
+        67
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Erudição",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Erudição, sorteada pela faixa 67–67 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.cervejeiro.classic",
+    "system_id": "ose",
+    "name_pt": "Cervejeiro",
+    "name_en": "Cervejeiro",
+    "name_es": "Cervejeiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 17–20 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 17–20 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 17–20 no d100.",
+    "key_ability": null,
+    "skill_type": "Alimentos",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Cervejeiro",
+      "range": [
+        17,
+        20
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Alimentos",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 17–20 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.cordoeiro_la_ador.classic",
+    "system_id": "ose",
+    "name_pt": "Cordoeiro / Laçador",
+    "name_en": "Cordoeiro / Laçador",
+    "name_es": "Cordoeiro / Laçador",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 77–78 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 77–78 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 77–78 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Cordoeiro / Laçador",
+      "range": [
+        77,
+        78
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 77–78 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.curtidor.classic",
+    "system_id": "ose",
+    "name_pt": "Curtidor",
+    "name_en": "Curtidor",
+    "name_es": "Curtidor",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 88–90 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 88–90 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 88–90 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Curtidor",
+      "range": [
+        88,
+        90
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 88–90 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.encadernador.classic",
+    "system_id": "ose",
+    "name_pt": "Encadernador",
+    "name_en": "Encadernador",
+    "name_es": "Encadernador",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Erudição, sorteada pela faixa 13–13 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Erudição, sorteada pela faixa 13–13 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Erudição, sorteada pela faixa 13–13 no d100.",
+    "key_ability": null,
+    "skill_type": "Erudição",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Encadernador",
+      "range": [
+        13,
+        13
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Erudição",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Erudição, sorteada pela faixa 13–13 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.especialista_m_ltiplo_duas_per_cias_.classic",
+    "system_id": "ose",
+    "name_pt": "Especialista Múltiplo (Duas Perícias)",
+    "name_en": "Especialista Múltiplo (Duas Perícias)",
+    "name_es": "Especialista Múltiplo (Duas Perícias)",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Especial, sorteada pela faixa 99–100 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Especial, sorteada pela faixa 99–100 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Especial, sorteada pela faixa 99–100 no d100.",
+    "key_ability": null,
+    "skill_type": "Especial",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Especialista Múltiplo (Duas Perícias)",
+      "range": [
+        99,
+        100
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Especial",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Especial, sorteada pela faixa 99–100 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.ferreiro.classic",
+    "system_id": "ose",
+    "name_pt": "Ferreiro",
+    "name_en": "Ferreiro",
+    "name_es": "Ferreiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Metalurgia, sorteada pela faixa 10–12 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Metalurgia, sorteada pela faixa 10–12 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Metalurgia, sorteada pela faixa 10–12 no d100.",
+    "key_ability": null,
+    "skill_type": "Metalurgia",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Ferreiro",
+      "range": [
+        10,
+        12
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Metalurgia",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Metalurgia, sorteada pela faixa 10–12 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.funileiro_ourives.classic",
+    "system_id": "ose",
+    "name_pt": "Funileiro / Ourives",
+    "name_en": "Funileiro / Ourives",
+    "name_es": "Funileiro / Ourives",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Metalurgia, sorteada pela faixa 34–35 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Metalurgia, sorteada pela faixa 34–35 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Metalurgia, sorteada pela faixa 34–35 no d100.",
+    "key_ability": null,
+    "skill_type": "Metalurgia",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Funileiro / Ourives",
+      "range": [
+        34,
+        35
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Metalurgia",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Metalurgia, sorteada pela faixa 34–35 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.lapid_rio_joalheiro.classic",
+    "system_id": "ose",
+    "name_pt": "Lapidário / Joalheiro",
+    "name_en": "Lapidário / Joalheiro",
+    "name_es": "Lapidário / Joalheiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 60–62 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 60–62 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 60–62 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Lapidário / Joalheiro",
+      "range": [
+        60,
+        62
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 60–62 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.lenhador.classic",
+    "system_id": "ose",
+    "name_pt": "Lenhador",
+    "name_en": "Lenhador",
+    "name_es": "Lenhador",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 94–96 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 94–96 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 94–96 no d100.",
+    "key_ability": null,
+    "skill_type": "Campo",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Lenhador",
+      "range": [
+        94,
+        96
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Campo",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 94–96 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.lorimer_selaria_.classic",
+    "system_id": "ose",
+    "name_pt": "Lorimer (Selaria)",
+    "name_en": "Lorimer (Selaria)",
+    "name_es": "Lorimer (Selaria)",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 63–66 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 63–66 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 63–66 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Lorimer (Selaria)",
+      "range": [
+        63,
+        66
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 63–66 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.marinheiro.classic",
+    "system_id": "ose",
+    "name_pt": "Marinheiro",
+    "name_en": "Marinheiro",
+    "name_es": "Marinheiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Náutica, sorteada pela faixa 79–81 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Náutica, sorteada pela faixa 79–81 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Náutica, sorteada pela faixa 79–81 no d100.",
+    "key_ability": null,
+    "skill_type": "Náutica",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Marinheiro",
+      "range": [
+        79,
+        81
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Náutica",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Náutica, sorteada pela faixa 79–81 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.mercador.classic",
+    "system_id": "ose",
+    "name_pt": "Mercador",
+    "name_en": "Mercador",
+    "name_es": "Mercador",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Comércio, sorteada pela faixa 27–28 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Comércio, sorteada pela faixa 27–28 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Comércio, sorteada pela faixa 27–28 no d100.",
+    "key_ability": null,
+    "skill_type": "Comércio",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Mercador",
+      "range": [
+        27,
+        28
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Comércio",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Comércio, sorteada pela faixa 27–28 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.mineiro.classic",
+    "system_id": "ose",
+    "name_pt": "Mineiro",
+    "name_en": "Mineiro",
+    "name_es": "Mineiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Extração, sorteada pela faixa 70–73 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Extração, sorteada pela faixa 70–73 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Extração, sorteada pela faixa 70–73 no d100.",
+    "key_ability": null,
+    "skill_type": "Extração",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Mineiro",
+      "range": [
+        70,
+        73
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Extração",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Extração, sorteada pela faixa 70–73 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.oleiro.classic",
+    "system_id": "ose",
+    "name_pt": "Oleiro",
+    "name_en": "Oleiro",
+    "name_es": "Oleiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 74–76 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 74–76 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 74–76 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Oleiro",
+      "range": [
+        74,
+        76
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 74–76 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.padeiro.classic",
+    "system_id": "ose",
+    "name_pt": "Padeiro",
+    "name_en": "Padeiro",
+    "name_es": "Padeiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 6–9 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 6–9 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 6–9 no d100.",
+    "key_ability": null,
+    "skill_type": "Alimentos",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Padeiro",
+      "range": [
+        6,
+        9
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Alimentos",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 6–9 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.pedreiro.classic",
+    "system_id": "ose",
+    "name_pt": "Pedreiro",
+    "name_en": "Pedreiro",
+    "name_es": "Pedreiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Construção, sorteada pela faixa 68–69 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Construção, sorteada pela faixa 68–69 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Construção, sorteada pela faixa 68–69 no d100.",
+    "key_ability": null,
+    "skill_type": "Construção",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Pedreiro",
+      "range": [
+        68,
+        69
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Construção",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Construção, sorteada pela faixa 68–69 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.peleiro.classic",
+    "system_id": "ose",
+    "name_pt": "Peleiro",
+    "name_en": "Peleiro",
+    "name_es": "Peleiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 51–54 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 51–54 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 51–54 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Peleiro",
+      "range": [
+        51,
+        54
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 51–54 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.pescador.classic",
+    "system_id": "ose",
+    "name_pt": "Pescador",
+    "name_en": "Pescador",
+    "name_es": "Pescador",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 47–50 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 47–50 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 47–50 no d100.",
+    "key_ability": null,
+    "skill_type": "Campo",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Pescador",
+      "range": [
+        47,
+        50
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Campo",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Campo, sorteada pela faixa 47–50 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.soprador_de_vidro.classic",
+    "system_id": "ose",
+    "name_pt": "Soprador de Vidro",
+    "name_en": "Soprador de Vidro",
+    "name_es": "Soprador de Vidro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 55–55 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 55–55 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 55–55 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Soprador de Vidro",
+      "range": [
+        55,
+        55
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 55–55 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.tanoeiro_barris_.classic",
+    "system_id": "ose",
+    "name_pt": "Tanoeiro (Barris)",
+    "name_en": "Tanoeiro (Barris)",
+    "name_es": "Tanoeiro (Barris)",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 29–33 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 29–33 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 29–33 no d100.",
+    "key_ability": null,
+    "skill_type": "Artesanato",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Tanoeiro (Barris)",
+      "range": [
+        29,
+        33
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Artesanato",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Artesanato, sorteada pela faixa 29–33 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.telhador_carpinteiro.classic",
+    "system_id": "ose",
+    "name_pt": "Telhador / Carpinteiro",
+    "name_en": "Telhador / Carpinteiro",
+    "name_es": "Telhador / Carpinteiro",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Construção, sorteada pela faixa 91–93 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Construção, sorteada pela faixa 91–93 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Construção, sorteada pela faixa 91–93 no d100.",
+    "key_ability": null,
+    "skill_type": "Construção",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Telhador / Carpinteiro",
+      "range": [
+        91,
+        93
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Construção",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Construção, sorteada pela faixa 91–93 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.treinador_de_animais.classic",
+    "system_id": "ose",
+    "name_pt": "Treinador de Animais",
+    "name_en": "Treinador de Animais",
+    "name_es": "Treinador de Animais",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Animais, sorteada pela faixa 1–3 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Animais, sorteada pela faixa 1–3 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Animais, sorteada pela faixa 1–3 no d100.",
+    "key_ability": null,
+    "skill_type": "Animais",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Treinador de Animais",
+      "range": [
+        1,
+        3
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Animais",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Animais, sorteada pela faixa 1–3 no d100."
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "ose.skill.secondary.vinicultor.classic",
+    "system_id": "ose",
+    "name_pt": "Vinicultor",
+    "name_en": "Vinicultor",
+    "name_es": "Vinicultor",
+    "description_pt": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 97–98 no d100.",
+    "description_en": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 97–98 no d100.",
+    "description_es": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 97–98 no d100.",
+    "key_ability": null,
+    "skill_type": "Alimentos",
+    "ruleset": "classic",
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 25,
+    "data": {
+      "id": "Vinicultor",
+      "range": [
+        97,
+        98
+      ],
+      "source": {
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 25
+      },
+      "ruleset": "classic",
+      "category": "Alimentos",
+      "description": "Perícia secundária opcional do OSE Classic: profissão de Alimentos, sorteada pela faixa 97–98 no d100."
+    },
+    "created_at": "2026-09-13T22:33:05.707973+00:00",
+    "updated_at": "2026-09-13T22:34:05.178612+00:00"
+  }
+]

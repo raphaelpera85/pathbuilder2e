@@ -1,0 +1,271 @@
+[
+  {
+    "id": "dnd5e.anao_colina",
+    "ancestry_id": "dnd5e.anao",
+    "is_versatile": false,
+    "name_pt": "Anão da Colina",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Sub-raça do Livro do Jogador 2014.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisite": null,
+    "traits": [
+      "Tenacidade anã",
+      "Proficiência com armadura anã"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 20,
+    "data": {
+      "abilityBonuses": "Sabedoria +1"
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.anao_montanha",
+    "ancestry_id": "dnd5e.anao",
+    "is_versatile": false,
+    "name_pt": "Anão da Montanha",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Sub-raça do Livro do Jogador 2014.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisite": null,
+    "traits": [
+      "Treinamento com armadura anã"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 20,
+    "data": {
+      "abilityBonuses": "Força +2"
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.elfo_alto",
+    "ancestry_id": "dnd5e.elfo",
+    "is_versatile": false,
+    "name_pt": "Alto Elfo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Sub-raça do Livro do Jogador 2014.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisite": null,
+    "traits": [
+      "Truque de mago",
+      "Idioma adicional",
+      "Treinamento com armas élficas"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 23,
+    "data": {
+      "abilityBonuses": "Inteligência +1",
+      "subraceChoices": [
+        {
+          "id": "high-elf-cantrip",
+          "count": 1,
+          "label": "Truque de mago",
+          "options": [
+            "Amigos",
+            "Consertar",
+            "Ilusão menor",
+            "Luz",
+            "Mãos mágicas",
+            "Mensagem",
+            "Prestidigitação",
+            "Raio de gelo",
+            "Rajada de fogo",
+            "Toque chocante"
+          ]
+        },
+        {
+          "id": "high-elf-language",
+          "count": 1,
+          "label": "Idioma adicional do Alto Elfo",
+          "options": [
+            "Anão",
+            "Dracônico",
+            "Gigante",
+            "Gnômico",
+            "Goblin",
+            "Halfling",
+            "Infernal",
+            "Orc",
+            "Primordial",
+            "Silvestre"
+          ]
+        }
+      ]
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-13T17:59:24.146353+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.elfo_drow",
+    "ancestry_id": "dnd5e.elfo",
+    "is_versatile": false,
+    "name_pt": "Drow",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Sub-raça do Livro do Jogador 2014.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisite": null,
+    "traits": [
+      "Sensibilidade à luz solar",
+      "Magia drow",
+      "Treinamento com armas drow"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 24,
+    "data": {
+      "abilityBonuses": "Carisma +1"
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.elfo_floresta",
+    "ancestry_id": "dnd5e.elfo",
+    "is_versatile": false,
+    "name_pt": "Elfo da Floresta",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Sub-raça do Livro do Jogador 2014.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisite": null,
+    "traits": [
+      "Máscara da natureza",
+      "Treinamento com armas élficas"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 24,
+    "data": {
+      "abilityBonuses": "Sabedoria +1"
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.gnomo_floresta",
+    "ancestry_id": "dnd5e.gnomo",
+    "is_versatile": false,
+    "name_pt": "Gnomo da Floresta",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Sub-raça do Livro do Jogador 2014.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisite": null,
+    "traits": [
+      "Ilusionista nato",
+      "Falar com bestas pequenas"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 36,
+    "data": {
+      "abilityBonuses": "Destreza +1"
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.gnomo_pedra",
+    "ancestry_id": "dnd5e.gnomo",
+    "is_versatile": false,
+    "name_pt": "Gnomo das Rochas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Sub-raça do Livro do Jogador 2014.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisite": null,
+    "traits": [
+      "Conhecimento de artífice",
+      "Engenho"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 37,
+    "data": {
+      "abilityBonuses": "Constituição +1"
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.halfling_pes_leves",
+    "ancestry_id": "dnd5e.halfling",
+    "is_versatile": false,
+    "name_pt": "Halfling Pés-Leves",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Sub-raça do Livro do Jogador 2014.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisite": null,
+    "traits": [
+      "Furtividade natural"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 28,
+    "data": {
+      "abilityBonuses": "Carisma +1"
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.halfling_resistente",
+    "ancestry_id": "dnd5e.halfling",
+    "is_versatile": false,
+    "name_pt": "Halfling Robusto",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Sub-raça do Livro do Jogador 2014.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisite": null,
+    "traits": [
+      "Resiliência robusta"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 28,
+    "data": {
+      "abilityBonuses": "Constituição +1"
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  }
+]

@@ -1,0 +1,1734 @@
+[
+  {
+    "id": "dnd5e.barbaro_berserker",
+    "class_id": "dnd5e.barbaro",
+    "subclass_type": "subclass",
+    "name_pt": "Caminho do Berserker",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Fúria frenética e presença intimidante.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 49,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.barbaro_totem",
+    "class_id": "dnd5e.barbaro",
+    "subclass_type": "subclass",
+    "name_pt": "Caminho do Guerreiro Totêmico",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Espírito totêmico e comunhão com a natureza.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 50,
+    "data": {
+      "choices": [
+        {
+          "id": "totem-spirit",
+          "count": 1,
+          "label": "Espírito Totêmico",
+          "options": [
+            "Urso",
+            "Águia",
+            "Lobo"
+          ],
+          "minimumLevel": 3
+        },
+        {
+          "id": "totem-aspect",
+          "count": 1,
+          "label": "Aspecto da Fera",
+          "options": [
+            "Urso",
+            "Águia",
+            "Lobo"
+          ],
+          "minimumLevel": 6
+        },
+        {
+          "id": "totem-attunement",
+          "count": 1,
+          "label": "Sintonia Totêmica",
+          "options": [
+            "Urso",
+            "Águia",
+            "Lobo"
+          ],
+          "minimumLevel": 14
+        }
+      ],
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-13T17:43:00.304824+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.bardo_conhecimento",
+    "class_id": "dnd5e.bardo",
+    "subclass_type": "subclass",
+    "name_pt": "Colégio do Conhecimento",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Perícias adicionais e palavras cortantes.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 54,
+    "data": {
+      "choices": [
+        {
+          "id": "lore-bonus-skills",
+          "count": 3,
+          "label": "Proficiências bônus do Colégio do Conhecimento",
+          "options": [
+            "Acrobacia",
+            "Adestramento",
+            "Arcanismo",
+            "Atletismo",
+            "Atuação",
+            "Enganação",
+            "Furtividade",
+            "História",
+            "Intuição",
+            "Intimidação",
+            "Investigação",
+            "Medicina",
+            "Natureza",
+            "Percepção",
+            "Persuasão",
+            "Prestidigitação",
+            "Religião",
+            "Sobrevivência"
+          ],
+          "minimumLevel": 3,
+          "grantsSkillProficiencies": true
+        },
+        {
+          "id": "lore-magical-secrets",
+          "count": 2,
+          "label": "Segredos Mágicos Adicionais",
+          "options": [
+            "Infringir Ferimentos",
+            "Sonho",
+            "Contato Extraplanar",
+            "Vid�ncia",
+            "Reviver os Mortos",
+            "Restaura��o Maior",
+            "Praga de Insetos",
+            "Praga",
+            "Miss�o",
+            "Curar Ferimentos em Massa",
+            "Consagrar",
+            "Conhecimento Lend�rio",
+            "Comunh�o",
+            "Coluna de Chamas",
+            "�ncora Planar",
+            "Prote��o contra a Morte",
+            "Movimenta��o Livre",
+            "Moldar Rochas",
+            "Guardi�o da F�",
+            "Localizar Criatura",
+            "Controlar a �gua",
+            "Adivinha��o",
+            "Toque Vamp�rico",
+            "Rogar Maldi��o",
+            "Revivificar",
+            "Prote��o contra Energia",
+            "Luz do Dia",
+            "Idiomas",
+            "Glifo de Vigil�ncia",
+            "Forjar Morte",
+            "Esp�ritos Guardi�es",
+            "Enviar Mensagem",
+            "Clarivid�ncia",
+            "C�rculo M�gico",
+            "Zona da Verdade",
+            "Sil�ncio",
+            "Restaura��o Menor",
+            "Prote��o contra Veneno",
+            "Ora��o Curativa",
+            "Localizar Objeto",
+            "Encontrar Armadilhas",
+            "Chama Cont�nua",
+            "Cegueira/Surdez",
+            "Aug�rio",
+            "Arma Espiritual",
+            "Aprimorar Habilidade",
+            "Ajuda",
+            "Santu�rio",
+            "Raio Guiador",
+            "Purificar Alimentos",
+            "Perdi��o",
+            "Palavra Curativa",
+            "Escrita Ilus�ria",
+            "Prote��o contra o Bem e Mal",
+            "B�n��o",
+            "Comando",
+            "Criar ou Destruir �gua",
+            "Detectar o Bem e Mal",
+            "Detectar Veneno e Doen�a",
+            "Escudo da F�",
+            "Confus�o",
+            "Amizade Animal",
+            "Bom Fruto",
+            "Constri��o",
+            "Falar com Animais",
+            "Fogo das Fadas",
+            "Passos Longos",
+            "Crescer Espinhos",
+            "Esfera Flamejante",
+            "Esquentar Metal",
+            "L�mina Flamejante",
+            "Localizar Animais ou Plantas",
+            "Lufada de Vento",
+            "Mensageiro Animal",
+            "Passos sem Pegadas",
+            "Pele de �rvore",
+            "Raio Lunar",
+            "Sentido Bestial",
+            "Vis�o no Escuro",
+            "Andar na �gua",
+            "Ampliar Plantas",
+            "Conjurar Animais",
+            "Convocar Rel�mpagos",
+            "Falar com Plantas",
+            "Muralha de Vento",
+            "Nevasca",
+            "Respirar na �gua",
+            "Conjurar Elementais Menores",
+            "Conjurar Seres da Floresta",
+            "Dominar Besta",
+            "Inseto Gigante",
+            "Malogro",
+            "Metamorfose",
+            "Pele de Pedra",
+            "Tempestade de Gelo",
+            "Terreno Alucin�geno",
+            "Vinha Esmagadora",
+            "Caminhar em �rvores",
+            "Conjurar Elemental",
+            "Comunh�o com a Natureza",
+            "C�pula Antivida",
+            "Despertar",
+            "Muralha de Pedra",
+            "Reencarna��o",
+            "Cria��o",
+            "Cone de Frio",
+            "C�rculo de Teletransporte",
+            "Animar Objetos",
+            "Sono",
+            "Raio Adoecente",
+            "Orbe Crom�tica",
+            "Leque Crom�tico",
+            "Armadura Arcana",
+            "Arrombar",
+            "For�a Fantasmag�rica",
+            "Nublar",
+            "Raio Ardente",
+            "Ver o Invis�vel",
+            "Porta Dimensional",
+            "Telecin�sia",
+            "Similaridade",
+            "N�voa Mortal",
+            "Imobilizar Monstro",
+            "Dominar Pessoa",
+            "Identifica��o",
+            "Disco Flutuante de Tenser",
+            "Convocar Familiar",
+            "Escudo de Fogo",
+            "Aura M�gica de Nystul",
+            "Boca Encantada",
+            "Flecha �cida de Melf",
+            "Repouso Tranquilo",
+            "Tent�culos Negros de Evard",
+            "Olho Arcano",
+            "Tranca Arcana",
+            "Truque de Corda",
+            "Riso Hist�rico de Tasha",
+            "Animar Mortos",
+            "Fabricar",
+            "Esfera Resiliente de Otiluke",
+            "Saraivada de Espinhos",
+            "Aura de Vida",
+            "Destrui��o Estonteante",
+            "Cord�o de Flechas",
+            "Aljava Veloz",
+            "Conjurar Saraivada",
+            "C�rculo de Poder",
+            "Destrui��o Banidora",
+            "Arma Elemental",
+            "Aura de Vitalidade",
+            "Criar Alimentos",
+            "Manto do Cruzado",
+            "Conjurar Rajada",
+            "Flecha Relampejante",
+            "Onda Destrutiva",
+            "Aura de Pureza",
+            "Aux�lio Divino",
+            "Destrui��o Col�rica",
+            "Destrui��o Lancinante",
+            "Destrui��o Trovejante",
+            "Duelo Compelido",
+            "Hero�smo",
+            "Golpe Constritor",
+            "Marca do Ca�ador",
+            "Armadura de Agathys",
+            "Arma Mágica",
+            "Alarme",
+            "Área Escorregadia",
+            "Banimento",
+            "Aumentar/Reduzir",
+            "Piscar",
+            "Compreender Idiomas",
+            "Braços de Hadar",
+            "Bruxaria",
+            "Contramágica",
+            "Curar Ferimentos",
+            "Detectar Pensamentos",
+            "Detectar Magia",
+            "Disfarçar-se",
+            "Dissipar Magia",
+            "Enfeitiçar Pessoa",
+            "Escuridão",
+            "Bola de Fogo",
+            "Falar com os Mortos",
+            "Forma Gasosa",
+            "Fome de Hadar",
+            "Escudo",
+            "Imagem Silenciosa",
+            "Imagem Espelhada",
+            "Imobilizar Pessoa",
+            "Invisibilidade",
+            "Invisibilidade Maior",
+            "Levitação",
+            "Mãos Flamejantes",
+            "Medo",
+            "Modificar Memória",
+            "Mísseis Mágicos",
+            "Não Detecção",
+            "Muralha de Fogo",
+            "N�voa Obscurecente",
+            "Nuvem de Adagas",
+            "Nuvem Fétida",
+            "Passo Nebuloso",
+            "Passagem",
+            "Onda Trovejante",
+            "Queda Suave",
+            "Raio de Bruxa",
+            "Repreensão Infernal",
+            "Recuo Acelerado",
+            "Relâmpago",
+            "Despedaçar",
+            "Servo Invisível",
+            "Salto",
+            "Escalar",
+            "Sinal de Esperança",
+            "Lentidão",
+            "Sugestão",
+            "Teia",
+            "Voo",
+            "Velocidade",
+            "Videira Agarrante",
+            "Vitalidade Falsa"
+          ],
+          "grantsSpells": true,
+          "minimumLevel": 6
+        }
+      ],
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-23T17:25:38.066804+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.bardo_valor",
+    "class_id": "dnd5e.bardo",
+    "subclass_type": "subclass",
+    "name_pt": "Colégio do Valor",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Treinamento marcial e inspiração em combate.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 55,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.bruxo_arque_fada",
+    "class_id": "dnd5e.bruxo",
+    "subclass_type": "subclass",
+    "name_pt": "Arquifada",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Poderes feéricos e encanto sobrenatural.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 109,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.bruxo_grande_antigo",
+    "class_id": "dnd5e.bruxo",
+    "subclass_type": "subclass",
+    "name_pt": "Grande Antigo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Conhecimento proibido e influência psíquica.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 110,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.bruxo_infernal",
+    "class_id": "dnd5e.bruxo",
+    "subclass_type": "subclass",
+    "name_pt": "Infernal",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Poderes concedidos por um patrono infernal.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 109,
+    "data": {
+      "choices": [
+        {
+          "id": "fiendish-resilience",
+          "count": 1,
+          "label": "Resiliência Infernal",
+          "options": [
+            "Ácido",
+            "Contundente",
+            "Frio",
+            "Fogo",
+            "Elétrico",
+            "Necrótico",
+            "Perfurante",
+            "Psíquico",
+            "Radiante",
+            "Trovejante",
+            "Veneno"
+          ],
+          "minimumLevel": 10
+        }
+      ],
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-23T17:25:41.695886+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.clerigo_conhecimento",
+    "class_id": "dnd5e.clerigo",
+    "subclass_type": "subclass",
+    "name_pt": "Domínio do Conhecimento",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Sabedoria, línguas e domínio de informações.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 59,
+    "data": {
+      "choices": [
+        {
+          "id": "knowledge-blessings-skills",
+          "count": 2,
+          "label": "Perícias das Bênçãos do Conhecimento",
+          "options": [
+            "Arcanismo",
+            "História",
+            "Natureza",
+            "Religião"
+          ],
+          "minimumLevel": 1,
+          "grantsSkillExpertise": true,
+          "grantsSkillProficiencies": true
+        },
+        {
+          "id": "knowledge-blessings-languages",
+          "count": 2,
+          "label": "Idiomas das Bênçãos do Conhecimento",
+          "options": [
+            "Anão",
+            "Celestial",
+            "Dracônico",
+            "Élfico",
+            "Gigante",
+            "Gnômico",
+            "Goblin",
+            "Halfling",
+            "Infernal",
+            "Orc",
+            "Primordial",
+            "Silvestre",
+            "Subcomum"
+          ],
+          "minimumLevel": 1,
+          "grantsLanguages": true
+        }
+      ],
+      "domainSpells": {
+        "1": [
+          "Comando",
+          "Identificação"
+        ],
+        "3": [
+          "Augúrio",
+          "Sugestão"
+        ],
+        "5": [
+          "Não Detecção",
+          "Falar com os Mortos"
+        ],
+        "7": [
+          "Olho Arcano",
+          "Confusão"
+        ],
+        "9": [
+          "Conhecimento Lendário",
+          "Vidência"
+        ]
+      },
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-23T17:25:39.042445+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.clerigo_guerra",
+    "class_id": "dnd5e.clerigo",
+    "subclass_type": "subclass",
+    "name_pt": "Domínio da Guerra",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Poder marcial e bênçãos de batalha.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 63,
+    "data": {
+      "domainSpells": {
+        "1": [
+          "Auxílio Divino",
+          "Escudo da Fé"
+        ],
+        "3": [
+          "Arma Mágica",
+          "Arma Espiritual"
+        ],
+        "5": [
+          "Manto do Cruzado",
+          "Espíritos Guardiões"
+        ],
+        "7": [
+          "Movimentação Livre",
+          "Pele de Pedra"
+        ],
+        "9": [
+          "Coluna de Chamas",
+          "Imobilizar Monstro"
+        ]
+      },
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-19T10:54:46.021117+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.clerigo_luz",
+    "class_id": "dnd5e.clerigo",
+    "subclass_type": "subclass",
+    "name_pt": "Domínio da Luz",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Luz divina e fogo radiante.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 61,
+    "data": {
+      "choices": [
+        {
+          "id": "light-domain-cantrip",
+          "count": 1,
+          "label": "Truque adicional do Domínio da Luz",
+          "options": [
+            "Luz"
+          ],
+          "grantsSpells": true,
+          "minimumLevel": 1
+        }
+      ],
+      "domainSpells": {
+        "1": [
+          "Mãos Flamejantes",
+          "Fogo das Fadas"
+        ],
+        "3": [
+          "Esfera Flamejante",
+          "Raio Ardente"
+        ],
+        "5": [
+          "Luz do Dia",
+          "Bola de Fogo"
+        ],
+        "7": [
+          "Guardião da Fé",
+          "Muralha de Fogo"
+        ],
+        "9": [
+          "Coluna de Chamas",
+          "Vidência"
+        ]
+      },
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-23T17:25:39.972846+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.clerigo_natureza",
+    "class_id": "dnd5e.clerigo",
+    "subclass_type": "subclass",
+    "name_pt": "Domínio da Natureza",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Ligação com a natureza e seus ciclos.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 62,
+    "data": {
+      "choices": [
+        {
+          "id": "nature-acolyte-skill",
+          "count": 1,
+          "label": "Perícia do Acólito da Natureza",
+          "options": [
+            "Adestramento",
+            "Natureza",
+            "Sobrevivência"
+          ],
+          "minimumLevel": 1,
+          "grantsSkillProficiencies": true
+        },
+        {
+          "id": "nature-acolyte-cantrip",
+          "count": 1,
+          "label": "Truque do Acólito da Natureza",
+          "options": [
+            "Globos de Luz",
+            "Luz"
+          ],
+          "grantsSpells": true,
+          "minimumLevel": 1
+        }
+      ],
+      "domainSpells": {
+        "1": [
+          "Amizade Animal",
+          "Falar com Animais"
+        ],
+        "3": [
+          "Pele de Árvore",
+          "Crescer Espinhos"
+        ],
+        "5": [
+          "Ampliar Plantas",
+          "Muralha de Vento"
+        ],
+        "7": [
+          "Dominar Besta",
+          "Videira Agarrante"
+        ],
+        "9": [
+          "Praga de Insetos",
+          "Caminhar em Árvores"
+        ]
+      },
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-23T17:25:40.607891+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.clerigo_tempestade",
+    "class_id": "dnd5e.clerigo",
+    "subclass_type": "subclass",
+    "name_pt": "Domínio da Tempestade",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Trovão, relâmpago e fúria da tormenta.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 62,
+    "data": {
+      "domainSpells": {
+        "1": [
+          "Névoa Obscurecente",
+          "Onda Trovejante"
+        ],
+        "3": [
+          "Lufada de Vento",
+          "Despedaçar"
+        ],
+        "5": [
+          "Convocar Relâmpagos",
+          "Nevasca"
+        ],
+        "7": [
+          "Controlar a Água",
+          "Tempestade de Gelo"
+        ],
+        "9": [
+          "Onda Destrutiva",
+          "Praga de Insetos"
+        ]
+      },
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-19T10:54:45.217373+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.clerigo_trapaca",
+    "class_id": "dnd5e.clerigo",
+    "subclass_type": "subclass",
+    "name_pt": "Domínio da Trapaça",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Ilusão, duplicidade e mobilidade.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 63,
+    "data": {
+      "domainSpells": {
+        "1": [
+          "Enfeitiçar Pessoa",
+          "Disfarçar-se"
+        ],
+        "3": [
+          "Imagem Espelhada",
+          "Passos sem Pegadas"
+        ],
+        "5": [
+          "Piscar",
+          "Dissipar Magia"
+        ],
+        "7": [
+          "Porta Dimensional",
+          "Metamorfose"
+        ],
+        "9": [
+          "Dominar Pessoa",
+          "Modificar Memória"
+        ]
+      },
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-19T10:54:45.61512+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.clerigo_vida",
+    "class_id": "dnd5e.clerigo",
+    "subclass_type": "subclass",
+    "name_pt": "Domínio da Vida",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Cura ampliada e proteção da vida.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 60,
+    "data": {
+      "domainSpells": {
+        "1": [
+          "Bênção",
+          "Curar Ferimentos"
+        ],
+        "3": [
+          "Restauração Menor",
+          "Arma Espiritual"
+        ],
+        "5": [
+          "Sinal de Esperança",
+          "Revivificar"
+        ],
+        "7": [
+          "Proteção contra a Morte",
+          "Guardião da Fé"
+        ],
+        "9": [
+          "Curar Ferimentos em Massa",
+          "Reviver os Mortos"
+        ]
+      },
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-19T10:54:43.989593+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.druida_lua",
+    "class_id": "dnd5e.druida",
+    "subclass_type": "subclass",
+    "name_pt": "Círculo da Lua",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Formas selvagens de combate.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 69,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.druida_terra",
+    "class_id": "dnd5e.druida",
+    "subclass_type": "subclass",
+    "name_pt": "Círculo da Terra",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Magia natural e recuperação de espaços.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 68,
+    "data": {
+      "choices": [
+        {
+          "id": "land-terrain",
+          "count": 1,
+          "label": "Terreno do Círculo da Terra",
+          "options": [
+            "Ártico",
+            "Costa",
+            "Deserto",
+            "Floresta",
+            "Montanha",
+            "Pântano",
+            "Planalto",
+            "Subterrâneo"
+          ],
+          "minimumLevel": 2
+        },
+        {
+          "id": "land-bonus-cantrip",
+          "count": 1,
+          "label": "Truque adicional do Círculo da Terra",
+          "options": [
+            "Luz",
+            "Globos de Luz"
+          ],
+          "grantsSpells": true,
+          "minimumLevel": 2
+        }
+      ],
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-23T17:25:41.333968+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.feiticeiro_linhagem_draconica",
+    "class_id": "dnd5e.feiticeiro",
+    "subclass_type": "subclass",
+    "name_pt": "Linhagem Dracônica",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Magia inata de ancestralidade dracônica.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 102,
+    "data": {
+      "choices": [
+        {
+          "id": "draconic-ancestry",
+          "count": 1,
+          "label": "Ancestralidade Dracônica",
+          "options": [
+            "Azul",
+            "Branco",
+            "Bronze",
+            "Cobre",
+            "Latão",
+            "Negro",
+            "Ouro",
+            "Prata",
+            "Verde",
+            "Vermelho"
+          ],
+          "minimumLevel": 1
+        }
+      ],
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-13T17:43:00.304824+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.feiticeiro_magia_selvagem",
+    "class_id": "dnd5e.feiticeiro",
+    "subclass_type": "subclass",
+    "name_pt": "Magia Selvagem",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Surtos imprevisíveis de magia bruta.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 103,
+    "data": {
+      "choices": [
+        {
+          "id": "wild-magic-surge",
+          "count": 1,
+          "label": "Surto de Magia Selvagem",
+          "options": [
+            "Usar tabela do Livro do Jogador"
+          ],
+          "minimumLevel": 1
+        }
+      ],
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-13T17:43:00.304824+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.guerreiro_campeao",
+    "class_id": "dnd5e.guerreiro",
+    "subclass_type": "subclass",
+    "name_pt": "Arquétipo do Campeão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Aprimoramento marcial simples e crítico.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 85,
+    "data": {
+      "choices": [
+        {
+          "id": "champion-additional-fighting-style",
+          "count": 1,
+          "label": "Estilo de Luta adicional do Campeão",
+          "options": [
+            "Arquearia",
+            "Defesa",
+            "Duelos",
+            "Luta com Armas Grandes",
+            "Luta com Duas Armas",
+            "Proteção"
+          ],
+          "minimumLevel": 10
+        }
+      ],
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-23T17:25:40.966358+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.guerreiro_cavaleiro_arcano",
+    "class_id": "dnd5e.guerreiro",
+    "subclass_type": "subclass",
+    "name_pt": "Cavaleiro Arcano",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Combate marcial combinado com magia.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 87,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.guerreiro_mestre_batalha",
+    "class_id": "dnd5e.guerreiro",
+    "subclass_type": "subclass",
+    "name_pt": "Mestre da Batalha",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Manobras e dados de superioridade.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 86,
+    "data": {
+      "choices": [
+        {
+          "id": "battle-master-maneuvers",
+          "count": 3,
+          "label": "Manobras (3º nível)",
+          "options": [
+            "Aparar",
+            "Ataque de Precisão",
+            "Ataque de Provocação",
+            "Ataque Desarmante",
+            "Ataque Distrativo",
+            "Ataque Estonteante",
+            "Ataque de Finta",
+            "Ataque de Empurrão",
+            "Ataque de Investida",
+            "Ataque de Manobra",
+            "Ataque de Reunir",
+            "Ataque de Varredura",
+            "Contra-ataque",
+            "Golpe do Comandante"
+          ],
+          "minimumLevel": 3
+        },
+        {
+          "id": "battle-master-maneuvers-7",
+          "count": 2,
+          "label": "Manobras adicionais (7º nível)",
+          "options": [
+            "Aparar",
+            "Ataque de Precisão",
+            "Ataque de Provocação",
+            "Ataque Desarmante",
+            "Ataque Distrativo",
+            "Ataque Estonteante",
+            "Ataque de Finta",
+            "Ataque de Empurrão",
+            "Ataque de Investida",
+            "Ataque de Manobra",
+            "Ataque de Reunir",
+            "Ataque de Varredura",
+            "Contra-ataque",
+            "Golpe do Comandante"
+          ],
+          "minimumLevel": 7
+        },
+        {
+          "id": "battle-master-maneuvers-15",
+          "count": 1,
+          "label": "Manobra adicional (15º nível)",
+          "options": [
+            "Aparar",
+            "Ataque de Precisão",
+            "Ataque de Provocação",
+            "Ataque Desarmante",
+            "Ataque Distrativo",
+            "Ataque Estonteante",
+            "Ataque de Finta",
+            "Ataque de Empurrão",
+            "Ataque de Investida",
+            "Ataque de Manobra",
+            "Ataque de Reunir",
+            "Ataque de Varredura",
+            "Contra-ataque",
+            "Golpe do Comandante"
+          ],
+          "minimumLevel": 15
+        },
+        {
+          "id": "battle-master-warrior-tool",
+          "count": 1,
+          "label": "Ferramenta de artesão do Aluno da Guerra",
+          "options": [
+            "ferramentas de carpinteiro",
+            "ferramentas de cartografo",
+            "ferramentas de costureiro",
+            "ferramentas de coureiro",
+            "ferramentas de entalhador",
+            "ferramentas de ferreiro",
+            "ferramentas de funileiro",
+            "ferramentas de joalheiro",
+            "ferramentas de oleiro",
+            "ferramentas de pedreiro",
+            "ferramentas de pintor",
+            "ferramentas de sapateiro",
+            "ferramentas de vidreiro",
+            "suprimentos de alquimista",
+            "suprimentos de cervejeiro",
+            "suprimentos de caligrafia",
+            "utensilios de cozinheiro"
+          ],
+          "minimumLevel": 7,
+          "grantsToolProficiencies": true
+        }
+      ],
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-23T17:25:42.345116+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.ladino_assassino",
+    "class_id": "dnd5e.ladino",
+    "subclass_type": "subclass",
+    "name_pt": "Arquétipo do Assassino",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Disfarce, veneno e ataques surpresa.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 93,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.ladino_ladrao",
+    "class_id": "dnd5e.ladino",
+    "subclass_type": "subclass",
+    "name_pt": "Arquétipo do Ladrão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Agilidade, furtividade e uso rápido de itens.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 92,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.ladino_trapaceiro_arcano",
+    "class_id": "dnd5e.ladino",
+    "subclass_type": "subclass",
+    "name_pt": "Trapaceiro Arcano",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Truques arcanos para ampliar a astúcia.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 94,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.mago_abjuracao",
+    "class_id": "dnd5e.mago",
+    "subclass_type": "subclass",
+    "name_pt": "Escola de Abjuração",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Proteções, selos e defesa arcana.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 115,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.mago_adivinhacao",
+    "class_id": "dnd5e.mago",
+    "subclass_type": "subclass",
+    "name_pt": "Escola de Adivinhação",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Visões e manipulação do acaso.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 117,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.mago_conjuracao",
+    "class_id": "dnd5e.mago",
+    "subclass_type": "subclass",
+    "name_pt": "Escola de Conjuração",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Criação e transporte por magia.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 116,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.mago_encantamento",
+    "class_id": "dnd5e.mago",
+    "subclass_type": "subclass",
+    "name_pt": "Escola de Encantamento",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Influência sobre mentes e emoções.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 117,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.mago_evocacao",
+    "class_id": "dnd5e.mago",
+    "subclass_type": "subclass",
+    "name_pt": "Escola de Evocação",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Explosões e controle de energia.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 118,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.mago_ilusao",
+    "class_id": "dnd5e.mago",
+    "subclass_type": "subclass",
+    "name_pt": "Escola de Ilusão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Imagens, sons e enganos mágicos.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 118,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.mago_necromancia",
+    "class_id": "dnd5e.mago",
+    "subclass_type": "subclass",
+    "name_pt": "Escola de Necromancia",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Energia vital, morte e não-morte.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 119,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.mago_transmutacao",
+    "class_id": "dnd5e.mago",
+    "subclass_type": "subclass",
+    "name_pt": "Escola de Transmutação",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Alteração da matéria e do corpo.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 119,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.monge_mao_aberta",
+    "class_id": "dnd5e.monge",
+    "subclass_type": "subclass",
+    "name_pt": "Tradição da Mão Aberta",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Técnicas de combate desarmado.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 101,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.monge_quatro_elementos",
+    "class_id": "dnd5e.monge",
+    "subclass_type": "subclass",
+    "name_pt": "Tradição dos Quatro Elementos",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Disciplina elemental e pontos de chi.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 103,
+    "data": {
+      "choices": [
+        {
+          "id": "elemental-disciplines",
+          "count": 1,
+          "label": "Disciplina Elemental (3º nível)",
+          "options": [
+            "Abraço dos Ventos",
+            "Caminho dos Quatro Elementos",
+            "Chamas da Fênix",
+            "Defesa da Montanha Eterna",
+            "Golpe de Cinzas",
+            "Moldar o Rio Corrente",
+            "Punho dos Quatro Trovões",
+            "Rastro da Serpente de Fogo",
+            "Rio de Chamas",
+            "Varredura de Cinzas"
+          ],
+          "minimumLevel": 3
+        },
+        {
+          "id": "elemental-disciplines-6",
+          "count": 1,
+          "label": "Disciplina Elemental (6º nível)",
+          "options": [
+            "Abraço dos Ventos",
+            "Caminho dos Quatro Elementos",
+            "Chamas da Fênix",
+            "Defesa da Montanha Eterna",
+            "Golpe de Cinzas",
+            "Moldar o Rio Corrente",
+            "Punho dos Quatro Trovões",
+            "Rastro da Serpente de Fogo",
+            "Rio de Chamas",
+            "Varredura de Cinzas"
+          ],
+          "minimumLevel": 6
+        },
+        {
+          "id": "elemental-disciplines-11",
+          "count": 1,
+          "label": "Disciplina Elemental (11º nível)",
+          "options": [
+            "Abraço dos Ventos",
+            "Caminho dos Quatro Elementos",
+            "Chamas da Fênix",
+            "Defesa da Montanha Eterna",
+            "Golpe de Cinzas",
+            "Moldar o Rio Corrente",
+            "Punho dos Quatro Trovões",
+            "Rastro da Serpente de Fogo",
+            "Rio de Chamas",
+            "Varredura de Cinzas"
+          ],
+          "minimumLevel": 11
+        },
+        {
+          "id": "elemental-disciplines-17",
+          "count": 1,
+          "label": "Disciplina Elemental (17º nível)",
+          "options": [
+            "Abraço dos Ventos",
+            "Caminho dos Quatro Elementos",
+            "Chamas da Fênix",
+            "Defesa da Montanha Eterna",
+            "Golpe de Cinzas",
+            "Moldar o Rio Corrente",
+            "Punho dos Quatro Trovões",
+            "Rastro da Serpente de Fogo",
+            "Rio de Chamas",
+            "Varredura de Cinzas"
+          ],
+          "minimumLevel": 17
+        }
+      ],
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-13T17:43:00.304824+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.monge_sombra",
+    "class_id": "dnd5e.monge",
+    "subclass_type": "subclass",
+    "name_pt": "Tradição das Sombras",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Furtividade e manipulação das sombras.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 102,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.paladino_anciaos",
+    "class_id": "dnd5e.paladino",
+    "subclass_type": "subclass",
+    "name_pt": "Juramento dos Anciões",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Vida, esperança e defesa da natureza.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 114,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.paladino_devocao",
+    "class_id": "dnd5e.paladino",
+    "subclass_type": "subclass",
+    "name_pt": "Juramento de Devoção",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Honra, disciplina e proteção da luz.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 113,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.paladino_vinganca",
+    "class_id": "dnd5e.paladino",
+    "subclass_type": "subclass",
+    "name_pt": "Juramento de Vingança",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Perseguição implacável aos inimigos jurados.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 116,
+    "data": {
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-12T13:05:31.454865+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.patrulheiro_cacador",
+    "class_id": "dnd5e.patrulheiro",
+    "subclass_type": "subclass",
+    "name_pt": "Arquétipo do Caçador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Táticas para enfrentar ameaças escolhidas.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 119,
+    "data": {
+      "choices": [
+        {
+          "id": "hunter-prey",
+          "count": 1,
+          "label": "Presa do Caçador",
+          "options": [
+            "Matador de Gigantes",
+            "Matador de Colossos",
+            "Destruidor de Hordas"
+          ],
+          "minimumLevel": 3
+        },
+        {
+          "id": "hunter-defensive-tactics",
+          "count": 1,
+          "label": "Táticas Defensivas",
+          "options": [
+            "Escapar da Horda",
+            "Defesa Multiataque",
+            "Vontade de Aço"
+          ],
+          "minimumLevel": 7
+        },
+        {
+          "id": "hunter-multiattack",
+          "count": 1,
+          "label": "Ataque Múltiplo",
+          "options": [
+            "Saraivada",
+            "Ataque de Redemoinho"
+          ],
+          "minimumLevel": 11
+        },
+        {
+          "id": "hunter-superior-defense",
+          "count": 1,
+          "label": "Defesa Superior do Caçador",
+          "options": [
+            "Evasão",
+            "Resistência contra Ataques Mágicos",
+            "Resistência ao Ataque"
+          ],
+          "minimumLevel": 15
+        }
+      ],
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-13T17:43:00.304824+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.patrulheiro_mestre_feras",
+    "class_id": "dnd5e.patrulheiro",
+    "subclass_type": "subclass",
+    "name_pt": "Mestre das Feras",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Companheiro animal e combate coordenado.",
+    "description_en": null,
+    "description_es": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 121,
+    "data": {
+      "choices": [
+        {
+          "id": "beast-companion",
+          "count": 1,
+          "label": "Tipo de companheiro animal",
+          "options": [
+            "Javali",
+            "Lobo",
+            "Pantera",
+            "Urso",
+            "Texugo",
+            "Aranha",
+            "Águia",
+            "Cavalo"
+          ],
+          "minimumLevel": 3
+        }
+      ],
+      "featureLevel": 3
+    },
+    "created_at": "2026-09-12T13:05:31.454865+00:00",
+    "updated_at": "2026-09-13T17:43:00.304824+00:00",
+    "system_id": "dnd5e"
+  }
+]

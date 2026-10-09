@@ -1,0 +1,582 @@
+[
+  {
+    "id": "t20.anao",
+    "name_pt": "Anão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 20,
+    "attribute_boosts": [
+      "con",
+      "wis"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Visão no escuro",
+      "Devagar e Sempre",
+      "Duro como Pedra"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 20,
+    "data": {
+      "attributeAdjustments": {
+        "con": 4,
+        "dex": -2,
+        "wis": 2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.dahllan",
+    "name_pt": "Dahllan",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "wis",
+      "dex"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Amiga das Plantas",
+      "Empatia Selvagem"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 21,
+    "data": {
+      "attributeAdjustments": {
+        "dex": 2,
+        "int": -2,
+        "wis": 4
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.elfo",
+    "name_pt": "Elfo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 40,
+    "attribute_boosts": [
+      "int",
+      "dex"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Graça de Glórienn",
+      "Herança Feérica"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 22,
+    "data": {
+      "attributeAdjustments": {
+        "con": -2,
+        "dex": 2,
+        "int": 4
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.goblin",
+    "name_pt": "Goblin",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Small",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "dex",
+      "int"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Visão no escuro",
+      "Peste Esguia"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 23,
+    "data": {
+      "attributeAdjustments": {
+        "cha": -2,
+        "dex": 4,
+        "int": 2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.golem",
+    "name_pt": "Golem",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 20,
+    "attribute_boosts": [
+      "str",
+      "con"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Canalizar Reparos",
+      "Chassi",
+      "Criatura Artificial"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 27,
+    "data": {
+      "attributeAdjustments": {
+        "cha": -2,
+        "con": 2,
+        "str": 4
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.humano",
+    "name_pt": "Humano",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Versátil"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 19,
+    "data": {
+      "abilityBonuses": "+2 em três atributos diferentes"
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.hynne",
+    "name_pt": "Hynne",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Small",
+    "speed_feet": 20,
+    "attribute_boosts": [
+      "dex",
+      "cha"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Arremessador",
+      "Pequeno e Rechonchudo",
+      "Sorte Salvadora"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 27,
+    "data": {
+      "attributeAdjustments": {
+        "cha": 2,
+        "dex": 4,
+        "str": -2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.kliren",
+    "name_pt": "Kliren",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "int",
+      "cha"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Híbrido",
+      "Lógica Gnômica",
+      "Engenhoqueiro"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 28,
+    "data": {
+      "attributeAdjustments": {
+        "cha": 2,
+        "int": 4,
+        "str": -2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.lefou",
+    "name_pt": "Lefou",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Criatura da Tormenta",
+      "Deformidade"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 24,
+    "data": {
+      "abilityBonuses": "+2 em três atributos exceto Carisma; Carisma -2"
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.medusa",
+    "name_pt": "Medusa",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "dex",
+      "wis"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Cria de Megalokk",
+      "Natureza Venenosa",
+      "Olhar Atordoante"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 28,
+    "data": {
+      "attributeAdjustments": {
+        "cha": -2,
+        "dex": 4,
+        "wis": 2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.minotauro",
+    "name_pt": "Minotauro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "str",
+      "con"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Chifres",
+      "Couro Rígido",
+      "Faro"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 25,
+    "data": {
+      "attributeAdjustments": {
+        "con": 2,
+        "str": 4,
+        "wis": -2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.osteon",
+    "name_pt": "Osteon",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Armadura Óssea",
+      "Memória Póstuma"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 29,
+    "data": {
+      "abilityBonuses": "+2 em três atributos exceto Constituição; Constituição -2"
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.qareen",
+    "name_pt": "Qareen",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "cha",
+      "int"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Desejos",
+      "Resistência Elemental",
+      "Tatuagem Mística"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 26,
+    "data": {
+      "attributeAdjustments": {
+        "cha": 4,
+        "int": 2,
+        "wis": -2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.sereia_tritao",
+    "name_pt": "Sereia/Tritão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Canção dos Mares",
+      "Mestre do Tridente",
+      "Transformação Anfíbia"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 29,
+    "data": {},
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.siflide",
+    "name_pt": "Sílfide",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Tiny",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "cha",
+      "dex"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Asas de Borboleta",
+      "Resistência Feérica"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 30,
+    "data": {
+      "attributeAdjustments": {
+        "cha": 4,
+        "dex": 2,
+        "str": -4
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.suraggel",
+    "name_pt": "Suraggel",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Herança Divina"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 30,
+    "data": {},
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.trog",
+    "name_pt": "Trog",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "con",
+      "str"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Mau Cheiro",
+      "Mordida",
+      "Resistência a veneno"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 31,
+    "data": {
+      "attributeAdjustments": {
+        "con": 4,
+        "int": -2,
+        "str": 2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  }
+]

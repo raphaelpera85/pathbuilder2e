@@ -1,0 +1,353 @@
+[
+  {
+    "id": "dnd5e.anao",
+    "name_pt": "Anão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "con"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Visão no escuro",
+      "Resiliência anã"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 18,
+    "data": {
+      "raceChoices": [
+        {
+          "id": "dwarf-tool-proficiency",
+          "count": 1,
+          "label": "Proficiência com ferramentas de anão",
+          "options": [
+            "ferramentas de ferreiro",
+            "suprimentos de cervejeiro",
+            "ferramentas de pedreiro"
+          ]
+        }
+      ],
+      "attributeAdjustments": {
+        "con": 2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-13T17:51:40.615391+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.draconato",
+    "name_pt": "Draconato",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "str",
+      "cha"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Ancestral dracônico",
+      "Arma de sopro",
+      "Resistência a dano"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 32,
+    "data": {
+      "raceChoices": [
+        {
+          "id": "draconic-ancestry",
+          "count": 1,
+          "label": "Ancestralidade dracônica",
+          "options": [
+            "Preto",
+            "Azul",
+            "Latão",
+            "Bronze",
+            "Cobre",
+            "Ouro",
+            "Verde",
+            "Vermelho",
+            "Prata",
+            "Branco"
+          ]
+        }
+      ],
+      "attributeAdjustments": {
+        "cha": 1,
+        "str": 2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-13T17:51:40.615391+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.elfo",
+    "name_pt": "Elfo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "dex"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Visão no escuro",
+      "Sentidos aguçados",
+      "Ancestralidade feérica",
+      "Transe"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 21,
+    "data": {
+      "attributeAdjustments": {
+        "dex": 2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.gnomo",
+    "name_pt": "Gnomo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Small",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "int"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Visão no escuro",
+      "Astúcia gnômica"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 35,
+    "data": {
+      "attributeAdjustments": {
+        "int": 2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.halfling",
+    "name_pt": "Halfling",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Small",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "dex"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Sortudo",
+      "Bravura",
+      "Furtividade natural"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 26,
+    "data": {
+      "attributeAdjustments": {
+        "dex": 2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.humano",
+    "name_pt": "Humano",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "str",
+      "dex",
+      "con",
+      "int",
+      "wis",
+      "cha"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Versátil",
+      "Idioma adicional"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 29,
+    "data": {
+      "attributeAdjustments": {
+        "cha": 1,
+        "con": 1,
+        "dex": 1,
+        "int": 1,
+        "str": 1,
+        "wis": 1
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.meio_elfo",
+    "name_pt": "Meio-Elfo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "cha"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Visão no escuro",
+      "Ancestralidade feérica",
+      "Versatilidade em perícias"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 38,
+    "data": {
+      "attributeAdjustments": {
+        "cha": 2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.meio_orc",
+    "name_pt": "Meio-Orc",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "str",
+      "con"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Visão no escuro",
+      "Ameaçador",
+      "Resistência implacável"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 40,
+    "data": {
+      "attributeAdjustments": {
+        "con": 1,
+        "str": 2
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.tiefling",
+    "name_pt": "Tiefling",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "cha",
+      "int"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Visão no escuro",
+      "Resistência infernal",
+      "Legado infernal"
+    ],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 42,
+    "data": {
+      "attributeAdjustments": {
+        "cha": 2,
+        "int": 1
+      }
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "dnd5e"
+  }
+]

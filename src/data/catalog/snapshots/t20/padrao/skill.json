@@ -1,0 +1,959 @@
+[
+  {
+    "id": "t20.skill.acrobacia",
+    "system_id": "t20",
+    "name_pt": "Acrobacia",
+    "name_en": "Acrobacia",
+    "name_es": "Acrobacia",
+    "description_pt": "Equilíbrio (CD 15), escapar de agarrões e reduzir dano de queda; terreno difícil ainda limita o movimento.",
+    "description_en": "Equilíbrio (CD 15), escapar de agarrões e reduzir dano de queda; terreno difícil ainda limita o movimento.",
+    "description_es": "Equilíbrio (CD 15), escapar de agarrões e reduzir dano de queda; terreno difícil ainda limita o movimento.",
+    "key_ability": "dex",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 115,
+    "data": {
+      "id": "acrobacia",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 115
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "dex"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 115,
+      "description": "Equilíbrio (CD 15), escapar de agarrões e reduzir dano de queda; terreno difícil ainda limita o movimento.",
+      "ruleSummary": "Equilíbrio (CD 15), escapar de agarrões e reduzir dano de queda; terreno difícil ainda limita o movimento.",
+      "skillAbility": "dex"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.adestramento",
+    "system_id": "t20",
+    "name_pt": "Adestramento",
+    "name_en": "Adestramento",
+    "name_es": "Adestramento",
+    "description_pt": "Lidar com animais, mudar atitude, ensinar truques e comandar montarias ou parceiros.",
+    "description_en": "Lidar com animais, mudar atitude, ensinar truques e comandar montarias ou parceiros.",
+    "description_es": "Lidar com animais, mudar atitude, ensinar truques e comandar montarias ou parceiros.",
+    "key_ability": "cha",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 115,
+    "data": {
+      "id": "adestramento",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 115
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "cha"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 115,
+      "description": "Lidar com animais, mudar atitude, ensinar truques e comandar montarias ou parceiros.",
+      "ruleSummary": "Lidar com animais, mudar atitude, ensinar truques e comandar montarias ou parceiros.",
+      "skillAbility": "cha"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.atletismo",
+    "system_id": "t20",
+    "name_pt": "Atletismo",
+    "name_en": "Atletismo",
+    "name_es": "Atletismo",
+    "description_pt": "Escalar (CD 15), nadar (CD 15 + condições) e saltar; corrida e natação exigem testes de Fortitude para manter o fôlego.",
+    "description_en": "Escalar (CD 15), nadar (CD 15 + condições) e saltar; corrida e natação exigem testes de Fortitude para manter o fôlego.",
+    "description_es": "Escalar (CD 15), nadar (CD 15 + condições) e saltar; corrida e natação exigem testes de Fortitude para manter o fôlego.",
+    "key_ability": "str",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 115,
+    "data": {
+      "id": "atletismo",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 115
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "str"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 115,
+      "description": "Escalar (CD 15), nadar (CD 15 + condições) e saltar; corrida e natação exigem testes de Fortitude para manter o fôlego.",
+      "ruleSummary": "Escalar (CD 15), nadar (CD 15 + condições) e saltar; corrida e natação exigem testes de Fortitude para manter o fôlego.",
+      "skillAbility": "str"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.atuacao",
+    "system_id": "t20",
+    "name_pt": "Atuação",
+    "name_en": "Atuação",
+    "name_es": "Atuação",
+    "description_pt": "Entreter plateia; o resultado define a reação e pode render dinheiro ou melhorar atitudes.",
+    "description_en": "Entreter plateia; o resultado define a reação e pode render dinheiro ou melhorar atitudes.",
+    "description_es": "Entreter plateia; o resultado define a reação e pode render dinheiro ou melhorar atitudes.",
+    "key_ability": "cha",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 116,
+    "data": {
+      "id": "atuacao",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 116
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "cha"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 116,
+      "description": "Entreter plateia; o resultado define a reação e pode render dinheiro ou melhorar atitudes.",
+      "ruleSummary": "Entreter plateia; o resultado define a reação e pode render dinheiro ou melhorar atitudes.",
+      "skillAbility": "cha"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.cavalgar",
+    "system_id": "t20",
+    "name_pt": "Cavalgar",
+    "name_en": "Cavalgar",
+    "name_es": "Cavalgar",
+    "description_pt": "Montar e controlar montaria; testes evitam queda, permitem manobras e controlam a montaria em combate.",
+    "description_en": "Montar e controlar montaria; testes evitam queda, permitem manobras e controlam a montaria em combate.",
+    "description_es": "Montar e controlar montaria; testes evitam queda, permitem manobras e controlam a montaria em combate.",
+    "key_ability": "dex",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 116,
+    "data": {
+      "id": "cavalgar",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 116
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "dex"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 116,
+      "description": "Montar e controlar montaria; testes evitam queda, permitem manobras e controlam a montaria em combate.",
+      "ruleSummary": "Montar e controlar montaria; testes evitam queda, permitem manobras e controlam a montaria em combate.",
+      "skillAbility": "dex"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.conhecimento",
+    "system_id": "t20",
+    "name_pt": "Conhecimento",
+    "name_en": "Conhecimento",
+    "name_es": "Conhecimento",
+    "description_pt": "Recordar informação sobre assuntos acadêmicos; CD 10 simples, 20 complexa, 30 mistério ou enigma.",
+    "description_en": "Recordar informação sobre assuntos acadêmicos; CD 10 simples, 20 complexa, 30 mistério ou enigma.",
+    "description_es": "Recordar informação sobre assuntos acadêmicos; CD 10 simples, 20 complexa, 30 mistério ou enigma.",
+    "key_ability": "int",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 116,
+    "data": {
+      "id": "conhecimento",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 116
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "int"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 116,
+      "description": "Recordar informação sobre assuntos acadêmicos; CD 10 simples, 20 complexa, 30 mistério ou enigma.",
+      "ruleSummary": "Recordar informação sobre assuntos acadêmicos; CD 10 simples, 20 complexa, 30 mistério ou enigma.",
+      "skillAbility": "int"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.cura",
+    "system_id": "t20",
+    "name_pt": "Cura",
+    "name_en": "Cura",
+    "name_es": "Cura",
+    "description_pt": "Estabilizar moribundo (CD 15), tratar doenças e venenos e diagnosticar condições; kit concede recursos ao atendimento.",
+    "description_en": "Estabilizar moribundo (CD 15), tratar doenças e venenos e diagnosticar condições; kit concede recursos ao atendimento.",
+    "description_es": "Estabilizar moribundo (CD 15), tratar doenças e venenos e diagnosticar condições; kit concede recursos ao atendimento.",
+    "key_ability": "wis",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 117,
+    "data": {
+      "id": "cura",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 117
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "wis"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 117,
+      "description": "Estabilizar moribundo (CD 15), tratar doenças e venenos e diagnosticar condições; kit concede recursos ao atendimento.",
+      "ruleSummary": "Estabilizar moribundo (CD 15), tratar doenças e venenos e diagnosticar condições; kit concede recursos ao atendimento.",
+      "skillAbility": "wis"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.diplomacia",
+    "system_id": "t20",
+    "name_pt": "Diplomacia",
+    "name_en": "Diplomacia",
+    "name_es": "Diplomacia",
+    "description_pt": "Mudar atitude, negociar e pedir favores; pedidos simples não exigem teste, perigosos recebem +10 na CD.",
+    "description_en": "Mudar atitude, negociar e pedir favores; pedidos simples não exigem teste, perigosos recebem +10 na CD.",
+    "description_es": "Mudar atitude, negociar e pedir favores; pedidos simples não exigem teste, perigosos recebem +10 na CD.",
+    "key_ability": "cha",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 117,
+    "data": {
+      "id": "diplomacia",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 117
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "cha"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 117,
+      "description": "Mudar atitude, negociar e pedir favores; pedidos simples não exigem teste, perigosos recebem +10 na CD.",
+      "ruleSummary": "Mudar atitude, negociar e pedir favores; pedidos simples não exigem teste, perigosos recebem +10 na CD.",
+      "skillAbility": "cha"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.enganacao",
+    "system_id": "t20",
+    "name_pt": "Enganação",
+    "name_en": "Enganação",
+    "name_es": "Enganação",
+    "description_pt": "Blefar, disfarçar, falsificar e plantar intrigas; fintar é ação padrão contra Reflexos em alcance curto.",
+    "description_en": "Blefar, disfarçar, falsificar e plantar intrigas; fintar é ação padrão contra Reflexos em alcance curto.",
+    "description_es": "Blefar, disfarçar, falsificar e plantar intrigas; fintar é ação padrão contra Reflexos em alcance curto.",
+    "key_ability": "cha",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 118,
+    "data": {
+      "id": "enganacao",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 118
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "cha"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 118,
+      "description": "Blefar, disfarçar, falsificar e plantar intrigas; fintar é ação padrão contra Reflexos em alcance curto.",
+      "ruleSummary": "Blefar, disfarçar, falsificar e plantar intrigas; fintar é ação padrão contra Reflexos em alcance curto.",
+      "skillAbility": "cha"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.fortitude",
+    "system_id": "t20",
+    "name_pt": "Fortitude",
+    "name_en": "Fortitude",
+    "name_es": "Fortitude",
+    "description_pt": "Resistir a efeitos que afetam saúde e vitalidade, como venenos e doenças; CD vem do efeito.",
+    "description_en": "Resistir a efeitos que afetam saúde e vitalidade, como venenos e doenças; CD vem do efeito.",
+    "description_es": "Resistir a efeitos que afetam saúde e vitalidade, como venenos e doenças; CD vem do efeito.",
+    "key_ability": "con",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 119,
+    "data": {
+      "id": "fortitude",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 119
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "con"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 119,
+      "description": "Resistir a efeitos que afetam saúde e vitalidade, como venenos e doenças; CD vem do efeito.",
+      "ruleSummary": "Resistir a efeitos que afetam saúde e vitalidade, como venenos e doenças; CD vem do efeito.",
+      "skillAbility": "con"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.furtividade",
+    "system_id": "t20",
+    "name_pt": "Furtividade",
+    "name_en": "Furtividade",
+    "name_es": "Furtividade",
+    "description_pt": "Esconder-se com cobertura/camuflagem e seguir alguém; deslocamento normal impõe -5 e ação chamativa impõe -20.",
+    "description_en": "Esconder-se com cobertura/camuflagem e seguir alguém; deslocamento normal impõe -5 e ação chamativa impõe -20.",
+    "description_es": "Esconder-se com cobertura/camuflagem e seguir alguém; deslocamento normal impõe -5 e ação chamativa impõe -20.",
+    "key_ability": "dex",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 119,
+    "data": {
+      "id": "furtividade",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 119
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "dex"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 119,
+      "description": "Esconder-se com cobertura/camuflagem e seguir alguém; deslocamento normal impõe -5 e ação chamativa impõe -20.",
+      "ruleSummary": "Esconder-se com cobertura/camuflagem e seguir alguém; deslocamento normal impõe -5 e ação chamativa impõe -20.",
+      "skillAbility": "dex"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.guerra",
+    "system_id": "t20",
+    "name_pt": "Guerra",
+    "name_en": "Guerra",
+    "name_es": "Guerra",
+    "description_pt": "Analisar terreno (CD 20) como ação de movimento ou orientar aliado (CD 20) para melhorar a iniciativa.",
+    "description_en": "Analisar terreno (CD 20) como ação de movimento ou orientar aliado (CD 20) para melhorar a iniciativa.",
+    "description_es": "Analisar terreno (CD 20) como ação de movimento ou orientar aliado (CD 20) para melhorar a iniciativa.",
+    "key_ability": "int",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 119,
+    "data": {
+      "id": "guerra",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 119
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "int"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 119,
+      "description": "Analisar terreno (CD 20) como ação de movimento ou orientar aliado (CD 20) para melhorar a iniciativa.",
+      "ruleSummary": "Analisar terreno (CD 20) como ação de movimento ou orientar aliado (CD 20) para melhorar a iniciativa.",
+      "skillAbility": "int"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.iniciativa",
+    "system_id": "t20",
+    "name_pt": "Iniciativa",
+    "name_en": "Iniciativa",
+    "name_es": "Iniciativa",
+    "description_pt": "Determina a ordem de ação no início de uma cena; desempate usa o maior bônus de Iniciativa.",
+    "description_en": "Determina a ordem de ação no início de uma cena; desempate usa o maior bônus de Iniciativa.",
+    "description_es": "Determina a ordem de ação no início de uma cena; desempate usa o maior bônus de Iniciativa.",
+    "key_ability": "dex",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 119,
+    "data": {
+      "id": "iniciativa",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 119
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "dex"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 119,
+      "description": "Determina a ordem de ação no início de uma cena; desempate usa o maior bônus de Iniciativa.",
+      "ruleSummary": "Determina a ordem de ação no início de uma cena; desempate usa o maior bônus de Iniciativa.",
+      "skillAbility": "dex"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.intimidacao",
+    "system_id": "t20",
+    "name_pt": "Intimidação",
+    "name_en": "Intimidação",
+    "name_es": "Intimidação",
+    "description_pt": "Assustar ou coagir; ação padrão contra Vontade deixa abalado, e margem de 10 deixa apavorado por uma rodada.",
+    "description_en": "Assustar ou coagir; ação padrão contra Vontade deixa abalado, e margem de 10 deixa apavorado por uma rodada.",
+    "description_es": "Assustar ou coagir; ação padrão contra Vontade deixa abalado, e margem de 10 deixa apavorado por uma rodada.",
+    "key_ability": "cha",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 119,
+    "data": {
+      "id": "intimidacao",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 119
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "cha"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 119,
+      "description": "Assustar ou coagir; ação padrão contra Vontade deixa abalado, e margem de 10 deixa apavorado por uma rodada.",
+      "ruleSummary": "Assustar ou coagir; ação padrão contra Vontade deixa abalado, e margem de 10 deixa apavorado por uma rodada.",
+      "skillAbility": "cha"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.intuicao",
+    "system_id": "t20",
+    "name_pt": "Intuição",
+    "name_en": "Intuição",
+    "name_es": "Intuição",
+    "description_pt": "Perceber blefes e pressentir comportamento estranho; pressentimento exige CD 20 e treinamento.",
+    "description_en": "Perceber blefes e pressentir comportamento estranho; pressentimento exige CD 20 e treinamento.",
+    "description_es": "Perceber blefes e pressentir comportamento estranho; pressentimento exige CD 20 e treinamento.",
+    "key_ability": "wis",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 119,
+    "data": {
+      "id": "intuicao",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 119
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "wis"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 119,
+      "description": "Perceber blefes e pressentir comportamento estranho; pressentimento exige CD 20 e treinamento.",
+      "ruleSummary": "Perceber blefes e pressentir comportamento estranho; pressentimento exige CD 20 e treinamento.",
+      "skillAbility": "wis"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.investigacao",
+    "system_id": "t20",
+    "name_pt": "Investigação",
+    "name_en": "Investigação",
+    "name_es": "Investigação",
+    "description_pt": "Obter informação em um dia ou procurar área em ação completa; CDs e custos variam conforme o sigilo da pista.",
+    "description_en": "Obter informação em um dia ou procurar área em ação completa; CDs e custos variam conforme o sigilo da pista.",
+    "description_es": "Obter informação em um dia ou procurar área em ação completa; CDs e custos variam conforme o sigilo da pista.",
+    "key_ability": "int",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 120,
+    "data": {
+      "id": "investigacao",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 120
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "int"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 120,
+      "description": "Obter informação em um dia ou procurar área em ação completa; CDs e custos variam conforme o sigilo da pista.",
+      "ruleSummary": "Obter informação em um dia ou procurar área em ação completa; CDs e custos variam conforme o sigilo da pista.",
+      "skillAbility": "int"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.jogatina",
+    "system_id": "t20",
+    "name_pt": "Jogatina",
+    "name_en": "Jogatina",
+    "name_es": "Jogatina",
+    "description_pt": "Resolver uma noite de apostas com teste: CD 10–40 define se perde, empata ou multiplica a aposta.",
+    "description_en": "Resolver uma noite de apostas com teste: CD 10–40 define se perde, empata ou multiplica a aposta.",
+    "description_es": "Resolver uma noite de apostas com teste: CD 10–40 define se perde, empata ou multiplica a aposta.",
+    "key_ability": "cha",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 120,
+    "data": {
+      "id": "jogatina",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 120
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "cha"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 120,
+      "description": "Resolver uma noite de apostas com teste: CD 10–40 define se perde, empata ou multiplica a aposta.",
+      "ruleSummary": "Resolver uma noite de apostas com teste: CD 10–40 define se perde, empata ou multiplica a aposta.",
+      "skillAbility": "cha"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.ladinagem",
+    "system_id": "t20",
+    "name_pt": "Ladinagem",
+    "name_en": "Ladinagem",
+    "name_es": "Ladinagem",
+    "description_pt": "Abrir fechaduras (CD 20–30), ocultar itens, fazer punga e sabotar mecanismos (CD 20–30); kit de ladrão evita -5.",
+    "description_en": "Abrir fechaduras (CD 20–30), ocultar itens, fazer punga e sabotar mecanismos (CD 20–30); kit de ladrão evita -5.",
+    "description_es": "Abrir fechaduras (CD 20–30), ocultar itens, fazer punga e sabotar mecanismos (CD 20–30); kit de ladrão evita -5.",
+    "key_ability": "dex",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 120,
+    "data": {
+      "id": "ladinagem",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 120
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "dex"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 120,
+      "description": "Abrir fechaduras (CD 20–30), ocultar itens, fazer punga e sabotar mecanismos (CD 20–30); kit de ladrão evita -5.",
+      "ruleSummary": "Abrir fechaduras (CD 20–30), ocultar itens, fazer punga e sabotar mecanismos (CD 20–30); kit de ladrão evita -5.",
+      "skillAbility": "dex"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.luta",
+    "system_id": "t20",
+    "name_pt": "Luta",
+    "name_en": "Luta",
+    "name_es": "Luta",
+    "description_pt": "Ataque corpo a corpo contra a Defesa do alvo; também resolve manobras e técnicas de combate.",
+    "description_en": "Ataque corpo a corpo contra a Defesa do alvo; também resolve manobras e técnicas de combate.",
+    "description_es": "Ataque corpo a corpo contra a Defesa do alvo; também resolve manobras e técnicas de combate.",
+    "key_ability": "str",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 120,
+    "data": {
+      "id": "luta",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 120
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "str"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 120,
+      "description": "Ataque corpo a corpo contra a Defesa do alvo; também resolve manobras e técnicas de combate.",
+      "ruleSummary": "Ataque corpo a corpo contra a Defesa do alvo; também resolve manobras e técnicas de combate.",
+      "skillAbility": "str"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.misticismo",
+    "system_id": "t20",
+    "name_pt": "Misticismo",
+    "name_en": "Misticismo",
+    "name_es": "Misticismo",
+    "description_pt": "Detectar e identificar magias, criaturas e itens; CDs 15 + custo/ND e CD 20–30 para itens mágicos.",
+    "description_en": "Detectar e identificar magias, criaturas e itens; CDs 15 + custo/ND e CD 20–30 para itens mágicos.",
+    "description_es": "Detectar e identificar magias, criaturas e itens; CDs 15 + custo/ND e CD 20–30 para itens mágicos.",
+    "key_ability": "int",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 121,
+    "data": {
+      "id": "misticismo",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 121
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "int"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 121,
+      "description": "Detectar e identificar magias, criaturas e itens; CDs 15 + custo/ND e CD 20–30 para itens mágicos.",
+      "ruleSummary": "Detectar e identificar magias, criaturas e itens; CDs 15 + custo/ND e CD 20–30 para itens mágicos.",
+      "skillAbility": "int"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.nobreza",
+    "system_id": "t20",
+    "name_pt": "Nobreza",
+    "name_en": "Nobreza",
+    "name_es": "Nobreza",
+    "description_pt": "Etiqueta e informação sobre leis, tradições, linhagens e heráldica; perguntas usam CD 10, 20 ou 30.",
+    "description_en": "Etiqueta e informação sobre leis, tradições, linhagens e heráldica; perguntas usam CD 10, 20 ou 30.",
+    "description_es": "Etiqueta e informação sobre leis, tradições, linhagens e heráldica; perguntas usam CD 10, 20 ou 30.",
+    "key_ability": "int",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 121,
+    "data": {
+      "id": "nobreza",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 121
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "int"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 121,
+      "description": "Etiqueta e informação sobre leis, tradições, linhagens e heráldica; perguntas usam CD 10, 20 ou 30.",
+      "ruleSummary": "Etiqueta e informação sobre leis, tradições, linhagens e heráldica; perguntas usam CD 10, 20 ou 30.",
+      "skillAbility": "int"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.oficio",
+    "system_id": "t20",
+    "name_pt": "Ofício",
+    "name_en": "Ofício",
+    "name_es": "Ofício",
+    "description_pt": "Fabricar, reparar, identificar e obter sustento com um ofício; fabricar usa matéria-prima de um terço do preço.",
+    "description_en": "Fabricar, reparar, identificar e obter sustento com um ofício; fabricar usa matéria-prima de um terço do preço.",
+    "description_es": "Fabricar, reparar, identificar e obter sustento com um ofício; fabricar usa matéria-prima de um terço do preço.",
+    "key_ability": "int",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 121,
+    "data": {
+      "id": "oficio",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 121
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "int"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 121,
+      "description": "Fabricar, reparar, identificar e obter sustento com um ofício; fabricar usa matéria-prima de um terço do preço.",
+      "ruleSummary": "Fabricar, reparar, identificar e obter sustento com um ofício; fabricar usa matéria-prima de um terço do preço.",
+      "skillAbility": "int"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.percepcao",
+    "system_id": "t20",
+    "name_pt": "Percepção",
+    "name_en": "Percepção",
+    "name_es": "Percepção",
+    "description_pt": "Observar, ouvir e perceber criaturas invisíveis, disfarces e falsificações; ouvir através de porta aumenta a CD em +5.",
+    "description_en": "Observar, ouvir e perceber criaturas invisíveis, disfarces e falsificações; ouvir através de porta aumenta a CD em +5.",
+    "description_es": "Observar, ouvir e perceber criaturas invisíveis, disfarces e falsificações; ouvir através de porta aumenta a CD em +5.",
+    "key_ability": "wis",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 122,
+    "data": {
+      "id": "percepcao",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 122
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "wis"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 122,
+      "description": "Observar, ouvir e perceber criaturas invisíveis, disfarces e falsificações; ouvir através de porta aumenta a CD em +5.",
+      "ruleSummary": "Observar, ouvir e perceber criaturas invisíveis, disfarces e falsificações; ouvir através de porta aumenta a CD em +5.",
+      "skillAbility": "wis"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.pilotagem",
+    "system_id": "t20",
+    "name_pt": "Pilotagem",
+    "name_en": "Pilotagem",
+    "name_es": "Pilotagem",
+    "description_pt": "Conduzir carroças, barcos ou balões; CD 15 em condições boas, 20 ruins e 25 terríveis.",
+    "description_en": "Conduzir carroças, barcos ou balões; CD 15 em condições boas, 20 ruins e 25 terríveis.",
+    "description_es": "Conduzir carroças, barcos ou balões; CD 15 em condições boas, 20 ruins e 25 terríveis.",
+    "key_ability": "dex",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 122,
+    "data": {
+      "id": "pilotagem",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 122
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "dex"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 122,
+      "description": "Conduzir carroças, barcos ou balões; CD 15 em condições boas, 20 ruins e 25 terríveis.",
+      "ruleSummary": "Conduzir carroças, barcos ou balões; CD 15 em condições boas, 20 ruins e 25 terríveis.",
+      "skillAbility": "dex"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.pontaria",
+    "system_id": "t20",
+    "name_pt": "Pontaria",
+    "name_en": "Pontaria",
+    "name_es": "Pontaria",
+    "description_pt": "Ataque à distância contra a Defesa do alvo usando armas de arremesso ou disparo.",
+    "description_en": "Ataque à distância contra a Defesa do alvo usando armas de arremesso ou disparo.",
+    "description_es": "Ataque à distância contra a Defesa do alvo usando armas de arremesso ou disparo.",
+    "key_ability": "dex",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 123,
+    "data": {
+      "id": "pontaria",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 123
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "dex"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 123,
+      "description": "Ataque à distância contra a Defesa do alvo usando armas de arremesso ou disparo.",
+      "ruleSummary": "Ataque à distância contra a Defesa do alvo usando armas de arremesso ou disparo.",
+      "skillAbility": "dex"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.reflexos",
+    "system_id": "t20",
+    "name_pt": "Reflexos",
+    "name_en": "Reflexos",
+    "name_es": "Reflexos",
+    "description_pt": "Evitar efeitos súbitos e de área e resistir a fintas; a CD vem da ameaça ou efeito.",
+    "description_en": "Evitar efeitos súbitos e de área e resistir a fintas; a CD vem da ameaça ou efeito.",
+    "description_es": "Evitar efeitos súbitos e de área e resistir a fintas; a CD vem da ameaça ou efeito.",
+    "key_ability": "dex",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 123,
+    "data": {
+      "id": "reflexos",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 123
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "dex"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 123,
+      "description": "Evitar efeitos súbitos e de área e resistir a fintas; a CD vem da ameaça ou efeito.",
+      "ruleSummary": "Evitar efeitos súbitos e de área e resistir a fintas; a CD vem da ameaça ou efeito.",
+      "skillAbility": "dex"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.religiao",
+    "system_id": "t20",
+    "name_pt": "Religião",
+    "name_en": "Religião",
+    "name_es": "Religião",
+    "description_pt": "Identificar criaturas e itens divinos, responder questões sobre deuses e realizar ritos (CD 20).",
+    "description_en": "Identificar criaturas e itens divinos, responder questões sobre deuses e realizar ritos (CD 20).",
+    "description_es": "Identificar criaturas e itens divinos, responder questões sobre deuses e realizar ritos (CD 20).",
+    "key_ability": "wis",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 123,
+    "data": {
+      "id": "religiao",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 123
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "wis"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 123,
+      "description": "Identificar criaturas e itens divinos, responder questões sobre deuses e realizar ritos (CD 20).",
+      "ruleSummary": "Identificar criaturas e itens divinos, responder questões sobre deuses e realizar ritos (CD 20).",
+      "skillAbility": "wis"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.sobrevivencia",
+    "system_id": "t20",
+    "name_pt": "Sobrevivência",
+    "name_en": "Sobrevivência",
+    "name_es": "Sobrevivência",
+    "description_pt": "Acampar (CD 15–30), orientar-se, rastrear e identificar animais; falha pode reduzir o avanço ou fazer o grupo se perder.",
+    "description_en": "Acampar (CD 15–30), orientar-se, rastrear e identificar animais; falha pode reduzir o avanço ou fazer o grupo se perder.",
+    "description_es": "Acampar (CD 15–30), orientar-se, rastrear e identificar animais; falha pode reduzir o avanço ou fazer o grupo se perder.",
+    "key_ability": "wis",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 123,
+    "data": {
+      "id": "sobrevivencia",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 123
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "wis"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 123,
+      "description": "Acampar (CD 15–30), orientar-se, rastrear e identificar animais; falha pode reduzir o avanço ou fazer o grupo se perder.",
+      "ruleSummary": "Acampar (CD 15–30), orientar-se, rastrear e identificar animais; falha pode reduzir o avanço ou fazer o grupo se perder.",
+      "skillAbility": "wis"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  },
+  {
+    "id": "t20.skill.vontade",
+    "system_id": "t20",
+    "name_pt": "Vontade",
+    "name_en": "Vontade",
+    "name_es": "Vontade",
+    "description_pt": "Concentração e resistência a efeitos mentais; também sustenta magia em condições adversas ou após sofrer dano.",
+    "description_en": "Concentração e resistência a efeitos mentais; também sustenta magia em condições adversas ou após sofrer dano.",
+    "description_es": "Concentração e resistência a efeitos mentais; também sustenta magia em condições adversas ou após sofrer dano.",
+    "key_ability": "wis",
+    "skill_type": "skill",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 123,
+    "data": {
+      "id": "vontade",
+      "source": {
+        "book": "Tormenta20 — Livro Básico",
+        "page": 123
+      },
+      "ruleset": "padrao",
+      "keyAbility": [
+        "wis"
+      ],
+      "sourceBook": "Tormenta20 — Livro Básico",
+      "sourcePage": 123,
+      "description": "Concentração e resistência a efeitos mentais; também sustenta magia em condições adversas ou após sofrer dano.",
+      "ruleSummary": "Concentração e resistência a efeitos mentais; também sustenta magia em condições adversas ou após sofrer dano.",
+      "skillAbility": "wis"
+    },
+    "created_at": "2026-09-13T22:33:04.551295+00:00",
+    "updated_at": "2026-09-13T22:34:04.3138+00:00"
+  }
+]

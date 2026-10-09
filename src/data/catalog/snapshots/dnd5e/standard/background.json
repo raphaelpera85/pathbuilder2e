@@ -1,0 +1,441 @@
+[
+  {
+    "id": "dnd5e.acolito",
+    "name_pt": "Acólito",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intuicao",
+      "religiao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 129,
+    "data": {
+      "kind": "background"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.artesao_guilda",
+    "name_pt": "Artesão de Guilda",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intuicao",
+      "persuasao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 130,
+    "data": {
+      "kind": "background",
+      "toolChoiceNames": [
+        "ferramentas de carpinteiro",
+        "ferramentas de cartógrafo",
+        "ferramentas de costureiro",
+        "ferramentas de coureiro",
+        "ferramentas de entalhador",
+        "ferramentas de ferreiro",
+        "ferramentas de funileiro",
+        "ferramentas de joalheiro",
+        "ferramentas de oleiro",
+        "ferramentas de pedreiro",
+        "ferramentas de pintor",
+        "ferramentas de sapateiro",
+        "ferramentas de vidreiro",
+        "suprimentos de alquimista",
+        "suprimentos de cervejeiro",
+        "suprimentos de caligrafia",
+        "utensílios de cozinheiro"
+      ],
+      "toolChoiceGroups": [
+        "artisan"
+      ]
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-13T14:18:29.748848+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.artista",
+    "name_pt": "Artista",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "acrobacia",
+      "atuacao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 134,
+    "data": {
+      "kind": "background",
+      "toolChoiceNames": [
+        "alaúde",
+        "flauta",
+        "flauta de pã",
+        "gaita de foles",
+        "lira",
+        "oboé",
+        "tambor",
+        "trombeta",
+        "violino",
+        "xilofone"
+      ],
+      "toolChoiceGroups": [
+        "instrument"
+      ]
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-13T14:18:29.748848+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.charlatao",
+    "name_pt": "Charlatão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "enganacao",
+      "prestidigitacao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 136,
+    "data": {
+      "kind": "background"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.criminoso",
+    "name_pt": "Criminoso",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "furtividade",
+      "enganacao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 139,
+    "data": {
+      "kind": "background",
+      "toolChoiceNames": [
+        "baralho de cartas",
+        "conjunto de dados",
+        "jogo dos três dragões",
+        "xadrez do dragão"
+      ],
+      "toolChoiceGroups": [
+        "game"
+      ]
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-13T14:18:29.748848+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.eremita",
+    "name_pt": "Eremita",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "medicina",
+      "religiao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 141,
+    "data": {
+      "kind": "background"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.forasteiro",
+    "name_pt": "Forasteiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atletismo",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 148,
+    "data": {
+      "kind": "background",
+      "toolChoiceNames": [
+        "alaúde",
+        "flauta",
+        "flauta de pã",
+        "gaita de foles",
+        "lira",
+        "oboé",
+        "tambor",
+        "trombeta",
+        "violino",
+        "xilofone"
+      ],
+      "toolChoiceGroups": [
+        "instrument"
+      ]
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-13T14:18:29.748848+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.heroi_do_povo",
+    "name_pt": "Herói do Povo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "adestramento",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 143,
+    "data": {
+      "kind": "background",
+      "toolChoiceNames": [
+        "ferramentas de carpinteiro",
+        "ferramentas de cartógrafo",
+        "ferramentas de costureiro",
+        "ferramentas de coureiro",
+        "ferramentas de entalhador",
+        "ferramentas de ferreiro",
+        "ferramentas de funileiro",
+        "ferramentas de joalheiro",
+        "ferramentas de oleiro",
+        "ferramentas de pedreiro",
+        "ferramentas de pintor",
+        "ferramentas de sapateiro",
+        "ferramentas de vidreiro",
+        "suprimentos de alquimista",
+        "suprimentos de cervejeiro",
+        "suprimentos de caligrafia",
+        "utensílios de cozinheiro"
+      ],
+      "toolChoiceGroups": [
+        "artisan"
+      ]
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-13T14:18:29.748848+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.marinheiro",
+    "name_pt": "Marinheiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atletismo",
+      "percepcao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 146,
+    "data": {
+      "kind": "background"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.nobre",
+    "name_pt": "Nobre",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "historia",
+      "persuasao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 147,
+    "data": {
+      "kind": "background",
+      "toolChoiceNames": [
+        "baralho de cartas",
+        "conjunto de dados",
+        "jogo dos três dragões",
+        "xadrez do dragão"
+      ],
+      "toolChoiceGroups": [
+        "game"
+      ]
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-13T14:18:29.748848+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.orfao",
+    "name_pt": "Órfão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "furtividade",
+      "prestidigitacao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 150,
+    "data": {
+      "kind": "background"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.sabio",
+    "name_pt": "Sábio",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "arcanismo",
+      "historia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 152,
+    "data": {
+      "kind": "background"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.soldado",
+    "name_pt": "Soldado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atletismo",
+      "intimidacao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 153,
+    "data": {
+      "kind": "background",
+      "toolChoiceNames": [
+        "baralho de cartas",
+        "conjunto de dados",
+        "jogo dos três dragões",
+        "xadrez do dragão"
+      ],
+      "toolChoiceGroups": [
+        "game"
+      ]
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-13T14:18:29.748848+00:00",
+    "system_id": "dnd5e"
+  }
+]

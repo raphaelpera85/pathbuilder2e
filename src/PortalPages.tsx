@@ -64,7 +64,7 @@ import { OSE_CLASSES } from "./data/ose/oseClasses";
 import { OSE_RACES } from "./data/ose/oseRaces";
 import { OSE_SPELLS } from "./data/ose/oseSpells";
 import { OSE_WEAPONS, OSE_ARMORS, OSE_GEAR } from "./data/ose/oseEquipment";
-import { getCoreCompendiumEntries, type CoreCatalogEntry } from "./data/coreCompendium";
+import type { CoreCatalogEntry } from "./data/coreCompendium";
 import "./portal.css";
 
 type PortalRoute = "builder" | "compendium" | "rules" | "downloads" | "library" | "campaigns" | "privacy" | "admin";
@@ -175,14 +175,12 @@ function CatalogPage() {
   const [bookFilter, setBookFilter] = useState<string>("all");
   const [inspectedEntry, setInspectedEntry] = useState<(PickerItem & { category: PickerType; categoryLabel: string }) | null>(null);
   const inspectedCloseRef = useRef<HTMLButtonElement>(null);
-  const [syncStatus, setSyncStatus] = useState<CatalogSyncStatus>(getCatalogSyncStatus());
-  const [remoteItemsByCategory, setRemoteItemsByCategory] = useState<Partial<Record<PickerType, PickerItem[]>>>({});
-  const [isSyncing, setIsSyncing] = useState(false);
+  const [syncStatus] = useState<CatalogSyncStatus>(getCatalogSyncStatus());
+  const [catalogItemsByCategory, setCatalogItemsByCategory] = useState<Partial<Record<PickerType, PickerItem[]>>>({});
   const [isCatalogLoading, setIsCatalogLoading] = useState(true);
   const [catalogLoadFailed, setCatalogLoadFailed] = useState(false);
-  const localCoreEntries = useMemo(() => getCoreCompendiumEntries(), []);
 
-  // Efeito para carregar dados remotos do Supabase
+  // O catálogo é um snapshot local versionado no Git; não há consulta remota.
   useEffect(() => {
     let isMounted = true;
     setIsCatalogLoading(true);
@@ -195,12 +193,7 @@ function CatalogPage() {
         });
         if (isMounted) {
           if (result.items.length > 0) {
-            setRemoteItemsByCategory((prev) => ({ ...prev, [type]: result.items }));
-          }
-          // Um fallback local em uma categoria não deve esconder que as demais
-          // continuam sendo servidas pelo Supabase.
-          if (result.source === "supabase") {
-            setSyncStatus((prev) => ({ ...prev, source: "supabase" }));
+            setCatalogItemsByCategory((prev) => ({ ...prev, [type]: result.items }));
           }
         }
         return result;
@@ -211,7 +204,7 @@ function CatalogPage() {
     };
 
     if (category === "all") {
-      // Carrega todas as 18 categorias relacionais do Supabase em lotes paralelos
+      // Carrega todas as categorias do snapshot local em lotes pequenos.
       const allTypes: PickerType[] = catalogCategories.map((c) => c.type);
       const BATCH_SIZE = 4;
       (async () => {
@@ -220,7 +213,7 @@ function CatalogPage() {
           if (!isMounted) break;
           const batch = allTypes.slice(i, i + BATCH_SIZE);
           const results = await Promise.all(batch.map((type) => loadCategory(type)));
-          degraded = degraded || results.some((result) => !result || result.source !== "supabase");
+          degraded = degraded || results.some((result) => !result);
         }
         if (isMounted) {
           setCatalogLoadFailed(degraded);
@@ -230,7 +223,7 @@ function CatalogPage() {
     } else {
       void loadCategory(category).then((result) => {
         if (!isMounted) return;
-        setCatalogLoadFailed(!result || result.source !== "supabase");
+        setCatalogLoadFailed(!result);
         setIsCatalogLoading(false);
       });
     }
@@ -240,67 +233,9 @@ function CatalogPage() {
     };
   }, [category, systemFilter, rulesetFilter]);
 
-  const handleManualSync = async () => {
-    setIsSyncing(true);
-    setIsCatalogLoading(true);
-    setCatalogLoadFailed(false);
-    try {
-      const typesToSync: PickerType[] = category === "all" ? catalogCategories.map((c) => c.type) : [category];
-      const BATCH_SIZE = 4;
-      let degraded = false;
-      for (let i = 0; i < typesToSync.length; i += BATCH_SIZE) {
-        const batch = typesToSync.slice(i, i + BATCH_SIZE);
-        const results = await Promise.all(
-          batch.map(async (type) => {
-            const result = await fetchCatalogCategory(type, {
-              forceRemote: true,
-              systemId: systemFilter === "all" ? "all" : systemFilter,
-              ruleset: rulesetFilter === "all" ? undefined : rulesetFilter as any,
-            });
-            if (result.items.length > 0) {
-              setRemoteItemsByCategory((prev) => ({ ...prev, [type]: result.items }));
-            }
-            if (result.source === "supabase") setSyncStatus((prev) => ({ ...prev, source: "supabase" }));
-            return result;
-          })
-        );
-        degraded = degraded || results.some((result) => result.source !== "supabase");
-      }
-      setCatalogLoadFailed(degraded);
-    } finally {
-      setIsSyncing(false);
-      setIsCatalogLoading(false);
-    }
-  };
-
   const entries = useMemo<CoreCatalogEntry[]>(() => {
-    const remoteAndLegacy = catalogCategories.flatMap(({ type, label }) => {
-    const remote = remoteItemsByCategory[type];
-    if (remote && remote.length > 0) {
-      return remote.map((item) => ({ ...item, category: type, categoryLabel: t(label) }));
-    }
-    // Quando o Supabase está configurado e online, as informações devem vir exclusivamente dele
-    if (syncStatus.isConfigured && syncStatus.isOnline) {
-      return [];
-    }
-    try {
-      return (window as any).app?.getPickerItems(type, { includeIncompatible: true }).map((item: any) => ({ ...item, category: type, categoryLabel: t(label) })) || [];
-    } catch {
-      return [];
-    }
-    });
-    // O catálogo local é fallback completo para modo offline. Quando já há
-    // dados remotos carregados, não mesclamos uma segunda cópia do mesmo
-    // sistema/registro (isso também evita duplicações durante a sincronização).
-    const useLocalCore = remoteAndLegacy.length === 0 && (!syncStatus.isConfigured || !syncStatus.isOnline);
-    if (useLocalCore) return localCoreEntries;
-    // O catálogo remoto legado pode ainda não conter os registros Classic do
-    // OSE. Mantemos esse ruleset localmente para que o filtro não fique vazio
-    // quando o Supabase estiver configurado, sem duplicar entradas já remotas.
-    const remoteIds = new Set(remoteAndLegacy.map((entry) => entry.data?.id));
-    const localRulesetEntries = localCoreEntries.filter((entry) => String(entry.data?.ruleset) === "classic" && !remoteIds.has(entry.data?.id));
-    return [...remoteAndLegacy, ...localRulesetEntries];
-  }, [localCoreEntries, remoteItemsByCategory, syncStatus.isConfigured, syncStatus.isOnline, t]);
+    return catalogCategories.flatMap(({ type, label }) => (catalogItemsByCategory[type] || []).map((item) => ({ ...item, category: type, categoryLabel: t(label) })));
+  }, [catalogItemsByCategory, t]);
 
   const availableBooks = useMemo(() => {
     const books = new Set<string>();
@@ -465,32 +400,17 @@ function CatalogPage() {
         {availableBooks.length > 0 && <label><span>{t("filterBook")}</span><select value={bookFilter} onChange={(event) => setBookFilter(event.target.value)}><option value="all">{t("allBooks")}</option>{availableBooks.map((b) => <option key={b} value={b}>{localizeSourceBook(b, locale)}</option>)}</select></label>}
       </div>
       <div className="catalog-toolbar-bottom-row">
-        <div className="catalog-source-badge" title={syncStatus.isConfigured ? "Conectado ao Supabase com 18 tabelas relacionais" : "Modo offline local"}>
-          <span className="source-indicator-dot" style={{ backgroundColor: syncStatus.source === "supabase" ? "#10b981" : syncStatus.source === "local_cache" ? "#3b82f6" : "#f59e0b" }} />
+        <div className="catalog-source-badge" title="Snapshot do catálogo, versionado no Git">
+          <span className="source-indicator-dot" style={{ backgroundColor: syncStatus.source === "local_snapshot" ? "#10b981" : "#f59e0b" }} />
           <span className="source-indicator-text">
-            {syncStatus.source === "supabase"
-              ? (locale === "en" ? "☁️ Supabase Cloud" : locale === "es" ? "☁️ Nube Supabase" : "☁️ Supabase Conectado")
-              : syncStatus.source === "local_cache"
-                ? (locale === "en" ? "⚡ Local Cache" : locale === "es" ? "⚡ Caché Local" : "⚡ Cache Offline")
-                : (locale === "en" ? "💾 Local Catalog" : locale === "es" ? "💾 Catálogo Local" : "💾 Catálogo Integrado")}
+            {locale === "en" ? "💾 Git catalog" : locale === "es" ? "💾 Catálogo Git" : "💾 Catálogo versionado"}
           </span>
-          {syncStatus.isConfigured && (
-            <button
-              type="button"
-              className="catalog-sync-btn"
-              onClick={handleManualSync}
-              disabled={isSyncing}
-              title={locale === "en" ? "Sync with Supabase" : locale === "es" ? "Sincronizar con Supabase" : "Sincronizar com Supabase"}
-            >
-              {isSyncing ? "⏳" : "🔄"}
-            </button>
-          )}
         </div>
         <strong className="catalog-count" aria-live="polite">{filtered.length} {t("results")}</strong>
       </div>
     </section>
     {isCatalogLoading && entries.length === 0 ? <div className="portal-empty" role="status" aria-live="polite" aria-busy="true">{t("loadingCatalog")}</div>
-      : catalogLoadFailed && entries.length === 0 ? <div className="portal-empty" role="alert"><p>{t("catalogLoadFailed")}</p><button type="button" onClick={handleManualSync} disabled={isSyncing}>{t("retry")}</button></div>
+      : catalogLoadFailed && entries.length === 0 ? <div className="portal-empty" role="alert"><p>{t("catalogLoadFailed")}</p></div>
       : filtered.length === 0 ? <div className="portal-empty">{hasHiddenCatalogMatches && <p className="portal-warning" role="status">{t("catalogHiddenByFilters")}</p>}<p>{t("noCatalogResults")}</p></div> : <section className="catalog-grid" aria-label={t("compendiumTitle")}>
       {filtered.map((entry) => {
         const catalogEntryKey = entry.id ?? entry.data?.id ?? `${entry.category}:${entry.name}`;

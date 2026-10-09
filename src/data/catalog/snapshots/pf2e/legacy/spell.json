@@ -1,0 +1,2528 @@
+[
+  {
+    "id": "spell.book_of_dead.consecrated_ground",
+    "name_pt": "Solo Consagrado",
+    "name_en": "Consecrated Ground",
+    "name_es": "Suelo consagrado",
+    "description_pt": "Cria uma área hostil a mortos-vivos: causa dano positivo e bondoso, aumenta sua fraqueza a dano positivo e impede criações de mortos-vivos.",
+    "description_en": "Creates an area hostile to undead: it deals positive and good damage, increases weakness to positive damage, and counters undead creation.",
+    "description_es": "Crea un área hostil a los no muertos: inflige daño positivo y bueno, aumenta su debilidad al daño positivo y contrarresta la creación de no muertos.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": true,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Bondoso",
+      "Necromancia",
+      "Positivo",
+      "Foco"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.bilocation",
+    "name_pt": "Bilocação",
+    "name_en": "Bilocation",
+    "name_es": "Bilocación",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 9; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 9; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 9; requiere una habilidad desviada.",
+    "rank": 9,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 104,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.bracing_tendrils",
+    "name_pt": "Gavinhas de Sustentação",
+    "name_en": "Bracing Tendrils",
+    "name_es": "Zarcillos de refuerzo",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 3; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 3; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 3; requiere una habilidad desviada.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 104,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.empty_pack",
+    "name_pt": "Mochila Vazia",
+    "name_en": "Empty Pack",
+    "name_es": "Mochila vacía",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 2; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 2; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 2; requiere una habilidad desviada.",
+    "rank": 2,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 104,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.etheric_shards",
+    "name_pt": "Estilhaços Etéricos",
+    "name_en": "Etheric Shards",
+    "name_es": "Esquirlas etéricas",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 5; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 5; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 5; requiere una habilidad desviada.",
+    "rank": 5,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 105,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.falling_sky",
+    "name_pt": "Céu Cadente",
+    "name_en": "Falling Sky",
+    "name_es": "Cielo descendente",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 8; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 8; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 8; requiere una habilidad desviada.",
+    "rank": 8,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 105,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.focusing_hum",
+    "name_pt": "Zumbido de Foco",
+    "name_en": "Focusing Hum",
+    "name_es": "Zumbido focalizador",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 3; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 3; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 3; requiere una habilidad desviada.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 104,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.implement_of_destruction",
+    "name_pt": "Implemento de Destruição",
+    "name_en": "Implement of Destruction",
+    "name_es": "Implemento de destrucción",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 4; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 4; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 4; requiere una habilidad desviada.",
+    "rank": 4,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 105,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.momentary_recovery",
+    "name_pt": "Recuperação Momentânea",
+    "name_en": "Momentary Recovery",
+    "name_es": "Recuperación momentánea",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 7; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 7; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 7; requiere una habilidad desviada.",
+    "rank": 7,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 106,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.moths_supper",
+    "name_pt": "Banquete das Mariposas",
+    "name_en": "Moth's Supper",
+    "name_es": "Banquete de polillas",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 3; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 3; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 3; requiere una habilidad desviada.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 106,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.poltergeists_fury",
+    "name_pt": "Fúria do Poltergeist",
+    "name_en": "Poltergeist's Fury",
+    "name_es": "Furia del poltergeist",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 6; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 6; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 6; requiere una habilidad desviada.",
+    "rank": 6,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 106,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.rally_point",
+    "name_pt": "Ponto de Reunião",
+    "name_en": "Rally Point",
+    "name_es": "Punto de reunión",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 3; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 3; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 3; requiere una habilidad desviada.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 106,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.sea_of_thought",
+    "name_pt": "Mar de Pensamento",
+    "name_en": "Sea of Thought",
+    "name_es": "Mar de pensamiento",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 3; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 3; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 3; requiere una habilidad desviada.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 106,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.shadow_spy",
+    "name_pt": "Espião das Sombras",
+    "name_en": "Shadow Spy",
+    "name_es": "Espía de las sombras",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 3; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 3; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 3; requiere una habilidad desviada.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 107,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.soft_landing",
+    "name_pt": "Pouso Suave",
+    "name_en": "Soft Landing",
+    "name_es": "Aterrizaje suave",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 4; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 4; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 4; requiere una habilidad desviada.",
+    "rank": 4,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 107,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.deviant.telekinetic_bombardment",
+    "name_pt": "Bombardeio Telecinético",
+    "name_en": "Telekinetic Bombardment",
+    "name_es": "Bombardeo telequinético",
+    "description_pt": "Magia Deviant de Dark Archive, ranque 7; requer habilidade desviante.",
+    "description_en": "Dark Archive deviant spell, rank 7; requires a deviant ability.",
+    "description_es": "Conjuro Deviant de Dark Archive, rango 7; requiere una habilidad desviada.",
+    "rank": 7,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Desviante"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 107,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.domain.cinder_gaze",
+    "name_pt": "Olhar de Brasa",
+    "name_en": "Cinder Gaze",
+    "name_es": "Mirada de brasa",
+    "description_pt": "Magia de domínio apócrifo de fire, foco 1, de Dark Archive.",
+    "description_en": "Dark Archive apocryphal fire domain focus spell, focus 1.",
+    "description_es": "Conjuro de dominio apócrifo de fire de Dark Archive, foco 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Domínio",
+      "Apócrifo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 142,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.domain.euphoric_renewal",
+    "name_pt": "Renovação Eufórica",
+    "name_en": "Euphoric Renewal",
+    "name_es": "Renovación eufórica",
+    "description_pt": "Magia de domínio apócrifo de death, foco 4, de Dark Archive.",
+    "description_en": "Dark Archive apocryphal death domain focus spell, focus 4.",
+    "description_es": "Conjuro de dominio apócrifo de death de Dark Archive, foco 4.",
+    "rank": 4,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Domínio",
+      "Apócrifo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 142,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.domain.frenzied_revelry",
+    "name_pt": "Folguedo Frenético",
+    "name_en": "Frenzied Revelry",
+    "name_es": "Jolgorio frenético",
+    "description_pt": "Magia de domínio apócrifo de indulgence, foco 1, de Dark Archive.",
+    "description_en": "Dark Archive apocryphal indulgence domain focus spell, focus 1.",
+    "description_es": "Conjuro de dominio apócrifo de indulgence de Dark Archive, foco 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Domínio",
+      "Apócrifo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 142,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.domain.hollow_heart",
+    "name_pt": "Coração Vazio",
+    "name_en": "Hollow Heart",
+    "name_es": "Corazón hueco",
+    "description_pt": "Magia de domínio apócrifo de ambition, foco 1, de Dark Archive.",
+    "description_en": "Dark Archive apocryphal ambition domain focus spell, focus 1.",
+    "description_es": "Conjuro de dominio apócrifo de ambition de Dark Archive, foco 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Domínio",
+      "Apócrifo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 143,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.domain.inevitable_destination",
+    "name_pt": "Destino Inevitável",
+    "name_en": "Inevitable Destination",
+    "name_es": "Destino inevitable",
+    "description_pt": "Magia de domínio apócrifo de travel, foco 4, de Dark Archive.",
+    "description_en": "Dark Archive apocryphal travel domain focus spell, focus 4.",
+    "description_es": "Conjuro de dominio apócrifo de travel de Dark Archive, foco 4.",
+    "rank": 4,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Domínio",
+      "Apócrifo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 144,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.domain.isolation",
+    "name_pt": "Isolamento",
+    "name_en": "Isolation",
+    "name_es": "Aislamiento",
+    "description_pt": "Magia de domínio apócrifo de darkness, foco 4, de Dark Archive.",
+    "description_en": "Dark Archive apocryphal darkness domain focus spell, focus 4.",
+    "description_es": "Conjuro de dominio apócrifo de darkness de Dark Archive, foco 4.",
+    "rank": 4,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Domínio",
+      "Apócrifo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 143,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.domain.purifying_veil",
+    "name_pt": "Véu Purificador",
+    "name_en": "Purifying Veil",
+    "name_es": "Velo purificador",
+    "description_pt": "Magia de domínio apócrifo de water, foco 4, de Dark Archive.",
+    "description_en": "Dark Archive apocryphal water domain focus spell, focus 4.",
+    "description_es": "Conjuro de dominio apócrifo de water de Dark Archive, foco 4.",
+    "rank": 4,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Domínio",
+      "Apócrifo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 144,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.domain.shaken_confidence",
+    "name_pt": "Confiança Abalada",
+    "name_en": "Shaken Confidence",
+    "name_es": "Confianza quebrada",
+    "description_pt": "Magia de domínio apócrifo de confidence, foco 4, de Dark Archive.",
+    "description_en": "Dark Archive apocryphal confidence domain focus spell, focus 4.",
+    "description_es": "Conjuro de dominio apócrifo de confidence de Dark Archive, foco 4.",
+    "rank": 4,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Domínio",
+      "Apócrifo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 143,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.domain.string_of_fate",
+    "name_pt": "Fio do Destino",
+    "name_en": "String of Fate",
+    "name_es": "Hilo del destino",
+    "description_pt": "Magia de domínio apócrifo de fate, foco 1, de Dark Archive.",
+    "description_en": "Dark Archive apocryphal fate domain focus spell, focus 1.",
+    "description_es": "Conjuro de dominio apócrifo de fate de Dark Archive, foco 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Domínio",
+      "Apócrifo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 144,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.domain.victory_cry",
+    "name_pt": "Grito de Vitória",
+    "name_en": "Victory Cry",
+    "name_es": "Grito de victoria",
+    "description_pt": "Magia de domínio apócrifo de might, foco 1, de Dark Archive.",
+    "description_en": "Dark Archive apocryphal might domain focus spell, focus 1.",
+    "description_es": "Conjuro de dominio apócrifo de might de Dark Archive, foco 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Domínio",
+      "Apócrifo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 144,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.domain.weaponize_secret",
+    "name_pt": "Armar Segredo",
+    "name_en": "Weaponize Secret",
+    "name_es": "Armar secreto",
+    "description_pt": "Magia de domínio apócrifo de secrecy, foco 4, de Dark Archive.",
+    "description_en": "Dark Archive apocryphal secrecy domain focus spell, focus 4.",
+    "description_es": "Conjuro de dominio apócrifo de secrecy de Dark Archive, foco 4.",
+    "rank": 4,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Domínio",
+      "Apócrifo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 145,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.domain.wind_whispers",
+    "name_pt": "Sussurros do Vento",
+    "name_en": "Wind Whispers",
+    "name_es": "Susurros del viento",
+    "description_pt": "Magia de domínio apócrifo de air, foco 4, de Dark Archive.",
+    "description_en": "Dark Archive apocryphal air domain focus spell, focus 4.",
+    "description_es": "Conjuro de dominio apócrifo de air de Dark Archive, foco 4.",
+    "rank": 4,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Domínio",
+      "Apócrifo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 145,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.domain.wordsmith",
+    "name_pt": "Mestre das Palavras",
+    "name_en": "Wordsmith",
+    "name_es": "Maestro de las palabras",
+    "description_pt": "Magia de domínio apócrifo de knowledge, foco 4, de Dark Archive.",
+    "description_en": "Dark Archive apocryphal knowledge domain focus spell, focus 4.",
+    "description_es": "Conjuro de dominio apócrifo de knowledge de Dark Archive, foco 4.",
+    "rank": 4,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divine"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Domínio",
+      "Apócrifo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 145,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.astral_rain",
+    "name_pt": "Chuva Astral",
+    "name_en": "Astral Rain",
+    "name_es": "Lluvia astral",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 3.",
+    "description_en": "Psychic exclusive psi cantrip, rank 3.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 3.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.contagious_idea",
+    "name_pt": "Ideia Contagiosa",
+    "name_en": "Contagious Idea",
+    "name_es": "Idea contagiosa",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 5.",
+    "description_en": "Psychic exclusive psi cantrip, rank 5.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 5.",
+    "rank": 5,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 28,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.dancing_blade",
+    "name_pt": "Lâmina Dançante",
+    "name_en": "Dancing Blade",
+    "name_es": "Hoja danzante",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 5.",
+    "description_en": "Psychic exclusive psi cantrip, rank 5.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 5.",
+    "rank": 5,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 25,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.distortion_lens",
+    "name_pt": "Lente de Distorção",
+    "name_en": "Distortion Lens",
+    "name_es": "Lente de distorsión",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 1.",
+    "description_en": "Psychic exclusive psi cantrip, rank 1.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.entropic_wheel",
+    "name_pt": "Roda Entrópica",
+    "name_en": "Entropic Wheel",
+    "name_es": "Rueda entrópica",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 3.",
+    "description_en": "Psychic exclusive psi cantrip, rank 3.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 3.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 27,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.forbidden_thought",
+    "name_pt": "Pensamento Proibido",
+    "name_en": "Forbidden Thought",
+    "name_es": "Pensamiento prohibido",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 1.",
+    "description_en": "Psychic exclusive psi cantrip, rank 1.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 28,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.foresee_the_path",
+    "name_pt": "Prever o Caminho",
+    "name_en": "Foresee the Path",
+    "name_es": "Prever el camino",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 5.",
+    "description_en": "Psychic exclusive psi cantrip, rank 5.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 5.",
+    "rank": 5,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 26,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.ghostly_shift",
+    "name_pt": "Deslocamento Fantasmagórico",
+    "name_en": "Ghostly Shift",
+    "name_es": "Desplazamiento fantasmal",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 3.",
+    "description_en": "Psychic exclusive psi cantrip, rank 3.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 3.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.glimpse_weakness",
+    "name_pt": "Vislumbrar Fraqueza",
+    "name_en": "Glimpse Weakness",
+    "name_es": "Vislumbrar debilidad",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 1.",
+    "description_en": "Psychic exclusive psi cantrip, rank 1.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 26,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.hologram_cage",
+    "name_pt": "Jaula de Holograma",
+    "name_en": "Hologram Cage",
+    "name_es": "Jaula de holograma",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 5.",
+    "description_en": "Psychic exclusive psi cantrip, rank 5.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 5.",
+    "rank": 5,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.imaginary_weapon",
+    "name_pt": "Arma Imaginária",
+    "name_en": "Imaginary Weapon",
+    "name_es": "Arma imaginaria",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 1.",
+    "description_en": "Psychic exclusive psi cantrip, rank 1.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.omnidirectional_scan",
+    "name_pt": "Varredura Omnidirecional",
+    "name_en": "Omnidirectional Scan",
+    "name_es": "Escaneo omnidireccional",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 3.",
+    "description_en": "Psychic exclusive psi cantrip, rank 3.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 3.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 26,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.redistribute_potential",
+    "name_pt": "Redistribuir Potencial",
+    "name_en": "Redistribute Potential",
+    "name_es": "Redistribuir potencial",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 5.",
+    "description_en": "Psychic exclusive psi cantrip, rank 5.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 5.",
+    "rank": 5,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 27,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.shatter_mind",
+    "name_pt": "Despedaçar a Mente",
+    "name_en": "Shatter Mind",
+    "name_es": "Destrozar la mente",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 3.",
+    "description_en": "Psychic exclusive psi cantrip, rank 3.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 3.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 28,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.telekinetic_rend",
+    "name_pt": "Rasgo Telecinético",
+    "name_en": "Telekinetic Rend",
+    "name_es": "Desgarro telequinético",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 1.",
+    "description_en": "Psychic exclusive psi cantrip, rank 1.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 25,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.tesseract_tunnel",
+    "name_pt": "Túnel de Tesserato",
+    "name_en": "Tesseract Tunnel",
+    "name_es": "Túnel de teseracto",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 5.",
+    "description_en": "Psychic exclusive psi cantrip, rank 5.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 5.",
+    "rank": 5,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.thermal_stasis",
+    "name_pt": "Estase Térmica",
+    "name_en": "Thermal Stasis",
+    "name_es": "Estasis térmica",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 1.",
+    "description_en": "Psychic exclusive psi cantrip, rank 1.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 27,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.psychic.vector_screen",
+    "name_pt": "Tela Vetorial",
+    "name_en": "Vector Screen",
+    "name_es": "Pantalla vectorial",
+    "description_pt": "Psi cantrip exclusivo do Psíquico, ranque 3.",
+    "description_en": "Psychic exclusive psi cantrip, rank 3.",
+    "description_es": "Truco psi exclusivo del Psíquico, rango 3.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Psíquico",
+      "Ocultista"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 25,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.temporal.awaken_entropy",
+    "name_pt": "Despertar Entropia",
+    "name_en": "Awaken Entropy",
+    "name_es": "Despertar la entropía",
+    "description_pt": "Magia temporal de Dark Archive, ranque 6.",
+    "description_en": "Dark Archive temporal spell, rank 6.",
+    "description_es": "Conjuro temporal de Dark Archive, rango 6.",
+    "rank": 6,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Temporal"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 181,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.temporal.behold_the_weave",
+    "name_pt": "Contemplar a Trama",
+    "name_en": "Behold the Weave",
+    "name_es": "Contemplar la trama",
+    "description_pt": "Magia temporal de Dark Archive, ranque 3.",
+    "description_en": "Dark Archive temporal spell, rank 3.",
+    "description_es": "Conjuro temporal de Dark Archive, rango 3.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Temporal"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 181,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.temporal.loose_times_arrow",
+    "name_pt": "Soltar a Flecha do Tempo",
+    "name_en": "Loose Time's Arrow",
+    "name_es": "Soltar la flecha del tiempo",
+    "description_pt": "Magia temporal de Dark Archive, ranque 2.",
+    "description_en": "Dark Archive temporal spell, rank 2.",
+    "description_es": "Conjuro temporal de Dark Archive, rango 2.",
+    "rank": 2,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Temporal"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 182,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.temporal.morass_of_ages",
+    "name_pt": "Pântano das Eras",
+    "name_en": "Morass of Ages",
+    "name_es": "Pantano de las eras",
+    "description_pt": "Magia temporal de Dark Archive, ranque 4.",
+    "description_en": "Dark Archive temporal spell, rank 4.",
+    "description_es": "Conjuro temporal de Dark Archive, rango 4.",
+    "rank": 4,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Temporal"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 182,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.temporal.quicken_time",
+    "name_pt": "Acelerar o Tempo",
+    "name_en": "Quicken Time",
+    "name_es": "Acelerar el tiempo",
+    "description_pt": "Magia temporal de Dark Archive, ranque 5.",
+    "description_en": "Dark Archive temporal spell, rank 5.",
+    "description_es": "Conjuro temporal de Dark Archive, rango 5.",
+    "rank": 5,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Temporal"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 181,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.temporal.stagnate_time",
+    "name_pt": "Estagnar o Tempo",
+    "name_en": "Stagnate Time",
+    "name_es": "Estancar el tiempo",
+    "description_pt": "Magia temporal de Dark Archive, ranque 5.",
+    "description_en": "Dark Archive temporal spell, rank 5.",
+    "description_es": "Conjuro temporal de Dark Archive, rango 5.",
+    "rank": 5,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Temporal"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 181,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.temporal.summon_irii",
+    "name_pt": "Convocar Irii",
+    "name_en": "Summon Irii",
+    "name_es": "Convocar iri",
+    "description_pt": "Magia temporal de Dark Archive, ranque 8.",
+    "description_en": "Dark Archive temporal spell, rank 8.",
+    "description_es": "Conjuro temporal de Dark Archive, rango 8.",
+    "rank": 8,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Temporal"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 182,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.temporal.suspended_retribution",
+    "name_pt": "Retribuição Suspensa",
+    "name_en": "Suspended Retribution",
+    "name_es": "Retribución suspendida",
+    "description_pt": "Magia temporal de Dark Archive, ranque 6.",
+    "description_en": "Dark Archive temporal spell, rank 6.",
+    "description_es": "Conjuro temporal de Dark Archive, rango 6.",
+    "rank": 6,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Temporal"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 183,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.temporal.temporal_twin",
+    "name_pt": "Gêmeo Temporal",
+    "name_en": "Temporal Twin",
+    "name_es": "Gemelo temporal",
+    "description_pt": "Magia temporal de Dark Archive, ranque 3.",
+    "description_en": "Dark Archive temporal spell, rank 3.",
+    "description_es": "Conjuro temporal de Dark Archive, rango 3.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Temporal"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 183,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.temporal.time_pocket",
+    "name_pt": "Bolso Temporal",
+    "name_en": "Time Pocket",
+    "name_es": "Bolsillo temporal",
+    "description_pt": "Magia temporal de Dark Archive, ranque 3.",
+    "description_en": "Dark Archive temporal spell, rank 3.",
+    "description_es": "Conjuro temporal de Dark Archive, rango 3.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Temporal"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 183,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.dark_archive.temporal.time_sense",
+    "name_pt": "Sentido Temporal",
+    "name_en": "Time Sense",
+    "name_es": "Sentido temporal",
+    "description_pt": "Magia temporal de Dark Archive, ranque 1.",
+    "description_en": "Dark Archive temporal spell, rank 1.",
+    "description_es": "Conjuro temporal de Dark Archive, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "occult"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "Temporal"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 183,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:42.101515+00:00",
+    "updated_at": "2026-09-23T18:16:35.693563+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.secrets_of_magic.magus.cascade_countermeasure",
+    "name_pt": "Contramedida de Cascata",
+    "name_en": "Cascade Countermeasure",
+    "name_es": "Contramedida de cascada",
+    "description_pt": "Magia de foco de Magus, ranque 3.",
+    "description_en": "Magus focus spell, rank 3.",
+    "description_es": "Conjuro de foco del magus, rango 3.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 145,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.secrets_of_magic.magus.dimensional_assault",
+    "name_pt": "Agressão Dimensional",
+    "name_en": "Dimensional Assault",
+    "name_es": "Asalto dimensional",
+    "description_pt": "Magia de foco de Magus, ranque 1.",
+    "description_en": "Magus focus spell, rank 1.",
+    "description_es": "Conjuro de foco del magus, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 144,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.secrets_of_magic.magus.force_fang",
+    "name_pt": "Presa de Força",
+    "name_en": "Force Fang",
+    "name_es": "Colmillo de fuerza",
+    "description_pt": "Magia de foco de Magus, ranque 1.",
+    "description_en": "Magus focus spell, rank 1.",
+    "description_es": "Conjuro de foco del magus, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 145,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.secrets_of_magic.magus.quickened_assault",
+    "name_pt": "Ataque Rápido",
+    "name_en": "Hasted Assault",
+    "name_es": "Asalto acelerado",
+    "description_pt": "Magia de foco de Magus, ranque 7.",
+    "description_en": "Magus focus spell, rank 7.",
+    "description_es": "Conjuro de foco del magus, rango 7.",
+    "rank": 7,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 144,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.secrets_of_magic.magus.rune_engraving",
+    "name_pt": "Impressão Rúnica",
+    "name_en": "Runic Impression",
+    "name_es": "Impresión rúnica",
+    "description_pt": "Magia de foco de Magus, ranque 4.",
+    "description_en": "Magus focus spell, rank 4.",
+    "description_es": "Conjuro de foco del magus, rango 4.",
+    "rank": 4,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 144,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.secrets_of_magic.magus.shielding_strike",
+    "name_pt": "Golpe e Escudo",
+    "name_en": "Shielding Strike",
+    "name_es": "Golpe y escudo",
+    "description_pt": "Magia de foco de Magus, ranque 1.",
+    "description_en": "Magus focus spell, rank 1.",
+    "description_es": "Conjuro de foco del magus, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 145,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.secrets_of_magic.magus.shooting_star",
+    "name_pt": "Estrela Cadente",
+    "name_en": "Shooting Star",
+    "name_es": "Estrella fugaz",
+    "description_pt": "Magia de foco de Magus, ranque 1.",
+    "description_en": "Magus focus spell, rank 1.",
+    "description_es": "Conjuro de foco del magus, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 145,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.secrets_of_magic.magus.spinning_staff",
+    "name_pt": "Cajado Giratório",
+    "name_en": "Spinning Staff",
+    "name_es": "Bastón giratorio",
+    "description_pt": "Magia de foco de Magus, ranque 1.",
+    "description_en": "Magus focus spell, rank 1.",
+    "description_es": "Conjuro de foco del magus, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 144,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.secrets_of_magic.magus.thunderous_strike",
+    "name_pt": "Golpe Estrondoso",
+    "name_en": "Thunderous Strike",
+    "name_es": "Golpe atronador",
+    "description_pt": "Magia de foco de Magus, ranque 1.",
+    "description_en": "Magus focus spell, rank 1.",
+    "description_es": "Conjuro de foco del magus, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 145,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.secrets_of_magic.summoner.eidolons_ire",
+    "name_pt": "Ira do Eidolon",
+    "name_en": "Eidolon's Wrath",
+    "name_es": "Ira del eidolón",
+    "description_pt": "Magia de foco de Convocador, ranque 3.",
+    "description_en": "Summoner focus spell, rank 3.",
+    "description_es": "Conjuro de foco del convocador, rango 3.",
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 142,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.secrets_of_magic.summoner.evolution_surge",
+    "name_pt": "Surto de Evolução",
+    "name_en": "Evolution Surge",
+    "name_es": "Oleada de evolución",
+    "description_pt": "Magia de foco de Convocador, ranque 1.",
+    "description_en": "Summoner focus spell, rank 1.",
+    "description_es": "Conjuro de foco del convocador, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 143,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.secrets_of_magic.summoner.extend_boost",
+    "name_pt": "Prolongar Impulsionamento",
+    "name_en": "Extend Boost",
+    "name_es": "Extender impulso",
+    "description_pt": "Magia de foco de Convocador, ranque 1.",
+    "description_en": "Summoner focus spell, rank 1.",
+    "description_es": "Conjuro de foco del convocador, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 143,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.secrets_of_magic.summoner.release_eidolon",
+    "name_pt": "Libertar Eidolon",
+    "name_en": "Release Eidolon",
+    "name_es": "Liberar eidolón",
+    "description_pt": "Magia de foco de Convocador, ranque 1.",
+    "description_en": "Summoner focus spell, rank 1.",
+    "description_es": "Conjuro de foco del convocador, rango 1.",
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 142,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "spell.secrets_of_magic.summoner.vital_bond_surge",
+    "name_pt": "Surto de Vínculo Vital",
+    "name_en": "Vital Bond Surge",
+    "name_es": "Oleada de vínculo vital",
+    "description_pt": "Magia de foco de Convocador, ranque 2.",
+    "description_en": "Summoner focus spell, rank 2.",
+    "description_es": "Conjuro de foco del convocador, rango 2.",
+    "rank": 2,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcane",
+      "divine",
+      "occult",
+      "primal"
+    ],
+    "cast_actions": "two-actions",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 143,
+    "data": {
+      "heightened": null,
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:54:41.539673+00:00",
+    "updated_at": "2026-09-23T18:16:35.49521+00:00",
+    "system_id": "pf2e"
+  }
+]

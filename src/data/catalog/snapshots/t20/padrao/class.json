@@ -1,0 +1,603 @@
+[
+  {
+    "id": "t20.arcanista",
+    "name_pt": "Arcanista",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 2,
+    "key_attributes": [
+      "int"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Misticismo",
+      "Vontade"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 36,
+    "data": {
+      "startingHp": 8,
+      "manaPerLevel": 6,
+      "proficiencies": "Nenhuma",
+      "choiceSkillCount": 1
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.barbaro",
+    "name_pt": "Bárbaro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 6,
+    "key_attributes": [
+      "str"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Fortitude",
+      "Luta"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 40,
+    "data": {
+      "startingHp": 24,
+      "manaPerLevel": 3,
+      "proficiencies": "Armas marciais e escudos",
+      "choiceSkillCount": 4
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.bardo",
+    "name_pt": "Bardo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 3,
+    "key_attributes": [
+      "cha"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Atuação",
+      "Reflexos"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 43,
+    "data": {
+      "startingHp": 12,
+      "classChoices": [
+        {
+          "id": "t20-bardo-schools",
+          "count": 3,
+          "label": "Escolas de magia do Bardo",
+          "options": [
+            "Abjuração",
+            "Adivinhação",
+            "Convocação",
+            "Encantamento",
+            "Evocação",
+            "Ilusão",
+            "Necromancia",
+            "Transmutação"
+          ],
+          "minimumLevel": 1
+        }
+      ],
+      "manaPerLevel": 4,
+      "proficiencies": "Armas marciais",
+      "choiceSkillCount": 6
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-13T15:22:53.48914+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.bucaneiro",
+    "name_pt": "Bucaneiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 4,
+    "key_attributes": [
+      "dex"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Reflexos"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 46,
+    "data": {
+      "startingHp": 16,
+      "manaPerLevel": 3,
+      "proficiencies": "Armas marciais",
+      "choiceSkillCount": 4
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.cacador",
+    "name_pt": "Caçador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 4,
+    "key_attributes": [
+      "dex"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Sobrevivência"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 49,
+    "data": {
+      "startingHp": 16,
+      "classChoices": [
+        {
+          "id": "t20-cacador-favored-enemy",
+          "count": 1,
+          "label": "Inimigo favorecido",
+          "options": [
+            "Aberração",
+            "Animal",
+            "Construto",
+            "Espírito",
+            "Fada",
+            "Humanoide",
+            "Monstro",
+            "Morto-vivo",
+            "Planta"
+          ],
+          "minimumLevel": 1
+        },
+        {
+          "id": "t20-cacador-favored-terrain",
+          "count": 1,
+          "label": "Terreno favorecido",
+          "options": [
+            "Deserto",
+            "Floresta",
+            "Montanha",
+            "Pântano",
+            "Planície",
+            "Subterrâneo",
+            "Urbano",
+            "Litoral"
+          ],
+          "minimumLevel": 1
+        }
+      ],
+      "manaPerLevel": 4,
+      "proficiencies": "Armas marciais e escudos",
+      "choiceSkillCount": 6
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-13T15:22:53.48914+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.cavaleiro",
+    "name_pt": "Cavaleiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 5,
+    "key_attributes": [
+      "str"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Fortitude",
+      "Luta"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 52,
+    "data": {
+      "startingHp": 20,
+      "classChoices": [
+        {
+          "id": "t20-cavaleiro-path",
+          "count": 1,
+          "label": "Caminho do Cavaleiro",
+          "options": [
+            "Bastião",
+            "Montaria"
+          ],
+          "minimumLevel": 5
+        }
+      ],
+      "manaPerLevel": 3,
+      "proficiencies": "Armas marciais, armaduras pesadas e escudos",
+      "choiceSkillCount": 2
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-13T15:22:53.48914+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.clerigo",
+    "name_pt": "Clérigo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 4,
+    "key_attributes": [
+      "wis"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Religião",
+      "Vontade"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 56,
+    "data": {
+      "startingHp": 16,
+      "manaPerLevel": 5,
+      "proficiencies": "Armaduras pesadas e escudos",
+      "choiceSkillCount": 2
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.druida",
+    "name_pt": "Druida",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 4,
+    "key_attributes": [
+      "wis"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Sobrevivência",
+      "Vontade"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 60,
+    "data": {
+      "startingHp": 16,
+      "manaPerLevel": 4,
+      "proficiencies": "Escudos",
+      "choiceSkillCount": 4
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.guerreiro",
+    "name_pt": "Guerreiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 5,
+    "key_attributes": [
+      "str",
+      "dex"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Fortitude"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 64,
+    "data": {
+      "startingHp": 20,
+      "manaPerLevel": 3,
+      "proficiencies": "Armas marciais, armaduras pesadas e escudos",
+      "choiceSkillCount": 2
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.inventor",
+    "name_pt": "Inventor",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 3,
+    "key_attributes": [
+      "int"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Ofício",
+      "Vontade"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 67,
+    "data": {
+      "startingHp": 12,
+      "manaPerLevel": 4,
+      "proficiencies": "Nenhuma",
+      "choiceSkillCount": 4
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.ladino",
+    "name_pt": "Ladino",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 3,
+    "key_attributes": [
+      "dex"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Ladinagem",
+      "Reflexos"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 72,
+    "data": {
+      "startingHp": 12,
+      "classChoices": [
+        {
+          "id": "t20-ladino-specialist",
+          "count": 2,
+          "label": "Perícias de Especialista",
+          "options": [
+            "Acrobacia",
+            "Adestramento",
+            "Atletismo",
+            "Atuação",
+            "Cavalgar",
+            "Conhecimento",
+            "Cura",
+            "Diplomacia",
+            "Enganação",
+            "Furtividade",
+            "Guerra",
+            "Iniciativa",
+            "Intimidação",
+            "Intuição",
+            "Investigação",
+            "Ladinagem",
+            "Luta",
+            "Misticismo",
+            "Nobreza",
+            "Ofício",
+            "Percepção",
+            "Pilotagem",
+            "Pontaria",
+            "Religião",
+            "Sobrevivência",
+            "Vontade"
+          ],
+          "minimumLevel": 1
+        }
+      ],
+      "manaPerLevel": 4,
+      "proficiencies": "Nenhuma",
+      "choiceSkillCount": 8
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-13T15:22:53.48914+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.lutador",
+    "name_pt": "Lutador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 5,
+    "key_attributes": [
+      "str"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Fortitude",
+      "Luta"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 75,
+    "data": {
+      "startingHp": 20,
+      "manaPerLevel": 3,
+      "proficiencies": "Nenhuma",
+      "choiceSkillCount": 4
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.nobre",
+    "name_pt": "Nobre",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 4,
+    "key_attributes": [
+      "cha"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Vontade"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 78,
+    "data": {
+      "startingHp": 16,
+      "manaPerLevel": 4,
+      "proficiencies": "Armas marciais, armaduras pesadas e escudos",
+      "choiceSkillCount": 4
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-12T12:50:32.196269+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.paladino",
+    "name_pt": "Paladino",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 5,
+    "key_attributes": [
+      "str",
+      "cha"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "Luta",
+      "Vontade"
+    ],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 81,
+    "data": {
+      "startingHp": 20,
+      "classChoices": [
+        {
+          "id": "t20-paladino-justice-blessing",
+          "count": 1,
+          "label": "Bênção da Justiça",
+          "options": [
+            "Égide Sagrada",
+            "Montaria Sagrada"
+          ],
+          "minimumLevel": 5
+        }
+      ],
+      "manaPerLevel": 3,
+      "proficiencies": "Armas marciais, armaduras pesadas e escudos",
+      "choiceSkillCount": 2
+    },
+    "created_at": "2026-09-12T12:50:32.196269+00:00",
+    "updated_at": "2026-09-13T15:41:37.854287+00:00",
+    "system_id": "t20"
+  }
+]

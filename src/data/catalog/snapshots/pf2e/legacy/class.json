@@ -1,0 +1,310 @@
+[
+  {
+    "id": "class.gunslinger",
+    "name_pt": "Pistoleiro",
+    "name_en": "Gunslinger",
+    "name_es": "Pistolero",
+    "description_pt": "Combatente de precisão especializado em armas de fogo, bestas, recarga e posicionamento.",
+    "description_en": "A precision combatant specializing in firearms, crossbows, reloading, and positioning.",
+    "description_es": "Un combatiente de precisión especializado en armas de fuego, ballestas, recarga y posicionamiento.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Destreza"
+    ],
+    "perception_rank": "Especialista",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Especialista",
+    "will_rank": "Treinado",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 104,
+    "data": {
+      "armor": {
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Destreinado",
+        "Sem Armadura": "Treinado"
+      },
+      "weapons": {
+        "Marcial": "Treinado",
+        "Simples": "Treinado",
+        "Desarmado": "Treinado",
+        "Armas de Fogo e Bestas": "Especialista"
+      },
+      "fixedSkills": [
+        "crafting"
+      ],
+      "needs_review": false,
+      "subclassesList": [
+        "Caminho do Pistoleiro (Pistolero)",
+        "Caminho do Franco-Atirador (Sniper)",
+        "Caminho da Vanguarda (Vanguard)",
+        "Caminho do Andarilho (Drifter)"
+      ],
+      "trainedSkillsCount": 3
+    },
+    "created_at": "2026-09-04T04:37:36.853905+00:00",
+    "updated_at": "2026-09-23T18:16:26.052439+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "class.inventor",
+    "name_pt": "Inventor",
+    "name_en": "Inventor",
+    "name_es": "Inventor",
+    "description_pt": "Especialista em Manufatura que combate usando uma inovação única e continuamente aprimorada.",
+    "description_en": "A Crafting expert who fights with a unique innovation that is continually improved.",
+    "description_es": "Un experto en Artesanía que combate con una innovación única y mejorada continuamente.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Inteligência"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 14,
+    "data": {
+      "armor": {
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Destreinado",
+        "Sem Armadura": "Treinado"
+      },
+      "weapons": {
+        "Marcial": "Treinado",
+        "Simples": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "fixedSkills": [
+        "crafting"
+      ],
+      "needs_review": false,
+      "subclassesList": [
+        "Inovação de Armadura",
+        "Inovação de Arma",
+        "Inovação de Companheiro Constructo"
+      ],
+      "trainedSkillsCount": 3
+    },
+    "created_at": "2026-09-04T04:37:36.853905+00:00",
+    "updated_at": "2026-09-23T18:16:26.052439+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "class.magus",
+    "name_pt": "Magus",
+    "name_en": "Magus",
+    "name_es": "Magus",
+    "description_pt": "Combatente arcano que combina golpes físicos e magias por meio do Golpe de Magia.",
+    "description_en": "An arcane combatant who combines physical strikes and spells through Spellstrike.",
+    "description_es": "Un combatiente arcano que combina ataques físicos y conjuros mediante Golpe de conjuro.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Força",
+      "Destreza"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 58,
+    "data": {
+      "armor": {
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Destreinado",
+        "Sem Armadura": "Treinado"
+      },
+      "weapons": {
+        "Marcial": "Treinado",
+        "Simples": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "fixedSkills": [
+        "arcana"
+      ],
+      "needs_review": false,
+      "subclassesList": [
+        "Árvore Retorcida (Twisting Tree / Árbol retorcido)",
+        "Ferro Inexorável (Inexorable Iron / Hierro inexorable)",
+        "Sombra Jocosa (Laughing Shadow / Sombra jocosa)",
+        "Targe Cintilante (Sparkling Targe / Broquel centelleante)",
+        "Vão Estrelado (Starlit Span / Vano estelar)"
+      ],
+      "trainedSkillsCount": 2
+    },
+    "created_at": "2026-09-04T04:37:36.853905+00:00",
+    "updated_at": "2026-09-23T18:16:26.052439+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "class.psychic",
+    "name_pt": "Psíquico",
+    "name_en": "Psychic",
+    "name_es": "Psíquico",
+    "description_pt": "Conjurador ocultista que manifesta magia mental por meio de psi cantrips e amplificações.",
+    "description_en": "An occult spellcaster who manifests mental magic through psi cantrips and amps.",
+    "description_es": "Un lanzador ocultista que manifiesta magia mental mediante trucos psi y amplificaciones.",
+    "hp_per_level": 6,
+    "key_attributes": [
+      "Inteligência",
+      "Carisma"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Treinado",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 8,
+    "data": {
+      "armor": {
+        "Leve": "Destreinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado",
+        "Sem Armadura": "Treinado"
+      },
+      "weapons": {
+        "Marcial": "Destreinado",
+        "Simples": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "fixedSkills": [
+        "occultism"
+      ],
+      "needs_review": false,
+      "subclassesList": [
+        "Mente Distante (Telecinese)",
+        "Mente Infinita",
+        "Mente Calosa",
+        "Mente Tangível"
+      ],
+      "trainedSkillsCount": 3
+    },
+    "created_at": "2026-09-04T04:37:36.853905+00:00",
+    "updated_at": "2026-09-23T18:16:26.052439+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "class.summoner",
+    "name_pt": "Convocador",
+    "name_en": "Summoner",
+    "name_es": "Convocador",
+    "description_pt": "Conjurador ligado a um eidolon com o qual compartilha ações e força vital.",
+    "description_en": "A spellcaster bound to an eidolon with whom they share actions and life force.",
+    "description_es": "Un lanzador ligado a un eidolon con el que comparte acciones y fuerza vital.",
+    "hp_per_level": 10,
+    "key_attributes": [
+      "Carisma"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 34,
+    "data": {
+      "armor": {
+        "Leve": "Treinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado",
+        "Sem Armadura": "Treinado"
+      },
+      "weapons": {
+        "Marcial": "Destreinado",
+        "Simples": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "fixedSkills": [],
+      "needs_review": false,
+      "subclassesList": [
+        "Eidolon Dragão",
+        "Eidolon Fera",
+        "Eidolon Anjo",
+        "Eidolon Demônio",
+        "Eidolon Fantasma",
+        "Eidolon Elemental"
+      ],
+      "trainedSkillsCount": 3
+    },
+    "created_at": "2026-09-04T04:37:36.853905+00:00",
+    "updated_at": "2026-09-23T18:16:26.052439+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "class.thaumaturge",
+    "name_pt": "Taumaturgo",
+    "name_en": "Thaumaturge",
+    "name_es": "Taumaturgo",
+    "description_pt": "Especialista carismático que explora fraquezas usando esoterismo e implementos místicos.",
+    "description_en": "A charismatic expert who exploits weaknesses using esoterica and mystic implements.",
+    "description_es": "Un experto carismático que explota debilidades mediante esoterismo e implementos místicos.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Carisma"
+    ],
+    "perception_rank": "Especialista",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 30,
+    "data": {
+      "armor": {
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Destreinado",
+        "Sem Armadura": "Treinado"
+      },
+      "weapons": {
+        "Marcial": "Treinado",
+        "Simples": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "fixedSkills": [
+        "arcana",
+        "nature",
+        "occultism",
+        "religion"
+      ],
+      "needs_review": false,
+      "subclassesList": [
+        "Implemento: Amuleto",
+        "Implemento: Cálice",
+        "Implemento: Lanterna",
+        "Implemento: Espelho",
+        "Implemento: Arma",
+        "Implemento: Livro"
+      ],
+      "trainedSkillsCount": 3
+    },
+    "created_at": "2026-09-04T04:37:36.853905+00:00",
+    "updated_at": "2026-09-23T18:16:26.052439+00:00",
+    "system_id": "pf2e"
+  }
+]

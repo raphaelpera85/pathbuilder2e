@@ -10,7 +10,7 @@ import {
 } from "./catalog";
 import type { PickerType } from "../types";
 
-describe("Catalog Service & Supabase Mapping", () => {
+describe("serviço de catálogo local", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
@@ -20,7 +20,7 @@ describe("Catalog Service & Supabase Mapping", () => {
     expect(DEFAULT_RPG_SYSTEMS.find((system) => system.id === "t20")?.supportedRulesets).toEqual(["padrao"]);
   });
 
-  it("mapeia todas as categorias para suas respectivas tabelas relacionais do Supabase", () => {
+  it("mantém o mapeamento de categorias usado pelo exportador de snapshot", () => {
     const requiredCategories: PickerType[] = [
       "ancestry",
       "heritage",
@@ -49,7 +49,7 @@ describe("Catalog Service & Supabase Mapping", () => {
     }
   });
 
-  it("normaliza corretamente um registro do Supabase para o formato PickerItem", () => {
+  it("normaliza corretamente um registro do snapshot para o formato PickerItem", () => {
     const mockRecord: CatalogItemRecord = {
       id: "feat.toughness",
       name_pt: "Robustez",
@@ -86,7 +86,7 @@ describe("Catalog Service & Supabase Mapping", () => {
     expect(item.data.mechanics).toEqual({ failure: "fica atordoado 1", heightened: "+1d6" });
   });
 
-  it("preserva metadados de ações e condições core vindos do Supabase", () => {
+  it("preserva metadados de ações e condições core no snapshot", () => {
     const action = normalizeSupabaseRecordToPickerItem({
       id: "dnd5e.action.dodge",
       system_id: "dnd5e",
@@ -111,10 +111,10 @@ describe("Catalog Service & Supabase Mapping", () => {
     expect(condition.data).toMatchObject({ hasValue: true, conditionGroup: "core" });
   });
 
-  it("serve perícias core no Compêndio sem criar uma tabela Supabase inexistente", async () => {
+  it("serve perícias core diretamente do snapshot", async () => {
     const t20 = await fetchCatalogCategory("skill", { systemId: "t20" });
     const dnd = await fetchCatalogCategory("skill", { systemId: "dnd5e" });
-    expect(t20.source).toBe("local_runtime");
+    expect(t20.source).toBe("local_snapshot");
     expect(t20.items).toHaveLength(29);
     expect(dnd.items).toHaveLength(18);
     expect(t20.items[0]).toMatchObject({ category: "skill", system_id: "t20" });
@@ -173,17 +173,17 @@ describe("Catalog Service & Supabase Mapping", () => {
     });
   });
 
-  it("retorna o status do catálogo indicando se o Supabase está configurado", () => {
+  it("retorna o status do catálogo local", () => {
     const status = getCatalogSyncStatus();
     expect(status).toHaveProperty("isConfigured");
     expect(status).toHaveProperty("isOnline");
     expect(status).toHaveProperty("source");
   });
 
-  it("faz fallback para runtime local quando chamado em ambiente de teste ou offline", async () => {
+  it("usa o snapshot também no ambiente de teste", async () => {
     const res = await fetchCatalogCategory("ancestry");
     expect(res).toBeDefined();
     expect(Array.isArray(res.items)).toBe(true);
-    expect(["supabase", "local_cache", "local_runtime"]).toContain(res.source);
+    expect(["local_snapshot", "local_runtime"]).toContain(res.source);
   });
 });

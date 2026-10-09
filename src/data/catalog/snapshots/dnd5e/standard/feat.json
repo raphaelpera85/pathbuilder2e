@@ -1,0 +1,1708 @@
+[
+  {
+    "id": "dnd5e.talento.adepto_elemental",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Adepto Elemental",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 166,
+    "data": {
+      "id": "dnd5e.talento.adepto_elemental",
+      "name": "Adepto Elemental",
+      "choices": [
+        {
+          "id": "elemental-damage",
+          "count": 1,
+          "label": "Tipo de dano",
+          "options": [
+            "Ácido",
+            "Frio",
+            "Fogo",
+            "Elétrico",
+            "Trovão"
+          ]
+        }
+      ],
+      "summary": "Escolhe um tipo de dano; ignora resistência a ele e trata 1 em dado de dano como 2.",
+      "category": "talento",
+      "sourcePage": 166,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "requiresSpellcasting": true
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.adepto_marcial",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Adepto Marcial",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 168,
+    "data": {
+      "id": "dnd5e.talento.adepto_marcial",
+      "name": "Adepto Marcial",
+      "choices": [
+        {
+          "id": "martial-adept-maneuvers",
+          "count": 2,
+          "label": "Manobras",
+          "options": [
+            "Ataque ameaçador",
+            "Ataque de precisão",
+            "Ataque de provocação",
+            "Ataque para desarmar",
+            "Ataque rasante",
+            "Contra-ataque",
+            "Derrubar",
+            "Golpe de distração",
+            "Investida",
+            "Liderança",
+            "Manobra de evasão",
+            "Parada",
+            "Reagrupar",
+            "Troca de posição",
+            "Ataque de empurrão",
+            "Aparar"
+          ]
+        }
+      ],
+      "summary": "Aprende duas manobras e recebe um dado de superioridade d6 por descanso curto ou longo.",
+      "category": "talento",
+      "sourcePage": 168,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.agarrador",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Agarrador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 166,
+    "data": {
+      "id": "dnd5e.talento.agarrador",
+      "name": "Agarrador",
+      "summary": "Vantagem para atacar criaturas agarradas; pode tentar restringir uma criatura agarrada.",
+      "category": "talento",
+      "sourcePage": 166,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "ability": {
+          "key": "str",
+          "minimum": 13
+        }
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.alerta",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Alerta",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 165,
+    "data": {
+      "id": "dnd5e.talento.alerta",
+      "name": "Alerta",
+      "summary": "+5 iniciativa; enquanto consciente, não pode ser surpreendido.",
+      "category": "talento",
+      "sourcePage": 165,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T12:54:26.85812+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.atacante_de_duas_armas",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Atacante de Duas Armas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 165,
+    "data": {
+      "id": "dnd5e.talento.atacante_de_duas_armas",
+      "name": "Atacante de Duas Armas",
+      "summary": "+1 CA ao empunhar uma arma corpo a corpo separada em cada mão.",
+      "category": "talento",
+      "sourcePage": 165,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T12:54:26.85812+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.atacante_selvagem",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Atacante Selvagem",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 169,
+    "data": {
+      "id": "dnd5e.talento.atacante_selvagem",
+      "name": "Atacante Selvagem",
+      "summary": "Uma vez por turno, rola novamente os dados de dano de um ataque corpo a corpo e escolhe o total.",
+      "category": "talento",
+      "sourcePage": 169,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.atirador_de_magia",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Atirador de Magia",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 169,
+    "data": {
+      "id": "dnd5e.talento.atirador_de_magia",
+      "name": "Atirador de Magia",
+      "summary": "Dobra alcance de magias com ataque; ignora meia e três quartos de cobertura; aprende um truque de ataque.",
+      "category": "talento",
+      "sourcePage": 169,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "requiresSpellcasting": true
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.atleta",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Atleta",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 165,
+    "data": {
+      "id": "dnd5e.talento.atleta",
+      "name": "Atleta",
+      "choices": [
+        {
+          "id": "atleta-ability",
+          "count": 1,
+          "label": "Aumento de atributo",
+          "options": [
+            "Força",
+            "Destreza"
+          ]
+        }
+      ],
+      "summary": "+1 Força ou Destreza; levantar-se custa 1,5 m; escalada e saltos ficam mais eficientes.",
+      "category": "talento",
+      "sourcePage": 165,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "ability": {
+          "key": "str",
+          "minimum": 13
+        }
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.ator",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Ator",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 165,
+    "data": {
+      "id": "dnd5e.talento.ator",
+      "name": "Ator",
+      "choices": [
+        {
+          "id": "ator-ability",
+          "count": 1,
+          "label": "Aumento de atributo",
+          "options": [
+            "Carisma"
+          ]
+        }
+      ],
+      "summary": "+1 Carisma; vantagem para imitar voz e representar uma pessoa; pode imitar fala após ouvir por 1 minuto.",
+      "category": "talento",
+      "sourcePage": 165,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "ability": {
+          "key": "cha",
+          "minimum": 13
+        }
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.brigao_de_taverna",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Brigão de Taverna",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 170,
+    "data": {
+      "id": "dnd5e.talento.brigao_de_taverna",
+      "name": "Brigão de Taverna",
+      "choices": [
+        {
+          "id": "briga-ability",
+          "count": 1,
+          "label": "Aumento de atributo",
+          "options": [
+            "Força",
+            "Constituição"
+          ]
+        }
+      ],
+      "summary": "+1 Força ou Constituição; proficiência com armas improvisadas; ataque desarmado d4; agarrar como ação bônus após acertar.",
+      "category": "talento",
+      "sourcePage": 170,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "ability": {
+          "key": "str",
+          "minimum": 13
+        }
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.combatente_montado",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Combatente Montado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 168,
+    "data": {
+      "id": "dnd5e.talento.combatente_montado",
+      "name": "Combatente Montado",
+      "summary": "Vantagem contra criaturas menores que sua montaria; pode redirecionar ataques para si e reduz dano de salvamentos de Destreza da montaria.",
+      "category": "talento",
+      "sourcePage": 168,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.conjurador_de_rituais",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Conjurador de Rituais",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 169,
+    "data": {
+      "id": "dnd5e.talento.conjurador_de_rituais",
+      "name": "Conjurador de Rituais",
+      "choices": [
+        {
+          "id": "ritual-caster-class",
+          "count": 1,
+          "label": "Classe do livro ritualístico",
+          "options": [
+            "Bardo",
+            "Clérigo",
+            "Druida",
+            "Feiticeiro",
+            "Mago",
+            "Bruxo"
+          ]
+        },
+        {
+          "id": "ritual-caster-spells",
+          "count": 2,
+          "label": "Rituais de 1º nível",
+          "options": [
+            "Alarme",
+            "Compreender Idiomas",
+            "Detectar Magia",
+            "Queda Suave",
+            "Servo Invisível"
+          ]
+        }
+      ],
+      "summary": "Livro com duas magias de ritual de 1º nível; pode adicionar rituais encontrados e conjurá-los como rituais.",
+      "category": "talento",
+      "sourcePage": 169,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "ability": {
+          "key": "int",
+          "minimum": 13
+        }
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.curandeiro",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Curandeiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 167,
+    "data": {
+      "id": "dnd5e.talento.curandeiro",
+      "name": "Curandeiro",
+      "summary": "Kit estabiliza com 1 PV; ação cura 1d6+4+nível do alvo, uma vez por descanso curto/longo por criatura.",
+      "category": "talento",
+      "sourcePage": 167,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.defensor_duelista",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Defensor Duelista",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 165,
+    "data": {
+      "id": "dnd5e.talento.defensor_duelista",
+      "name": "Defensor Duelista",
+      "summary": "Reação para adicionar o bônus de proficiência à CA contra um ataque corpo a corpo quando empunha arma de acuidade.",
+      "category": "talento",
+      "sourcePage": 165,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "ability": {
+          "key": "dex",
+          "minimum": 13
+        }
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.duravel",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Durável",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 166,
+    "data": {
+      "id": "dnd5e.talento.duravel",
+      "name": "Durável",
+      "choices": [
+        {
+          "id": "duravel-ability",
+          "count": 1,
+          "label": "Aumento de atributo",
+          "options": [
+            "Constituição"
+          ]
+        }
+      ],
+      "summary": "+1 Constituição; ao gastar Dados de Vida, o mínimo recuperado é o dobro do modificador de Constituição.",
+      "category": "talento",
+      "sourcePage": 166,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "ability": {
+          "key": "con",
+          "minimum": 13
+        }
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.especialista_em_bestas",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Especialista em Besta",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 165,
+    "data": {
+      "id": "dnd5e.talento.especialista_em_bestas",
+      "name": "Especialista em Besta",
+      "summary": "Ignora recarga; não sofre desvantagem à distância adjacente; pode atacar com besta de mão como ação bônus.",
+      "category": "talento",
+      "sourcePage": 165,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.explorador_de_masmorras",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Explorador de Masmorras",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 166,
+    "data": {
+      "id": "dnd5e.talento.explorador_de_masmorras",
+      "name": "Explorador de Masmorras",
+      "summary": "Vantagem contra armadilhas e para encontrá-las; resistência ao dano de armadilhas; busca portas secretas ativamente.",
+      "category": "talento",
+      "sourcePage": 166,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.fortemente_blindado",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Fortemente Blindado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 167,
+    "data": {
+      "id": "dnd5e.talento.fortemente_blindado",
+      "name": "Fortemente Blindado",
+      "choices": [
+        {
+          "id": "heavy-armor-ability",
+          "count": 1,
+          "label": "Aumento de atributo",
+          "options": [
+            "Força"
+          ]
+        }
+      ],
+      "summary": "+1 Força e proficiência com armaduras pesadas.",
+      "category": "talento",
+      "sourcePage": 167,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "requiresProficiency": "medium_armor"
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.furtivo",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Furtivo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 169,
+    "data": {
+      "id": "dnd5e.talento.furtivo",
+      "name": "Furtivo",
+      "summary": "Não sofre desvantagem em ataques à distância com pouca luz; ataque à distância que erra não revela sua posição.",
+      "category": "talento",
+      "sourcePage": 169,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "ability": {
+          "key": "dex",
+          "minimum": 13
+        }
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.habilidoso",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Habilidoso",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 169,
+    "data": {
+      "id": "dnd5e.talento.habilidoso",
+      "name": "Habilidoso",
+      "choices": [
+        {
+          "id": "skilled-proficiencies",
+          "count": 3,
+          "label": "Perícias ou ferramentas",
+          "options": [
+            "Acrobacia",
+            "Adestramento",
+            "Arcanismo",
+            "Atletismo",
+            "Atuação",
+            "Enganação",
+            "Furtividade",
+            "História",
+            "Intuição",
+            "Intimidação",
+            "Investigação",
+            "Medicina",
+            "Natureza",
+            "Percepção",
+            "Persuasão",
+            "Prestidigitação",
+            "Religião",
+            "Sobrevivência",
+            "Ferramentas de ladrão",
+            "Ferramentas de ferreiro",
+            "Ferramentas de carpinteiro",
+            "Ferramentas de alquimista",
+            "Kit de disfarce",
+            "Kit de falsificação",
+            "Instrumento musical",
+            "Kit de herbalismo"
+          ]
+        }
+      ],
+      "summary": "Ganha proficiência em três perícias ou ferramentas escolhidas.",
+      "category": "talento",
+      "sourcePage": 169,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.iniciado_em_magia",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Iniciado em Magia",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 168,
+    "data": {
+      "id": "dnd5e.talento.iniciado_em_magia",
+      "name": "Iniciado em Magia",
+      "choices": [
+        {
+          "id": "magic-initiate-class",
+          "count": 1,
+          "label": "Classe da magia",
+          "options": [
+            "Bardo",
+            "Clérigo",
+            "Druida",
+            "Feiticeiro",
+            "Mago",
+            "Bruxo"
+          ]
+        },
+        {
+          "id": "magic-initiate-cantrips",
+          "count": 2,
+          "label": "Truques",
+          "options": [
+            "Amizade",
+            "Ataque Certeiro",
+            "Consertar",
+            "Globos de Luz",
+            "Ilusão Menor",
+            "Mãos Mágicas",
+            "Mensagem",
+            "Prestidigitação",
+            "Raio de Fogo",
+            "Raio de Gelo",
+            "Toque Arrepiante",
+            "Luz"
+          ]
+        },
+        {
+          "id": "magic-initiate-spell",
+          "count": 1,
+          "label": "Magia de 1º nível",
+          "options": [
+            "Alarme",
+            "Armadura de Agathys",
+            "Compreender Idiomas",
+            "Detectar Magia",
+            "Enfeitiçar Pessoa",
+            "Queda Suave",
+            "Servo Invisível",
+            "Vitalidade Falsa"
+          ]
+        }
+      ],
+      "summary": "Aprende dois truques e uma magia de 1º nível de uma classe; a magia de 1º nível é lançada uma vez por descanso longo.",
+      "category": "talento",
+      "sourcePage": 168,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.levemente_blindado",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Levemente Blindado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 167,
+    "data": {
+      "id": "dnd5e.talento.levemente_blindado",
+      "name": "Levemente Blindado",
+      "choices": [
+        {
+          "id": "light-armor-ability",
+          "count": 1,
+          "label": "Aumento de atributo",
+          "options": [
+            "Força",
+            "Destreza"
+          ]
+        }
+      ],
+      "summary": "+1 Força ou Destreza e proficiência com armaduras leves.",
+      "category": "talento",
+      "sourcePage": 167,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.lider_inspirador",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Líder Inspirador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 167,
+    "data": {
+      "id": "dnd5e.talento.lider_inspirador",
+      "name": "Líder Inspirador",
+      "choices": [
+        {
+          "id": "inspiring-leader-ability",
+          "count": 1,
+          "label": "Aumento de atributo",
+          "options": [
+            "Carisma"
+          ]
+        }
+      ],
+      "summary": "+1 Carisma; discurso de 10 minutos concede PV temporários iguais ao nível + modificador de Carisma a até seis criaturas.",
+      "category": "talento",
+      "sourcePage": 167,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "ability": {
+          "key": "cha",
+          "minimum": 13
+        }
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.linguista",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Linguista",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 167,
+    "data": {
+      "id": "dnd5e.talento.linguista",
+      "name": "Linguista",
+      "choices": [
+        {
+          "id": "linguist-ability",
+          "count": 1,
+          "label": "Aumento de atributo",
+          "options": [
+            "Inteligência"
+          ]
+        },
+        {
+          "id": "linguist-languages",
+          "count": 3,
+          "label": "Idiomas adicionais",
+          "options": [
+            "Anão",
+            "Celestial",
+            "Comum",
+            "Dracônico",
+            "Élfico",
+            "Gigante",
+            "Gnômico",
+            "Goblin",
+            "Halfling",
+            "Infernal",
+            "Orc",
+            "Primordial",
+            "Silvestre",
+            "Subcomum"
+          ]
+        }
+      ],
+      "summary": "+1 Inteligência; aprende três idiomas e cria cifras escritas.",
+      "category": "talento",
+      "sourcePage": 167,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "ability": {
+          "key": "int",
+          "minimum": 13
+        }
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.mago_de_guerra",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Mago de Guerra",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 170,
+    "data": {
+      "id": "dnd5e.talento.mago_de_guerra",
+      "name": "Mago de Guerra",
+      "summary": "Vantagem em concentração; conjura componente somático com mãos ocupadas; pode conjurar magia como ataque de oportunidade.",
+      "category": "talento",
+      "sourcePage": 170,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "requiresSpellcasting": true
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.matador_de_magicos",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Matador de Mágicos",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 168,
+    "data": {
+      "id": "dnd5e.talento.matador_de_magicos",
+      "name": "Matador de Mágicos",
+      "summary": "Reação para atacar conjurador adjacente; vantagem em salvamentos contra magias de criatura adjacente; desvantagem em concentração após seu ataque.",
+      "category": "talento",
+      "sourcePage": 168,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.mente_aguçada",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Mente Aguçada",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 167,
+    "data": {
+      "id": "dnd5e.talento.mente_aguçada",
+      "name": "Mente Aguçada",
+      "choices": [
+        {
+          "id": "keen-mind-ability",
+          "count": 1,
+          "label": "Aumento de atributo",
+          "options": [
+            "Inteligência"
+          ]
+        }
+      ],
+      "summary": "+1 Inteligência; sabe sempre norte, horas e data aproximadas; recorda com precisão o que viu/ouviu no último mês.",
+      "category": "talento",
+      "sourcePage": 167,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "ability": {
+          "key": "int",
+          "minimum": 13
+        }
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.mestre_de_armadura_media",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Mestre de Armadura Média",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 168,
+    "data": {
+      "id": "dnd5e.talento.mestre_de_armadura_media",
+      "name": "Mestre de Armadura Média",
+      "choices": [
+        {
+          "id": "medium-armor-ability",
+          "count": 1,
+          "label": "Aumento de atributo",
+          "options": [
+            "Força",
+            "Destreza"
+          ]
+        }
+      ],
+      "summary": "+1 Força ou Destreza; armadura média não impõe desvantagem em Furtividade e permite Destreza até +3 na CA.",
+      "category": "talento",
+      "sourcePage": 168,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "requiresProficiency": "light_armor"
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.mestre_de_armadura_pesada",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Mestre de Armadura Pesada",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 167,
+    "data": {
+      "id": "dnd5e.talento.mestre_de_armadura_pesada",
+      "name": "Mestre de Armadura Pesada",
+      "summary": "+1 Força; reduz em 3 o dano de armas não mágicas de concussão, cortante e perfurante usando armadura pesada.",
+      "category": "talento",
+      "sourcePage": 167,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "requiresProficiency": "heavy_armor"
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.mestre_de_armas",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Mestre de Armas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 167,
+    "data": {
+      "id": "dnd5e.talento.mestre_de_armas",
+      "name": "Mestre de Armas",
+      "choices": [
+        {
+          "id": "weapon-master-weapons",
+          "count": 4,
+          "label": "Armas escolhidas",
+          "options": [
+            "Adaga",
+            "Espada curta",
+            "Espada longa",
+            "Rapieira",
+            "Machado de batalha",
+            "Machado grande",
+            "Arco longo",
+            "Besta leve",
+            "Martelo de guerra",
+            "Mangual",
+            "Glaive",
+            "Alabarda"
+          ]
+        }
+      ],
+      "summary": "Aumenta Força ou Destreza em 1 e concede proficiência em quatro armas escolhidas.",
+      "category": "talento",
+      "sourcePage": 167,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T12:54:26.85812+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.mestre_de_armas_pesadas",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Mestre de Armas Pesadas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 167,
+    "data": {
+      "id": "dnd5e.talento.mestre_de_armas_pesadas",
+      "name": "Mestre de Armas Pesadas",
+      "summary": "Arma pesada: pode sofrer -5 na jogada para causar +10 dano; crítico ou reduzir criatura a 0 PV permite ataque bônus.",
+      "category": "talento",
+      "sourcePage": 167,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.mestre_de_escudos",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Mestre de Escudos",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 169,
+    "data": {
+      "id": "dnd5e.talento.mestre_de_escudos",
+      "name": "Mestre de Escudos",
+      "summary": "Ação bônus para empurrar; adiciona o bônus do escudo a salvamentos de Destreza; reação reduz dano de salvamento bem-sucedido a zero.",
+      "category": "talento",
+      "sourcePage": 169,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.mestre_de_hastes",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Mestre de Hastes",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 168,
+    "data": {
+      "id": "dnd5e.talento.mestre_de_hastes",
+      "name": "Mestre de Hastes",
+      "summary": "Ataque bônus com a extremidade da arma; provoca ataque de oportunidade quando criatura entra no seu alcance.",
+      "category": "talento",
+      "sourcePage": 168,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.moderadamente_blindado",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Moderadamente Blindado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 168,
+    "data": {
+      "id": "dnd5e.talento.moderadamente_blindado",
+      "name": "Moderadamente Blindado",
+      "choices": [
+        {
+          "id": "moderate-armor-ability",
+          "count": 1,
+          "label": "Aumento de atributo",
+          "options": [
+            "Força",
+            "Destreza"
+          ]
+        }
+      ],
+      "summary": "+1 Força ou Destreza e proficiência com armaduras médias e escudos.",
+      "category": "talento",
+      "sourcePage": 168,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "requiresProficiency": "light_armor"
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.movel",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Móvel",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 168,
+    "data": {
+      "id": "dnd5e.talento.movel",
+      "name": "Móvel",
+      "summary": "+3 m de deslocamento; terreno difícil não custa movimento ao correr; alvo atacado não provoca ataque de oportunidade ao se afastar.",
+      "category": "talento",
+      "sourcePage": 168,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.observador",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Observador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 168,
+    "data": {
+      "id": "dnd5e.talento.observador",
+      "name": "Observador",
+      "choices": [
+        {
+          "id": "observant-ability",
+          "count": 1,
+          "label": "Aumento de atributo",
+          "options": [
+            "Inteligência",
+            "Sabedoria"
+          ]
+        }
+      ],
+      "summary": "+1 Inteligência ou Sabedoria; lê lábios e recebe +5 em Percepção passiva e Investigação passiva.",
+      "category": "talento",
+      "sourcePage": 168,
+      "minimumLevel": 4,
+      "prerequisite": {
+        "ability": {
+          "key": "wis",
+          "minimum": 13
+        }
+      }
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.resiliente",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Resiliente",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 168,
+    "data": {
+      "id": "dnd5e.talento.resiliente",
+      "name": "Resiliente",
+      "choices": [
+        {
+          "id": "resilient-ability",
+          "count": 1,
+          "label": "Atributo do salvamento",
+          "options": [
+            "Força",
+            "Destreza",
+            "Constituição",
+            "Inteligência",
+            "Sabedoria",
+            "Carisma"
+          ]
+        }
+      ],
+      "summary": "Aumenta um atributo em 1 e concede proficiência em testes de resistência desse atributo.",
+      "category": "talento",
+      "sourcePage": 168,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T12:54:26.85812+00:00",
+    "updated_at": "2026-09-13T15:14:18.580383+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.resistente",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Resistente",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 170,
+    "data": {
+      "id": "dnd5e.talento.resistente",
+      "name": "Resistente",
+      "summary": "+2 PV máximos por nível.",
+      "category": "talento",
+      "sourcePage": 170,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.sentinela",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Sentinela",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 169,
+    "data": {
+      "id": "dnd5e.talento.sentinela",
+      "name": "Sentinela",
+      "summary": "Ataques de oportunidade reduzem deslocamento a 0; ignora Desengajar; pode atacar criatura adjacente que ataque um aliado.",
+      "category": "talento",
+      "sourcePage": 169,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  },
+  {
+    "id": "dnd5e.talento.sortudo",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Sortudo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "standard",
+    "source_book": "D&D 5e — Livro do Jogador (2014)",
+    "source_page": 167,
+    "data": {
+      "id": "dnd5e.talento.sortudo",
+      "name": "Sortudo",
+      "summary": "Três pontos de sorte por descanso longo para rolar d20 adicional e escolher o resultado em ataques, testes ou salvamentos.",
+      "category": "talento",
+      "sourcePage": 167,
+      "minimumLevel": 4
+    },
+    "created_at": "2026-09-12T14:14:15.161009+00:00",
+    "updated_at": "2026-09-13T14:21:05.082518+00:00",
+    "system_id": "dnd5e"
+  }
+]

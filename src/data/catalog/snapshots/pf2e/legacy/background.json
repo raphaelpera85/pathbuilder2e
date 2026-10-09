@@ -1,0 +1,1172 @@
+[
+  {
+    "id": "background.academy_dropout",
+    "name_pt": "Desistente da Academia",
+    "name_en": "Academy Dropout",
+    "name_es": "Desertor de la academia",
+    "description_pt": "Sua passagem interrompida por uma academia mágica ainda molda sua vida.",
+    "description_en": "Your interrupted time at a magical academy still shapes your life.",
+    "description_es": "Tu paso interrumpido por una academia mágica aún moldea tu vida.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "arcana"
+    ],
+    "granted_feat": "Conhecimento Duvidoso",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "lore": "Saber Acadêmico",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.anti_magical",
+    "name_pt": "Anti-Mágico",
+    "name_en": "Anti-Magical",
+    "name_es": "Antimágico",
+    "description_pt": "A magia se comporta de forma instável ao seu redor, inclusive quando deveria ajudar.",
+    "description_en": "Magic behaves unpredictably around you, even when it should help.",
+    "description_es": "La magia se comporta de forma inestable a tu alrededor, incluso cuando debería ayudarte.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nonmagical lore"
+    ],
+    "granted_feat": "Interferência Antimágica",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 30,
+    "data": {
+      "lore": "Saber não mágico",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.astrologer",
+    "name_pt": "Astrólogo",
+    "name_en": "Astrologer",
+    "name_es": "Astrólogo",
+    "description_pt": "Você estudou os movimentos celestes para interpretar sinais e orientar caminhos.",
+    "description_en": "You studied celestial movements to interpret signs and guide your path.",
+    "description_es": "Estudiaste los movimientos celestes para interpretar señales y orientar tu camino.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "occultism"
+    ],
+    "granted_feat": "Identificar Estranhezas",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 28,
+    "data": {
+      "lore": "Saber de Astrologia",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.chosen_one",
+    "name_pt": "Escolhido",
+    "name_en": "Chosen One",
+    "name_es": "Elegido",
+    "description_pt": "Seu nascimento cumpriu uma profecia que ainda pressiona suas decisões.",
+    "description_en": "Your birth fulfilled a prophecy that still weighs on your decisions.",
+    "description_es": "Tu nacimiento cumplió una profecía que aún pesa sobre tus decisiones.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "prophecy-related"
+    ],
+    "granted_feat": "Peão da Profecia",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 30,
+    "data": {
+      "lore": "Saber de Vidência",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.eidolon_contact",
+    "name_pt": "Contato de Eidolon",
+    "name_en": "Eidolon Contact",
+    "name_es": "Contacto de eidolon",
+    "description_pt": "Um encontro com um eidolon deixou lembranças e conhecimentos mágicos duradouros.",
+    "description_en": "An encounter with an eidolon left lasting memories and magical knowledge.",
+    "description_es": "Un encuentro con un eidolon dejó recuerdos y conocimientos mágicos duraderos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "magical tradition"
+    ],
+    "granted_feat": "Conhecimento Duvidoso",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 28,
+    "data": {
+      "lore": "Saber da criatura do eidolon",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.false_medium",
+    "name_pt": "Falso Médium",
+    "name_en": "False Medium",
+    "name_es": "Falso médium",
+    "description_pt": "Técnicas de leitura fria e ocultismo sustentaram suas sessões fraudulentas.",
+    "description_en": "Cold-reading techniques and occult lore supported your fraudulent séances.",
+    "description_es": "Técnicas de lectura en frío y ocultismo sostuvieron tus sesiones fraudulentas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "occultism"
+    ],
+    "granted_feat": "Adoração Enganosa",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "lore": "Saber de Vidência",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.genie_blessed",
+    "name_pt": "Abençoado por Gênio",
+    "name_en": "Genie-Blessed",
+    "name_es": "Bendecido por un genio",
+    "description_pt": "A bênção de um gênio poderoso concedeu a você uma sorte mágica incomum.",
+    "description_en": "A powerful genie's blessing granted you unusual magical luck.",
+    "description_es": "La bendición de un genio poderoso te concedió una suerte mágica inusual.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacy"
+    ],
+    "granted_feat": "Desejo de Sorte",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 30,
+    "data": {
+      "lore": "Saber de Gênios",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.grave_robber",
+    "name_pt": "Ladrão de Tumbas",
+    "name_en": "Grave Robber",
+    "name_es": "Ladrón de tumbas",
+    "description_pt": "Você conhece tumbas, cadáveres valiosos e maneiras discretas de retirar o saque.",
+    "description_en": "You know tombs, valuable corpses, and discreet ways to remove the spoils.",
+    "description_es": "Conoces tumbas, cadáveres valiosos y formas discretas de retirar el botín.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "stealth"
+    ],
+    "granted_feat": "Contrabandista Experiente",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "lore": "Saber de Submundo",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.anti_technology_activist",
+    "name_pt": "Ativista Anti-Tecnologia",
+    "name_en": "Anti-Technology Activist",
+    "name_es": "Activista antitecnología",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Guildas; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in intimidation and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en intimidation y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intimidation"
+    ],
+    "granted_feat": "Coagir Grupo",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 45,
+    "data": {
+      "lore": "Saber (Guildas)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.decoder",
+    "name_pt": "Decodificador",
+    "name_en": "Decoder",
+    "name_es": "Descifrador",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Criptografia; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in society and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en society y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Olhar Atento",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 45,
+    "data": {
+      "lore": "Saber (Criptografia)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.driver",
+    "name_pt": "Motorista",
+    "name_en": "Driver",
+    "name_es": "Conductor",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Pilotagem; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in acrobatics and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en acrobatics y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "acrobatics"
+    ],
+    "granted_feat": "Certeza para Saber (Pilotagem)",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "lore": "Saber (Pilotagem)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.gear_disciple",
+    "name_pt": "Discípulo da Engrenagem",
+    "name_en": "Gear Disciple",
+    "name_es": "Discípulo de los engranajes",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Divindade; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in crafting and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en crafting y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Reparo Rápido",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 45,
+    "data": {
+      "lore": "Saber (Divindade)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.gear_researcher",
+    "name_pt": "Pesquisador das Engrenagens",
+    "name_en": "Gear Researcher",
+    "name_es": "Investigador de engranajes",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Engenharia; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in society and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en society y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Subitizar",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "lore": "Saber (Engenharia)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.gear_warrior",
+    "name_pt": "Guerreiro Engrenário",
+    "name_en": "Gear Warrior",
+    "name_es": "Guerrero de engranajes",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Gladiatorial; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in crafting and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en crafting y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Profissional Experiente",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "lore": "Saber (Gladiatorial)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.mechanic",
+    "name_pt": "Mecânico",
+    "name_en": "Mechanic",
+    "name_es": "Mecánico",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Engenharia; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in crafting and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en crafting y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Reparo Rápido",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "lore": "Saber (Engenharia)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.medicinal_engineer",
+    "name_pt": "Engenheiro Medicinal",
+    "name_en": "Medicinal Engineer",
+    "name_es": "Ingeniero medicinal",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Engenharia; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in medicine and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en medicine y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "medicine"
+    ],
+    "granted_feat": "Cirurgia Arriscada",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 45,
+    "data": {
+      "lore": "Saber (Engenharia)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.printer",
+    "name_pt": "Impressor",
+    "name_en": "Printer",
+    "name_es": "Impresor",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Quirografia; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in society and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en society y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Poliglota",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "lore": "Saber (Quirografia)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.rare.desired_life",
+    "name_pt": "Vida Desejada",
+    "name_en": "Desired Life",
+    "name_es": "Vida deseada",
+    "description_pt": "Você foi um constructo ou boneco inanimado que ganhou vida por causa de um desejo profundo.",
+    "description_en": "You were once an inanimate construct or doll who gained life through a profound wish.",
+    "description_es": "Antes eras un constructo o muñeco inanimado que cobró vida por un deseo profundo.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacy"
+    ],
+    "granted_feat": "—",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 48,
+    "data": {
+      "lore": "—",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.rare.discarded_duplicate",
+    "name_pt": "Duplicata Descartada",
+    "name_en": "Discarded Duplicate",
+    "name_es": "Duplicado descartado",
+    "description_pt": "Você foi criado para substituir alguém importante e agora explora um mundo que o deixou para trás.",
+    "description_en": "You were created to replace someone important and now explore a world that left you behind.",
+    "description_es": "Fuiste creado para reemplazar a alguien importante y ahora exploras un mundo que te dejó atrás.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "—",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 47,
+    "data": {
+      "lore": "identity lore",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.rare.mechanical_symbiosis",
+    "name_pt": "Simbiose Mecânica",
+    "name_en": "Mechanical Symbiosis",
+    "name_es": "Simbiosis mecánica",
+    "description_pt": "Uma entidade vive em um objeto maquinal preso ao seu corpo e às suas decisões.",
+    "description_en": "An entity lives within a mechanical object attached to your body and choices.",
+    "description_es": "Una entidad vive en un objeto mecánico unido a tu cuerpo y tus decisiones.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "arcana"
+    ],
+    "granted_feat": "—",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 48,
+    "data": {
+      "lore": "entity lore",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.rare.saved_by_gears",
+    "name_pt": "Salvo pelas Engrenagens",
+    "name_en": "Saved by Gears",
+    "name_es": "Salvado por los engranajes",
+    "description_pt": "Uma prótese mecânica substitui parte do seu corpo e exige manutenção regular.",
+    "description_en": "A mechanical prosthesis replaces part of your body and requires regular maintenance.",
+    "description_es": "Una prótesis mecánica reemplaza parte de tu cuerpo y requiere mantenimiento regular.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "—",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 48,
+    "data": {
+      "lore": "—",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.rare.technology_dependent",
+    "name_pt": "Dependente de Tecnologia",
+    "name_en": "Technology Dependent",
+    "name_es": "Dependiente de la tecnología",
+    "description_pt": "Seu corpo não tolera mais magia de cura e você depende de dispositivos e engenhosidade.",
+    "description_en": "Your body no longer tolerates magical healing, so you rely on devices and ingenuity.",
+    "description_es": "Tu cuerpo ya no tolera la curación mágica, así que dependes de dispositivos e ingenio.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Medicina de Batalha",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 47,
+    "data": {
+      "lore": "medicine",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.saboteur",
+    "name_pt": "Sabotador",
+    "name_en": "Saboteur",
+    "name_es": "Saboteador",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Engenharia; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in thievery and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en thievery y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "thievery"
+    ],
+    "granted_feat": "Malabarismo Dissimulado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "lore": "Saber (Engenharia)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.scrapper",
+    "name_pt": "Sucateiro",
+    "name_en": "Scrapper",
+    "name_es": "Chatarrero",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Terreno; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in athletics and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en athletics y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Carregador Robusto",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "lore": "Saber (Terreno)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.toy_maker",
+    "name_pt": "Fabricante de Brinquedos",
+    "name_en": "Toy Maker",
+    "name_es": "Fabricante de juguetes",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Mercantilismo; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in crafting and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en crafting y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Especialidade de Manufatura",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "lore": "Saber (Mercantilismo)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.guns_gears.watched_thief",
+    "name_pt": "Ladrão Vigiado",
+    "name_en": "Watched Thief",
+    "name_es": "Ladrón vigilado",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Submundo; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in thievery and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en thievery y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "thievery"
+    ],
+    "granted_feat": "Punga",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "lore": "Saber (Submundo)",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.haunted_citizen",
+    "name_pt": "Cidadão Assombrado",
+    "name_en": "Haunted Citizen",
+    "name_es": "Ciudadano atormentado",
+    "description_pt": "Crescer cercado por mortos-vivos transformou cautela e negociação em habilidades diárias.",
+    "description_en": "Growing up around undead made caution and negotiation everyday skills.",
+    "description_es": "Crecer rodeado de no muertos convirtió la cautela y la negociación en habilidades cotidianas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacy"
+    ],
+    "granted_feat": "Sem Motivo para Alarde",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "lore": "Saber da Cidade Natal",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.healer_undead",
+    "name_pt": "Curandeiro",
+    "name_en": "Healer",
+    "name_es": "Sanador",
+    "description_pt": "Sua prática comunitária de cura também preparou você para assombrações e possessões.",
+    "description_en": "Your community healing practice also prepared you for hauntings and possessions.",
+    "description_es": "Tu práctica comunitaria de sanación también te preparó para apariciones y posesiones.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "medicine"
+    ],
+    "granted_feat": "Inoculação",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "lore": "Saber de Herbalismo",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.magic_student",
+    "name_pt": "Estudante de Magia",
+    "name_en": "Magic Student",
+    "name_es": "Estudiante de magia",
+    "description_pt": "Você concilia aventuras com os estudos formais de uma tradição mágica.",
+    "description_en": "You balance adventuring with formal study of a magical tradition.",
+    "description_es": "Compaginas las aventuras con el estudio formal de una tradición mágica.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "magical tradition"
+    ],
+    "granted_feat": "Reconhecer Magia",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "lore": "Saber Acadêmico",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.magical_experiment",
+    "name_pt": "Experimento Mágico",
+    "name_en": "Magical Experiment",
+    "name_es": "Experimento mágico",
+    "description_pt": "Experimentos alteraram permanentemente seu corpo e deixaram uma habilidade incomum.",
+    "description_en": "Experiments permanently altered your body and left an unusual ability.",
+    "description_es": "Experimentos alteraron tu cuerpo para siempre y dejaron una capacidad inusual.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "occultism"
+    ],
+    "granted_feat": "Alteração Experimental",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 31,
+    "data": {
+      "lore": "Saber Acadêmico",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.magical_merchant",
+    "name_pt": "Mercador Mágico",
+    "name_en": "Magical Merchant",
+    "name_es": "Mercader mágico",
+    "description_pt": "O comércio de itens mágicos ensinou você a avaliar mercadorias raras.",
+    "description_en": "Trading magic items taught you how to appraise rare merchandise.",
+    "description_es": "El comercio de objetos mágicos te enseñó a valorar mercancías raras.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Avaliação do Artesão",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "lore": "Saber de Mercadores",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.magical_misfit",
+    "name_pt": "Desajustado Mágico",
+    "name_en": "Magical Misfit",
+    "name_es": "Inadaptado mágico",
+    "description_pt": "Você aprendeu a usar magia para provocar confusão e escapar das consequências.",
+    "description_en": "You learned to use magic to cause trouble and escape the consequences.",
+    "description_es": "Aprendiste a usar la magia para causar problemas y escapar de las consecuencias.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "arcana"
+    ],
+    "granted_feat": "Enganar Item Mágico",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 28,
+    "data": {
+      "lore": "Saber de Submundo",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.musical_prodigy",
+    "name_pt": "Prodígio Musical",
+    "name_en": "Musical Prodigy",
+    "name_es": "Prodigio musical",
+    "description_pt": "Seu talento musical extraordinário surgiu muito antes da vida de aventureiro.",
+    "description_en": "Your extraordinary musical talent appeared long before your adventuring life.",
+    "description_es": "Tu extraordinario talento musical apareció mucho antes de tu vida aventurera.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "performance"
+    ],
+    "granted_feat": "Artista Virtuoso",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "lore": "Saber de Música",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.necromancer_apprentice",
+    "name_pt": "Aprendiz de Necromante",
+    "name_en": "Necromancer Apprentice",
+    "name_es": "Aprendiz de nigromante",
+    "description_pt": "Um aprendizado perigoso ensinou você a reconhecer rapidamente ameaças mágicas.",
+    "description_en": "A dangerous apprenticeship taught you to identify magical threats quickly.",
+    "description_es": "Un aprendizaje peligroso te enseñó a identificar rápidamente amenazas mágicas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "arcana"
+    ],
+    "granted_feat": "Identificação Rápida",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "lore": "Saber de Necromancia",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.night_watch",
+    "name_pt": "Patrulha Noturna",
+    "name_en": "Night Watch",
+    "name_es": "Guardia nocturna",
+    "description_pt": "Anos de vigília ensinaram você a encarar ameaças que surgem depois do anoitecer.",
+    "description_en": "Years on watch taught you to face threats that emerge after nightfall.",
+    "description_es": "Años de vigilancia te enseñaron a afrontar amenazas que surgen después del anochecer.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intimidation"
+    ],
+    "granted_feat": "Coerção Rápida",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "lore": "Saber de Leis ou da Cidade Natal",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.occult_librarian",
+    "name_pt": "Bibliotecário Ocultista",
+    "name_en": "Occult Librarian",
+    "name_es": "Bibliotecario ocultista",
+    "description_pt": "O estudo de compêndios raros treinou você nos mistérios do ocultismo.",
+    "description_en": "Studying rare compendiums trained you in the mysteries of occultism.",
+    "description_es": "El estudio de compendios raros te formó en los misterios del ocultismo.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "occultism"
+    ],
+    "granted_feat": "Instruído em Segredos",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 28,
+    "data": {
+      "lore": "Saber Acadêmico",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.plant_whisperer",
+    "name_pt": "Encantador de Plantas",
+    "name_en": "Plant Whisperer",
+    "name_es": "Encantador de plantas",
+    "description_pt": "Sua afinidade excepcional com plantas beira o sobrenatural.",
+    "description_en": "Your exceptional affinity with plants borders on the supernatural.",
+    "description_es": "Tu afinidad excepcional con las plantas roza lo sobrenatural.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nature"
+    ],
+    "granted_feat": "Medicina Natural",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "lore": "Saber de Plantas",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.pyre_tender",
+    "name_pt": "Cuidador de Piras",
+    "name_en": "Pyre Tender",
+    "name_es": "Cuidador de piras",
+    "description_pt": "Você domina piras funerárias, combustíveis e técnicas para impedir o retorno dos mortos.",
+    "description_en": "You master funeral pyres, fuels, and techniques that keep the dead from returning.",
+    "description_es": "Dominas las piras funerarias, combustibles y técnicas que impiden el regreso de los muertos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Manufatura Alquímica",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "lore": "Saber de Funerais",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.seer_of_the_dead",
+    "name_pt": "Vidente dos Mortos",
+    "name_en": "Seer of the Dead",
+    "name_es": "Vidente de los muertos",
+    "description_pt": "Você percebe e conversa com espíritos que já partiram do mundo dos vivos.",
+    "description_en": "You perceive and speak with spirits that have left the world of the living.",
+    "description_es": "Percibes y hablas con espíritus que abandonaron el mundo de los vivos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "religion"
+    ],
+    "granted_feat": "Sentir Espíritos",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 31,
+    "data": {
+      "lore": "Saber de Mortos-Vivos",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.song_of_the_deep",
+    "name_pt": "Canção das Profundezas",
+    "name_en": "Song of the Deep",
+    "name_es": "Canción de las profundidades",
+    "description_pt": "Um resgate sobrenatural no mar deixou você capaz de respirar sob a água.",
+    "description_en": "A supernatural rescue at sea left you able to breathe underwater.",
+    "description_es": "Un rescate sobrenatural en el mar te dejó capaz de respirar bajo el agua.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Respirar na Água",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 30,
+    "data": {
+      "lore": "Saber de Oceanos",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.street_preacher",
+    "name_pt": "Pregador das Ruas",
+    "name_en": "Street Preacher",
+    "name_es": "Predicador callejero",
+    "description_pt": "Você levou a palavra de sua divindade diretamente às ruas e estradas.",
+    "description_en": "You carried your deity's word directly to streets and roads.",
+    "description_es": "Llevaste la palabra de tu deidad directamente a calles y caminos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "religion"
+    ],
+    "granted_feat": "Conhecimento Duvidoso",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "lore": "Saber da Divindade",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.time_traveler",
+    "name_pt": "Viajante do Tempo",
+    "name_en": "Time Traveler",
+    "name_es": "Viajero del tiempo",
+    "description_pt": "Você chegou de outra época e carrega conhecimentos que não pertencem ao presente.",
+    "description_en": "You arrived from another era and carry knowledge that does not belong to the present.",
+    "description_es": "Llegaste de otra época y llevas conocimientos que no pertenecen al presente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "three lore skills"
+    ],
+    "granted_feat": "Dobrar o Tempo",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 31,
+    "data": {
+      "lore": "Três Saberes do seu tempo",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.tombborn",
+    "name_pt": "Nascido da Tumba",
+    "name_en": "Tombborn",
+    "name_es": "Nacido de la tumba",
+    "description_pt": "Concebido em um lugar marcado pela morte, você se torna perigoso ao cair.",
+    "description_en": "Conceived in a death-stained place, you become dangerous when brought down.",
+    "description_es": "Concebido en un lugar marcado por la muerte, te vuelves peligroso al caer.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "undead lore"
+    ],
+    "granted_feat": "Rancor Final",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 17,
+    "data": {
+      "lore": "Saber de Mortos-Vivos",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.undead_hunter_heir",
+    "name_pt": "Herdeiro de Caçadores de Mortos",
+    "name_en": "Undead Hunter Heir",
+    "name_es": "Heredero de cazadores de muertos",
+    "description_pt": "Uma linhagem de caçadores transmitiu a você responsabilidade e poder contra mortos-vivos.",
+    "description_en": "A lineage of hunters passed responsibility and power against undead to you.",
+    "description_es": "Un linaje de cazadores te transmitió responsabilidad y poder contra los no muertos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Disrupção de Morto-Vivo Inata",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "lore": "Saber de Mortos-Vivos",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.146509+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "background.willing_host",
+    "name_pt": "Hospedeiro Voluntário",
+    "name_en": "Willing Host",
+    "name_es": "Anfitrión voluntario",
+    "description_pt": "Você negocia com espíritos e permite que compartilhem seu corpo em troca de auxílio.",
+    "description_en": "You bargain with spirits and let them share your body in exchange for aid.",
+    "description_es": "Negocias con espíritus y permites que compartan tu cuerpo a cambio de ayuda.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "spirit lore"
+    ],
+    "granted_feat": "Hospedar Espírito",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 17,
+    "data": {
+      "lore": "Saber de Espíritos",
+      "needs_review": false
+    },
+    "created_at": "2026-09-04T04:37:46.178157+00:00",
+    "updated_at": "2026-09-23T18:16:32.620127+00:00",
+    "system_id": "pf2e"
+  }
+]

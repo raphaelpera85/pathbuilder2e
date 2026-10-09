@@ -1,0 +1,94 @@
+[
+  {
+    "id": "dnd35",
+    "name_pt": "D&D 3.5",
+    "name_en": "D&D 3.5",
+    "name_es": "D&D 3.5",
+    "description_pt": "Dungeons & Dragons 3.5ª Edição, conforme o Livro do Jogador 3.5: 7 raças, 11 classes, perícias, 109 talentos, equipamento, magias e domínios.",
+    "description_en": "Dungeons & Dragons 3.5 Edition, per the 3.5 Player's Handbook: 7 races, 11 classes, skills, 109 feats, equipment, spells and domains.",
+    "description_es": "Dungeons & Dragons 3.5ª Edición, según el Manual del Jugador 3.5: 7 razas, 11 clases, habilidades, 109 dotes, equipo, conjuros y dominios.",
+    "icon": "⚔️",
+    "badge_color": "#8b5cf6",
+    "default_ruleset": "v35",
+    "supported_rulesets": [
+      "v35"
+    ],
+    "active": true,
+    "created_at": "2026-10-04T07:49:54.73146+00:00",
+    "updated_at": "2026-10-04T07:49:54.73146+00:00"
+  },
+  {
+    "id": "dnd5e",
+    "name_pt": "D&D 5e",
+    "name_en": "D&D 5e",
+    "name_es": "D&D 5e",
+    "description_pt": "Dungeons & Dragons 5ª Edição clássica e regras 2024.",
+    "description_en": "Dungeons & Dragons 5th Edition classic and 2024 rules.",
+    "description_es": "Dungeons & Dragons 5ª Edición clásica y reglas 2024.",
+    "icon": "🐉",
+    "badge_color": "#ef4444",
+    "default_ruleset": "standard",
+    "supported_rulesets": [
+      "standard"
+    ],
+    "active": true,
+    "created_at": "2026-09-12T09:32:45.846337+00:00",
+    "updated_at": "2026-09-12T14:35:38.02031+00:00"
+  },
+  {
+    "id": "ose",
+    "name_pt": "Old-School Essentials",
+    "name_en": "Old-School Essentials",
+    "name_es": "Old-School Essentials",
+    "description_pt": "RPG de exploração clássica e fantasia retroclone B/X com opções de Fantasia Avançada (13 classes, 10 raças, magias e regras completas).",
+    "description_en": "Classic adventure RPG and B/X retroclone with Advanced Fantasy options (13 classes, 10 races, spells, and complete rules).",
+    "description_es": "Juego de aventuras clásico y retroclon B/X con opciones de Fantasía Avanzada (13 clases, 10 razas, conjuros y reglas completas).",
+    "icon": "🎲",
+    "badge_color": "#78350f",
+    "default_ruleset": "advanced",
+    "supported_rulesets": [
+      "advanced",
+      "classic"
+    ],
+    "active": true,
+    "created_at": "2026-09-12T09:33:34.412057+00:00",
+    "updated_at": "2026-09-12T09:33:34.412057+00:00"
+  },
+  {
+    "id": "pf2e",
+    "name_pt": "Pathfinder 2e",
+    "name_en": "Pathfinder 2e",
+    "name_es": "Pathfinder 2e",
+    "description_pt": "Sistema oficial Remaster e Legado, com 28 classes, talentos, magias e regras completas.",
+    "description_en": "Official Remaster and Legacy rules, 28 classes, feats, spells, and full mechanics.",
+    "description_es": "Sistema oficial Remaster y Legacy, 28 clases, dotes, conjuros y mecánicas completas.",
+    "icon": "⚔️",
+    "badge_color": "#f97316",
+    "default_ruleset": "remaster",
+    "supported_rulesets": [
+      "remaster",
+      "legacy"
+    ],
+    "active": true,
+    "created_at": "2026-09-12T09:32:45.846337+00:00",
+    "updated_at": "2026-09-12T09:32:45.846337+00:00"
+  },
+  {
+    "id": "t20",
+    "name_pt": "Tormenta 20",
+    "name_en": "Tormenta 20",
+    "name_es": "Tormenta 20",
+    "description_pt": "O maior RPG brasileiro no mundo de Arton, Edição Jogo do Ano.",
+    "description_en": "The premier Brazilian RPG set in the world of Arton, Game of the Year Edition.",
+    "description_es": "El principal juego de rol brasileño en Arton, Edición Juego del Año.",
+    "icon": "🛡️",
+    "badge_color": "#3b82f6",
+    "default_ruleset": "padrao",
+    "supported_rulesets": [
+      "padrao"
+    ],
+    "active": true,
+    "created_at": "2026-09-12T09:32:45.846337+00:00",
+    "updated_at": "2026-09-12T14:35:38.02031+00:00"
+  }
+]

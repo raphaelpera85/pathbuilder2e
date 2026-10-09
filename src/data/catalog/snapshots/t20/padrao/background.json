@@ -1,0 +1,909 @@
+[
+  {
+    "id": "t20.acolito",
+    "name_pt": "Acólito",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "religiao",
+      "vontade"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.amigo_dos_animais",
+    "name_pt": "Amigo dos Animais",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "adestramento",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.amnesico",
+    "name_pt": "Amnésico",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.aristocrata",
+    "name_pt": "Aristocrata",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nobreza",
+      "diplomacia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.artesao",
+    "name_pt": "Artesão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "oficio",
+      "vontade"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.artista",
+    "name_pt": "Artista",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atuacao",
+      "diplomacia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.assistente_de_laboratorio",
+    "name_pt": "Assistente de Laboratório",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "misticismo",
+      "oficio"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.batedor",
+    "name_pt": "Batedor",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "furtividade",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.capanga",
+    "name_pt": "Capanga",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "luta",
+      "intimidacao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.charlatao",
+    "name_pt": "Charlatão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "enganacao",
+      "jogatina"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.circense",
+    "name_pt": "Circense",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "acrobacia",
+      "atuacao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.criminoso",
+    "name_pt": "Criminoso",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "enganacao",
+      "ladinagem"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.curandeiro",
+    "name_pt": "Curandeiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "cura",
+      "religiao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.eremita",
+    "name_pt": "Eremita",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "misticismo",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.escravo",
+    "name_pt": "Escravo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "fortitude",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.estudioso",
+    "name_pt": "Estudioso",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "conhecimento",
+      "investigacao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.fazendeiro",
+    "name_pt": "Fazendeiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "adestramento",
+      "atletismo"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.forasteiro",
+    "name_pt": "Forasteiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "sobrevivencia",
+      "percepcao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.gladiador",
+    "name_pt": "Gladiador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atuacao",
+      "luta"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.guarda",
+    "name_pt": "Guarda",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "fortitude",
+      "percepcao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.herdeiro",
+    "name_pt": "Herdeiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nobreza",
+      "vontade"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.heroi_campones",
+    "name_pt": "Herói Camponês",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atletismo",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.marujo",
+    "name_pt": "Marujo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atletismo",
+      "pilotagem"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.mateiro",
+    "name_pt": "Mateiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "furtividade",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.membro_de_guilda",
+    "name_pt": "Membro de Guilda",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacia",
+      "oficio"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.mercador",
+    "name_pt": "Mercador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacia",
+      "jogatina"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.minerador",
+    "name_pt": "Minerador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atletismo",
+      "fortitude"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.nomade",
+    "name_pt": "Nômade",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "cavalgar",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.pivete",
+    "name_pt": "Pivete",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "furtividade",
+      "ladinagem"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.refugiado",
+    "name_pt": "Refugiado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intuicao",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.seguidor",
+    "name_pt": "Seguidor",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacia",
+      "religiao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.selvagem",
+    "name_pt": "Selvagem",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atletismo",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.soldado",
+    "name_pt": "Soldado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "guerra",
+      "luta"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.taverneiro",
+    "name_pt": "Taverneiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacia",
+      "oficio"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.trabalhador",
+    "name_pt": "Trabalhador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": null,
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atletismo",
+      "oficio"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  }
+]
