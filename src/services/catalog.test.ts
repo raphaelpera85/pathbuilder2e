@@ -126,6 +126,19 @@ describe("serviço de catálogo local", () => {
     }
   });
 
+  it("preserva páginas de referência das ações nos snapshots de cada edição", async () => {
+    for (const [systemId, ruleset, page, expectedCount] of [
+      ["dnd5e", "standard", 192, 8],
+      ["t20", "padrao", 233, 4],
+      ["ose", "advanced", 120, 4],
+      ["ose", "classic", 120, 4],
+    ] as const) {
+      const { items } = await fetchCatalogCategory("action", { systemId, ruleset });
+      expect(items, `${systemId}/${ruleset}`).toHaveLength(expectedCount);
+      expect(items.every((item) => item.data.source?.page === page && item.data.sourcePage === page), `${systemId}/${ruleset}`).toBe(true);
+    }
+  });
+
   it("preserva regras de raça, classe e antecedente de D&D 5e no snapshot local", async () => {
     const [ancestries, classes, backgrounds] = await Promise.all([
       fetchCatalogCategory("ancestry", { systemId: "dnd5e", ruleset: "standard" }),

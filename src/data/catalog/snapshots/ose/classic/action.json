@@ -13,18 +13,20 @@
     "rarity": "common",
     "ruleset": "classic",
     "source_book": "Old-School Essentials — Livro de Regras",
-    "source_page": null,
+    "source_page": 120,
     "data": {
       "id": "ose.action.attack",
       "source": {
-        "book": "Old-School Essentials — Livro de Regras"
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 120
       },
       "ruleset": "classic",
       "ruleKind": "action",
       "systemId": "ose",
       "system_id": "ose",
       "sourceBook": "Old-School Essentials — Livro de Regras",
-      "description": "A jogada usa as tabelas de ataque do OSE e considera a classe, o nível, a arma e a Classe de Armadura do alvo."
+      "description": "A jogada usa as tabelas de ataque do OSE e considera a classe, o nível, a arma e a Classe de Armadura do alvo.",
+      "sourcePage": 120
     },
     "created_at": "2026-09-13T22:22:12.461293+00:00",
     "updated_at": "2026-09-13T22:32:54.941882+00:00",
@@ -44,18 +46,20 @@
     "rarity": "common",
     "ruleset": "classic",
     "source_book": "Old-School Essentials — Livro de Regras",
-    "source_page": null,
+    "source_page": 120,
     "data": {
       "id": "ose.action.cast",
       "source": {
-        "book": "Old-School Essentials — Livro de Regras"
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 120
       },
       "ruleset": "classic",
       "ruleKind": "action",
       "systemId": "ose",
       "system_id": "ose",
       "sourceBook": "Old-School Essentials — Livro de Regras",
-      "description": "A magia deve estar preparada e disponível para a classe; sofrer dano ou perder a concentração durante a conjuração pode interromper o efeito conforme a regra aplicável."
+      "description": "A magia deve estar preparada e disponível para a classe; sofrer dano ou perder a concentração durante a conjuração pode interromper o efeito conforme a regra aplicável.",
+      "sourcePage": 120
     },
     "created_at": "2026-09-13T22:22:12.461293+00:00",
     "updated_at": "2026-09-13T22:32:54.941882+00:00",
@@ -75,18 +79,20 @@
     "rarity": "common",
     "ruleset": "classic",
     "source_book": "Old-School Essentials — Livro de Regras",
-    "source_page": null,
+    "source_page": 120,
     "data": {
       "id": "ose.action.move",
       "source": {
-        "book": "Old-School Essentials — Livro de Regras"
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 120
       },
       "ruleset": "classic",
       "ruleKind": "action",
       "systemId": "ose",
       "system_id": "ose",
       "sourceBook": "Old-School Essentials — Livro de Regras",
-      "description": "O movimento é expresso em metros no jogo de exploração e é afetado por carga, armadura e condições previstas pelo ruleset."
+      "description": "O movimento é expresso em metros no jogo de exploração e é afetado por carga, armadura e condições previstas pelo ruleset.",
+      "sourcePage": 120
     },
     "created_at": "2026-09-13T22:22:12.461293+00:00",
     "updated_at": "2026-09-13T22:32:54.941882+00:00",
@@ -106,18 +112,20 @@
     "rarity": "common",
     "ruleset": "classic",
     "source_book": "Old-School Essentials — Livro de Regras",
-    "source_page": null,
+    "source_page": 120,
     "data": {
       "id": "ose.action.retreat",
       "source": {
-        "book": "Old-School Essentials — Livro de Regras"
+        "book": "Old-School Essentials — Livro de Regras",
+        "page": 120
       },
       "ruleset": "classic",
       "ruleKind": "action",
       "systemId": "ose",
       "system_id": "ose",
       "sourceBook": "Old-School Essentials — Livro de Regras",
-      "description": "A retirada é uma decisão de exploração e combate distinta de simplesmente mover-se; o Mestre aplica as regras de perseguição e reação quando pertinentes."
+      "description": "A retirada é uma decisão de exploração e combate distinta de simplesmente mover-se; o Mestre aplica as regras de perseguição e reação quando pertinentes.",
+      "sourcePage": 120
     },
     "created_at": "2026-09-13T22:22:12.461293+00:00",
     "updated_at": "2026-09-13T22:32:54.941882+00:00",

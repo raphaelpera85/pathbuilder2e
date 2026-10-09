@@ -13,18 +13,20 @@
     "rarity": "common",
     "ruleset": "standard",
     "source_book": "Livro do Jogador — D&D 5e 2014",
-    "source_page": null,
+    "source_page": 192,
     "data": {
       "id": "dnd5e.action.attack",
       "source": {
-        "book": "Livro do Jogador — D&D 5e 2014"
+        "book": "Livro do Jogador — D&D 5e 2014",
+        "page": 192
       },
       "ruleset": "standard",
       "ruleKind": "action",
       "systemId": "dnd5e",
       "system_id": "dnd5e",
       "sourceBook": "Livro do Jogador — D&D 5e 2014",
-      "description": "Você realiza um ataque com uma arma ou ataque desarmado. Quando uma classe concede Ataque Extra, a mesma ação pode incluir os ataques adicionais previstos pela característica."
+      "description": "Você realiza um ataque com uma arma ou ataque desarmado. Quando uma classe concede Ataque Extra, a mesma ação pode incluir os ataques adicionais previstos pela característica.",
+      "sourcePage": 192
     },
     "created_at": "2026-09-13T22:07:08.98402+00:00",
     "updated_at": "2026-09-13T22:22:12.461293+00:00",
@@ -44,18 +46,20 @@
     "rarity": "common",
     "ruleset": "standard",
     "source_book": "Livro do Jogador — D&D 5e 2014",
-    "source_page": null,
+    "source_page": 192,
     "data": {
       "id": "dnd5e.action.dash",
       "source": {
-        "book": "Livro do Jogador — D&D 5e 2014"
+        "book": "Livro do Jogador — D&D 5e 2014",
+        "page": 192
       },
       "ruleset": "standard",
       "ruleKind": "action",
       "systemId": "dnd5e",
       "system_id": "dnd5e",
       "sourceBook": "Livro do Jogador — D&D 5e 2014",
-      "description": "O movimento adicional é igual ao seu deslocamento, depois de considerar os modificadores aplicáveis."
+      "description": "O movimento adicional é igual ao seu deslocamento, depois de considerar os modificadores aplicáveis.",
+      "sourcePage": 192
     },
     "created_at": "2026-09-13T22:07:08.98402+00:00",
     "updated_at": "2026-09-13T22:22:12.461293+00:00",
@@ -75,18 +79,20 @@
     "rarity": "common",
     "ruleset": "standard",
     "source_book": "Livro do Jogador — D&D 5e 2014",
-    "source_page": null,
+    "source_page": 192,
     "data": {
       "id": "dnd5e.action.disengage",
       "source": {
-        "book": "Livro do Jogador — D&D 5e 2014"
+        "book": "Livro do Jogador — D&D 5e 2014",
+        "page": 192
       },
       "ruleset": "standard",
       "ruleKind": "action",
       "systemId": "dnd5e",
       "system_id": "dnd5e",
       "sourceBook": "Livro do Jogador — D&D 5e 2014",
-      "description": "Até o fim do turno, seu movimento não provoca ataques de oportunidade das criaturas que você puder ver."
+      "description": "Até o fim do turno, seu movimento não provoca ataques de oportunidade das criaturas que você puder ver.",
+      "sourcePage": 192
     },
     "created_at": "2026-09-13T22:07:08.98402+00:00",
     "updated_at": "2026-09-13T22:22:12.461293+00:00",
@@ -106,18 +112,20 @@
     "rarity": "common",
     "ruleset": "standard",
     "source_book": "Livro do Jogador — D&D 5e 2014",
-    "source_page": null,
+    "source_page": 192,
     "data": {
       "id": "dnd5e.action.dodge",
       "source": {
-        "book": "Livro do Jogador — D&D 5e 2014"
+        "book": "Livro do Jogador — D&D 5e 2014",
+        "page": 192
       },
       "ruleset": "standard",
       "ruleKind": "action",
       "systemId": "dnd5e",
       "system_id": "dnd5e",
       "sourceBook": "Livro do Jogador — D&D 5e 2014",
-      "description": "Até o início do seu próximo turno, ataques contra você têm desvantagem quando você puder ver o atacante, e você tem vantagem em testes de Destreza. A condição termina se ficar incapacitado ou se o deslocamento chegar a 0."
+      "description": "Até o início do seu próximo turno, ataques contra você têm desvantagem quando você puder ver o atacante, e você tem vantagem em testes de Destreza. A condição termina se ficar incapacitado ou se o deslocamento chegar a 0.",
+      "sourcePage": 192
     },
     "created_at": "2026-09-13T22:07:08.98402+00:00",
     "updated_at": "2026-09-13T22:22:12.461293+00:00",
@@ -137,18 +145,20 @@
     "rarity": "common",
     "ruleset": "standard",
     "source_book": "Livro do Jogador — D&D 5e 2014",
-    "source_page": null,
+    "source_page": 192,
     "data": {
       "id": "dnd5e.action.help",
       "source": {
-        "book": "Livro do Jogador — D&D 5e 2014"
+        "book": "Livro do Jogador — D&D 5e 2014",
+        "page": 192
       },
       "ruleset": "standard",
       "ruleKind": "action",
       "systemId": "dnd5e",
       "system_id": "dnd5e",
       "sourceBook": "Livro do Jogador — D&D 5e 2014",
-      "description": "Você presta ajuda para conceder vantagem ao próximo teste relevante de um aliado ou para dar vantagem ao próximo ataque contra uma criatura dentro do alcance definido pela regra."
+      "description": "Você presta ajuda para conceder vantagem ao próximo teste relevante de um aliado ou para dar vantagem ao próximo ataque contra uma criatura dentro do alcance definido pela regra.",
+      "sourcePage": 192
     },
     "created_at": "2026-09-13T22:07:08.98402+00:00",
     "updated_at": "2026-09-13T22:22:12.461293+00:00",
@@ -168,18 +178,20 @@
     "rarity": "common",
     "ruleset": "standard",
     "source_book": "Livro do Jogador — D&D 5e 2014",
-    "source_page": null,
+    "source_page": 192,
     "data": {
       "id": "dnd5e.action.hide",
       "source": {
-        "book": "Livro do Jogador — D&D 5e 2014"
+        "book": "Livro do Jogador — D&D 5e 2014",
+        "page": 192
       },
       "ruleset": "standard",
       "ruleKind": "action",
       "systemId": "dnd5e",
       "system_id": "dnd5e",
       "sourceBook": "Livro do Jogador — D&D 5e 2014",
-      "description": "A ação exige atender às condições de cobertura ou ocultação previstas pela regra; armadura que impõe desvantagem em Furtividade continua aplicando essa desvantagem."
+      "description": "A ação exige atender às condições de cobertura ou ocultação previstas pela regra; armadura que impõe desvantagem em Furtividade continua aplicando essa desvantagem.",
+      "sourcePage": 192
     },
     "created_at": "2026-09-13T22:07:08.98402+00:00",
     "updated_at": "2026-09-13T22:22:12.461293+00:00",
@@ -199,18 +211,20 @@
     "rarity": "common",
     "ruleset": "standard",
     "source_book": "Livro do Jogador — D&D 5e 2014",
-    "source_page": null,
+    "source_page": 192,
     "data": {
       "id": "dnd5e.action.ready",
       "source": {
-        "book": "Livro do Jogador — D&D 5e 2014"
+        "book": "Livro do Jogador — D&D 5e 2014",
+        "page": 192
       },
       "ruleset": "standard",
       "ruleKind": "action",
       "systemId": "dnd5e",
       "system_id": "dnd5e",
       "sourceBook": "Livro do Jogador — D&D 5e 2014",
-      "description": "Você escolhe uma ação executável e um gatilho perceptível. Ao ocorrer o gatilho, pode usar sua reação para executar a ação ou mover-se até o deslocamento escolhido."
+      "description": "Você escolhe uma ação executável e um gatilho perceptível. Ao ocorrer o gatilho, pode usar sua reação para executar a ação ou mover-se até o deslocamento escolhido.",
+      "sourcePage": 192
     },
     "created_at": "2026-09-13T22:07:08.98402+00:00",
     "updated_at": "2026-09-13T22:22:12.461293+00:00",
@@ -230,18 +244,20 @@
     "rarity": "common",
     "ruleset": "standard",
     "source_book": "Livro do Jogador — D&D 5e 2014",
-    "source_page": null,
+    "source_page": 192,
     "data": {
       "id": "dnd5e.action.search",
       "source": {
-        "book": "Livro do Jogador — D&D 5e 2014"
+        "book": "Livro do Jogador — D&D 5e 2014",
+        "page": 192
       },
       "ruleset": "standard",
       "ruleKind": "action",
       "systemId": "dnd5e",
       "system_id": "dnd5e",
       "sourceBook": "Livro do Jogador — D&D 5e 2014",
-      "description": "O Mestre determina o teste de Sabedoria (Percepção) ou Inteligência (Investigação), conforme o que você procura."
+      "description": "O Mestre determina o teste de Sabedoria (Percepção) ou Inteligência (Investigação), conforme o que você procura.",
+      "sourcePage": 192
     },
     "created_at": "2026-09-13T22:07:08.98402+00:00",
     "updated_at": "2026-09-13T22:22:12.461293+00:00",

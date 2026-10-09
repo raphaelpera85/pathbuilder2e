@@ -36,4 +36,15 @@ describe("system action compendium", () => {
     expect(basico.every((item) => item.data.ruleset === "basico")).toBe(true);
     expect(basico.some((item) => advanced.some((entry) => entry.id === item.id))).toBe(false);
   });
+
+  it.each([
+    ["dnd5e", "standard", 192],
+    ["t20", "padrao", 233],
+    ["ose", "advanced", 120],
+    ["ose", "classic", 120],
+  ])("retains the source page for %s/%s actions", (systemId, ruleset, page) => {
+    const actions = getSystemActionItems(systemId, ruleset);
+    expect(actions.length).toBeGreaterThan(0);
+    expect(actions.every((action) => action.data.source.page === page && action.data.sourcePage === page)).toBe(true);
+  });
 });
