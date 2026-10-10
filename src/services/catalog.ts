@@ -117,7 +117,7 @@ export function normalizeCatalogRecordToPickerItem(record: CatalogItemRecord, ca
     damage_dice: "damage", damage_type: "damageType", range_feet: "rangeFeet", reload: "reload", hands: "hands", weapon_group: "weaponGroup",
     weapon_category: "weaponCategory", ac_bonus: "acBonus", action_cost: "actionCost", action_type: "actionType", has_value: "hasValue",
     condition_group: "conditionGroup", prerequisite: "prerequisites", category: "category", ancestry_id: "ancestryId", class_id: "classId", archetype_id: "archetypeId",
-    trained_skills: "trainedSkills",
+    trained_skills: "trainedSkills", price_gp: "price",
   };
   for (const [dbKey, itemKey] of Object.entries(aliases)) if (record[dbKey] != null) data[itemKey] = record[dbKey];
   if (record.range_feet != null) data.range = record.range_feet;

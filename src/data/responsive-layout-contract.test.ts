@@ -154,7 +154,7 @@ describe("responsive layout contract", () => {
   it("permite abrir cards do compêndio com Enter e Espaço", () => {
     const portal = read("src/PortalPages.tsx");
     expect(portal).toContain('if (e.key === "Enter" || e.key === " ")');
-    expect(portal).toContain('role="button" aria-label={accessibleName}');
+    expect(portal).toContain('role="button" aria-label={cardAccessibleName}');
   });
 
   it("exibe o resumo localizado dos mascotes na ficha", () => {

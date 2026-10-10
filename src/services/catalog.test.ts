@@ -788,6 +788,62 @@ describe("serviço de catálogo local", () => {
     expect(chainmail?.data.availableRulesets).toEqual(["advanced", "classic"]);
   });
 
+  it("preserva os dados impressos da arma mágica Belkzen Deadsmasher no snapshot local", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const deadsmasher = items.find((entry) => entry.id === "weapon.battlecry.belkzen_deadsmasher");
+
+    expect(deadsmasher?.data).toMatchObject({
+      level: 13,
+      weaponCategory: "Marcial",
+      damage: "1d6",
+      damageType: "Impacto (B)",
+      hands: "1",
+      bulk: "1",
+      price: 2800,
+      rarity: "uncommon",
+      itemEffect: {
+        baseWeaponId: "weapon.morningstar",
+        potencyRune: 2,
+        strikingRune: "greater",
+        propertyRunes: ["vitalizing"],
+        voidResistance: 5,
+        voidResistanceGreater: 10,
+        greaterVariantLevel: 18,
+        greaterVariantPriceGp: 22000,
+        rerollAgainstUndeadVoidOncePerDay: true,
+      },
+    });
+    expect(deadsmasher?.data.summaries?.["pt-BR"]).toContain("Uma vez por dia");
+    expect(deadsmasher?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 126 });
+  });
+
+  it("preserva os dados impressos da Lança do Comandante de Cavalaria no snapshot local", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const lance = items.find((entry) => entry.id === "weapon.battlecry.cavalry_commanders_lance");
+
+    expect(lance?.data).toMatchObject({
+      level: 6,
+      weaponCategory: "Marcial",
+      damage: "1d8",
+      damageType: "Perfuração (P)",
+      hands: "2",
+      bulk: "2",
+      price: 225,
+      rarity: "uncommon",
+      itemEffect: {
+        potencyRune: 1,
+        strikingRune: true,
+        mountedDiplomacyBonus: 2,
+        mountedDiplomacyTarget: "creature loyal to the pennant's nation or cause",
+        allyAttackBonus: 1,
+        allyAttackRangeFeet: 60,
+        allyAttackOncePerDay: true,
+      },
+    });
+    expect(lance?.data.summaries?.["pt-BR"]).toContain("Uma vez por dia");
+    expect(lance?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 126 });
+  });
+
   it("mantém os 304 resumos mecânicos D&D 3.5 sincronizados com as fontes locais", async () => {
     const categories = ["weapon", "armor", "item", "skill"] as const;
     const loaded = await Promise.all(categories.map((category) => fetchCatalogCategory(category, { systemId: "dnd35", ruleset: "v35" })));

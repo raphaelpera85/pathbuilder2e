@@ -154,7 +154,7 @@ describe("PortalPages", () => {
     fireEvent.change(filters[1], { target: { value: "spell" } });
     fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Augúrio" } });
 
-    const card = await screen.findByRole("button", { name: "Augúrio, Classe: Clérigo, Nível 2" }, { timeout: 20_000 });
+    const card = await screen.findByRole("button", { name: /^Augúrio, Classe: Clérigo, Nível 2, Modos: D&D 3\.5$/ }, { timeout: 20_000 });
     expect(card).toHaveTextContent("Classe: Clérigo");
     expect(card).toHaveTextContent("Nível 2");
     fireEvent.click(card);
@@ -176,7 +176,7 @@ describe("PortalPages", () => {
     fireEvent.change(filters[1], { target: { value: "background" } });
     fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Acólito" } });
 
-    const originCard = await screen.findByRole("button", { name: "Acólito" }, { timeout: 20_000 });
+    const originCard = await screen.findByRole("button", { name: /^Acólito, Modos: Tormenta20 padrão$/ }, { timeout: 20_000 });
     fireEvent.click(originCard);
     const dialog = await screen.findByRole("dialog");
 
@@ -198,7 +198,7 @@ describe("PortalPages", () => {
     fireEvent.change(filters[1], { target: { value: "feat" } });
     fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Familiar Aprimorado" } });
 
-    const card = await screen.findByRole("button", { name: "Familiar Aprimorado" }, { timeout: 20_000 });
+    const card = await screen.findByRole("button", { name: /^Familiar Aprimorado, Modos:/ }, { timeout: 20_000 });
     fireEvent.click(card);
     const dialog = await screen.findByRole("dialog");
     expect(dialog).toHaveTextContent("As dez opções, tendências e níveis mínimos de conjurador arcano estão na tabela abaixo.");
@@ -218,8 +218,8 @@ describe("PortalPages", () => {
     const systemFilter = document.querySelector<HTMLSelectElement>(".catalog-filters-collapsible select");
     expect(systemFilter).not.toBeNull();
     fireEvent.change(systemFilter!, { target: { value: "pf2e" } });
-    await waitFor(() => expect(screen.getAllByRole("button", { name: "Anão" })).toHaveLength(1));
-    const card = screen.getByRole("button", { name: "Anão" });
+    await waitFor(() => expect(screen.getAllByRole("button", { name: /^Anão, Modos:/ })).toHaveLength(1));
+    const card = screen.getByRole("button", { name: /^Anão, Modos:/ });
     card.focus();
     fireEvent.keyDown(card, { key: "Enter" });
     await waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument());
@@ -251,7 +251,7 @@ describe("PortalPages", () => {
     fireEvent.change(filters[0], { target: { value: "pf1e" } });
     fireEvent.change(filters[1], { target: { value: "feat" } });
     fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Corrida" } });
-    const card = await screen.findByRole("button", { name: "Corrida" }, { timeout: 15_000 });
+    const card = await screen.findByRole("button", { name: /^Corrida, Modos:/ }, { timeout: 15_000 });
     expect(within(card).getByText("Fonte verificada")).toBeInTheDocument();
     expect(within(card).queryByText(/Remaster/)).not.toBeInTheDocument();
   }, 40_000);
