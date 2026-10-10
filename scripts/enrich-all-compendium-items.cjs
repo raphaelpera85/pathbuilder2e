@@ -11,7 +11,7 @@ let content = fs.readFileSync(dataFilePath, 'utf8');
 
 // 1. Atualizar o loop de BATTLECRY_MAGIC_WEAPONS para incluir dano, preço, volume, mãos e traços auditados
 content = content.replace(
-  /for \(const \[slug, pt, en, es, level\] of BATTLECRY_MAGIC_WEAPONS\) \{[\s\S]*?PF2E_DATA\.weapons\.push\(\{[\s\S]*?\}\);\s*\}/,
+  /const BATTLECRY_WEAPONS_DATA = \{[\s\S]*?\};\s*for \(const \[slug, pt, en, es, level\] of BATTLECRY_MAGIC_WEAPONS\) \{[\s\S]*?PF2E_DATA\.weapons\.push\(\{[\s\S]*?\}\);\s*\}/,
   `const BATTLECRY_WEAPONS_DATA = {
   belkzen_deadsmasher: { price: "15 PO", bulk: 2, hands: "2", damage: "1d10", damageType: "Impacto (B)", traits: ["Incomum", "Orc", "Empurrão", "Desarmar"] },
   cavalry_commanders_lance: { price: "12 PO", bulk: 2, hands: "2", damage: "1d8", damageType: "Perfuração (P)", traits: ["Incomum", "Investida de Justa d10", "Alcance"] },
@@ -27,11 +27,71 @@ content = content.replace(
       craftRequirements: ["one casting of command"],
     },
   },
-  chainbreaker: { price: "10 PO", bulk: 1, hands: "1", damage: "1d6", damageType: "Cortante (S)", traits: ["Incomum", "Desarmar", "Varredura"] },
-  dazzling_shortbow: { price: "25 PO", bulk: 1, hands: "1+", damage: "1d6", damageType: "Perfuração (P)", traits: ["Incomum", "Mortal d10", "Alcance 60 pés"] },
-  doomsweeper: { price: "30 PO", bulk: 2, hands: "2", damage: "1d12", damageType: "Cortante (S)", traits: ["Incomum", "Varredura", "Empurrão"] },
-  draddeths_edge: { price: "20 PO", bulk: 1, hands: "1", damage: "1d8", damageType: "Cortante (S)", traits: ["Incomum", "Versátil P"] },
-  final_stand: { price: "35 PO", bulk: 2, hands: "2", damage: "1d10", damageType: "Perfuração (P)", traits: ["Incomum", "Alcance", "Apunhaladora"] },
+  chainbreaker: {
+    price: "150 PO", bulk: 1, hands: "1", damage: "1d6", damageType: "Perfuração (P)", weaponCategory: "Marcial",
+    traits: ["Incomum", "Mágico", "Fatal d10"], sourceApproximate: false, needs_review: false,
+    summaryPt: "Picareta mágica +1 striking que rompe contenções; a versão maior é de nível 12.",
+    description: "Esta picareta +1 striking ignora os primeiros 5 pontos de Dureza de um objeto inanimado destinado a prender ou confinar, como algemas ou grades. Uma vez por dia, você pode Golpear uma criatura com a arma; se acertar e causar dano, um aliado agarrado ou restringido a até 18 m do alvo pode usar uma reação para tentar Escapar. A versão maior (nível 12, 1.750 po) é uma picareta +2 striking e ignora os primeiros 10 pontos de Dureza de objetos usados para conter.",
+    itemEffect: {
+      potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.pick", unattendedRestraintHardnessIgnored: 5,
+      liberatingStrikeOncePerDay: true, liberatedAllyRangeFeet: 60, greaterVariantLevel: 12, greaterVariantPriceGp: 1750,
+      greaterPotencyRune: 2, greaterStrikingRune: true, greaterRestraintHardnessIgnored: 10,
+    },
+  },
+  dazzling_shortbow: {
+    price: "160 PO", bulk: 1, hands: "2", damage: "1d6", damageType: "Perfuração (P)", weaponCategory: "Simples", weaponGroup: "Bow",
+    traits: ["Incomum", "Mágico", "Mortal d10", "Alcance 60 pés"], sourceApproximate: false, needs_review: false,
+    summaryPt: "Arco curto +1 striking; críticos podem ofuscar (Fortitude CD 19); uma vez ao dia dispara luz reveladora (CD 19).",
+    description: "Este arco curto +1 striking é favorito de caçadores de magos e de quem enfrenta inimigos capazes de ficar invisíveis. Uma criatura atingida criticamente por um Golpe à distância feito com ele deve obter sucesso em um teste de Fortitude CD 19 ou fica ofuscada por 1 minuto. Uma vez por dia, com duas ações de concentração, você dispara uma flecha de luz púrpura; criaturas numa explosão de 3 m a até 18 m são afetadas por luz reveladora (CD 19). Requisito de Fabricação: fornecer uma conjuração de luz reveladora.",
+    itemEffect: {
+      potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.shortbow", criticalFortitudeSaveDC: 19, dazzledDuration: "1 minute",
+      showYourselfOncePerDay: true, showYourselfActionCost: 2, showYourselfActivationTrait: "concentrate",
+      revealingLightDC: 19, revealingLightBurstFeet: 10, revealingLightRangeFeet: 60,
+      craftRequirements: ["one casting of revealing light"],
+    },
+  },
+  doomsweeper: {
+    price: "475 PO", bulk: 2, hands: "2", damage: "1d10", damageType: "Perfuração (P)", weaponCategory: "Marcial", weaponGroup: "Polearm",
+    traits: ["Incomum", "Mágico", "Alcance", "Versátil C"], sourceApproximate: false, needs_review: false,
+    summaryPt: "Alabarda +1 striking que detecta perigos ocultos e, uma vez ao dia, limpa um cone de 30 pés.",
+    description: "Este ancinho pesado de aço funciona como uma alabarda +1 striking. Quando segurado estendido, concede bônus de item +1 em testes de Percepção para notar perigos ocultos num cone de 30 pés; o bônus aumenta para +2 ao usar as atividades de exploração Batedor (Scout) ou Procurar (Search). Uma vez por dia, com duas ações de concentração e manipulação e segurando-o com as duas mãos, você varre um cone de 30 pés, removendo efeitos mundanos de 4º nível ou inferior que dificultem o movimento no solo. O efeito também tenta neutralizar perigos mágicos com +14 (4º nível de neutralização) e desabilitar perigos não mágicos com Ladroagem +14, exceto assombrações. Você não precisa perceber os perigos para afetá-los e não os percebe se a tentativa falhar.",
+    itemEffect: {
+      potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.halberd",
+      hiddenHazardDetection: { perceptionBonus: 1, rangeFeet: 30, scoutOrSearchBonus: 2 },
+      clearTheWay: {
+        actionCost: 2, activationTraits: ["concentrate", "manipulate"], frequency: "once per day", requiredHands: "2",
+        area: { shape: "cone", rangeFeet: 30 }, mundaneEffectsMaximumLevel: 4, difficultTerrainMaximumDepthFeet: 4,
+        counteract: { modifier: 14, rank: 4 },
+        thievery: { modifier: 14, disablesNonmagicalHazards: true, excludesHaunts: true },
+        canTargetUnnoticedHazards: true, failedAttemptsRevealHazards: false,
+      },
+    },
+  },
+  draddeths_edge: {
+    price: "—", bulk: 1, hands: "1", damage: "1d8", damageType: "Impacto (B)", weaponCategory: "Marcial", weaponGroup: "Hammer",
+    traits: ["Inteligente", "Ocultista", "Empurrão"], sourceApproximate: false, needs_review: false,
+    summaryPt: "Martelo de guerra +2 maior striking shifting inteligente; telepatia, capacidades táticas e vínculo patriótico com Molthune.",
+    description: "Este martelo de guerra +2 com runas striking maior e shifting é habitado por uma inteligência militar brilhante e patriótica de Molthune. Comunica-se por telepatia em Comum e Varisiano; Percepção +11, visão precisa 30 pés, audição imprecisa 30 pés, Sobrevivência +28, Saber de Guerra +35, Int +6, Sab +3, Car +3 e Vontade +28. Pode partir em busca de um portador mais digno se for desrespeitado ou se este desprezar Molthune. Enquanto o portador viver, não pode ser desarmado nem derrubado sem consentimento, e permanece em sua mão enquanto inconsciente. Concede bônus de item em testes de recuperação ao morrer igual ao bônus da runa de Potência instalada.",
+    itemEffect: {
+      potencyRune: 2, greaterStrikingRune: true, propertyRunes: ["shifting"], baseWeaponId: "weapon.warhammer",
+      intelligentWeapon: {
+        perceptionModifier: 11, preciseVisionFeet: 30, impreciseHearingFeet: 30, telepathyLanguages: ["Common", "Varisian"],
+        skills: { survival: 28, warfareLore: 35 }, abilityModifiers: { intelligence: 6, wisdom: 3, charisma: 3 }, willModifier: 28,
+        loyalty: "Molthune", leavesDisrespectfulWielder: true, cannotBeDisarmedWhileWielderAlive: true,
+        remainsHeldWhileUnconscious: true, recoveryCheckBonusEqualsPotencyRuneBonusWhileDying: true,
+      },
+    },
+  },
+  final_stand: {
+    price: "—", bulk: 1, hands: "1", damage: "1d6", damageType: "Perfuração (P)", weaponCategory: "Marcial", weaponGroup: "Sword", sourcePage: 127,
+    traits: ["Artefato", "Divino", "Mágico", "Acurada", "Mortal d8", "Desarmar"], sourceApproximate: false, needs_review: false,
+    summaryPt: "Rapieira +3 maior striking artefato: um teste plano CD 11 pode mantê-lo com 1 PV quando cairia a 0.",
+    description: "Esta rapieira +3 maior striking é ligada à resistência heroica até o fim. Quando um dano reduzir você a 0 PV sem matá-lo imediatamente, faça um teste plano CD 11; se tiver sucesso, permanece com 1 PV e não pode recuperar PV pelo restante do encontro, embora possa ser estabilizado se ficar morrendo. Se continuar consciente sem inimigos próximos que possa perceber, cai imediatamente a 0 PV e fica morrendo 1. Use antes quaisquer outras habilidades que o manteriam com 1 PV. Destruição: se o portador se render enquanto aliados ainda lutam, a CD aumenta permanentemente em 2; a espada se estilhaça quando a CD ultrapassar 20.",
+    itemEffect: {
+      potencyRune: 3, greaterStrikingRune: true, baseWeaponId: "weapon.rapier",
+      finalStand: { flatCheckDC: 11, remainsAtOneHitPointOnSuccess: true, healingProhibitedForEncounter: true, canBeStabilized: true, dropsToDyingOneWithoutPerceivedNearbyEnemies: true, otherRemainAtOneHitPointAbilitiesResolveFirst: true, destruction: { trigger: "surrenders while allies remain standing", permanentFlatCheckDCIncrease: 2, shattersWhenDCExceeds: 20 } },
+    },
+  },
   generals_word: { price: "40 PO", bulk: 1, hands: "1", damage: "1d8", damageType: "Impacto (B)", traits: ["Incomum", "Empurrão"] },
   gravediggers_call: { price: "22 PO", bulk: 2, hands: "2", damage: "1d10", damageType: "Perfuração (P)", traits: ["Incomum", "Derrubar"] },
   hells_judgment: { price: "45 PO", bulk: 2, hands: "2", damage: "1d12", damageType: "Cortante (S)", traits: ["Incomum", "Profano", "Varredura"] },
@@ -60,14 +120,14 @@ for (const [slug, pt, en, es, level] of BATTLECRY_MAGIC_WEAPONS) {
     description: extra.description || \`Arma mágica de Battlecry! (p. 126); \${extra.damage ? \`Dano \${extra.damage} \${extra.damageType}\` : ""}.\`,
     category: "Arma Mágica", weaponCategory: extra.weaponCategory, weaponGroup: extra.weaponGroup, level, price: extra.price || "25 PO", bulk: extra.bulk || 1, hands: extra.hands || "1",
     damage: extra.damage || "1d8", damageType: extra.damageType || "Cortante (S)", traits: extra.traits || ["Incomum", "Mágico"], itemEffect: extra.itemEffect,
-    source: { book: BATTLECRY_SOURCE, page: 126 }, sourceApproximate: false, ruleset: "remaster", needs_review: false,
+    source: { book: BATTLECRY_SOURCE, page: extra.sourcePage || 126 }, sourceApproximate: extra.sourceApproximate ?? true, ruleset: "remaster", needs_review: extra.needs_review ?? true,
   });
 }`
 );
 
 // 2. Atualizar o loop de BATTLECRY_MAGIC_ARMORS para incluir AC, penalidades, Força e bônus mecânicos
 content = content.replace(
-  /for \(const \[slug, pt, en, es, level\] of BATTLECRY_MAGIC_ARMORS\) \{[\s\S]*?PF2E_DATA\.armors\.push\(\{[\s\S]*?\}\);\s*\}/,
+  /(?:const BATTLECRY_ARMORS_DATA = \{[\s\S]*?\};\s*)?for \(const \[slug, pt, en, es, level\] of BATTLECRY_MAGIC_ARMORS\) \{[\s\S]*?PF2E_DATA\.armors\.push\(\{[\s\S]*?\}\);\s*\}/,
   `const BATTLECRY_ARMORS_DATA = {
   alkenstar_phalanx: { price: "45 PO", bulk: 3, category: "Pesada", acBonus: 5, dexCap: 1, checkPenalty: -3, speedPenalty: -10, strReq: 16, traits: ["Incomum", "Bastião"] },
   ankhrav_carapace: { price: "25 PO", bulk: 2, category: "Média", acBonus: 3, dexCap: 2, checkPenalty: -2, speedPenalty: -5, strReq: 14, traits: ["Incomum"] },
@@ -111,7 +171,7 @@ for (const [slug, pt, en, es, level] of BATTLECRY_MAGIC_ARMORS) {
 
 // 3. Atualizar o loop de BATTLECRY_MAGIC_SHIELDS para incluir Dureza, PV, LQ, Preço, Volume
 content = content.replace(
-  /for \(const \[slug, pt, en, es, level\] of BATTLECRY_MAGIC_SHIELDS\) \{[\s\S]*?PF2E_DATA\.shields\.push\(\{[\s\S]*?\}\);\s*\}/,
+  /const BATTLECRY_SHIELDS_DATA = \{[\s\S]*?\};\s*for \(const \[slug, pt, en, es, level\] of BATTLECRY_MAGIC_SHIELDS\) \{[\s\S]*?PF2E_DATA\.shields\.push\(\{[\s\S]*?\}\);\s*\}/,
   `const BATTLECRY_SHIELDS_DATA = {
   bivouac_targe: { price: "15 PO", bulk: 1, acBonus: 1, hardness: 4, maxHp: 16, bt: 8 },
   dragon_shield: { price: "40 PO", bulk: 2, acBonus: 2, hardness: 6, maxHp: 24, bt: 12, resistances: ["Fogo 5"] },
@@ -135,7 +195,7 @@ for (const [slug, pt, en, es, level] of BATTLECRY_MAGIC_SHIELDS) {
     category: "Escudo Mágico", level, price: extra.price || "25 PO", bulk: extra.bulk || 1, acBonus: extra.acBonus || 2,
     hardness: extra.hardness || 5, maxHp: extra.maxHp || 20, bt: extra.bt || 10, speedPenalty: extra.speedPenalty || 0,
     itemBonus: extra.itemBonus, skill: extra.skill, resistances: extra.resistances, damage: extra.damage, damageType: extra.damageType,
-    traits: ["Incomum", "Mágico"], source: { book: BATTLECRY_SOURCE, page: 130 }, sourceApproximate: false, ruleset: "remaster", needs_review: false,
+    traits: ["Incomum", "Mágico"], source: { book: BATTLECRY_SOURCE, page: 130 }, sourceApproximate: extra.sourceApproximate ?? true, ruleset: "remaster", needs_review: extra.needs_review ?? true,
   });
 }`
 );
@@ -178,6 +238,14 @@ for (const s of coreShields) {
   const regex = new RegExp(`\\{\\s*(id:\\s*["']${s.id}["']\\s*,)?\\s*name:\\s*["']${s.name.replace(/\(/g, '\\(').replace(/\)/g, '\\)')}["'][\\s\\S]*?\\}`);
   const replacement = `{ id: "${s.id}", name: "${s.name}", names: { "pt-BR": "${s.pt}", en: "${s.name}", es: "${s.es}" }, summaries: { "pt-BR": "${s.desc}", en: "${s.desc}", es: "${s.desc}" }, level: ${s.level || 0}, price: "${s.price}", acBonus: ${s.ac}, hardness: ${s.hard}, maxHp: ${s.hp}, bt: ${s.bt}, speedPenalty: ${s.spd}, bulk: ${typeof s.bulk === 'number' ? s.bulk : `"${s.bulk}"`}, ${s.traits ? `traits: ${JSON.stringify(s.traits)}, ` : ""}description: "${s.desc}", source: { book: "${s.book}", page: ${s.page} }, ruleset: "remaster", needs_review: false }`;
   content = content.replace(regex, replacement);
+}
+
+for (const [label, pattern] of [
+  ["BATTLECRY_WEAPONS_DATA", /const BATTLECRY_WEAPONS_DATA = \{/g],
+  ["BATTLECRY_SHIELDS_DATA", /const BATTLECRY_SHIELDS_DATA = \{/g],
+]) {
+  const declarations = content.match(pattern) || [];
+  if (declarations.length !== 1) throw new Error(`Transformação inconsistente: esperado um bloco ${label}, encontrados ${declarations.length}.`);
 }
 
 fs.writeFileSync(dataFilePath, content, 'utf8');

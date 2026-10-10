@@ -1950,16 +1950,17 @@
   },
   {
     "id": "weapon.battlecry.dazzling_shortbow",
-    "hands": "1+",
-    "priceGp": 25,
+    "hands": "2",
+    "priceGp": 160,
     "traits": [
       "Incomum",
+      "Mágico",
       "Mortal d10",
       "Alcance 60 pés"
     ],
     "rangeFeet": 60,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Bow",
     "source": {
       "book": "Battlecry! (Remaster)",
       "page": 126
@@ -1969,15 +1970,16 @@
   {
     "id": "weapon.battlecry.doomsweeper",
     "hands": "2",
-    "priceGp": 30,
+    "priceGp": 475,
     "traits": [
       "Incomum",
-      "Varredura",
-      "Empurrão"
+      "Mágico",
+      "Alcance",
+      "Versátil C"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Polearm",
     "source": {
       "book": "Battlecry! (Remaster)",
       "page": 126
@@ -1987,14 +1989,15 @@
   {
     "id": "weapon.battlecry.draddeths_edge",
     "hands": "1",
-    "priceGp": 20,
+    "priceGp": null,
     "traits": [
-      "Incomum",
-      "Versátil P"
+      "Inteligente",
+      "Ocultista",
+      "Empurrão"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Hammer",
     "source": {
       "book": "Battlecry! (Remaster)",
       "page": 126
@@ -2003,19 +2006,22 @@
   },
   {
     "id": "weapon.battlecry.final_stand",
-    "hands": "2",
-    "priceGp": 35,
+    "hands": "1",
+    "priceGp": null,
     "traits": [
-      "Incomum",
-      "Alcance",
-      "Apunhaladora"
+      "Artefato",
+      "Divino",
+      "Mágico",
+      "Acurada",
+      "Mortal d8",
+      "Desarmar"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Sword",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 127
     },
     "ruleset": "remaster"
   },

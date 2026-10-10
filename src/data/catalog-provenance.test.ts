@@ -849,7 +849,7 @@ describe("proveniência do catálogo legado", () => {
     const catalog = loadCatalog() as { weapons: LegacyRecord[] };
     const weapons = catalog.weapons.filter((item) => item.id?.startsWith("weapon.battlecry.") && item.category === "Arma Mágica");
     expect(weapons).toHaveLength(25);
-    expect(weapons.every((item) => item.level >= 5 && item.source?.page === 126 && item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect(weapons.every((item) => item.level >= 5 && item.source?.page === (item.id === "weapon.battlecry.final_stand" ? 127 : 126) && item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
   });
 
   it("usa os dados impressos de Quebra-Correntes também no catálogo runtime do construtor", () => {
@@ -1468,6 +1468,158 @@ describe("proveniência do catálogo legado", () => {
       needs_review: false,
       mechanics: { effect: expect.stringContaining("6d6") },
     });
+  });
+
+  it("usa os dados impressos do Arco Curto Deslumbrante também no catálogo runtime do construtor", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; weaponGroup?: string; traits?: string[]; description?: string; itemEffect?: Record<string, unknown> })[] };
+    const bow = catalog.weapons.find((item) => item.id === "weapon.battlecry.dazzling_shortbow");
+
+    expect(bow).toMatchObject({
+      level: 5,
+      price: "160 PO",
+      bulk: 1,
+      hands: "2",
+      damage: "1d6",
+      damageType: "Perfuração (P)",
+      weaponCategory: "Simples",
+      weaponGroup: "Bow",
+      traits: ["Incomum", "Mágico", "Mortal d10", "Alcance 60 pés"],
+      itemEffect: {
+        potencyRune: 1,
+        strikingRune: true,
+        baseWeaponId: "weapon.shortbow",
+        criticalFortitudeSaveDC: 19,
+        dazzledDuration: "1 minute",
+        showYourselfOncePerDay: true,
+        revealingLightDC: 19,
+        revealingLightBurstFeet: 10,
+        revealingLightRangeFeet: 60,
+        craftRequirements: ["one casting of revealing light"],
+      },
+      source: { book: "Battlecry! (Remaster)", page: 126 },
+      sourceApproximate: false,
+      needs_review: false,
+    });
+    expect(bow?.description).toContain("Fortitude CD 19");
+  });
+
+  it("usa os dados impressos do Varredor do Destino também no catálogo runtime do construtor", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; weaponGroup?: string; traits?: string[]; description?: string; itemEffect?: Record<string, unknown> })[] };
+    const weapon = catalog.weapons.find((item) => item.id === "weapon.battlecry.doomsweeper");
+
+    expect(weapon).toMatchObject({
+      level: 8,
+      price: "475 PO",
+      bulk: 2,
+      hands: "2",
+      damage: "1d10",
+      damageType: "Perfuração (P)",
+      weaponCategory: "Marcial",
+      weaponGroup: "Polearm",
+      traits: ["Incomum", "Mágico", "Alcance", "Versátil C"],
+      itemEffect: {
+        potencyRune: 1,
+        strikingRune: true,
+        baseWeaponId: "weapon.halberd",
+        hiddenHazardDetection: { perceptionBonus: 1, rangeFeet: 30, scoutOrSearchBonus: 2 },
+        clearTheWay: {
+          actionCost: 2,
+          activationTraits: ["concentrate", "manipulate"],
+          frequency: "once per day",
+          requiredHands: "2",
+          area: { shape: "cone", rangeFeet: 30 },
+          mundaneEffectsMaximumLevel: 4,
+          difficultTerrainMaximumDepthFeet: 4,
+          counteract: { modifier: 14, rank: 4 },
+          thievery: { modifier: 14, disablesNonmagicalHazards: true, excludesHaunts: true },
+          canTargetUnnoticedHazards: true,
+          failedAttemptsRevealHazards: false,
+        },
+      },
+      source: { book: "Battlecry! (Remaster)", page: 126 },
+      sourceApproximate: false,
+      needs_review: false,
+    });
+    expect(weapon?.description).toContain("cone de 30 pés");
+  });
+
+  it("preserva a ficha inteligente de Fio de Draddeth no catálogo runtime", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; weaponGroup?: string; traits?: string[]; description?: string; itemEffect?: Record<string, unknown> })[] };
+    const weapon = catalog.weapons.find((item) => item.id === "weapon.battlecry.draddeths_edge");
+
+    expect(weapon).toMatchObject({
+      level: 16,
+      price: "—",
+      bulk: 1,
+      hands: "1",
+      damage: "1d8",
+      damageType: "Impacto (B)",
+      weaponCategory: "Marcial",
+      weaponGroup: "Hammer",
+      traits: ["Inteligente", "Ocultista", "Empurrão"],
+      itemEffect: {
+        potencyRune: 2,
+        greaterStrikingRune: true,
+        propertyRunes: ["shifting"],
+        baseWeaponId: "weapon.warhammer",
+        intelligentWeapon: {
+          perceptionModifier: 11,
+          preciseVisionFeet: 30,
+          impreciseHearingFeet: 30,
+          telepathyLanguages: ["Common", "Varisian"],
+          skills: { survival: 28, warfareLore: 35 },
+          abilityModifiers: { intelligence: 6, wisdom: 3, charisma: 3 },
+          willModifier: 28,
+          loyalty: "Molthune",
+          leavesDisrespectfulWielder: true,
+          cannotBeDisarmedWhileWielderAlive: true,
+          remainsHeldWhileUnconscious: true,
+          recoveryCheckBonusEqualsPotencyRuneBonusWhileDying: true,
+        },
+      },
+      source: { book: "Battlecry! (Remaster)", page: 126 },
+      sourceApproximate: false,
+      needs_review: false,
+    });
+    expect(weapon?.description).toContain("telepatia");
+  });
+
+  it("preserva as regras de artefato de Última Resistência no catálogo runtime", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; weaponGroup?: string; traits?: string[]; description?: string; itemEffect?: Record<string, unknown> })[] };
+    const weapon = catalog.weapons.find((item) => item.id === "weapon.battlecry.final_stand");
+
+    expect(weapon).toMatchObject({
+      level: 17,
+      price: "—",
+      bulk: 1,
+      hands: "1",
+      damage: "1d6",
+      damageType: "Perfuração (P)",
+      weaponCategory: "Marcial",
+      weaponGroup: "Sword",
+      traits: ["Artefato", "Divino", "Mágico", "Acurada", "Mortal d8", "Desarmar"],
+      itemEffect: {
+        potencyRune: 3,
+        greaterStrikingRune: true,
+        baseWeaponId: "weapon.rapier",
+        finalStand: {
+          flatCheckDC: 11,
+          remainsAtOneHitPointOnSuccess: true,
+          healingProhibitedForEncounter: true,
+          canBeStabilized: true,
+          dropsToDyingOneWithoutPerceivedNearbyEnemies: true,
+          otherRemainAtOneHitPointAbilitiesResolveFirst: true,
+          destruction: {
+            permanentFlatCheckDCIncrease: 2,
+            shattersWhenDCExceeds: 20,
+          },
+        },
+      },
+      source: { book: "Battlecry! (Remaster)", page: 127 },
+      sourceApproximate: false,
+      needs_review: false,
+    });
+    expect(weapon?.description).toContain("teste plano CD 11");
   });
 
   it("confirma efeitos graduados das magias do Player Core 2 revisadas no lote atual", () => {

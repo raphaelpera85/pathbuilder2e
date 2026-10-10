@@ -904,6 +904,155 @@ describe("serviço de catálogo local", () => {
     expect(chainbreaker?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 126 });
   });
 
+  it("preserva os dados impressos do Arco Curto Deslumbrante no snapshot local", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const bow = items.find((entry) => entry.id === "weapon.battlecry.dazzling_shortbow");
+
+    expect(bow?.data).toMatchObject({
+      level: 5,
+      weaponCategory: "Simples",
+      weaponGroup: "Bow",
+      damage: "1d6",
+      damageType: "Perfuração (P)",
+      hands: "2",
+      bulk: "1",
+      price: 160,
+      rarity: "uncommon",
+      itemEffect: {
+        potencyRune: 1,
+        strikingRune: true,
+        baseWeaponId: "weapon.shortbow",
+        criticalFortitudeSaveDC: 19,
+        dazzledDuration: "1 minute",
+        showYourselfOncePerDay: true,
+        revealingLightDC: 19,
+        revealingLightBurstFeet: 10,
+        revealingLightRangeFeet: 60,
+        craftRequirements: ["one casting of revealing light"],
+      },
+    });
+    expect(bow?.data.traits).toEqual(["Incomum", "Mágico", "Mortal d10", "Alcance 60 pés"]);
+    expect(bow?.data.summaries?.["pt-BR"]).toContain("Fortitude CD 19");
+    expect(bow?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 126 });
+  });
+
+  it("preserva os dados impressos do Varredor do Destino no snapshot local", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const weapon = items.find((entry) => entry.id === "weapon.battlecry.doomsweeper");
+
+    expect(weapon?.data).toMatchObject({
+      level: 8,
+      weaponCategory: "Marcial",
+      weaponGroup: "Polearm",
+      damage: "1d10",
+      damageType: "Perfuração (P)",
+      hands: "2",
+      bulk: "2",
+      price: 475,
+      rarity: "uncommon",
+      itemEffect: {
+        potencyRune: 1,
+        strikingRune: true,
+        baseWeaponId: "weapon.halberd",
+        hiddenHazardDetection: { perceptionBonus: 1, rangeFeet: 30, scoutOrSearchBonus: 2 },
+        clearTheWay: {
+          actionCost: 2,
+          activationTraits: ["concentrate", "manipulate"],
+          frequency: "once per day",
+          requiredHands: "2",
+          area: { shape: "cone", rangeFeet: 30 },
+          mundaneEffectsMaximumLevel: 4,
+          difficultTerrainMaximumDepthFeet: 4,
+          counteract: { modifier: 14, rank: 4 },
+          thievery: { modifier: 14, disablesNonmagicalHazards: true, excludesHaunts: true },
+          canTargetUnnoticedHazards: true,
+          failedAttemptsRevealHazards: false,
+        },
+      },
+    });
+    expect(weapon?.data.traits).toEqual(["Incomum", "Mágico", "Alcance", "Versátil C"]);
+    expect(weapon?.data.summaries?.["pt-BR"]).toContain("bônus de item +1 em testes de Percepção");
+    expect(weapon?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 126 });
+  });
+
+  it("preserva as runas e a inteligência de Fio de Draddeth sem inventar preço", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const weapon = items.find((entry) => entry.id === "weapon.battlecry.draddeths_edge");
+
+    expect(weapon?.data).toMatchObject({
+      level: 16,
+      weaponCategory: "Marcial",
+      weaponGroup: "Hammer",
+      damage: "1d8",
+      damageType: "Impacto (B)",
+      hands: "1",
+      bulk: "1",
+      rarity: "unique",
+      itemEffect: {
+        potencyRune: 2,
+        greaterStrikingRune: true,
+        propertyRunes: ["shifting"],
+        baseWeaponId: "weapon.warhammer",
+        intelligentWeapon: {
+          perceptionModifier: 11,
+          preciseVisionFeet: 30,
+          impreciseHearingFeet: 30,
+          telepathyLanguages: ["Common", "Varisian"],
+          skills: { survival: 28, warfareLore: 35 },
+          abilityModifiers: { intelligence: 6, wisdom: 3, charisma: 3 },
+          willModifier: 28,
+          loyalty: "Molthune",
+          leavesDisrespectfulWielder: true,
+          cannotBeDisarmedWhileWielderAlive: true,
+          remainsHeldWhileUnconscious: true,
+          recoveryCheckBonusEqualsPotencyRuneBonusWhileDying: true,
+        },
+      },
+    });
+    expect(weapon?.data).not.toHaveProperty("price");
+    expect(weapon?.data.traits).toEqual(["Inteligente", "Ocultista", "Empurrão"]);
+    expect(weapon?.data.summaries?.["pt-BR"]).toContain("telepatia");
+    expect(weapon?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 126 });
+  });
+
+  it("preserva as runas e as regras de artefato de Última Resistência sem inventar preço", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const weapon = items.find((entry) => entry.id === "weapon.battlecry.final_stand");
+
+    expect(weapon?.data).toMatchObject({
+      level: 17,
+      weaponCategory: "Marcial",
+      weaponGroup: "Sword",
+      damage: "1d6",
+      damageType: "Perfuração (P)",
+      hands: "1",
+      bulk: "1",
+      rarity: "unique",
+      itemEffect: {
+        potencyRune: 3,
+        greaterStrikingRune: true,
+        baseWeaponId: "weapon.rapier",
+        finalStand: {
+          flatCheckDC: 11,
+          remainsAtOneHitPointOnSuccess: true,
+          healingProhibitedForEncounter: true,
+          canBeStabilized: true,
+          dropsToDyingOneWithoutPerceivedNearbyEnemies: true,
+          otherRemainAtOneHitPointAbilitiesResolveFirst: true,
+          destruction: {
+            trigger: "surrenders while allies remain standing",
+            permanentFlatCheckDCIncrease: 2,
+            shattersWhenDCExceeds: 20,
+          },
+        },
+      },
+    });
+    expect(weapon?.data).not.toHaveProperty("price");
+    expect(weapon?.data.traits).toEqual(["Artefato", "Divino", "Mágico", "Acurada", "Mortal d8", "Desarmar"]);
+    expect(weapon?.data.summaries?.["pt-BR"]).toContain("teste plano CD 11");
+    expect(weapon?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 127 });
+  });
+
   it("mantém os 304 resumos mecânicos D&D 3.5 sincronizados com as fontes locais", async () => {
     const categories = ["weapon", "armor", "item", "skill"] as const;
     const loaded = await Promise.all(categories.map((category) => fetchCatalogCategory(category, { systemId: "dnd35", ruleset: "v35" })));

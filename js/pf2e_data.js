@@ -15101,7 +15101,7 @@ for (const [slug, pt, en, es, level] of BATTLECRY_MAGIC_SHIELDS) {
     category: "Escudo Mágico", level, price: extra.price || "25 PO", bulk: extra.bulk || 1, acBonus: extra.acBonus || 2,
     hardness: extra.hardness || 5, maxHp: extra.maxHp || 20, bt: extra.bt || 10, speedPenalty: extra.speedPenalty || 0,
     itemBonus: extra.itemBonus, skill: extra.skill, resistances: extra.resistances, damage: extra.damage, damageType: extra.damageType,
-    traits: ["Incomum", "Mágico"], source: { book: BATTLECRY_SOURCE, page: 130 }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+    traits: ["Incomum", "Mágico"], source: { book: BATTLECRY_SOURCE, page: 130 }, sourceApproximate: extra.sourceApproximate ?? true, ruleset: "remaster", needs_review: extra.needs_review ?? true,
   });
 }
 const BATTLECRY_MAGIC_AMMUNITION = [
@@ -15179,10 +15179,60 @@ const BATTLECRY_WEAPONS_DATA = {
       greaterPotencyRune: 2, greaterStrikingRune: true, greaterRestraintHardnessIgnored: 10,
     },
   },
-  dazzling_shortbow: { price: "25 PO", bulk: 1, hands: "1+", damage: "1d6", damageType: "Perfuração (P)", traits: ["Incomum", "Mortal d10", "Alcance 60 pés"] },
-  doomsweeper: { price: "30 PO", bulk: 2, hands: "2", damage: "1d12", damageType: "Cortante (S)", traits: ["Incomum", "Varredura", "Empurrão"] },
-  draddeths_edge: { price: "20 PO", bulk: 1, hands: "1", damage: "1d8", damageType: "Cortante (S)", traits: ["Incomum", "Versátil P"] },
-  final_stand: { price: "35 PO", bulk: 2, hands: "2", damage: "1d10", damageType: "Perfuração (P)", traits: ["Incomum", "Alcance", "Apunhaladora"] },
+  dazzling_shortbow: {
+    price: "160 PO", bulk: 1, hands: "2", damage: "1d6", damageType: "Perfuração (P)", weaponCategory: "Simples", weaponGroup: "Bow",
+    traits: ["Incomum", "Mágico", "Mortal d10", "Alcance 60 pés"], sourceApproximate: false, needs_review: false,
+    summaryPt: "Arco curto +1 striking; críticos podem ofuscar (Fortitude CD 19); uma vez ao dia dispara luz reveladora (CD 19).",
+    description: "Este arco curto +1 striking é favorito de caçadores de magos e de quem enfrenta inimigos capazes de ficar invisíveis. Uma criatura atingida criticamente por um Golpe à distância feito com ele deve obter sucesso em um teste de Fortitude CD 19 ou fica ofuscada por 1 minuto. Uma vez por dia, com duas ações de concentração, você dispara uma flecha de luz púrpura; criaturas numa explosão de 3 m a até 18 m são afetadas por luz reveladora (CD 19). Requisito de Fabricação: fornecer uma conjuração de luz reveladora.",
+    itemEffect: {
+      potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.shortbow", criticalFortitudeSaveDC: 19, dazzledDuration: "1 minute",
+      showYourselfOncePerDay: true, showYourselfActionCost: 2, showYourselfActivationTrait: "concentrate",
+      revealingLightDC: 19, revealingLightBurstFeet: 10, revealingLightRangeFeet: 60,
+      craftRequirements: ["one casting of revealing light"],
+    },
+  },
+  doomsweeper: {
+    price: "475 PO", bulk: 2, hands: "2", damage: "1d10", damageType: "Perfuração (P)", weaponCategory: "Marcial", weaponGroup: "Polearm",
+    traits: ["Incomum", "Mágico", "Alcance", "Versátil C"], sourceApproximate: false, needs_review: false,
+    summaryPt: "Alabarda +1 striking que detecta perigos ocultos e, uma vez ao dia, limpa um cone de 30 pés.",
+    description: "Este ancinho pesado de aço funciona como uma alabarda +1 striking. Quando segurado estendido, concede bônus de item +1 em testes de Percepção para notar perigos ocultos num cone de 30 pés; o bônus aumenta para +2 ao usar as atividades de exploração Batedor (Scout) ou Procurar (Search). Uma vez por dia, com duas ações de concentração e manipulação e segurando-o com as duas mãos, você varre um cone de 30 pés, removendo efeitos mundanos de 4º nível ou inferior que dificultem o movimento no solo. O efeito também tenta neutralizar perigos mágicos com +14 (4º nível de neutralização) e desabilitar perigos não mágicos com Ladroagem +14, exceto assombrações. Você não precisa perceber os perigos para afetá-los e não os percebe se a tentativa falhar.",
+    itemEffect: {
+      potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.halberd",
+      hiddenHazardDetection: { perceptionBonus: 1, rangeFeet: 30, scoutOrSearchBonus: 2 },
+      clearTheWay: {
+        actionCost: 2, activationTraits: ["concentrate", "manipulate"], frequency: "once per day", requiredHands: "2",
+        area: { shape: "cone", rangeFeet: 30 }, mundaneEffectsMaximumLevel: 4, difficultTerrainMaximumDepthFeet: 4,
+        counteract: { modifier: 14, rank: 4 },
+        thievery: { modifier: 14, disablesNonmagicalHazards: true, excludesHaunts: true },
+        canTargetUnnoticedHazards: true, failedAttemptsRevealHazards: false,
+      },
+    },
+  },
+  draddeths_edge: {
+    price: "—", bulk: 1, hands: "1", damage: "1d8", damageType: "Impacto (B)", weaponCategory: "Marcial", weaponGroup: "Hammer",
+    traits: ["Inteligente", "Ocultista", "Empurrão"], sourceApproximate: false, needs_review: false,
+    summaryPt: "Martelo de guerra +2 maior striking shifting inteligente; telepatia, capacidades táticas e vínculo patriótico com Molthune.",
+    description: "Este martelo de guerra +2 com runas striking maior e shifting é habitado por uma inteligência militar brilhante e patriótica de Molthune. Comunica-se por telepatia em Comum e Varisiano; Percepção +11, visão precisa 30 pés, audição imprecisa 30 pés, Sobrevivência +28, Saber de Guerra +35, Int +6, Sab +3, Car +3 e Vontade +28. Pode partir em busca de um portador mais digno se for desrespeitado ou se este desprezar Molthune. Enquanto o portador viver, não pode ser desarmado nem derrubado sem consentimento, e permanece em sua mão enquanto inconsciente. Concede bônus de item em testes de recuperação ao morrer igual ao bônus da runa de Potência instalada.",
+    itemEffect: {
+      potencyRune: 2, greaterStrikingRune: true, propertyRunes: ["shifting"], baseWeaponId: "weapon.warhammer",
+      intelligentWeapon: {
+        perceptionModifier: 11, preciseVisionFeet: 30, impreciseHearingFeet: 30, telepathyLanguages: ["Common", "Varisian"],
+        skills: { survival: 28, warfareLore: 35 }, abilityModifiers: { intelligence: 6, wisdom: 3, charisma: 3 }, willModifier: 28,
+        loyalty: "Molthune", leavesDisrespectfulWielder: true, cannotBeDisarmedWhileWielderAlive: true,
+        remainsHeldWhileUnconscious: true, recoveryCheckBonusEqualsPotencyRuneBonusWhileDying: true,
+      },
+    },
+  },
+  final_stand: {
+    price: "—", bulk: 1, hands: "1", damage: "1d6", damageType: "Perfuração (P)", weaponCategory: "Marcial", weaponGroup: "Sword", sourcePage: 127,
+    traits: ["Artefato", "Divino", "Mágico", "Acurada", "Mortal d8", "Desarmar"], sourceApproximate: false, needs_review: false,
+    summaryPt: "Rapieira +3 maior striking artefato: um teste plano CD 11 pode mantê-lo com 1 PV quando cairia a 0.",
+    description: "Esta rapieira +3 maior striking é ligada à resistência heroica até o fim. Quando um dano reduzir você a 0 PV sem matá-lo imediatamente, faça um teste plano CD 11; se tiver sucesso, permanece com 1 PV e não pode recuperar PV pelo restante do encontro, embora possa ser estabilizado se ficar morrendo. Se continuar consciente sem inimigos próximos que possa perceber, cai imediatamente a 0 PV e fica morrendo 1. Use antes quaisquer outras habilidades que o manteriam com 1 PV. Destruição: se o portador se render enquanto aliados ainda lutam, a CD aumenta permanentemente em 2; a espada se estilhaça quando a CD ultrapassar 20.",
+    itemEffect: {
+      potencyRune: 3, greaterStrikingRune: true, baseWeaponId: "weapon.rapier",
+      finalStand: { flatCheckDC: 11, remainsAtOneHitPointOnSuccess: true, healingProhibitedForEncounter: true, canBeStabilized: true, dropsToDyingOneWithoutPerceivedNearbyEnemies: true, otherRemainAtOneHitPointAbilitiesResolveFirst: true, destruction: { trigger: "surrenders while allies remain standing", permanentFlatCheckDCIncrease: 2, shattersWhenDCExceeds: 20 } },
+    },
+  },
   generals_word: { price: "40 PO", bulk: 1, hands: "1", damage: "1d8", damageType: "Impacto (B)", traits: ["Incomum", "Empurrão"] },
   gravediggers_call: { price: "22 PO", bulk: 2, hands: "2", damage: "1d10", damageType: "Perfuração (P)", traits: ["Incomum", "Derrubar"] },
   hells_judgment: { price: "45 PO", bulk: 2, hands: "2", damage: "1d12", damageType: "Cortante (S)", traits: ["Incomum", "Profano", "Varredura"] },
@@ -15211,7 +15261,7 @@ for (const [slug, pt, en, es, level] of BATTLECRY_MAGIC_WEAPONS) {
     description: extra.description || `Arma mágica de Battlecry! (p. 126); ${extra.damage ? `Dano ${extra.damage} ${extra.damageType}` : ""}.`,
     category: "Arma Mágica", weaponCategory: extra.weaponCategory, weaponGroup: extra.weaponGroup, level, price: extra.price || "25 PO", bulk: extra.bulk || 1, hands: extra.hands || "1",
     damage: extra.damage || "1d8", damageType: extra.damageType || "Cortante (S)", traits: extra.traits || ["Incomum", "Mágico"], itemEffect: extra.itemEffect,
-    source: { book: BATTLECRY_SOURCE, page: 126 }, sourceApproximate: extra.sourceApproximate ?? true, ruleset: "remaster", needs_review: extra.needs_review ?? true,
+    source: { book: BATTLECRY_SOURCE, page: extra.sourcePage || 126 }, sourceApproximate: extra.sourceApproximate ?? true, ruleset: "remaster", needs_review: extra.needs_review ?? true,
   });
 }
 
