@@ -27,6 +27,7 @@ import { DND35_WEAPONS, DND35_ARMORS } from "../data/dnd35/dnd35Equipment";
 import { DND35_GEAR } from "../data/dnd35/dnd35Gear";
 import { DND35_SKILLS } from "../data/dnd35/dnd35Skills";
 import { DND35_SPELL_LISTS } from "../data/dnd35/dnd35SpellLists";
+import { PF1E_CLERIC_CANTRIPS } from "../data/pf1e/pf1eSpells";
 import { DND5E_SPELLS } from "../data/dnd5e/dnd5eCompendium";
 import { OSE_BASIC_METHOD_RACE_BY_CLASS, isOseClassAvailableForMode } from "../data/ose/oseRules";
 import { OSE_CLASSES } from "../data/ose/oseClasses";
@@ -692,15 +693,30 @@ describe("serviço de catálogo local", () => {
     expect(items.every((item) => item.data.source?.book === "D&D 3.5 — Livro do Jogador" && item.data.source?.page)).toBe(true);
   });
 
+  it("expõe os truques de clérigo PF1e somente no ruleset legado e identifica o conteúdo parcial", async () => {
+    const { items, source } = await fetchCatalogCategory("spell", { systemId: "pf1e", ruleset: "legacy_pf1" });
+    const byName = new Map(items.map((item) => [item.name, item]));
+
+    expect(source).toBe("local_runtime");
+    expect(items).toHaveLength(PF1E_CLERIC_CANTRIPS.length);
+    expect(items.every((item) => item.system_id === "pf1e" && item.data.ruleset === "legacy_pf1")).toBe(true);
+    expect(items.every((item) => item.data.spellLevel === 0 && item.data.classIds?.includes("clerigo"))).toBe(true);
+    expect(items.every((item) => item.data.summaryOnly === true && item.data.source?.book === "Pathfinder RPG — Livro Básico" && item.data.source?.page === 226)).toBe(true);
+    expect(byName.get("Detectar Magia")?.summary).toContain("presença, quantidade, força, localização");
+    expect((await fetchCatalogCategory("spell", { systemId: "pf1e", ruleset: "v35" })).items).toHaveLength(0);
+  });
+
   it("mescla as listas locais D&D 3.5 com os snapshots sem omitir suplementos ao filtrar todos os sistemas", async () => {
     const dnd35CoreCount = DND35_SPELL_LISTS.reduce((total, list) => total + list.entries.length, 0);
     const { items, source } = await fetchCatalogCategory("spell", { systemId: "all" });
     const coreSpells = items.filter((item) => item.system_id === "dnd35" && item.data.ruleset === "v35");
     const supplementSpells = items.filter((item) => item.system_id === "dnd35" && item.data.ruleset !== "v35");
+    const pf1eSpells = items.filter((item) => item.system_id === "pf1e" && item.data.ruleset === "legacy_pf1");
 
     expect(source).toBe("local_mixed");
     expect(coreSpells).toHaveLength(dnd35CoreCount);
     expect(supplementSpells).toHaveLength(190);
+    expect(pf1eSpells).toHaveLength(PF1E_CLERIC_CANTRIPS.length);
   });
 
   it("preserva todos os traços das raças T20 no snapshot versionado", async () => {
@@ -1633,9 +1649,9 @@ describe("serviço de catálogo local", () => {
   it("calcula as métricas do compêndio pelos snapshots locais, incluindo perícias", async () => {
     const metrics = await fetchCatalogLocalMetrics();
     expect(metrics.counts.catalog_skills).toBe(195);
-    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(7155);
-    expect(metrics.counts.catalog_spells).toBe(1337);
-    expect(metrics.verifiedCount + metrics.reviewCount).toBe(7155);
+    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(7167);
+    expect(metrics.counts.catalog_spells).toBe(1349);
+    expect(metrics.verifiedCount + metrics.reviewCount).toBe(7167);
   });
 
   it("compartilha o cálculo das métricas locais entre chamadas concorrentes", async () => {
