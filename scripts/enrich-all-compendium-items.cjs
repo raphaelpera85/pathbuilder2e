@@ -15,7 +15,18 @@ content = content.replace(
   `const BATTLECRY_WEAPONS_DATA = {
   belkzen_deadsmasher: { price: "15 PO", bulk: 2, hands: "2", damage: "1d10", damageType: "Impacto (B)", traits: ["Incomum", "Orc", "Empurrão", "Desarmar"] },
   cavalry_commanders_lance: { price: "12 PO", bulk: 2, hands: "2", damage: "1d8", damageType: "Perfuração (P)", traits: ["Incomum", "Investida de Justa d10", "Alcance"] },
-  chain_of_command: { price: "18 PO", bulk: 2, hands: "2", damage: "1d8", damageType: "Impacto (B)", traits: ["Incomum", "Desarmar", "Derrubar", "Alcance"] },
+  chain_of_command: {
+    price: "240 PO", bulk: 1, hands: "2", damage: "1d8", damageType: "Cortante (S)", weaponCategory: "Marcial", weaponGroup: "Flail",
+    traits: ["Incomum", "Mágico", "Desarmar", "Acurada", "Derrubar"], sourceApproximate: false, needs_review: false,
+    summaryPt: "Corrente com espinhos +1 striking; acertos críticos causam 1d6 mental e duas ativações concedem não letal ou Comando CD 22.",
+    description: "Esta corrente com espinhos +1 striking, adornada com insígnias militares ensanguentadas e troféus de soldados derrotados, é usada por comandantes hobgoblins para motivar suas tropas. Em um acerto crítico, causa 1d6 de dano mental adicional. Com uma ação de concentração, ela recebe o traço não letal por 1 minuto. Com outra ação de concentração, se sua ação anterior foi um acerto crítico com a arma, você conjura Comando no alvo do crítico com CD 22; independentemente do resultado, o alvo fica imune a este efeito por 24 horas. Requisito de Fabricação: fornecer uma conjuração de Comando.",
+    itemEffect: {
+      potencyRune: 1, strikingRune: true, baseWeapon: "spiked chain", criticalHitMentalDamage: "1d6",
+      mercyOfCommander: { actionCost: 1, activationTrait: "concentrate", grantsTrait: "nonlethal", duration: "1 minute" },
+      willOfCommander: { actionCost: 1, activationTrait: "concentrate", requirement: "Your last action was a critical hit with the chain of command", spell: "command", spellDC: 22, immunityHours: 24 },
+      craftRequirements: ["one casting of command"],
+    },
+  },
   chainbreaker: { price: "10 PO", bulk: 1, hands: "1", damage: "1d6", damageType: "Cortante (S)", traits: ["Incomum", "Desarmar", "Varredura"] },
   dazzling_shortbow: { price: "25 PO", bulk: 1, hands: "1+", damage: "1d6", damageType: "Perfuração (P)", traits: ["Incomum", "Mortal d10", "Alcance 60 pés"] },
   doomsweeper: { price: "30 PO", bulk: 2, hands: "2", damage: "1d12", damageType: "Cortante (S)", traits: ["Incomum", "Varredura", "Empurrão"] },
@@ -45,10 +56,10 @@ for (const [slug, pt, en, es, level] of BATTLECRY_MAGIC_WEAPONS) {
   const extra = BATTLECRY_WEAPONS_DATA[slug] || {};
   PF2E_DATA.weapons.push({
     id, name: \`\${pt} (\${en})\`, names: { "pt-BR": pt, en, es },
-    summaries: { "pt-BR": \`Arma mágica de Battlecry!, nível \${level}.\`, en: \`Battlecry! magic weapon, level \${level}.\`, es: \`Arma mágica de Battlecry!, nivel \${level}.\` },
-    description: \`Arma mágica de Battlecry! (p. 126); \${extra.damage ? \`Dano \${extra.damage} \${extra.damageType}\` : ""}.\`,
-    category: "Arma Mágica", level, price: extra.price || "25 PO", bulk: extra.bulk || 1, hands: extra.hands || "1",
-    damage: extra.damage || "1d8", damageType: extra.damageType || "Cortante (S)", traits: extra.traits || ["Incomum", "Mágico"],
+    summaries: { "pt-BR": extra.summaryPt || \`Arma mágica de Battlecry!, nível \${level}.\`, en: \`Battlecry! magic weapon, level \${level}.\`, es: \`Arma mágica de Battlecry!, nivel \${level}.\` },
+    description: extra.description || \`Arma mágica de Battlecry! (p. 126); \${extra.damage ? \`Dano \${extra.damage} \${extra.damageType}\` : ""}.\`,
+    category: "Arma Mágica", weaponCategory: extra.weaponCategory, weaponGroup: extra.weaponGroup, level, price: extra.price || "25 PO", bulk: extra.bulk || 1, hands: extra.hands || "1",
+    damage: extra.damage || "1d8", damageType: extra.damageType || "Cortante (S)", traits: extra.traits || ["Incomum", "Mágico"], itemEffect: extra.itemEffect,
     source: { book: BATTLECRY_SOURCE, page: 126 }, sourceApproximate: false, ruleset: "remaster", needs_review: false,
   });
 }`

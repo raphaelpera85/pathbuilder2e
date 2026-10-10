@@ -844,6 +844,35 @@ describe("serviço de catálogo local", () => {
     expect(lance?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 126 });
   });
 
+  it("preserva os dados impressos da Cadeia de Comando no snapshot local", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const chain = items.find((entry) => entry.id === "weapon.battlecry.chain_of_command");
+
+    expect(chain?.data).toMatchObject({
+      level: 6,
+      weaponCategory: "Marcial",
+      weaponGroup: "Flail",
+      damage: "1d8",
+      damageType: "Cortante (S)",
+      hands: "2",
+      bulk: "1",
+      price: 240,
+      rarity: "uncommon",
+      itemEffect: {
+        potencyRune: 1,
+        strikingRune: true,
+        baseWeapon: "spiked chain",
+        criticalHitMentalDamage: "1d6",
+        mercyOfCommander: { actionCost: 1, grantsTrait: "nonlethal", duration: "1 minute" },
+        willOfCommander: { actionCost: 1, spell: "command", spellDC: 22, immunityHours: 24 },
+        craftRequirements: ["one casting of command"],
+      },
+    });
+    expect(chain?.data.traits).toEqual(["Incomum", "Mágico", "Desarmar", "Acurada", "Derrubar"]);
+    expect(chain?.data.summaries?.["pt-BR"]).toContain("1d6 de dano mental adicional");
+    expect(chain?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 126 });
+  });
+
   it("preserva os dados impressos de Quebra-Correntes no snapshot local", async () => {
     const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
     const chainbreaker = items.find((entry) => entry.id === "weapon.battlecry.chainbreaker");

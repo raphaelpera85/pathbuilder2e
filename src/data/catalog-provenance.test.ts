@@ -886,6 +886,38 @@ describe("proveniência do catálogo legado", () => {
     expect(chainbreaker?.description).toContain("aliado agarrado ou restringido");
   });
 
+  it("usa os dados impressos da Cadeia de Comando também no catálogo runtime do construtor", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; weaponGroup?: string; traits?: string[]; description?: string; itemEffect?: Record<string, unknown> })[] };
+    const chain = catalog.weapons.find((item) => item.id === "weapon.battlecry.chain_of_command");
+
+    expect(chain).toMatchObject({
+      level: 6,
+      price: "240 PO",
+      bulk: 1,
+      hands: "2",
+      damage: "1d8",
+      damageType: "Cortante (S)",
+      weaponCategory: "Marcial",
+      weaponGroup: "Flail",
+      traits: ["Incomum", "Mágico", "Desarmar", "Acurada", "Derrubar"],
+      itemEffect: {
+        potencyRune: 1,
+        strikingRune: true,
+        baseWeapon: "spiked chain",
+        criticalHitMentalDamage: "1d6",
+        mercyOfCommander: { actionCost: 1, grantsTrait: "nonlethal", duration: "1 minute" },
+        willOfCommander: { actionCost: 1, spell: "command", spellDC: 22, immunityHours: 24 },
+        craftRequirements: ["one casting of command"],
+      },
+      source: { book: "Battlecry! (Remaster)", page: 126 },
+      sourceApproximate: false,
+      needs_review: false,
+    });
+    expect(chain?.description).toContain("Em um acerto crítico, causa 1d6 de dano mental adicional.");
+    expect(chain?.description).toContain("CD 22");
+    expect(chain?.description).toContain("imune a este efeito por 24 horas");
+  });
+
   it("indexa as magias de batalha de Battlecry", () => {
     const catalog = loadCatalog() as { spells: (LegacyRecord & { rank?: number; traditions?: string[] })[] };
     const spells = catalog.spells.filter((item) => item.id?.startsWith("spell.battlecry.battle_magic.") && item.source?.book === "Battlecry! (Remaster)");

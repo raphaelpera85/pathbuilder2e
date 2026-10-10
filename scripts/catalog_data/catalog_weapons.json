@@ -3648,25 +3648,27 @@
     "name_pt": "Cadeia de Comando",
     "name_en": "Chain of Command",
     "name_es": "Cadena de mando",
-    "description_pt": "Arma mágica de Battlecry!, nível 6.",
-    "description_en": "Battlecry! magic weapon, level 6.",
-    "description_es": "Arma mágica de Battlecry!, nivel 6.",
-    "weapon_category": "Arma Mágica",
-    "weapon_group": null,
+    "description_pt": "Esta corrente com espinhos +1 striking, adornada com insígnias militares ensanguentadas e troféus de soldados derrotados, é usada por comandantes hobgoblins para motivar suas tropas. Em um acerto crítico, causa 1d6 de dano mental adicional. Com uma ação de concentração, ela recebe o traço não letal por 1 minuto. Com outra ação de concentração, se sua ação anterior foi um acerto crítico com a arma, você conjura Comando no alvo do crítico com CD 22; independentemente do resultado, o alvo fica imune a este efeito por 24 horas. Requisito de Fabricação: fornecer uma conjuração de Comando.",
+    "description_en": null,
+    "description_es": null,
+    "level": 6,
+    "weapon_category": "Marcial",
+    "weapon_group": "Flail",
     "damage_dice": "1d8",
-    "damage_type": "Impacto (B)",
+    "damage_type": "Cortante (S)",
     "range_feet": null,
     "reload": null,
     "hands": "2",
-    "bulk": "2",
-    "price_gp": 18,
+    "bulk": "1",
+    "price_gp": 240,
     "traits": [
       "Incomum",
+      "Mágico",
       "Desarmar",
-      "Derrubar",
-      "Alcance"
+      "Acurada",
+      "Derrubar"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
@@ -3674,7 +3676,18 @@
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-chain-of-command.png",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "sourceApproximate": false,
+      "summary_pt": "Corrente com espinhos +1 striking; acertos críticos causam 1d6 mental e duas ativações concedem não letal ou Comando CD 22.",
+      "itemEffect": {
+        "potencyRune": 1,
+        "strikingRune": true,
+        "baseWeapon": "spiked chain",
+        "criticalHitMentalDamage": "1d6",
+        "mercyOfCommander": { "actionCost": 1, "activationTrait": "concentrate", "grantsTrait": "nonlethal", "duration": "1 minute" },
+        "willOfCommander": { "actionCost": 1, "activationTrait": "concentrate", "requirement": "Your last action was a critical hit with the chain of command", "spell": "command", "spellDC": 22, "immunityHours": 24 },
+        "craftRequirements": ["one casting of command"]
+      }
     }
   },
   {

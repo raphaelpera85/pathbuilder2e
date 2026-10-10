@@ -1913,16 +1913,17 @@
   {
     "id": "weapon.battlecry.chain_of_command",
     "hands": "2",
-    "priceGp": 18,
+    "priceGp": 240,
     "traits": [
       "Incomum",
+      "Mágico",
       "Desarmar",
-      "Derrubar",
-      "Alcance"
+      "Acurada",
+      "Derrubar"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Flail",
     "source": {
       "book": "Battlecry! (Remaster)",
       "page": 126
