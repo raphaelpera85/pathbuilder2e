@@ -89,19 +89,19 @@
   },
   {
     "id": "weapon.arbalest",
-    "hands": "1",
+    "hands": "2",
     "priceGp": 8,
     "traits": [
       "Apunhaladora",
-      "Recarga 2",
-      "Alcance 120 pés"
+      "Recarga 1",
+      "Alcance 110 pés"
     ],
-    "rangeFeet": 120,
-    "reload": 2,
-    "weaponGroup": null,
+    "rangeFeet": 110,
+    "reload": 1,
+    "weaponGroup": "Crossbow",
     "source": {
-      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
-      "page": 275
+      "book": "Livro do Jogador (Player Core, Remaster)",
+      "page": 280
     },
     "ruleset": "remaster"
   },
@@ -842,7 +842,7 @@
   },
   {
     "id": "weapon.scythe",
-    "hands": "1",
+    "hands": "2",
     "priceGp": 2,
     "traits": [
       "Mortal d10",
@@ -850,10 +850,10 @@
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Polearm",
     "source": {
       "book": "Livro do Jogador (Player Core, Remaster)",
-      "page": 279
+      "page": 278
     },
     "ruleset": "remaster"
   },
@@ -2106,36 +2106,38 @@
   {
     "id": "weapon.battlecry.jistkan_colossus_crusher",
     "hands": "2",
-    "priceGp": 50,
+    "priceGp": 6250,
     "traits": [
-      "Incomum",
-      "Empurrão",
-      "Brutal"
+      "Raro",
+      "Mágico",
+      "Empurrão"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Hammer",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 128
     },
     "ruleset": "remaster"
   },
   {
     "id": "weapon.battlecry.jistkan_war_crossbow",
     "hands": "2",
-    "priceGp": 28,
+    "priceGp": 22000,
     "traits": [
-      "Incomum",
+      "Raro",
+      "Mágico",
+      "Apunhaladora",
       "Recarga 1",
-      "Alcance 120 pés"
+      "Alcance 110 pés"
     ],
-    "rangeFeet": 120,
+    "rangeFeet": 110,
     "reload": 1,
-    "weaponGroup": null,
+    "weaponGroup": "Crossbow",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 128
     },
     "ruleset": "remaster"
   },
@@ -2212,37 +2214,41 @@
   },
   {
     "id": "weapon.battlecry.radiant_victory",
-    "hands": "2",
-    "priceGp": 55,
+    "hands": "1",
+    "priceGp": 240,
     "traits": [
       "Incomum",
-      "Luz",
-      "Sagrado"
+      "Mágico",
+      "Ágil",
+      "Acurada",
+      "Versátil Ct"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Sword",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 130
     },
     "ruleset": "remaster"
   },
   {
     "id": "weapon.battlecry.reapers_toll",
     "hands": "2",
-    "priceGp": 42,
+    "priceGp": 6500,
     "traits": [
       "Incomum",
+      "Mágico",
+      "Vazio",
       "Mortal d10",
       "Derrubar"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Polearm",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 130
     },
     "ruleset": "remaster"
   },

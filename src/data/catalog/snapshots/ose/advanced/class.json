@@ -343,6 +343,230 @@
     }
   },
   {
+    "id": "ose.class.anao_bx",
+    "name_pt": "Anão (Classe Clássica)",
+    "name_en": "Dwarf (Classic)",
+    "name_es": null,
+    "description_pt": "Classe de aventureiro anão no estilo B/X tradicional. Combina grande resistência, vida de guerreiro e habilidades em alvenaria.",
+    "description_en": "Classe de aventureiro anão no estilo B/X tradicional. Combina grande resistência, vida de guerreiro e habilidades em alvenaria.",
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [
+      "str"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "todas",
+      "marcial",
+      "classe-raça"
+    ],
+    "rarity": "common",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "anao_bx",
+      "name": "Anão (Classe Clássica)",
+      "hitDie": "d8",
+      "nameEn": "Dwarf (Classic)",
+      "features": [
+        "Robustez Mineral: Saves defensivos excepcionais contra Magia e Veneno.",
+        "Detectar Construções: 2 em 6 ao inspecionar alvenaria e mecanismos.",
+        "Infravisão: 18m no escuro total."
+      ],
+      "description": "Classe de aventureiro anão no estilo B/X tradicional. Combina grande resistência, vida de guerreiro e habilidades em alvenaria.",
+      "isRaceClass": true,
+      "progression": [
+        {
+          "hd": "1d8",
+          "xp": 0,
+          "level": 1,
+          "saves": {
+            "death": 8,
+            "wands": 9,
+            "breath": 13,
+            "spells": 12,
+            "paralysis": 10
+          },
+          "thac0": 19,
+          "aacBonus": 0
+        },
+        {
+          "hd": "2d8",
+          "xp": 2200,
+          "level": 2,
+          "saves": {
+            "death": 8,
+            "wands": 9,
+            "breath": 13,
+            "spells": 12,
+            "paralysis": 10
+          },
+          "thac0": 19,
+          "aacBonus": 0
+        },
+        {
+          "hd": "3d8",
+          "xp": 4400,
+          "level": 3,
+          "saves": {
+            "death": 8,
+            "wands": 9,
+            "breath": 13,
+            "spells": 12,
+            "paralysis": 10
+          },
+          "thac0": 19,
+          "aacBonus": 0
+        },
+        {
+          "hd": "4d8",
+          "xp": 8800,
+          "level": 4,
+          "saves": {
+            "death": 6,
+            "wands": 7,
+            "breath": 10,
+            "spells": 10,
+            "paralysis": 8
+          },
+          "thac0": 17,
+          "aacBonus": 2
+        },
+        {
+          "hd": "5d8",
+          "xp": 17000,
+          "level": 5,
+          "saves": {
+            "death": 6,
+            "wands": 7,
+            "breath": 10,
+            "spells": 10,
+            "paralysis": 8
+          },
+          "thac0": 17,
+          "aacBonus": 2
+        },
+        {
+          "hd": "6d8",
+          "xp": 35000,
+          "level": 6,
+          "saves": {
+            "death": 6,
+            "wands": 7,
+            "breath": 10,
+            "spells": 10,
+            "paralysis": 8
+          },
+          "thac0": 17,
+          "aacBonus": 2
+        },
+        {
+          "hd": "7d8",
+          "xp": 70000,
+          "level": 7,
+          "saves": {
+            "death": 4,
+            "wands": 5,
+            "breath": 7,
+            "spells": 8,
+            "paralysis": 6
+          },
+          "thac0": 14,
+          "aacBonus": 5
+        },
+        {
+          "hd": "8d8",
+          "xp": 140000,
+          "level": 8,
+          "saves": {
+            "death": 4,
+            "wands": 5,
+            "breath": 7,
+            "spells": 8,
+            "paralysis": 6
+          },
+          "thac0": 14,
+          "aacBonus": 5
+        },
+        {
+          "hd": "9d8",
+          "xp": 270000,
+          "level": 9,
+          "saves": {
+            "death": 4,
+            "wands": 5,
+            "breath": 7,
+            "spells": 8,
+            "paralysis": 6
+          },
+          "thac0": 14,
+          "aacBonus": 5
+        },
+        {
+          "hd": "9d8+3",
+          "xp": 400000,
+          "level": 10,
+          "saves": {
+            "death": 2,
+            "wands": 3,
+            "breath": 4,
+            "spells": 6,
+            "paralysis": 4
+          },
+          "thac0": 12,
+          "aacBonus": 7
+        },
+        {
+          "hd": "9d8+6",
+          "xp": 530000,
+          "level": 11,
+          "saves": {
+            "death": 2,
+            "wands": 3,
+            "breath": 4,
+            "spells": 6,
+            "paralysis": 4
+          },
+          "thac0": 12,
+          "aacBonus": 7
+        },
+        {
+          "hd": "9d8+9",
+          "xp": 660000,
+          "level": 12,
+          "saves": {
+            "death": 2,
+            "wands": 3,
+            "breath": 4,
+            "spells": 6,
+            "paralysis": 4
+          },
+          "thac0": 12,
+          "aacBonus": 7
+        }
+      ],
+      "allowedArmor": "todas",
+      "shieldAllowed": true,
+      "allowedWeapons": "todas",
+      "combatCategory": "marcial",
+      "minRequirements": {
+        "con": 9
+      },
+      "primeRequisites": [
+        "str"
+      ],
+      "allowedWeaponsDesc": "Todas as armas (exceto arcos longos e espadas de duas mãos)."
+    },
+    "created_at": "2026-09-12T14:42:06.790923+00:00",
+    "updated_at": "2026-09-12T14:42:06.790923+00:00",
+    "system_id": "ose"
+  },
+  {
     "id": "ose.class.assassino",
     "system_id": "ose",
     "name_pt": "Assassino",
@@ -2057,6 +2281,260 @@
     }
   },
   {
+    "id": "ose.class.elfo_bx",
+    "name_pt": "Elfo (Classe Clássica)",
+    "name_en": "Elf (Classic)",
+    "name_es": null,
+    "description_pt": "Classe de aventureiro elfo B/X tradicional. Guerreiro e mago simultaneamente, empunhando armaduras pesadas e lançando feitiços arcanos.",
+    "description_en": "Classe de aventureiro elfo B/X tradicional. Guerreiro e mago simultaneamente, empunhando armaduras pesadas e lançando feitiços arcanos.",
+    "description_es": null,
+    "hp_per_level": 6,
+    "key_attributes": [
+      "str",
+      "int"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "todas",
+      "marcial",
+      "classe-raça"
+    ],
+    "rarity": "common",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "elfo_bx",
+      "name": "Elfo (Classe Clássica)",
+      "hitDie": "d6",
+      "nameEn": "Elf (Classic)",
+      "features": [
+        "Guerreiro-Mago: Lança feitiços mesmo vestindo cota de malha ou placas!",
+        "Imunidade a Carniçal: Imune à paralisia sobrenatural.",
+        "Detectar Portas Secretas: 2 em 6 ao procurar, 1 em 6 ao passar perto.",
+        "Infravisão: 18 metros."
+      ],
+      "description": "Classe de aventureiro elfo B/X tradicional. Guerreiro e mago simultaneamente, empunhando armaduras pesadas e lançando feitiços arcanos.",
+      "isRaceClass": true,
+      "progression": [
+        {
+          "hd": "1d6",
+          "xp": 0,
+          "level": 1,
+          "saves": {
+            "death": 12,
+            "wands": 13,
+            "breath": 15,
+            "spells": 15,
+            "paralysis": 13
+          },
+          "thac0": 19,
+          "spells": [
+            1
+          ],
+          "aacBonus": 0
+        },
+        {
+          "hd": "2d6",
+          "xp": 4000,
+          "level": 2,
+          "saves": {
+            "death": 12,
+            "wands": 13,
+            "breath": 15,
+            "spells": 15,
+            "paralysis": 13
+          },
+          "thac0": 19,
+          "spells": [
+            2
+          ],
+          "aacBonus": 0
+        },
+        {
+          "hd": "3d6",
+          "xp": 8000,
+          "level": 3,
+          "saves": {
+            "death": 12,
+            "wands": 13,
+            "breath": 15,
+            "spells": 15,
+            "paralysis": 13
+          },
+          "thac0": 19,
+          "spells": [
+            2,
+            1
+          ],
+          "aacBonus": 0
+        },
+        {
+          "hd": "4d6",
+          "xp": 16000,
+          "level": 4,
+          "saves": {
+            "death": 10,
+            "wands": 11,
+            "breath": 13,
+            "spells": 12,
+            "paralysis": 11
+          },
+          "thac0": 17,
+          "spells": [
+            2,
+            2
+          ],
+          "aacBonus": 2
+        },
+        {
+          "hd": "5d6",
+          "xp": 32000,
+          "level": 5,
+          "saves": {
+            "death": 10,
+            "wands": 11,
+            "breath": 13,
+            "spells": 12,
+            "paralysis": 11
+          },
+          "thac0": 17,
+          "spells": [
+            2,
+            2,
+            1
+          ],
+          "aacBonus": 2
+        },
+        {
+          "hd": "6d6",
+          "xp": 64000,
+          "level": 6,
+          "saves": {
+            "death": 10,
+            "wands": 11,
+            "breath": 13,
+            "spells": 12,
+            "paralysis": 11
+          },
+          "thac0": 17,
+          "spells": [
+            2,
+            2,
+            2
+          ],
+          "aacBonus": 2
+        },
+        {
+          "hd": "7d6",
+          "xp": 120000,
+          "level": 7,
+          "saves": {
+            "death": 8,
+            "wands": 9,
+            "breath": 10,
+            "spells": 10,
+            "paralysis": 9
+          },
+          "thac0": 14,
+          "spells": [
+            3,
+            2,
+            2,
+            1
+          ],
+          "aacBonus": 5
+        },
+        {
+          "hd": "8d6",
+          "xp": 250000,
+          "level": 8,
+          "saves": {
+            "death": 8,
+            "wands": 9,
+            "breath": 10,
+            "spells": 10,
+            "paralysis": 9
+          },
+          "thac0": 14,
+          "spells": [
+            3,
+            3,
+            2,
+            2
+          ],
+          "aacBonus": 5
+        },
+        {
+          "hd": "9d6",
+          "xp": 400000,
+          "level": 9,
+          "saves": {
+            "death": 8,
+            "wands": 9,
+            "breath": 10,
+            "spells": 10,
+            "paralysis": 9
+          },
+          "thac0": 14,
+          "spells": [
+            3,
+            3,
+            3,
+            2,
+            1
+          ],
+          "aacBonus": 5
+        },
+        {
+          "hd": "9d6+2",
+          "xp": 600000,
+          "level": 10,
+          "saves": {
+            "death": 6,
+            "wands": 7,
+            "breath": 8,
+            "spells": 8,
+            "paralysis": 8
+          },
+          "thac0": 12,
+          "spells": [
+            3,
+            3,
+            3,
+            3,
+            2
+          ],
+          "aacBonus": 7
+        }
+      ],
+      "allowedArmor": "todas",
+      "spellCasting": {
+        "type": "arcana",
+        "startLevel": 1,
+        "spellListName": "mago"
+      },
+      "shieldAllowed": true,
+      "allowedWeapons": "todas",
+      "combatCategory": "marcial",
+      "minRequirements": {
+        "int": 9
+      },
+      "primeRequisites": [
+        "str",
+        "int"
+      ],
+      "allowedWeaponsDesc": "Pode empunhar qualquer arma."
+    },
+    "created_at": "2026-09-12T14:42:06.790923+00:00",
+    "updated_at": "2026-09-12T14:42:06.790923+00:00",
+    "system_id": "ose"
+  },
+  {
     "id": "ose.class.guerreiro",
     "system_id": "ose",
     "name_pt": "Guerreiro",
@@ -2297,6 +2775,178 @@
       "system_id": "ose",
       "ruleset": "advanced"
     }
+  },
+  {
+    "id": "ose.class.halfling_bx",
+    "name_pt": "Halfling (Classe Clássica)",
+    "name_en": "Halfling (Classic)",
+    "name_es": null,
+    "description_pt": "Classe de aventureiro halfling B/X tradicional. Pontaria incrível com pedras e arcos, furtividade natural e bônus defensivos.",
+    "description_en": "Classe de aventureiro halfling B/X tradicional. Pontaria incrível com pedras e arcos, furtividade natural e bônus defensivos.",
+    "description_es": null,
+    "hp_per_level": 6,
+    "key_attributes": [
+      "dex",
+      "str"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "todas",
+      "marcial",
+      "classe-raça"
+    ],
+    "rarity": "common",
+    "ruleset": "advanced",
+    "source_book": "Old-School Essentials — Tomo do Jogador",
+    "source_page": 28,
+    "data": {
+      "id": "halfling_bx",
+      "name": "Halfling (Classe Clássica)",
+      "hitDie": "d6",
+      "nameEn": "Halfling (Classic)",
+      "features": [
+        "Pontaria com Mísseis: +1 em ataques à distância.",
+        "Defesa contra Gigantes: +2 na CA contra criaturas grandes.",
+        "Furtividade e Ocultação: 90% em áreas naturais, 2 em 6 em masmorras.",
+        "Saves Lendários de Halfling: Os melhores saves do jogo."
+      ],
+      "description": "Classe de aventureiro halfling B/X tradicional. Pontaria incrível com pedras e arcos, furtividade natural e bônus defensivos.",
+      "isRaceClass": true,
+      "progression": [
+        {
+          "hd": "1d6",
+          "xp": 0,
+          "level": 1,
+          "saves": {
+            "death": 8,
+            "wands": 9,
+            "breath": 13,
+            "spells": 12,
+            "paralysis": 10
+          },
+          "thac0": 19,
+          "aacBonus": 0
+        },
+        {
+          "hd": "2d6",
+          "xp": 2000,
+          "level": 2,
+          "saves": {
+            "death": 8,
+            "wands": 9,
+            "breath": 13,
+            "spells": 12,
+            "paralysis": 10
+          },
+          "thac0": 19,
+          "aacBonus": 0
+        },
+        {
+          "hd": "3d6",
+          "xp": 4000,
+          "level": 3,
+          "saves": {
+            "death": 8,
+            "wands": 9,
+            "breath": 13,
+            "spells": 12,
+            "paralysis": 10
+          },
+          "thac0": 19,
+          "aacBonus": 0
+        },
+        {
+          "hd": "4d6",
+          "xp": 8000,
+          "level": 4,
+          "saves": {
+            "death": 6,
+            "wands": 7,
+            "breath": 10,
+            "spells": 10,
+            "paralysis": 8
+          },
+          "thac0": 17,
+          "aacBonus": 2
+        },
+        {
+          "hd": "5d6",
+          "xp": 16000,
+          "level": 5,
+          "saves": {
+            "death": 6,
+            "wands": 7,
+            "breath": 10,
+            "spells": 10,
+            "paralysis": 8
+          },
+          "thac0": 17,
+          "aacBonus": 2
+        },
+        {
+          "hd": "6d6",
+          "xp": 32000,
+          "level": 6,
+          "saves": {
+            "death": 6,
+            "wands": 7,
+            "breath": 10,
+            "spells": 10,
+            "paralysis": 8
+          },
+          "thac0": 17,
+          "aacBonus": 2
+        },
+        {
+          "hd": "7d6",
+          "xp": 64000,
+          "level": 7,
+          "saves": {
+            "death": 4,
+            "wands": 5,
+            "breath": 7,
+            "spells": 8,
+            "paralysis": 6
+          },
+          "thac0": 14,
+          "aacBonus": 5
+        },
+        {
+          "hd": "8d6",
+          "xp": 120000,
+          "level": 8,
+          "saves": {
+            "death": 4,
+            "wands": 5,
+            "breath": 7,
+            "spells": 8,
+            "paralysis": 6
+          },
+          "thac0": 14,
+          "aacBonus": 5
+        }
+      ],
+      "allowedArmor": "todas",
+      "shieldAllowed": true,
+      "allowedWeapons": "todas",
+      "combatCategory": "marcial",
+      "minRequirements": {
+        "con": 9,
+        "dex": 9
+      },
+      "primeRequisites": [
+        "dex",
+        "str"
+      ],
+      "allowedWeaponsDesc": "Todas as armas proporcionais (sem armas de duas mãos ou arcos longos)."
+    },
+    "created_at": "2026-09-12T14:42:06.790923+00:00",
+    "updated_at": "2026-09-12T14:42:06.790923+00:00",
+    "system_id": "ose"
   },
   {
     "id": "ose.class.ilusionista",

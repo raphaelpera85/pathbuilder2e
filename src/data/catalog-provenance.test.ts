@@ -199,9 +199,10 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.weapons.find((item) => item.id === "weapon.alchemical_bomb")).toMatchObject({ source: { page: 281 }, ruleset: "remaster", needs_review: false });
     expect(catalog.weapons.find((item) => item.id === "weapon.backpack_ballista")).toMatchObject({ source: { book: "Pólvora e Engrenagens (pré-Remaster)", page: 63 }, sourceApproximate: false, needs_review: false });
     expect(catalog.weapons.find((item) => item.id === "weapon.backpack_catapult")).toMatchObject({ source: { book: "Pólvora e Engrenagens (pré-Remaster)", page: 64 }, sourceApproximate: false, needs_review: false });
-    for (const id of ["weapon.aklys", "weapon.alchemical_crossbow", "weapon.arbalest", "weapon.asp_coil", "weapon.atlatl", "weapon.main_gauche", "weapon.punching_dagger"]) {
+    for (const id of ["weapon.aklys", "weapon.alchemical_crossbow", "weapon.asp_coil", "weapon.atlatl", "weapon.main_gauche", "weapon.punching_dagger"]) {
       expect(catalog.weapons.find((item) => item.id === id)).toMatchObject({ source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 275 }, sourceApproximate: false, ruleset: "remaster", needs_review: false });
     }
+    expect(catalog.weapons.find((item) => item.id === "weapon.arbalest")).toMatchObject({ source: { book: "Livro do Jogador (Player Core, Remaster)", page: 280 }, sourceApproximate: false, ruleset: "remaster", needs_review: false });
   });
 
   it("preserva os dados mecânicos das biografias comuns do Player Core 2", () => {
@@ -849,7 +850,7 @@ describe("proveniência do catálogo legado", () => {
     const catalog = loadCatalog() as { weapons: LegacyRecord[] };
     const weapons = catalog.weapons.filter((item) => item.id?.startsWith("weapon.battlecry.") && item.category === "Arma Mágica");
     expect(weapons).toHaveLength(25);
-    expect(weapons.every((item) => item.level >= 5 && item.source?.page === (["weapon.battlecry.final_stand", "weapon.battlecry.generals_word", "weapon.battlecry.gravediggers_call"].includes(item.id || "") ? 127 : ["weapon.battlecry.hells_judgment", "weapon.battlecry.horselords_longbow", "weapon.battlecry.jistkan_colossus_crusher"].includes(item.id || "") ? 128 : 126) && item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect(weapons.every((item) => item.level >= 5 && item.source?.page === (["weapon.battlecry.final_stand", "weapon.battlecry.generals_word", "weapon.battlecry.gravediggers_call"].includes(item.id || "") ? 127 : ["weapon.battlecry.hells_judgment", "weapon.battlecry.horselords_longbow", "weapon.battlecry.jistkan_colossus_crusher", "weapon.battlecry.jistkan_war_crossbow"].includes(item.id || "") ? 128 : ["weapon.battlecry.radiant_victory", "weapon.battlecry.reapers_toll", "weapon.battlecry.mageslayer", "weapon.battlecry.revenant_blade", "weapon.battlecry.righteous_fury", "weapon.battlecry.talonstrike_blade"].includes(item.id || "") ? 130 : ["weapon.battlecry.ulfen_shieldbreaker", "weapon.battlecry.undead_scourge"].includes(item.id || "") ? 131 : 126) && item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
   });
 
   it("usa os dados impressos de Quebra-Correntes também no catálogo runtime do construtor", () => {
@@ -1701,6 +1702,89 @@ describe("proveniência do catálogo legado", () => {
       },
     });
     expect(weapon?.description).toContain("stunned 1");
+  });
+
+  it("preserva as runas e a ativação da Besta de Guerra Jistkan no runtime", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; weaponGroup?: string; range?: number; reload?: number; traits?: string[]; itemEffect?: Record<string, unknown> })[] };
+    const weapon = catalog.weapons.find((item) => item.id === "weapon.battlecry.jistkan_war_crossbow");
+
+    expect(weapon).toMatchObject({
+      level: 18, price: "22.000 PO", bulk: 2, hands: "2", damage: "1d10", damageType: "Perfuração (P)",
+      weaponCategory: "Marcial", weaponGroup: "Crossbow", range: 110, reload: "1",
+      traits: ["Raro", "Mágico", "Apunhaladora", "Recarga 1", "Alcance 110 pés"],
+      source: { book: "Battlecry! (Remaster)", page: 128 }, sourceApproximate: false, needs_review: false,
+      itemEffect: {
+        potencyRune: 3, greaterStrikingRune: true, propertyRunes: ["grievous"], baseWeaponId: "weapon.arbalest",
+        boltOfWar: {
+          actionCost: 1, frequency: "once per 10 minutes", ignoresRangeIncrementPenalty: [2, 3],
+          splashTrait: true, splashDamage: { amount: 10, damageType: "piercing", strikeOnly: true },
+        },
+      },
+    });
+    expect(weapon?.description).toContain("10 de dano splash de perfuração");
+  });
+
+  it("preserva os dados impressos da Vitória Radiante no runtime do construtor", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number | string; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; weaponGroup?: string; traits?: string[]; description?: string; itemEffect?: Record<string, any> })[] };
+    const weapon = catalog.weapons.find((item) => item.id === "weapon.battlecry.radiant_victory");
+
+    expect(weapon).toMatchObject({
+      level: 6, price: "240 PO", bulk: "L", hands: "1", damage: "1d6", damageType: "Perfuração (P)",
+      weaponCategory: "Marcial", weaponGroup: "Sword", traits: ["Incomum", "Mágico", "Ágil", "Acurada", "Versátil Ct"],
+      source: { book: "Battlecry! (Remaster)", page: 130 }, sourceApproximate: false, needs_review: false,
+      itemEffect: {
+        potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.shortsword",
+        rallyTheTroops: { actionCost: 1, frequency: "once per day", triggerLastActionReducedToZeroHp: true, burstFeet: 30, duration: "1 minute", statusBonusAttack: 1, affectsWielderAndAllies: true },
+      },
+    });
+    expect(weapon?.description).toContain("+1 de bônus de status nas jogadas de ataque");
+  });
+
+  it("preserva as runas, a aura e a reação da Ceifa do Ceifador no runtime", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number | string; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; weaponGroup?: string; traits?: string[]; description?: string; itemEffect?: Record<string, any> })[] };
+    const weapon = catalog.weapons.find((item) => item.id === "weapon.battlecry.reapers_toll");
+
+    expect(weapon).toMatchObject({
+      level: 15, price: "6.500 PO", bulk: 2, hands: "2", damage: "1d10", damageType: "Cortante (S)",
+      weaponCategory: "Marcial", weaponGroup: "Polearm", traits: ["Incomum", "Mágico", "Vazio", "Mortal d10", "Derrubar"],
+      source: { book: "Battlecry! (Remaster)", page: 130 }, sourceApproximate: false, needs_review: false,
+      itemEffect: {
+        potencyRune: 2, greaterStrikingRune: true, propertyRunes: ["decaying"], baseWeaponId: "weapon.scythe",
+        reapersClaim: { actionCost: "reaction", frequency: "once per day", triggerCreatureReducedToZeroHpWithinFeet: 30, makesMeleeStrikeFromCreatureSpace: true, temporaryHitPointsEqualHalfDamage: true, temporaryHitPointsDuration: "1 minute" },
+      },
+    });
+    expect(weapon?.description).toContain("Plantas mundanas pequenas murcham após 24 horas próximas à arma");
+    expect(weapon?.description).toContain("Ceifa do Ceifador [reação]");
+  });
+
+  it("preserva Matamagos e seus efeitos antimagia no runtime", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number | string; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; weaponGroup?: string; traits?: string[]; description?: string; itemEffect?: Record<string, any> })[] };
+    const weapon = catalog.weapons.find((item) => item.id === "weapon.battlecry.mageslayer");
+
+    expect(weapon).toMatchObject({
+      level: 8, price: "500 PO", bulk: 1, hands: "1", damage: "1d6", damageType: "Cortante (S)",
+      weaponCategory: "Marcial", weaponGroup: "Sword", traits: ["Incomum", "Mágico", "Forçosa", "Acurada", "Varredura"],
+      source: { book: "Battlecry! (Remaster)", page: 130 }, sourceApproximate: false, needs_review: false,
+      itemEffect: { potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.scimitar", mageslayer: { bonusSpiritDamage: "1d6", targetCanCastArcaneSpells: true }, arcaneSpellResistance: 5 },
+    });
+    expect(weapon?.description).toContain("resistência 5 a dano de magias da tradição arcana");
+  });
+
+  it("preserva as mecânicas do armorial nas armas do runtime do construtor", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number | string; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; weaponGroup?: string; traits?: string[]; description?: string; itemEffect?: Record<string, any> })[] };
+    const revenant = catalog.weapons.find((item) => item.id === "weapon.battlecry.revenant_blade");
+    const righteous = catalog.weapons.find((item) => item.id === "weapon.battlecry.righteous_fury");
+    const talonstrike = catalog.weapons.find((item) => item.id === "weapon.battlecry.talonstrike_blade");
+    const ulfen = catalog.weapons.find((item) => item.id === "weapon.battlecry.ulfen_shieldbreaker");
+    const undead = catalog.weapons.find((item) => item.id === "weapon.battlecry.undead_scourge");
+
+    expect(revenant).toMatchObject({ level: 10, price: "900 PO", bulk: "L", hands: "1", damage: "1d4", damageType: "Cortante (S)", weaponCategory: "Simples", weaponGroup: "Knife", source: { page: 130 }, sourceApproximate: false, needs_review: false, itemEffect: { potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.sickle", invested: true, propertyRunesWhileInvested: ["decaying"] } });
+    expect(revenant?.description).toContain("o cadáver se ergue como morto-vivo após 1 rodada");
+    expect(righteous).toMatchObject({ level: 15, price: "6.000 PO", bulk: 1, hands: "1", damage: "1d8", weaponCategory: "Marcial", weaponGroup: "Sword", source: { page: 130 }, sourceApproximate: false, needs_review: false, itemEffect: { potencyRune: 2, greaterStrikingRune: true, baseWeaponId: "weapon.longsword", greatVengeance: { spiritDamage: "2d8", vitalityDamage: "2d8", basicReflexDC: 34 } } });
+    expect(talonstrike).toMatchObject({ level: 12, price: "2.000 PO", hands: "1+", damage: "1d8", weaponGroup: "Sword", source: { page: 130 }, sourceApproximate: false, needs_review: false, itemEffect: { baseWeaponId: "weapon.bastard_sword", greaterVariant: { level: 14, price: 4500 } } });
+    expect(ulfen).toMatchObject({ level: 6, price: "250 PO", bulk: 1, hands: "1", damage: "1d8", weaponGroup: "Axe", source: { page: 131 }, sourceApproximate: false, needs_review: false, itemEffect: { baseWeaponId: "weapon.battle_axe", shieldHardnessIgnored: 3, batteringBlow: { circumstanceBonusIfShieldDestroyed: 2 } } });
+    expect(undead).toMatchObject({ level: 7, price: "350 PO", bulk: "L", hands: "1", damage: "1d4", weaponGroup: "Knife", source: { page: 131 }, sourceApproximate: false, needs_review: false, itemEffect: { baseWeaponId: "weapon.dagger", propertyRunes: ["vitalizing"], severFromTheVoid: { counteractRank: 4, counteractDC: 25 } } });
+    expect(undead?.description).toContain("impede que ele seja curado por energia vazia");
   });
 
   it("confirma efeitos graduados das magias do Player Core 2 revisadas no lote atual", () => {

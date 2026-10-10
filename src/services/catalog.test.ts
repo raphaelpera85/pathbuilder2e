@@ -758,9 +758,10 @@ describe("serviço de catálogo local", () => {
     ]);
     const basicOnlyIds = Object.keys(OSE_BASIC_METHOD_RACE_BY_CLASS).map((id) => `ose.class.${id}`).sort();
 
-    expect(advanced.items).toHaveLength(Object.values(OSE_CLASSES).filter((entry) => isOseClassAvailableForMode(entry, "advanced")).length);
+    const importedAdvancedRaceClasses = 3;
+    expect(advanced.items).toHaveLength(Object.values(OSE_CLASSES).filter((entry) => isOseClassAvailableForMode(entry, "advanced")).length + importedAdvancedRaceClasses);
     expect(classic.items).toHaveLength(Object.values(OSE_CLASSES).filter((entry) => isOseClassAvailableForMode(entry, "classic")).length);
-    expect(basic.items).toHaveLength(Object.values(OSE_CLASSES).filter((entry) => isOseClassAvailableForMode(entry, "basico")).length);
+    expect(basic.items).toHaveLength(Object.values(OSE_CLASSES).filter((entry) => isOseClassAvailableForMode(entry, "basico")).length + importedAdvancedRaceClasses);
     expect(basicOnlyIds).toHaveLength(6);
     expect(advanced.items.some((entry) => basicOnlyIds.includes(entry.id))).toBe(false);
     expect(classic.items.some((entry) => basicOnlyIds.includes(entry.id))).toBe(false);
@@ -934,6 +935,92 @@ describe("serviço de catálogo local", () => {
     expect(bow?.data.traits).toEqual(["Incomum", "Mágico", "Mortal d10", "Alcance 60 pés"]);
     expect(bow?.data.summaries?.["pt-BR"]).toContain("Fortitude CD 19");
     expect(bow?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 126 });
+  });
+
+  it("preserva a espada curta Vitória Radiante conforme Battlecry!", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const weapon = items.find((entry) => entry.id === "weapon.battlecry.radiant_victory");
+
+    expect(weapon?.data).toMatchObject({
+      level: 6, weaponCategory: "Marcial", weaponGroup: "Sword", damage: "1d6", damageType: "Perfuração (P)",
+      hands: "1", bulk: "L", price: 240, rarity: "uncommon",
+      itemEffect: {
+        potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.shortsword",
+        rallyTheTroops: { actionCost: 1, frequency: "once per day", triggerLastActionReducedToZeroHp: true,
+          burstFeet: 30, duration: "1 minute", statusBonusAttack: 1, affectsWielderAndAllies: true },
+      },
+    });
+    expect(weapon?.data.traits).toEqual(["Incomum", "Mágico", "Ágil", "Acurada", "Versátil Ct"]);
+    expect(weapon?.data.summaries?.["pt-BR"]).toContain("+1 de status nas jogadas de ataque");
+    expect(weapon?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 130 });
+  });
+
+  it("preserva a Ceifa do Ceifador e sua foice-base conforme Battlecry!", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const scythe = items.find((entry) => entry.id === "weapon.scythe");
+    const weapon = items.find((entry) => entry.id === "weapon.battlecry.reapers_toll");
+
+    expect(scythe?.data).toMatchObject({
+      weaponCategory: "Marcial", weaponGroup: "Polearm", damage: "1d10", damageType: "Cortante (S)",
+      price: 2, hands: "2", bulk: "2",
+    });
+    expect(scythe?.data.traits).toEqual(["Mortal d10", "Derrubar"]);
+    expect(scythe?.data.source).toMatchObject({ book: "Livro do Jogador (Player Core, Remaster)", page: 278 });
+    expect(weapon?.data).toMatchObject({
+      level: 15, weaponCategory: "Marcial", weaponGroup: "Polearm", damage: "1d10", damageType: "Cortante (S)",
+      hands: "2", bulk: "2", price: 6500, rarity: "uncommon",
+      itemEffect: {
+        potencyRune: 2, greaterStrikingRune: true, propertyRunes: ["decaying"], baseWeaponId: "weapon.scythe",
+        reapersClaim: { actionCost: "reaction", frequency: "once per day", triggerCreatureReducedToZeroHpWithinFeet: 30, makesMeleeStrikeFromCreatureSpace: true, temporaryHitPointsEqualHalfDamage: true, temporaryHitPointsDuration: "1 minute" },
+        aura: { animalsAvoidIfPossible: true, worsensStartingAttitudeByOneStepWhenInteracting: true, corpseScavengingVerminAppearMoreOften: true, mundanePlantsWiltAfterHours: 24, wiltedPlantsCrumbleAfterAdditionalHours: 24 },
+      },
+    });
+    expect(weapon?.data.traits).toEqual(["Incomum", "Mágico", "Vazio", "Mortal d10", "Derrubar"]);
+    expect(weapon?.data.summaries?.["pt-BR"]).toContain("+2 greater striking decaying");
+    expect(weapon?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 130 });
+  });
+
+  it("preserva Matamagos como cimitarra antimagia conforme Battlecry!", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const scimitar = items.find((entry) => entry.id === "weapon.scimitar");
+    const weapon = items.find((entry) => entry.id === "weapon.battlecry.mageslayer");
+
+    expect(scimitar?.data).toMatchObject({ weaponCategory: "Marcial", weaponGroup: "Sword", damage: "1d6", hands: "1", bulk: "1", price: 1 });
+    expect(weapon?.data).toMatchObject({
+      level: 8, weaponCategory: "Marcial", weaponGroup: "Sword", damage: "1d6", damageType: "Cortante (S)",
+      hands: "1", bulk: "1", price: 500, rarity: "uncommon",
+      itemEffect: { potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.scimitar", mageslayer: { bonusSpiritDamage: "1d6", targetCanCastArcaneSpells: true }, arcaneSpellResistance: 5 },
+    });
+    expect(weapon?.data.traits).toEqual(["Incomum", "Mágico", "Forçosa", "Acurada", "Varredura"]);
+    expect(weapon?.data.summaries?.["pt-BR"]).toContain("dano espiritual adicional");
+    expect(weapon?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 130 });
+  });
+
+  it("preserva as armas do armorial nas páginas 130–131 de Battlecry!", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const revenant = items.find((entry) => entry.id === "weapon.battlecry.revenant_blade");
+    const righteous = items.find((entry) => entry.id === "weapon.battlecry.righteous_fury");
+    const talonstrike = items.find((entry) => entry.id === "weapon.battlecry.talonstrike_blade");
+    const ulfen = items.find((entry) => entry.id === "weapon.battlecry.ulfen_shieldbreaker");
+    const undead = items.find((entry) => entry.id === "weapon.battlecry.undead_scourge");
+
+    expect(revenant?.data).toMatchObject({ level: 10, weaponCategory: "Simples", weaponGroup: "Knife", damage: "1d4", damageType: "Cortante (S)", hands: "1", bulk: "L", price: 900, rarity: "rare", itemEffect: { potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.sickle", invested: true, propertyRunesWhileInvested: ["decaying"], deathTransformation: { delayRounds: 1, maximumUndeadLevelOffset: -5, minimumUndeadLevel: 0, blockedResurrection: "wish ritual until undead form is destroyed" } } });
+    expect(revenant?.data.traits).toContain("Vazio");
+    expect(revenant?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 130 });
+
+    expect(righteous?.data).toMatchObject({ level: 15, weaponCategory: "Marcial", weaponGroup: "Sword", damage: "1d8", damageType: "Cortante (S)", hands: "1", bulk: "1", price: 6000, rarity: "uncommon", itemEffect: { potencyRune: 2, greaterStrikingRune: true, propertyRunes: ["holy"], baseWeaponId: "weapon.longsword", greatVengeance: { actionCost: 1, frequency: "once per hour", triggerLastActionSuccessfulMeleeStrikeAgainstUnholy: true, emanationFeet: 20, spiritDamage: "2d8", vitalityDamage: "2d8", basicReflexDC: 34, blindedOnFailure: "1 round", blindedOnCriticalFailure: "1 minute" } } });
+    expect(righteous?.data.traits).toContain("Sagrado");
+    expect(righteous?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 130 });
+
+    expect(talonstrike?.data).toMatchObject({ level: 12, weaponCategory: "Marcial", weaponGroup: "Sword", damage: "1d8", damageType: "Cortante (S)", hands: "1+", bulk: "1", price: 2000, rarity: "uncommon", itemEffect: { potencyRune: 2, strikingRune: true, baseWeaponId: "weapon.bastard_sword", material: "standard-grade silver", access: "Eagle Knights", defenseOfLiberty: { actionCost: "reaction", frequency: "once per hour", triggerYouOrMountTargetedByPhysicalAttack: true, requiresAwareAndNotOffGuard: true, circumstanceBonusAC: 2 }, greaterVariant: { level: 14, price: 4500, greaterStrikingRune: true, graspingTalons: { frequency: "once per day", planarTetherRank: 5, spellDC: 34 } } } });
+    expect(talonstrike?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 130 });
+
+    expect(ulfen?.data).toMatchObject({ level: 6, weaponCategory: "Marcial", weaponGroup: "Axe", damage: "1d8", damageType: "Cortante (S)", hands: "1", bulk: "1", price: 250, rarity: "uncommon", itemEffect: { potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.battle_axe", shieldHardnessIgnored: 3, extraSlashingDamageThroughRemainingHardness: "1d6", batteringBlow: { actionCost: "free action", triggerTargetShieldReducedBelowBrokenThreshold: true, athleticsTripTarget: true, circumstanceBonusIfShieldDestroyed: 2 } } });
+    expect(ulfen?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 131 });
+
+    expect(undead?.data).toMatchObject({ level: 7, weaponCategory: "Simples", weaponGroup: "Knife", damage: "1d4", damageType: "Perfuração (P)", hands: "1", bulk: "L", price: 350, rarity: "uncommon", itemEffect: { potencyRune: 1, strikingRune: true, propertyRunes: ["vitalizing"], baseWeaponId: "weapon.dagger", access: "Knights of Lastwall", severFromTheVoid: { actionCost: "free action", frequency: "once per hour", triggerHitAndDamageUndead: true, duration: "1 minute", blocksVoidHealing: true, counteractRank: 4, counteractDC: 25, vitalityUnaffected: true } } });
+    expect(undead?.data.traits).toContain("Ágil");
+    expect(undead?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 131 });
   });
 
   it("preserva os dados impressos do Varredor do Destino no snapshot local", async () => {
@@ -1165,6 +1252,33 @@ describe("serviço de catálogo local", () => {
     expect(weapon?.data.traits).toEqual(["Raro", "Mágico", "Empurrão"]);
     expect(weapon?.summary).toContain("1d6 de dano persistente de força");
     expect(weapon?.summary).toContain("CD 35");
+    expect(weapon?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 128 });
+  });
+
+  it("preserva a Besta de Guerra Jistkan e a Arbalesta-base conforme as fontes", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const arbalest = items.find((entry) => entry.id === "weapon.arbalest");
+    const weapon = items.find((entry) => entry.id === "weapon.battlecry.jistkan_war_crossbow");
+
+    expect(arbalest?.data).toMatchObject({
+      weaponCategory: "Marcial", weaponGroup: "Crossbow", damage: "1d10", damageType: "Perfuração (P)",
+      price: 8, bulk: "2", hands: "2", range: 110, reload: "1",
+    });
+    expect(arbalest?.data.traits).toContain("Apunhaladora");
+    expect(arbalest?.data.source).toMatchObject({ book: "Livro do Jogador (Player Core, Remaster)", page: 280 });
+    expect(weapon?.data).toMatchObject({
+      level: 18, weaponCategory: "Marcial", weaponGroup: "Crossbow", damage: "1d10", damageType: "Perfuração (P)",
+      price: 22000, bulk: "2", hands: "2", range: 110, reload: "1", rarity: "rare",
+      itemEffect: {
+        potencyRune: 3, greaterStrikingRune: true, propertyRunes: ["grievous"], baseWeaponId: "weapon.arbalest",
+        boltOfWar: {
+          actionCost: 1, frequency: "once per 10 minutes", ignoresRangeIncrementPenalty: [2, 3],
+          splashTrait: true, splashDamage: { amount: 10, damageType: "piercing", strikeOnly: true },
+        },
+      },
+    });
+    expect(weapon?.data.traits).toEqual(["Raro", "Mágico", "Apunhaladora", "Recarga 1", "Alcance 110 pés"]);
+    expect(weapon?.summary).toContain("10 de dano splash de perfuração");
     expect(weapon?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 128 });
   });
 
@@ -1448,9 +1562,9 @@ describe("serviço de catálogo local", () => {
   it("calcula as métricas do compêndio pelos snapshots locais, incluindo perícias", async () => {
     const metrics = await fetchCatalogLocalMetrics();
     expect(metrics.counts.catalog_skills).toBe(195);
-    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(7152);
+    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(7155);
     expect(metrics.counts.catalog_spells).toBe(1337);
-    expect(metrics.verifiedCount + metrics.reviewCount).toBe(7152);
+    expect(metrics.verifiedCount + metrics.reviewCount).toBe(7155);
   });
 
   it("compartilha o cálculo das métricas locais entre chamadas concorrentes", async () => {
