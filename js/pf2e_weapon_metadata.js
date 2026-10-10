@@ -12,7 +12,7 @@
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Sword",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -833,7 +833,7 @@
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Sword",
     "source": {
       "book": "Livro do Jogador (Player Core, Remaster)",
       "page": 279
@@ -2143,72 +2143,77 @@
   },
   {
     "id": "weapon.battlecry.kithrender",
-    "hands": "1",
-    "priceGp": 32,
+    "hands": "2",
+    "priceGp": 10000,
     "traits": [
-      "Incomum",
-      "Ágil",
-      "Acurada"
+      "Raro",
+      "Mágico",
+      "Varredura"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Axe",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 128
     },
     "ruleset": "remaster"
   },
   {
     "id": "weapon.battlecry.lamentation_of_the_faithless",
-    "hands": "1",
-    "priceGp": 48,
+    "hands": "2",
+    "priceGp": null,
     "traits": [
-      "Incomum",
-      "Sagrado",
+      "Artefato",
+      "Divino",
+      "Mágico",
+      "Profano",
       "Versátil P"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Sword",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 128
     },
     "ruleset": "remaster"
   },
   {
     "id": "weapon.battlecry.last_hope",
     "hands": "1",
-    "priceGp": 26,
+    "priceGp": 10000,
     "traits": [
       "Incomum",
-      "Aparar"
+      "Mágico",
+      "Versátil P"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Sword",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 129
     },
     "ruleset": "remaster"
   },
   {
     "id": "weapon.battlecry.mageslayer",
-    "hands": "2",
-    "priceGp": 38,
+    "hands": "1",
+    "priceGp": 500,
     "traits": [
       "Incomum",
-      "Desarmar",
+      "Mágico",
+      "Forçosa",
+      "Acurada",
       "Varredura"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Sword",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 130
     },
     "ruleset": "remaster"
   },
@@ -2255,91 +2260,99 @@
   {
     "id": "weapon.battlecry.revenant_blade",
     "hands": "1",
-    "priceGp": 36,
+    "priceGp": 900,
     "traits": [
-      "Incomum",
-      "Profano",
-      "Versátil P"
+      "Raro",
+      "Investido",
+      "Mágico",
+      "Vazio",
+      "Ágil",
+      "Acurada",
+      "Derrubar"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Knife",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 130
     },
     "ruleset": "remaster"
   },
   {
     "id": "weapon.battlecry.righteous_fury",
-    "hands": "2",
-    "priceGp": 44,
+    "hands": "1",
+    "priceGp": 6000,
     "traits": [
       "Incomum",
+      "Mágico",
       "Sagrado",
-      "Empurrão"
+      "Versátil P"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Sword",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 130
     },
     "ruleset": "remaster"
   },
   {
     "id": "weapon.battlecry.talonstrike_blade",
-    "hands": "1",
-    "priceGp": 24,
+    "hands": "1+",
+    "priceGp": 2000,
     "traits": [
       "Incomum",
-      "Ágil",
-      "Acurada",
-      "Mortal d8"
+      "Mágico",
+      "Duas Mãos d12"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Sword",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 130
     },
     "ruleset": "remaster"
   },
   {
     "id": "weapon.battlecry.undead_scourge",
-    "hands": "2",
-    "priceGp": 50,
+    "hands": "1",
+    "priceGp": 350,
     "traits": [
       "Incomum",
-      "Sagrado",
-      "Concussiva"
+      "Mágico",
+      "Ágil",
+      "Acurada",
+      "Arremesso 10 pés",
+      "Versátil C",
+      "Vitalizante"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Knife",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 131
     },
     "ruleset": "remaster"
   },
   {
     "id": "weapon.battlecry.ulfen_shieldbreaker",
-    "hands": "2",
-    "priceGp": 25,
+    "hands": "1",
+    "priceGp": 250,
     "traits": [
       "Incomum",
-      "Desarmar",
+      "Mágico",
       "Varredura"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Axe",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 131
     },
     "ruleset": "remaster"
   },

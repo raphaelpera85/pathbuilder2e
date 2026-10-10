@@ -850,7 +850,27 @@ describe("proveniência do catálogo legado", () => {
     const catalog = loadCatalog() as { weapons: LegacyRecord[] };
     const weapons = catalog.weapons.filter((item) => item.id?.startsWith("weapon.battlecry.") && item.category === "Arma Mágica");
     expect(weapons).toHaveLength(25);
-    expect(weapons.every((item) => item.level >= 5 && item.source?.page === (["weapon.battlecry.final_stand", "weapon.battlecry.generals_word", "weapon.battlecry.gravediggers_call"].includes(item.id || "") ? 127 : ["weapon.battlecry.hells_judgment", "weapon.battlecry.horselords_longbow", "weapon.battlecry.jistkan_colossus_crusher", "weapon.battlecry.jistkan_war_crossbow"].includes(item.id || "") ? 128 : ["weapon.battlecry.radiant_victory", "weapon.battlecry.reapers_toll", "weapon.battlecry.mageslayer", "weapon.battlecry.revenant_blade", "weapon.battlecry.righteous_fury", "weapon.battlecry.talonstrike_blade"].includes(item.id || "") ? 130 : ["weapon.battlecry.ulfen_shieldbreaker", "weapon.battlecry.undead_scourge"].includes(item.id || "") ? 131 : 126) && item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect(weapons.every((item) => item.level >= 5 && item.source?.page === (["weapon.battlecry.final_stand", "weapon.battlecry.generals_word", "weapon.battlecry.gravediggers_call"].includes(item.id || "") ? 127 : ["weapon.battlecry.hells_judgment", "weapon.battlecry.horselords_longbow", "weapon.battlecry.jistkan_colossus_crusher", "weapon.battlecry.jistkan_war_crossbow", "weapon.battlecry.kithrender", "weapon.battlecry.lamentation_of_the_faithless"].includes(item.id || "") ? 128 : item.id === "weapon.battlecry.last_hope" ? 129 : ["weapon.battlecry.radiant_victory", "weapon.battlecry.reapers_toll", "weapon.battlecry.mageslayer", "weapon.battlecry.revenant_blade", "weapon.battlecry.righteous_fury", "weapon.battlecry.talonstrike_blade"].includes(item.id || "") ? 130 : ["weapon.battlecry.ulfen_shieldbreaker", "weapon.battlecry.undead_scourge"].includes(item.id || "") ? 131 : 126) && item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+  });
+
+  it("carrega no runtime as armas mágicas corrigidas de Battlecry", () => {
+    const weapons = (loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; hands?: string; bulk?: number; damage?: string; weaponCategory?: string; weaponGroup?: string; itemEffect?: Record<string, unknown> })[] }).weapons;
+    const kithrender = weapons.find((item) => item.id === "weapon.battlecry.kithrender");
+    const lamentation = weapons.find((item) => item.id === "weapon.battlecry.lamentation_of_the_faithless");
+    const lastHope = weapons.find((item) => item.id === "weapon.battlecry.last_hope");
+
+    expect(kithrender).toMatchObject({ level: 16, price: "10.000 PO", hands: "2", bulk: 2, damage: "1d12", weaponCategory: "Marcial", weaponGroup: "Axe", source: { page: 128 }, sourceApproximate: false, needs_review: false, itemEffect: { baseWeaponId: "weapon.greataxe", renderConnection: { mentalDamage: "6d8", basicWillDC: 35 } } });
+    expect(lamentation).toMatchObject({ level: 25, price: "—", hands: "2", bulk: 2, damage: "1d12", rarity: "unique", weaponGroup: "Sword", source: { page: 128 }, sourceApproximate: false, needs_review: false, itemEffect: { baseWeaponId: "weapon.greatsword", healOnDamageLiving: "1d12" } });
+    expect(lastHope).toMatchObject({ level: 16, price: "10.000 PO", hands: "1", bulk: 1, damage: "1d8", weaponGroup: "Sword", source: { page: 129 }, sourceApproximate: false, needs_review: false, itemEffect: { baseWeaponId: "weapon.longsword", comesTheDawn: { perHealedHitPoints: 10, healingAndVitalityDamage: "1d10", basicFortitudeDC: 37 } } });
+  });
+
+  it("reconstrói Belkzen Deadsmasher e a lança de cavalaria a partir dos dados impressos", () => {
+    const weapons = (loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; hands?: string; bulk?: number; damage?: string; weaponCategory?: string; traits?: string[]; itemEffect?: Record<string, unknown> })[] }).weapons;
+    const deadsmasher = weapons.find((item) => item.id === "weapon.battlecry.belkzen_deadsmasher");
+    const lance = weapons.find((item) => item.id === "weapon.battlecry.cavalry_commanders_lance");
+
+    expect(deadsmasher).toMatchObject({ level: 13, price: "2.800 PO", hands: "1", bulk: 1, damage: "1d6", weaponCategory: "Marcial", source: { page: 126 }, sourceApproximate: false, needs_review: false, itemEffect: { baseWeaponId: "weapon.morningstar", potencyRune: 2, strikingRune: "greater", propertyRunes: ["vitalizing"], voidResistance: 5, greaterVariantLevel: 18, greaterVariantPriceGp: 22000 } });
+    expect(lance).toMatchObject({ level: 6, price: "225 PO", hands: "2", bulk: 2, damage: "1d8", weaponCategory: "Marcial", source: { page: 126 }, sourceApproximate: false, needs_review: false, itemEffect: { potencyRune: 1, strikingRune: true, mountedDiplomacyBonus: 2, allyAttackBonus: 1, allyAttackRangeFeet: 60, allyAttackOncePerDay: true } });
   });
 
   it("usa os dados impressos de Quebra-Correntes também no catálogo runtime do construtor", () => {

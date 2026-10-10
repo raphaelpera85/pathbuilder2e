@@ -1023,6 +1023,45 @@ describe("serviço de catálogo local", () => {
     expect(undead?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 131 });
   });
 
+  it("preserva Kithrender, Lamentation of the Faithless e Last Hope conforme Battlecry!", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const kithrender = items.find((entry) => entry.id === "weapon.battlecry.kithrender");
+    const lamentation = items.find((entry) => entry.id === "weapon.battlecry.lamentation_of_the_faithless");
+    const lastHope = items.find((entry) => entry.id === "weapon.battlecry.last_hope");
+
+    expect(kithrender?.data).toMatchObject({
+      level: 16, weaponCategory: "Marcial", weaponGroup: "Axe", damage: "1d12", damageType: "Cortante (S)",
+      hands: "2", bulk: "2", price: 10000, rarity: "rare",
+      itemEffect: {
+        potencyRune: 2, greaterStrikingRune: true, propertyRunes: ["fearsome"], baseWeaponId: "weapon.greataxe",
+        kithrender: { mentalDamageToAlliedFoes: "1d6", rangeFeet: 30, doubledForStrongOrMagicalBond: true },
+        renderConnection: { actionCost: "free action", frequency: "once per 10 minutes", triggerReduceEnemyToZeroHp: true, rangeFeet: 30, mentalDamage: "6d8", basicWillDC: 35 },
+      },
+    });
+    expect(kithrender?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 128 });
+
+    expect(lamentation?.data).toMatchObject({
+      level: 25, weaponCategory: "Marcial", weaponGroup: "Sword", damage: "1d12", damageType: "Cortante (S)",
+      hands: "2", bulk: "2", price: null, rarity: "unique",
+      itemEffect: {
+        potencyRune: 4, majorStrikingRune: true, propertyRunes: ["speed", "unholy"], baseWeaponId: "weapon.greatsword",
+        unsheathedLightCounteract: { radiusFeet: 15, modifier: 37, lightFlatCheckDC: 15 },
+        healOnDamageLiving: "1d12", loAndBehold: { frequency: "once per day", rangeFeet: 60, willDC: 50, unholyImmune: true, holyStatusPenalty: -2, successSlowed: 1, failureBlind: "1 round", criticalFailureBlind: "1 minute" },
+      },
+    });
+    expect(lamentation?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 128 });
+
+    expect(lastHope?.data).toMatchObject({
+      level: 16, weaponCategory: "Marcial", weaponGroup: "Sword", damage: "1d8", damageType: "Cortante (S)",
+      hands: "1", bulk: "1", price: 10000, rarity: "uncommon",
+      itemEffect: {
+        potencyRune: 2, greaterStrikingRune: true, propertyRunes: ["vitalizing"], baseWeaponId: "weapon.longsword",
+        comesTheDawn: { actionCost: "reaction", frequency: "once per day", triggerMagicalHealing: true, emanationFeet: 30, perHealedHitPoints: 10, healingAndVitalityDamage: "1d10", basicFortitudeDC: 37 },
+      },
+    });
+    expect(lastHope?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 129 });
+  });
+
   it("preserva os dados impressos do Varredor do Destino no snapshot local", async () => {
     const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
     const weapon = items.find((entry) => entry.id === "weapon.battlecry.doomsweeper");
