@@ -1053,6 +1053,121 @@ describe("serviço de catálogo local", () => {
     expect(weapon?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 127 });
   });
 
+  it("preserva as runas, magias e requisitos impressos de Palavra do General", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const weapon = items.find((entry) => entry.id === "weapon.battlecry.generals_word");
+
+    expect(weapon?.data).toMatchObject({
+      weaponCategory: "Simples",
+      weaponGroup: "Club",
+      damage: "1d6",
+      damageType: "Impacto (B)",
+      hands: "1",
+      bulk: "1",
+      rarity: "uncommon",
+      price: 4500,
+      itemEffect: {
+        potencyRune: 2,
+        greaterStrikingRune: true,
+        propertyRunes: ["thundering"],
+        baseWeaponId: "weapon.mace",
+        bullhornCantrip: { spellId: "spell.bullhorn", rank: 1, frequency: "at will" },
+        battlefieldBroadcast: {
+          actionCost: 2,
+          frequency: "once per day",
+          effect: "telepathy",
+          rangeFeet: 500,
+          durationMinutes: 10,
+          endsWhenDropped: true,
+        },
+        craftRequirements: ["one casting of bullhorn", "one casting of telepathy"],
+      },
+    });
+    expect(weapon?.data.level).toBe(14);
+    expect(weapon?.data.traits).toEqual(["Incomum", "Mágico", "Empurrão"]);
+    expect(weapon?.data.summaries?.["pt-BR"]).toContain("telepaticamente");
+    expect(weapon?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 127 });
+  });
+
+  it("preserva os dados da glaive Chamado do Coveiro conforme Battlecry!", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const weapon = items.find((entry) => entry.id === "weapon.battlecry.gravediggers_call");
+
+    expect(weapon?.data).toMatchObject({
+      level: 12,
+      weaponCategory: "Marcial", weaponGroup: "Polearm", damage: "1d8", damageType: "Cortante (S)",
+      hands: "2", bulk: "2", rarity: "common", price: 1700,
+      itemEffect: {
+        potencyRune: 2, strikingRune: true, propertyRunes: ["decaying"], baseWeaponId: "weapon.glaive",
+        hauntInvestigationBonus: 1,
+        callTheFallen: { actionCost: 2, activationTraits: ["concentrate", "manipulate"], frequency: "once per day", spellId: "spell.rouse_skeletons", rank: 5, tradition: "occult", dc: 30 },
+        craftRequirements: ["one casting of rouse skeletons (5th rank)"],
+      },
+    });
+    expect(weapon?.data.summaries?.["pt-BR"]).toContain("CD 30");
+    expect(weapon?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 127 });
+  });
+
+  it("preserva runas, acesso e ativação de Julgamento do Inferno conforme Battlecry!", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const weapon = items.find((entry) => entry.id === "weapon.battlecry.hells_judgment");
+
+    expect(weapon?.data).toMatchObject({
+      level: 16,
+      weaponCategory: "Marcial", weaponGroup: "Polearm", damage: "1d10", damageType: "Cortante (S)",
+      hands: "2", bulk: "2", rarity: "uncommon", price: 10000,
+      itemEffect: {
+        potencyRune: 2, greaterStrikingRune: true, propertyRunes: ["flaming"], baseWeaponId: "weapon.guisarme",
+        access: "Hellknight",
+        flamesOfPhlegethon: {
+          actionCost: 2, activationTraits: ["concentrate", "divine", "manipulate", "unholy"], frequency: "once per day",
+          area: { shape: "line", lengthFeet: 30 }, fireDamage: "6d6", spiritDamage: "6d6", save: "basic Reflex", dc: 37,
+        },
+      },
+    });
+    expect(weapon?.data.traits).toEqual(["Incomum", "Fogo", "Mágico", "Alcance", "Derrubar"]);
+    expect(weapon?.summary).toContain("6d6 de dano de fogo e 6d6 de dano espiritual");
+    expect(weapon?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 128 });
+  });
+
+  it("preserva a arma-base e o benefício montado do Arco Longo do Senhor dos Cavalos", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const weapon = items.find((entry) => entry.id === "weapon.battlecry.horselords_longbow");
+
+    expect(weapon?.data).toMatchObject({
+      level: 6, weaponCategory: "Marcial", weaponGroup: "Bow", damage: "1d8", damageType: "Perfuração (P)",
+      range: 100, hands: "2", bulk: "2", rarity: "uncommon", price: 250,
+      itemEffect: {
+        potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.longbow",
+        mountedDamageBonus: { bonus: 2, bonusType: "circumstance", target: "unmounted creature smaller than mount", requiresWielderMounted: true },
+      },
+    });
+    expect(weapon?.data.traits).toEqual(["Incomum", "Mágico", "Mortal d10", "Alcance 100 pés", "Voleio 30 pés"]);
+    expect(weapon?.summary).toContain("+2 de bônus de circunstância no dano");
+    expect(weapon?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 128 });
+  });
+
+  it("preserva as runas e os efeitos do Esmagador de Colossos Jistkan contra constructos", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const weapon = items.find((entry) => entry.id === "weapon.battlecry.jistkan_colossus_crusher");
+
+    expect(weapon?.data).toMatchObject({
+      level: 15, weaponCategory: "Marcial", weaponGroup: "Hammer", damage: "1d12", damageType: "Impacto (B)",
+      hands: "2", bulk: "2", rarity: "rare", price: 6250,
+      itemEffect: {
+        potencyRune: 2, greaterStrikingRune: true, baseWeaponId: "weapon.maul",
+        constructEffects: {
+          strikeDamage: { amount: "1d6", damageType: "persistent force" },
+          criticalHit: { save: "Fortitude", dc: 35, failureEffect: "stunned 1" },
+        },
+      },
+    });
+    expect(weapon?.data.traits).toEqual(["Raro", "Mágico", "Empurrão"]);
+    expect(weapon?.summary).toContain("1d6 de dano persistente de força");
+    expect(weapon?.summary).toContain("CD 35");
+    expect(weapon?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 128 });
+  });
+
   it("mantém os 304 resumos mecânicos D&D 3.5 sincronizados com as fontes locais", async () => {
     const categories = ["weapon", "armor", "item", "skill"] as const;
     const loaded = await Promise.all(categories.map((category) => fetchCatalogCategory(category, { systemId: "dnd35", ruleset: "v35" })));

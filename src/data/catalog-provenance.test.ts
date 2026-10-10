@@ -849,7 +849,7 @@ describe("proveniência do catálogo legado", () => {
     const catalog = loadCatalog() as { weapons: LegacyRecord[] };
     const weapons = catalog.weapons.filter((item) => item.id?.startsWith("weapon.battlecry.") && item.category === "Arma Mágica");
     expect(weapons).toHaveLength(25);
-    expect(weapons.every((item) => item.level >= 5 && item.source?.page === (item.id === "weapon.battlecry.final_stand" ? 127 : 126) && item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect(weapons.every((item) => item.level >= 5 && item.source?.page === (["weapon.battlecry.final_stand", "weapon.battlecry.generals_word", "weapon.battlecry.gravediggers_call"].includes(item.id || "") ? 127 : ["weapon.battlecry.hells_judgment", "weapon.battlecry.horselords_longbow", "weapon.battlecry.jistkan_colossus_crusher"].includes(item.id || "") ? 128 : 126) && item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
   });
 
   it("usa os dados impressos de Quebra-Correntes também no catálogo runtime do construtor", () => {
@@ -1620,6 +1620,87 @@ describe("proveniência do catálogo legado", () => {
       needs_review: false,
     });
     expect(weapon?.description).toContain("teste plano CD 11");
+  });
+
+  it("preserva as runas e as ativações de Palavra do General no catálogo runtime", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; weaponGroup?: string; traits?: string[]; description?: string; itemEffect?: Record<string, unknown> })[] };
+    const weapon = catalog.weapons.find((item) => item.id === "weapon.battlecry.generals_word");
+
+    expect(weapon).toMatchObject({
+      level: 14,
+      price: "4.500 PO",
+      bulk: 1,
+      hands: "1",
+      damage: "1d6",
+      damageType: "Impacto (B)",
+      weaponCategory: "Simples",
+      weaponGroup: "Club",
+      traits: ["Incomum", "Mágico", "Empurrão"],
+      source: { book: "Battlecry! (Remaster)", page: 127 },
+      sourceApproximate: false,
+      needs_review: false,
+      itemEffect: {
+        potencyRune: 2,
+        greaterStrikingRune: true,
+        propertyRunes: ["thundering"],
+        baseWeaponId: "weapon.mace",
+        bullhornCantrip: { spellId: "spell.bullhorn", rank: 1, frequency: "at will" },
+        battlefieldBroadcast: { actionCost: 2, frequency: "once per day", effect: "telepathy", rangeFeet: 500, durationMinutes: 10, endsWhenDropped: true },
+      },
+    });
+    expect(weapon?.price).toBe("4.500 PO");
+    expect(weapon?.description).toContain("500 pés");
+  });
+
+  it("preserva a ficha completa de Julgamento do Inferno no catálogo runtime", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; weaponGroup?: string; traits?: string[]; itemEffect?: Record<string, unknown> })[] };
+    const weapon = catalog.weapons.find((item) => item.id === "weapon.battlecry.hells_judgment");
+
+    expect(weapon).toMatchObject({
+      level: 16, price: "10.000 PO", bulk: 2, hands: "2", damage: "1d10", damageType: "Cortante (S)",
+      weaponCategory: "Marcial", weaponGroup: "Polearm", traits: ["Incomum", "Fogo", "Mágico", "Alcance", "Derrubar"],
+      source: { book: "Battlecry! (Remaster)", page: 128 }, sourceApproximate: false, needs_review: false,
+      itemEffect: {
+        potencyRune: 2, greaterStrikingRune: true, propertyRunes: ["flaming"], baseWeaponId: "weapon.guisarme", access: "Hellknight",
+        flamesOfPhlegethon: { actionCost: 2, frequency: "once per day", area: { shape: "line", lengthFeet: 30 }, fireDamage: "6d6", spiritDamage: "6d6", save: "basic Reflex", dc: 37 },
+      },
+    });
+    expect(weapon?.description).toContain("CD 37");
+  });
+
+  it("preserva o bônus de combate montado do Arco Longo do Senhor dos Cavalos no runtime", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; weaponGroup?: string; traits?: string[]; range?: number; itemEffect?: Record<string, unknown> })[] };
+    const weapon = catalog.weapons.find((item) => item.id === "weapon.battlecry.horselords_longbow");
+
+    expect(weapon).toMatchObject({
+      level: 6, price: "250 PO", bulk: 2, hands: "2", damage: "1d8", damageType: "Perfuração (P)", range: 100,
+      weaponCategory: "Marcial", weaponGroup: "Bow", traits: ["Incomum", "Mágico", "Mortal d10", "Alcance 100 pés", "Voleio 30 pés"],
+      source: { book: "Battlecry! (Remaster)", page: 128 }, sourceApproximate: false, needs_review: false,
+      itemEffect: {
+        potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.longbow",
+        mountedDamageBonus: { bonus: 2, bonusType: "circumstance", requiresWielderMounted: true },
+      },
+    });
+    expect(weapon?.description).toContain("menores que sua montaria");
+  });
+
+  it("preserva os efeitos contra constructos do Esmagador de Colossos Jistkan no runtime", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; weaponGroup?: string; traits?: string[]; itemEffect?: Record<string, unknown> })[] };
+    const weapon = catalog.weapons.find((item) => item.id === "weapon.battlecry.jistkan_colossus_crusher");
+
+    expect(weapon).toMatchObject({
+      level: 15, price: "6.250 PO", bulk: 2, hands: "2", damage: "1d12", damageType: "Impacto (B)",
+      weaponCategory: "Marcial", weaponGroup: "Hammer", traits: ["Raro", "Mágico", "Empurrão"],
+      source: { book: "Battlecry! (Remaster)", page: 128 }, sourceApproximate: false, needs_review: false,
+      itemEffect: {
+        potencyRune: 2, greaterStrikingRune: true, baseWeaponId: "weapon.maul",
+        constructEffects: {
+          strikeDamage: { amount: "1d6", damageType: "persistent force" },
+          criticalHit: { save: "Fortitude", dc: 35, failureEffect: "stunned 1" },
+        },
+      },
+    });
+    expect(weapon?.description).toContain("stunned 1");
   });
 
   it("confirma efeitos graduados das magias do Player Core 2 revisadas no lote atual", () => {

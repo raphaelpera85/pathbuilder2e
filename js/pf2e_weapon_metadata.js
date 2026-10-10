@@ -2028,71 +2028,78 @@
   {
     "id": "weapon.battlecry.generals_word",
     "hands": "1",
-    "priceGp": 40,
+    "priceGp": 4500,
     "traits": [
       "Incomum",
+      "Mágico",
       "Empurrão"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Club",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 127
     },
     "ruleset": "remaster"
   },
   {
     "id": "weapon.battlecry.gravediggers_call",
     "hands": "2",
-    "priceGp": 22,
+    "priceGp": 1700,
     "traits": [
-      "Incomum",
-      "Derrubar"
+      "Mágico",
+      "Ocultista",
+      "Mortal d8",
+      "Forçosa",
+      "Alcance"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Polearm",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 127
     },
     "ruleset": "remaster"
   },
   {
     "id": "weapon.battlecry.hells_judgment",
     "hands": "2",
-    "priceGp": 45,
+    "priceGp": 10000,
     "traits": [
       "Incomum",
-      "Profano",
-      "Varredura"
+      "Fogo",
+      "Mágico",
+      "Alcance",
+      "Derrubar"
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Polearm",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 128
     },
     "ruleset": "remaster"
   },
   {
     "id": "weapon.battlecry.horselords_longbow",
-    "hands": "1+",
-    "priceGp": 35,
+    "hands": "2",
+    "priceGp": 250,
     "traits": [
       "Incomum",
+      "Mágico",
       "Mortal d10",
       "Alcance 100 pés",
       "Voleio 30 pés"
     ],
     "rangeFeet": 100,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Bow",
     "source": {
       "book": "Battlecry! (Remaster)",
-      "page": 126
+      "page": 128
     },
     "ruleset": "remaster"
   },
