@@ -15157,7 +15157,17 @@ const BATTLECRY_WEAPONS_DATA = {
   belkzen_deadsmasher: { price: "15 PO", bulk: 2, hands: "2", damage: "1d10", damageType: "Impacto (B)", traits: ["Incomum", "Orc", "Empurrão", "Desarmar"] },
   cavalry_commanders_lance: { price: "12 PO", bulk: 2, hands: "2", damage: "1d8", damageType: "Perfuração (P)", traits: ["Incomum", "Investida de Justa d10", "Alcance"] },
   chain_of_command: { price: "18 PO", bulk: 2, hands: "2", damage: "1d8", damageType: "Impacto (B)", traits: ["Incomum", "Desarmar", "Derrubar", "Alcance"] },
-  chainbreaker: { price: "10 PO", bulk: 1, hands: "1", damage: "1d6", damageType: "Cortante (S)", traits: ["Incomum", "Desarmar", "Varredura"] },
+  chainbreaker: {
+    price: "150 PO", bulk: 1, hands: "1", damage: "1d6", damageType: "Perfuração (P)", weaponCategory: "Marcial",
+    traits: ["Incomum", "Mágico", "Fatal d10"], sourceApproximate: false, needs_review: false,
+    summaryPt: "Picareta mágica +1 striking que rompe contenções; a versão maior é de nível 12.",
+    description: "Esta picareta +1 striking ignora os primeiros 5 pontos de Dureza de um objeto inanimado destinado a prender ou confinar, como algemas ou grades. Uma vez por dia, você pode Golpear uma criatura com a arma; se acertar e causar dano, um aliado agarrado ou restringido a até 18 m do alvo pode usar uma reação para tentar Escapar. A versão maior (nível 12, 1.750 po) é uma picareta +2 striking e ignora os primeiros 10 pontos de Dureza de objetos usados para conter.",
+    itemEffect: {
+      potencyRune: 1, strikingRune: true, baseWeaponId: "weapon.pick", unattendedRestraintHardnessIgnored: 5,
+      liberatingStrikeOncePerDay: true, liberatedAllyRangeFeet: 60, greaterVariantLevel: 12, greaterVariantPriceGp: 1750,
+      greaterPotencyRune: 2, greaterStrikingRune: true, greaterRestraintHardnessIgnored: 10,
+    },
+  },
   dazzling_shortbow: { price: "25 PO", bulk: 1, hands: "1+", damage: "1d6", damageType: "Perfuração (P)", traits: ["Incomum", "Mortal d10", "Alcance 60 pés"] },
   doomsweeper: { price: "30 PO", bulk: 2, hands: "2", damage: "1d12", damageType: "Cortante (S)", traits: ["Incomum", "Varredura", "Empurrão"] },
   draddeths_edge: { price: "20 PO", bulk: 1, hands: "1", damage: "1d8", damageType: "Cortante (S)", traits: ["Incomum", "Versátil P"] },
@@ -15186,11 +15196,11 @@ for (const [slug, pt, en, es, level] of BATTLECRY_MAGIC_WEAPONS) {
   const extra = BATTLECRY_WEAPONS_DATA[slug] || {};
   PF2E_DATA.weapons.push({
     id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
-    summaries: { "pt-BR": `Arma mágica de Battlecry!, nível ${level}.`, en: `Battlecry! magic weapon, level ${level}.`, es: `Arma mágica de Battlecry!, nivel ${level}.` },
-    description: `Arma mágica de Battlecry! (p. 126); ${extra.damage ? `Dano ${extra.damage} ${extra.damageType}` : ""}.`,
-    category: "Arma Mágica", level, price: extra.price || "25 PO", bulk: extra.bulk || 1, hands: extra.hands || "1",
-    damage: extra.damage || "1d8", damageType: extra.damageType || "Cortante (S)", traits: extra.traits || ["Incomum", "Mágico"],
-    source: { book: BATTLECRY_SOURCE, page: 126 }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+    summaries: { "pt-BR": extra.summaryPt || `Arma mágica de Battlecry!, nível ${level}.`, en: `Battlecry! magic weapon, level ${level}.`, es: `Arma mágica de Battlecry!, nivel ${level}.` },
+    description: extra.description || `Arma mágica de Battlecry! (p. 126); ${extra.damage ? `Dano ${extra.damage} ${extra.damageType}` : ""}.`,
+    category: "Arma Mágica", weaponCategory: extra.weaponCategory, level, price: extra.price || "25 PO", bulk: extra.bulk || 1, hands: extra.hands || "1",
+    damage: extra.damage || "1d8", damageType: extra.damageType || "Cortante (S)", traits: extra.traits || ["Incomum", "Mágico"], itemEffect: extra.itemEffect,
+    source: { book: BATTLECRY_SOURCE, page: 126 }, sourceApproximate: extra.sourceApproximate ?? true, ruleset: "remaster", needs_review: extra.needs_review ?? true,
   });
 }
 

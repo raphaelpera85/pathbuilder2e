@@ -844,6 +844,37 @@ describe("serviço de catálogo local", () => {
     expect(lance?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 126 });
   });
 
+  it("preserva os dados impressos de Quebra-Correntes no snapshot local", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const chainbreaker = items.find((entry) => entry.id === "weapon.battlecry.chainbreaker");
+
+    expect(chainbreaker?.data).toMatchObject({
+      level: 5,
+      weaponCategory: "Marcial",
+      damage: "1d6",
+      damageType: "Perfuração (P)",
+      hands: "1",
+      bulk: "1",
+      price: 150,
+      rarity: "uncommon",
+      itemEffect: {
+        potencyRune: 1,
+        strikingRune: true,
+        baseWeaponId: "weapon.pick",
+        unattendedRestraintHardnessIgnored: 5,
+        liberatingStrikeOncePerDay: true,
+        liberatedAllyRangeFeet: 60,
+        greaterVariantLevel: 12,
+        greaterVariantPriceGp: 1750,
+        greaterPotencyRune: 2,
+        greaterStrikingRune: true,
+        greaterRestraintHardnessIgnored: 10,
+      },
+    });
+    expect(chainbreaker?.data.summaries?.["pt-BR"]).toContain("Uma vez por dia");
+    expect(chainbreaker?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 126 });
+  });
+
   it("mantém os 304 resumos mecânicos D&D 3.5 sincronizados com as fontes locais", async () => {
     const categories = ["weapon", "armor", "item", "skill"] as const;
     const loaded = await Promise.all(categories.map((category) => fetchCatalogCategory(category, { systemId: "dnd35", ruleset: "v35" })));

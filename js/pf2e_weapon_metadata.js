@@ -1932,11 +1932,11 @@
   {
     "id": "weapon.battlecry.chainbreaker",
     "hands": "1",
-    "priceGp": 10,
+    "priceGp": 150,
     "traits": [
       "Incomum",
-      "Desarmar",
-      "Varredura"
+      "Mágico",
+      "Fatal d10"
     ],
     "rangeFeet": null,
     "reload": null,

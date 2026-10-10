@@ -9,7 +9,7 @@ Este documento é a fonte de verdade para continuar o trabalho quando esta sess�
 ### TODO EXECUTÁVEL — ordem atual
 
 - [ ] P1. Conferir os registros de armas mágicas de Battlecry! contra as páginas impressas; priorizar campos que contradizem a arma-base, nível, raridade, preço e efeitos. Primeiro caso identificado: Belkzen Deadsmasher, p. 126.
-  - Progresso (2026-10-10): Belkzen Deadsmasher e Lança do Comandante de Cavalaria conferidas no PDF local, p. 126; corrigidos nível, preço, raridade, arma-base e efeitos, com regressões no serviço. Restam as outras armas mágicas do lote.
+  - Progresso (2026-10-10): Belkzen Deadsmasher, Lança do Comandante de Cavalaria e Quebra-Correntes conferidas no PDF local, p. 126; corrigidos nível, preço, raridade, arma-base e efeitos, com regressões no serviço. Restam as outras armas mágicas do lote.
 
 - [x] P1. Integrar seleção de sistema e criação inicial de personagens OSE com base nos livros locais Básico e Tomo do Jogador Avançado.
   - Log arquivado (1 entrada): `docs/auditoria/TODO_COBERTURA_E_BUGS-evidencias.md`

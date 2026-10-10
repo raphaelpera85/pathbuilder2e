@@ -852,6 +852,40 @@ describe("proveniência do catálogo legado", () => {
     expect(weapons.every((item) => item.level >= 5 && item.source?.page === 126 && item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
   });
 
+  it("usa os dados impressos de Quebra-Correntes também no catálogo runtime do construtor", () => {
+    const catalog = loadCatalog() as { weapons: (LegacyRecord & { level?: number; price?: string; bulk?: number; hands?: string; damage?: string; damageType?: string; weaponCategory?: string; traits?: string[]; description?: string; itemEffect?: Record<string, unknown> })[] };
+    const chainbreaker = catalog.weapons.find((item) => item.id === "weapon.battlecry.chainbreaker");
+
+    expect(chainbreaker).toMatchObject({
+      level: 5,
+      price: "150 PO",
+      bulk: 1,
+      hands: "1",
+      damage: "1d6",
+      damageType: "Perfuração (P)",
+      weaponCategory: "Marcial",
+      traits: ["Incomum", "Mágico", "Fatal d10"],
+      itemEffect: {
+        potencyRune: 1,
+        strikingRune: true,
+        baseWeaponId: "weapon.pick",
+        unattendedRestraintHardnessIgnored: 5,
+        liberatingStrikeOncePerDay: true,
+        liberatedAllyRangeFeet: 60,
+        greaterVariantLevel: 12,
+        greaterVariantPriceGp: 1750,
+        greaterPotencyRune: 2,
+        greaterStrikingRune: true,
+        greaterRestraintHardnessIgnored: 10,
+      },
+      source: { book: "Battlecry! (Remaster)", page: 126 },
+      sourceApproximate: false,
+      needs_review: false,
+    });
+    expect(chainbreaker?.description).toContain("ignora os primeiros 5 pontos de Dureza");
+    expect(chainbreaker?.description).toContain("aliado agarrado ou restringido");
+  });
+
   it("indexa as magias de batalha de Battlecry", () => {
     const catalog = loadCatalog() as { spells: (LegacyRecord & { rank?: number; traditions?: string[] })[] };
     const spells = catalog.spells.filter((item) => item.id?.startsWith("spell.battlecry.battle_magic.") && item.source?.book === "Battlecry! (Remaster)");
