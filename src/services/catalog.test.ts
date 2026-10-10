@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { execFileSync } from "node:child_process";
+import { readFileSync } from "node:fs";
 import {
   PICKER_TYPE_TO_TABLE,
   normalizeCatalogRecordToPickerItem,
@@ -816,6 +817,37 @@ describe("serviço de catálogo local", () => {
     });
     expect(deadsmasher?.data.summaries?.["pt-BR"]).toContain("Uma vez por dia");
     expect(deadsmasher?.data.source).toMatchObject({ book: "Battlecry! (Remaster)", page: 126 });
+  });
+
+  it("preserva descrições, raridade e preços das armas mundanas de Battlecry!", async () => {
+    const { items } = await fetchCatalogCategory("weapon", { systemId: "pf2e", ruleset: "remaster" });
+    const sourceRows = JSON.parse(readFileSync("scripts/catalog_data/catalog_weapons.json", "utf8")) as Array<Record<string, unknown>>;
+    const expected = [
+      ["battle_lute", "uncommon", 7, "cordas", "strings", "cuerdas"],
+      ["fauchard", "common", 1.4, "côncavo", "concave", "cóncavo"],
+      ["gaff", "common", 1, "pescadores", "fishers", "pescadores"],
+      ["scourge", "common", 0.1, "nove", "nine", "nueve"],
+      ["bladed_gauntlet", "uncommon", 5, "retrai", "retracted", "retrae"],
+      ["lion_scythe", "uncommon", 1, "foice", "sickle", "hoz"],
+      ["war_lance", "uncommon", 4, "manopla", "vamplate", "guardamano"],
+      ["aldori_dueling_sword", "uncommon", 2, "lâmina única", "single-bladed", "una sola hoja"],
+      ["bladesweeper", "uncommon", 4, "três espadas", "three swords", "tres espadas"],
+      ["maul_spade", "uncommon", 6, "pá", "shovel", "pala"],
+      ["gauntlet_bow", "common", 9, "câmara giratória", "rotating chamber", "cámara giratoria"],
+      ["repeating_hand_crossbow", "uncommon", 10, "cinco virotes", "five bolts", "cinco virotes"],
+    ] as const;
+
+    for (const [slug, rarity, price, pt, en, es] of expected) {
+      const weapon = items.find((item) => item.id === `weapon.battlecry.${slug}`);
+      const source = sourceRows.find((item) => item.id === `weapon.battlecry.${slug}`);
+      expect(weapon?.data, slug).toMatchObject({ rarity, price, descriptionSourcePage: 119 });
+      expect(weapon?.data.summaries?.["pt-BR"]?.toLocaleLowerCase(), slug).toContain(pt.toLocaleLowerCase());
+      expect(weapon?.data.summaries?.en?.toLocaleLowerCase(), slug).toContain(en.toLocaleLowerCase());
+      expect(weapon?.data.summaries?.es?.toLocaleLowerCase(), slug).toContain(es.toLocaleLowerCase());
+      expect(weapon?.data.source, slug).toMatchObject({ book: "Battlecry! (Remaster)", page: 118 });
+      expect(source, slug).toMatchObject({ rarity, price_gp: price, source_page: 118, data: { descriptionSourcePage: 119 } });
+      expect(source?.description_pt, slug).not.toContain("Arma de Battlecry!");
+    }
   });
 
   it("preserva os dados impressos da Lança do Comandante de Cavalaria no snapshot local", async () => {

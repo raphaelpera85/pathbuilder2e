@@ -331,9 +331,9 @@
     "name_pt": "Espada de Duelo Aldori",
     "name_en": "Aldori Dueling Sword",
     "name_es": "Espada de duelo aldori",
-    "description_pt": "Arma de Battlecry!, dano 1d8, categoria Avançada.",
-    "description_en": "Battlecry! weapon, 1d8 damage, Avançada category.",
-    "description_es": "Arma de Battlecry!, daño 1d8, categoría Avançada.",
+    "description_pt": "Espada de duelo fina, de lâmina única, levemente curva e com ponta reforçada e afiada.",
+    "description_en": "A slim single-bladed dueling sword with a slight curve and a sharp, reinforced point.",
+    "description_es": "Una fina espada de duelo de una sola hoja, ligeramente curva y con una punta afilada y reforzada.",
     "weapon_category": "Avançada",
     "weapon_group": "Sword",
     "damage_dice": "1d8",
@@ -347,7 +347,7 @@
       "Acurada",
       "Versátil P"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -355,7 +355,8 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-aldori-dueling-sword.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false
+      "needs_review": false,
+      "descriptionSourcePage": 119
     },
     "created_at": "2026-09-04T04:38:07.663119+00:00",
     "updated_at": "2026-09-23T18:16:42.210773+00:00",
@@ -367,9 +368,9 @@
     "name_pt": "Lute de Batalha",
     "name_en": "Battle Lute",
     "name_es": "Laúd de batalla",
-    "description_pt": "Arma de Battlecry!, dano 1d4, categoria Simples.",
-    "description_en": "Battlecry! weapon, 1d4 damage, Simples category.",
-    "description_es": "Arma de Battlecry!, daño 1d4, categoría Simples.",
+    "description_pt": "O alaúde reforçado serve como instrumento e arma para golpear; suas cordas são fios trançados resistentes. Quando usado para Performance, recebe como bônus de item o bônus de runas de potência da arma.",
+    "description_en": "This reinforced lute doubles as an instrument and a bludgeoning weapon, with sturdy braided-wire strings. When used for Performance, it adds its weapon potency rune bonus as an item bonus.",
+    "description_es": "Este laúd reforzado funciona como instrumento y arma contundente, con cuerdas de alambre trenzado resistente. Al usarlo para Interpretación, suma como bonificador de objeto el bonificador de sus runas de potencia.",
     "weapon_category": "Simples",
     "weapon_group": "Club",
     "damage_dice": "1d4",
@@ -383,7 +384,7 @@
       "Empurrão",
       "Duas Mãos d8"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -391,7 +392,8 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-lute.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false
+      "needs_review": false,
+      "descriptionSourcePage": 119
     },
     "created_at": "2026-09-04T04:38:07.663119+00:00",
     "updated_at": "2026-09-23T18:16:41.984219+00:00",
@@ -454,9 +456,9 @@
     "name_pt": "Manopla Lâmina",
     "name_en": "Bladed Gauntlet",
     "name_es": "Guantelete afilado",
-    "description_pt": "Arma de Battlecry!, dano 1d4, categoria Marcial.",
-    "description_en": "Battlecry! weapon, 1d4 damage, Marcial category.",
-    "description_es": "Arma de Battlecry!, daño 1d4, categoría Marcial.",
+    "description_pt": "Uma adaga integrada ao dorso da manopla se revela ou retrai conforme a configuração. A lâmina não pode ser removida nem receber runas separadamente.",
+    "description_en": "A dagger built into the back of the gauntlet is revealed or retracted by switching configurations. The blade can't be removed or etched with runes separately.",
+    "description_es": "Una daga integrada en el dorso del guantelete aparece o se retrae al cambiar de configuración. No puede retirarse ni recibir runas por separado.",
     "weapon_category": "Marcial",
     "weapon_group": "Brawling",
     "damage_dice": "1d4",
@@ -472,7 +474,7 @@
       "Livre-Mão",
       "Modular B, P ou S"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -480,7 +482,8 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-bladed-gauntlet.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false
+      "needs_review": false,
+      "descriptionSourcePage": 119
     },
     "created_at": "2026-09-04T04:38:07.663119+00:00",
     "updated_at": "2026-09-23T18:16:41.984219+00:00",
@@ -492,9 +495,9 @@
     "name_pt": "Varredor de Lâminas",
     "name_en": "Bladesweeper",
     "name_es": "Barrid hojas",
-    "description_pt": "Arma de Battlecry!, dano 1d10, categoria Avançada.",
-    "description_en": "Battlecry! weapon, 1d10 damage, Avançada category.",
-    "description_es": "Arma de Battlecry!, daño 1d10, categoría Avançada.",
+    "description_pt": "Três espadas unidas a um único punho formam uma arma devastadora nas mãos de um guerreiro jotunato.",
+    "description_en": "Three swords joined to a single hilt make a devastating weapon in the hands of a jotunborn warrior.",
+    "description_es": "Tres espadas unidas a una sola empuñadura forman un arma devastadora en manos de un guerrero jotunato.",
     "weapon_category": "Avançada",
     "weapon_group": "Sword",
     "damage_dice": "1d10",
@@ -510,7 +513,7 @@
       "Varredura",
       "Versátil P"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -518,7 +521,8 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-bladesweeper.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false
+      "needs_review": false,
+      "descriptionSourcePage": 119
     },
     "created_at": "2026-09-04T04:38:07.663119+00:00",
     "updated_at": "2026-09-23T18:16:42.210773+00:00",
@@ -897,9 +901,9 @@
     "name_pt": "Fauchard",
     "name_en": "Fauchard",
     "name_es": "Fauchard",
-    "description_pt": "Arma de Battlecry!, dano 1d8, categoria Marcial.",
-    "description_en": "Battlecry! weapon, 1d8 damage, Marcial category.",
-    "description_es": "Arma de Battlecry!, daño 1d8, categoría Marcial.",
+    "description_pt": "Semelhante a uma glaive, esta arma tem o fio de corte no lado côncavo.",
+    "description_en": "Similar to a glaive, this weapon has its cutting edge along the concave side.",
+    "description_es": "Similar a una guja, esta arma tiene el filo en el lado cóncavo.",
     "weapon_category": "Marcial",
     "weapon_group": "Polearm",
     "damage_dice": "1d8",
@@ -908,7 +912,7 @@
     "reload": null,
     "hands": "2",
     "bulk": "2",
-    "price_gp": 1,
+    "price_gp": 1.4,
     "traits": [
       "Mortal d8",
       "Alcance",
@@ -923,7 +927,8 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-fauchard.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false
+      "needs_review": false,
+      "descriptionSourcePage": 119
     },
     "created_at": "2026-09-04T04:38:07.663119+00:00",
     "updated_at": "2026-09-23T18:16:41.984219+00:00",
@@ -995,9 +1000,9 @@
     "name_pt": "Gancho",
     "name_en": "Gaff",
     "name_es": "Garfio",
-    "description_pt": "Arma de Battlecry!, dano 1d6, categoria Marcial.",
-    "description_en": "Battlecry! weapon, 1d6 damage, Marcial category.",
-    "description_es": "Arma de Battlecry!, daño 1d6, categoría Marcial.",
+    "description_pt": "Bastões com uma ponta em gancho, populares entre pescadores e guerreiros.",
+    "description_en": "Hooked staffs popular among fishers and warriors alike.",
+    "description_es": "Bastones con un gancho, populares entre pescadores y guerreros.",
     "weapon_category": "Marcial",
     "weapon_group": "Club",
     "damage_dice": "1d6",
@@ -1019,7 +1024,8 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-gaff.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false
+      "needs_review": false,
+      "descriptionSourcePage": 119
     },
     "created_at": "2026-09-04T04:38:07.663119+00:00",
     "updated_at": "2026-09-23T18:16:41.984219+00:00",
@@ -1031,9 +1037,9 @@
     "name_pt": "Arco de Manopla",
     "name_en": "Gauntlet Bow",
     "name_es": "Arco de guantelete",
-    "description_pt": "Arma de Battlecry!, dano 1d4, categoria Marcial.",
-    "description_en": "Battlecry! weapon, 1d4 damage, Marcial category.",
-    "description_es": "Arma de Battlecry!, daño 1d4, categoría Marcial.",
+    "description_pt": "Uma luva metálica pesada incorpora uma besta e uma câmara giratória. Pode atacar como uma manopla e conservar runas válidas nesse uso, mas a mão que a empunha não pode recarregá-la.",
+    "description_en": "A heavy metal glove houses a crossbow and rotating chamber. It can make melee attacks as a gauntlet and retain valid runes, but the wielding hand can't reload it.",
+    "description_es": "Un pesado guante metálico incorpora una ballesta y una cámara giratoria. Puede atacar cuerpo a cuerpo como un guantelete y conservar runas válidas, pero la mano que lo empuña no puede recargarlo.",
     "weapon_category": "Marcial",
     "weapon_group": "Crossbow",
     "damage_dice": "1d4",
@@ -1056,7 +1062,8 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-gauntlet-bow.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false
+      "needs_review": false,
+      "descriptionSourcePage": 119
     },
     "created_at": "2026-09-04T04:38:07.663119+00:00",
     "updated_at": "2026-09-23T18:16:42.210773+00:00",
@@ -1476,7 +1483,11 @@
     "hands": "2",
     "bulk": "2",
     "price_gp": 10000,
-    "traits": ["Raro", "Mágico", "Varredura"],
+    "traits": [
+      "Raro",
+      "Mágico",
+      "Varredura"
+    ],
     "rarity": "rare",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
@@ -1489,10 +1500,24 @@
       "itemEffect": {
         "potencyRune": 2,
         "greaterStrikingRune": true,
-        "propertyRunes": ["fearsome"],
+        "propertyRunes": [
+          "fearsome"
+        ],
         "baseWeaponId": "weapon.greataxe",
-        "kithrender": { "mentalDamageToAlliedFoes": "1d6", "rangeFeet": 30, "doubledForStrongOrMagicalBond": true },
-        "renderConnection": { "actionCost": "free action", "activationTrait": "concentrate", "frequency": "once per 10 minutes", "triggerReduceEnemyToZeroHp": true, "rangeFeet": 30, "mentalDamage": "6d8", "basicWillDC": 35 }
+        "kithrender": {
+          "mentalDamageToAlliedFoes": "1d6",
+          "rangeFeet": 30,
+          "doubledForStrongOrMagicalBond": true
+        },
+        "renderConnection": {
+          "actionCost": "free action",
+          "activationTrait": "concentrate",
+          "frequency": "once per 10 minutes",
+          "triggerReduceEnemyToZeroHp": true,
+          "rangeFeet": 30,
+          "mentalDamage": "6d8",
+          "basicWillDC": 35
+        }
       }
     },
     "created_at": "2026-09-04T04:38:07.663119+00:00",
@@ -1518,7 +1543,13 @@
     "hands": "2",
     "bulk": "2",
     "price_gp": null,
-    "traits": ["Artefato", "Divino", "Mágico", "Profano", "Versátil P"],
+    "traits": [
+      "Artefato",
+      "Divino",
+      "Mágico",
+      "Profano",
+      "Versátil P"
+    ],
     "rarity": "unique",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
@@ -1532,11 +1563,29 @@
       "itemEffect": {
         "potencyRune": 4,
         "majorStrikingRune": true,
-        "propertyRunes": ["speed", "unholy"],
+        "propertyRunes": [
+          "speed",
+          "unholy"
+        ],
         "baseWeaponId": "weapon.greatsword",
-        "unsheathedLightCounteract": { "radiusFeet": 15, "modifier": 37, "lightFlatCheckDC": 15 },
+        "unsheathedLightCounteract": {
+          "radiusFeet": 15,
+          "modifier": 37,
+          "lightFlatCheckDC": 15
+        },
         "healOnDamageLiving": "1d12",
-        "loAndBehold": { "actionCost": 1, "frequency": "once per day", "rangeFeet": 60, "willDC": 50, "unholyImmune": true, "holyStatusPenalty": -2, "successSlowed": 1, "cannotReactWhileSlowed": true, "failureBlind": "1 round", "criticalFailureBlind": "1 minute" },
+        "loAndBehold": {
+          "actionCost": 1,
+          "frequency": "once per day",
+          "rangeFeet": 60,
+          "willDC": 50,
+          "unholyImmune": true,
+          "holyStatusPenalty": -2,
+          "successSlowed": 1,
+          "cannotReactWhileSlowed": true,
+          "failureBlind": "1 round",
+          "criticalFailureBlind": "1 minute"
+        },
         "destructionCondition": "Driven into the ground in the walled secluded garden at Heaven's summit by a risen repentant fiend"
       }
     },
@@ -1563,7 +1612,11 @@
     "hands": "1",
     "bulk": "1",
     "price_gp": 10000,
-    "traits": ["Incomum", "Mágico", "Versátil P"],
+    "traits": [
+      "Incomum",
+      "Mágico",
+      "Versátil P"
+    ],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
@@ -1576,10 +1629,26 @@
       "itemEffect": {
         "potencyRune": 2,
         "greaterStrikingRune": true,
-        "propertyRunes": ["vitalizing"],
+        "propertyRunes": [
+          "vitalizing"
+        ],
         "baseWeaponId": "weapon.longsword",
         "access": "Knights of Lastwall",
-        "comesTheDawn": { "actionCost": "reaction", "activationTraits": ["concentrate", "divine", "healing", "vitality"], "frequency": "once per day", "triggerMagicalHealing": true, "emanationFeet": 30, "perHealedHitPoints": 10, "healingAndVitalityDamage": "1d10", "basicFortitudeDC": 37 }
+        "comesTheDawn": {
+          "actionCost": "reaction",
+          "activationTraits": [
+            "concentrate",
+            "divine",
+            "healing",
+            "vitality"
+          ],
+          "frequency": "once per day",
+          "triggerMagicalHealing": true,
+          "emanationFeet": 30,
+          "perHealedHitPoints": 10,
+          "healingAndVitalityDamage": "1d10",
+          "basicFortitudeDC": 37
+        }
       }
     },
     "created_at": "2026-09-04T04:38:07.663119+00:00",
@@ -1592,9 +1661,9 @@
     "name_pt": "Foice do Leão",
     "name_en": "Lion Scythe",
     "name_es": "Guadaña de león",
-    "description_pt": "Arma de Battlecry!, dano 1d6, categoria Marcial.",
-    "description_en": "Battlecry! weapon, 1d6 damage, Marcial category.",
-    "description_es": "Arma de Battlecry!, daño 1d6, categoría Marcial.",
+    "description_pt": "Esta foice lembra uma foice comum, mas tem peso especial para golpes mais potentes.",
+    "description_en": "This scythe resembles a common sickle but is specially weighted for more powerful strikes.",
+    "description_es": "Esta guadaña se parece a una hoz común, pero está especialmente equilibrada para golpear con más fuerza.",
     "weapon_category": "Marcial",
     "weapon_group": "Knife",
     "damage_dice": "1d6",
@@ -1609,7 +1678,7 @@
       "Acurada",
       "Derrubar"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -1617,7 +1686,8 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-lion-scythe.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false
+      "needs_review": false,
+      "descriptionSourcePage": 119
     },
     "created_at": "2026-09-04T04:38:07.663119+00:00",
     "updated_at": "2026-09-23T18:16:41.984219+00:00",
@@ -1682,9 +1752,9 @@
     "name_pt": "Pá-Malho",
     "name_en": "Maul-Spade",
     "name_es": "Pala-mazo",
-    "description_pt": "Arma de Battlecry!, dano 1d10, categoria Avançada.",
-    "description_en": "Battlecry! weapon, 1d10 damage, Avançada category.",
-    "description_es": "Arma de Battlecry!, daño 1d10, categoría Avançada.",
+    "description_pt": "Arma pesada semelhante a um porrete, que também funciona como pá. Ao cavar com ela, runas de potência concedem seu bônus de item em Atletismo e perícias de Saber apropriadas.",
+    "description_en": "This heavy, club-like weapon also functions as a shovel. When digging with it, its potency rune bonus applies as an item bonus to Athletics and appropriate Lore checks.",
+    "description_es": "Esta pesada arma similar a una clava también sirve como pala. Al cavar con ella, su bonificador de runas de potencia se aplica como bonificador de objeto a Atletismo y pruebas de Saber pertinentes.",
     "weapon_category": "Avançada",
     "weapon_group": "Club",
     "damage_dice": "1d10",
@@ -1699,7 +1769,7 @@
       "Jotunnato",
       "Empurrão"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -1707,7 +1777,8 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-maul-spade.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false
+      "needs_review": false,
+      "descriptionSourcePage": 119
     },
     "created_at": "2026-09-04T04:38:07.663119+00:00",
     "updated_at": "2026-09-23T18:16:42.210773+00:00",
@@ -1842,9 +1913,9 @@
     "name_pt": "Besta de Mão Repetidora",
     "name_en": "Repeating Hand Crossbow",
     "name_es": "Ballesta de mano repetidora",
-    "description_pt": "Arma de Battlecry!, dano 1d6, categoria Avançada.",
-    "description_en": "Battlecry! weapon, 1d6 damage, Avançada category.",
-    "description_es": "Arma de Battlecry!, daño 1d6, categoría Avançada.",
+    "description_pt": "Besta de mão com um mecanismo que puxa automaticamente um virote do carregador e arma a corda a cada disparo; um carregador típico contém cinco virotes.",
+    "description_en": "A hand crossbow whose catch automatically loads a bolt from a magazine and resets the string after each shot; a typical magazine holds five bolts.",
+    "description_es": "Una ballesta de mano cuyo mecanismo carga automáticamente un virote del cargador y vuelve a tensar la cuerda tras cada disparo; un cargador típico contiene cinco virotes.",
     "weapon_category": "Avançada",
     "weapon_group": "Crossbow",
     "damage_dice": "1d6",
@@ -1857,7 +1928,7 @@
     "traits": [
       "Repetição"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -1865,7 +1936,8 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-repeating-hand-crossbow.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false
+      "needs_review": false,
+      "descriptionSourcePage": 119
     },
     "created_at": "2026-09-04T04:38:07.663119+00:00",
     "updated_at": "2026-09-23T18:16:42.210773+00:00",
@@ -1998,9 +2070,9 @@
     "name_pt": "Chicote de Nós",
     "name_en": "Scourge",
     "name_es": "Azote",
-    "description_pt": "Arma de Battlecry!, dano 1d4, categoria Marcial.",
-    "description_en": "Battlecry! weapon, 1d4 damage, Marcial category.",
-    "description_es": "Arma de Battlecry!, daño 1d4, categoría Marcial.",
+    "description_pt": "Também chamado de chicote de nove caudas, é feito de cordões de algodão ou couro com nós presos a um cabo; versões de combate podem ter farpas metálicas entrelaçadas.",
+    "description_en": "Also called a cat-o'-nine-tails, it consists of knotted cotton or leather cords attached to a handle; combat versions can weave metal barbs into the cords.",
+    "description_es": "También llamado gato de nueve colas, consta de cordones anudados de algodón o cuero sujetos a un mango; las versiones de combate pueden llevar púas metálicas entretejidas.",
     "weapon_category": "Marcial",
     "weapon_group": "Flail",
     "damage_dice": "1d4",
@@ -2009,7 +2081,7 @@
     "reload": null,
     "hands": "1",
     "bulk": "1",
-    "price_gp": 1,
+    "price_gp": 0.1,
     "traits": [
       "Ágil",
       "Desarmar",
@@ -2025,7 +2097,8 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-scourge.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false
+      "needs_review": false,
+      "descriptionSourcePage": 119
     },
     "created_at": "2026-09-04T04:38:07.663119+00:00",
     "updated_at": "2026-09-23T18:16:41.984219+00:00",
@@ -2221,9 +2294,9 @@
     "name_pt": "Lança de Guerra",
     "name_en": "War Lance",
     "name_es": "Lanza de guerra",
-    "description_pt": "Arma de Battlecry!, dano 1d8, categoria Marcial.",
-    "description_en": "Battlecry! weapon, 1d8 damage, Marcial category.",
-    "description_es": "Arma de Battlecry!, daño 1d8, categoría Marcial.",
+    "description_pt": "Mais curta e robusta que outras lanças, possui proteção integrada à manopla da lança; abre mão do alcance para uma base mais firme ao defender-se ou subjugar um oponente.",
+    "description_en": "Shorter and stockier than other lances, it has shielding built into its vamplate, trading reach for a sturdier base when defending or overpowering an opponent.",
+    "description_es": "Más corta y robusta que otras lanzas, incorpora protección en el guardamano; sacrifica alcance por una base más firme al defenderse o dominar a un oponente.",
     "weapon_category": "Marcial",
     "weapon_group": "Spear",
     "damage_dice": "1d8",
@@ -2239,7 +2312,7 @@
       "Aparar",
       "Empurrão"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -2247,7 +2320,8 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-war-lance.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false
+      "needs_review": false,
+      "descriptionSourcePage": 119
     },
     "created_at": "2026-09-04T04:38:07.663119+00:00",
     "updated_at": "2026-09-23T18:16:42.210773+00:00",

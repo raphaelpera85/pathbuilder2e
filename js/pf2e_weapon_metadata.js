@@ -1676,7 +1676,7 @@
   {
     "id": "weapon.battlecry.fauchard",
     "hands": "2",
-    "priceGp": 1,
+    "priceGp": 1.4,
     "traits": [
       "Mortal d8",
       "Alcance",
@@ -1712,7 +1712,7 @@
   {
     "id": "weapon.battlecry.scourge",
     "hands": "1",
-    "priceGp": 1,
+    "priceGp": 0.1,
     "traits": [
       "Ágil",
       "Desarmar",
@@ -1875,13 +1875,12 @@
   },
   {
     "id": "weapon.battlecry.belkzen_deadsmasher",
-    "hands": "2",
-    "priceGp": 15,
+    "hands": "1",
+    "priceGp": 2800,
     "traits": [
       "Incomum",
-      "Orc",
-      "Empurrão",
-      "Desarmar"
+      "Mágico",
+      "Versátil P"
     ],
     "rangeFeet": null,
     "reload": null,
@@ -1895,7 +1894,7 @@
   {
     "id": "weapon.battlecry.cavalry_commanders_lance",
     "hands": "2",
-    "priceGp": 12,
+    "priceGp": 225,
     "traits": [
       "Incomum",
       "Investida de Justa d10",

@@ -14938,20 +14938,20 @@ for (const [slug, pt, en, es, level, page] of BATTLECRY_GUARDIAN_FEATS) {
 
 // Battlecry!, p. 118: armas e equipamento mundanos do capítulo Armory.
 const BATTLECRY_EQUIPMENT = [
-  ["battle_lute", "Lute de Batalha", "Battle Lute", "Laúd de batalla", "1d4", "Contundente", 1, "7 PO", "Simples"],
-  ["fauchard", "Fauchard", "Fauchard", "Fauchard", "1d8", "Cortante", 2, "1 PO 4 PP", "Marcial"],
-  ["gaff", "Gancho", "Gaff", "Garfio", "1d6", "Impacto", 1, "1 PO", "Marcial"],
-  ["scourge", "Chicote de Nós", "Scourge", "Azote", "1d4", "Cortante", 1, "1 PP", "Marcial"],
-  ["bladed_gauntlet", "Manopla Lâmina", "Bladed Gauntlet", "Guantelete afilado", "1d4", "Cortante", "L", "5 PO", "Marcial"],
-  ["lion_scythe", "Foice do Leão", "Lion Scythe", "Guadaña de león", "1d6", "Cortante", "L", "1 PO", "Marcial"],
-  ["war_lance", "Lança de Guerra", "War Lance", "Lanza de guerra", "1d8", "Perfurante", 2, "4 PO", "Marcial"],
-  ["aldori_dueling_sword", "Espada de Duelo Aldori", "Aldori Dueling Sword", "Espada de duelo aldori", "1d8", "Cortante", 1, "2 PO", "Avançada"],
-  ["bladesweeper", "Varredor de Lâminas", "Bladesweeper", "Barrid hojas", "1d10", "Cortante", 2, "4 PO", "Avançada"],
-  ["maul_spade", "Pá-Malho", "Maul-Spade", "Pala-mazo", "1d10", "Impacto", 2, "6 PO", "Avançada"],
-  ["gauntlet_bow", "Arco de Manopla", "Gauntlet Bow", "Arco de guantelete", "1d4", "Perfurante", 1, "9 PO", "Marcial"],
-  ["repeating_hand_crossbow", "Besta de Mão Repetidora", "Repeating Hand Crossbow", "Ballesta de mano repetidora", "1d6", "Perfurante", "L", "10 PO", "Avançada"],
+  ["battle_lute", "Lute de Batalha", "Battle Lute", "Laúd de batalla", "1d4", "Contundente", 1, "7 PO", "Simples", "O alaúde reforçado serve como instrumento e arma para golpear; suas cordas são fios trançados resistentes.", "This reinforced lute doubles as an instrument and a bludgeoning weapon, with sturdy braided-wire strings.", "Este laúd reforzado funciona como instrumento y arma contundente, con cuerdas de alambre trenzado resistente.", "uncommon"],
+  ["fauchard", "Fauchard", "Fauchard", "Fauchard", "1d8", "Cortante", 2, "1 PO 4 PP", "Marcial", "Semelhante a uma glaive, esta arma tem o fio de corte no lado côncavo.", "Similar to a glaive, this weapon has its cutting edge along the concave side.", "Similar a una guja, esta arma tiene el filo en el lado cóncavo.", "common"],
+  ["gaff", "Gancho", "Gaff", "Garfio", "1d6", "Impacto", 1, "1 PO", "Marcial", "Bastões com uma ponta em gancho, populares entre pescadores e guerreiros.", "Hooked staffs popular among fishers and warriors alike.", "Bastones con un gancho, populares entre pescadores y guerreros.", "common"],
+  ["scourge", "Chicote de Nós", "Scourge", "Azote", "1d4", "Cortante", 1, "1 PP", "Marcial", "Feito de cordões com nós presos a um cabo; versões de combate podem ter farpas metálicas entrelaçadas.", "Knotted cords attached to a handle; combat versions can weave metal barbs into the cords.", "Cordones anudados sujetos a un mango; las versiones de combate pueden llevar púas metálicas entretejidas.", "common"],
+  ["bladed_gauntlet", "Manopla Lâmina", "Bladed Gauntlet", "Guantelete afilado", "1d4", "Cortante", "L", "5 PO", "Marcial", "Uma adaga integrada ao dorso da manopla se revela ou retrai conforme a configuração; não pode ser removida nem receber runas separadamente.", "A dagger built into the back of the gauntlet is revealed or retracted by switching configurations; it can't be removed or etched with runes separately.", "Una daga integrada en el dorso del guantelete aparece o se retrae al cambiar de configuración; no puede retirarse ni recibir runas por separado.", "uncommon"],
+  ["lion_scythe", "Foice do Leão", "Lion Scythe", "Guadaña de león", "1d6", "Cortante", "L", "1 PO", "Marcial", "Esta foice lembra uma foice comum, mas tem peso especial para golpes mais potentes.", "This scythe resembles a common sickle but is specially weighted for more powerful strikes.", "Esta guadaña se parece a una hoz común, pero está especialmente equilibrada para golpear con más fuerza.", "uncommon"],
+  ["war_lance", "Lança de Guerra", "War Lance", "Lanza de guerra", "1d8", "Perfurante", 2, "4 PO", "Marcial", "Mais curta e robusta que outras lanças, possui proteção integrada à manopla da lança e sacrifica alcance por uma base mais firme.", "Shorter and stockier than other lances, it has shielding built into its vamplate, trading reach for a sturdier base.", "Más corta y robusta que otras lanzas, incorpora protección en el guardamano y sacrifica alcance por una base más firme.", "uncommon"],
+  ["aldori_dueling_sword", "Espada de Duelo Aldori", "Aldori Dueling Sword", "Espada de duelo aldori", "1d8", "Cortante", 1, "2 PO", "Avançada", "Espada de duelo fina, de lâmina única, levemente curva e com ponta reforçada e afiada.", "A slim single-bladed dueling sword with a slight curve and a sharp, reinforced point.", "Una fina espada de duelo de una sola hoja, ligeramente curva y con una punta afilada y reforzada.", "uncommon"],
+  ["bladesweeper", "Varredor de Lâminas", "Bladesweeper", "Barrid hojas", "1d10", "Cortante", 2, "4 PO", "Avançada", "Três espadas unidas a um único punho formam uma arma devastadora nas mãos de um guerreiro jotunato.", "Three swords joined to a single hilt make a devastating weapon in the hands of a jotunborn warrior.", "Tres espadas unidas a una sola empuñadura forman un arma devastadora en manos de un guerrero jotunato.", "uncommon"],
+  ["maul_spade", "Pá-Malho", "Maul-Spade", "Pala-mazo", "1d10", "Impacto", 2, "6 PO", "Avançada", "Arma pesada semelhante a um porrete, que também funciona como pá.", "This heavy, club-like weapon also functions as a shovel.", "Esta pesada arma similar a una clava también sirve como pala.", "uncommon"],
+  ["gauntlet_bow", "Arco de Manopla", "Gauntlet Bow", "Arco de guantelete", "1d4", "Perfurante", 1, "9 PO", "Marcial", "Uma luva metálica pesada incorpora uma besta e uma câmara giratória; pode atacar como manopla, mas não pode ser recarregada pela mão que a empunha.", "A heavy metal glove houses a crossbow and rotating chamber; it can attack as a gauntlet but can't be reloaded by its wielding hand.", "Un pesado guante metálico incorpora una ballesta y una cámara giratoria; puede atacar como guantelete, pero no recargarse con la mano que lo empuña.", "common"],
+  ["repeating_hand_crossbow", "Besta de Mão Repetidora", "Repeating Hand Crossbow", "Ballesta de mano repetidora", "1d6", "Perfurante", "L", "10 PO", "Avançada", "Besta de mão que carrega automaticamente um virote do carregador e rearma a corda a cada disparo; um carregador típico contém cinco virotes.", "A hand crossbow that automatically loads a bolt from its magazine and resets the string after each shot; a typical magazine holds five bolts.", "Ballesta de mano que carga automáticamente un virote del cargador y vuelve a tensar la cuerda tras cada disparo; un cargador típico contiene cinco virotes.", "uncommon"],
 ];
-for (const [slug, pt, en, es, damage, damageType, bulk, price, category] of BATTLECRY_EQUIPMENT) {
+for (const [slug, pt, en, es, damage, damageType, bulk, price, category, summaryPt, summaryEn, summaryEs, rarity] of BATTLECRY_EQUIPMENT) {
   const id = `weapon.battlecry.${slug}`;
   if ((PF2E_DATA.weapons || []).some((record) => record.id === id)) continue;
   PF2E_DATA.weapons.push({
@@ -14959,21 +14959,23 @@ for (const [slug, pt, en, es, damage, damageType, bulk, price, category] of BATT
     name: `${pt} (${en})`,
     names: { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": `Arma de Battlecry!, dano ${damage}, categoria ${category}.`,
-      en: `Battlecry! weapon, ${damage} damage, ${category} category.`,
-      es: `Arma de Battlecry!, daño ${damage}, categoría ${category}.`,
+      "pt-BR": summaryPt,
+      en: summaryEn,
+      es: summaryEs,
     },
-    description: `Arma mundana de Battlecry!, dano ${damage}.`,
+    description: summaryPt,
     category,
     damage,
     damageType,
     bulk,
     price,
+    rarity,
     level: 0,
     source: { book: BATTLECRY_SOURCE, page: 118 },
-    sourceApproximate: true,
+    descriptionSourcePage: 119,
+    sourceApproximate: false,
     ruleset: "remaster",
-    needs_review: true,
+    needs_review: false,
   });
 }
 // Battlecry!, p. 118: os campos abaixo vêm da tabela de armas, não de

@@ -3170,9 +3170,9 @@
     "name_pt": "Lute de Batalha",
     "name_en": "Battle Lute",
     "name_es": "Laúd de batalla",
-    "description_pt": "Arma de Battlecry!, dano 1d4, categoria Simples.",
-    "description_en": "Battlecry! weapon, 1d4 damage, Simples category.",
-    "description_es": "Arma de Battlecry!, daño 1d4, categoría Simples.",
+    "description_pt": "O alaúde reforçado serve como instrumento e arma para golpear; suas cordas são fios trançados resistentes. Quando usado para Performance, recebe como bônus de item o bônus de runas de potência da arma.",
+    "description_en": "This reinforced lute doubles as an instrument and a bludgeoning weapon, with sturdy braided-wire strings. When used for Performance, it adds its weapon potency rune bonus as an item bonus.",
+    "description_es": "Este laúd reforzado funciona como instrumento y arma contundente, con cuerdas de alambre trenzado resistente. Al usarlo para Interpretación, suma como bonificador de objeto el bonificador de sus runas de potencia.",
     "weapon_category": "Simples",
     "weapon_group": "Club",
     "damage_dice": "1d4",
@@ -3186,7 +3186,7 @@
       "Empurrão",
       "Duas Mãos d8"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -3194,7 +3194,8 @@
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-lute.png",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "descriptionSourcePage": 119
     }
   },
   {
@@ -3203,9 +3204,9 @@
     "name_pt": "Fauchard",
     "name_en": "Fauchard",
     "name_es": "Fauchard",
-    "description_pt": "Arma de Battlecry!, dano 1d8, categoria Marcial.",
-    "description_en": "Battlecry! weapon, 1d8 damage, Marcial category.",
-    "description_es": "Arma de Battlecry!, daño 1d8, categoría Marcial.",
+    "description_pt": "Semelhante a uma glaive, esta arma tem o fio de corte no lado côncavo.",
+    "description_en": "Similar to a glaive, this weapon has its cutting edge along the concave side.",
+    "description_es": "Similar a una guja, esta arma tiene el filo en el lado cóncavo.",
     "weapon_category": "Marcial",
     "weapon_group": "Polearm",
     "damage_dice": "1d8",
@@ -3214,7 +3215,7 @@
     "reload": null,
     "hands": "2",
     "bulk": "2",
-    "price_gp": 1,
+    "price_gp": 1.4,
     "traits": [
       "Mortal d8",
       "Alcance",
@@ -3229,7 +3230,8 @@
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-fauchard.png",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "descriptionSourcePage": 119
     }
   },
   {
@@ -3238,9 +3240,9 @@
     "name_pt": "Gancho",
     "name_en": "Gaff",
     "name_es": "Garfio",
-    "description_pt": "Arma de Battlecry!, dano 1d6, categoria Marcial.",
-    "description_en": "Battlecry! weapon, 1d6 damage, Marcial category.",
-    "description_es": "Arma de Battlecry!, daño 1d6, categoría Marcial.",
+    "description_pt": "Bastões com uma ponta em gancho, populares entre pescadores e guerreiros.",
+    "description_en": "Hooked staffs popular among fishers and warriors alike.",
+    "description_es": "Bastones con un gancho, populares entre pescadores y guerreros.",
     "weapon_category": "Marcial",
     "weapon_group": "Club",
     "damage_dice": "1d6",
@@ -3262,7 +3264,8 @@
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-gaff.png",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "descriptionSourcePage": 119
     }
   },
   {
@@ -3271,9 +3274,9 @@
     "name_pt": "Chicote de Nós",
     "name_en": "Scourge",
     "name_es": "Azote",
-    "description_pt": "Arma de Battlecry!, dano 1d4, categoria Marcial.",
-    "description_en": "Battlecry! weapon, 1d4 damage, Marcial category.",
-    "description_es": "Arma de Battlecry!, daño 1d4, categoría Marcial.",
+    "description_pt": "Também chamado de chicote de nove caudas, é feito de cordões de algodão ou couro com nós presos a um cabo; versões de combate podem ter farpas metálicas entrelaçadas.",
+    "description_en": "Also called a cat-o'-nine-tails, it consists of knotted cotton or leather cords attached to a handle; combat versions can weave metal barbs into the cords.",
+    "description_es": "También llamado gato de nueve colas, consta de cordones anudados de algodón o cuero sujetos a un mango; las versiones de combate pueden llevar púas metálicas entretejidas.",
     "weapon_category": "Marcial",
     "weapon_group": "Flail",
     "damage_dice": "1d4",
@@ -3282,7 +3285,7 @@
     "reload": null,
     "hands": "1",
     "bulk": "1",
-    "price_gp": 1,
+    "price_gp": 0.1,
     "traits": [
       "Ágil",
       "Desarmar",
@@ -3298,7 +3301,8 @@
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-scourge.png",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "descriptionSourcePage": 119
     }
   },
   {
@@ -3307,9 +3311,9 @@
     "name_pt": "Manopla Lâmina",
     "name_en": "Bladed Gauntlet",
     "name_es": "Guantelete afilado",
-    "description_pt": "Arma de Battlecry!, dano 1d4, categoria Marcial.",
-    "description_en": "Battlecry! weapon, 1d4 damage, Marcial category.",
-    "description_es": "Arma de Battlecry!, daño 1d4, categoría Marcial.",
+    "description_pt": "Uma adaga integrada ao dorso da manopla se revela ou retrai conforme a configuração. A lâmina não pode ser removida nem receber runas separadamente.",
+    "description_en": "A dagger built into the back of the gauntlet is revealed or retracted by switching configurations. The blade can't be removed or etched with runes separately.",
+    "description_es": "Una daga integrada en el dorso del guantelete aparece o se retrae al cambiar de configuración. No puede retirarse ni recibir runas por separado.",
     "weapon_category": "Marcial",
     "weapon_group": "Brawling",
     "damage_dice": "1d4",
@@ -3325,7 +3329,7 @@
       "Livre-Mão",
       "Modular B, P ou S"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -3333,7 +3337,8 @@
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-bladed-gauntlet.png",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "descriptionSourcePage": 119
     }
   },
   {
@@ -3342,9 +3347,9 @@
     "name_pt": "Foice do Leão",
     "name_en": "Lion Scythe",
     "name_es": "Guadaña de león",
-    "description_pt": "Arma de Battlecry!, dano 1d6, categoria Marcial.",
-    "description_en": "Battlecry! weapon, 1d6 damage, Marcial category.",
-    "description_es": "Arma de Battlecry!, daño 1d6, categoría Marcial.",
+    "description_pt": "Esta foice lembra uma foice comum, mas tem peso especial para golpes mais potentes.",
+    "description_en": "This scythe resembles a common sickle but is specially weighted for more powerful strikes.",
+    "description_es": "Esta guadaña se parece a una hoz común, pero está especialmente equilibrada para golpear con más fuerza.",
     "weapon_category": "Marcial",
     "weapon_group": "Knife",
     "damage_dice": "1d6",
@@ -3359,7 +3364,7 @@
       "Acurada",
       "Derrubar"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -3367,7 +3372,8 @@
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-lion-scythe.png",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "descriptionSourcePage": 119
     }
   },
   {
@@ -3376,9 +3382,9 @@
     "name_pt": "Lança de Guerra",
     "name_en": "War Lance",
     "name_es": "Lanza de guerra",
-    "description_pt": "Arma de Battlecry!, dano 1d8, categoria Marcial.",
-    "description_en": "Battlecry! weapon, 1d8 damage, Marcial category.",
-    "description_es": "Arma de Battlecry!, daño 1d8, categoría Marcial.",
+    "description_pt": "Mais curta e robusta que outras lanças, possui proteção integrada à manopla da lança; abre mão do alcance para uma base mais firme ao defender-se ou subjugar um oponente.",
+    "description_en": "Shorter and stockier than other lances, it has shielding built into its vamplate, trading reach for a sturdier base when defending or overpowering an opponent.",
+    "description_es": "Más corta y robusta que otras lanzas, incorpora protección en el guardamano; sacrifica alcance por una base más firme al defenderse o dominar a un oponente.",
     "weapon_category": "Marcial",
     "weapon_group": "Spear",
     "damage_dice": "1d8",
@@ -3394,7 +3400,7 @@
       "Aparar",
       "Empurrão"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -3402,7 +3408,8 @@
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-war-lance.png",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "descriptionSourcePage": 119
     }
   },
   {
@@ -3411,9 +3418,9 @@
     "name_pt": "Espada de Duelo Aldori",
     "name_en": "Aldori Dueling Sword",
     "name_es": "Espada de duelo aldori",
-    "description_pt": "Arma de Battlecry!, dano 1d8, categoria Avançada.",
-    "description_en": "Battlecry! weapon, 1d8 damage, Avançada category.",
-    "description_es": "Arma de Battlecry!, daño 1d8, categoría Avançada.",
+    "description_pt": "Espada de duelo fina, de lâmina única, levemente curva e com ponta reforçada e afiada.",
+    "description_en": "A slim single-bladed dueling sword with a slight curve and a sharp, reinforced point.",
+    "description_es": "Una fina espada de duelo de una sola hoja, ligeramente curva y con una punta afilada y reforzada.",
     "weapon_category": "Avançada",
     "weapon_group": "Sword",
     "damage_dice": "1d8",
@@ -3427,7 +3434,7 @@
       "Acurada",
       "Versátil P"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -3435,7 +3442,8 @@
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-aldori-dueling-sword.png",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "descriptionSourcePage": 119
     }
   },
   {
@@ -3444,9 +3452,9 @@
     "name_pt": "Varredor de Lâminas",
     "name_en": "Bladesweeper",
     "name_es": "Barrid hojas",
-    "description_pt": "Arma de Battlecry!, dano 1d10, categoria Avançada.",
-    "description_en": "Battlecry! weapon, 1d10 damage, Avançada category.",
-    "description_es": "Arma de Battlecry!, daño 1d10, categoría Avançada.",
+    "description_pt": "Três espadas unidas a um único punho formam uma arma devastadora nas mãos de um guerreiro jotunato.",
+    "description_en": "Three swords joined to a single hilt make a devastating weapon in the hands of a jotunborn warrior.",
+    "description_es": "Tres espadas unidas a una sola empuñadura forman un arma devastadora en manos de un guerrero jotunato.",
     "weapon_category": "Avançada",
     "weapon_group": "Sword",
     "damage_dice": "1d10",
@@ -3462,7 +3470,7 @@
       "Varredura",
       "Versátil P"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -3470,7 +3478,8 @@
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-bladesweeper.png",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "descriptionSourcePage": 119
     }
   },
   {
@@ -3479,9 +3488,9 @@
     "name_pt": "Pá-Malho",
     "name_en": "Maul-Spade",
     "name_es": "Pala-mazo",
-    "description_pt": "Arma de Battlecry!, dano 1d10, categoria Avançada.",
-    "description_en": "Battlecry! weapon, 1d10 damage, Avançada category.",
-    "description_es": "Arma de Battlecry!, daño 1d10, categoría Avançada.",
+    "description_pt": "Arma pesada semelhante a um porrete, que também funciona como pá. Ao cavar com ela, runas de potência concedem seu bônus de item em Atletismo e perícias de Saber apropriadas.",
+    "description_en": "This heavy, club-like weapon also functions as a shovel. When digging with it, its potency rune bonus applies as an item bonus to Athletics and appropriate Lore checks.",
+    "description_es": "Esta pesada arma similar a una clava también sirve como pala. Al cavar con ella, su bonificador de runas de potencia se aplica como bonificador de objeto a Atletismo y pruebas de Saber pertinentes.",
     "weapon_category": "Avançada",
     "weapon_group": "Club",
     "damage_dice": "1d10",
@@ -3496,7 +3505,7 @@
       "Jotunnato",
       "Empurrão"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -3504,7 +3513,8 @@
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-maul-spade.png",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "descriptionSourcePage": 119
     }
   },
   {
@@ -3513,9 +3523,9 @@
     "name_pt": "Arco de Manopla",
     "name_en": "Gauntlet Bow",
     "name_es": "Arco de guantelete",
-    "description_pt": "Arma de Battlecry!, dano 1d4, categoria Marcial.",
-    "description_en": "Battlecry! weapon, 1d4 damage, Marcial category.",
-    "description_es": "Arma de Battlecry!, daño 1d4, categoría Marcial.",
+    "description_pt": "Uma luva metálica pesada incorpora uma besta e uma câmara giratória. Pode atacar como uma manopla e conservar runas válidas nesse uso, mas a mão que a empunha não pode recarregá-la.",
+    "description_en": "A heavy metal glove houses a crossbow and rotating chamber. It can make melee attacks as a gauntlet and retain valid runes, but the wielding hand can't reload it.",
+    "description_es": "Un pesado guante metálico incorpora una ballesta y una cámara giratoria. Puede atacar cuerpo a cuerpo como un guantelete y conservar runas válidas, pero la mano que lo empuña no puede recargarlo.",
     "weapon_category": "Marcial",
     "weapon_group": "Crossbow",
     "damage_dice": "1d4",
@@ -3538,7 +3548,8 @@
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-gauntlet-bow.png",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "descriptionSourcePage": 119
     }
   },
   {
@@ -3547,9 +3558,9 @@
     "name_pt": "Besta de Mão Repetidora",
     "name_en": "Repeating Hand Crossbow",
     "name_es": "Ballesta de mano repetidora",
-    "description_pt": "Arma de Battlecry!, dano 1d6, categoria Avançada.",
-    "description_en": "Battlecry! weapon, 1d6 damage, Avançada category.",
-    "description_es": "Arma de Battlecry!, daño 1d6, categoría Avançada.",
+    "description_pt": "Besta de mão com um mecanismo que puxa automaticamente um virote do carregador e arma a corda a cada disparo; um carregador típico contém cinco virotes.",
+    "description_en": "A hand crossbow whose catch automatically loads a bolt from a magazine and resets the string after each shot; a typical magazine holds five bolts.",
+    "description_es": "Una ballesta de mano cuyo mecanismo carga automáticamente un virote del cargador y vuelve a tensar la cuerda tras cada disparo; un cargador típico contiene cinco virotes.",
     "weapon_category": "Avançada",
     "weapon_group": "Crossbow",
     "damage_dice": "1d6",
@@ -3562,7 +3573,7 @@
     "traits": [
       "Repetição"
     ],
-    "rarity": "common",
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
@@ -3570,7 +3581,8 @@
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-repeating-hand-crossbow.png",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "descriptionSourcePage": 119
     }
   },
   {
@@ -3592,7 +3604,11 @@
     "hands": "1",
     "bulk": "1",
     "price_gp": 2800,
-    "traits": ["Incomum", "Mágico", "Versátil P"],
+    "traits": [
+      "Incomum",
+      "Mágico",
+      "Versátil P"
+    ],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
@@ -3606,7 +3622,9 @@
         "baseWeaponId": "weapon.morningstar",
         "potencyRune": 2,
         "strikingRune": "greater",
-        "propertyRunes": ["vitalizing"],
+        "propertyRunes": [
+          "vitalizing"
+        ],
         "voidResistance": 5,
         "voidResistanceGreater": 10,
         "greaterVariantLevel": 18,
@@ -3701,9 +3719,23 @@
         "strikingRune": true,
         "baseWeapon": "spiked chain",
         "criticalHitMentalDamage": "1d6",
-        "mercyOfCommander": { "actionCost": 1, "activationTrait": "concentrate", "grantsTrait": "nonlethal", "duration": "1 minute" },
-        "willOfCommander": { "actionCost": 1, "activationTrait": "concentrate", "requirement": "Your last action was a critical hit with the chain of command", "spell": "command", "spellDC": 22, "immunityHours": 24 },
-        "craftRequirements": ["one casting of command"]
+        "mercyOfCommander": {
+          "actionCost": 1,
+          "activationTrait": "concentrate",
+          "grantsTrait": "nonlethal",
+          "duration": "1 minute"
+        },
+        "willOfCommander": {
+          "actionCost": 1,
+          "activationTrait": "concentrate",
+          "requirement": "Your last action was a critical hit with the chain of command",
+          "spell": "command",
+          "spellDC": 22,
+          "immunityHours": 24
+        },
+        "craftRequirements": [
+          "one casting of command"
+        ]
       }
     }
   },
@@ -3775,7 +3807,6 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-dazzling-shortbow.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false,
       "summary_pt": "Arco curto +1 striking; críticos podem ofuscar (Fortitude CD 19); uma vez ao dia dispara luz reveladora (CD 19).",
       "itemEffect": {
         "potencyRune": 1,
@@ -3789,7 +3820,9 @@
         "revealingLightDC": 19,
         "revealingLightBurstFeet": 10,
         "revealingLightRangeFeet": 60,
-        "craftRequirements": ["one casting of revealing light"]
+        "craftRequirements": [
+          "one casting of revealing light"
+        ]
       }
     }
   },
@@ -3827,23 +3860,39 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-doomsweeper.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false,
       "summary_pt": "Alabarda +1 striking que detecta perigos ocultos e, uma vez ao dia, limpa um cone de 30 pés.",
       "itemEffect": {
         "potencyRune": 1,
         "strikingRune": true,
         "baseWeaponId": "weapon.halberd",
-        "hiddenHazardDetection": { "perceptionBonus": 1, "rangeFeet": 30, "scoutOrSearchBonus": 2 },
+        "hiddenHazardDetection": {
+          "perceptionBonus": 1,
+          "rangeFeet": 30,
+          "scoutOrSearchBonus": 2
+        },
         "clearTheWay": {
           "actionCost": 2,
-          "activationTraits": ["concentrate", "manipulate"],
+          "activationTraits": [
+            "concentrate",
+            "manipulate"
+          ],
           "frequency": "once per day",
           "requiredHands": "2",
-          "area": { "shape": "cone", "rangeFeet": 30 },
+          "area": {
+            "shape": "cone",
+            "rangeFeet": 30
+          },
           "mundaneEffectsMaximumLevel": 4,
           "difficultTerrainMaximumDepthFeet": 4,
-          "counteract": { "modifier": 14, "rank": 4 },
-          "thievery": { "modifier": 14, "disablesNonmagicalHazards": true, "excludesHaunts": true },
+          "counteract": {
+            "modifier": 14,
+            "rank": 4
+          },
+          "thievery": {
+            "modifier": 14,
+            "disablesNonmagicalHazards": true,
+            "excludesHaunts": true
+          },
           "canTargetUnnoticedHazards": true,
           "failedAttemptsRevealHazards": false
         }
@@ -3883,20 +3932,31 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-draddeths-edge.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false,
       "summary_pt": "Martelo de guerra +2 maior striking shifting inteligente; telepatia, capacidades táticas e vínculo patriótico com Molthune.",
       "itemEffect": {
         "potencyRune": 2,
         "greaterStrikingRune": true,
-        "propertyRunes": ["shifting"],
+        "propertyRunes": [
+          "shifting"
+        ],
         "baseWeaponId": "weapon.warhammer",
         "intelligentWeapon": {
           "perceptionModifier": 11,
           "preciseVisionFeet": 30,
           "impreciseHearingFeet": 30,
-          "telepathyLanguages": ["Common", "Varisian"],
-          "skills": { "survival": 28, "warfareLore": 35 },
-          "abilityModifiers": { "intelligence": 6, "wisdom": 3, "charisma": 3 },
+          "telepathyLanguages": [
+            "Common",
+            "Varisian"
+          ],
+          "skills": {
+            "survival": 28,
+            "warfareLore": 35
+          },
+          "abilityModifiers": {
+            "intelligence": 6,
+            "wisdom": 3,
+            "charisma": 3
+          },
           "willModifier": 28,
           "loyalty": "Molthune",
           "leavesDisrespectfulWielder": true,
@@ -3943,7 +4003,6 @@
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-final-stand.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art",
-      "needs_review": false,
       "summary_pt": "Rapieira +3 maior striking artefato: um teste plano CD 11 pode mantê-lo com 1 PV quando cairia a 0.",
       "itemEffect": {
         "potencyRune": 3,
@@ -4002,19 +4061,34 @@
       "itemEffect": {
         "potencyRune": 2,
         "greaterStrikingRune": true,
-        "propertyRunes": ["thundering"],
+        "propertyRunes": [
+          "thundering"
+        ],
         "baseWeaponId": "weapon.mace",
-        "bullhornCantrip": { "spellId": "spell.bullhorn", "rank": 1, "frequency": "at will" },
+        "bullhornCantrip": {
+          "spellId": "spell.bullhorn",
+          "rank": 1,
+          "frequency": "at will"
+        },
         "battlefieldBroadcast": {
           "actionCost": 2,
-          "activationTraits": ["concentrate", "linguistic", "manipulate", "mental", "occult"],
+          "activationTraits": [
+            "concentrate",
+            "linguistic",
+            "manipulate",
+            "mental",
+            "occult"
+          ],
           "frequency": "once per day",
           "effect": "telepathy",
           "rangeFeet": 500,
           "durationMinutes": 10,
           "endsWhenDropped": true
         },
-        "craftRequirements": ["one casting of bullhorn", "one casting of telepathy"]
+        "craftRequirements": [
+          "one casting of bullhorn",
+          "one casting of telepathy"
+        ]
       }
     }
   },
@@ -4037,7 +4111,13 @@
     "hands": "2",
     "bulk": "2",
     "price_gp": 1700,
-    "traits": ["Mágico", "Ocultista", "Mortal d8", "Forçosa", "Alcance"],
+    "traits": [
+      "Mágico",
+      "Ocultista",
+      "Mortal d8",
+      "Forçosa",
+      "Alcance"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
@@ -4045,8 +4125,34 @@
     "data": {
       "needs_review": false,
       "summary": "Glaive decaída +2 striking; concede +1 para Buscar assombrações e descobrir sua origem; 1/dia conjura rouse skeletons de 5º círculo (CD 30).",
-      "summaries": {"pt-BR": "Glaive decaída +2 striking; concede +1 para Buscar assombrações e descobrir sua origem; 1/dia conjura rouse skeletons de 5º círculo (CD 30).", "en": "A +2 striking decaying glaive; grants +1 to Seek haunts and uncover their origins; casts 5th-rank rouse skeletons (DC 30) once per day."},
-      "itemEffect": {"potencyRune": 2, "strikingRune": true, "propertyRunes": ["decaying"], "baseWeaponId": "weapon.glaive", "hauntInvestigationBonus": 1, "callTheFallen": {"actionCost": 2, "activationTraits": ["concentrate", "manipulate"], "frequency": "once per day", "spellId": "spell.rouse_skeletons", "rank": 5, "tradition": "occult", "dc": 30}, "craftRequirements": ["one casting of rouse skeletons (5th rank)"]},
+      "summaries": {
+        "pt-BR": "Glaive decaída +2 striking; concede +1 para Buscar assombrações e descobrir sua origem; 1/dia conjura rouse skeletons de 5º círculo (CD 30).",
+        "en": "A +2 striking decaying glaive; grants +1 to Seek haunts and uncover their origins; casts 5th-rank rouse skeletons (DC 30) once per day."
+      },
+      "itemEffect": {
+        "potencyRune": 2,
+        "strikingRune": true,
+        "propertyRunes": [
+          "decaying"
+        ],
+        "baseWeaponId": "weapon.glaive",
+        "hauntInvestigationBonus": 1,
+        "callTheFallen": {
+          "actionCost": 2,
+          "activationTraits": [
+            "concentrate",
+            "manipulate"
+          ],
+          "frequency": "once per day",
+          "spellId": "spell.rouse_skeletons",
+          "rank": 5,
+          "tradition": "occult",
+          "dc": 30
+        },
+        "craftRequirements": [
+          "one casting of rouse skeletons (5th rank)"
+        ]
+      },
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-gravediggers-call.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
@@ -4071,7 +4177,13 @@
     "hands": "2",
     "bulk": "2",
     "price_gp": 10000,
-    "traits": ["Incomum", "Fogo", "Mágico", "Alcance", "Derrubar"],
+    "traits": [
+      "Incomum",
+      "Fogo",
+      "Mágico",
+      "Alcance",
+      "Derrubar"
+    ],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
@@ -4079,8 +4191,37 @@
     "data": {
       "needs_review": false,
       "summary": "Guisarme +2 flamejante maior striking, com acesso Hellknight; uma vez ao dia abre uma linha de fogo infernal que causa 6d6 fogo e 6d6 espiritual (Reflexos básico CD 37).",
-      "summaries": {"pt-BR": "Guisarme +2 flamejante maior striking, com acesso Hellknight; uma vez ao dia abre uma linha de fogo infernal que causa 6d6 fogo e 6d6 espiritual (Reflexos básico CD 37).", "en": "A +2 flaming greater striking guisarme with Hellknight access; once per day opens a hellfire line dealing 6d6 fire and 6d6 spirit damage (DC 37 basic Reflex)."},
-      "itemEffect": {"potencyRune": 2, "greaterStrikingRune": true, "propertyRunes": ["flaming"], "baseWeaponId": "weapon.guisarme", "access": "Hellknight", "flamesOfPhlegethon": {"actionCost": 2, "activationTraits": ["concentrate", "divine", "manipulate", "unholy"], "frequency": "once per day", "area": {"shape": "line", "lengthFeet": 30}, "fireDamage": "6d6", "spiritDamage": "6d6", "save": "basic Reflex", "dc": 37}},
+      "summaries": {
+        "pt-BR": "Guisarme +2 flamejante maior striking, com acesso Hellknight; uma vez ao dia abre uma linha de fogo infernal que causa 6d6 fogo e 6d6 espiritual (Reflexos básico CD 37).",
+        "en": "A +2 flaming greater striking guisarme with Hellknight access; once per day opens a hellfire line dealing 6d6 fire and 6d6 spirit damage (DC 37 basic Reflex)."
+      },
+      "itemEffect": {
+        "potencyRune": 2,
+        "greaterStrikingRune": true,
+        "propertyRunes": [
+          "flaming"
+        ],
+        "baseWeaponId": "weapon.guisarme",
+        "access": "Hellknight",
+        "flamesOfPhlegethon": {
+          "actionCost": 2,
+          "activationTraits": [
+            "concentrate",
+            "divine",
+            "manipulate",
+            "unholy"
+          ],
+          "frequency": "once per day",
+          "area": {
+            "shape": "line",
+            "lengthFeet": 30
+          },
+          "fireDamage": "6d6",
+          "spiritDamage": "6d6",
+          "save": "basic Reflex",
+          "dc": 37
+        }
+      },
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-hells-judgment.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
@@ -4119,8 +4260,21 @@
     "data": {
       "needs_review": false,
       "summary": "Arco longo +1 striking; enquanto montado, seus Golpes causam +2 de bônus de circunstância no dano contra criaturas não montadas menores que sua montaria.",
-      "summaries": {"pt-BR": "Arco longo +1 striking; enquanto montado, seus Golpes causam +2 de bônus de circunstância no dano contra criaturas não montadas menores que sua montaria.", "en": "+1 striking longbow; while mounted, your Strikes gain a +2 circumstance bonus to damage against unmounted creatures smaller than your mount."},
-      "itemEffect": {"potencyRune": 1, "strikingRune": true, "baseWeaponId": "weapon.longbow", "mountedDamageBonus": {"bonus": 2, "bonusType": "circumstance", "target": "unmounted creature smaller than mount", "requiresWielderMounted": true}},
+      "summaries": {
+        "pt-BR": "Arco longo +1 striking; enquanto montado, seus Golpes causam +2 de bônus de circunstância no dano contra criaturas não montadas menores que sua montaria.",
+        "en": "+1 striking longbow; while mounted, your Strikes gain a +2 circumstance bonus to damage against unmounted creatures smaller than your mount."
+      },
+      "itemEffect": {
+        "potencyRune": 1,
+        "strikingRune": true,
+        "baseWeaponId": "weapon.longbow",
+        "mountedDamageBonus": {
+          "bonus": 2,
+          "bonusType": "circumstance",
+          "target": "unmounted creature smaller than mount",
+          "requiresWielderMounted": true
+        }
+      },
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-horselords-longbow.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
@@ -4145,7 +4299,11 @@
     "hands": "2",
     "bulk": "2",
     "price_gp": 6250,
-    "traits": ["Raro", "Mágico", "Empurrão"],
+    "traits": [
+      "Raro",
+      "Mágico",
+      "Empurrão"
+    ],
     "rarity": "rare",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
@@ -4153,8 +4311,26 @@
     "data": {
       "needs_review": false,
       "summary": "Malho +2 maior striking; contra constructos, causa 1d6 de dano persistente de força ao acertar e, em crítico, pode deixá-los stunned 1 (Fortitude CD 35).",
-      "summaries": {"pt-BR": "Malho +2 maior striking; contra constructos, causa 1d6 de dano persistente de força ao acertar e, em crítico, pode deixá-los stunned 1 (Fortitude CD 35).", "en": "+2 greater striking maul; against constructs, deals 1d6 persistent force damage on a damaging Strike and can stun them on a critical hit (DC 35 Fortitude)."},
-      "itemEffect": {"potencyRune": 2, "greaterStrikingRune": true, "baseWeaponId": "weapon.maul", "constructEffects": {"strikeDamage": {"amount": "1d6", "damageType": "persistent force"}, "criticalHit": {"save": "Fortitude", "dc": 35, "failureEffect": "stunned 1"}}},
+      "summaries": {
+        "pt-BR": "Malho +2 maior striking; contra constructos, causa 1d6 de dano persistente de força ao acertar e, em crítico, pode deixá-los stunned 1 (Fortitude CD 35).",
+        "en": "+2 greater striking maul; against constructs, deals 1d6 persistent force damage on a damaging Strike and can stun them on a critical hit (DC 35 Fortitude)."
+      },
+      "itemEffect": {
+        "potencyRune": 2,
+        "greaterStrikingRune": true,
+        "baseWeaponId": "weapon.maul",
+        "constructEffects": {
+          "strikeDamage": {
+            "amount": "1d6",
+            "damageType": "persistent force"
+          },
+          "criticalHit": {
+            "save": "Fortitude",
+            "dc": 35,
+            "failureEffect": "stunned 1"
+          }
+        }
+      },
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-jistkan-colossus-crusher.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
@@ -4200,14 +4376,23 @@
       "itemEffect": {
         "potencyRune": 3,
         "greaterStrikingRune": true,
-        "propertyRunes": ["grievous"],
+        "propertyRunes": [
+          "grievous"
+        ],
         "baseWeaponId": "weapon.arbalest",
         "boltOfWar": {
           "actionCost": 1,
           "frequency": "once per 10 minutes",
-          "ignoresRangeIncrementPenalty": [2, 3],
+          "ignoresRangeIncrementPenalty": [
+            2,
+            3
+          ],
           "splashTrait": true,
-          "splashDamage": {"amount": 10, "damageType": "piercing", "strikeOnly": true}
+          "splashDamage": {
+            "amount": 10,
+            "damageType": "piercing",
+            "strikeOnly": true
+          }
         }
       },
       "needs_review": false,
@@ -4252,10 +4437,24 @@
       "itemEffect": {
         "potencyRune": 2,
         "greaterStrikingRune": true,
-        "propertyRunes": ["fearsome"],
+        "propertyRunes": [
+          "fearsome"
+        ],
         "baseWeaponId": "weapon.greataxe",
-        "kithrender": { "mentalDamageToAlliedFoes": "1d6", "rangeFeet": 30, "doubledForStrongOrMagicalBond": true },
-        "renderConnection": { "actionCost": "free action", "activationTrait": "concentrate", "frequency": "once per 10 minutes", "triggerReduceEnemyToZeroHp": true, "rangeFeet": 30, "mentalDamage": "6d8", "basicWillDC": 35 }
+        "kithrender": {
+          "mentalDamageToAlliedFoes": "1d6",
+          "rangeFeet": 30,
+          "doubledForStrongOrMagicalBond": true
+        },
+        "renderConnection": {
+          "actionCost": "free action",
+          "activationTrait": "concentrate",
+          "frequency": "once per 10 minutes",
+          "triggerReduceEnemyToZeroHp": true,
+          "rangeFeet": 30,
+          "mentalDamage": "6d8",
+          "basicWillDC": 35
+        }
       }
     }
   },
@@ -4278,7 +4477,13 @@
     "hands": "2",
     "bulk": "2",
     "price_gp": null,
-    "traits": ["Artefato", "Divino", "Mágico", "Profano", "Versátil P"],
+    "traits": [
+      "Artefato",
+      "Divino",
+      "Mágico",
+      "Profano",
+      "Versátil P"
+    ],
     "rarity": "unique",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
@@ -4292,11 +4497,29 @@
       "itemEffect": {
         "potencyRune": 4,
         "majorStrikingRune": true,
-        "propertyRunes": ["speed", "unholy"],
+        "propertyRunes": [
+          "speed",
+          "unholy"
+        ],
         "baseWeaponId": "weapon.greatsword",
-        "unsheathedLightCounteract": { "radiusFeet": 15, "modifier": 37, "lightFlatCheckDC": 15 },
+        "unsheathedLightCounteract": {
+          "radiusFeet": 15,
+          "modifier": 37,
+          "lightFlatCheckDC": 15
+        },
         "healOnDamageLiving": "1d12",
-        "loAndBehold": { "actionCost": 1, "frequency": "once per day", "rangeFeet": 60, "willDC": 50, "unholyImmune": true, "holyStatusPenalty": -2, "successSlowed": 1, "cannotReactWhileSlowed": true, "failureBlind": "1 round", "criticalFailureBlind": "1 minute" },
+        "loAndBehold": {
+          "actionCost": 1,
+          "frequency": "once per day",
+          "rangeFeet": 60,
+          "willDC": 50,
+          "unholyImmune": true,
+          "holyStatusPenalty": -2,
+          "successSlowed": 1,
+          "cannotReactWhileSlowed": true,
+          "failureBlind": "1 round",
+          "criticalFailureBlind": "1 minute"
+        },
         "destructionCondition": "Driven into the ground in the walled secluded garden at Heaven's summit by a risen repentant fiend"
       }
     }
@@ -4320,7 +4543,11 @@
     "hands": "1",
     "bulk": "1",
     "price_gp": 10000,
-    "traits": ["Incomum", "Mágico", "Versátil P"],
+    "traits": [
+      "Incomum",
+      "Mágico",
+      "Versátil P"
+    ],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
@@ -4333,10 +4560,26 @@
       "itemEffect": {
         "potencyRune": 2,
         "greaterStrikingRune": true,
-        "propertyRunes": ["vitalizing"],
+        "propertyRunes": [
+          "vitalizing"
+        ],
         "baseWeaponId": "weapon.longsword",
         "access": "Knights of Lastwall",
-        "comesTheDawn": { "actionCost": "reaction", "activationTraits": ["concentrate", "divine", "healing", "vitality"], "frequency": "once per day", "triggerMagicalHealing": true, "emanationFeet": 30, "perHealedHitPoints": 10, "healingAndVitalityDamage": "1d10", "basicFortitudeDC": 37 }
+        "comesTheDawn": {
+          "actionCost": "reaction",
+          "activationTraits": [
+            "concentrate",
+            "divine",
+            "healing",
+            "vitality"
+          ],
+          "frequency": "once per day",
+          "triggerMagicalHealing": true,
+          "emanationFeet": 30,
+          "perHealedHitPoints": 10,
+          "healingAndVitalityDamage": "1d10",
+          "basicFortitudeDC": 37
+        }
       }
     }
   },
@@ -4379,7 +4622,10 @@
         "potencyRune": 1,
         "strikingRune": true,
         "baseWeaponId": "weapon.scimitar",
-        "mageslayer": { "bonusSpiritDamage": "1d6", "targetCanCastArcaneSpells": true },
+        "mageslayer": {
+          "bonusSpiritDamage": "1d6",
+          "targetCanCastArcaneSpells": true
+        },
         "arcaneSpellResistance": 5
       },
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mageslayer.png",
@@ -4429,7 +4675,15 @@
         "potencyRune": 1,
         "strikingRune": true,
         "baseWeaponId": "weapon.shortsword",
-        "rallyTheTroops": { "actionCost": 1, "frequency": "once per day", "triggerLastActionReducedToZeroHp": true, "burstFeet": 30, "duration": "1 minute", "statusBonusAttack": 1, "affectsWielderAndAllies": true }
+        "rallyTheTroops": {
+          "actionCost": 1,
+          "frequency": "once per day",
+          "triggerLastActionReducedToZeroHp": true,
+          "burstFeet": 30,
+          "duration": "1 minute",
+          "statusBonusAttack": 1,
+          "affectsWielderAndAllies": true
+        }
       }
     }
   },
@@ -4474,10 +4728,25 @@
       "itemEffect": {
         "potencyRune": 2,
         "greaterStrikingRune": true,
-        "propertyRunes": ["decaying"],
+        "propertyRunes": [
+          "decaying"
+        ],
         "baseWeaponId": "weapon.scythe",
-        "aura": { "animalsAvoidIfPossible": true, "worsensStartingAttitudeByOneStepWhenInteracting": true, "corpseScavengingVerminAppearMoreOften": true, "mundanePlantsWiltAfterHours": 24, "wiltedPlantsCrumbleAfterAdditionalHours": 24 },
-        "reapersClaim": { "actionCost": "reaction", "frequency": "once per day", "triggerCreatureReducedToZeroHpWithinFeet": 30, "makesMeleeStrikeFromCreatureSpace": true, "temporaryHitPointsEqualHalfDamage": true, "temporaryHitPointsDuration": "1 minute" }
+        "aura": {
+          "animalsAvoidIfPossible": true,
+          "worsensStartingAttitudeByOneStepWhenInteracting": true,
+          "corpseScavengingVerminAppearMoreOften": true,
+          "mundanePlantsWiltAfterHours": 24,
+          "wiltedPlantsCrumbleAfterAdditionalHours": 24
+        },
+        "reapersClaim": {
+          "actionCost": "reaction",
+          "frequency": "once per day",
+          "triggerCreatureReducedToZeroHpWithinFeet": 30,
+          "makesMeleeStrikeFromCreatureSpace": true,
+          "temporaryHitPointsEqualHalfDamage": true,
+          "temporaryHitPointsDuration": "1 minute"
+        }
       }
     }
   },
@@ -4500,7 +4769,15 @@
     "hands": "1",
     "bulk": "L",
     "price_gp": 900,
-    "traits": ["Raro", "Investido", "Mágico", "Vazio", "Ágil", "Acurada", "Derrubar"],
+    "traits": [
+      "Raro",
+      "Investido",
+      "Mágico",
+      "Vazio",
+      "Ágil",
+      "Acurada",
+      "Derrubar"
+    ],
     "rarity": "rare",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
@@ -4509,7 +4786,21 @@
       "summaryPt": "Foice +1 striking investida; enquanto investida recebe decaying e, se o portador morrer, seu cadáver se ergue como morto-vivo após 1 rodada.",
       "summaryEn": "Invested +1 striking sickle; gains decaying while invested and raises its dead wielder as an undead creature 1 round after death.",
       "summaryEs": "Hoz +1 striking investida; obtiene decaying mientras está invertida y alza como muerto viviente a su portador 1 ronda después de morir.",
-      "itemEffect": {"potencyRune": 1, "strikingRune": true, "baseWeaponId": "weapon.sickle", "invested": true, "propertyRunesWhileInvested": ["decaying"], "deathTransformation": {"delayRounds": 1, "maximumUndeadLevelOffset": -5, "minimumUndeadLevel": 0, "blockedResurrection": "wish ritual until undead form is destroyed"}},
+      "itemEffect": {
+        "potencyRune": 1,
+        "strikingRune": true,
+        "baseWeaponId": "weapon.sickle",
+        "invested": true,
+        "propertyRunesWhileInvested": [
+          "decaying"
+        ],
+        "deathTransformation": {
+          "delayRounds": 1,
+          "maximumUndeadLevelOffset": -5,
+          "minimumUndeadLevel": 0,
+          "blockedResurrection": "wish ritual until undead form is destroyed"
+        }
+      },
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-revenant-blade.png",
       "imageSource": "local-project-asset",
@@ -4535,7 +4826,12 @@
     "hands": "1",
     "bulk": "1",
     "price_gp": 6000,
-    "traits": ["Incomum", "Mágico", "Sagrado", "Versátil P"],
+    "traits": [
+      "Incomum",
+      "Mágico",
+      "Sagrado",
+      "Versátil P"
+    ],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
@@ -4544,7 +4840,25 @@
       "summaryPt": "Espada longa +2 greater striking holy; Great Vengeance explode o alvo profano com dano espiritual e de vitalidade e pode cegar os inimigos.",
       "summaryEn": "+2 greater striking holy longsword; Great Vengeance blasts enemies around an unholy target with spirit and vitality damage and can blind them.",
       "summaryEs": "Espada larga +2 greater striking holy; Great Vengeance daña con energía espiritual y de vitalidad a los enemigos alrededor de un objetivo profano y puede cegarlos.",
-      "itemEffect": {"potencyRune": 2, "greaterStrikingRune": true, "propertyRunes": ["holy"], "baseWeaponId": "weapon.longsword", "greatVengeance": {"actionCost": 1, "frequency": "once per hour", "triggerLastActionSuccessfulMeleeStrikeAgainstUnholy": true, "emanationFeet": 20, "spiritDamage": "2d8", "vitalityDamage": "2d8", "basicReflexDC": 34, "blindedOnFailure": "1 round", "blindedOnCriticalFailure": "1 minute"}},
+      "itemEffect": {
+        "potencyRune": 2,
+        "greaterStrikingRune": true,
+        "propertyRunes": [
+          "holy"
+        ],
+        "baseWeaponId": "weapon.longsword",
+        "greatVengeance": {
+          "actionCost": 1,
+          "frequency": "once per hour",
+          "triggerLastActionSuccessfulMeleeStrikeAgainstUnholy": true,
+          "emanationFeet": 20,
+          "spiritDamage": "2d8",
+          "vitalityDamage": "2d8",
+          "basicReflexDC": 34,
+          "blindedOnFailure": "1 round",
+          "blindedOnCriticalFailure": "1 minute"
+        }
+      },
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mace.png",
       "imageSource": "local-project-asset",
@@ -4570,7 +4884,11 @@
     "hands": "1+",
     "bulk": "1",
     "price_gp": 2000,
-    "traits": ["Incomum", "Mágico", "Duas Mãos d12"],
+    "traits": [
+      "Incomum",
+      "Mágico",
+      "Duas Mãos d12"
+    ],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
@@ -4580,7 +4898,30 @@
       "summaryPt": "Espada bastarda +2 striking de prata padrão; reação defensiva dos Cavaleiros da Águia. A versão maior adiciona planar tether de 5º ranque.",
       "summaryEn": "Standard-grade silver +2 striking bastard sword; grants Eagle Knights a defensive reaction. The greater version adds a 5th-rank planar tether activation.",
       "summaryEs": "Espada bastarda +2 striking de plata estándar; concede una reacción defensiva a los Caballeros del Águila. La versión mayor añade ancla planar de 5.º rango.",
-      "itemEffect": {"potencyRune": 2, "strikingRune": true, "baseWeaponId": "weapon.bastard_sword", "material": "standard-grade silver", "access": "Eagle Knights", "defenseOfLiberty": {"actionCost": "reaction", "frequency": "once per hour", "triggerYouOrMountTargetedByPhysicalAttack": true, "requiresAwareAndNotOffGuard": true, "circumstanceBonusAC": 2}, "greaterVariant": {"level": 14, "price": 4500, "greaterStrikingRune": true, "graspingTalons": {"frequency": "once per day", "planarTetherRank": 5, "spellDC": 34}}},
+      "itemEffect": {
+        "potencyRune": 2,
+        "strikingRune": true,
+        "baseWeaponId": "weapon.bastard_sword",
+        "material": "standard-grade silver",
+        "access": "Eagle Knights",
+        "defenseOfLiberty": {
+          "actionCost": "reaction",
+          "frequency": "once per hour",
+          "triggerYouOrMountTargetedByPhysicalAttack": true,
+          "requiresAwareAndNotOffGuard": true,
+          "circumstanceBonusAC": 2
+        },
+        "greaterVariant": {
+          "level": 14,
+          "price": 4500,
+          "greaterStrikingRune": true,
+          "graspingTalons": {
+            "frequency": "once per day",
+            "planarTetherRank": 5,
+            "spellDC": 34
+          }
+        }
+      },
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-talonstrike-blade.png",
       "imageSource": "local-project-asset",
@@ -4606,7 +4947,15 @@
     "hands": "1",
     "bulk": "L",
     "price_gp": 350,
-    "traits": ["Incomum", "Mágico", "Ágil", "Acurada", "Arremesso 10 pés", "Versátil C", "Vitalizante"],
+    "traits": [
+      "Incomum",
+      "Mágico",
+      "Ágil",
+      "Acurada",
+      "Arremesso 10 pés",
+      "Versátil C",
+      "Vitalizante"
+    ],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
@@ -4615,7 +4964,25 @@
       "summaryPt": "Adaga +1 striking vitalizing dos Cavaleiros de Lastwall; uma vez por hora bloqueia cura por energia vazia em um morto-vivo atingido.",
       "summaryEn": "Knights of Lastwall +1 striking vitalizing dagger; once per hour, prevents a struck undead creature from healing through void energy.",
       "summaryEs": "Daga +1 striking vitalizing de los Caballeros de Lastwall; una vez por hora impide que el muerto viviente alcanzado se cure con energía vacía.",
-      "itemEffect": {"potencyRune": 1, "strikingRune": true, "propertyRunes": ["vitalizing"], "baseWeaponId": "weapon.dagger", "access": "Knights of Lastwall", "severFromTheVoid": {"actionCost": "free action", "frequency": "once per hour", "triggerHitAndDamageUndead": true, "duration": "1 minute", "blocksVoidHealing": true, "counteractRank": 4, "counteractDC": 25, "vitalityUnaffected": true}},
+      "itemEffect": {
+        "potencyRune": 1,
+        "strikingRune": true,
+        "propertyRunes": [
+          "vitalizing"
+        ],
+        "baseWeaponId": "weapon.dagger",
+        "access": "Knights of Lastwall",
+        "severFromTheVoid": {
+          "actionCost": "free action",
+          "frequency": "once per hour",
+          "triggerHitAndDamageUndead": true,
+          "duration": "1 minute",
+          "blocksVoidHealing": true,
+          "counteractRank": 4,
+          "counteractDC": 25,
+          "vitalityUnaffected": true
+        }
+      },
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-undead-scourge.png",
       "imageSource": "local-project-asset",
@@ -4641,7 +5008,11 @@
     "hands": "1",
     "bulk": "1",
     "price_gp": 250,
-    "traits": ["Incomum", "Mágico", "Varredura"],
+    "traits": [
+      "Incomum",
+      "Mágico",
+      "Varredura"
+    ],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
@@ -4650,7 +5021,19 @@
       "summaryPt": "Machado de batalha +1 striking que rompe escudos; ignora Dureza e pode desequilibrar o portador com Battering Blow.",
       "summaryEn": "+1 striking battle axe that breaks shields, ignores Hardness, and can Trip their wielder with Battering Blow.",
       "summaryEs": "Hacha de batalla +1 striking que rompe escudos, ignora Dureza y puede Derribar a quien lo porta con Battering Blow.",
-      "itemEffect": {"potencyRune": 1, "strikingRune": true, "baseWeaponId": "weapon.battle_axe", "shieldHardnessIgnored": 3, "extraSlashingDamageThroughRemainingHardness": "1d6", "batteringBlow": {"actionCost": "free action", "triggerTargetShieldReducedBelowBrokenThreshold": true, "athleticsTripTarget": true, "circumstanceBonusIfShieldDestroyed": 2}},
+      "itemEffect": {
+        "potencyRune": 1,
+        "strikingRune": true,
+        "baseWeaponId": "weapon.battle_axe",
+        "shieldHardnessIgnored": 3,
+        "extraSlashingDamageThroughRemainingHardness": "1d6",
+        "batteringBlow": {
+          "actionCost": "free action",
+          "triggerTargetShieldReducedBelowBrokenThreshold": true,
+          "athleticsTripTarget": true,
+          "circumstanceBonusIfShieldDestroyed": 2
+        }
+      },
       "needs_review": false,
       "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-ulfen-shieldbreaker.png",
       "imageSource": "local-project-asset",
