@@ -1,0 +1,1358 @@
+[
+  {
+    "id": "pf1e.armor.acolchoada",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Acolchoada",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Armadura leve. Bônus de armadura +1; bônus máximo de Destreza +8; penalidade de armadura 0; falha de magia arcana 5%; deslocamento 9 m (base 9 m) ou 6 m (base 6 m); peso 5 kg.",
+    "description_en": null,
+    "description_es": null,
+    "armor_category": "leve",
+    "ac_bonus": 1,
+    "dex_cap": 8,
+    "check_penalty": 0,
+    "price_gp": 5,
+    "traits": [
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "maxDexBonus": 8,
+      "armorCheckPenalty": 0,
+      "arcaneSpellFailure": 5,
+      "speed9m": 9,
+      "speed6m": 6,
+      "weightKg": 5,
+      "donningGroup": "light",
+      "donningTimes": {
+        "don": "1 minuto",
+        "donQuick": "5 rodadas",
+        "remove": "1 minuto"
+      },
+      "assistedDonningRule": "Com auxílio, reduza o tempo à metade; um ajudante pode auxiliar dois personagens adjacentes e personagens não podem ajudar um ao outro.",
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "donningSourcePage": 153,
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Acolchoada"
+      },
+      "summaries": {
+        "pt-BR": "Armadura leve. Bônus de armadura +1; bônus máximo de Destreza +8; penalidade de armadura 0; falha de magia arcana 5%; deslocamento 9 m (base 9 m) ou 6 m (base 6 m); peso 5 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.armor.armadura-completa",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Armadura completa",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Armadura pesada. Bônus de armadura +9; bônus máximo de Destreza +1; penalidade de armadura -6; falha de magia arcana 35%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 25 kg.",
+    "description_en": null,
+    "description_es": null,
+    "armor_category": "pesada",
+    "ac_bonus": 9,
+    "dex_cap": 1,
+    "check_penalty": -6,
+    "price_gp": 1500,
+    "traits": [
+      "heavy"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "maxDexBonus": 1,
+      "armorCheckPenalty": -6,
+      "arcaneSpellFailure": 35,
+      "speed9m": 6,
+      "speed6m": 4.5,
+      "weightKg": 25,
+      "donningGroup": "battle",
+      "donningTimes": {
+        "don": "4 minutos",
+        "donQuick": "4 minutos",
+        "remove": "1d4+1 minutos"
+      },
+      "assistedDonningRule": "Com auxílio, reduza o tempo à metade; um ajudante pode auxiliar dois personagens adjacentes e personagens não podem ajudar um ao outro.",
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "donningSourcePage": 153,
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Armadura completa"
+      },
+      "summaries": {
+        "pt-BR": "Armadura pesada. Bônus de armadura +9; bônus máximo de Destreza +1; penalidade de armadura -6; falha de magia arcana 35%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 25 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.armor.brunea",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Brunea",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Armadura média. Bônus de armadura +5; bônus máximo de Destreza +3; penalidade de armadura -4; falha de magia arcana 25%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 15 kg.",
+    "description_en": null,
+    "description_es": null,
+    "armor_category": "média",
+    "ac_bonus": 5,
+    "dex_cap": 3,
+    "check_penalty": -4,
+    "price_gp": 50,
+    "traits": [
+      "medium"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "maxDexBonus": 3,
+      "armorCheckPenalty": -4,
+      "arcaneSpellFailure": 25,
+      "speed9m": 6,
+      "speed6m": 4.5,
+      "weightKg": 15,
+      "donningGroup": "medium",
+      "donningTimes": {
+        "don": "4 minutos",
+        "donQuick": "1 minuto",
+        "remove": "1 minuto"
+      },
+      "assistedDonningRule": "Com auxílio, reduza o tempo à metade; um ajudante pode auxiliar dois personagens adjacentes e personagens não podem ajudar um ao outro.",
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "donningSourcePage": 153,
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Brunea"
+      },
+      "summaries": {
+        "pt-BR": "Armadura média. Bônus de armadura +5; bônus máximo de Destreza +3; penalidade de armadura -4; falha de magia arcana 25%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 15 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.armor.camisao-de-cota-de-malha",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Camisão de cota de malha",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Armadura leve. Bônus de armadura +4; bônus máximo de Destreza +4; penalidade de armadura -2; falha de magia arcana 20%; deslocamento 9 m (base 9 m) ou 6 m (base 6 m); peso 12.5 kg.",
+    "description_en": null,
+    "description_es": null,
+    "armor_category": "leve",
+    "ac_bonus": 4,
+    "dex_cap": 4,
+    "check_penalty": -2,
+    "price_gp": 100,
+    "traits": [
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "maxDexBonus": 4,
+      "armorCheckPenalty": -2,
+      "arcaneSpellFailure": 20,
+      "speed9m": 9,
+      "speed6m": 6,
+      "weightKg": 12.5,
+      "donningGroup": "light",
+      "donningTimes": {
+        "don": "1 minuto",
+        "donQuick": "5 rodadas",
+        "remove": "1 minuto"
+      },
+      "assistedDonningRule": "Com auxílio, reduza o tempo à metade; um ajudante pode auxiliar dois personagens adjacentes e personagens não podem ajudar um ao outro.",
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "donningSourcePage": 153,
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Camisão de cota de malha"
+      },
+      "summaries": {
+        "pt-BR": "Armadura leve. Bônus de armadura +4; bônus máximo de Destreza +4; penalidade de armadura -2; falha de magia arcana 20%; deslocamento 9 m (base 9 m) ou 6 m (base 6 m); peso 12.5 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.armor.corselete-de-couro",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Corselete de couro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Armadura leve. Bônus de armadura +2; bônus máximo de Destreza +6; penalidade de armadura 0; falha de magia arcana 10%; deslocamento 9 m (base 9 m) ou 6 m (base 6 m); peso 7.5 kg.",
+    "description_en": null,
+    "description_es": null,
+    "armor_category": "leve",
+    "ac_bonus": 2,
+    "dex_cap": 6,
+    "check_penalty": 0,
+    "price_gp": 10,
+    "traits": [
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "maxDexBonus": 6,
+      "armorCheckPenalty": 0,
+      "arcaneSpellFailure": 10,
+      "speed9m": 9,
+      "speed6m": 6,
+      "weightKg": 7.5,
+      "donningGroup": "light",
+      "donningTimes": {
+        "don": "1 minuto",
+        "donQuick": "5 rodadas",
+        "remove": "1 minuto"
+      },
+      "assistedDonningRule": "Com auxílio, reduza o tempo à metade; um ajudante pode auxiliar dois personagens adjacentes e personagens não podem ajudar um ao outro.",
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "donningSourcePage": 153,
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Corselete de couro"
+      },
+      "summaries": {
+        "pt-BR": "Armadura leve. Bônus de armadura +2; bônus máximo de Destreza +6; penalidade de armadura 0; falha de magia arcana 10%; deslocamento 9 m (base 9 m) ou 6 m (base 6 m); peso 7.5 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.armor.corselete-de-couro-batido",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Corselete de couro batido",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Armadura leve. Bônus de armadura +3; bônus máximo de Destreza +5; penalidade de armadura -1; falha de magia arcana 15%; deslocamento 9 m (base 9 m) ou 6 m (base 6 m); peso 10 kg.",
+    "description_en": null,
+    "description_es": null,
+    "armor_category": "leve",
+    "ac_bonus": 3,
+    "dex_cap": 5,
+    "check_penalty": -1,
+    "price_gp": 25,
+    "traits": [
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "maxDexBonus": 5,
+      "armorCheckPenalty": -1,
+      "arcaneSpellFailure": 15,
+      "speed9m": 9,
+      "speed6m": 6,
+      "weightKg": 10,
+      "donningGroup": "light",
+      "donningTimes": {
+        "don": "1 minuto",
+        "donQuick": "5 rodadas",
+        "remove": "1 minuto"
+      },
+      "assistedDonningRule": "Com auxílio, reduza o tempo à metade; um ajudante pode auxiliar dois personagens adjacentes e personagens não podem ajudar um ao outro.",
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "donningSourcePage": 153,
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Corselete de couro batido"
+      },
+      "summaries": {
+        "pt-BR": "Armadura leve. Bônus de armadura +3; bônus máximo de Destreza +5; penalidade de armadura -1; falha de magia arcana 15%; deslocamento 9 m (base 9 m) ou 6 m (base 6 m); peso 10 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.armor.cota-de-malha",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Cota de malha",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Armadura média. Bônus de armadura +6; bônus máximo de Destreza +2; penalidade de armadura -5; falha de magia arcana 30%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 20 kg.",
+    "description_en": null,
+    "description_es": null,
+    "armor_category": "média",
+    "ac_bonus": 6,
+    "dex_cap": 2,
+    "check_penalty": -5,
+    "price_gp": 150,
+    "traits": [
+      "medium"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "maxDexBonus": 2,
+      "armorCheckPenalty": -5,
+      "arcaneSpellFailure": 30,
+      "speed9m": 6,
+      "speed6m": 4.5,
+      "weightKg": 20,
+      "donningGroup": "medium",
+      "donningTimes": {
+        "don": "4 minutos",
+        "donQuick": "1 minuto",
+        "remove": "1 minuto"
+      },
+      "assistedDonningRule": "Com auxílio, reduza o tempo à metade; um ajudante pode auxiliar dois personagens adjacentes e personagens não podem ajudar um ao outro.",
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "donningSourcePage": 153,
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Cota de malha"
+      },
+      "summaries": {
+        "pt-BR": "Armadura média. Bônus de armadura +6; bônus máximo de Destreza +2; penalidade de armadura -5; falha de magia arcana 30%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 20 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.armor.cota-de-talas",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Cota de talas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Armadura pesada. Bônus de armadura +7; bônus máximo de Destreza +0; penalidade de armadura -7; falha de magia arcana 40%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 22.5 kg.",
+    "description_en": null,
+    "description_es": null,
+    "armor_category": "pesada",
+    "ac_bonus": 7,
+    "dex_cap": 0,
+    "check_penalty": -7,
+    "price_gp": 200,
+    "traits": [
+      "heavy"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "maxDexBonus": 0,
+      "armorCheckPenalty": -7,
+      "arcaneSpellFailure": 40,
+      "speed9m": 6,
+      "speed6m": 4.5,
+      "weightKg": 22.5,
+      "donningGroup": "medium",
+      "donningTimes": {
+        "don": "4 minutos",
+        "donQuick": "1 minuto",
+        "remove": "1 minuto"
+      },
+      "assistedDonningRule": "Com auxílio, reduza o tempo à metade; um ajudante pode auxiliar dois personagens adjacentes e personagens não podem ajudar um ao outro.",
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "donningSourcePage": 153,
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Cota de talas"
+      },
+      "summaries": {
+        "pt-BR": "Armadura pesada. Bônus de armadura +7; bônus máximo de Destreza +0; penalidade de armadura -7; falha de magia arcana 40%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 22.5 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.armor.gibao-de-peles",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Gibão de peles",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Armadura média. Bônus de armadura +4; bônus máximo de Destreza +4; penalidade de armadura -3; falha de magia arcana 20%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 12.5 kg.",
+    "description_en": null,
+    "description_es": null,
+    "armor_category": "média",
+    "ac_bonus": 4,
+    "dex_cap": 4,
+    "check_penalty": -3,
+    "price_gp": 15,
+    "traits": [
+      "medium"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "maxDexBonus": 4,
+      "armorCheckPenalty": -3,
+      "arcaneSpellFailure": 20,
+      "speed9m": 6,
+      "speed6m": 4.5,
+      "weightKg": 12.5,
+      "donningGroup": "light",
+      "donningTimes": {
+        "don": "1 minuto",
+        "donQuick": "5 rodadas",
+        "remove": "1 minuto"
+      },
+      "assistedDonningRule": "Com auxílio, reduza o tempo à metade; um ajudante pode auxiliar dois personagens adjacentes e personagens não podem ajudar um ao outro.",
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "donningSourcePage": 153,
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Gibão de peles"
+      },
+      "summaries": {
+        "pt-BR": "Armadura média. Bônus de armadura +4; bônus máximo de Destreza +4; penalidade de armadura -3; falha de magia arcana 20%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 12.5 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.armor.loriga-segmentada",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Loriga segmentada",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Armadura pesada. Bônus de armadura +7; bônus máximo de Destreza +1; penalidade de armadura -6; falha de magia arcana 35%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 17.5 kg.",
+    "description_en": null,
+    "description_es": null,
+    "armor_category": "pesada",
+    "ac_bonus": 7,
+    "dex_cap": 1,
+    "check_penalty": -6,
+    "price_gp": 250,
+    "traits": [
+      "heavy"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "maxDexBonus": 1,
+      "armorCheckPenalty": -6,
+      "arcaneSpellFailure": 35,
+      "speed9m": 6,
+      "speed6m": 4.5,
+      "weightKg": 17.5,
+      "donningGroup": "medium",
+      "donningTimes": {
+        "don": "4 minutos",
+        "donQuick": "1 minuto",
+        "remove": "1 minuto"
+      },
+      "assistedDonningRule": "Com auxílio, reduza o tempo à metade; um ajudante pode auxiliar dois personagens adjacentes e personagens não podem ajudar um ao outro.",
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "donningSourcePage": 153,
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Loriga segmentada"
+      },
+      "summaries": {
+        "pt-BR": "Armadura pesada. Bônus de armadura +7; bônus máximo de Destreza +1; penalidade de armadura -6; falha de magia arcana 35%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 17.5 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.armor.meia-armadura",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Meia-armadura",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Armadura pesada. Bônus de armadura +8; bônus máximo de Destreza +0; penalidade de armadura -7; falha de magia arcana 40%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 25 kg.",
+    "description_en": null,
+    "description_es": null,
+    "armor_category": "pesada",
+    "ac_bonus": 8,
+    "dex_cap": 0,
+    "check_penalty": -7,
+    "price_gp": 600,
+    "traits": [
+      "heavy"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "maxDexBonus": 0,
+      "armorCheckPenalty": -7,
+      "arcaneSpellFailure": 40,
+      "speed9m": 6,
+      "speed6m": 4.5,
+      "weightKg": 25,
+      "donningGroup": "battle",
+      "donningTimes": {
+        "don": "4 minutos",
+        "donQuick": "4 minutos",
+        "remove": "1d4+1 minutos"
+      },
+      "assistedDonningRule": "Com auxílio, reduza o tempo à metade; um ajudante pode auxiliar dois personagens adjacentes e personagens não podem ajudar um ao outro.",
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "donningSourcePage": 153,
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Meia-armadura"
+      },
+      "summaries": {
+        "pt-BR": "Armadura pesada. Bônus de armadura +8; bônus máximo de Destreza +0; penalidade de armadura -7; falha de magia arcana 40%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 25 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.armor.peitoral-de-aco",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Peitoral de aço",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Armadura média. Bônus de armadura +6; bônus máximo de Destreza +3; penalidade de armadura -4; falha de magia arcana 25%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 15 kg.",
+    "description_en": null,
+    "description_es": null,
+    "armor_category": "média",
+    "ac_bonus": 6,
+    "dex_cap": 3,
+    "check_penalty": -4,
+    "price_gp": 200,
+    "traits": [
+      "medium"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "maxDexBonus": 3,
+      "armorCheckPenalty": -4,
+      "arcaneSpellFailure": 25,
+      "speed9m": 6,
+      "speed6m": 4.5,
+      "weightKg": 15,
+      "donningGroup": "medium",
+      "donningTimes": {
+        "don": "4 minutos",
+        "donQuick": "1 minuto",
+        "remove": "1 minuto"
+      },
+      "assistedDonningRule": "Com auxílio, reduza o tempo à metade; um ajudante pode auxiliar dois personagens adjacentes e personagens não podem ajudar um ao outro.",
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "donningSourcePage": 153,
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Peitoral de aço"
+      },
+      "summaries": {
+        "pt-BR": "Armadura média. Bônus de armadura +6; bônus máximo de Destreza +3; penalidade de armadura -4; falha de magia arcana 25%; deslocamento 6 m (base 9 m) ou 4.5 m (base 6 m); peso 15 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  }
+]

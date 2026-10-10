@@ -45,9 +45,9 @@ describe("D&D 3.5 — pré-requisitos de talento", () => {
     expect(dnd35CheckPrereqPart("Usar Arma Simples (besta)", { ...base, classId: "druida", featIds: ["usar-arma-simples"] })).toBe("ok");
   });
 
-  it("Ataque Giratório lista os 6 pré-requisitos; guerreiro de 1º nível não tem nenhum", () => {
+  it("Ataque Giratório lista os 7 pré-requisitos; guerreiro de 1º nível não tem nenhum", () => {
     const checks = dnd35CheckFeatPrereqs("ataque-giratorio", base);
-    expect(checks.map((c) => c.text)).toEqual(["Des 13", "Especialização em Combate", "Esquiva", "Mobilidade", "Ataque em Movimento", "bônus base de ataque +4"]);
+    expect(checks.map((c) => c.text)).toEqual(["Des 13", "Int 13", "Especialização em Combate", "Esquiva", "Mobilidade", "Ataque em Movimento", "bônus base de ataque +4"]);
     expect(checks.every((c) => c.status === "falta")).toBe(true);
   });
 

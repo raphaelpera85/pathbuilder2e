@@ -4,6 +4,7 @@ import { DND5E_RULES_ENGINE, T20_RULES_ENGINE, getSystemRulesEngine } from "./sy
 import { DND5E_CLASS_PROGRESSIONS } from "./dnd5e/dnd5eProgressions";
 import { T20_CLASS_PROGRESSIONS } from "./t20/t20Progressions";
 import { getCoreClassFeatures } from "./coreClassFeatures";
+import { getDnd5eThirdCasterSpellSchoolRules } from "./dnd5e/dnd5eOptions";
 
 describe("system rules engines", () => {
   it("descreve cada habilidade de progressão dos sistemas core", () => {
@@ -598,9 +599,9 @@ describe("system rules engines", () => {
     land.classId = "druida";
     land.level = 2;
     land.subclassId = "druida_terra";
-    land.subclassChoices = { "land-terrain": ["Floresta"], "land-bonus-cantrip": ["Luz"] };
+    land.subclassChoices = { "land-terrain": ["Floresta"], "land-bonus-cantrip": ["Druidismo"] };
     expect(DND5E_RULES_ENGINE.validateCharacter(land)).toEqual([]);
-    expect(DND5E_RULES_ENGINE.deriveStats(land).subclassEffects).toContain("Truque adicional do Círculo da Terra: Luz");
+    expect(DND5E_RULES_ENGINE.deriveStats(land).subclassEffects).toContain("Truque adicional do Círculo da Terra: Druidismo");
 
     const fiend = DND5E_RULES_ENGINE.createDefaultCharacter();
     fiend.classId = "bruxo";
@@ -2990,12 +2991,12 @@ describe("system rules engines", () => {
     const paladin = DND5E_RULES_ENGINE.createDefaultCharacter();
     paladin.classId = "paladino";
     paladin.level = 3;
-    expect(DND5E_RULES_ENGINE.deriveStats(paladin).spellSlots).toEqual({ 1: 2 });
+    expect(DND5E_RULES_ENGINE.deriveStats(paladin)).toMatchObject({ spellcastingAbility: "cha", spellSlots: { 1: 3 } });
 
     const ranger = DND5E_RULES_ENGINE.createDefaultCharacter();
     ranger.classId = "patrulheiro";
     ranger.level = 5;
-    expect(DND5E_RULES_ENGINE.deriveStats(ranger).spellSlots).toEqual({ 1: 3 });
+    expect(DND5E_RULES_ENGINE.deriveStats(ranger)).toMatchObject({ spellcastingAbility: "wis", spellSlots: { 1: 4, 2: 2 } });
 
     const warlock = DND5E_RULES_ENGINE.createDefaultCharacter();
     warlock.classId = "bruxo";
@@ -3029,6 +3030,42 @@ describe("system rules engines", () => {
     arcaneTrickster.spellIds = ["dnd5e.magia.escudo"];
     expect(DND5E_RULES_ENGINE.deriveStats(arcaneTrickster).spellcastingAbility).toBe("int");
     expect(DND5E_RULES_ENGINE.validateCharacter(arcaneTrickster)).not.toContain("a magia selecionada não pertence à lista da classe");
+  });
+
+  it("respects the spell-school restrictions of Eldritch Knight and Arcane Trickster", () => {
+    const knight = DND5E_RULES_ENGINE.createDefaultCharacter();
+    knight.classId = "guerreiro";
+    knight.subclassId = "guerreiro_cavaleiro_arcano";
+    knight.level = 3;
+    knight.spellIds = ["dnd5e.magia.misseis_magicos", "dnd5e.magia.sono"];
+    const knightOptions = getAvailableCoreSpells("dnd5e", knight.classId, knight.level, knight);
+    expect(knightOptions.some((spell) => spell.id === "dnd5e.magia.misseis_magicos")).toBe(true);
+    expect(knightOptions.some((spell) => spell.id === "dnd5e.magia.sono")).toBe(true);
+    expect(knightOptions.some((spell) => spell.id === "dnd5e.magia.compreender_idiomas")).toBe(false);
+    knight.spellIds = [...knight.spellIds, "dnd5e.magia.compreender_idiomas"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(knight)).toContain("a subclasse permite no máximo 1 magia(s) de outras escolas");
+    knight.level = 8;
+    expect(DND5E_RULES_ENGINE.validateCharacter(knight).some((error) => error.includes("outras escolas"))).toBe(false);
+    expect(getAvailableCoreSpells("dnd5e", knight.classId, knight.level, knight).some((spell) => spell.id === "dnd5e.magia.compreender_idiomas")).toBe(true);
+    knight.level = 14;
+    expect(getAvailableCoreSpells("dnd5e", knight.classId, knight.level, knight).some((spell) => spell.id === "dnd5e.magia.compreender_idiomas")).toBe(true);
+
+    const trickster = DND5E_RULES_ENGINE.createDefaultCharacter();
+    trickster.classId = "ladino";
+    trickster.subclassId = "ladino_trapaceiro_arcano";
+    trickster.level = 4;
+    trickster.spellIds = ["dnd5e.magia.sono", "dnd5e.magia.riso_histerico_tasha", "dnd5e.magia.escudo", "dnd5e.magia.compreender_idiomas"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(trickster)).toContain("a subclasse permite no máximo 1 magia(s) de outras escolas");
+    trickster.level = 8;
+    expect(DND5E_RULES_ENGINE.validateCharacter(trickster).some((error) => error.includes("outras escolas"))).toBe(false);
+    const tricksterOptions = getAvailableCoreSpells("dnd5e", trickster.classId, trickster.level, trickster);
+    expect(tricksterOptions.some((spell) => spell.id === "dnd5e.magia.compreender_idiomas")).toBe(true);
+  });
+
+  it("maps unrestricted-school spell choices to the printed subclass milestones", () => {
+    expect([3, 7, 8, 13, 14, 19, 20].map((level) => getDnd5eThirdCasterSpellSchoolRules("guerreiro_cavaleiro_arcano", level)?.unrestrictedSpellLimit)).toEqual([1, 1, 2, 2, 3, 3, 4]);
+    expect([3, 7, 8, 13, 14, 19, 20].map((level) => getDnd5eThirdCasterSpellSchoolRules("ladino_trapaceiro_arcano", level)?.unrestrictedSpellLimit)).toEqual([1, 1, 2, 2, 3, 3, 4]);
+    expect(getDnd5eThirdCasterSpellSchoolRules("guerreiro_campeao", 20)).toBeUndefined();
   });
 
   it("rejects prepared spell state for D&D known-spell classes and T20", () => {

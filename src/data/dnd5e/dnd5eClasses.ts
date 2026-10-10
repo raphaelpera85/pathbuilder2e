@@ -4,6 +4,7 @@ export interface Dnd5eClassRules {
   sourcePage: number;
   hitDie: string;
   primaryAbility: string;
+  spellcastingAbility?: "int" | "wis" | "cha";
   savingThrows: string[];
   skillChoiceCount: number;
   skillChoices: string[];
@@ -29,6 +30,14 @@ export const DND5E_CLASS_RULES: Dnd5eClassRules[] = [
   c("paladino", "Paladino", 108, "d10", "Força e Carisma", ["Sabedoria", "Carisma"], 2, ["atletismo", "intuicao", "intimidacao", "medicina", "persuasao", "religiao"], "Todas as armaduras; escudos; armas simples e marciais"),
   c("patrulheiro", "Patrulheiro", 115, "d10", "Destreza e Sabedoria", ["Força", "Destreza"], 3, ["adestramento", "atletismo", "furtividade", "investigacao", "natureza", "percepcao", "sobrevivencia"], "Armaduras leves e médias; escudos; armas simples e marciais"),
 ];
+
+const DND5E_SPELLCASTING_ABILITIES: Record<string, "int" | "wis" | "cha"> = {
+  bardo: "cha", bruxo: "cha", clerigo: "wis", druida: "wis", feiticeiro: "cha",
+  mago: "int", paladino: "cha", patrulheiro: "wis",
+};
+DND5E_CLASS_RULES.forEach((classRule) => {
+  classRule.spellcastingAbility = DND5E_SPELLCASTING_ABILITIES[classRule.id];
+});
 
 const DND5E_STARTING_EQUIPMENT: Record<string, string[]> = {
   barbaro: ["Machado grande ou arma marcial corpo a corpo", "Duas machadinhas", "Pacote de explorador", "Quatro azagaias"],

@@ -1,0 +1,651 @@
+[
+  {
+    "id": "pf1e.shield.broquel",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Broquel",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Escudo. Bônus de escudo +1; penalidade de armadura -1; falha de magia arcana 5%; peso 2.5 kg.",
+    "description_en": null,
+    "description_es": null,
+    "ac_bonus": 1,
+    "price_gp": 5,
+    "traits": [
+      "escudo"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "acBonus": 1,
+      "maxDexBonus": null,
+      "armorCheckPenalty": -1,
+      "arcaneSpellFailure": 5,
+      "weightKg": 2.5,
+      "donningGroup": "shield",
+      "donningTimes": {
+        "don": "1 ação de movimento",
+        "donQuick": null,
+        "remove": "1 ação de movimento"
+      },
+      "donningSourcePage": 153,
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Broquel"
+      },
+      "summaries": {
+        "pt-BR": "Escudo. Bônus de escudo +1; penalidade de armadura -1; falha de magia arcana 5%; peso 2.5 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.shield.escudo-de-aco-leve",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Escudo de aço leve",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Escudo. Bônus de escudo +1; penalidade de armadura -1; falha de magia arcana 5%; peso 3 kg.",
+    "description_en": null,
+    "description_es": null,
+    "ac_bonus": 1,
+    "price_gp": 9,
+    "traits": [
+      "escudo"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "acBonus": 1,
+      "maxDexBonus": null,
+      "armorCheckPenalty": -1,
+      "arcaneSpellFailure": 5,
+      "weightKg": 3,
+      "donningGroup": "shield",
+      "donningTimes": {
+        "don": "1 ação de movimento",
+        "donQuick": null,
+        "remove": "1 ação de movimento"
+      },
+      "donningSourcePage": 153,
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Escudo de aço leve"
+      },
+      "summaries": {
+        "pt-BR": "Escudo. Bônus de escudo +1; penalidade de armadura -1; falha de magia arcana 5%; peso 3 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.shield.escudo-de-aco-pesado",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Escudo de aço pesado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Escudo. Bônus de escudo +2; penalidade de armadura -2; falha de magia arcana 15%; peso 7.5 kg.",
+    "description_en": null,
+    "description_es": null,
+    "ac_bonus": 2,
+    "price_gp": 20,
+    "traits": [
+      "escudo"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "acBonus": 2,
+      "maxDexBonus": null,
+      "armorCheckPenalty": -2,
+      "arcaneSpellFailure": 15,
+      "weightKg": 7.5,
+      "donningGroup": "shield",
+      "donningTimes": {
+        "don": "1 ação de movimento",
+        "donQuick": null,
+        "remove": "1 ação de movimento"
+      },
+      "donningSourcePage": 153,
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Escudo de aço pesado"
+      },
+      "summaries": {
+        "pt-BR": "Escudo. Bônus de escudo +2; penalidade de armadura -2; falha de magia arcana 15%; peso 7.5 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.shield.escudo-de-corpo",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Escudo de corpo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Escudo. Bônus de escudo +4; penalidade de armadura -10; falha de magia arcana 50%; peso 22.5 kg. Bônus máximo de Destreza +2. também pode oferecer cobertura.",
+    "description_en": null,
+    "description_es": null,
+    "ac_bonus": 4,
+    "price_gp": 30,
+    "traits": [
+      "escudo"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "acBonus": 4,
+      "maxDexBonus": 2,
+      "armorCheckPenalty": -10,
+      "arcaneSpellFailure": 50,
+      "weightKg": 22.5,
+      "donningGroup": "shield",
+      "donningTimes": {
+        "don": "1 ação de movimento",
+        "donQuick": null,
+        "remove": "1 ação de movimento"
+      },
+      "donningSourcePage": 153,
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "special": "também pode oferecer cobertura",
+      "table": "6-6",
+      "donningTable": "6-7",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Escudo de corpo"
+      },
+      "summaries": {
+        "pt-BR": "Escudo. Bônus de escudo +4; penalidade de armadura -10; falha de magia arcana 50%; peso 22.5 kg. Bônus máximo de Destreza +2. também pode oferecer cobertura."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.shield.escudo-de-madeira-leve",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Escudo de madeira leve",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Escudo. Bônus de escudo +1; penalidade de armadura -1; falha de magia arcana 5%; peso 2.5 kg.",
+    "description_en": null,
+    "description_es": null,
+    "ac_bonus": 1,
+    "price_gp": 3,
+    "traits": [
+      "escudo"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "acBonus": 1,
+      "maxDexBonus": null,
+      "armorCheckPenalty": -1,
+      "arcaneSpellFailure": 5,
+      "weightKg": 2.5,
+      "donningGroup": "shield",
+      "donningTimes": {
+        "don": "1 ação de movimento",
+        "donQuick": null,
+        "remove": "1 ação de movimento"
+      },
+      "donningSourcePage": 153,
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Escudo de madeira leve"
+      },
+      "summaries": {
+        "pt-BR": "Escudo. Bônus de escudo +1; penalidade de armadura -1; falha de magia arcana 5%; peso 2.5 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.shield.escudo-de-madeira-pesado",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Escudo de madeira pesado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Escudo. Bônus de escudo +2; penalidade de armadura -2; falha de magia arcana 15%; peso 5 kg.",
+    "description_en": null,
+    "description_es": null,
+    "ac_bonus": 2,
+    "price_gp": 7,
+    "traits": [
+      "escudo"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 150,
+    "data": {
+      "acBonus": 2,
+      "maxDexBonus": null,
+      "armorCheckPenalty": -2,
+      "arcaneSpellFailure": 15,
+      "weightKg": 5,
+      "donningGroup": "shield",
+      "donningTimes": {
+        "don": "1 ação de movimento",
+        "donQuick": null,
+        "remove": "1 ação de movimento"
+      },
+      "donningSourcePage": 153,
+      "sizeAdjustments": {
+        "table": "6-8",
+        "sourcePage": 153,
+        "humanoid": {
+          "miúdo-ou-menor": {
+            "cost": 0.5,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 1,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 1,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 2,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 4,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 8,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 16,
+            "weight": 12
+          }
+        },
+        "nonHumanoid": {
+          "miúdo-ou-menor": {
+            "cost": 1,
+            "weight": 0.1
+          },
+          "pequeno": {
+            "cost": 2,
+            "weight": 0.5
+          },
+          "médio": {
+            "cost": 2,
+            "weight": 1
+          },
+          "grande": {
+            "cost": 4,
+            "weight": 2
+          },
+          "enorme": {
+            "cost": 8,
+            "weight": 5
+          },
+          "imenso": {
+            "cost": 16,
+            "weight": 8
+          },
+          "colossal": {
+            "cost": 32,
+            "weight": 12
+          }
+        },
+        "tinyOrSmallerArmorBonusMultiplier": 0.5
+      },
+      "table": "6-6",
+      "donningTable": "6-7",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Escudo de madeira pesado"
+      },
+      "summaries": {
+        "pt-BR": "Escudo. Bônus de escudo +2; penalidade de armadura -2; falha de magia arcana 15%; peso 5 kg."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  }
+]

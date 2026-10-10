@@ -8,6 +8,7 @@ describe("system rules compendium", () => {
     ["dnd5e", "standard"],
     ["ose", "advanced"],
     ["dnd35", "v35"],
+    ["pf1e", "legacy_pf1"],
   ])("keeps creation rules isolated for %s", (systemId, ruleset) => {
     const rules = getSystemRuleItems(systemId);
     expect(rules.length).toBeGreaterThan(0);
@@ -26,5 +27,15 @@ describe("system rules compendium", () => {
     expect(getSystemRuleItems("ose", "classic").every((item) => item.data.ruleset === "classic")).toBe(true);
     expect(getSystemRuleItems("ose", "basico").every((item) => item.data.ruleset === "basico")).toBe(true);
     expect(getSystemRuleItems("ose", "basico").some((item) => item.data.ruleKind === "creation")).toBe(true);
+  });
+
+  it("exposes Pathfinder 1e wealth, exchange, weight, and resale rules from page 140", () => {
+    const rules = getSystemRuleItems("pf1e", "legacy_pf1");
+    expect(rules).toHaveLength(3);
+    expect(rules.find((rule) => rule.id === "pf1e.rule.currency.legacy_pf1")).toMatchObject({
+      summary: expect.stringContaining("10 PC = 1 PP"),
+      data: { ruleset: "legacy_pf1", source: { book: "Pathfinder RPG — Livro Básico", page: 140 } },
+    });
+    expect(rules.find((rule) => rule.id === "pf1e.rule.treasure-selling.legacy_pf1")?.summary).toContain("metade do preço");
   });
 });

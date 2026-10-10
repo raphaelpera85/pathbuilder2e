@@ -16,6 +16,7 @@ export interface Pf1eClass {
   nameEn: string;
   sourceBook: string;
   sourcePageStart: number;
+  startingWealth: { diceCount: number; dieSides: 6; multiplierGp: 10; averageGp: number; sourcePage: 140 };
   alignment: string;
   hitDie: 6 | 8 | 10 | 12;
   /** BBA por nível: "full" = +1/nível, "medium" = 3/4 por nível, "poor" = 1/2 por nível. */
@@ -35,6 +36,7 @@ export const PF1E_CLASSES: Record<string, Pf1eClass> = {
     nameEn: "Barbarian",
     sourceBook: "Pathfinder RPG — Livro Básico",
     sourcePageStart: 30,
+    startingWealth: { diceCount: 3, dieSides: 6, multiplierGp: 10, averageGp: 105, sourcePage: 140 },
     alignment: "Qualquer uma não ordeira",
     hitDie: 12,
     babProgression: "full",
@@ -54,6 +56,7 @@ export const PF1E_CLASSES: Record<string, Pf1eClass> = {
     nameEn: "Bard",
     sourceBook: "Pathfinder RPG — Livro Básico",
     sourcePageStart: 34,
+    startingWealth: { diceCount: 3, dieSides: 6, multiplierGp: 10, averageGp: 105, sourcePage: 140 },
     alignment: "Qualquer uma",
     hitDie: 8,
     babProgression: "medium",
@@ -75,6 +78,7 @@ export const PF1E_CLASSES: Record<string, Pf1eClass> = {
     nameEn: "Cleric",
     sourceBook: "Pathfinder RPG — Livro Básico",
     sourcePageStart: 37,
+    startingWealth: { diceCount: 4, dieSides: 6, multiplierGp: 10, averageGp: 140, sourcePage: 140 },
     alignment: "Deve estar a um passo da tendência de sua divindade",
     hitDie: 8,
     babProgression: "medium",
@@ -96,6 +100,7 @@ export const PF1E_CLASSES: Record<string, Pf1eClass> = {
     nameEn: "Druid",
     sourceBook: "Pathfinder RPG — Livro Básico",
     sourcePageStart: 49,
+    startingWealth: { diceCount: 2, dieSides: 6, multiplierGp: 10, averageGp: 70, sourcePage: 140 },
     alignment: "Qualquer neutra",
     hitDie: 8,
     babProgression: "medium",
@@ -116,6 +121,7 @@ export const PF1E_CLASSES: Record<string, Pf1eClass> = {
     nameEn: "Sorcerer",
     sourceBook: "Pathfinder RPG — Livro Básico",
     sourcePageStart: 57,
+    startingWealth: { diceCount: 2, dieSides: 6, multiplierGp: 10, averageGp: 70, sourcePage: 140 },
     alignment: "Qualquer uma",
     hitDie: 6,
     babProgression: "poor",
@@ -135,6 +141,7 @@ export const PF1E_CLASSES: Record<string, Pf1eClass> = {
     nameEn: "Fighter",
     sourceBook: "Pathfinder RPG — Livro Básico",
     sourcePageStart: 62,
+    startingWealth: { diceCount: 5, dieSides: 6, multiplierGp: 10, averageGp: 175, sourcePage: 140 },
     alignment: "Qualquer uma",
     hitDie: 10,
     babProgression: "full",
@@ -154,6 +161,7 @@ export const PF1E_CLASSES: Record<string, Pf1eClass> = {
     nameEn: "Rogue",
     sourceBook: "Pathfinder RPG — Livro Básico",
     sourcePageStart: 64,
+    startingWealth: { diceCount: 4, dieSides: 6, multiplierGp: 10, averageGp: 140, sourcePage: 140 },
     alignment: "Qualquer uma",
     hitDie: 8,
     babProgression: "medium",
@@ -176,6 +184,7 @@ export const PF1E_CLASSES: Record<string, Pf1eClass> = {
     nameEn: "Wizard",
     sourceBook: "Pathfinder RPG — Livro Básico",
     sourcePageStart: 70,
+    startingWealth: { diceCount: 2, dieSides: 6, multiplierGp: 10, averageGp: 70, sourcePage: 140 },
     alignment: "Qualquer uma",
     hitDie: 6,
     babProgression: "poor",
@@ -194,6 +203,7 @@ export const PF1E_CLASSES: Record<string, Pf1eClass> = {
     nameEn: "Monk",
     sourceBook: "Pathfinder RPG — Livro Básico",
     sourcePageStart: 73,
+    startingWealth: { diceCount: 1, dieSides: 6, multiplierGp: 10, averageGp: 35, sourcePage: 140 },
     alignment: "Qualquer ordeira",
     hitDie: 8,
     babProgression: "medium",
@@ -214,6 +224,7 @@ export const PF1E_CLASSES: Record<string, Pf1eClass> = {
     nameEn: "Paladin",
     sourceBook: "Pathfinder RPG — Livro Básico",
     sourcePageStart: 76,
+    startingWealth: { diceCount: 5, dieSides: 6, multiplierGp: 10, averageGp: 175, sourcePage: 140 },
     alignment: "Bondoso e Ordeiro (obrigatório)",
     hitDie: 10,
     babProgression: "full",
@@ -233,6 +244,7 @@ export const PF1E_CLASSES: Record<string, Pf1eClass> = {
     nameEn: "Ranger",
     sourceBook: "Pathfinder RPG — Livro Básico",
     sourcePageStart: 79,
+    startingWealth: { diceCount: 5, dieSides: 6, multiplierGp: 10, averageGp: 175, sourcePage: 140 },
     alignment: "Qualquer uma",
     hitDie: 10,
     babProgression: "full",

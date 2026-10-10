@@ -57,7 +57,7 @@
       "heritage": 9,
       "item": 226,
       "skill": 18,
-      "spell": 315,
+      "spell": 362,
       "subclass": 40
     }
   },
@@ -67,10 +67,17 @@
     "categories": {
       "action": 4,
       "ancestry": 10,
-      "class": 16,
+      "class": 13,
       "item": 53,
       "skill": 45,
       "spell": 34
+    }
+  },
+  {
+    "systemId": "ose",
+    "ruleset": "basico",
+    "categories": {
+      "class": 6
     }
   },
   {
@@ -82,6 +89,20 @@
       "item": 53,
       "skill": 32,
       "spell": 34
+    }
+  },
+  {
+    "systemId": "pf1e",
+    "ruleset": "legacy_pf1",
+    "categories": {
+      "ancestry": 7,
+      "armor": 12,
+      "class": 11,
+      "feat": 176,
+      "item": 198,
+      "shield": 6,
+      "skill": 26,
+      "weapon": 77
     }
   },
   {

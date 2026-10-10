@@ -10,7 +10,7 @@ import { T20_EQUIPMENT, T20_POWERS, T20_SPELLS, T20_POWER_CHOICES } from "./t20/
 import { DND5E_EQUIPMENT, DND5E_FEATS, DND5E_SPELLS } from "./dnd5e/dnd5eCompendium";
 import { DND5E_CLASS_PROGRESSIONS } from "./dnd5e/dnd5eProgressions";
 import { T20_CLASS_PROGRESSIONS } from "./t20/t20Progressions";
-import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_LAND_CIRCLE_SPELLS, DND5E_SUBRACES, DND5E_SUBCLASSES } from "./dnd5e/dnd5eOptions";
+import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_LAND_CIRCLE_SPELLS, DND5E_PALADIN_OATH_SPELLS, DND5E_WARLOCK_PATRON_SPELLS, DND5E_SUBRACES, DND5E_SUBCLASSES, getDnd5eSpellSchool, getDnd5eThirdCasterSpellSchoolRules, normalizeDnd5eSpellName } from "./dnd5e/dnd5eOptions";
 import type { AbilityGenerationMethod } from "./coreCharacterRules";
 import { getCatalogVersion } from "./catalogVersions";
 
@@ -388,6 +388,16 @@ export function getAvailableCoreSpells(system: SupportedCoreSystem, classId: str
       .filter(([minimumLevel]) => level >= Number(minimumLevel))
       .flatMap(([, names]) => names)
     : [];
+  const dndPaladinOathSpellNames = system === "dnd5e" && character?.classId === "paladino" && character.subclassId
+    ? Object.entries(DND5E_PALADIN_OATH_SPELLS[character.subclassId] || {})
+      .filter(([minimumLevel]) => level >= Number(minimumLevel))
+      .flatMap(([, names]) => names)
+    : [];
+  const dndWarlockExpandedSpellNames = system === "dnd5e" && character?.classId === "bruxo" && character.subclassId
+    ? Object.entries(DND5E_WARLOCK_PATRON_SPELLS[character.subclassId] || {})
+      .filter(([spellLevel]) => level >= Number(spellLevel) * 2 - 1)
+      .flatMap(([, names]) => names)
+    : [];
   const dndSubclassSpellNames = system === "dnd5e" && character
     ? new Set([
       ...(DND5E_SUBCLASSES.find((subclass) => subclass.id === character.subclassId)?.choices || [])
@@ -395,6 +405,7 @@ export function getAvailableCoreSpells(system: SupportedCoreSystem, classId: str
         .flatMap((choice) => character.subclassChoices?.[choice.id] || []),
       ...dndLandCircleSpellNames,
       ...dndClericDomainSpellNames,
+      ...dndPaladinOathSpellNames,
     ].map(normalizeSpellChoice))
     : new Set<string>();
   const dndSubclassSpells = catalog.spells.filter((spell) => dndSubclassSpellNames.has(normalizeSpellChoice(spell.name)));
@@ -420,6 +431,14 @@ export function getAvailableCoreSpells(system: SupportedCoreSystem, classId: str
   const paladinPrayerCount = system === "t20" && classId === "paladino" && character ? getCoreFeatQuantity(character, "t20.poder.orar") : 0;
   const hasPaladinPrayer = paladinPrayerCount > 0;
   const thirdCasterSubclass = system === "dnd5e" && character && isDnd5eThirdCasterSubclass(character.subclassId);
+  const thirdCasterSchoolRules = system === "dnd5e" ? getDnd5eThirdCasterSpellSchoolRules(character?.subclassId, level) : undefined;
+  const selectedThirdCasterOffSchoolCount = thirdCasterSchoolRules && character
+    ? (character.spellIds || []).filter((spellId) => {
+      if (dndFeatSpellIds.has(spellId) || grantedSpellIds.has(spellId)) return false;
+      const spell = catalog.spells.find((entry) => entry.id === spellId);
+      return Boolean(spell?.classIds?.includes("mago") && (spell.spellLevel || 0) > 0 && !thirdCasterSchoolRules.restrictedSchools.includes(getDnd5eSpellSchool(spell.summary) || ""));
+    }).length
+    : 0;
   const spellcaster = system === "t20"
     ? ["arcanista", "bardo", "clerigo", "druida"].includes(classId) || hasPaladinPrayer
     : Boolean(thirdCasterSubclass) || (progression && "spellcaster" in progression ? progression.spellcaster : false);
@@ -433,6 +452,10 @@ export function getAvailableCoreSpells(system: SupportedCoreSystem, classId: str
       : classId === "bruxo"
         ? Math.min(5, Math.floor((safeLevel + 1) / 2))
         : Math.min(9, Math.max(0, Math.ceil((["paladino", "patrulheiro"].includes(classId) ? Math.floor(safeLevel / 2) : safeLevel) / 2)));
+  const dndWarlockExpandedSpellNamesSet = new Set(dndWarlockExpandedSpellNames.map(normalizeDnd5eSpellName));
+  const dndWarlockExpandedSpells = system === "dnd5e"
+    ? catalog.spells.filter((spell) => dndWarlockExpandedSpellNamesSet.has(normalizeDnd5eSpellName(spell.name)) && (spell.spellLevel ?? 0) <= maximumSpellLevel)
+    : [];
   const rawBardSchools = system === "t20" && classId === "bardo" ? character?.classChoices?.["t20-bardo-schools"] : undefined;
   const bardSchools = Array.isArray(rawBardSchools) ? rawBardSchools : [];
   // A Bardo must choose the three schools required by the class before the
@@ -447,9 +470,10 @@ export function getAvailableCoreSpells(system: SupportedCoreSystem, classId: str
     if (hasPaladinPrayer) return "tradition" in spell && spell.tradition === "divina" && spell.spellLevel === 1;
     if (spell.classIds && !spell.classIds.includes(spellListClassId)) return false;
     if (bardSchools.length > 0 && (!("school" in spell) || !spell.school || !bardSchools.includes(spell.school))) return false;
+    if (thirdCasterSchoolRules && spell.classIds?.includes("mago") && (spell.spellLevel || 0) > 0 && !thirdCasterSchoolRules.restrictedSchools.includes(getDnd5eSpellSchool(spell.summary) || "") && !character?.spellIds?.includes(spell.id) && selectedThirdCasterOffSchoolCount >= thirdCasterSchoolRules.unrestrictedSpellLimit) return false;
     return spell.spellLevel === undefined || spell.spellLevel <= maximumSpellLevel;
   });
-  return Array.from(new Map([...classSpells, ...dndFeatSpells, ...dndSubclassSpells, ...t20PowerSpells, ...(t20LineageSpell ? [t20LineageSpell] : []), ...grantedSpells].map((spell) => [spell.id, spell])).values());
+  return Array.from(new Map([...classSpells, ...dndFeatSpells, ...dndSubclassSpells, ...dndWarlockExpandedSpells, ...t20PowerSpells, ...(t20LineageSpell ? [t20LineageSpell] : []), ...grantedSpells].map((spell) => [spell.id, spell])).values());
 }
 
 export function getT20MaximumSpellLevel(classId: string, level: number, hasPaladinPrayer = false): number {

@@ -45,17 +45,52 @@ describe("Dnd35CharacterCreatorModal — riqueza inicial por classe", () => {
     const saved: Dnd35CharacterCreatedData = {
       id: "dnd35-teste", name: "Tordek", system_id: "dnd35", ruleset: "v35", raceId: "anao", classId: "guerreiro",
       level: 1, xp: 0, alignment: "Leal e Bom", abilities: { for: 15, des: 13, con: 16, int: 10, sab: 12, car: 6 },
-      maxHp: 13, currentHp: 13, goldGp: 37.5, trainedSkillIds: [], featIds: [],
+      maxHp: 13, currentHp: 13, goldGp: 37.5, trainedSkillIds: ["escalar"], featIds: [],
       weaponIds: ["espada-longa"], armorIds: [], gearIds: [],
     };
     const onCreated = vi.fn();
     render(<Dnd35CharacterCreatorModal isOpen onClose={() => {}} onCharacterCreated={onCreated} initialCharacter={saved} />);
+    tab(/PV & Perícias/);
+    expect(screen.getByLabelText("Graduações em Escalar")).toHaveProperty("value", "1");
     tab(/Talentos & Equipamento/);
     expect(screen.getByText(/37\.50 PO restantes/)).toBeTruthy();
   });
 });
 
 describe("Dnd35CharacterCreatorModal — bônus de 1º nível (Tabela 3-1)", () => {
+  it("permite comprar várias graduações respeitando custos e tetos de classe/cruzada", () => {
+    const onCreated = vi.fn();
+    render(<Dnd35CharacterCreatorModal isOpen onClose={() => {}} onCharacterCreated={onCreated} />);
+    tab(/PV & Perícias/);
+    const classSkillRanks = screen.getByLabelText("Graduações em Escalar");
+    const crossClassSkillRanks = screen.getByLabelText("Graduações em Usar Instrumento Mágico");
+    fireEvent.change(classSkillRanks, { target: { value: "4" } });
+    fireEvent.change(crossClassSkillRanks, { target: { value: "2" } });
+    fireEvent.change(classSkillRanks, { target: { value: "5" } });
+    fireEvent.change(crossClassSkillRanks, { target: { value: "2.5" } });
+    expect(classSkillRanks).toHaveProperty("value", "4");
+    expect(crossClassSkillRanks).toHaveProperty("value", "2");
+    expect(screen.getByRole("heading", { name: "Perícias (8/12 pontos gastos)" })).toBeTruthy();
+
+    tab(/Revisão final/);
+    fireEvent.click(screen.getByRole("button", { name: /Salvar personagem/ }));
+    expect(onCreated.mock.calls[0][0]).toMatchObject({
+      trainedSkillIds: ["escalar", "usar-instrumento-magico"],
+      skillRanks: { escalar: 4, "usar-instrumento-magico": 2 },
+    });
+  });
+
+  it("inclui os 4 pontos de perícia adicionais do Humano no 1º nível (p. 13)", () => {
+    render(<Dnd35CharacterCreatorModal isOpen onClose={() => {}} onCharacterCreated={() => {}} />);
+    tab(/PV & Perícias/);
+    expect(screen.getByRole("heading", { name: "Perícias (0/12 pontos gastos)" })).toBeTruthy();
+
+    tab(/Raça & Classe/);
+    fireEvent.click(allButtons().find((button) => button.querySelector("strong")?.textContent === "Anão")!);
+    tab(/PV & Perícias/);
+    expect(screen.getByRole("heading", { name: "Perícias (0/8 pontos gastos)" })).toBeTruthy();
+  });
+
   it("Guerreiro humano padrão: BBA +1, Fort boa; Monge: BBA +0, três resistências boas", () => {
     render(<Dnd35CharacterCreatorModal isOpen onClose={() => {}} onCharacterCreated={() => {}} />);
     tab(/Raça & Classe/);
@@ -456,7 +491,7 @@ describe("Dnd35CharacterCreatorModal — pré-requisitos de talento (p. 87)", ()
     search("combate montado");
     expect(card("Combate Montado")!.textContent).toContain("Falta: 1 graduação em Cavalgar");
     tab(/PV & Perícias/);
-    fireEvent.click(screen.getByText("Cavalgar").closest("label")!.querySelector("input")!);
+    fireEvent.change(screen.getByLabelText("Graduações em Cavalgar"), { target: { value: "1" } });
     tab(/Talentos & Equipamento/);
     search("combate montado");
     expect(card("Combate Montado")!.textContent).not.toContain("Falta");

@@ -3,6 +3,9 @@ import { getSystemSkillItems } from "../data/systemSkills";
 import { getSystemRuleItems } from "../data/systemRulesCatalog";
 import { getSystemActionItems } from "../data/systemActions";
 import { getSystemConditionItems } from "../data/systemConditions";
+import { DND35_CLASSES } from "../data/dnd35/dnd35Classes";
+import { DND35_SPELL_LISTS } from "../data/dnd35/dnd35SpellLists";
+import { OSE_CLASSIC_CORE_CLASS_IDS } from "../data/ose/oseRules";
 import systemsSnapshot from "../data/catalog/snapshots/systems.json";
 import snapshotManifest from "../data/catalog/snapshots/manifest.json";
 
@@ -46,7 +49,7 @@ interface CatalogSnapshotScope {
 const catalogSnapshotScopes = snapshotManifest as unknown as CatalogSnapshotScope[];
 
 export type CatalogRuleset = string;
-export type CatalogSource = "local_snapshot" | "local_runtime";
+export type CatalogSource = "local_snapshot" | "local_runtime" | "local_mixed";
 export interface CatalogSyncStatus {
   isConfigured: false; isOnline: boolean; source: CatalogSource; lastSync?: string | null;
   tableCounts?: Partial<Record<PickerType, number>>;
@@ -67,6 +70,8 @@ export const DEFAULT_RPG_SYSTEMS: IRPGSystem[] = (systemsSnapshot as CatalogSyst
 export const CATALOG_RULESETS = [...new Set(
   catalogSnapshotScopes.map(({ ruleset }) => ruleset),
 )].sort();
+/** Sistemas com conteúdo catalogado, inclusive os que ainda não têm criador ativo. */
+export const CATALOG_SYSTEM_IDS = [...new Set(catalogSnapshotScopes.map(({ systemId }) => systemId))].sort();
 export async function fetchCatalogSystems(): Promise<IRPGSystem[]> { return DEFAULT_RPG_SYSTEMS.filter((system) => system.active); }
 
 /** Converte um registro do snapshot versionado no formato consumido pela UI. */
@@ -84,6 +89,26 @@ export function normalizeCatalogRecordToPickerItem(record: CatalogItemRecord, ca
     "pt-BR": text(record.description_pt, nestedSummaries["pt-BR"], data.summary_pt, data.summary, data.description, record.description),
     en: text(record.description_en, nestedSummaries.en, data.summary_en, data.description_en, record.description_pt, data.summary, data.description, record.description),
     es: text(record.description_es, nestedSummaries.es, data.summary_es, data.description_es, record.description_pt, data.summary, data.description, record.description),
+  };
+  const explicitNames = {
+    en: text(record.name_en, nestedNames.en, data.name_en, data.nameEn),
+    es: text(record.name_es, nestedNames.es, data.name_es),
+  };
+  const explicitSummaries = {
+    en: text(record.description_en, nestedSummaries.en, data.summary_en, data.description_en),
+    es: text(record.description_es, nestedSummaries.es, data.summary_es, data.description_es),
+  };
+  data.translationStatus = {
+    names: {
+      "pt-BR": Boolean(names["pt-BR"]),
+      en: Boolean(explicitNames.en) || Boolean(names.en && names.en !== names["pt-BR"]),
+      es: Boolean(explicitNames.es) || Boolean(names.es && names.es !== names["pt-BR"]),
+    },
+    summaries: {
+      "pt-BR": Boolean(summaries["pt-BR"]),
+      en: Boolean(explicitSummaries.en) || Boolean(summaries.en && summaries.en !== summaries["pt-BR"]),
+      es: Boolean(explicitSummaries.es) || Boolean(summaries.es && summaries.es !== summaries["pt-BR"]),
+    },
   };
   const systemId = record.system_id || "pf2e";
   data.systemId = systemId; data.system_id = systemId;
@@ -104,9 +129,11 @@ export function normalizeCatalogRecordToPickerItem(record: CatalogItemRecord, ca
 
 async function snapshotRowsFor(category: PickerType, systemId = "all", ruleset?: string): Promise<CatalogItemRecord[]> {
   const file = category === "gear" ? "item" : category;
+  const usesOseAdvancedBase = (systemId === "all" || systemId === "ose")
+    && (ruleset === "basico" || (category === "class" && ruleset === "classic"));
   const scopes = catalogSnapshotScopes.filter((scope) =>
     (systemId === "all" || scope.systemId === systemId)
-    && (!ruleset || scope.ruleset === ruleset)
+    && (!ruleset || scope.ruleset === ruleset || (usesOseAdvancedBase && scope.systemId === "ose" && scope.ruleset === "advanced"))
     && (scope.categories[file] ?? 0) > 0,
   );
   const records = await Promise.all(scopes.map(async (scope) => {
@@ -120,11 +147,121 @@ async function snapshotRowsFor(category: PickerType, systemId = "all", ruleset?:
     }
     return pendingRecords;
   }));
-  return records.flat();
+  const rows = records.flat();
+  if (!ruleset) return systemId === "ose" || systemId === "all" ? collapseIdenticalOseRulesetRows(rows) : rows;
+  if (systemId !== "ose" && systemId !== "all") return rows;
+
+  const scopedRows = category === "class" && ruleset === "classic"
+    ? rows.filter((record) => record.ruleset === "classic" || (
+      record.system_id === "ose" && record.ruleset === "advanced"
+      && OSE_CLASSIC_CORE_CLASS_IDS.includes(String(record.data?.id) as typeof OSE_CLASSIC_CORE_CLASS_IDS[number])
+    ))
+    : ruleset === "basico"
+      ? rows.filter((record) => record.system_id === "ose" && (record.ruleset === "advanced" || record.ruleset === "basico"))
+      : null;
+
+  if (!scopedRows) return rows;
+
+  return scopedRows.map((record) => record.ruleset === ruleset
+    ? record
+    : { ...record, ruleset, data: { ...record.data, ruleset } });
 }
 
-const CORE_SYSTEM_IDS = ["t20", "dnd5e", "ose"] as const;
+function stableCatalogValue(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(stableCatalogValue);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value as Record<string, unknown>)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([key, item]) => [key, stableCatalogValue(item)]));
+  }
+  return value;
+}
+
+function oseRulesetContentSignature(record: CatalogItemRecord): string {
+  const { id: _id, system_id: _systemId, ruleset: _ruleset, created_at: _createdAt, updated_at: _updatedAt, data, ...content } = record;
+  const {
+    id: _dataId,
+    system_id: _dataSystemId,
+    ruleset: _dataRuleset,
+    availableRulesets: _availableRulesets,
+    ...mechanics
+  } = data || {};
+  return JSON.stringify(stableCatalogValue({ ...content, data: mechanics }));
+}
+
+/** Agrupa conteúdo OSE literalmente idêntico no filtro agregado, preservando os modos aplicáveis. */
+function collapseIdenticalOseRulesetRows(rows: CatalogItemRecord[]): CatalogItemRecord[] {
+  const result: CatalogItemRecord[] = [];
+  const indexesBySignature = new Map<string, number>();
+
+  for (const record of rows) {
+    if (record.system_id !== "ose") {
+      result.push(record);
+      continue;
+    }
+
+    const signature = oseRulesetContentSignature(record);
+    const existingIndex = indexesBySignature.get(signature);
+    if (existingIndex === undefined) {
+      indexesBySignature.set(signature, result.length);
+      const ruleset = String(record.data?.ruleset || record.ruleset);
+      result.push({ ...record, data: { ...record.data, availableRulesets: [ruleset] } });
+      continue;
+    }
+
+    const existing = result[existingIndex];
+    const ruleset = String(record.data?.ruleset || record.ruleset);
+    const availableRulesets = [...new Set([
+      ...(Array.isArray(existing.data?.availableRulesets) ? existing.data.availableRulesets.map(String) : []),
+      ruleset,
+    ])].sort((left, right) => left.localeCompare(right));
+    result[existingIndex] = { ...existing, data: { ...existing.data, availableRulesets } };
+  }
+
+  return result;
+}
+
+/** Listas do Livro do Jogador já transcritas: não preencher classes/níveis ainda ausentes. */
+function dnd35CoreSpellRows(): CatalogItemRecord[] {
+  return DND35_SPELL_LISTS.flatMap((list) => list.entries.map((spell) => {
+    const sourcePage = Number(list.sourcePage.split("-")[0]);
+    const spellClasses = list.classIds.map((classId) => DND35_CLASSES[classId]).filter(Boolean);
+    const slug = spell.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    return {
+      id: `dnd35.phb.spell.${list.listId}.${list.spellLevel}.${slug}`,
+      system_id: "dnd35",
+      name_pt: spell.name,
+      description_pt: spell.summary,
+      rarity: "common",
+      ruleset: "v35",
+      source_book: "D&D 3.5 — Livro do Jogador",
+      source_page: sourcePage,
+      traits: [],
+      data: {
+        listId: list.listId,
+        classIds: list.classIds,
+        classId: list.classIds.length === 1 ? list.classIds[0] : undefined,
+        spellClasses: {
+          "pt-BR": spellClasses.map((classInfo) => classInfo.name),
+          en: spellClasses.map((classInfo) => classInfo.nameEn),
+        },
+        spellLevel: list.spellLevel,
+        level: list.spellLevel,
+        school: spell.school,
+        spellFlags: spell.flags,
+        components: spell.flags.join(", "),
+        sourcePageRange: list.sourcePage,
+        sourcePage,
+      },
+    };
+  }));
+}
+
+const CORE_SYSTEM_IDS = ["t20", "dnd5e", "ose", "pf1e"] as const;
 function localRuntimeItems(category: PickerType, systemId: string, ruleset: string | undefined, hasSnapshotRecords: boolean): PickerItem[] {
+  if (category === "spell" && (!ruleset || ruleset === "v35") && (systemId === "dnd35" || systemId === "all")) {
+    return dnd35CoreSpellRows().map((record) => normalizeCatalogRecordToPickerItem(record, category));
+  }
   if (category === "rule") return systemId === "all" ? CORE_SYSTEM_IDS.flatMap((id) => getSystemRuleItems(id, ruleset)) : getSystemRuleItems(systemId, ruleset);
   if (category === "skill" && !hasSnapshotRecords) return getSystemSkillItems(systemId, ruleset);
   if (category === "action" && !hasSnapshotRecords) return getSystemActionItems(systemId, ruleset);
@@ -135,11 +272,13 @@ function localRuntimeItems(category: PickerType, systemId: string, ruleset: stri
 export async function fetchCatalogCategory(category: PickerType, options: { limit?: number; systemId?: string; ruleset?: CatalogRuleset } = {}): Promise<{ items: PickerItem[]; source: CatalogSource }> {
   const systemId = options.systemId ?? "pf2e";
   const records = await snapshotRowsFor(category, systemId, options.ruleset);
-  if (records.length) {
-    const items = records.map((record) => normalizeCatalogRecordToPickerItem(record, category));
-    return { items: options.limit ? items.slice(0, options.limit) : items, source: "local_snapshot" };
-  }
-  return { items: localRuntimeItems(category, systemId, options.ruleset, false), source: "local_runtime" };
+  const snapshotItems = records.map((record) => normalizeCatalogRecordToPickerItem(record, category));
+  const runtimeItems = localRuntimeItems(category, systemId, options.ruleset, records.length > 0);
+  const items = [...snapshotItems, ...runtimeItems];
+  const source: CatalogSource = snapshotItems.length && runtimeItems.length
+    ? "local_mixed"
+    : snapshotItems.length ? "local_snapshot" : "local_runtime";
+  return { items: options.limit ? items.slice(0, options.limit) : items, source };
 }
 
 export async function fetchAllCatalogCategories(systemId = "pf2e", ruleset?: CatalogRuleset): Promise<Record<PickerType, PickerItem[]>> {
@@ -156,6 +295,40 @@ export async function fetchCatalogTableCounts(): Promise<Record<CatalogTableName
     counts[table] = catalogSnapshotScopes.reduce((total, scope) => total + (scope.categories[file] ?? 0), 0);
   }
   return counts;
+}
+
+export interface CatalogLocalMetrics {
+  counts: Record<CatalogTableName, number>;
+  verifiedCount: number;
+  reviewCount: number;
+}
+
+let catalogLocalMetricsPromise: Promise<CatalogLocalMetrics> | undefined;
+
+/** Reutiliza o cálculo porque os snapshots versionados não mudam durante a sessão. */
+export function fetchCatalogLocalMetrics(): Promise<CatalogLocalMetrics> {
+  if (!catalogLocalMetricsPromise) {
+    const pending = calculateCatalogLocalMetrics();
+    catalogLocalMetricsPromise = pending;
+    void pending.catch(() => {
+      if (catalogLocalMetricsPromise === pending) catalogLocalMetricsPromise = undefined;
+    });
+  }
+  return catalogLocalMetricsPromise;
+}
+
+async function calculateCatalogLocalMetrics(): Promise<CatalogLocalMetrics> {
+  const counts = await fetchCatalogTableCounts();
+  counts.catalog_spells += dnd35CoreSpellRows().length;
+  const categories = [...new Map(
+    Object.entries(PICKER_TYPE_TO_TABLE).map(([category, table]) => [table, category as PickerType]),
+  ).values()];
+  const rowsByCategory = await Promise.all(categories.map((category) => snapshotRowsFor(category, "all")));
+  const reviewCount = rowsByCategory.flat().filter((record) =>
+    record.ruleset === "needs_review" || record.data?.needs_review === true,
+  ).length;
+  const total = Object.values(counts).reduce((sum, count) => sum + count, 0);
+  return { counts, verifiedCount: Math.max(0, total - reviewCount), reviewCount };
 }
 
 export async function fetchCatalogItemById(category: PickerType, id: string, systemId = "pf2e"): Promise<PickerItem | null> {

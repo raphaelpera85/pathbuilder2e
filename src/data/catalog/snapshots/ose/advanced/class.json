@@ -1,21 +1,14 @@
 [
   {
     "id": "ose.class.acrobata",
+    "system_id": "ose",
     "name_pt": "Acrobata",
     "name_en": "Acrobat",
-    "name_es": null,
     "description_pt": "Artistas ágeis e ginastas furtivos, hábeis em saltos acrobáticos, equilíbrio em cordas e evasão de quedas.",
-    "description_en": "Artistas ágeis e ginastas furtivos, hábeis em saltos acrobáticos, equilíbrio em cordas e evasão de quedas.",
-    "description_es": null,
     "hp_per_level": 4,
     "key_attributes": [
       "dex"
     ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
     "traits": [
       "couro",
       "semimarcial",
@@ -28,567 +21,337 @@
     "data": {
       "id": "acrobata",
       "name": "Acrobata",
-      "hitDie": "d4",
       "nameEn": "Acrobat",
+      "description": "Artistas ágeis e ginastas furtivos, hábeis em saltos acrobáticos, equilíbrio em cordas e evasão de quedas.",
+      "primeRequisites": [
+        "dex"
+      ],
+      "minRequirements": {},
+      "hitDie": "d4",
+      "allowedArmor": "couro",
+      "shieldAllowed": false,
+      "allowedWeapons": "restrita",
+      "allowedWeaponsDesc": "Adaga, dardo, cajado, espada curta, estilingue, arco curto.",
+      "combatCategory": "semimarcial",
       "features": [
         "Queda com Evasão: Reduz substancialmente danos de quedas altas.",
         "Caminhada na Corda Bamba: Anda sobre cordas e vigas em velocidade sem perder o equilíbrio.",
         "Salto Acrobático: Salta grandes distâncias sobre obstáculos e oponentes."
       ],
-      "description": "Artistas ágeis e ginastas furtivos, hábeis em saltos acrobáticos, equilíbrio em cordas e evasão de quedas.",
       "progression": [
         {
-          "hd": "1d4",
-          "xp": 0,
           "level": 1,
+          "xp": 0,
+          "hd": "1d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 15
+          }
         },
         {
-          "hd": "2d4",
-          "xp": 1200,
           "level": 2,
+          "xp": 1200,
+          "hd": "2d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 15
+          }
         },
         {
-          "hd": "3d4",
-          "xp": 2400,
           "level": 3,
+          "xp": 2400,
+          "hd": "3d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 15
+          }
         },
         {
-          "hd": "4d4",
-          "xp": 4800,
           "level": 4,
+          "xp": 4800,
+          "hd": "4d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 15
+          }
         },
         {
-          "hd": "5d4",
-          "xp": 9600,
           "level": 5,
+          "xp": 9600,
+          "hd": "5d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "6d4",
-          "xp": 20000,
           "level": 6,
+          "xp": 20000,
+          "hd": "6d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "7d4",
-          "xp": 40000,
           "level": 7,
+          "xp": 40000,
+          "hd": "7d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "8d4",
-          "xp": 80000,
           "level": 8,
+          "xp": 80000,
+          "hd": "8d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "9d4",
-          "xp": 160000,
           "level": 9,
+          "xp": 160000,
+          "hd": "9d4",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d4+2",
-          "xp": 280000,
           "level": 10,
+          "xp": 280000,
+          "hd": "9d4+2",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d4+4",
-          "xp": 400000,
           "level": 11,
+          "xp": 400000,
+          "hd": "9d4+4",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d4+6",
-          "xp": 520000,
           "level": 12,
+          "xp": 520000,
+          "hd": "9d4+6",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d4+8",
-          "xp": 640000,
           "level": 13,
+          "xp": 640000,
+          "hd": "9d4+8",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 7,
             "breath": 10,
-            "spells": 8,
-            "paralysis": 7
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 8
+          }
         },
         {
-          "hd": "9d4+10",
-          "xp": 760000,
           "level": 14,
+          "xp": 760000,
+          "hd": "9d4+10",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 7,
             "breath": 10,
-            "spells": 8,
-            "paralysis": 7
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 8
+          }
         }
       ],
-      "allowedArmor": "couro",
       "acrobatSkills": {
         "1": {
+          "ssi": 87,
+          "qu": 25,
           "es": 10,
           "ms": 20,
-          "qu": 25,
-          "ccb": 60,
-          "ssi": 87
+          "ccb": 60
         },
         "2": {
+          "ssi": 88,
+          "qu": 25,
           "es": 15,
           "ms": 25,
-          "qu": 25,
-          "ccb": 65,
-          "ssi": 88
+          "ccb": 65
         },
         "3": {
+          "ssi": 89,
+          "qu": 25,
           "es": 20,
           "ms": 30,
-          "qu": 25,
-          "ccb": 70,
-          "ssi": 89
+          "ccb": 70
         },
         "4": {
+          "ssi": 90,
+          "qu": 33,
           "es": 25,
           "ms": 35,
-          "qu": 33,
-          "ccb": 75,
-          "ssi": 90
+          "ccb": 75
         },
         "5": {
+          "ssi": 91,
+          "qu": 33,
           "es": 30,
           "ms": 40,
-          "qu": 33,
-          "ccb": 80,
-          "ssi": 91
+          "ccb": 80
         },
         "6": {
+          "ssi": 92,
+          "qu": 33,
           "es": 33,
           "ms": 43,
-          "qu": 33,
-          "ccb": 85,
-          "ssi": 92
+          "ccb": 85
         },
         "7": {
+          "ssi": 93,
+          "qu": 33,
           "es": 36,
           "ms": 46,
-          "qu": 33,
-          "ccb": 90,
-          "ssi": 93
+          "ccb": 90
         },
         "8": {
+          "ssi": 94,
+          "qu": 50,
           "es": 40,
           "ms": 50,
-          "qu": 50,
-          "ccb": 95,
-          "ssi": 94
+          "ccb": 95
         },
         "9": {
+          "ssi": 95,
+          "qu": 50,
           "es": 43,
           "ms": 53,
-          "qu": 50,
-          "ccb": 99,
-          "ssi": 95
+          "ccb": 99
         },
         "10": {
+          "ssi": 96,
+          "qu": 50,
           "es": 46,
           "ms": 56,
-          "qu": 50,
-          "ccb": 99,
-          "ssi": 96
+          "ccb": 99
         },
         "11": {
+          "ssi": 97,
+          "qu": 50,
           "es": 50,
           "ms": 60,
-          "qu": 50,
-          "ccb": 99,
-          "ssi": 97
+          "ccb": 99
         },
         "12": {
+          "ssi": 98,
+          "qu": 66,
           "es": 53,
           "ms": 63,
-          "qu": 66,
-          "ccb": 99,
-          "ssi": 98
+          "ccb": 99
         },
         "13": {
+          "ssi": 99,
+          "qu": 66,
           "es": 56,
           "ms": 66,
-          "qu": 66,
-          "ccb": 99,
-          "ssi": 99
+          "ccb": 99
         },
         "14": {
+          "ssi": 99,
+          "qu": 75,
           "es": 60,
           "ms": 70,
-          "qu": 75,
-          "ccb": 99,
-          "ssi": 99
+          "ccb": 99
         }
       },
-      "shieldAllowed": false,
-      "allowedWeapons": "restrita",
-      "combatCategory": "semimarcial",
-      "minRequirements": {},
-      "primeRequisites": [
-        "dex"
-      ],
-      "allowedWeaponsDesc": "Adaga, dardo, cajado, espada curta, estilingue, arco curto."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
-  },
-  {
-    "id": "ose.class.anao_bx",
-    "name_pt": "Anão (Classe Clássica)",
-    "name_en": "Dwarf (Classic)",
-    "name_es": null,
-    "description_pt": "Classe de aventureiro anão no estilo B/X tradicional. Combina grande resistência, vida de guerreiro e habilidades em alvenaria.",
-    "description_en": "Classe de aventureiro anão no estilo B/X tradicional. Combina grande resistência, vida de guerreiro e habilidades em alvenaria.",
-    "description_es": null,
-    "hp_per_level": 8,
-    "key_attributes": [
-      "str"
-    ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
-    "traits": [
-      "todas",
-      "marcial",
-      "classe-raça"
-    ],
-    "rarity": "common",
-    "ruleset": "advanced",
-    "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
-    "data": {
-      "id": "anao_bx",
-      "name": "Anão (Classe Clássica)",
-      "hitDie": "d8",
-      "nameEn": "Dwarf (Classic)",
-      "features": [
-        "Robustez Mineral: Saves defensivos excepcionais contra Magia e Veneno.",
-        "Detectar Construções: 2 em 6 ao inspecionar alvenaria e mecanismos.",
-        "Infravisão: 18m no escuro total."
-      ],
-      "description": "Classe de aventureiro anão no estilo B/X tradicional. Combina grande resistência, vida de guerreiro e habilidades em alvenaria.",
-      "isRaceClass": true,
-      "progression": [
-        {
-          "hd": "1d8",
-          "xp": 0,
-          "level": 1,
-          "saves": {
-            "death": 8,
-            "wands": 9,
-            "breath": 13,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 19,
-          "aacBonus": 0
-        },
-        {
-          "hd": "2d8",
-          "xp": 2200,
-          "level": 2,
-          "saves": {
-            "death": 8,
-            "wands": 9,
-            "breath": 13,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 19,
-          "aacBonus": 0
-        },
-        {
-          "hd": "3d8",
-          "xp": 4400,
-          "level": 3,
-          "saves": {
-            "death": 8,
-            "wands": 9,
-            "breath": 13,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 19,
-          "aacBonus": 0
-        },
-        {
-          "hd": "4d8",
-          "xp": 8800,
-          "level": 4,
-          "saves": {
-            "death": 6,
-            "wands": 7,
-            "breath": 10,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 17,
-          "aacBonus": 2
-        },
-        {
-          "hd": "5d8",
-          "xp": 17000,
-          "level": 5,
-          "saves": {
-            "death": 6,
-            "wands": 7,
-            "breath": 10,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 17,
-          "aacBonus": 2
-        },
-        {
-          "hd": "6d8",
-          "xp": 35000,
-          "level": 6,
-          "saves": {
-            "death": 6,
-            "wands": 7,
-            "breath": 10,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 17,
-          "aacBonus": 2
-        },
-        {
-          "hd": "7d8",
-          "xp": 70000,
-          "level": 7,
-          "saves": {
-            "death": 4,
-            "wands": 5,
-            "breath": 7,
-            "spells": 8,
-            "paralysis": 6
-          },
-          "thac0": 14,
-          "aacBonus": 5
-        },
-        {
-          "hd": "8d8",
-          "xp": 140000,
-          "level": 8,
-          "saves": {
-            "death": 4,
-            "wands": 5,
-            "breath": 7,
-            "spells": 8,
-            "paralysis": 6
-          },
-          "thac0": 14,
-          "aacBonus": 5
-        },
-        {
-          "hd": "9d8",
-          "xp": 270000,
-          "level": 9,
-          "saves": {
-            "death": 4,
-            "wands": 5,
-            "breath": 7,
-            "spells": 8,
-            "paralysis": 6
-          },
-          "thac0": 14,
-          "aacBonus": 5
-        },
-        {
-          "hd": "9d8+3",
-          "xp": 400000,
-          "level": 10,
-          "saves": {
-            "death": 2,
-            "wands": 3,
-            "breath": 4,
-            "spells": 6,
-            "paralysis": 4
-          },
-          "thac0": 12,
-          "aacBonus": 7
-        },
-        {
-          "hd": "9d8+6",
-          "xp": 530000,
-          "level": 11,
-          "saves": {
-            "death": 2,
-            "wands": 3,
-            "breath": 4,
-            "spells": 6,
-            "paralysis": 4
-          },
-          "thac0": 12,
-          "aacBonus": 7
-        },
-        {
-          "hd": "9d8+9",
-          "xp": 660000,
-          "level": 12,
-          "saves": {
-            "death": 2,
-            "wands": 3,
-            "breath": 4,
-            "spells": 6,
-            "paralysis": 4
-          },
-          "thac0": 12,
-          "aacBonus": 7
-        }
-      ],
-      "allowedArmor": "todas",
-      "shieldAllowed": true,
-      "allowedWeapons": "todas",
-      "combatCategory": "marcial",
-      "minRequirements": {
-        "con": 9
-      },
-      "primeRequisites": [
-        "str"
-      ],
-      "allowedWeaponsDesc": "Todas as armas (exceto arcos longos e espadas de duas mãos)."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 28,
+      "system_id": "ose",
+      "ruleset": "advanced"
+    }
   },
   {
     "id": "ose.class.assassino",
+    "system_id": "ose",
     "name_pt": "Assassino",
     "name_en": "Assassin",
-    "name_es": null,
     "description_pt": "Peritos em morte silenciosa, disfarce impecável e fabricação de venenos letais.",
-    "description_en": "Peritos em morte silenciosa, disfarce impecável e fabricação de venenos letais.",
-    "description_es": null,
     "hp_per_level": 4,
     "key_attributes": [
       "dex"
     ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
     "traits": [
       "couro",
       "semimarcial",
@@ -597,250 +360,241 @@
     "rarity": "common",
     "ruleset": "advanced",
     "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
+    "source_page": 30,
     "data": {
       "id": "assassino",
       "name": "Assassino",
-      "hitDie": "d4",
       "nameEn": "Assassin",
+      "description": "Peritos em morte silenciosa, disfarce impecável e fabricação de venenos letais.",
+      "primeRequisites": [
+        "dex"
+      ],
+      "minRequirements": {},
+      "hitDie": "d4",
+      "allowedArmor": "couro",
+      "shieldAllowed": true,
+      "allowedWeapons": "todas",
+      "allowedWeaponsDesc": "Pode usar qualquer arma de combate.",
+      "combatCategory": "semimarcial",
       "features": [
         "Golpe Assassino: Ataque surpresa por trás que pode matar instantaneamente ou infligir dano quadruplicado.",
         "Disfarce Especialista: Capaz de se passar por qualquer pessoa de outra raça ou classe.",
         "Fabricação e Aplicação de Venenos: Treinado para manusear toxinas sem risco de autoenvenenamento."
       ],
-      "description": "Peritos em morte silenciosa, disfarce impecável e fabricação de venenos letais.",
       "progression": [
         {
-          "hd": "1d4",
-          "xp": 0,
           "level": 1,
+          "xp": 0,
+          "hd": "1d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 15
+          }
         },
         {
-          "hd": "2d4",
-          "xp": 1500,
           "level": 2,
+          "xp": 1500,
+          "hd": "2d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 15
+          }
         },
         {
-          "hd": "3d4",
-          "xp": 3000,
           "level": 3,
+          "xp": 3000,
+          "hd": "3d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 15
+          }
         },
         {
-          "hd": "4d4",
-          "xp": 6000,
           "level": 4,
+          "xp": 6000,
+          "hd": "4d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 15
+          }
         },
         {
-          "hd": "5d4",
-          "xp": 12000,
           "level": 5,
+          "xp": 12000,
+          "hd": "5d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "6d4",
-          "xp": 25000,
           "level": 6,
+          "xp": 25000,
+          "hd": "6d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "7d4",
-          "xp": 50000,
           "level": 7,
+          "xp": 50000,
+          "hd": "7d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "8d4",
-          "xp": 100000,
           "level": 8,
+          "xp": 100000,
+          "hd": "8d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "9d4",
-          "xp": 200000,
           "level": 9,
+          "xp": 200000,
+          "hd": "9d4",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d4+2",
-          "xp": 300000,
           "level": 10,
+          "xp": 300000,
+          "hd": "9d4+2",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d4+4",
-          "xp": 425000,
           "level": 11,
+          "xp": 425000,
+          "hd": "9d4+4",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d4+6",
-          "xp": 575000,
           "level": 12,
+          "xp": 575000,
+          "hd": "9d4+6",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d4+8",
-          "xp": 750000,
           "level": 13,
+          "xp": 750000,
+          "hd": "9d4+8",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 7,
             "breath": 10,
-            "spells": 8,
-            "paralysis": 7
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 8
+          }
         },
         {
-          "hd": "9d4+10",
-          "xp": 1000000,
           "level": 14,
+          "xp": 1000000,
+          "hd": "9d4+10",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 7,
             "breath": 10,
-            "spells": 8,
-            "paralysis": 7
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 8
+          }
         }
       ],
-      "allowedArmor": "couro",
-      "shieldAllowed": true,
-      "allowedWeapons": "todas",
-      "combatCategory": "semimarcial",
-      "minRequirements": {
-        "dex": 9
-      },
-      "primeRequisites": [
-        "dex"
-      ],
-      "allowedWeaponsDesc": "Pode usar qualquer arma de combate."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 30,
+      "system_id": "ose",
+      "ruleset": "advanced"
+    }
   },
   {
     "id": "ose.class.barbaro",
+    "system_id": "ose",
     "name_pt": "Bárbaro",
     "name_en": "Barbarian",
-    "name_es": null,
     "description_pt": "Guerreiros impetuosos das estepes e montanhas, com constituição formidável e intuição selvagem.",
-    "description_en": "Guerreiros impetuosos das estepes e montanhas, com constituição formidável e intuição selvagem.",
-    "description_es": null,
     "hp_per_level": 8,
     "key_attributes": [
-      "str",
-      "con"
+      "str"
     ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
     "traits": [
       "couro_e_malha",
       "marcial",
@@ -849,251 +603,243 @@
     "rarity": "common",
     "ruleset": "advanced",
     "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
+    "source_page": 32,
     "data": {
       "id": "barbaro",
       "name": "Bárbaro",
-      "hitDie": "d8",
       "nameEn": "Barbarian",
+      "description": "Guerreiros impetuosos das estepes e montanhas, com constituição formidável e intuição selvagem.",
+      "primeRequisites": [
+        "str"
+      ],
+      "minRequirements": {
+        "str": 9
+      },
+      "hitDie": "d8",
+      "allowedArmor": "couro_e_malha",
+      "shieldAllowed": true,
+      "allowedWeapons": "todas",
+      "allowedWeaponsDesc": "Pode usar qualquer arma de combate.",
+      "combatCategory": "marcial",
       "features": [
         "Vigor Selvagem: Ganha PV adicional e recupera pontos de vida mais rápido durante o descanso.",
         "Esquiva Sobrenatural: Surpresa reduzida (apenas 1 em 6 de ser emboscado).",
         "Perícias da Selva: Rola para Rastrear, Subir Penhascos e Evitar Perigos Naturais."
       ],
-      "description": "Guerreiros impetuosos das estepes e montanhas, com constituição formidável e intuição selvagem.",
       "progression": [
         {
-          "hd": "1d8",
-          "xp": 0,
           "level": 1,
+          "xp": 0,
+          "hd": "1d8",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 10,
             "wands": 13,
+            "paralysis": 12,
             "breath": 15,
-            "spells": 16,
-            "paralysis": 12
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 16
+          }
         },
         {
-          "hd": "2d8",
-          "xp": 2500,
           "level": 2,
+          "xp": 2500,
+          "hd": "2d8",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 10,
             "wands": 13,
+            "paralysis": 12,
             "breath": 15,
-            "spells": 16,
-            "paralysis": 12
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 16
+          }
         },
         {
-          "hd": "3d8",
-          "xp": 5000,
           "level": 3,
+          "xp": 5000,
+          "hd": "3d8",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 10,
             "wands": 13,
+            "paralysis": 12,
             "breath": 15,
-            "spells": 16,
-            "paralysis": 12
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 16
+          }
         },
         {
-          "hd": "4d8",
-          "xp": 10000,
           "level": 4,
+          "xp": 10000,
+          "hd": "4d8",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 8,
             "wands": 11,
+            "paralysis": 10,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 10
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "5d8",
-          "xp": 20000,
           "level": 5,
+          "xp": 18500,
+          "hd": "5d8",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 8,
             "wands": 11,
+            "paralysis": 10,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 10
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "6d8",
-          "xp": 40000,
           "level": 6,
+          "xp": 37000,
+          "hd": "6d8",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 8,
             "wands": 11,
+            "paralysis": 10,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 10
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "7d8",
-          "xp": 80000,
           "level": 7,
+          "xp": 85000,
+          "hd": "7d8",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 6,
             "wands": 9,
+            "paralysis": 8,
             "breath": 10,
-            "spells": 12,
-            "paralysis": 8
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "8d8",
-          "xp": 150000,
           "level": 8,
+          "xp": 140000,
+          "hd": "8d8",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 6,
             "wands": 9,
+            "paralysis": 8,
             "breath": 10,
-            "spells": 12,
-            "paralysis": 8
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d8",
-          "xp": 300000,
           "level": 9,
+          "xp": 270000,
+          "hd": "9d8",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 6,
             "wands": 9,
+            "paralysis": 8,
             "breath": 10,
-            "spells": 12,
-            "paralysis": 8
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d8+3",
-          "xp": 450000,
           "level": 10,
+          "xp": 400000,
+          "hd": "9d8+3",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 4,
             "wands": 7,
+            "paralysis": 6,
             "breath": 8,
-            "spells": 10,
-            "paralysis": 6
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 7
+          }
         },
         {
-          "hd": "9d8+6",
-          "xp": 600000,
           "level": 11,
+          "xp": 530000,
+          "hd": "9d8+6",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 4,
             "wands": 7,
+            "paralysis": 6,
             "breath": 8,
-            "spells": 10,
-            "paralysis": 6
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 7
+          }
         },
         {
-          "hd": "9d8+9",
-          "xp": 750000,
           "level": 12,
+          "xp": 660000,
+          "hd": "9d8+9",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 4,
             "wands": 7,
+            "paralysis": 6,
             "breath": 8,
-            "spells": 10,
-            "paralysis": 6
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 7
+          }
         },
         {
-          "hd": "9d8+12",
-          "xp": 900000,
           "level": 13,
-          "saves": {
-            "death": 2,
-            "wands": 5,
-            "breath": 5,
-            "spells": 8,
-            "paralysis": 4
-          },
+          "xp": 790000,
+          "hd": "9d8+12",
           "thac0": 10,
-          "aacBonus": 9
+          "aacBonus": 9,
+          "saves": {
+            "death": 3,
+            "wands": 5,
+            "paralysis": 4,
+            "breath": 5,
+            "spells": 5
+          }
         },
         {
-          "hd": "9d8+15",
-          "xp": 1050000,
           "level": 14,
-          "saves": {
-            "death": 2,
-            "wands": 5,
-            "breath": 5,
-            "spells": 8,
-            "paralysis": 4
-          },
+          "xp": 920000,
+          "hd": "9d8+15",
           "thac0": 10,
-          "aacBonus": 9
+          "aacBonus": 9,
+          "saves": {
+            "death": 3,
+            "wands": 5,
+            "paralysis": 4,
+            "breath": 5,
+            "spells": 5
+          }
         }
       ],
-      "allowedArmor": "couro_e_malha",
-      "shieldAllowed": true,
-      "allowedWeapons": "todas",
-      "combatCategory": "marcial",
-      "minRequirements": {
-        "con": 9,
-        "str": 9
-      },
-      "primeRequisites": [
-        "str",
-        "con"
-      ],
-      "allowedWeaponsDesc": "Pode usar qualquer arma de combate."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 32,
+      "system_id": "ose",
+      "ruleset": "advanced"
+    }
   },
   {
     "id": "ose.class.bardo",
+    "system_id": "ose",
     "name_pt": "Bardo",
     "name_en": "Bard",
-    "name_es": null,
     "description_pt": "Trovadores e poetas aventureiros, conhecedores de lendas antigas, canções mágicas e feitiços arcanos.",
-    "description_en": "Trovadores e poetas aventureiros, conhecedores de lendas antigas, canções mágicas e feitiços arcanos.",
-    "description_es": null,
     "hp_per_level": 6,
     "key_attributes": [
       "cha"
     ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
     "traits": [
       "couro_e_malha",
       "semimarcial",
@@ -1102,326 +848,319 @@
     "rarity": "common",
     "ruleset": "advanced",
     "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
+    "source_page": 34,
     "data": {
       "id": "bardo",
       "name": "Bardo",
-      "hitDie": "d6",
       "nameEn": "Bard",
+      "description": "Trovadores e poetas aventureiros, conhecedores de lendas antigas, canções mágicas e feitiços arcanos.",
+      "primeRequisites": [
+        "cha"
+      ],
+      "minRequirements": {
+        "dex": 9,
+        "int": 9
+      },
+      "hitDie": "d6",
+      "allowedArmor": "couro_e_malha",
+      "shieldAllowed": false,
+      "allowedWeapons": "restrita",
+      "allowedWeaponsDesc": "Armas de uma mão, dardos, estilingues e arcos.",
+      "combatCategory": "semimarcial",
+      "spellCasting": {
+        "type": "arcana",
+        "spellListName": "mago",
+        "startLevel": 2
+      },
       "features": [
         "Canção de Fascinação: Canção capaz de acalmar feras e encantar ouvintes.",
         "Conhecimento de Lendas: Chance de identificar a história e poderes de itens lendários.",
         "Feitiços Arcanos: Conhece e conjura magias de mago a partir do 2º nível."
       ],
-      "description": "Trovadores e poetas aventureiros, conhecedores de lendas antigas, canções mágicas e feitiços arcanos.",
       "progression": [
         {
-          "hd": "1d6",
-          "xp": 0,
           "level": 1,
+          "xp": 0,
+          "hd": "1d6",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 15
+          }
         },
         {
-          "hd": "2d6",
-          "xp": 2000,
           "level": 2,
+          "xp": 2000,
+          "hd": "2d6",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             1
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "3d6",
-          "xp": 4000,
           "level": 3,
+          "xp": 4000,
+          "hd": "3d6",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "4d6",
-          "xp": 8000,
           "level": 4,
+          "xp": 8000,
+          "hd": "4d6",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2,
             1
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "5d6",
-          "xp": 16000,
           "level": 5,
+          "xp": 16000,
+          "hd": "5d6",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
+            "spells": 13
           },
-          "thac0": 17,
           "spells": [
             2,
             2
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "6d6",
-          "xp": 32000,
           "level": 6,
+          "xp": 32000,
+          "hd": "6d6",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
+            "spells": 13
           },
-          "thac0": 17,
           "spells": [
             2,
             2,
             1
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "7d6",
-          "xp": 64000,
           "level": 7,
+          "xp": 64000,
+          "hd": "7d6",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
+            "spells": 13
           },
-          "thac0": 17,
           "spells": [
             3,
             2,
             2
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "8d6",
-          "xp": 120000,
           "level": 8,
+          "xp": 120000,
+          "hd": "8d6",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
+            "spells": 13
           },
-          "thac0": 17,
           "spells": [
             3,
             3,
             2,
             1
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "9d6",
-          "xp": 240000,
           "level": 9,
+          "xp": 240000,
+          "hd": "9d6",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
+            "spells": 10
           },
-          "thac0": 14,
           "spells": [
             3,
             3,
             3,
             2
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d6+1",
-          "xp": 360000,
           "level": 10,
+          "xp": 360000,
+          "hd": "9d6+2",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
+            "spells": 10
           },
-          "thac0": 14,
           "spells": [
             3,
             3,
             3,
             3
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d6+2",
-          "xp": 480000,
           "level": 11,
+          "xp": 480000,
+          "hd": "9d6+4",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
+            "spells": 10
           },
-          "thac0": 14,
           "spells": [
-            4,
+            3,
             3,
             3,
             3,
             1
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d6+3",
-          "xp": 600000,
           "level": 12,
+          "xp": 600000,
+          "hd": "9d6+6",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
+            "spells": 10
           },
-          "thac0": 14,
           "spells": [
-            4,
-            4,
+            3,
+            3,
             3,
             3,
             2
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d6+4",
-          "xp": 720000,
           "level": 13,
+          "xp": 720000,
+          "hd": "9d6+8",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 7,
             "breath": 10,
-            "spells": 8,
-            "paralysis": 7
+            "spells": 8
           },
-          "thac0": 12,
           "spells": [
-            4,
+            3,
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "level": 14,
+          "xp": 840000,
+          "hd": "9d6+10",
+          "thac0": 12,
+          "aacBonus": 7,
+          "saves": {
+            "death": 8,
+            "wands": 9,
+            "paralysis": 7,
+            "breath": 10,
+            "spells": 8
+          },
+          "spells": [
             4,
             4,
             3,
+            3,
             3
-          ],
-          "aacBonus": 7
-        },
-        {
-          "hd": "9d6+5",
-          "xp": 840000,
-          "level": 14,
-          "saves": {
-            "death": 8,
-            "wands": 9,
-            "breath": 10,
-            "spells": 8,
-            "paralysis": 7
-          },
-          "thac0": 12,
-          "spells": [
-            4,
-            4,
-            4,
-            4,
-            3
-          ],
-          "aacBonus": 7
+          ]
         }
       ],
-      "allowedArmor": "couro_e_malha",
-      "spellCasting": {
-        "type": "arcana",
-        "startLevel": 2,
-        "spellListName": "mago"
-      },
-      "shieldAllowed": false,
-      "allowedWeapons": "restrita",
-      "combatCategory": "semimarcial",
-      "minRequirements": {
-        "cha": 9,
-        "dex": 9
-      },
-      "primeRequisites": [
-        "cha"
-      ],
-      "allowedWeaponsDesc": "Armas de uma mão, dardos, estilingues e arcos."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 34,
+      "system_id": "ose",
+      "ruleset": "advanced"
+    }
   },
   {
     "id": "ose.class.cavaleiro",
+    "system_id": "ose",
     "name_pt": "Cavaleiro",
     "name_en": "Knight",
-    "name_es": null,
     "description_pt": "Membros da nobreza e ordens cavalheirescas juramentadas, especialistas em combate montado e honra bélica.",
-    "description_en": "Membros da nobreza e ordens cavalheirescas juramentadas, especialistas em combate montado e honra bélica.",
-    "description_es": null,
     "hp_per_level": 8,
     "key_attributes": [
-      "str",
-      "cha"
+      "str"
     ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
     "traits": [
       "todas",
       "marcial",
@@ -1430,252 +1169,244 @@
     "rarity": "common",
     "ruleset": "advanced",
     "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
+    "source_page": 64,
     "data": {
       "id": "cavaleiro",
       "name": "Cavaleiro",
-      "hitDie": "d8",
       "nameEn": "Knight",
+      "description": "Membros da nobreza e ordens cavalheirescas juramentadas, especialistas em combate montado e honra bélica.",
+      "primeRequisites": [
+        "str"
+      ],
+      "minRequirements": {
+        "con": 9,
+        "dex": 9
+      },
+      "hitDie": "d8",
+      "allowedArmor": "todas",
+      "shieldAllowed": true,
+      "allowedWeapons": "todas",
+      "allowedWeaponsDesc": "Pode usar qualquer arma de combate.",
+      "combatCategory": "marcial",
       "features": [
         "Combate Montado Formidável: Bônus de +1 em ataques a cavalo e investida devastadora.",
         "Hospitalidade Feudal: Direito a abrigo e boas-vindas em castelos e ordens nobres.",
         "Código de Honra: Obriga-se à lealdade, proteção dos desamparados e combate leal."
       ],
-      "description": "Membros da nobreza e ordens cavalheirescas juramentadas, especialistas em combate montado e honra bélica.",
       "progression": [
         {
-          "hd": "1d8",
-          "xp": 0,
           "level": 1,
+          "xp": 0,
+          "hd": "1d8",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 14,
             "breath": 15,
-            "spells": 16,
-            "paralysis": 14
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 16
+          }
         },
         {
-          "hd": "2d8",
-          "xp": 2500,
           "level": 2,
+          "xp": 2500,
+          "hd": "2d8",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 14,
             "breath": 15,
-            "spells": 16,
-            "paralysis": 14
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 16
+          }
         },
         {
-          "hd": "3d8",
-          "xp": 5000,
           "level": 3,
+          "xp": 5000,
+          "hd": "3d8",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 14,
             "breath": 15,
-            "spells": 16,
-            "paralysis": 14
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 16
+          }
         },
         {
-          "hd": "4d8",
-          "xp": 10000,
           "level": 4,
+          "xp": 10000,
+          "hd": "4d8",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 12,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 12
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 14
+          }
         },
         {
-          "hd": "5d8",
-          "xp": 20000,
           "level": 5,
+          "xp": 18500,
+          "hd": "5d8",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 12,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 12
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 14
+          }
         },
         {
-          "hd": "6d8",
-          "xp": 40000,
           "level": 6,
+          "xp": 37000,
+          "hd": "6d8",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 12,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 12
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 14
+          }
         },
         {
-          "hd": "7d8",
-          "xp": 80000,
           "level": 7,
+          "xp": 85000,
+          "hd": "7d8",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 10,
             "breath": 10,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 12
+          }
         },
         {
-          "hd": "8d8",
-          "xp": 150000,
           "level": 8,
+          "xp": 140000,
+          "hd": "8d8",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 10,
             "breath": 10,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 12
+          }
         },
         {
-          "hd": "9d8",
-          "xp": 300000,
           "level": 9,
+          "xp": 270000,
+          "hd": "9d8",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 10,
             "breath": 10,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 12
+          }
         },
         {
-          "hd": "9d8+3",
-          "xp": 450000,
           "level": 10,
+          "xp": 400000,
+          "hd": "9d8+2",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 8,
             "breath": 8,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 10
+          }
         },
         {
-          "hd": "9d8+6",
-          "xp": 600000,
           "level": 11,
+          "xp": 530000,
+          "hd": "9d8+4",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 8,
             "breath": 8,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 10
+          }
         },
         {
-          "hd": "9d8+9",
-          "xp": 750000,
           "level": 12,
+          "xp": 660000,
+          "hd": "9d8+6",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 8,
             "breath": 8,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 10
+          }
         },
         {
-          "hd": "9d8+12",
-          "xp": 900000,
           "level": 13,
+          "xp": 790000,
+          "hd": "9d8+8",
+          "thac0": 10,
+          "aacBonus": 9,
           "saves": {
             "death": 4,
             "wands": 5,
+            "paralysis": 6,
             "breath": 5,
-            "spells": 8,
-            "paralysis": 6
-          },
-          "thac0": 10,
-          "aacBonus": 9
+            "spells": 8
+          }
         },
         {
-          "hd": "9d8+15",
-          "xp": 1050000,
           "level": 14,
+          "xp": 920000,
+          "hd": "9d8+10",
+          "thac0": 10,
+          "aacBonus": 9,
           "saves": {
             "death": 4,
             "wands": 5,
+            "paralysis": 6,
             "breath": 5,
-            "spells": 8,
-            "paralysis": 6
-          },
-          "thac0": 10,
-          "aacBonus": 9
+            "spells": 8
+          }
         }
       ],
-      "allowedArmor": "todas",
-      "shieldAllowed": true,
-      "allowedWeapons": "todas",
-      "combatCategory": "marcial",
-      "minRequirements": {
-        "cha": 9,
-        "con": 9,
-        "str": 9
-      },
-      "primeRequisites": [
-        "str",
-        "cha"
-      ],
-      "allowedWeaponsDesc": "Pode usar qualquer arma de combate."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 64,
+      "system_id": "ose",
+      "ruleset": "advanced"
+    }
   },
   {
     "id": "ose.class.clerigo",
+    "system_id": "ose",
     "name_pt": "Clérigo",
     "name_en": "Cleric",
-    "name_es": null,
     "description_pt": "Campeões da fé e servos dos deuses, combinando habilidade marcial com milagres e cura sagrada.",
-    "description_en": "Campeões da fé e servos dos deuses, combinando habilidade marcial com milagres e cura sagrada.",
-    "description_es": null,
     "hp_per_level": 6,
     "key_attributes": [
       "wis"
     ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
     "traits": [
       "todas",
       "semimarcial",
@@ -1683,330 +1414,327 @@
     ],
     "rarity": "common",
     "ruleset": "advanced",
-    "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 16,
     "data": {
       "id": "clerigo",
       "name": "Clérigo",
-      "hitDie": "d6",
       "nameEn": "Cleric",
+      "description": "Campeões da fé e servos dos deuses, combinando habilidade marcial com milagres e cura sagrada.",
+      "primeRequisites": [
+        "wis"
+      ],
+      "minRequirements": {},
+      "hitDie": "d6",
+      "allowedArmor": "todas",
+      "shieldAllowed": true,
+      "allowedWeapons": "sem_corte",
+      "allowedWeaponsDesc": "Apenas armas contundentes sem corte (maça, clava, martelo de guerra, cajado, funda).",
+      "combatCategory": "semimarcial",
+      "spellCasting": {
+        "type": "divina",
+        "spellListName": "clerigo",
+        "startLevel": 1
+      },
       "features": [
         "Expulsar Mortos-Vivos: Pode afastar ou destruir esqueletos, zumbis, ghouls e vampiros com seu símbolo sagrado.",
         "Magias Divinas: Ora diretamente para sua divindade para receber milagres diários."
       ],
-      "description": "Campeões da fé e servos dos deuses, combinando habilidade marcial com milagres e cura sagrada.",
       "progression": [
         {
-          "hd": "1d6",
-          "xp": 0,
           "level": 1,
+          "xp": 0,
+          "hd": "1d6",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 14,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 14
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             1
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "2d6",
-          "xp": 1500,
           "level": 2,
+          "xp": 1500,
+          "hd": "2d6",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 14,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 14
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "3d6",
-          "xp": 3000,
           "level": 3,
+          "xp": 3000,
+          "hd": "3d6",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 14,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 14
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2,
             1
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "4d6",
-          "xp": 6000,
           "level": 4,
+          "xp": 6000,
+          "hd": "4d6",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 14,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 14
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2,
             2
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "5d6",
-          "xp": 12000,
           "level": 5,
+          "xp": 12000,
+          "hd": "5d6",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 9,
             "wands": 10,
+            "paralysis": 12,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 12
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             2,
             2,
             1
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "6d6",
-          "xp": 25000,
           "level": 6,
+          "xp": 25000,
+          "hd": "6d6",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 9,
             "wands": 10,
+            "paralysis": 12,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 12
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             2,
             2,
-            2
-          ],
-          "aacBonus": 2
+            1,
+            1
+          ]
         },
         {
-          "hd": "7d6",
-          "xp": 50000,
           "level": 7,
+          "xp": 50000,
+          "hd": "7d6",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 9,
             "wands": 10,
+            "paralysis": 12,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 12
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
-            3,
             2,
             2,
+            2,
+            1,
             1
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "8d6",
-          "xp": 100000,
           "level": 8,
+          "xp": 100000,
+          "hd": "8d6",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 9,
             "wands": 10,
+            "paralysis": 12,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 12
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             3,
             3,
             2,
-            2
-          ],
-          "aacBonus": 2
-        },
-        {
-          "hd": "9d6",
-          "xp": 200000,
-          "level": 9,
-          "saves": {
-            "death": 6,
-            "wands": 7,
-            "breath": 11,
-            "spells": 9,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "spells": [
-            3,
-            3,
-            3,
             2,
             1
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d6+1",
-          "xp": 300000,
-          "level": 10,
+          "level": 9,
+          "xp": 200000,
+          "hd": "9d6",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 9,
             "breath": 11,
-            "spells": 9,
-            "paralysis": 9
+            "spells": 9
           },
+          "spells": [
+            3,
+            3,
+            3,
+            2,
+            2
+          ]
+        },
+        {
+          "level": 10,
+          "xp": 300000,
+          "hd": "9d6+1",
           "thac0": 14,
+          "aacBonus": 5,
+          "saves": {
+            "death": 6,
+            "wands": 7,
+            "paralysis": 9,
+            "breath": 11,
+            "spells": 9
+          },
           "spells": [
             4,
             4,
             3,
             3,
             2
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d6+2",
-          "xp": 400000,
           "level": 11,
+          "xp": 400000,
+          "hd": "9d6+2",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 9,
             "breath": 11,
-            "spells": 9,
-            "paralysis": 9
+            "spells": 9
           },
-          "thac0": 14,
           "spells": [
             4,
             4,
             4,
             3,
             3
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d6+3",
-          "xp": 500000,
           "level": 12,
+          "xp": 500000,
+          "hd": "9d6+3",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 9,
             "breath": 11,
-            "spells": 9,
-            "paralysis": 9
+            "spells": 9
           },
-          "thac0": 14,
           "spells": [
             5,
             5,
             4,
             4,
             3
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d6+4",
-          "xp": 600000,
           "level": 13,
+          "xp": 600000,
+          "hd": "9d6+4",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 3,
             "wands": 5,
+            "paralysis": 7,
             "breath": 8,
-            "spells": 7,
-            "paralysis": 7
+            "spells": 7
           },
-          "thac0": 12,
           "spells": [
             5,
             5,
             5,
             4,
             4
-          ],
-          "aacBonus": 7
+          ]
         },
         {
-          "hd": "9d6+5",
-          "xp": 700000,
           "level": 14,
+          "xp": 700000,
+          "hd": "9d6+5",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 3,
             "wands": 5,
+            "paralysis": 7,
             "breath": 8,
-            "spells": 7,
-            "paralysis": 7
+            "spells": 7
           },
-          "thac0": 12,
           "spells": [
             6,
             5,
             5,
             5,
             4
-          ],
-          "aacBonus": 7
+          ]
         }
       ],
-      "allowedArmor": "todas",
-      "spellCasting": {
-        "type": "divina",
-        "startLevel": 1,
-        "spellListName": "clerigo"
-      },
-      "shieldAllowed": true,
-      "allowedWeapons": "sem_corte",
-      "combatCategory": "semimarcial",
-      "minRequirements": {},
-      "primeRequisites": [
-        "wis"
-      ],
-      "allowedWeaponsDesc": "Apenas armas contundentes sem corte (maça, clava, martelo de guerra, cajado, funda)."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
+      "sourceBook": "Old-School Essentials — Livro de Regras",
+      "sourcePage": 16,
+      "system_id": "ose",
+      "ruleset": "advanced"
+    }
   },
   {
     "id": "ose.class.druida",
+    "system_id": "ose",
     "name_pt": "Druida",
     "name_en": "Druid",
-    "name_es": null,
     "description_pt": "Guardiões dos bosques sagrados e forças primordiais, mestres do clima, flora e transmutação animal.",
-    "description_en": "Guardiões dos bosques sagrados e forças primordiais, mestres do clima, flora e transmutação animal.",
-    "description_es": null,
     "hp_per_level": 6,
     "key_attributes": [
       "wis"
     ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
     "traits": [
       "couro",
       "semimarcial",
@@ -2015,587 +1743,329 @@
     "rarity": "common",
     "ruleset": "advanced",
     "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
+    "source_page": 40,
     "data": {
       "id": "druida",
       "name": "Druida",
-      "hitDie": "d6",
       "nameEn": "Druid",
+      "description": "Guardiões dos bosques sagrados e forças primordiais, mestres do clima, flora e transmutação animal.",
+      "primeRequisites": [
+        "wis"
+      ],
+      "minRequirements": {},
+      "hitDie": "d6",
+      "allowedArmor": "couro",
+      "shieldAllowed": true,
+      "allowedWeapons": "restrita",
+      "allowedWeaponsDesc": "Clava, adaga, dardo, cajado, funda, lança (sem metais nas armaduras/escudos).",
+      "combatCategory": "semimarcial",
+      "spellCasting": {
+        "type": "druidica",
+        "spellListName": "druida",
+        "startLevel": 1
+      },
       "features": [
         "Magias da Natureza: Conjura magias de druida desde o 1º nível.",
         "Identificar Plantas e Animais: Identifica espécies puras e água potável com precisão.",
         "Forma Selvagem (8º nível): Pode transformar-se em animais terrestres, aves e répteis 3x ao dia."
       ],
-      "description": "Guardiões dos bosques sagrados e forças primordiais, mestres do clima, flora e transmutação animal.",
       "progression": [
         {
-          "hd": "1d6",
-          "xp": 0,
           "level": 1,
+          "xp": 0,
+          "hd": "1d6",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 14,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 14
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             1
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "2d6",
-          "xp": 2000,
           "level": 2,
+          "xp": 2000,
+          "hd": "2d6",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 14,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 14
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "3d6",
-          "xp": 4000,
           "level": 3,
+          "xp": 4000,
+          "hd": "3d6",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 14,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 14
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2,
             1
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "4d6",
-          "xp": 8000,
           "level": 4,
+          "xp": 7500,
+          "hd": "4d6",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 14,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 14
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2,
             2
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "5d6",
-          "xp": 16000,
           "level": 5,
+          "xp": 12500,
+          "hd": "5d6",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 9,
             "wands": 10,
+            "paralysis": 12,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 12
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             2,
             2,
+            1,
             1
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "6d6",
-          "xp": 32000,
           "level": 6,
+          "xp": 20000,
+          "hd": "6d6",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 9,
             "wands": 10,
+            "paralysis": 12,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 12
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             2,
             2,
-            2
-          ],
-          "aacBonus": 2
+            2,
+            1,
+            1
+          ]
         },
         {
-          "hd": "7d6",
-          "xp": 64000,
           "level": 7,
+          "xp": 35000,
+          "hd": "7d6",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 9,
             "wands": 10,
+            "paralysis": 12,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 12
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
+            3,
             3,
             2,
             2,
             1
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "8d6",
-          "xp": 120000,
           "level": 8,
+          "xp": 60000,
+          "hd": "8d6",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 9,
             "wands": 10,
+            "paralysis": 12,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 12
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
+            3,
             3,
             3,
             2,
             2
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "9d6",
-          "xp": 240000,
           "level": 9,
+          "xp": 90000,
+          "hd": "9d6",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 9,
             "breath": 11,
-            "spells": 9,
-            "paralysis": 9
+            "spells": 9
           },
-          "thac0": 14,
-          "spells": [
-            3,
-            3,
-            3,
-            2,
-            1
-          ],
-          "aacBonus": 5
-        },
-        {
-          "hd": "9d6+1",
-          "xp": 360000,
-          "level": 10,
-          "saves": {
-            "death": 6,
-            "wands": 7,
-            "breath": 11,
-            "spells": 9,
-            "paralysis": 9
-          },
-          "thac0": 14,
           "spells": [
             4,
             4,
             3,
             3,
             2
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d6+2",
-          "xp": 480000,
-          "level": 11,
+          "level": 10,
+          "xp": 125000,
+          "hd": "9d6+1",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 9,
             "breath": 11,
-            "spells": 9,
-            "paralysis": 9
+            "spells": 9
           },
-          "thac0": 14,
           "spells": [
             4,
             4,
             4,
             3,
             3
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d6+3",
-          "xp": 600000,
-          "level": 12,
+          "level": 11,
+          "xp": 200000,
+          "hd": "9d6+2",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 9,
             "breath": 11,
-            "spells": 9,
-            "paralysis": 9
+            "spells": 9
           },
-          "thac0": 14,
           "spells": [
             5,
             5,
             4,
             4,
             3
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d6+4",
-          "xp": 720000,
-          "level": 13,
+          "level": 12,
+          "xp": 300000,
+          "hd": "9d6+3",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
-            "death": 3,
-            "wands": 5,
-            "breath": 8,
-            "spells": 7,
-            "paralysis": 7
+            "death": 6,
+            "wands": 7,
+            "paralysis": 9,
+            "breath": 11,
+            "spells": 9
           },
-          "thac0": 12,
           "spells": [
             5,
             5,
             5,
             4,
             4
-          ],
-          "aacBonus": 7
+          ]
         },
         {
-          "hd": "9d6+5",
-          "xp": 840000,
-          "level": 14,
+          "level": 13,
+          "xp": 750000,
+          "hd": "9d6+4",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 3,
             "wands": 5,
+            "paralysis": 7,
             "breath": 8,
-            "spells": 7,
-            "paralysis": 7
+            "spells": 7
           },
-          "thac0": 12,
           "spells": [
             6,
             5,
             5,
             5,
             4
-          ],
-          "aacBonus": 7
-        }
-      ],
-      "allowedArmor": "couro",
-      "spellCasting": {
-        "type": "druidica",
-        "startLevel": 1,
-        "spellListName": "druida"
-      },
-      "shieldAllowed": true,
-      "allowedWeapons": "restrita",
-      "combatCategory": "semimarcial",
-      "minRequirements": {
-        "cha": 9,
-        "wis": 9
-      },
-      "primeRequisites": [
-        "wis"
-      ],
-      "allowedWeaponsDesc": "Clava, adaga, dardo, cajado, funda, lança (sem metais nas armaduras/escudos)."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
-  },
-  {
-    "id": "ose.class.elfo_bx",
-    "name_pt": "Elfo (Classe Clássica)",
-    "name_en": "Elf (Classic)",
-    "name_es": null,
-    "description_pt": "Classe de aventureiro elfo B/X tradicional. Guerreiro e mago simultaneamente, empunhando armaduras pesadas e lançando feitiços arcanos.",
-    "description_en": "Classe de aventureiro elfo B/X tradicional. Guerreiro e mago simultaneamente, empunhando armaduras pesadas e lançando feitiços arcanos.",
-    "description_es": null,
-    "hp_per_level": 6,
-    "key_attributes": [
-      "str",
-      "int"
-    ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
-    "traits": [
-      "todas",
-      "marcial",
-      "classe-raça"
-    ],
-    "rarity": "common",
-    "ruleset": "advanced",
-    "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
-    "data": {
-      "id": "elfo_bx",
-      "name": "Elfo (Classe Clássica)",
-      "hitDie": "d6",
-      "nameEn": "Elf (Classic)",
-      "features": [
-        "Guerreiro-Mago: Lança feitiços mesmo vestindo cota de malha ou placas!",
-        "Imunidade a Carniçal: Imune à paralisia sobrenatural.",
-        "Detectar Portas Secretas: 2 em 6 ao procurar, 1 em 6 ao passar perto.",
-        "Infravisão: 18 metros."
-      ],
-      "description": "Classe de aventureiro elfo B/X tradicional. Guerreiro e mago simultaneamente, empunhando armaduras pesadas e lançando feitiços arcanos.",
-      "isRaceClass": true,
-      "progression": [
-        {
-          "hd": "1d6",
-          "xp": 0,
-          "level": 1,
-          "saves": {
-            "death": 12,
-            "wands": 13,
-            "breath": 15,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "spells": [
-            1
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "2d6",
-          "xp": 4000,
-          "level": 2,
-          "saves": {
-            "death": 12,
-            "wands": 13,
-            "breath": 15,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "spells": [
-            2
-          ],
-          "aacBonus": 0
-        },
-        {
-          "hd": "3d6",
-          "xp": 8000,
-          "level": 3,
-          "saves": {
-            "death": 12,
-            "wands": 13,
-            "breath": 15,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "spells": [
-            2,
-            1
-          ],
-          "aacBonus": 0
-        },
-        {
-          "hd": "4d6",
-          "xp": 16000,
-          "level": 4,
-          "saves": {
-            "death": 10,
-            "wands": 11,
-            "breath": 13,
-            "spells": 12,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "spells": [
-            2,
-            2
-          ],
-          "aacBonus": 2
-        },
-        {
-          "hd": "5d6",
-          "xp": 32000,
-          "level": 5,
-          "saves": {
-            "death": 10,
-            "wands": 11,
-            "breath": 13,
-            "spells": 12,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "spells": [
-            2,
-            2,
-            1
-          ],
-          "aacBonus": 2
-        },
-        {
-          "hd": "6d6",
-          "xp": 64000,
-          "level": 6,
-          "saves": {
-            "death": 10,
-            "wands": 11,
-            "breath": 13,
-            "spells": 12,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "spells": [
-            2,
-            2,
-            2
-          ],
-          "aacBonus": 2
-        },
-        {
-          "hd": "7d6",
-          "xp": 120000,
-          "level": 7,
-          "saves": {
-            "death": 8,
-            "wands": 9,
-            "breath": 10,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "spells": [
-            3,
-            2,
-            2,
-            1
-          ],
-          "aacBonus": 5
-        },
-        {
-          "hd": "8d6",
-          "xp": 250000,
-          "level": 8,
-          "saves": {
-            "death": 8,
-            "wands": 9,
-            "breath": 10,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "spells": [
-            3,
-            3,
-            2,
-            2
-          ],
-          "aacBonus": 5
-        },
-        {
-          "hd": "9d6",
-          "xp": 400000,
-          "level": 9,
-          "saves": {
-            "death": 8,
-            "wands": 9,
-            "breath": 10,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "spells": [
-            3,
-            3,
-            3,
-            2,
-            1
-          ],
-          "aacBonus": 5
-        },
-        {
-          "hd": "9d6+2",
-          "xp": 600000,
-          "level": 10,
-          "saves": {
-            "death": 6,
-            "wands": 7,
-            "breath": 8,
-            "spells": 8,
-            "paralysis": 8
-          },
+          "level": 14,
+          "xp": 1500000,
+          "hd": "9d6+5",
           "thac0": 12,
+          "aacBonus": 7,
+          "saves": {
+            "death": 3,
+            "wands": 5,
+            "paralysis": 7,
+            "breath": 8,
+            "spells": 7
+          },
           "spells": [
-            3,
-            3,
-            3,
-            3,
-            2
-          ],
-          "aacBonus": 7
+            6,
+            6,
+            5,
+            5,
+            5
+          ]
         }
       ],
-      "allowedArmor": "todas",
-      "spellCasting": {
-        "type": "arcana",
-        "startLevel": 1,
-        "spellListName": "mago"
-      },
-      "shieldAllowed": true,
-      "allowedWeapons": "todas",
-      "combatCategory": "marcial",
-      "minRequirements": {
-        "int": 9
-      },
-      "primeRequisites": [
-        "str",
-        "int"
-      ],
-      "allowedWeaponsDesc": "Pode empunhar qualquer arma."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 40,
+      "system_id": "ose",
+      "ruleset": "advanced"
+    }
   },
   {
     "id": "ose.class.guerreiro",
+    "system_id": "ose",
     "name_pt": "Guerreiro",
     "name_en": "Fighter",
-    "name_es": null,
     "description_pt": "Mestres do combate corpo a corpo e à distância, treinados para resistir e liderar forças em campo aberto.",
-    "description_en": "Mestres do combate corpo a corpo e à distância, treinados para resistir e liderar forças em campo aberto.",
-    "description_es": null,
     "hp_per_level": 8,
     "key_attributes": [
       "str"
     ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
     "traits": [
       "todas",
       "marcial",
@@ -2603,420 +2073,241 @@
     ],
     "rarity": "common",
     "ruleset": "advanced",
-    "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 18,
     "data": {
       "id": "guerreiro",
       "name": "Guerreiro",
-      "hitDie": "d8",
       "nameEn": "Fighter",
+      "description": "Mestres do combate corpo a corpo e à distância, treinados para resistir e liderar forças em campo aberto.",
+      "primeRequisites": [
+        "str"
+      ],
+      "minRequirements": {},
+      "hitDie": "d8",
+      "allowedArmor": "todas",
+      "shieldAllowed": true,
+      "allowedWeapons": "todas",
+      "allowedWeaponsDesc": "Pode empunhar qualquer arma de combate.",
+      "combatCategory": "marcial",
       "features": [
         "Treinamento Bélico Total: Pode vestir qualquer armadura, usar escudo e todas as armas.",
         "Fortaleza (9º nível): Pode construir um castelo fortificado e liderar homens-de-armas mercenários."
       ],
-      "description": "Mestres do combate corpo a corpo e à distância, treinados para resistir e liderar forças em campo aberto.",
       "progression": [
         {
+          "level": 1,
+          "xp": 0,
           "hd": "1d8",
-          "xp": 0,
-          "level": 1,
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 14,
             "breath": 15,
-            "spells": 16,
-            "paralysis": 14
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 16
+          }
         },
         {
+          "level": 2,
+          "xp": 2000,
           "hd": "2d8",
-          "xp": 2000,
-          "level": 2,
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 14,
             "breath": 15,
-            "spells": 16,
-            "paralysis": 14
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 16
+          }
         },
         {
+          "level": 3,
+          "xp": 4000,
           "hd": "3d8",
-          "xp": 4000,
-          "level": 3,
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 14,
             "breath": 15,
-            "spells": 16,
-            "paralysis": 14
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 16
+          }
         },
         {
+          "level": 4,
+          "xp": 8000,
           "hd": "4d8",
-          "xp": 8000,
-          "level": 4,
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 12,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 12
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 14
+          }
         },
         {
+          "level": 5,
+          "xp": 16000,
           "hd": "5d8",
-          "xp": 16000,
-          "level": 5,
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 12,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 12
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 14
+          }
         },
         {
+          "level": 6,
+          "xp": 32000,
           "hd": "6d8",
-          "xp": 32000,
-          "level": 6,
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 12,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 12
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 14
+          }
         },
         {
+          "level": 7,
+          "xp": 64000,
           "hd": "7d8",
-          "xp": 64000,
-          "level": 7,
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 10,
             "breath": 10,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 12
+          }
         },
         {
+          "level": 8,
+          "xp": 120000,
           "hd": "8d8",
-          "xp": 120000,
-          "level": 8,
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 10,
             "breath": 10,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 12
+          }
         },
         {
-          "hd": "9d8",
-          "xp": 240000,
           "level": 9,
+          "xp": 240000,
+          "hd": "9d8",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 10,
             "breath": 10,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 12
+          }
         },
         {
-          "hd": "9d8+2",
-          "xp": 360000,
           "level": 10,
+          "xp": 360000,
+          "hd": "9d8+2",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 8,
             "breath": 8,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 10
+          }
         },
         {
-          "hd": "9d8+4",
-          "xp": 480000,
           "level": 11,
+          "xp": 480000,
+          "hd": "9d8+4",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 8,
             "breath": 8,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 10
+          }
         },
         {
-          "hd": "9d8+6",
-          "xp": 600000,
           "level": 12,
-          "saves": {
-            "death": 6,
-            "wands": 7,
-            "breath": 8,
-            "spells": 10,
-            "paralysis": 8
-          },
+          "xp": 600000,
+          "hd": "9d8+6",
           "thac0": 12,
-          "aacBonus": 7
+          "aacBonus": 7,
+          "saves": {
+            "death": 6,
+            "wands": 7,
+            "paralysis": 8,
+            "breath": 8,
+            "spells": 10
+          }
         },
         {
-          "hd": "9d8+8",
-          "xp": 720000,
           "level": 13,
+          "xp": 720000,
+          "hd": "9d8+8",
+          "thac0": 10,
+          "aacBonus": 9,
           "saves": {
             "death": 4,
             "wands": 5,
+            "paralysis": 6,
             "breath": 5,
-            "spells": 8,
-            "paralysis": 6
-          },
-          "thac0": 10,
-          "aacBonus": 9
+            "spells": 8
+          }
         },
         {
-          "hd": "9d8+10",
-          "xp": 840000,
           "level": 14,
-          "saves": {
-            "death": 4,
-            "wands": 5,
-            "breath": 5,
-            "spells": 8,
-            "paralysis": 6
-          },
+          "xp": 840000,
+          "hd": "9d8+10",
           "thac0": 10,
-          "aacBonus": 9
-        }
-      ],
-      "allowedArmor": "todas",
-      "shieldAllowed": true,
-      "allowedWeapons": "todas",
-      "combatCategory": "marcial",
-      "minRequirements": {},
-      "primeRequisites": [
-        "str"
-      ],
-      "allowedWeaponsDesc": "Pode empunhar qualquer arma de combate."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
-  },
-  {
-    "id": "ose.class.halfling_bx",
-    "name_pt": "Halfling (Classe Clássica)",
-    "name_en": "Halfling (Classic)",
-    "name_es": null,
-    "description_pt": "Classe de aventureiro halfling B/X tradicional. Pontaria incrível com pedras e arcos, furtividade natural e bônus defensivos.",
-    "description_en": "Classe de aventureiro halfling B/X tradicional. Pontaria incrível com pedras e arcos, furtividade natural e bônus defensivos.",
-    "description_es": null,
-    "hp_per_level": 6,
-    "key_attributes": [
-      "dex",
-      "str"
-    ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
-    "traits": [
-      "todas",
-      "marcial",
-      "classe-raça"
-    ],
-    "rarity": "common",
-    "ruleset": "advanced",
-    "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
-    "data": {
-      "id": "halfling_bx",
-      "name": "Halfling (Classe Clássica)",
-      "hitDie": "d6",
-      "nameEn": "Halfling (Classic)",
-      "features": [
-        "Pontaria com Mísseis: +1 em ataques à distância.",
-        "Defesa contra Gigantes: +2 na CA contra criaturas grandes.",
-        "Furtividade e Ocultação: 90% em áreas naturais, 2 em 6 em masmorras.",
-        "Saves Lendários de Halfling: Os melhores saves do jogo."
-      ],
-      "description": "Classe de aventureiro halfling B/X tradicional. Pontaria incrível com pedras e arcos, furtividade natural e bônus defensivos.",
-      "isRaceClass": true,
-      "progression": [
-        {
-          "hd": "1d6",
-          "xp": 0,
-          "level": 1,
-          "saves": {
-            "death": 8,
-            "wands": 9,
-            "breath": 13,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 19,
-          "aacBonus": 0
-        },
-        {
-          "hd": "2d6",
-          "xp": 2000,
-          "level": 2,
-          "saves": {
-            "death": 8,
-            "wands": 9,
-            "breath": 13,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 19,
-          "aacBonus": 0
-        },
-        {
-          "hd": "3d6",
-          "xp": 4000,
-          "level": 3,
-          "saves": {
-            "death": 8,
-            "wands": 9,
-            "breath": 13,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 19,
-          "aacBonus": 0
-        },
-        {
-          "hd": "4d6",
-          "xp": 8000,
-          "level": 4,
-          "saves": {
-            "death": 6,
-            "wands": 7,
-            "breath": 10,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 17,
-          "aacBonus": 2
-        },
-        {
-          "hd": "5d6",
-          "xp": 16000,
-          "level": 5,
-          "saves": {
-            "death": 6,
-            "wands": 7,
-            "breath": 10,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 17,
-          "aacBonus": 2
-        },
-        {
-          "hd": "6d6",
-          "xp": 32000,
-          "level": 6,
-          "saves": {
-            "death": 6,
-            "wands": 7,
-            "breath": 10,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 17,
-          "aacBonus": 2
-        },
-        {
-          "hd": "7d6",
-          "xp": 64000,
-          "level": 7,
+          "aacBonus": 9,
           "saves": {
             "death": 4,
             "wands": 5,
-            "breath": 7,
-            "spells": 8,
-            "paralysis": 6
-          },
-          "thac0": 14,
-          "aacBonus": 5
-        },
-        {
-          "hd": "8d6",
-          "xp": 120000,
-          "level": 8,
-          "saves": {
-            "death": 4,
-            "wands": 5,
-            "breath": 7,
-            "spells": 8,
-            "paralysis": 6
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "paralysis": 6,
+            "breath": 5,
+            "spells": 8
+          }
         }
       ],
-      "allowedArmor": "todas",
-      "shieldAllowed": true,
-      "allowedWeapons": "todas",
-      "combatCategory": "marcial",
-      "minRequirements": {
-        "con": 9,
-        "dex": 9
-      },
-      "primeRequisites": [
-        "dex",
-        "str"
-      ],
-      "allowedWeaponsDesc": "Todas as armas proporcionais (sem armas de duas mãos ou arcos longos)."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
+      "sourceBook": "Old-School Essentials — Livro de Regras",
+      "sourcePage": 18,
+      "system_id": "ose",
+      "ruleset": "advanced"
+    }
   },
   {
     "id": "ose.class.ilusionista",
+    "system_id": "ose",
     "name_pt": "Ilusionista",
     "name_en": "Illusionist",
-    "name_es": null,
     "description_pt": "Mestres dos truques óticos, névoas cintilantes, miragens vivas e ilusões capazes de enganar mente e sentidos.",
-    "description_en": "Mestres dos truques óticos, névoas cintilantes, miragens vivas e ilusões capazes de enganar mente e sentidos.",
-    "description_es": null,
     "hp_per_level": 4,
     "key_attributes": [
-      "int",
-      "dex"
+      "int"
     ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
     "traits": [
       "nenhuma",
       "nao_marcial",
@@ -3025,220 +2316,237 @@
     "rarity": "common",
     "ruleset": "advanced",
     "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
+    "source_page": 62,
     "data": {
       "id": "ilusionista",
       "name": "Ilusionista",
-      "hitDie": "d4",
       "nameEn": "Illusionist",
+      "description": "Mestres dos truques óticos, névoas cintilantes, miragens vivas e ilusões capazes de enganar mente e sentidos.",
+      "primeRequisites": [
+        "int"
+      ],
+      "minRequirements": {
+        "dex": 9
+      },
+      "hitDie": "d4",
+      "allowedArmor": "nenhuma",
+      "shieldAllowed": false,
+      "allowedWeapons": "adaga_cajado",
+      "allowedWeaponsDesc": "Apenas adaga e cajado.",
+      "combatCategory": "nao_marcial",
+      "spellCasting": {
+        "type": "ilusionista",
+        "spellListName": "ilusionista",
+        "startLevel": 1
+      },
       "features": [
         "Grimório de Ilusões: Conhece feitiços visuais e hipnóticos exclusivos de sua ordem.",
         "Mente Astuta: Resistência aprimorada contra feitiços de ilusão e confusão."
       ],
-      "description": "Mestres dos truques óticos, névoas cintilantes, miragens vivas e ilusões capazes de enganar mente e sentidos.",
       "progression": [
         {
-          "hd": "1d4",
-          "xp": 0,
           "level": 1,
+          "xp": 0,
+          "hd": "1d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             1
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "2d4",
-          "xp": 2500,
           "level": 2,
+          "xp": 2500,
+          "hd": "2d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "3d4",
-          "xp": 5000,
           "level": 3,
+          "xp": 5000,
+          "hd": "3d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2,
             1
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "4d4",
-          "xp": 10000,
           "level": 4,
+          "xp": 10000,
+          "hd": "4d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2,
             2
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "5d4",
-          "xp": 20000,
           "level": 5,
+          "xp": 20000,
+          "hd": "5d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2,
             2,
             1
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "6d4",
-          "xp": 40000,
           "level": 6,
+          "xp": 40000,
+          "hd": "6d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 11
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             2,
             2,
             2
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "7d4",
-          "xp": 80000,
           "level": 7,
+          "xp": 80000,
+          "hd": "7d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 11
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             3,
             2,
             2,
             1
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "8d4",
-          "xp": 150000,
           "level": 8,
+          "xp": 150000,
+          "hd": "8d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 11
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             3,
             3,
             2,
             2
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "9d4",
-          "xp": 300000,
           "level": 9,
+          "xp": 300000,
+          "hd": "9d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 11
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             3,
             3,
             3,
             2,
             1
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "9d4+1",
-          "xp": 450000,
           "level": 10,
+          "xp": 450000,
+          "hd": "9d4+1",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 11
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             3,
             3,
             3,
             3,
             2
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "9d4+2",
-          "xp": 600000,
           "level": 11,
+          "xp": 600000,
+          "hd": "9d4+2",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 8,
             "breath": 11,
-            "spells": 8,
-            "paralysis": 8
+            "spells": 8
           },
-          "thac0": 14,
           "spells": [
             4,
             3,
@@ -3246,21 +2554,21 @@
             3,
             2,
             1
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d4+3",
-          "xp": 750000,
           "level": 12,
+          "xp": 750000,
+          "hd": "9d4+3",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 8,
             "breath": 11,
-            "spells": 8,
-            "paralysis": 8
+            "spells": 8
           },
-          "thac0": 14,
           "spells": [
             4,
             4,
@@ -3268,21 +2576,21 @@
             3,
             3,
             2
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d4+4",
-          "xp": 900000,
           "level": 13,
+          "xp": 900000,
+          "hd": "9d4+4",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 8,
             "breath": 11,
-            "spells": 8,
-            "paralysis": 8
+            "spells": 8
           },
-          "thac0": 14,
           "spells": [
             4,
             4,
@@ -3290,21 +2598,21 @@
             3,
             3,
             3
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d4+5",
-          "xp": 1050000,
           "level": 14,
+          "xp": 1050000,
+          "hd": "9d4+5",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 8,
             "breath": 11,
-            "spells": 8,
-            "paralysis": 8
+            "spells": 8
           },
-          "thac0": 14,
           "spells": [
             4,
             4,
@@ -3312,50 +2620,25 @@
             4,
             3,
             3
-          ],
-          "aacBonus": 5
+          ]
         }
       ],
-      "allowedArmor": "nenhuma",
-      "spellCasting": {
-        "type": "ilusionista",
-        "startLevel": 1,
-        "spellListName": "ilusionista"
-      },
-      "shieldAllowed": false,
-      "allowedWeapons": "adaga_cajado",
-      "combatCategory": "nao_marcial",
-      "minRequirements": {
-        "dex": 9,
-        "int": 9
-      },
-      "primeRequisites": [
-        "int",
-        "dex"
-      ],
-      "allowedWeaponsDesc": "Apenas adaga e cajado."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 62,
+      "system_id": "ose",
+      "ruleset": "advanced"
+    }
   },
   {
     "id": "ose.class.ladrao",
+    "system_id": "ose",
     "name_pt": "Ladrão",
     "name_en": "Thief",
-    "name_es": null,
     "description_pt": "Especialistas em infiltração, arrombamento, furto, ataque furtivo e desarmar armadilhas mortais.",
-    "description_en": "Especialistas em infiltração, arrombamento, furto, ataque furtivo e desarmar armadilhas mortais.",
-    "description_es": null,
     "hp_per_level": 4,
     "key_attributes": [
       "dex"
     ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
     "traits": [
       "couro",
       "semimarcial",
@@ -3363,390 +2646,384 @@
     ],
     "rarity": "common",
     "ruleset": "advanced",
-    "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 20,
     "data": {
       "id": "ladrao",
       "name": "Ladrão",
-      "hitDie": "d4",
       "nameEn": "Thief",
+      "description": "Especialistas em infiltração, arrombamento, furto, ataque furtivo e desarmar armadilhas mortais.",
+      "primeRequisites": [
+        "dex"
+      ],
+      "minRequirements": {},
+      "hitDie": "d4",
+      "allowedArmor": "couro",
+      "shieldAllowed": false,
+      "allowedWeapons": "todas",
+      "allowedWeaponsDesc": "Pode usar qualquer arma de combate.",
+      "combatCategory": "semimarcial",
       "features": [
         "Ataque Furtivo: Se atacar pelas costas sem ser detectado, recebe +4 no ataque e causa dano x2.",
         "Perícias de Ladrão: Rola d% para Escalar (ESI), Encontrar Armadilhas (ET), Operar Mecanismos (OB), Esconder-se (ES), Mover em Silêncio (MS), Abrir Fechaduras (AF) e Pungar (PB).",
         "Ler Pergaminhos (4º nível): Chance de 80% de ler pergaminhos arcanos."
       ],
-      "description": "Especialistas em infiltração, arrombamento, furto, ataque furtivo e desarmar armadilhas mortais.",
       "progression": [
         {
-          "hd": "1d4",
-          "xp": 0,
           "level": 1,
+          "xp": 0,
+          "hd": "1d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 15
+          }
         },
         {
-          "hd": "2d4",
-          "xp": 1200,
           "level": 2,
+          "xp": 1200,
+          "hd": "2d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 15
+          }
         },
         {
-          "hd": "3d4",
-          "xp": 2400,
           "level": 3,
+          "xp": 2400,
+          "hd": "3d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 15
+          }
         },
         {
-          "hd": "4d4",
-          "xp": 4800,
           "level": 4,
+          "xp": 4800,
+          "hd": "4d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 15
+          }
         },
         {
-          "hd": "5d4",
-          "xp": 9600,
           "level": 5,
+          "xp": 9600,
+          "hd": "5d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "6d4",
-          "xp": 20000,
           "level": 6,
+          "xp": 20000,
+          "hd": "6d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "7d4",
-          "xp": 40000,
           "level": 7,
+          "xp": 40000,
+          "hd": "7d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "8d4",
-          "xp": 80000,
           "level": 8,
+          "xp": 80000,
+          "hd": "8d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 13,
-            "paralysis": 11
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 13
+          }
         },
         {
-          "hd": "9d4",
-          "xp": 160000,
           "level": 9,
+          "xp": 160000,
+          "hd": "9d4",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d4+2",
-          "xp": 280000,
           "level": 10,
+          "xp": 280000,
+          "hd": "9d4+2",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d4+4",
-          "xp": 400000,
           "level": 11,
+          "xp": 400000,
+          "hd": "9d4+4",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d4+6",
-          "xp": 520000,
           "level": 12,
+          "xp": 520000,
+          "hd": "9d4+6",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 9,
             "breath": 12,
-            "spells": 10,
-            "paralysis": 9
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d4+8",
-          "xp": 640000,
           "level": 13,
+          "xp": 640000,
+          "hd": "9d4+8",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 7,
             "breath": 10,
-            "spells": 8,
-            "paralysis": 7
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 8
+          }
         },
         {
-          "hd": "9d4+10",
-          "xp": 760000,
           "level": 14,
+          "xp": 760000,
+          "hd": "9d4+10",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 7,
             "breath": 10,
-            "spells": 8,
-            "paralysis": 7
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 8
+          }
         }
       ],
       "thiefSkills": {
         "1": {
-          "af": 15,
-          "es": 10,
-          "et": 10,
-          "ms": 20,
-          "ob": 10,
-          "pb": 20,
           "esi": 87,
+          "et": 10,
+          "ob": 10,
+          "es": 10,
+          "ms": 20,
+          "af": 15,
+          "pb": 20,
           "orSkill": 2
         },
         "2": {
-          "af": 20,
-          "es": 15,
-          "et": 15,
-          "ms": 25,
-          "ob": 15,
-          "pb": 25,
           "esi": 88,
+          "et": 15,
+          "ob": 15,
+          "es": 15,
+          "ms": 25,
+          "af": 20,
+          "pb": 25,
           "orSkill": 2
         },
         "3": {
-          "af": 25,
-          "es": 20,
-          "et": 20,
-          "ms": 30,
-          "ob": 20,
-          "pb": 30,
           "esi": 89,
+          "et": 20,
+          "ob": 20,
+          "es": 20,
+          "ms": 30,
+          "af": 25,
+          "pb": 30,
           "orSkill": 3
         },
         "4": {
-          "af": 31,
-          "es": 25,
-          "et": 25,
-          "ms": 35,
-          "ob": 25,
-          "pb": 35,
           "esi": 90,
+          "et": 25,
+          "ob": 25,
+          "es": 25,
+          "ms": 35,
+          "af": 31,
+          "pb": 35,
           "orSkill": 3
         },
         "5": {
-          "af": 37,
-          "es": 30,
-          "et": 30,
-          "ms": 40,
-          "ob": 30,
-          "pb": 40,
           "esi": 91,
+          "et": 30,
+          "ob": 30,
+          "es": 30,
+          "ms": 40,
+          "af": 37,
+          "pb": 40,
           "orSkill": 3
         },
         "6": {
-          "af": 43,
-          "es": 36,
-          "et": 40,
-          "ms": 45,
-          "ob": 37,
-          "pb": 45,
           "esi": 92,
+          "et": 40,
+          "ob": 37,
+          "es": 36,
+          "ms": 45,
+          "af": 43,
+          "pb": 45,
           "orSkill": 4
         },
         "7": {
-          "af": 50,
-          "es": 45,
-          "et": 50,
-          "ms": 55,
-          "ob": 44,
-          "pb": 55,
           "esi": 93,
+          "et": 50,
+          "ob": 44,
+          "es": 45,
+          "ms": 55,
+          "af": 50,
+          "pb": 55,
           "orSkill": 4
         },
         "8": {
-          "af": 56,
-          "es": 55,
-          "et": 60,
-          "ms": 65,
-          "ob": 52,
-          "pb": 65,
           "esi": 94,
+          "et": 60,
+          "ob": 52,
+          "es": 55,
+          "ms": 65,
+          "af": 56,
+          "pb": 65,
           "orSkill": 4
         },
         "9": {
-          "af": 62,
-          "es": 65,
-          "et": 70,
-          "ms": 75,
-          "ob": 60,
-          "pb": 75,
           "esi": 95,
+          "et": 70,
+          "ob": 60,
+          "es": 65,
+          "ms": 75,
+          "af": 62,
+          "pb": 75,
           "orSkill": 5
         },
         "10": {
-          "af": 68,
-          "es": 75,
-          "et": 80,
-          "ms": 85,
-          "ob": 68,
-          "pb": 85,
           "esi": 96,
+          "et": 80,
+          "ob": 68,
+          "es": 75,
+          "ms": 85,
+          "af": 68,
+          "pb": 85,
           "orSkill": 5
         },
         "11": {
-          "af": 74,
-          "es": 85,
-          "et": 90,
-          "ms": 95,
-          "ob": 75,
-          "pb": 95,
           "esi": 97,
+          "et": 90,
+          "ob": 75,
+          "es": 85,
+          "ms": 95,
+          "af": 74,
+          "pb": 95,
           "orSkill": 5
         },
         "12": {
-          "af": 80,
-          "es": 90,
-          "et": 95,
-          "ms": 96,
-          "ob": 83,
-          "pb": 105,
           "esi": 98,
+          "et": 95,
+          "ob": 83,
+          "es": 90,
+          "ms": 96,
+          "af": 80,
+          "pb": 105,
           "orSkill": 5
         },
         "13": {
-          "af": 85,
-          "es": 95,
-          "et": 97,
-          "ms": 98,
-          "ob": 90,
-          "pb": 115,
           "esi": 99,
+          "et": 97,
+          "ob": 90,
+          "es": 95,
+          "ms": 98,
+          "af": 85,
+          "pb": 115,
           "orSkill": 6
         },
         "14": {
-          "af": 90,
-          "es": 99,
-          "et": 99,
-          "ms": 99,
-          "ob": 97,
-          "pb": 125,
           "esi": 99,
+          "et": 99,
+          "ob": 97,
+          "es": 99,
+          "ms": 99,
+          "af": 90,
+          "pb": 125,
           "orSkill": 6
         }
       },
-      "allowedArmor": "couro",
-      "shieldAllowed": false,
-      "allowedWeapons": "todas",
-      "combatCategory": "semimarcial",
-      "minRequirements": {},
-      "primeRequisites": [
-        "dex"
-      ],
-      "allowedWeaponsDesc": "Pode usar qualquer arma de combate."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
+      "sourceBook": "Old-School Essentials — Livro de Regras",
+      "sourcePage": 20,
+      "system_id": "ose",
+      "ruleset": "advanced"
+    }
   },
   {
     "id": "ose.class.mago",
+    "system_id": "ose",
     "name_pt": "Mago",
     "name_en": "Magic-User",
-    "name_es": null,
     "description_pt": "Estudiosos dos mistérios arcanos capazes de alterar a realidade, o tempo e o espaço através de fórmulas inscritas em seus grimórios.",
-    "description_en": "Estudiosos dos mistérios arcanos capazes de alterar a realidade, o tempo e o espaço através de fórmulas inscritas em seus grimórios.",
-    "description_es": null,
     "hp_per_level": 4,
     "key_attributes": [
       "int"
     ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
     "traits": [
       "nenhuma",
       "nao_marcial",
@@ -3754,221 +3031,236 @@
     ],
     "rarity": "common",
     "ruleset": "advanced",
-    "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
+    "source_book": "Old-School Essentials — Livro de Regras",
+    "source_page": 22,
     "data": {
       "id": "mago",
       "name": "Mago",
-      "hitDie": "d4",
       "nameEn": "Magic-User",
+      "description": "Estudiosos dos mistérios arcanos capazes de alterar a realidade, o tempo e o espaço através de fórmulas inscritas em seus grimórios.",
+      "primeRequisites": [
+        "int"
+      ],
+      "minRequirements": {},
+      "hitDie": "d4",
+      "allowedArmor": "nenhuma",
+      "shieldAllowed": false,
+      "allowedWeapons": "adaga_cajado",
+      "allowedWeaponsDesc": "Apenas adaga e cajado.",
+      "combatCategory": "nao_marcial",
+      "spellCasting": {
+        "type": "arcana",
+        "spellListName": "mago",
+        "startLevel": 1
+      },
       "features": [
         "Grimório de Feitiços: Começa com Ler Magia e uma magia de 1º círculo de sua escolha.",
         "Pesquisa Mágica (9º nível): Pode construir uma torre mágica e pesquisar novos feitiços ou criar itens mágicos."
       ],
-      "description": "Estudiosos dos mistérios arcanos capazes de alterar a realidade, o tempo e o espaço através de fórmulas inscritas em seus grimórios.",
       "progression": [
         {
-          "hd": "1d4",
-          "xp": 0,
           "level": 1,
+          "xp": 0,
+          "hd": "1d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             1
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "2d4",
-          "xp": 2500,
           "level": 2,
+          "xp": 2500,
+          "hd": "2d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "3d4",
-          "xp": 5000,
           "level": 3,
+          "xp": 5000,
+          "hd": "3d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2,
             1
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "4d4",
-          "xp": 10000,
           "level": 4,
+          "xp": 10000,
+          "hd": "4d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2,
             2
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "5d4",
-          "xp": 20000,
           "level": 5,
+          "xp": 20000,
+          "hd": "5d4",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 13,
             "wands": 14,
+            "paralysis": 13,
             "breath": 16,
-            "spells": 15,
-            "paralysis": 13
+            "spells": 15
           },
-          "thac0": 19,
           "spells": [
             2,
             2,
             1
-          ],
-          "aacBonus": 0
+          ]
         },
         {
-          "hd": "6d4",
-          "xp": 40000,
           "level": 6,
+          "xp": 40000,
+          "hd": "6d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 11
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             2,
             2,
             2
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "7d4",
-          "xp": 80000,
           "level": 7,
+          "xp": 80000,
+          "hd": "7d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 11
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             3,
             2,
             2,
             1
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "8d4",
-          "xp": 150000,
           "level": 8,
+          "xp": 150000,
+          "hd": "8d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 11
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             3,
             3,
             2,
             2
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "9d4",
-          "xp": 300000,
           "level": 9,
+          "xp": 300000,
+          "hd": "9d4",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 11
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             3,
             3,
             3,
             2,
             1
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "9d4+1",
-          "xp": 450000,
           "level": 10,
+          "xp": 450000,
+          "hd": "9d4+1",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 11,
             "wands": 12,
+            "paralysis": 11,
             "breath": 14,
-            "spells": 12,
-            "paralysis": 11
+            "spells": 12
           },
-          "thac0": 17,
           "spells": [
             3,
             3,
             3,
             3,
             2
-          ],
-          "aacBonus": 2
+          ]
         },
         {
-          "hd": "9d4+2",
-          "xp": 600000,
           "level": 11,
+          "xp": 600000,
+          "hd": "9d4+2",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 8,
             "breath": 11,
-            "spells": 8,
-            "paralysis": 8
+            "spells": 8
           },
-          "thac0": 14,
           "spells": [
             4,
             3,
@@ -3976,21 +3268,21 @@
             3,
             2,
             1
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d4+3",
-          "xp": 750000,
           "level": 12,
+          "xp": 750000,
+          "hd": "9d4+3",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 8,
             "breath": 11,
-            "spells": 8,
-            "paralysis": 8
+            "spells": 8
           },
-          "thac0": 14,
           "spells": [
             4,
             4,
@@ -3998,21 +3290,21 @@
             3,
             3,
             2
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d4+4",
-          "xp": 900000,
           "level": 13,
+          "xp": 900000,
+          "hd": "9d4+4",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 8,
             "breath": 11,
-            "spells": 8,
-            "paralysis": 8
+            "spells": 8
           },
-          "thac0": 14,
           "spells": [
             4,
             4,
@@ -4020,21 +3312,21 @@
             3,
             3,
             3
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d4+5",
-          "xp": 1050000,
           "level": 14,
+          "xp": 1050000,
+          "hd": "9d4+5",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 8,
             "breath": 11,
-            "spells": 8,
-            "paralysis": 8
+            "spells": 8
           },
-          "thac0": 14,
           "spells": [
             4,
             4,
@@ -4042,47 +3334,26 @@
             4,
             3,
             3
-          ],
-          "aacBonus": 5
+          ]
         }
       ],
-      "allowedArmor": "nenhuma",
-      "spellCasting": {
-        "type": "arcana",
-        "startLevel": 1,
-        "spellListName": "mago"
-      },
-      "shieldAllowed": false,
-      "allowedWeapons": "adaga_cajado",
-      "combatCategory": "nao_marcial",
-      "minRequirements": {},
-      "primeRequisites": [
-        "int"
-      ],
-      "allowedWeaponsDesc": "Apenas adaga e cajado."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
+      "sourceBook": "Old-School Essentials — Livro de Regras",
+      "sourcePage": 22,
+      "system_id": "ose",
+      "ruleset": "advanced"
+    }
   },
   {
     "id": "ose.class.paladino",
+    "system_id": "ose",
     "name_pt": "Paladino",
     "name_en": "Paladin",
-    "name_es": null,
     "description_pt": "Cavaleiros sagrados devotados à ordem e à justiça divina, protegidos por auras benevolentes e cura sagrada.",
-    "description_en": "Cavaleiros sagrados devotados à ordem e à justiça divina, protegidos por auras benevolentes e cura sagrada.",
-    "description_es": null,
     "hp_per_level": 8,
     "key_attributes": [
       "str",
       "wis"
     ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
     "traits": [
       "todas",
       "marcial",
@@ -4091,279 +3362,269 @@
     "rarity": "common",
     "ruleset": "advanced",
     "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
+    "source_page": 68,
     "data": {
       "id": "paladino",
       "name": "Paladino",
-      "hitDie": "d8",
       "nameEn": "Paladin",
+      "description": "Cavaleiros sagrados devotados à ordem e à justiça divina, protegidos por auras benevolentes e cura sagrada.",
+      "primeRequisites": [
+        "str",
+        "wis"
+      ],
+      "minRequirements": {
+        "cha": 9
+      },
+      "hitDie": "d8",
+      "allowedArmor": "todas",
+      "shieldAllowed": true,
+      "allowedWeapons": "todas",
+      "allowedWeaponsDesc": "Pode usar qualquer arma de combate.",
+      "combatCategory": "marcial",
       "features": [
         "Imposição de Mãos: Cura 2 PV por nível do paladino 1x por dia.",
         "Aura Sagrada: Bônus de +2 em todas as jogadas de resistência.",
         "Detectar o Mal: Capaz de sentir intenções malignas a até 18 metros.",
         "Expulsar Mortos-Vivos (2º nível): Afasta mortos-vivos com autoridade divina."
       ],
-      "description": "Cavaleiros sagrados devotados à ordem e à justiça divina, protegidos por auras benevolentes e cura sagrada.",
       "progression": [
         {
-          "hd": "1d8",
-          "xp": 0,
           "level": 1,
+          "xp": 0,
+          "hd": "1d8",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 12,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 12
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 14
+          }
         },
         {
-          "hd": "2d8",
-          "xp": 2750,
           "level": 2,
+          "xp": 2750,
+          "hd": "2d8",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 12,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 12
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 14
+          }
         },
         {
-          "hd": "3d8",
-          "xp": 5500,
           "level": 3,
+          "xp": 5500,
+          "hd": "3d8",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 12,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 12
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 14
+          }
         },
         {
-          "hd": "4d8",
-          "xp": 12000,
           "level": 4,
+          "xp": 12000,
+          "hd": "4d8",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 10,
             "breath": 11,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 12
+          }
         },
         {
-          "hd": "5d8",
-          "xp": 24000,
           "level": 5,
+          "xp": 24000,
+          "hd": "5d8",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 10,
             "breath": 11,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 12
+          }
         },
         {
-          "hd": "6d8",
-          "xp": 45000,
           "level": 6,
+          "xp": 45000,
+          "hd": "6d8",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 10,
             "breath": 11,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 12
+          }
         },
         {
-          "hd": "7d8",
-          "xp": 95000,
           "level": 7,
+          "xp": 95000,
+          "hd": "7d8",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 8,
             "breath": 8,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "8d8",
-          "xp": 175000,
           "level": 8,
+          "xp": 175000,
+          "hd": "8d8",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 8,
             "breath": 8,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 10
+          }
         },
         {
-          "hd": "9d8",
-          "xp": 350000,
           "level": 9,
+          "xp": 350000,
+          "hd": "9d8",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 8,
             "breath": 8,
-            "spells": 10,
-            "paralysis": 8
+            "spells": 10
           },
-          "thac0": 14,
           "spells": [
             1
-          ],
-          "aacBonus": 5
+          ]
         },
         {
-          "hd": "9d8+2",
-          "xp": 500000,
           "level": 10,
+          "xp": 500000,
+          "hd": "9d8+2",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 4,
             "wands": 5,
+            "paralysis": 6,
             "breath": 6,
-            "spells": 8,
-            "paralysis": 6
+            "spells": 8
           },
-          "thac0": 12,
           "spells": [
             2
-          ],
-          "aacBonus": 7
+          ]
         },
         {
-          "hd": "9d8+4",
-          "xp": 650000,
           "level": 11,
+          "xp": 650000,
+          "hd": "9d8+4",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 4,
             "wands": 5,
+            "paralysis": 6,
             "breath": 6,
-            "spells": 8,
-            "paralysis": 6
+            "spells": 8
           },
-          "thac0": 12,
           "spells": [
             2,
             1
-          ],
-          "aacBonus": 7
+          ]
         },
         {
-          "hd": "9d8+6",
-          "xp": 800000,
           "level": 12,
+          "xp": 800000,
+          "hd": "9d8+6",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 4,
             "wands": 5,
+            "paralysis": 6,
             "breath": 6,
-            "spells": 8,
-            "paralysis": 6
+            "spells": 8
           },
-          "thac0": 12,
           "spells": [
             2,
             2
-          ],
-          "aacBonus": 7
+          ]
         },
         {
-          "hd": "9d8+8",
-          "xp": 950000,
           "level": 13,
+          "xp": 950000,
+          "hd": "9d8+8",
+          "thac0": 10,
+          "aacBonus": 9,
           "saves": {
             "death": 2,
             "wands": 3,
+            "paralysis": 4,
             "breath": 3,
-            "spells": 6,
-            "paralysis": 4
+            "spells": 6
           },
-          "thac0": 10,
           "spells": [
             2,
             2,
             1
-          ],
-          "aacBonus": 9
+          ]
         },
         {
-          "hd": "9d8+10",
-          "xp": 1100000,
           "level": 14,
+          "xp": 1100000,
+          "hd": "9d8+10",
+          "thac0": 10,
+          "aacBonus": 9,
           "saves": {
             "death": 2,
             "wands": 3,
+            "paralysis": 4,
             "breath": 3,
-            "spells": 6,
-            "paralysis": 4
+            "spells": 6
           },
-          "thac0": 10,
           "spells": [
             3,
             2,
             1
-          ],
-          "aacBonus": 9
+          ]
         }
       ],
-      "allowedArmor": "todas",
-      "shieldAllowed": true,
-      "allowedWeapons": "todas",
-      "combatCategory": "marcial",
-      "minRequirements": {
-        "cha": 9,
-        "con": 9,
-        "str": 9,
-        "wis": 9
-      },
-      "primeRequisites": [
-        "str",
-        "wis"
-      ],
-      "allowedWeaponsDesc": "Pode usar qualquer arma de combate."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 68,
+      "system_id": "ose",
+      "ruleset": "advanced"
+    }
   },
   {
     "id": "ose.class.ranger",
+    "system_id": "ose",
     "name_pt": "Ranger",
     "name_en": "Ranger",
-    "name_es": null,
     "description_pt": "Rastreadores solitários das fronteiras selvagens, letais com arco e espadas, defensores contra monstruosidades.",
-    "description_en": "Rastreadores solitários das fronteiras selvagens, letais com arco e espadas, defensores contra monstruosidades.",
-    "description_es": null,
     "hp_per_level": 8,
     "key_attributes": [
-      "str",
-      "wis"
+      "str"
     ],
-    "perception_rank": "T",
-    "fortitude_rank": "T",
-    "reflex_rank": "T",
-    "will_rank": "T",
-    "class_dc_stat": null,
     "traits": [
       "couro_e_malha",
       "marcial",
@@ -4372,233 +3633,232 @@
     "rarity": "common",
     "ruleset": "advanced",
     "source_book": "Old-School Essentials — Tomo do Jogador",
-    "source_page": 28,
+    "source_page": 70,
     "data": {
       "id": "ranger",
       "name": "Ranger",
-      "hitDie": "d8",
       "nameEn": "Ranger",
+      "description": "Rastreadores solitários das fronteiras selvagens, letais com arco e espadas, defensores contra monstruosidades.",
+      "primeRequisites": [
+        "str"
+      ],
+      "minRequirements": {
+        "con": 9,
+        "wis": 9
+      },
+      "hitDie": "d8",
+      "allowedArmor": "couro_e_malha",
+      "shieldAllowed": true,
+      "allowedWeapons": "todas",
+      "allowedWeaponsDesc": "Pode usar qualquer arma de combate.",
+      "combatCategory": "marcial",
       "features": [
         "Rastreamento Superior: 90% de chance de seguir rastros em terras selvagens e masmorras.",
         "Furtividade Natural: Pode se esconder nas sombras e mover-se silenciosamente na natureza.",
         "Dano contra Gigantes: Causa +1 de dano por nível contra humanoides gigantescos e ogros."
       ],
-      "description": "Rastreadores solitários das fronteiras selvagens, letais com arco e espadas, defensores contra monstruosidades.",
       "progression": [
         {
-          "hd": "1d8",
-          "xp": 0,
           "level": 1,
+          "xp": 0,
+          "hd": "1d8",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 14,
             "breath": 15,
-            "spells": 16,
-            "paralysis": 14
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 16
+          }
         },
         {
-          "hd": "2d8",
-          "xp": 2250,
           "level": 2,
+          "xp": 2250,
+          "hd": "2d8",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 14,
             "breath": 15,
-            "spells": 16,
-            "paralysis": 14
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 16
+          }
         },
         {
-          "hd": "3d8",
-          "xp": 4500,
           "level": 3,
+          "xp": 4500,
+          "hd": "3d8",
+          "thac0": 19,
+          "aacBonus": 0,
           "saves": {
             "death": 12,
             "wands": 13,
+            "paralysis": 14,
             "breath": 15,
-            "spells": 16,
-            "paralysis": 14
-          },
-          "thac0": 19,
-          "aacBonus": 0
+            "spells": 16
+          }
         },
         {
-          "hd": "4d8",
-          "xp": 10000,
           "level": 4,
+          "xp": 10000,
+          "hd": "4d8",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 12,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 12
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 14
+          }
         },
         {
-          "hd": "5d8",
-          "xp": 20000,
           "level": 5,
+          "xp": 20000,
+          "hd": "5d8",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 12,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 12
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 14
+          }
         },
         {
-          "hd": "6d8",
-          "xp": 40000,
           "level": 6,
+          "xp": 40000,
+          "hd": "6d8",
+          "thac0": 17,
+          "aacBonus": 2,
           "saves": {
             "death": 10,
             "wands": 11,
+            "paralysis": 12,
             "breath": 13,
-            "spells": 14,
-            "paralysis": 12
-          },
-          "thac0": 17,
-          "aacBonus": 2
+            "spells": 14
+          }
         },
         {
-          "hd": "7d8",
-          "xp": 90000,
           "level": 7,
+          "xp": 90000,
+          "hd": "7d8",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 10,
             "breath": 10,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 12
+          }
         },
         {
-          "hd": "8d8",
-          "xp": 175000,
           "level": 8,
+          "xp": 150000,
+          "hd": "8d8",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 10,
             "breath": 10,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 12
+          }
         },
         {
-          "hd": "9d8",
-          "xp": 300000,
           "level": 9,
+          "xp": 300000,
+          "hd": "9d8",
+          "thac0": 14,
+          "aacBonus": 5,
           "saves": {
             "death": 8,
             "wands": 9,
+            "paralysis": 10,
             "breath": 10,
-            "spells": 12,
-            "paralysis": 10
-          },
-          "thac0": 14,
-          "aacBonus": 5
+            "spells": 12
+          }
         },
         {
-          "hd": "9d8+2",
-          "xp": 425000,
           "level": 10,
+          "xp": 425000,
+          "hd": "9d8+2",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 8,
             "breath": 8,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 10
+          }
         },
         {
-          "hd": "9d8+4",
-          "xp": 550000,
           "level": 11,
+          "xp": 550000,
+          "hd": "9d8+4",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 8,
             "breath": 8,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 10
+          }
         },
         {
-          "hd": "9d8+6",
-          "xp": 675000,
           "level": 12,
+          "xp": 675000,
+          "hd": "9d8+6",
+          "thac0": 12,
+          "aacBonus": 7,
           "saves": {
             "death": 6,
             "wands": 7,
+            "paralysis": 8,
             "breath": 8,
-            "spells": 10,
-            "paralysis": 8
-          },
-          "thac0": 12,
-          "aacBonus": 7
+            "spells": 10
+          }
         },
         {
-          "hd": "9d8+8",
-          "xp": 800000,
           "level": 13,
+          "xp": 800000,
+          "hd": "9d8+8",
+          "thac0": 10,
+          "aacBonus": 9,
           "saves": {
             "death": 4,
             "wands": 5,
+            "paralysis": 6,
             "breath": 5,
-            "spells": 8,
-            "paralysis": 6
-          },
-          "thac0": 10,
-          "aacBonus": 9
+            "spells": 8
+          }
         },
         {
-          "hd": "9d8+10",
-          "xp": 925000,
           "level": 14,
+          "xp": 925000,
+          "hd": "9d8+10",
+          "thac0": 10,
+          "aacBonus": 9,
           "saves": {
             "death": 4,
             "wands": 5,
+            "paralysis": 6,
             "breath": 5,
-            "spells": 8,
-            "paralysis": 6
-          },
-          "thac0": 10,
-          "aacBonus": 9
+            "spells": 8
+          }
         }
       ],
-      "allowedArmor": "couro_e_malha",
-      "shieldAllowed": true,
-      "allowedWeapons": "todas",
-      "combatCategory": "marcial",
-      "minRequirements": {
-        "con": 9,
-        "str": 9,
-        "wis": 9
-      },
-      "primeRequisites": [
-        "str",
-        "wis"
-      ],
-      "allowedWeaponsDesc": "Pode usar qualquer arma de combate."
-    },
-    "created_at": "2026-09-12T14:42:06.790923+00:00",
-    "updated_at": "2026-09-12T14:42:06.790923+00:00",
-    "system_id": "ose"
+      "sourceBook": "Old-School Essentials — Tomo do Jogador",
+      "sourcePage": 70,
+      "system_id": "ose",
+      "ruleset": "advanced"
+    }
   }
 ]

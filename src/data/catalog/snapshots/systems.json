@@ -48,11 +48,28 @@
     "default_ruleset": "advanced",
     "supported_rulesets": [
       "advanced",
-      "classic"
+      "classic",
+      "basico"
     ],
     "active": true,
     "created_at": "2026-09-12T09:33:34.412057+00:00",
     "updated_at": "2026-09-12T09:33:34.412057+00:00"
+  },
+  {
+    "id": "pf1e",
+    "name_pt": "Pathfinder 1e",
+    "name_en": "Pathfinder 1e",
+    "name_es": "Pathfinder 1e",
+    "description_pt": "Pathfinder RPG edição legada; catálogo do Livro Básico em expansão, sem criador de fichas habilitado.",
+    "description_en": "Pathfinder Roleplaying Game legacy edition; Core Rulebook catalog in progress, with no character builder enabled.",
+    "description_es": "Pathfinder Juego de Rol edición legado; catálogo del Libro Básico en expansión, sin creador de personajes habilitado.",
+    "icon": "⚔️",
+    "badge_color": "#b45309",
+    "default_ruleset": "legacy_pf1",
+    "supported_rulesets": [
+      "legacy_pf1"
+    ],
+    "active": false
   },
   {
     "id": "pf2e",

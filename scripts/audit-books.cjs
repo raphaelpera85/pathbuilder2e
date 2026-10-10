@@ -48,7 +48,7 @@ const excluded = /ficha|poster|map|folio|raw|test/i;
     const textEntry = files.find((candidate) => candidate.name.toLowerCase() === `${base.toLowerCase()}.txt` && path.dirname(candidate.relativePath) === directory);
     const textPath = textEntry?.fullPath || null;
     const characters = textPath ? fs.readFileSync(textPath, "utf8").length : 0;
-    return { pdf: entry.relativePath, pdfPath: entry.fullPath, text: textEntry?.relativePath || null, textCharacters: characters, scannedText: characters > 1000 };
+    return { pdf: entry.relativePath, pdfPath: entry.fullPath, text: textEntry?.relativePath || null, textCharacters: characters, pairedTextUsable: characters > 1000 };
   });
   Promise.all(reports.map(async (report) => {
     try {
@@ -75,7 +75,7 @@ const excluded = /ficha|poster|map|folio|raw|test/i;
       report.pdfError = error instanceof Error ? error.message : String(error);
     }
   })).then(() => {
-    const missingText = reports.filter((report) => !report.text || !report.scannedText);
+    const missingText = reports.filter((report) => !report.text || !report.pairedTextUsable);
     const invalidPdf = reports.filter((report) => report.pdfReadable === false);
     const result = {
       generatedAt: new Date().toISOString(),
@@ -83,7 +83,7 @@ const excluded = /ficha|poster|map|folio|raw|test/i;
       bookPdfs: reports.length,
       readablePdfs: reports.filter((report) => report.pdfReadable).length,
       tooLargeForParser: reports.filter((report) => report.pdfTooLargeForParser).map((report) => report.pdf),
-      pairedText: reports.filter((report) => report.scannedText).length,
+      pairedText: reports.filter((report) => report.pairedTextUsable).length,
       missingText: missingText.map((report) => report.pdf),
       invalidPdf: invalidPdf.map((report) => ({ pdf: report.pdf, error: report.pdfError })),
       books: reports,

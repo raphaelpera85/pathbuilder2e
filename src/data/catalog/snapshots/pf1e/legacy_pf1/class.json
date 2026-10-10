@@ -1,0 +1,685 @@
+[
+  {
+    "id": "pf1e.class.barbaro",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Bárbaro",
+    "name_en": "Barbarian",
+    "name_es": null,
+    "description_pt": "Dado de Vida d12. Bônus base de ataque: full. Testes de resistência bons: Fortitude. Pontos de perícia por nível: 4 + modificador de Int. Riqueza inicial: 3d6 × 10 PO (valor médio 105 PO). Perícias de classe: Acrobacia (Des), Adestrar Animais (Car), Cavalgar (Des), Conhecimento (natureza) (Int), Escalar (For), Intimidação (Car), Natação (For), Ofícios (Int), Percepção (Sab), Sobrevivência (Sab). Guerreiro selvagem movido pela fúria da batalha; combatente exímio com fortitude para enfrentar inimigos superiores.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 12,
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 30,
+    "traits": [],
+    "data": {
+      "id": "barbaro",
+      "name": "Bárbaro",
+      "nameEn": "Barbarian",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePageStart": 30,
+      "startingWealth": {
+        "diceCount": 3,
+        "dieSides": 6,
+        "multiplierGp": 10,
+        "averageGp": 105,
+        "sourcePage": 140
+      },
+      "alignment": "Qualquer uma não ordeira",
+      "hitDie": 12,
+      "babProgression": "full",
+      "goodSaves": [
+        "fort"
+      ],
+      "skillPointsPerLevel": "4 + modificador de Int",
+      "classSkills": [
+        "Acrobacia (Des)",
+        "Adestrar Animais (Car)",
+        "Cavalgar (Des)",
+        "Conhecimento (natureza) (Int)",
+        "Escalar (For)",
+        "Intimidação (Car)",
+        "Natação (For)",
+        "Ofícios (Int)",
+        "Percepção (Sab)",
+        "Sobrevivência (Sab)"
+      ],
+      "casterType": null,
+      "description": "Guerreiro selvagem movido pela fúria da batalha; combatente exímio com fortitude para enfrentar inimigos superiores.",
+      "names": {
+        "pt-BR": "Bárbaro",
+        "en": "Barbarian"
+      },
+      "summaries": {
+        "pt-BR": "Dado de Vida d12. Bônus base de ataque: full. Testes de resistência bons: Fortitude. Pontos de perícia por nível: 4 + modificador de Int. Riqueza inicial: 3d6 × 10 PO (valor médio 105 PO). Perícias de classe: Acrobacia (Des), Adestrar Animais (Car), Cavalgar (Des), Conhecimento (natureza) (Int), Escalar (For), Intimidação (Car), Natação (For), Ofícios (Int), Percepção (Sab), Sobrevivência (Sab). Guerreiro selvagem movido pela fúria da batalha; combatente exímio com fortitude para enfrentar inimigos superiores."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.class.bardo",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Bardo",
+    "name_en": "Bard",
+    "name_es": null,
+    "description_pt": "Dado de Vida d8. Bônus base de ataque: medium. Testes de resistência bons: Reflexos, Vontade. Pontos de perícia por nível: 6 + modificador de Int. Riqueza inicial: 3d6 × 10 PO (valor médio 105 PO). Perícias de classe: Acrobacia (Des), Apresentação (Car), Arte da Fuga (Des), Artes Mágicas (Int), Avaliação (Int), Blefar (Car), Conhecimento (todos) (Int), Diplomacia (Car), Disfarce (Car), Escalar (For), Furtividade (Des), Intimidação (Car), Linguística (Int), Ofícios (Int), Percepção (Sab), Prestidigitação (Des), Profissão (Sab), Sentir Motivação (Sab), Usar Instrumento Mágico (Car). Aventureiro versátil que combina perícia, talento e magia arcana espontânea para confundir inimigos e inspirar aliados.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 34,
+    "traits": [],
+    "data": {
+      "id": "bardo",
+      "name": "Bardo",
+      "nameEn": "Bard",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePageStart": 34,
+      "startingWealth": {
+        "diceCount": 3,
+        "dieSides": 6,
+        "multiplierGp": 10,
+        "averageGp": 105,
+        "sourcePage": 140
+      },
+      "alignment": "Qualquer uma",
+      "hitDie": 8,
+      "babProgression": "medium",
+      "goodSaves": [
+        "ref",
+        "will"
+      ],
+      "skillPointsPerLevel": "6 + modificador de Int",
+      "classSkills": [
+        "Acrobacia (Des)",
+        "Apresentação (Car)",
+        "Arte da Fuga (Des)",
+        "Artes Mágicas (Int)",
+        "Avaliação (Int)",
+        "Blefar (Car)",
+        "Conhecimento (todos) (Int)",
+        "Diplomacia (Car)",
+        "Disfarce (Car)",
+        "Escalar (For)",
+        "Furtividade (Des)",
+        "Intimidação (Car)",
+        "Linguística (Int)",
+        "Ofícios (Int)",
+        "Percepção (Sab)",
+        "Prestidigitação (Des)",
+        "Profissão (Sab)",
+        "Sentir Motivação (Sab)",
+        "Usar Instrumento Mágico (Car)"
+      ],
+      "casterType": "arcane_spontaneous",
+      "description": "Aventureiro versátil que combina perícia, talento e magia arcana espontânea para confundir inimigos e inspirar aliados.",
+      "names": {
+        "pt-BR": "Bardo",
+        "en": "Bard"
+      },
+      "summaries": {
+        "pt-BR": "Dado de Vida d8. Bônus base de ataque: medium. Testes de resistência bons: Reflexos, Vontade. Pontos de perícia por nível: 6 + modificador de Int. Riqueza inicial: 3d6 × 10 PO (valor médio 105 PO). Perícias de classe: Acrobacia (Des), Apresentação (Car), Arte da Fuga (Des), Artes Mágicas (Int), Avaliação (Int), Blefar (Car), Conhecimento (todos) (Int), Diplomacia (Car), Disfarce (Car), Escalar (For), Furtividade (Des), Intimidação (Car), Linguística (Int), Ofícios (Int), Percepção (Sab), Prestidigitação (Des), Profissão (Sab), Sentir Motivação (Sab), Usar Instrumento Mágico (Car). Aventureiro versátil que combina perícia, talento e magia arcana espontânea para confundir inimigos e inspirar aliados."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.class.clerigo",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Clérigo",
+    "name_en": "Cleric",
+    "name_es": null,
+    "description_pt": "Dado de Vida d8. Bônus base de ataque: medium. Testes de resistência bons: Fortitude, Vontade. Pontos de perícia por nível: 2 + modificador de Int. Riqueza inicial: 4d6 × 10 PO (valor médio 140 PO). Perícias de classe: Artes Mágicas (Int), Avaliação (Int), Conhecimento (arcano) (Int), Conhecimento (história) (Int), Conhecimento (nobreza) (Int), Conhecimento (planos) (Int), Conhecimento (religião) (Int), Cura (Sab), Diplomacia (Car), Linguística (Int), Ofícios (Int), Profissão (Sab), Sentir Motivação (Sab). Servo devoto de uma divindade que canaliza poder divino em cura, proteção e combate ao mal (ou ao bem).",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 37,
+    "traits": [],
+    "data": {
+      "id": "clerigo",
+      "name": "Clérigo",
+      "nameEn": "Cleric",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePageStart": 37,
+      "startingWealth": {
+        "diceCount": 4,
+        "dieSides": 6,
+        "multiplierGp": 10,
+        "averageGp": 140,
+        "sourcePage": 140
+      },
+      "alignment": "Deve estar a um passo da tendência de sua divindade",
+      "hitDie": 8,
+      "babProgression": "medium",
+      "goodSaves": [
+        "fort",
+        "will"
+      ],
+      "skillPointsPerLevel": "2 + modificador de Int",
+      "classSkills": [
+        "Artes Mágicas (Int)",
+        "Avaliação (Int)",
+        "Conhecimento (arcano) (Int)",
+        "Conhecimento (história) (Int)",
+        "Conhecimento (nobreza) (Int)",
+        "Conhecimento (planos) (Int)",
+        "Conhecimento (religião) (Int)",
+        "Cura (Sab)",
+        "Diplomacia (Car)",
+        "Linguística (Int)",
+        "Ofícios (Int)",
+        "Profissão (Sab)",
+        "Sentir Motivação (Sab)"
+      ],
+      "casterType": "divine_prepared",
+      "description": "Servo devoto de uma divindade que canaliza poder divino em cura, proteção e combate ao mal (ou ao bem).",
+      "names": {
+        "pt-BR": "Clérigo",
+        "en": "Cleric"
+      },
+      "summaries": {
+        "pt-BR": "Dado de Vida d8. Bônus base de ataque: medium. Testes de resistência bons: Fortitude, Vontade. Pontos de perícia por nível: 2 + modificador de Int. Riqueza inicial: 4d6 × 10 PO (valor médio 140 PO). Perícias de classe: Artes Mágicas (Int), Avaliação (Int), Conhecimento (arcano) (Int), Conhecimento (história) (Int), Conhecimento (nobreza) (Int), Conhecimento (planos) (Int), Conhecimento (religião) (Int), Cura (Sab), Diplomacia (Car), Linguística (Int), Ofícios (Int), Profissão (Sab), Sentir Motivação (Sab). Servo devoto de uma divindade que canaliza poder divino em cura, proteção e combate ao mal (ou ao bem)."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.class.druida",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Druida",
+    "name_en": "Druid",
+    "name_es": null,
+    "description_pt": "Dado de Vida d8. Bônus base de ataque: medium. Testes de resistência bons: Fortitude, Vontade. Pontos de perícia por nível: 4 + modificador de Int. Riqueza inicial: 2d6 × 10 PO (valor médio 70 PO). Perícias de classe: Adestrar Animais (Car), Artes Mágicas (Int), Cavalgar (Des), Conhecimento (geografia) (Int), Conhecimento (natureza) (Int), Cura (Sab), Escalar (For), Natação (For), Ofícios (Int), Percepção (Sab), Profissão (Sab), Sobrevivência (Sab), Voo (Des). Guardiã do equilíbrio natural, aliada de feras, capaz de mudar de forma e canalizar o poder bruto da natureza.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 49,
+    "traits": [],
+    "data": {
+      "id": "druida",
+      "name": "Druida",
+      "nameEn": "Druid",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePageStart": 49,
+      "startingWealth": {
+        "diceCount": 2,
+        "dieSides": 6,
+        "multiplierGp": 10,
+        "averageGp": 70,
+        "sourcePage": 140
+      },
+      "alignment": "Qualquer neutra",
+      "hitDie": 8,
+      "babProgression": "medium",
+      "goodSaves": [
+        "fort",
+        "will"
+      ],
+      "skillPointsPerLevel": "4 + modificador de Int",
+      "classSkills": [
+        "Adestrar Animais (Car)",
+        "Artes Mágicas (Int)",
+        "Cavalgar (Des)",
+        "Conhecimento (geografia) (Int)",
+        "Conhecimento (natureza) (Int)",
+        "Cura (Sab)",
+        "Escalar (For)",
+        "Natação (For)",
+        "Ofícios (Int)",
+        "Percepção (Sab)",
+        "Profissão (Sab)",
+        "Sobrevivência (Sab)",
+        "Voo (Des)"
+      ],
+      "casterType": "divine_prepared",
+      "description": "Guardiã do equilíbrio natural, aliada de feras, capaz de mudar de forma e canalizar o poder bruto da natureza.",
+      "names": {
+        "pt-BR": "Druida",
+        "en": "Druid"
+      },
+      "summaries": {
+        "pt-BR": "Dado de Vida d8. Bônus base de ataque: medium. Testes de resistência bons: Fortitude, Vontade. Pontos de perícia por nível: 4 + modificador de Int. Riqueza inicial: 2d6 × 10 PO (valor médio 70 PO). Perícias de classe: Adestrar Animais (Car), Artes Mágicas (Int), Cavalgar (Des), Conhecimento (geografia) (Int), Conhecimento (natureza) (Int), Cura (Sab), Escalar (For), Natação (For), Ofícios (Int), Percepção (Sab), Profissão (Sab), Sobrevivência (Sab), Voo (Des). Guardiã do equilíbrio natural, aliada de feras, capaz de mudar de forma e canalizar o poder bruto da natureza."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.class.feiticeiro",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Feiticeiro",
+    "name_en": "Sorcerer",
+    "name_es": null,
+    "description_pt": "Dado de Vida d6. Bônus base de ataque: poor. Testes de resistência bons: Vontade. Pontos de perícia por nível: 2 + modificador de Int. Riqueza inicial: 2d6 × 10 PO (valor médio 70 PO). Perícias de classe: Artes Mágicas (Int), Avaliação (Int), Blefar (Car), Conhecimento (arcano) (Int), Intimidação (Car), Ofícios (Int), Profissão (Sab), Usar Instrumento Mágico (Car), Voo (Des). Conjurador que carrega magia no próprio sangue (uma linhagem), lançando magias arcanas de forma espontânea e poderosa.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 6,
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 57,
+    "traits": [],
+    "data": {
+      "id": "feiticeiro",
+      "name": "Feiticeiro",
+      "nameEn": "Sorcerer",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePageStart": 57,
+      "startingWealth": {
+        "diceCount": 2,
+        "dieSides": 6,
+        "multiplierGp": 10,
+        "averageGp": 70,
+        "sourcePage": 140
+      },
+      "alignment": "Qualquer uma",
+      "hitDie": 6,
+      "babProgression": "poor",
+      "goodSaves": [
+        "will"
+      ],
+      "skillPointsPerLevel": "2 + modificador de Int",
+      "classSkills": [
+        "Artes Mágicas (Int)",
+        "Avaliação (Int)",
+        "Blefar (Car)",
+        "Conhecimento (arcano) (Int)",
+        "Intimidação (Car)",
+        "Ofícios (Int)",
+        "Profissão (Sab)",
+        "Usar Instrumento Mágico (Car)",
+        "Voo (Des)"
+      ],
+      "casterType": "arcane_spontaneous",
+      "description": "Conjurador que carrega magia no próprio sangue (uma linhagem), lançando magias arcanas de forma espontânea e poderosa.",
+      "names": {
+        "pt-BR": "Feiticeiro",
+        "en": "Sorcerer"
+      },
+      "summaries": {
+        "pt-BR": "Dado de Vida d6. Bônus base de ataque: poor. Testes de resistência bons: Vontade. Pontos de perícia por nível: 2 + modificador de Int. Riqueza inicial: 2d6 × 10 PO (valor médio 70 PO). Perícias de classe: Artes Mágicas (Int), Avaliação (Int), Blefar (Car), Conhecimento (arcano) (Int), Intimidação (Car), Ofícios (Int), Profissão (Sab), Usar Instrumento Mágico (Car), Voo (Des). Conjurador que carrega magia no próprio sangue (uma linhagem), lançando magias arcanas de forma espontânea e poderosa."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.class.guerreiro",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Guerreiro",
+    "name_en": "Fighter",
+    "name_es": null,
+    "description_pt": "Dado de Vida d10. Bônus base de ataque: full. Testes de resistência bons: Fortitude. Pontos de perícia por nível: 2 + modificador de Int. Riqueza inicial: 5d6 × 10 PO (valor médio 175 PO). Perícias de classe: Adestrar Animais (Car), Cavalgar (Des), Conhecimento (engenharia) (Int), Conhecimento (exploração) (Int), Escalar (For), Intimidação (Car), Natação (For), Ofícios (Int), Profissão (Sab), Sobrevivência (Sab). Mestre das armas e armaduras, campeão marcial sem igual em proezas de batalha e domínio tático do campo de combate.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 10,
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 62,
+    "traits": [],
+    "data": {
+      "id": "guerreiro",
+      "name": "Guerreiro",
+      "nameEn": "Fighter",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePageStart": 62,
+      "startingWealth": {
+        "diceCount": 5,
+        "dieSides": 6,
+        "multiplierGp": 10,
+        "averageGp": 175,
+        "sourcePage": 140
+      },
+      "alignment": "Qualquer uma",
+      "hitDie": 10,
+      "babProgression": "full",
+      "goodSaves": [
+        "fort"
+      ],
+      "skillPointsPerLevel": "2 + modificador de Int",
+      "classSkills": [
+        "Adestrar Animais (Car)",
+        "Cavalgar (Des)",
+        "Conhecimento (engenharia) (Int)",
+        "Conhecimento (exploração) (Int)",
+        "Escalar (For)",
+        "Intimidação (Car)",
+        "Natação (For)",
+        "Ofícios (Int)",
+        "Profissão (Sab)",
+        "Sobrevivência (Sab)"
+      ],
+      "casterType": null,
+      "description": "Mestre das armas e armaduras, campeão marcial sem igual em proezas de batalha e domínio tático do campo de combate.",
+      "names": {
+        "pt-BR": "Guerreiro",
+        "en": "Fighter"
+      },
+      "summaries": {
+        "pt-BR": "Dado de Vida d10. Bônus base de ataque: full. Testes de resistência bons: Fortitude. Pontos de perícia por nível: 2 + modificador de Int. Riqueza inicial: 5d6 × 10 PO (valor médio 175 PO). Perícias de classe: Adestrar Animais (Car), Cavalgar (Des), Conhecimento (engenharia) (Int), Conhecimento (exploração) (Int), Escalar (For), Intimidação (Car), Natação (For), Ofícios (Int), Profissão (Sab), Sobrevivência (Sab). Mestre das armas e armaduras, campeão marcial sem igual em proezas de batalha e domínio tático do campo de combate."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.class.ladino",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Ladino",
+    "name_en": "Rogue",
+    "name_es": null,
+    "description_pt": "Dado de Vida d8. Bônus base de ataque: medium. Testes de resistência bons: Reflexos. Pontos de perícia por nível: 8 + modificador de Int. Riqueza inicial: 4d6 × 10 PO (valor médio 140 PO). Perícias de classe: Acrobacia (Des), Apresentação (Car), Arte da Fuga (Des), Avaliação (Int), Blefar (Car), Conhecimento (exploração) (Int), Conhecimento (local) (Int), Diplomacia (Car), Disfarce (Car), Escalar (For), Furtividade (Des), Intimidação (Car), Linguística (Int), Natação (For), Ofícios (Int), Operar Mecanismo (Int), Percepção (Sab), Prestidigitação (Des), Profissão (Int), Sentir Motivação (Sab), Usar Instrumento Mágico (Car). Especialista versátil em superar obstáculos: armadilhas, fechaduras, perigos mágicos e adversários, com ataque furtivo devastador.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 64,
+    "traits": [],
+    "data": {
+      "id": "ladino",
+      "name": "Ladino",
+      "nameEn": "Rogue",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePageStart": 64,
+      "startingWealth": {
+        "diceCount": 4,
+        "dieSides": 6,
+        "multiplierGp": 10,
+        "averageGp": 140,
+        "sourcePage": 140
+      },
+      "alignment": "Qualquer uma",
+      "hitDie": 8,
+      "babProgression": "medium",
+      "goodSaves": [
+        "ref"
+      ],
+      "skillPointsPerLevel": "8 + modificador de Int",
+      "classSkills": [
+        "Acrobacia (Des)",
+        "Apresentação (Car)",
+        "Arte da Fuga (Des)",
+        "Avaliação (Int)",
+        "Blefar (Car)",
+        "Conhecimento (exploração) (Int)",
+        "Conhecimento (local) (Int)",
+        "Diplomacia (Car)",
+        "Disfarce (Car)",
+        "Escalar (For)",
+        "Furtividade (Des)",
+        "Intimidação (Car)",
+        "Linguística (Int)",
+        "Natação (For)",
+        "Ofícios (Int)",
+        "Operar Mecanismo (Int)",
+        "Percepção (Sab)",
+        "Prestidigitação (Des)",
+        "Profissão (Int)",
+        "Sentir Motivação (Sab)",
+        "Usar Instrumento Mágico (Car)"
+      ],
+      "casterType": null,
+      "description": "Especialista versátil em superar obstáculos: armadilhas, fechaduras, perigos mágicos e adversários, com ataque furtivo devastador.",
+      "names": {
+        "pt-BR": "Ladino",
+        "en": "Rogue"
+      },
+      "summaries": {
+        "pt-BR": "Dado de Vida d8. Bônus base de ataque: medium. Testes de resistência bons: Reflexos. Pontos de perícia por nível: 8 + modificador de Int. Riqueza inicial: 4d6 × 10 PO (valor médio 140 PO). Perícias de classe: Acrobacia (Des), Apresentação (Car), Arte da Fuga (Des), Avaliação (Int), Blefar (Car), Conhecimento (exploração) (Int), Conhecimento (local) (Int), Diplomacia (Car), Disfarce (Car), Escalar (For), Furtividade (Des), Intimidação (Car), Linguística (Int), Natação (For), Ofícios (Int), Operar Mecanismo (Int), Percepção (Sab), Prestidigitação (Des), Profissão (Int), Sentir Motivação (Sab), Usar Instrumento Mágico (Car). Especialista versátil em superar obstáculos: armadilhas, fechaduras, perigos mágicos e adversários, com ataque furtivo devastador."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.class.mago",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Mago",
+    "name_en": "Wizard",
+    "name_es": null,
+    "description_pt": "Dado de Vida d6. Bônus base de ataque: poor. Testes de resistência bons: Vontade. Pontos de perícia por nível: 2 + modificador de Int. Riqueza inicial: 2d6 × 10 PO (valor médio 70 PO). Perícias de classe: Artes Mágicas (Int), Conhecimento (todos) (Int), Linguística (Int), Ofícios (Int), Profissão (Sab), Usar Instrumento Mágico (Int). Estudioso da magia arcana que domina uma escola de conjuração através de anos de pesquisa em grimórios e pergaminhos.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 6,
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 70,
+    "traits": [],
+    "data": {
+      "id": "mago",
+      "name": "Mago",
+      "nameEn": "Wizard",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePageStart": 70,
+      "startingWealth": {
+        "diceCount": 2,
+        "dieSides": 6,
+        "multiplierGp": 10,
+        "averageGp": 70,
+        "sourcePage": 140
+      },
+      "alignment": "Qualquer uma",
+      "hitDie": 6,
+      "babProgression": "poor",
+      "goodSaves": [
+        "will"
+      ],
+      "skillPointsPerLevel": "2 + modificador de Int",
+      "classSkills": [
+        "Artes Mágicas (Int)",
+        "Conhecimento (todos) (Int)",
+        "Linguística (Int)",
+        "Ofícios (Int)",
+        "Profissão (Sab)",
+        "Usar Instrumento Mágico (Int)"
+      ],
+      "casterType": "arcane_prepared",
+      "description": "Estudioso da magia arcana que domina uma escola de conjuração através de anos de pesquisa em grimórios e pergaminhos.",
+      "names": {
+        "pt-BR": "Mago",
+        "en": "Wizard"
+      },
+      "summaries": {
+        "pt-BR": "Dado de Vida d6. Bônus base de ataque: poor. Testes de resistência bons: Vontade. Pontos de perícia por nível: 2 + modificador de Int. Riqueza inicial: 2d6 × 10 PO (valor médio 70 PO). Perícias de classe: Artes Mágicas (Int), Conhecimento (todos) (Int), Linguística (Int), Ofícios (Int), Profissão (Sab), Usar Instrumento Mágico (Int). Estudioso da magia arcana que domina uma escola de conjuração através de anos de pesquisa em grimórios e pergaminhos."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.class.monge",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Monge",
+    "name_en": "Monk",
+    "name_es": null,
+    "description_pt": "Dado de Vida d8. Bônus base de ataque: medium. Testes de resistência bons: Fortitude, Reflexos, Vontade. Pontos de perícia por nível: 4 + modificador de Int. Riqueza inicial: 1d6 × 10 PO (valor médio 35 PO). Perícias de classe: Acrobacia (Des), Apresentação (Car), Arte da Fuga (Des), Cavalgar (Des), Conhecimento (história) (Int), Conhecimento (religião) (Int), Escalar (For), Furtividade (Des), Intimidação (Car), Natação (For), Ofícios (Int), Percepção (Sab), Profissão (Sab), Sentir Motivação (Sab). Guerreiro-asceta que treina corpo e mente até tornar o próprio corpo uma arma, combinando disciplina marcial e espiritual.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 73,
+    "traits": [],
+    "data": {
+      "id": "monge",
+      "name": "Monge",
+      "nameEn": "Monk",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePageStart": 73,
+      "startingWealth": {
+        "diceCount": 1,
+        "dieSides": 6,
+        "multiplierGp": 10,
+        "averageGp": 35,
+        "sourcePage": 140
+      },
+      "alignment": "Qualquer ordeira",
+      "hitDie": 8,
+      "babProgression": "medium",
+      "goodSaves": [
+        "fort",
+        "ref",
+        "will"
+      ],
+      "skillPointsPerLevel": "4 + modificador de Int",
+      "classSkills": [
+        "Acrobacia (Des)",
+        "Apresentação (Car)",
+        "Arte da Fuga (Des)",
+        "Cavalgar (Des)",
+        "Conhecimento (história) (Int)",
+        "Conhecimento (religião) (Int)",
+        "Escalar (For)",
+        "Furtividade (Des)",
+        "Intimidação (Car)",
+        "Natação (For)",
+        "Ofícios (Int)",
+        "Percepção (Sab)",
+        "Profissão (Sab)",
+        "Sentir Motivação (Sab)"
+      ],
+      "casterType": null,
+      "description": "Guerreiro-asceta que treina corpo e mente até tornar o próprio corpo uma arma, combinando disciplina marcial e espiritual.",
+      "names": {
+        "pt-BR": "Monge",
+        "en": "Monk"
+      },
+      "summaries": {
+        "pt-BR": "Dado de Vida d8. Bônus base de ataque: medium. Testes de resistência bons: Fortitude, Reflexos, Vontade. Pontos de perícia por nível: 4 + modificador de Int. Riqueza inicial: 1d6 × 10 PO (valor médio 35 PO). Perícias de classe: Acrobacia (Des), Apresentação (Car), Arte da Fuga (Des), Cavalgar (Des), Conhecimento (história) (Int), Conhecimento (religião) (Int), Escalar (For), Furtividade (Des), Intimidação (Car), Natação (For), Ofícios (Int), Percepção (Sab), Profissão (Sab), Sentir Motivação (Sab). Guerreiro-asceta que treina corpo e mente até tornar o próprio corpo uma arma, combinando disciplina marcial e espiritual."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.class.paladino",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Paladino",
+    "name_en": "Paladin",
+    "name_es": null,
+    "description_pt": "Dado de Vida d10. Bônus base de ataque: full. Testes de resistência bons: Fortitude, Vontade. Pontos de perícia por nível: 2 + modificador de Int. Riqueza inicial: 5d6 × 10 PO (valor médio 175 PO). Perícias de classe: Adestrar Animais (Car), Artes Mágicas (Int), Cavalgar (Des), Conhecimento (nobreza) (Int), Conhecimento (religião) (Int), Cura (Sab), Diplomacia (Car), Ofícios (Int), Profissão (Sab), Sentir Motivação (Sab). Campeão sagrado dedicado à batalha contra o mal, com bênçãos divinas de cura, proteção e punição.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 10,
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 76,
+    "traits": [],
+    "data": {
+      "id": "paladino",
+      "name": "Paladino",
+      "nameEn": "Paladin",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePageStart": 76,
+      "startingWealth": {
+        "diceCount": 5,
+        "dieSides": 6,
+        "multiplierGp": 10,
+        "averageGp": 175,
+        "sourcePage": 140
+      },
+      "alignment": "Bondoso e Ordeiro (obrigatório)",
+      "hitDie": 10,
+      "babProgression": "full",
+      "goodSaves": [
+        "fort",
+        "will"
+      ],
+      "skillPointsPerLevel": "2 + modificador de Int",
+      "classSkills": [
+        "Adestrar Animais (Car)",
+        "Artes Mágicas (Int)",
+        "Cavalgar (Des)",
+        "Conhecimento (nobreza) (Int)",
+        "Conhecimento (religião) (Int)",
+        "Cura (Sab)",
+        "Diplomacia (Car)",
+        "Ofícios (Int)",
+        "Profissão (Sab)",
+        "Sentir Motivação (Sab)"
+      ],
+      "casterType": "divine_prepared",
+      "description": "Campeão sagrado dedicado à batalha contra o mal, com bênçãos divinas de cura, proteção e punição.",
+      "names": {
+        "pt-BR": "Paladino",
+        "en": "Paladin"
+      },
+      "summaries": {
+        "pt-BR": "Dado de Vida d10. Bônus base de ataque: full. Testes de resistência bons: Fortitude, Vontade. Pontos de perícia por nível: 2 + modificador de Int. Riqueza inicial: 5d6 × 10 PO (valor médio 175 PO). Perícias de classe: Adestrar Animais (Car), Artes Mágicas (Int), Cavalgar (Des), Conhecimento (nobreza) (Int), Conhecimento (religião) (Int), Cura (Sab), Diplomacia (Car), Ofícios (Int), Profissão (Sab), Sentir Motivação (Sab). Campeão sagrado dedicado à batalha contra o mal, com bênçãos divinas de cura, proteção e punição."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.class.patrulheiro",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Patrulheiro",
+    "name_en": "Ranger",
+    "name_es": null,
+    "description_pt": "Dado de Vida d10. Bônus base de ataque: full. Testes de resistência bons: Fortitude, Reflexos. Pontos de perícia por nível: 6 + modificador de Int. Riqueza inicial: 5d6 × 10 PO (valor médio 175 PO). Perícias de classe: Adestrar Animais (Car), Artes Mágicas (Int), Cavalgar (Des), Conhecimento (geografia) (Int), Conhecimento (natureza) (Int), Escalar (For), Furtividade (Des), Natação (For), Ofícios (Int), Percepção (Sab), Profissão (Sab), Sobrevivência (Sab). Caçador e batedor especializado contra inimigos e terrenos específicos, combinando combate marcial com magia divina limitada.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 10,
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 79,
+    "traits": [],
+    "data": {
+      "id": "patrulheiro",
+      "name": "Patrulheiro",
+      "nameEn": "Ranger",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePageStart": 79,
+      "startingWealth": {
+        "diceCount": 5,
+        "dieSides": 6,
+        "multiplierGp": 10,
+        "averageGp": 175,
+        "sourcePage": 140
+      },
+      "alignment": "Qualquer uma",
+      "hitDie": 10,
+      "babProgression": "full",
+      "goodSaves": [
+        "fort",
+        "ref"
+      ],
+      "skillPointsPerLevel": "6 + modificador de Int",
+      "classSkills": [
+        "Adestrar Animais (Car)",
+        "Artes Mágicas (Int)",
+        "Cavalgar (Des)",
+        "Conhecimento (geografia) (Int)",
+        "Conhecimento (natureza) (Int)",
+        "Escalar (For)",
+        "Furtividade (Des)",
+        "Natação (For)",
+        "Ofícios (Int)",
+        "Percepção (Sab)",
+        "Profissão (Sab)",
+        "Sobrevivência (Sab)"
+      ],
+      "casterType": "divine_prepared",
+      "description": "Caçador e batedor especializado contra inimigos e terrenos específicos, combinando combate marcial com magia divina limitada.",
+      "names": {
+        "pt-BR": "Patrulheiro",
+        "en": "Ranger"
+      },
+      "summaries": {
+        "pt-BR": "Dado de Vida d10. Bônus base de ataque: full. Testes de resistência bons: Fortitude, Reflexos. Pontos de perícia por nível: 6 + modificador de Int. Riqueza inicial: 5d6 × 10 PO (valor médio 175 PO). Perícias de classe: Adestrar Animais (Car), Artes Mágicas (Int), Cavalgar (Des), Conhecimento (geografia) (Int), Conhecimento (natureza) (Int), Escalar (For), Furtividade (Des), Natação (For), Ofícios (Int), Percepção (Sab), Profissão (Sab), Sobrevivência (Sab). Caçador e batedor especializado contra inimigos e terrenos específicos, combinando combate marcial com magia divina limitada."
+      },
+      "ruleset": "legacy_pf1"
+    }
+  }
+]

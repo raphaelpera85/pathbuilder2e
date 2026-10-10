@@ -527,7 +527,7 @@
     "description_pt": "Quando o personagem realizar uma ação de ataque regular com uma arma de ataque corporal, ele poderá se mover antes e depois do ataque, desde que a distância total percorrida seja maior que seu deslocamento. Essa movimentação não provoca ataques de oportunidade do defensor, embora ainda provoque ataques de oportunidade de outras criaturas nas áreas ameaçadas. Não é possível utilizar esse talento se estiver usando qualquer tipo de armadura pesada. É necessário se deslocar no mínimo 1,5 m antes e depois do ataque para obter os benefícios deste talento.",
     "description_en": null,
     "description_es": null,
-    "prerequisites": "Mobilidade, bônus base de ataque +4",
+    "prerequisites": "Des 13, Esquiva, Mobilidade, bônus base de ataque +4",
     "action_cost": null,
     "traits": [
       "nota-1"
@@ -559,7 +559,7 @@
       "parent": "Mobilidade",
       "section": "comum",
       "summary": "Capaz de se deslocar antes e depois do ataque",
-      "prerequisites": "Mobilidade, bônus base de ataque +4"
+      "prerequisites": "Des 13, Esquiva, Mobilidade, bônus base de ataque +4"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -578,7 +578,7 @@
     "description_pt": "Realiza um ataque corporal contra cada oponente dentro do alcance",
     "description_en": null,
     "description_es": null,
-    "prerequisites": "Des 13, Especialização em Combate, Esquiva, Mobilidade, Ataque em Movimento, bônus base de ataque +4",
+    "prerequisites": "Des 13, Int 13, Especialização em Combate, Esquiva, Mobilidade, Ataque em Movimento, bônus base de ataque +4",
     "action_cost": null,
     "traits": [
       "nota-1"
@@ -596,7 +596,7 @@
       "parent": "Especialização em Combate",
       "section": "comum",
       "summary": "Realiza um ataque corporal contra cada oponente dentro do alcance",
-      "prerequisites": "Des 13, Especialização em Combate, Esquiva, Mobilidade, Ataque em Movimento, bônus base de ataque +4"
+      "prerequisites": "Des 13, Int 13, Especialização em Combate, Esquiva, Mobilidade, Ataque em Movimento, bônus base de ataque +4"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",

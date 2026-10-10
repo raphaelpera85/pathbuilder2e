@@ -39,6 +39,7 @@ import {
   type AdminDashboardMetrics,
 } from "./services/admin";
 import {
+  CATALOG_SYSTEM_IDS,
   CATALOG_RULESETS,
   DEFAULT_RPG_SYSTEMS,
   fetchCatalogCategory,
@@ -115,14 +116,44 @@ function catalogRulesetLabel(ruleset: string): string {
     padrao: "Tormenta20 padrão",
     advanced: "OSE Advanced Fantasy",
     classic: "OSE Classic Fantasy",
+    basico: "OSE Criação Básica/Especialista",
     remaster: "Pathfinder 2e Remaster",
     legacy: "Pathfinder 2e Legacy",
+    legacy_pf1: "Pathfinder 1e · Livro Básico",
     v35: "D&D 3.5",
     "v35-cov": "D&D 3.5 · Champions of Valor",
     "v35-defensores": "D&D 3.5 · Defensores da Fé",
     "v35-frostburn": "D&D 3.5 · Frostburn",
   };
   return labels[ruleset] || ruleset;
+}
+
+const DND5E_CLASS_TRANSLATIONS: Record<string, Record<"pt-BR" | "en" | "es", string>> = {
+  barbaro: { "pt-BR": "Bárbaro", en: "Barbarian", es: "Bárbaro" },
+  bardo: { "pt-BR": "Bardo", en: "Bard", es: "Bardo" },
+  bruxo: { "pt-BR": "Bruxo", en: "Warlock", es: "Brujo" },
+  clerigo: { "pt-BR": "Clérigo", en: "Cleric", es: "Clérigo" },
+  druida: { "pt-BR": "Druida", en: "Druid", es: "Druida" },
+  feiticeiro: { "pt-BR": "Feiticeiro", en: "Sorcerer", es: "Hechicero" },
+  guerreiro: { "pt-BR": "Guerreiro", en: "Fighter", es: "Guerrero" },
+  ladino: { "pt-BR": "Ladino", en: "Rogue", es: "Pícaro" },
+  mago: { "pt-BR": "Mago", en: "Wizard", es: "Mago" },
+  monge: { "pt-BR": "Monge", en: "Monk", es: "Monje" },
+  paladino: { "pt-BR": "Paladino", en: "Paladin", es: "Paladín" },
+  patrulheiro: { "pt-BR": "Patrulheiro", en: "Ranger", es: "Explorador" },
+};
+
+function getCatalogSpellClassNames(data: Record<string, unknown>, locale: "pt-BR" | "en" | "es"): string[] {
+  const spellClasses = data.spellClasses as Partial<Record<"pt-BR" | "en" | "es", string[]>> | undefined;
+  if (spellClasses?.[locale]?.length) return spellClasses[locale];
+  if (spellClasses?.["pt-BR"]?.length) return spellClasses["pt-BR"];
+  const systemId = data.systemId ?? data.system_id;
+  if (systemId !== "dnd5e" || !Array.isArray(data.classIds)) return [];
+  const classNames = new Map(DND5E_CLASSES.map((item) => [item.id, item.name]));
+  return data.classIds.map((id) => {
+    const key = String(id);
+    return DND5E_CLASS_TRANSLATIONS[key]?.[locale] || classNames.get(key) || key;
+  });
 }
 
 function localizeSourceBook(book: string, locale: "pt-BR" | "en" | "es"): string {
@@ -408,8 +439,12 @@ function CatalogPage() {
 
   const inspectedDescription = inspectedEntry
     && !(inspectedEntry.category === "background" && inspectedEntry.data.systemId === "t20" && inspectedEntry.data.summaryOrigin === "structured_rules")
-    ? String(inspectedEntry.data.summaries?.[locale] ?? inspectedEntry.data.description ?? inspectedEntry.summary ?? "").trim()
+    ? String(inspectedEntry.data.mechanicsSummary ?? inspectedEntry.data.summaries?.[locale] ?? inspectedEntry.data.description ?? inspectedEntry.summary ?? "").trim()
     : "";
+  const inspectedFamiliarOptions = inspectedEntry && Array.isArray(inspectedEntry.data.familiarOptions)
+    ? inspectedEntry.data.familiarOptions as Array<{ name: string; alignment?: string; minimumArcaneCasterLevel?: number; note?: string }>
+    : [];
+  const inspectedSpellClassNames = inspectedEntry ? getCatalogSpellClassNames(inspectedEntry.data, locale) : [];
 
   return <main className="portal-page portal-catalog-page" id="portal-content" tabIndex={-1}>
     <header className="portal-hero">
@@ -432,7 +467,7 @@ function CatalogPage() {
         </button>
       </div>
       <div className="catalog-filters-collapsible">
-        <label><span>Sistema</span><select value={systemFilter} onChange={(event) => setSystemFilter(event.target.value)}><option value="all">Todos os sistemas</option>{DEFAULT_RPG_SYSTEMS.filter((system) => system.active).map((system) => <option key={system.id} value={system.id}>{system.name[locale] || system.name["pt-BR"] || system.id}</option>)}</select></label>
+        <label><span>Sistema</span><select value={systemFilter} onChange={(event) => setSystemFilter(event.target.value)}><option value="all">Todos os sistemas</option>{DEFAULT_RPG_SYSTEMS.filter((system) => CATALOG_SYSTEM_IDS.includes(system.id)).map((system) => <option key={system.id} value={system.id}>{system.name[locale] || system.name["pt-BR"] || system.id}</option>)}</select></label>
         <label><span>{t("filterCategory")}</span><select value={category} onChange={(event) => setCategory(event.target.value as PickerType | "all")}><option value="all">{t("allCategories")}</option>{catalogCategories.map((item) => <option key={item.type} value={item.type}>{t(item.label)}</option>)}</select></label>
         <label><span>{t("filterRuleset")}</span><select value={rulesetFilter} onChange={(event) => setRulesetFilter(event.target.value)}><option value="all">{t("allRulesets")}</option>{CATALOG_RULESETS.map((ruleset) => <option key={ruleset} value={ruleset}>{catalogRulesetLabel(ruleset)}</option>)}</select></label>
         <label><span>{t("filterRarity")}</span><select value={rarityFilter} onChange={(event) => setRarityFilter(event.target.value)}><option value="all">{t("allRarities")}</option><option value="common">{t("rarityCommon")}</option><option value="uncommon">{t("rarityUncommon")}</option><option value="rare">{t("rarityRare")}</option></select></label>
@@ -477,23 +512,26 @@ function CatalogPage() {
           {/* TRAITS & BADGES */}
           <div className="compendium-modal-badges">
             {inspectedEntry.data.rarity && <span className={`rarity-badge ${String(inspectedEntry.data.rarity)}`}>{inspectedEntry.data.rarity}</span>}
-            <span className={inspectedEntry.data.ruleset === "remaster" ? "ruleset-badge remaster" : inspectedEntry.data.ruleset === "legacy" ? "ruleset-badge legacy" : "ruleset-badge needs_review"}>
-              {inspectedEntry.data.ruleset === "remaster" ? t("rulesetRemaster") : inspectedEntry.data.ruleset === "legacy" ? t("rulesetLegacy") : t("rulesetReview")}
+            <span className={`ruleset-badge ${String(inspectedEntry.data.ruleset || "needs_review")}`}>
+              {t(rulesetMessageKey((inspectedEntry.data.ruleset || "needs_review") as RulesetId))}
             </span>
             {inspectedEntry.data.sourceApproximate && <span className="source-badge review">{t("sourceSectionReference")}</span>}
-            {hasFallbackTranslation(inspectedEntry) && <span className="source-badge translation-pending">{t("translationPending")}</span>}
+            {hasFallbackTranslation(inspectedEntry, locale) && <span className="source-badge translation-pending">{t("translationPending")}</span>}
             {inspectedEntry.data.traits?.map((trait: string) => <span key={trait} className="trait-tag">{getLocalizedTrait(trait, locale)}</span>)}
           </div>
 
           {/* STATS MATRIX */}
           <div className="compendium-stats-grid">
             {inspectedEntry.data.level !== undefined ? <div className="stat-box"><strong>{t("level")}</strong><span>{String(inspectedEntry.data.level)}</span></div> : null}
+            {inspectedSpellClassNames.length > 0 ? <div className="stat-box"><strong>{locale === "en" ? "Class" : locale === "es" ? "Clase" : "Classe"}</strong><span>{inspectedSpellClassNames.join(", ")}</span></div> : null}
             {inspectedEntry.data.rank !== undefined ? <div className="stat-box"><strong>{t("rank")}</strong><span>{String(inspectedEntry.data.rank)}</span></div> : null}
             {inspectedEntry.data.hp !== undefined ? <div className="stat-box"><strong>{t("baseHp")}</strong><span>{String(inspectedEntry.data.hp)}</span></div> : null}
             {inspectedEntry.data.speed !== undefined ? <div className="stat-box"><strong>{t("speed")}</strong><span>{String(inspectedEntry.data.speed)} {t("feet")}</span></div> : null}
             {inspectedEntry.data.damage ? <div className="stat-box"><strong>{t("damage")}</strong><span>{String(inspectedEntry.data.damage)}</span></div> : null}
             {inspectedEntry.data.price ? <div className="stat-box"><strong>{t("price")}</strong><span>{formatPriceToLocale(inspectedEntry.data.price, locale)}</span></div> : null}
             {inspectedEntry.data.bulk !== undefined ? <div className="stat-box"><strong>{t("bulk")}</strong><span>{String(inspectedEntry.data.bulk)}</span></div> : null}
+            {Array.isArray(inspectedEntry.data.spellFlags) && inspectedEntry.data.spellFlags.length > 0 ? <div className="stat-box"><strong>{locale === "en" ? "Listed components" : locale === "es" ? "Componentes indicados" : "Componentes indicados"}</strong><span>{(inspectedEntry.data.spellFlags as string[]).map((flag) => flag === "M" ? (locale === "en" ? "Material" : locale === "es" ? "Material" : "Material") : flag === "F" ? (locale === "en" ? "Focus" : locale === "es" ? "Foco" : "Foco") : flag === "X" ? (locale === "en" ? "XP cost" : locale === "es" ? "Coste de PX" : "Custo de XP") : flag).join(", ")}</span></div> : null}
+            {inspectedEntry.data.school ? <div className="stat-box"><strong>{locale === "en" ? "School" : locale === "es" ? "Escuela" : "Escola"}</strong><span>{String(inspectedEntry.data.school)}</span></div> : null}
             {inspectedEntry.data.variantFamily ? <div className="stat-box"><strong>{locale === "en" ? "Variant" : locale === "es" ? "Variante" : "Variante"}</strong><span>{inspectedEntry.data.variantRole === "ranged" ? (locale === "en" ? "Ranged" : locale === "es" ? "A distancia" : "À distância") : inspectedEntry.data.variantRole === "melee" ? (locale === "en" ? "Melee" : locale === "es" ? "Cuerpo a cuerpo" : "Corpo a corpo") : inspectedEntry.data.variantFamily}</span></div> : null}
             {inspectedEntry.data.prerequisites ? <div className="stat-box"><strong>{t("prerequisites")}</strong><span>{formatCatalogValue(inspectedEntry.data.prerequisites, locale)}</span></div> : null}
             {inspectedEntry.category === "background" && inspectedEntry.data.systemId === "t20" && Array.isArray(inspectedEntry.data.trainedSkills) && inspectedEntry.data.trainedSkills.length > 0
@@ -511,12 +549,29 @@ function CatalogPage() {
           {inspectedDescription && <div className="compendium-modal-description">
             <h3>{t("itemDetails")}</h3>
             <p>{inspectedDescription}</p>
+            {inspectedFamiliarOptions.length > 0 && <div className="compendium-table-scroll">
+              <table className="compendium-options-table">
+                <caption>{locale === "en" ? "Improved familiar options" : locale === "es" ? "Opciones de Familiar Mejorado" : "Opções de Familiar Aprimorado"}</caption>
+                <thead><tr>
+                  <th scope="col">{locale === "en" ? "Familiar" : locale === "es" ? "Familiar" : "Familiar"}</th>
+                  <th scope="col">{locale === "en" ? "Alignment" : locale === "es" ? "Alineamiento" : "Tendência"}</th>
+                  <th scope="col">{locale === "en" ? "Minimum arcane caster level" : locale === "es" ? "Nivel mínimo de lanzador arcano" : "Nível mínimo de conjurador arcano"}</th>
+                  <th scope="col">{locale === "en" ? "Notes" : locale === "es" ? "Notas" : "Observações"}</th>
+                </tr></thead>
+                <tbody>{inspectedFamiliarOptions.map((option) => <tr key={option.name}>
+                  <th scope="row">{option.name}</th>
+                  <td>{option.alignment || "—"}</td>
+                  <td>{option.minimumArcaneCasterLevel ?? "—"}</td>
+                  <td>{option.note || "—"}</td>
+                </tr>)}</tbody>
+              </table>
+            </div>}
           </div>}
 
           {/* SOURCE CITATION */}
           <footer className="compendium-modal-footer">
             <strong>{t("source")}:</strong>
-            <span>{inspectedEntry.data.source?.book ? `${inspectedEntry.data.sourceApproximate ? `${t("sourceSectionReference")}: ` : ""}${localizeSourceBook(inspectedEntry.data.source.book, locale)} · p. ${inspectedEntry.data.source.page ?? "-"}` : inspectedEntry.data.needs_review ? t("sourcePending") : t("uncatalogued")}</span>
+            <span>{inspectedEntry.data.source?.book ? `${inspectedEntry.data.sourceApproximate ? `${t("sourceSectionReference")}: ` : ""}${localizeSourceBook(inspectedEntry.data.source.book, locale)} · p. ${inspectedEntry.data.sourcePageRange || inspectedEntry.data.source.page || "-"}` : inspectedEntry.data.needs_review ? t("sourcePending") : t("uncatalogued")}</span>
           </footer>
         </div>
       </div>
@@ -524,15 +579,14 @@ function CatalogPage() {
   </main>;
 }
 
-function hasFallbackTranslation(entry: { data?: { id?: string; summaries?: Partial<Record<"pt-BR" | "en" | "es", string>> } }): boolean {
-  const summaries = entry.data?.summaries;
-  const pt = summaries?.["pt-BR"];
-  const en = summaries?.en;
-  const es = summaries?.es;
-  return String(entry.data?.id ?? "").startsWith("item.compendium.")
-    && Boolean(pt)
-    && pt === en
-    && en === es;
+function hasFallbackTranslation(entry: { data?: { id?: string; summaries?: Partial<Record<"pt-BR" | "en" | "es", string>>; translationStatus?: { names?: Partial<Record<"pt-BR" | "en" | "es", boolean>>; summaries?: Partial<Record<"pt-BR" | "en" | "es", boolean>> } } }, locale: "pt-BR" | "en" | "es"): boolean {
+  if (locale === "pt-BR") return false;
+  const status = entry.data?.translationStatus;
+  const hasLegacyDuplicateSummary = String(entry.data?.id ?? "").startsWith("item.compendium.")
+    && Boolean(entry.data?.summaries?.["pt-BR"])
+    && entry.data?.summaries?.["pt-BR"] === entry.data?.summaries?.en
+    && entry.data?.summaries?.en === entry.data?.summaries?.es;
+  return status?.names?.[locale] === false || status?.summaries?.[locale] === false || hasLegacyDuplicateSummary;
 }
 
 function formatT20OriginBenefit(value: string): string {
@@ -599,7 +653,7 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
   const approximateSource = Boolean(entry.data.sourceApproximate);
   const verified = Boolean(source?.book && source?.page) && !approximateSource;
   const legacy = verified && entry.data.ruleset === "legacy";
-  const translationPending = hasFallbackTranslation(entry);
+  const translationPending = hasFallbackTranslation(entry, locale);
   const rarity = entry.data.rarity === "rare" ? t("rarityRare") : entry.data.rarity === "uncommon" ? t("rarityUncommon") : entry.data.rarity === "common" ? t("rarityCommon") : null;
   const castingTimes = entry.data.castingTimes as Partial<Record<"pt-BR" | "en" | "es", string>> | undefined;
   const traditionNames = entry.data.traditionNames as Partial<Record<"pt-BR" | "en" | "es", string[]>> | undefined;
@@ -613,6 +667,17 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
     wis: { "pt-BR": "Sabedoria", en: "Wisdom", es: "Sabiduría" }, cha: { "pt-BR": "Carisma", en: "Charisma", es: "Carisma" },
   };
   const displayName = getItemDisplayName(entry, locale);
+  const availableRulesets = Array.isArray(entry.data.availableRulesets)
+    ? entry.data.availableRulesets.map(String)
+    : entry.data.ruleset ? [String(entry.data.ruleset)] : [];
+  const rulesetLabels: Record<string, string> = {
+    advanced: t("rulesetAdvanced"),
+    classic: t("rulesetClassic"),
+    basico: locale === "en" ? "Basic/Expert" : locale === "es" ? "Básico/Experto" : "Básico/Especialista",
+  };
+  const applicableRulesets = availableRulesets.map((ruleset) => rulesetLabels[ruleset] || catalogRulesetLabel(ruleset));
+  const localizedSpellClasses = getCatalogSpellClassNames(entry.data, locale);
+  const spellClassLabel = locale === "en" ? "Class" : locale === "es" ? "Clase" : "Classe";
   const range = entry.data.rangeFeet ?? entry.data.range;
   const facts = [
     isWeapon && entry.data.damage ? `${t("damage")}: ${String(entry.data.damage)}` : null,
@@ -624,6 +689,7 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
     isWeapon && entry.data.weaponGroup ? `${t("weaponGroup")}: ${String(entry.data.weaponGroup)}` : null,
     typeof entry.data.rank === "number" ? `${t("rank")} ${entry.data.rank}` : null,
     typeof entry.data.level === "number" ? `${t("level")} ${entry.data.level}` : null,
+    entry.category === "spell" && localizedSpellClasses.length ? `${spellClassLabel}: ${localizedSpellClasses.join(", ")}` : null,
     isSkill && typeof entry.data.skillAbility === "string" ? `${t("keyAbility")}: ${skillAbilityLabels[entry.data.skillAbility]?.[locale] || entry.data.skillAbility}` : null,
     entry.category === "action" && entry.data.actionCost ? `${locale === "en" ? "Cost" : locale === "es" ? "Coste" : "Custo"}: ${String(entry.data.actionCost)}` : null,
     entry.category === "condition" && entry.data.hasValue ? (locale === "en" ? "Has levels" : locale === "es" ? "Tiene niveles" : "Possui níveis") : null,
@@ -636,18 +702,25 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
     entry.data.variantFamily ? `${locale === "en" ? "Variant" : locale === "es" ? "Variante" : "Variante"}: ${entry.data.variantRole === "ranged" ? (locale === "en" ? "Ranged" : locale === "es" ? "A distancia" : "À distância") : entry.data.variantRole === "melee" ? (locale === "en" ? "Melee" : locale === "es" ? "Cuerpo a cuerpo" : "Corpo a corpo") : entry.data.variantFamily}` : null,
   ].filter((fact): fact is string => Boolean(fact));
   const catalogEntryKey = entry.id ?? entry.data?.id ?? `${entry.category}:${entry.name}`;
+  const accessibleName = entry.category === "spell" && localizedSpellClasses.length
+    ? `${displayName}, ${spellClassLabel}: ${localizedSpellClasses.join(", ")}, ${t("level")} ${String(entry.data.spellLevel ?? entry.data.level ?? "")}`
+    : displayName;
+  const cardAccessibleName = applicableRulesets.length > 0
+    ? `${accessibleName}, ${locale === "en" ? "Rulesets" : locale === "es" ? "Reglas" : "Modos"}: ${applicableRulesets.join(", ")}`
+    : accessibleName;
   return <article className="catalog-card interactive" data-catalog-entry={String(catalogEntryKey)} onClick={(e) => onInspect?.(e.currentTarget)} tabIndex={0} onKeyDown={(e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       onInspect?.(e.currentTarget);
     }
-  }} role="button" aria-label={displayName}>
+  }} role="button" aria-label={cardAccessibleName}>
     <div className="catalog-card-top"><div className="catalog-card-meta"><span>{entry.categoryLabel}</span>{rarity && <span className={`rarity-badge ${String(entry.data.rarity)}`}>{rarity}</span>}</div><div className="catalog-card-status"><span className={legacy ? "source-badge legacy" : verified ? "source-badge verified" : "source-badge review"}>{legacy ? t("catalogLegacy") : verified ? t("catalogVerified") : t("catalogReview")}</span>{approximateSource && <span className="source-badge review">{t("sourceSectionReference")}</span>}{translationPending && <span className="source-badge translation-pending">{t("translationPending")}</span>}</div></div>
     {(isWeapon || isItem) && <img className="weapon-visual weapon-visual-card" src={isWeapon ? getWeaponImageUrl(entry.data) : getItemImageUrl(entry.data)} alt={isWeapon ? getWeaponImageAlt(displayName, entry.data, locale) : getItemImageAlt(displayName, entry.data, locale)} loading="lazy" />}
     <h2>{displayName}</h2>
+    {applicableRulesets.length > 0 && <div className="catalog-facts" aria-label={locale === "en" ? "Available rulesets" : locale === "es" ? "Reglas disponibles" : "Modos disponíveis"}>{applicableRulesets.map((label, index) => <span className={`ruleset-badge ${availableRulesets[index]}`} key={availableRulesets[index]}>{label}</span>)}</div>}
     {facts.length > 0 && <div className="catalog-facts">{facts.map((fact) => <span key={fact}>{fact}</span>)}</div>}
     {(entry.data.summaries?.[locale] ?? entry.data.description) && <p>{entry.data.summaries?.[locale] ?? entry.data.description}</p>}
-    <footer>{source?.book ? `${approximateSource ? `${t("sourceSectionReference")}: ` : ""}${localizeSourceBook(source.book, locale)}${source.page ? ` · p. ${source.page}` : ""}` : entry.data.needs_review ? t("sourcePending") : t("uncatalogued")}</footer>
+    <footer>{source?.book ? `${approximateSource ? `${t("sourceSectionReference")}: ` : ""}${localizeSourceBook(source.book, locale)}${source.page ? ` · p. ${entry.data.sourcePageRange || source.page}` : ""}` : entry.data.needs_review ? t("sourcePending") : t("uncatalogued")}</footer>
   </article>;
 }
 
@@ -660,6 +733,7 @@ function rulesetMessageKey(ruleset: RulesetId): MessageKey {
     case "advanced": return "rulesetAdvanced";
     case "classic": return "rulesetClassic";
     case "v35": return "rulesetV35";
+    case "legacy_pf1": return "rulesetPf1Legacy";
     // Tormenta 20 usa "Padrão" (contra "Jogo do Ano"), não o padrão de 2014 do D&D.
     case "padrao": return "rulesetT20";
     default: return "rulesetReview";

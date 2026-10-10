@@ -81,7 +81,7 @@ async function run() {
   const oseContent = (ruleset) => {
     const classic = ruleset === "classic";
     return {
-      classes: completeEntries(Object.values(oseClasses.OSE_CLASSES).filter((entry) => !classic || oseRules.isOseClassAvailableForMode(entry, "classic"))),
+      classes: completeEntries(Object.values(oseClasses.OSE_CLASSES).filter((entry) => oseRules.isOseClassAvailableForMode(entry, ruleset))),
       ancestries: completeEntries(Object.values(oseRaces.OSE_RACES).filter((entry) => !classic || ["humano", "anao", "elfo", "halfling"].includes(entry.id))),
       items: completeEntries([...oseEquipment.OSE_WEAPONS, ...oseEquipment.OSE_ARMORS, ...oseEquipment.OSE_GEAR]),
       spells: completeEntries(oseSpells.OSE_SPELLS),
@@ -108,18 +108,23 @@ async function run() {
     },
     {
       scope: "dnd5e/standard", systemId: "dnd5e", ruleset: "standard",
-      expected: { ancestries: 9, classes: 12, backgrounds: 13, items: 226, spells: 315, feats: 40, skills: 18 },
+      expected: { ancestries: 9, classes: 12, backgrounds: 13, items: 226, spells: 362, feats: 40, skills: 18 },
       actual: { ancestries: dndCatalog.DND5E_RACES.length, classes: dndCatalog.DND5E_CLASSES.length, backgrounds: dndBackgrounds.DND5E_BACKGROUNDS.length, items: dndCompendium.DND5E_EQUIPMENT.length, spells: dndCompendium.DND5E_SPELLS.length, feats: dndCompendium.DND5E_FEATS.length, skills: skills.getSystemSkillItems("dnd5e", "standard").length },
     },
     {
       scope: "ose/advanced", systemId: "ose", ruleset: "advanced",
-      expected: { ancestries: 10, classes: 22, items: 53, spells: 34 },
-      actual: { ancestries: Object.keys(oseRaces.OSE_RACES).length, classes: Object.keys(oseClasses.OSE_CLASSES).length, items: oseEquipment.OSE_WEAPONS.length + oseEquipment.OSE_ARMORS.length + oseEquipment.OSE_GEAR.length, spells: oseSpells.OSE_SPELLS.length },
+      expected: { ancestries: 10, classes: 13, items: 53, spells: 34 },
+      actual: { ancestries: Object.keys(oseRaces.OSE_RACES).length, classes: Object.values(oseClasses.OSE_CLASSES).filter((entry) => oseRules.isOseClassAvailableForMode(entry, "advanced")).length, items: oseEquipment.OSE_WEAPONS.length + oseEquipment.OSE_ARMORS.length + oseEquipment.OSE_GEAR.length, spells: oseSpells.OSE_SPELLS.length },
     },
     {
       scope: "ose/classic", systemId: "ose", ruleset: "classic",
       expected: { classes: 7, items: 53, spells: 34 },
       actual: { classes: Object.values(oseClasses.OSE_CLASSES).filter((entry) => oseRules.isOseClassAvailableForMode(entry, "classic")).length, items: oseEquipment.OSE_WEAPONS.length + oseEquipment.OSE_ARMORS.length + oseEquipment.OSE_GEAR.length, spells: oseSpells.OSE_SPELLS.length },
+    },
+    {
+      scope: "ose/basico", systemId: "ose", ruleset: "basico",
+      expected: { ancestries: 10, classes: 19, items: 53, spells: 34 },
+      actual: { ancestries: Object.keys(oseRaces.OSE_RACES).length, classes: Object.values(oseClasses.OSE_CLASSES).filter((entry) => oseRules.isOseClassAvailableForMode(entry, "basico")).length, items: oseEquipment.OSE_WEAPONS.length + oseEquipment.OSE_ARMORS.length + oseEquipment.OSE_GEAR.length, spells: oseSpells.OSE_SPELLS.length },
     },
     {
       scope: "dnd35/v35", systemId: "dnd35", ruleset: "v35",

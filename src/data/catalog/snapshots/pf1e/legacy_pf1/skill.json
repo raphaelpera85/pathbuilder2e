@@ -1,0 +1,994 @@
+[
+  {
+    "id": "pf1e.skill.acrobacia",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Acrobacia",
+    "name_en": "Acrobatics",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: DES. Pode ser usada sem treinamento. Aplica penalidade de armadura. Manter o equilíbrio, saltar e realizar acrobacias, incluindo mover-se por superfícies precárias sem cair.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "des",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 88,
+    "traits": [],
+    "data": {
+      "id": "acrobacia",
+      "name": "Acrobacia",
+      "nameEn": "Acrobatics",
+      "keyAbility": "des",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 88,
+      "trainedOnly": false,
+      "armorCheckPenalty": true,
+      "description": "Manter o equilíbrio, saltar e realizar acrobacias, incluindo mover-se por superfícies precárias sem cair.",
+      "names": {
+        "pt-BR": "Acrobacia",
+        "en": "Acrobatics"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: DES. Pode ser usada sem treinamento. Aplica penalidade de armadura. Manter o equilíbrio, saltar e realizar acrobacias, incluindo mover-se por superfícies precárias sem cair."
+      },
+      "skillAbility": "des",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.adestrar_animais",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Adestrar Animais",
+    "name_en": "Handle Animal",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: CAR. Exige treinamento. Não aplica penalidade de armadura. Ensinar truques, adestrar, domesticar ou forçar um animal a executar uma tarefa.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "car",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 89,
+    "traits": [],
+    "data": {
+      "id": "adestrar_animais",
+      "name": "Adestrar Animais",
+      "nameEn": "Handle Animal",
+      "keyAbility": "car",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 89,
+      "trainedOnly": true,
+      "armorCheckPenalty": false,
+      "description": "Ensinar truques, adestrar, domesticar ou forçar um animal a executar uma tarefa.",
+      "names": {
+        "pt-BR": "Adestrar Animais",
+        "en": "Handle Animal"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: CAR. Exige treinamento. Não aplica penalidade de armadura. Ensinar truques, adestrar, domesticar ou forçar um animal a executar uma tarefa."
+      },
+      "skillAbility": "car",
+      "usableUntrained": false,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.apresentacao",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Apresentação",
+    "name_en": "Perform",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: CAR. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Entreter uma audiência cantando, atuando, dançando ou tocando um instrumento; perícia com subtipos (como Ofícios).",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "car",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 90,
+    "traits": [],
+    "data": {
+      "id": "apresentacao",
+      "name": "Apresentação",
+      "nameEn": "Perform",
+      "keyAbility": "car",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 90,
+      "trainedOnly": false,
+      "armorCheckPenalty": false,
+      "hasSubtypes": true,
+      "description": "Entreter uma audiência cantando, atuando, dançando ou tocando um instrumento; perícia com subtipos (como Ofícios).",
+      "names": {
+        "pt-BR": "Apresentação",
+        "en": "Perform"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: CAR. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Entreter uma audiência cantando, atuando, dançando ou tocando um instrumento; perícia com subtipos (como Ofícios)."
+      },
+      "skillAbility": "car",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.arte_da_fuga",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Arte da Fuga",
+    "name_en": "Escape Artist",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: DES. Pode ser usada sem treinamento. Aplica penalidade de armadura. Escapar de amarras, algemas, teias ou de um agarrão/imobilização.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "des",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 91,
+    "traits": [],
+    "data": {
+      "id": "arte_da_fuga",
+      "name": "Arte da Fuga",
+      "nameEn": "Escape Artist",
+      "keyAbility": "des",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 91,
+      "trainedOnly": false,
+      "armorCheckPenalty": true,
+      "description": "Escapar de amarras, algemas, teias ou de um agarrão/imobilização.",
+      "names": {
+        "pt-BR": "Arte da Fuga",
+        "en": "Escape Artist"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: DES. Pode ser usada sem treinamento. Aplica penalidade de armadura. Escapar de amarras, algemas, teias ou de um agarrão/imobilização."
+      },
+      "skillAbility": "des",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.artes_magicas",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Artes Mágicas",
+    "name_en": "Spellcraft",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: INT. Exige treinamento. Não aplica penalidade de armadura. Identificar magias sendo conjuradas, itens mágicos e símbolos arcanos; requerida para preparar pergaminhos e itens mágicos.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "int",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 93,
+    "traits": [],
+    "data": {
+      "id": "artes_magicas",
+      "name": "Artes Mágicas",
+      "nameEn": "Spellcraft",
+      "keyAbility": "int",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 93,
+      "trainedOnly": true,
+      "armorCheckPenalty": false,
+      "description": "Identificar magias sendo conjuradas, itens mágicos e símbolos arcanos; requerida para preparar pergaminhos e itens mágicos.",
+      "names": {
+        "pt-BR": "Artes Mágicas",
+        "en": "Spellcraft"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: INT. Exige treinamento. Não aplica penalidade de armadura. Identificar magias sendo conjuradas, itens mágicos e símbolos arcanos; requerida para preparar pergaminhos e itens mágicos."
+      },
+      "skillAbility": "int",
+      "usableUntrained": false,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.avaliacao",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Avaliação",
+    "name_en": "Appraise",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: INT. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Estimar o valor monetário de um objeto.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "int",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 94,
+    "traits": [],
+    "data": {
+      "id": "avaliacao",
+      "name": "Avaliação",
+      "nameEn": "Appraise",
+      "keyAbility": "int",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 94,
+      "trainedOnly": false,
+      "armorCheckPenalty": false,
+      "description": "Estimar o valor monetário de um objeto.",
+      "names": {
+        "pt-BR": "Avaliação",
+        "en": "Appraise"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: INT. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Estimar o valor monetário de um objeto."
+      },
+      "skillAbility": "int",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.blefar",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Blefar",
+    "name_en": "Bluff",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: CAR. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Contar uma mentira convincente; teste oposto por Sentir Motivação.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "car",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 94,
+    "traits": [],
+    "data": {
+      "id": "blefar",
+      "name": "Blefar",
+      "nameEn": "Bluff",
+      "keyAbility": "car",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 94,
+      "trainedOnly": false,
+      "armorCheckPenalty": false,
+      "description": "Contar uma mentira convincente; teste oposto por Sentir Motivação.",
+      "names": {
+        "pt-BR": "Blefar",
+        "en": "Bluff"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: CAR. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Contar uma mentira convincente; teste oposto por Sentir Motivação."
+      },
+      "skillAbility": "car",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.cavalgar",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Cavalgar",
+    "name_en": "Ride",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: DES. Pode ser usada sem treinamento. Aplica penalidade de armadura. Controlar uma montaria em situações normais e de combate.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "des",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 95,
+    "traits": [],
+    "data": {
+      "id": "cavalgar",
+      "name": "Cavalgar",
+      "nameEn": "Ride",
+      "keyAbility": "des",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 95,
+      "trainedOnly": false,
+      "armorCheckPenalty": true,
+      "description": "Controlar uma montaria em situações normais e de combate.",
+      "names": {
+        "pt-BR": "Cavalgar",
+        "en": "Ride"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: DES. Pode ser usada sem treinamento. Aplica penalidade de armadura. Controlar uma montaria em situações normais e de combate."
+      },
+      "skillAbility": "des",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.conhecimento",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Conhecimento",
+    "name_en": "Knowledge",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: INT. Exige treinamento. Não aplica penalidade de armadura. Perícia com subtipos (arcano, dungeonaria, engenharia, geografia, história, local, natureza, nobreza, planos, religião); cada subtipo é treinado separadamente.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "int",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 96,
+    "traits": [],
+    "data": {
+      "id": "conhecimento",
+      "name": "Conhecimento",
+      "nameEn": "Knowledge",
+      "keyAbility": "int",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 96,
+      "trainedOnly": true,
+      "armorCheckPenalty": false,
+      "hasSubtypes": true,
+      "description": "Perícia com subtipos (arcano, dungeonaria, engenharia, geografia, história, local, natureza, nobreza, planos, religião); cada subtipo é treinado separadamente.",
+      "names": {
+        "pt-BR": "Conhecimento",
+        "en": "Knowledge"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: INT. Exige treinamento. Não aplica penalidade de armadura. Perícia com subtipos (arcano, dungeonaria, engenharia, geografia, história, local, natureza, nobreza, planos, religião); cada subtipo é treinado separadamente."
+      },
+      "skillAbility": "int",
+      "usableUntrained": false,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.cura",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Cura",
+    "name_en": "Heal",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: SAB. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Tratar ferimentos, doenças e venenos; estabilizar um personagem à beira da morte.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "sab",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 96,
+    "traits": [],
+    "data": {
+      "id": "cura",
+      "name": "Cura",
+      "nameEn": "Heal",
+      "keyAbility": "sab",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 96,
+      "trainedOnly": false,
+      "armorCheckPenalty": false,
+      "description": "Tratar ferimentos, doenças e venenos; estabilizar um personagem à beira da morte.",
+      "names": {
+        "pt-BR": "Cura",
+        "en": "Heal"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: SAB. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Tratar ferimentos, doenças e venenos; estabilizar um personagem à beira da morte."
+      },
+      "skillAbility": "sab",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.diplomacia",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Diplomacia",
+    "name_en": "Diplomacy",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: CAR. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Persuadir outros, resolver disputas e coletar informações ou rumores.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "car",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 97,
+    "traits": [],
+    "data": {
+      "id": "diplomacia",
+      "name": "Diplomacia",
+      "nameEn": "Diplomacy",
+      "keyAbility": "car",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 97,
+      "trainedOnly": false,
+      "armorCheckPenalty": false,
+      "description": "Persuadir outros, resolver disputas e coletar informações ou rumores.",
+      "names": {
+        "pt-BR": "Diplomacia",
+        "en": "Diplomacy"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: CAR. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Persuadir outros, resolver disputas e coletar informações ou rumores."
+      },
+      "skillAbility": "car",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.disfarce",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Disfarce",
+    "name_en": "Disguise",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: CAR. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Mudar a própria aparência; oposto por testes de Percepção de observadores.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "car",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 98,
+    "traits": [],
+    "data": {
+      "id": "disfarce",
+      "name": "Disfarce",
+      "nameEn": "Disguise",
+      "keyAbility": "car",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 98,
+      "trainedOnly": false,
+      "armorCheckPenalty": false,
+      "description": "Mudar a própria aparência; oposto por testes de Percepção de observadores.",
+      "names": {
+        "pt-BR": "Disfarce",
+        "en": "Disguise"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: CAR. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Mudar a própria aparência; oposto por testes de Percepção de observadores."
+      },
+      "skillAbility": "car",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.escalar",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Escalar",
+    "name_en": "Climb",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: FOR. Pode ser usada sem treinamento. Aplica penalidade de armadura. Subir, descer ou atravessar superfícies verticais ou íngremes.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "for",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 99,
+    "traits": [],
+    "data": {
+      "id": "escalar",
+      "name": "Escalar",
+      "nameEn": "Climb",
+      "keyAbility": "for",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 99,
+      "trainedOnly": false,
+      "armorCheckPenalty": true,
+      "description": "Subir, descer ou atravessar superfícies verticais ou íngremes.",
+      "names": {
+        "pt-BR": "Escalar",
+        "en": "Climb"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: FOR. Pode ser usada sem treinamento. Aplica penalidade de armadura. Subir, descer ou atravessar superfícies verticais ou íngremes."
+      },
+      "skillAbility": "for",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.furtividade",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Furtividade",
+    "name_en": "Stealth",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: DES. Pode ser usada sem treinamento. Aplica penalidade de armadura. Evitar ser detectado, escondendo-se e movendo-se silenciosamente.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "des",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 100,
+    "traits": [],
+    "data": {
+      "id": "furtividade",
+      "name": "Furtividade",
+      "nameEn": "Stealth",
+      "keyAbility": "des",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 100,
+      "trainedOnly": false,
+      "armorCheckPenalty": true,
+      "description": "Evitar ser detectado, escondendo-se e movendo-se silenciosamente.",
+      "names": {
+        "pt-BR": "Furtividade",
+        "en": "Stealth"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: DES. Pode ser usada sem treinamento. Aplica penalidade de armadura. Evitar ser detectado, escondendo-se e movendo-se silenciosamente."
+      },
+      "skillAbility": "des",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.intimidacao",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Intimidação",
+    "name_en": "Intimidate",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: CAR. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Assustar adversários ou coagi-los a agir de determinada forma através de ameaça.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "car",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 101,
+    "traits": [],
+    "data": {
+      "id": "intimidacao",
+      "name": "Intimidação",
+      "nameEn": "Intimidate",
+      "keyAbility": "car",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 101,
+      "trainedOnly": false,
+      "armorCheckPenalty": false,
+      "description": "Assustar adversários ou coagi-los a agir de determinada forma através de ameaça.",
+      "names": {
+        "pt-BR": "Intimidação",
+        "en": "Intimidate"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: CAR. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Assustar adversários ou coagi-los a agir de determinada forma através de ameaça."
+      },
+      "skillAbility": "car",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.linguistica",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Linguística",
+    "name_en": "Linguistics",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: INT. Exige treinamento. Não aplica penalidade de armadura. Decifrar escritos antigos, falsificar documentos e aprender novos idiomas.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "int",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 101,
+    "traits": [],
+    "data": {
+      "id": "linguistica",
+      "name": "Linguística",
+      "nameEn": "Linguistics",
+      "keyAbility": "int",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 101,
+      "trainedOnly": true,
+      "armorCheckPenalty": false,
+      "description": "Decifrar escritos antigos, falsificar documentos e aprender novos idiomas.",
+      "names": {
+        "pt-BR": "Linguística",
+        "en": "Linguistics"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: INT. Exige treinamento. Não aplica penalidade de armadura. Decifrar escritos antigos, falsificar documentos e aprender novos idiomas."
+      },
+      "skillAbility": "int",
+      "usableUntrained": false,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.natacao",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Natação",
+    "name_en": "Swim",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: FOR. Pode ser usada sem treinamento. Aplica penalidade de armadura. Nadar e manter-se à tona, mesmo em condições adversas ou com carga.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "for",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 102,
+    "traits": [],
+    "data": {
+      "id": "natacao",
+      "name": "Natação",
+      "nameEn": "Swim",
+      "keyAbility": "for",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 102,
+      "trainedOnly": false,
+      "armorCheckPenalty": true,
+      "description": "Nadar e manter-se à tona, mesmo em condições adversas ou com carga.",
+      "names": {
+        "pt-BR": "Natação",
+        "en": "Swim"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: FOR. Pode ser usada sem treinamento. Aplica penalidade de armadura. Nadar e manter-se à tona, mesmo em condições adversas ou com carga."
+      },
+      "skillAbility": "for",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.oficios",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Ofícios",
+    "name_en": "Craft",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: INT. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Criar produtos artesanais (alquímicos, armaduras, armas, etc.); perícia com subtipos, cada um treinado separadamente.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "int",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 102,
+    "traits": [],
+    "data": {
+      "id": "oficios",
+      "name": "Ofícios",
+      "nameEn": "Craft",
+      "keyAbility": "int",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 102,
+      "trainedOnly": false,
+      "armorCheckPenalty": false,
+      "hasSubtypes": true,
+      "description": "Criar produtos artesanais (alquímicos, armaduras, armas, etc.); perícia com subtipos, cada um treinado separadamente.",
+      "names": {
+        "pt-BR": "Ofícios",
+        "en": "Craft"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: INT. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Criar produtos artesanais (alquímicos, armaduras, armas, etc.); perícia com subtipos, cada um treinado separadamente."
+      },
+      "skillAbility": "int",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.operar_mecanismo",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Operar Mecanismo",
+    "name_en": "Disable Device",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: DES. Exige treinamento. Não aplica penalidade de armadura. Desarmar armadilhas e destrancar fechaduras sem a chave correta.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "des",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 103,
+    "traits": [],
+    "data": {
+      "id": "operar_mecanismo",
+      "name": "Operar Mecanismo",
+      "nameEn": "Disable Device",
+      "keyAbility": "des",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 103,
+      "trainedOnly": true,
+      "armorCheckPenalty": false,
+      "description": "Desarmar armadilhas e destrancar fechaduras sem a chave correta.",
+      "names": {
+        "pt-BR": "Operar Mecanismo",
+        "en": "Disable Device"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: DES. Exige treinamento. Não aplica penalidade de armadura. Desarmar armadilhas e destrancar fechaduras sem a chave correta."
+      },
+      "skillAbility": "des",
+      "usableUntrained": false,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.percepcao",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Percepção",
+    "name_en": "Perception",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: SAB. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Notar outras criaturas, ouvir sons, ver detalhes e localizar armadilhas ocultas.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "sab",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 104,
+    "traits": [],
+    "data": {
+      "id": "percepcao",
+      "name": "Percepção",
+      "nameEn": "Perception",
+      "keyAbility": "sab",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 104,
+      "trainedOnly": false,
+      "armorCheckPenalty": false,
+      "description": "Notar outras criaturas, ouvir sons, ver detalhes e localizar armadilhas ocultas.",
+      "names": {
+        "pt-BR": "Percepção",
+        "en": "Perception"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: SAB. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Notar outras criaturas, ouvir sons, ver detalhes e localizar armadilhas ocultas."
+      },
+      "skillAbility": "sab",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.prestidigitacao",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Prestidigitação",
+    "name_en": "Sleight of Hand",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: DES. Exige treinamento. Aplica penalidade de armadura. Furtar objetos, esconder um item pequeno no corpo ou realizar truques manuais discretos.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "des",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 105,
+    "traits": [],
+    "data": {
+      "id": "prestidigitacao",
+      "name": "Prestidigitação",
+      "nameEn": "Sleight of Hand",
+      "keyAbility": "des",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 105,
+      "trainedOnly": true,
+      "armorCheckPenalty": true,
+      "description": "Furtar objetos, esconder um item pequeno no corpo ou realizar truques manuais discretos.",
+      "names": {
+        "pt-BR": "Prestidigitação",
+        "en": "Sleight of Hand"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: DES. Exige treinamento. Aplica penalidade de armadura. Furtar objetos, esconder um item pequeno no corpo ou realizar truques manuais discretos."
+      },
+      "skillAbility": "des",
+      "usableUntrained": false,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.profissao",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Profissão",
+    "name_en": "Profession",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: SAB. Exige treinamento. Não aplica penalidade de armadura. Exercer um ofício remunerado (marinheiro, cozinheiro, escriba etc.); perícia com subtipos, cada um treinado separadamente.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "sab",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 106,
+    "traits": [],
+    "data": {
+      "id": "profissao",
+      "name": "Profissão",
+      "nameEn": "Profession",
+      "keyAbility": "sab",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 106,
+      "trainedOnly": true,
+      "armorCheckPenalty": false,
+      "hasSubtypes": true,
+      "description": "Exercer um ofício remunerado (marinheiro, cozinheiro, escriba etc.); perícia com subtipos, cada um treinado separadamente.",
+      "names": {
+        "pt-BR": "Profissão",
+        "en": "Profession"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: SAB. Exige treinamento. Não aplica penalidade de armadura. Exercer um ofício remunerado (marinheiro, cozinheiro, escriba etc.); perícia com subtipos, cada um treinado separadamente."
+      },
+      "skillAbility": "sab",
+      "usableUntrained": false,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.sentir_motivacao",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Sentir Motivação",
+    "name_en": "Sense Motive",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: SAB. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Detectar mentiras e discernir verdadeiras intenções; teste oposto a Blefar.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "sab",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 106,
+    "traits": [],
+    "data": {
+      "id": "sentir_motivacao",
+      "name": "Sentir Motivação",
+      "nameEn": "Sense Motive",
+      "keyAbility": "sab",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 106,
+      "trainedOnly": false,
+      "armorCheckPenalty": false,
+      "description": "Detectar mentiras e discernir verdadeiras intenções; teste oposto a Blefar.",
+      "names": {
+        "pt-BR": "Sentir Motivação",
+        "en": "Sense Motive"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: SAB. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Detectar mentiras e discernir verdadeiras intenções; teste oposto a Blefar."
+      },
+      "skillAbility": "sab",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.sobrevivencia",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Sobrevivência",
+    "name_en": "Survival",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: SAB. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Sobreviver em terras selvagens, rastrear criaturas e evitar perigos naturais.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "sab",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 106,
+    "traits": [],
+    "data": {
+      "id": "sobrevivencia",
+      "name": "Sobrevivência",
+      "nameEn": "Survival",
+      "keyAbility": "sab",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 106,
+      "trainedOnly": false,
+      "armorCheckPenalty": false,
+      "description": "Sobreviver em terras selvagens, rastrear criaturas e evitar perigos naturais.",
+      "names": {
+        "pt-BR": "Sobrevivência",
+        "en": "Survival"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: SAB. Pode ser usada sem treinamento. Não aplica penalidade de armadura. Sobreviver em terras selvagens, rastrear criaturas e evitar perigos naturais."
+      },
+      "skillAbility": "sab",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.usar_instrumento_magico",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Usar Instrumento Mágico",
+    "name_en": "Use Magic Device",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: CAR. Exige treinamento. Não aplica penalidade de armadura. Usar itens mágicos mesmo sem preencher seus requisitos normais (classe, raça, alinhamento).",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "car",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 108,
+    "traits": [],
+    "data": {
+      "id": "usar_instrumento_magico",
+      "name": "Usar Instrumento Mágico",
+      "nameEn": "Use Magic Device",
+      "keyAbility": "car",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 108,
+      "trainedOnly": true,
+      "armorCheckPenalty": false,
+      "description": "Usar itens mágicos mesmo sem preencher seus requisitos normais (classe, raça, alinhamento).",
+      "names": {
+        "pt-BR": "Usar Instrumento Mágico",
+        "en": "Use Magic Device"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: CAR. Exige treinamento. Não aplica penalidade de armadura. Usar itens mágicos mesmo sem preencher seus requisitos normais (classe, raça, alinhamento)."
+      },
+      "skillAbility": "car",
+      "usableUntrained": false,
+      "ruleset": "legacy_pf1"
+    }
+  },
+  {
+    "id": "pf1e.skill.voo",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Voo",
+    "name_en": "Fly",
+    "name_es": null,
+    "description_pt": "Habilidade-chave: DES. Pode ser usada sem treinamento. Aplica penalidade de armadura. Manobrar em voo, incluindo pairar, mudar de direção e evitar quedas.",
+    "description_en": null,
+    "description_es": null,
+    "key_ability": "des",
+    "skill_type": "skill",
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 109,
+    "traits": [],
+    "data": {
+      "id": "voo",
+      "name": "Voo",
+      "nameEn": "Fly",
+      "keyAbility": "des",
+      "sourceBook": "Pathfinder RPG — Livro Básico",
+      "sourcePage": 109,
+      "trainedOnly": false,
+      "armorCheckPenalty": true,
+      "description": "Manobrar em voo, incluindo pairar, mudar de direção e evitar quedas.",
+      "names": {
+        "pt-BR": "Voo",
+        "en": "Fly"
+      },
+      "summaries": {
+        "pt-BR": "Habilidade-chave: DES. Pode ser usada sem treinamento. Aplica penalidade de armadura. Manobrar em voo, incluindo pairar, mudar de direção e evitar quedas."
+      },
+      "skillAbility": "des",
+      "usableUntrained": true,
+      "ruleset": "legacy_pf1"
+    }
+  }
+]

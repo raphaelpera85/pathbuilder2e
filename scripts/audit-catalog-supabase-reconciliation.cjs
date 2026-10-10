@@ -37,7 +37,15 @@ const rows = [["t20", "padrao"], ["dnd5e", "standard"], ["ose", "advanced"], ["o
     key_ability: data.skillAbility || null, skill_type: data.skillTable || data.category || "skill", ruleset: data.ruleset,
     source_book: data.sourceBook || data.source?.book || null, source_page: data.sourcePage || data.source?.page || null, data,
   }; });
-console.log(JSON.stringify(rows));`;
+// O OSE reutiliza os IDs das perícias do Ladrão em classes raciais com progressões próprias.
+// O catálogo de perícias é indexado por ID; preserve a primeira definição canônica (Ladrão).
+const seen = new Set();
+const uniqueRows = rows.filter((row) => {
+  if (seen.has(row.id)) return false;
+  seen.add(row.id);
+  return true;
+});
+console.log(JSON.stringify(uniqueRows));`;
   return JSON.parse(execFileSync(process.execPath, ["--no-warnings", "--experimental-strip-types", "--loader", loader, "--input-type=module", "-e", code], { cwd: root, encoding: "utf8" }));
 }
 

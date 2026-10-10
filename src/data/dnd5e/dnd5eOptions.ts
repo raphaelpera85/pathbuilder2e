@@ -261,13 +261,13 @@ export const DND5E_CLASS_CHOICES: Dnd5eClassChoice[] = [
 /** Magias de Círculo da Terra do Livro do Jogador 2014, por terreno e nível de acesso. */
 export const DND5E_LAND_CIRCLE_SPELLS: Record<string, Record<number, string[]>> = {
   Ártico: { 3: ["Imobilizar Pessoa", "Crescer Espinhos"], 5: ["Nevasca", "Lentidão"], 7: ["Movimentação Livre", "Tempestade de Gelo"], 9: ["Comunhão com a Natureza", "Cone de Frio"] },
-  Costa: { 3: ["Imagem Espelhada", "Passo Nebuloso"], 5: ["Respirar na Água", "Andar na Água"], 7: ["Controlar a Água", "Movimentação Livre"], 9: ["Conjurar Elemental", "Vidência"] },
-  Deserto: { 3: ["Nublar", "Silêncio"], 5: ["Criar Alimentos", "Proteção contra Energia"], 7: ["Malogro", "Terreno Alucinógeno"], 9: ["Praga de Insetos", "Muralha de Pedra"] },
-  Floresta: { 3: ["Pele de Árvore", "Escalar"], 5: ["Convocar Relâmpagos", "Ampliar Plantas"], 7: ["Adivinhação", "Movimentação Livre"], 9: ["Comunhão com a Natureza", "Caminhar em Árvores"] },
-  Planalto: { 3: ["Invisibilidade", "Passos sem Pegadas"], 5: ["Luz do Dia", "Velocidade"], 7: ["Adivinhação", "Movimentação Livre"], 9: ["Sonho", "Praga de Insetos"] },
-  Montanha: { 3: ["Escalar", "Crescer Espinhos"], 5: ["Relâmpago", "Moldar Rochas"], 7: ["Moldar Rochas", "Pele de Pedra"], 9: ["Passagem", "Muralha de Pedra"] },
-  Pântano: { 3: ["Escuridão", "Flecha Ácida de Melf"], 5: ["Andar na Água", "Nuvem Fétida"], 7: ["Movimentação Livre", "Localizar Criatura"], 9: ["Praga de Insetos", "Vidência"] },
-  Subterrâneo: { 3: ["Teia", "Nublar"], 5: ["Forma Gasosa", "Nuvem Fétida"], 7: ["Invisibilidade Maior", "Moldar Rochas"], 9: ["Névoa Mortal", "Praga de Insetos"] },
+  Costa: { 3: ["Passo Nebuloso", "Reflexos"], 5: ["Andar na Água", "Respirar na Água"], 7: ["Movimentação Livre", "Controlar a Água"], 9: ["Vidência", "Conjurar Elemental"] },
+  Deserto: { 3: ["Nublar", "Silêncio"], 5: ["Criar Alimentos", "Proteção contra Energia"], 7: ["Praga", "Terreno Alucinógeno"], 9: ["Muralha de Pedra", "Praga de Insetos"] },
+  Floresta: { 3: ["Escalar", "Pele de Árvore"], 5: ["Convocar Relâmpagos", "Ampliar Plantas"], 7: ["Adivinhação", "Movimentação Livre"], 9: ["Comunhão com a Natureza", "Caminhar em Árvores"] },
+  Planalto: { 3: ["Invisibilidade", "Passos sem Pegadas"], 5: ["Luz do Dia", "Velocidade"], 7: ["Adivinhação", "Movimentação Livre"], 9: ["Praga de Insetos", "Sonho"] },
+  Montanha: { 3: ["Crescer Espinhos", "Escalar"], 5: ["Mesclar-se às Rochas", "Relâmpago"], 7: ["Moldar Rochas", "Pele de Pedra"], 9: ["Passagem", "Muralha de Pedra"] },
+  Pântano: { 3: ["Escuridão", "Flecha Ácida de Melf"], 5: ["Andar na Água", "Nuvem Fétida"], 7: ["Localizar Criatura", "Movimentação Livre"], 9: ["Vidência", "Praga de Insetos"] },
+  Subterrâneo: { 3: ["Escalar", "Teia"], 5: ["Forma Gasosa", "Nuvem Fétida"], 7: ["Invisibilidade Maior", "Moldar Rochas"], 9: ["Praga de Insetos", "Névoa Mortal"] },
 };
 
 /** Magias de domínio do Clérigo no Livro do Jogador 2014, por nível do personagem. */
@@ -286,14 +286,14 @@ export const DND5E_CLERIC_DOMAIN_SPELLS: Record<string, Record<number, string[]>
   },
   clerigo_natureza: {
     1: ["Amizade Animal", "Falar com Animais"], 3: ["Pele de Árvore", "Crescer Espinhos"], 5: ["Ampliar Plantas", "Muralha de Vento"],
-    7: ["Dominar Besta", "Videira Agarrante"], 9: ["Praga de Insetos", "Caminhar em Árvores"],
+    7: ["Dominar Besta", "Vinha Esmagadora"], 9: ["Praga de Insetos", "Caminhar em Árvores"],
   },
   clerigo_tempestade: {
     1: ["Névoa Obscurecente", "Onda Trovejante"], 3: ["Lufada de Vento", "Despedaçar"], 5: ["Convocar Relâmpagos", "Nevasca"],
     7: ["Controlar a Água", "Tempestade de Gelo"], 9: ["Onda Destrutiva", "Praga de Insetos"],
   },
   clerigo_trapaca: {
-    1: ["Enfeitiçar Pessoa", "Disfarçar-se"], 3: ["Imagem Espelhada", "Passos sem Pegadas"], 5: ["Piscar", "Dissipar Magia"],
+    1: ["Enfeitiçar Pessoa", "Disfarçar-se"], 3: ["Reflexos", "Passos sem Pegadas"], 5: ["Piscar", "Dissipar Magia"],
     7: ["Porta Dimensional", "Metamorfose"], 9: ["Dominar Pessoa", "Modificar Memória"],
   },
   clerigo_guerra: {
@@ -301,6 +301,78 @@ export const DND5E_CLERIC_DOMAIN_SPELLS: Record<string, Record<number, string[]>
     7: ["Movimentação Livre", "Pele de Pedra"], 9: ["Coluna de Chamas", "Imobilizar Monstro"],
   },
 };
+
+/** Magias sempre preparadas dos três Juramentos do Paladino no Livro do Jogador 2014. */
+export const DND5E_PALADIN_OATH_SPELLS: Record<string, Record<number, string[]>> = {
+  paladino_devocao: {
+    3: ["Proteção contra o Bem e Mal", "Santuário"], 5: ["Restauração Menor", "Zona da Verdade"],
+    9: ["Sinal de Esperança", "Dissipar Magia"], 13: ["Movimentação Livre", "Guardião da Fé"],
+    17: ["Comunhão", "Coluna de Chamas"],
+  },
+  paladino_anciaos: {
+    3: ["Golpe Constritor", "Falar com Animais"], 5: ["Raio Lunar", "Passo Nebuloso"],
+    9: ["Ampliar Plantas", "Proteção contra Energia"], 13: ["Tempestade de Gelo", "Pele de Pedra"],
+    17: ["Comunhão com a Natureza", "Caminhar em Árvores"],
+  },
+  paladino_vinganca: {
+    3: ["Perdição", "Marca do Caçador"], 5: ["Imobilizar Pessoa", "Passo Nebuloso"],
+    9: ["Velocidade", "Proteção contra Energia"], 13: ["Banimento", "Porta Dimensional"],
+    17: ["Imobilizar Monstro", "Vidência"],
+  },
+};
+
+/** Lista expandida para escolher magias ao aprender como Bruxo; não concede magias automaticamente. */
+export const DND5E_WARLOCK_PATRON_SPELLS: Record<string, Record<number, string[]>> = {
+  bruxo_arque_fada: {
+    1: ["Fogo das Fadas", "Sono"], 2: ["Acalmar Emoções", "Força Fantasmagórica"],
+    3: ["Piscar", "Ampliar Plantas"], 4: ["Dominar Besta", "Invisibilidade Maior"],
+    5: ["Dominar Pessoa", "Similaridade"],
+  },
+  bruxo_infernal: {
+    1: ["Mãos Flamejantes", "Comando"], 2: ["Cegueira/Surdez", "Raio Ardente"],
+    3: ["Bola de Fogo", "Névoa Fétida"], 4: ["Escudo de Fogo", "Muralha de Fogo"],
+    5: ["Coluna de Chamas", "Consagrar"],
+  },
+  bruxo_grande_antigo: {
+    1: ["Sussurros Dissonantes", "Riso Histérico de Tasha"], 2: ["Detectar Pensamentos", "Força Fantasmagórica"],
+    3: ["Clarividência", "Enviar Mensagem"], 4: ["Dominar Besta", "Tentáculos Negros de Evard"],
+    5: ["Dominar Pessoa", "Telecinésia"],
+  },
+};
+
+export interface Dnd5eThirdCasterSpellSchoolRules {
+  restrictedSchools: readonly string[];
+  unrestrictedSpellLimit: number;
+}
+
+/** Restrições das subclasses (Livro do Jogador, pp. 85 e 93). */
+export function getDnd5eThirdCasterSpellSchoolRules(subclassId: string | undefined, classLevel: number): Dnd5eThirdCasterSpellSchoolRules | undefined {
+  if (subclassId !== "guerreiro_cavaleiro_arcano" && subclassId !== "ladino_trapaceiro_arcano") return undefined;
+  // Both subclasses begin with one spell outside their restricted schools:
+  // the Knight knows three spells, two of which must be restricted; the
+  // Trickster also knows three, two of which must be restricted.
+  const initialUnrestrictedSpell = 1;
+  const levelMilestones = [8, 14, 20].filter((minimumLevel) => classLevel >= minimumLevel).length;
+  return {
+    restrictedSchools: subclassId === "guerreiro_cavaleiro_arcano" ? ["abjuração", "evocação"] : ["encantamento", "ilusão"],
+    unrestrictedSpellLimit: initialUnrestrictedSpell + levelMilestones,
+  };
+}
+
+/** As escolas estão no resumo editorial local, após o primeiro separador "·". */
+export function getDnd5eSpellSchool(summary: string): string | undefined {
+  return summary.split("·")[1]?.trim().split(" · ")[0]?.toLocaleLowerCase("pt-BR");
+}
+
+/** Grafias impressas em listas específicas que apontam para o mesmo verbete do compêndio. */
+export const DND5E_SPELL_NAME_ALIASES: Record<string, string> = {
+  "nevoa fetida": "nuvem fetida",
+};
+
+export function normalizeDnd5eSpellName(value: string): string {
+  const normalized = value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  return DND5E_SPELL_NAME_ALIASES[normalized] || normalized;
+}
 
 export const DND5E_SUBCLASSES: Dnd5eSubclass[] = DND5E_SUBCLASSES_BASE.map((item) => ({
   ...item,

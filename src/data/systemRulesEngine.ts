@@ -23,7 +23,7 @@ import { DND5E_CREATION_STEPS, DND5E_TOOLS, DND5E_TOOL_CHOICE_GROUPS, getDnd5eTo
 import { T20_ARCANIST_PATHS, T20_CREATION_STEPS, T20_SORCERER_LINEAGES, T20_DRACONIC_DAMAGE_TYPES } from "./t20/t20Catalog";
 import { validateAbilityGeneration } from "./coreCharacterRules";
 import { getCoreClassFeatures, getCoreClassResources, type CoreClassFeature, type CoreClassResource } from "./coreClassFeatures";
-import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_CLASS_CHOICES, DND5E_LAND_CIRCLE_SPELLS, getDnd5eClassChoiceCount } from "./dnd5e/dnd5eOptions";
+import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_CLASS_CHOICES, DND5E_LAND_CIRCLE_SPELLS, DND5E_PALADIN_OATH_SPELLS, DND5E_WARLOCK_PATRON_SPELLS, getDnd5eClassChoiceCount, getDnd5eSpellSchool, getDnd5eThirdCasterSpellSchoolRules, normalizeDnd5eSpellName } from "./dnd5e/dnd5eOptions";
 import { DND5E_FEAT_CHOICES } from "./dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "./t20/t20Compendium";
 import { T20_CLASS_CHOICES } from "./t20/t20Catalog";
@@ -112,7 +112,7 @@ function dndSpellSlots(classId: string, level: number, overrideCasterLevel?: num
   const safeLevel = Math.max(1, Math.min(20, Math.trunc(level)));
   if (overrideCasterLevel === undefined && ["barbaro", "guerreiro", "ladino", "monge"].includes(classId)) return {};
   if (classId === "bruxo") return DND_WARLOCK_SLOTS[safeLevel] || {};
-  const progressionLevel = overrideCasterLevel ?? (["paladino", "patrulheiro"].includes(classId) ? Math.floor(safeLevel / 2) : safeLevel);
+  const progressionLevel = overrideCasterLevel ?? (["paladino", "patrulheiro"].includes(classId) ? Math.ceil(safeLevel / 2) : safeLevel);
   if (progressionLevel < 1) return {};
   const slots = DND_FULL_CASTER_SLOTS[progressionLevel] || {};
   return Object.fromEntries(Object.entries(slots).map(([rank, amount]) => [Number(rank), amount]));
@@ -639,8 +639,8 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const t20DruidNatureSecretsCount = systemId === "t20" && character.classId === "druida" ? getCoreFeatQuantity(character, "t20.poder.segredos_da_natureza") : 0;
       const hasT20PaladinPrayer = t20PaladinPrayerCount > 0;
       const t20SpellAbilities: Record<string, string> = { arcanista: character.t20ArcanistPath === "feiticeiro" ? "cha" : "int", bardo: "cha", clerigo: "wis", druida: "wis", ...(hasT20PaladinPrayer ? { paladino: "wis" } : {}) };
-      const dndSpellAbility = classRules && "primaryAbility" in classRules
-        ? Object.entries(abilityLabels).find(([label]) => classRules.primaryAbility.toLowerCase().includes(label))?.[1]
+      const dndSpellAbility = classRules && "spellcastingAbility" in classRules
+        ? classRules.spellcastingAbility
         : undefined;
       const progressionSpellcastingLevel = progression && "spellcastingLevel" in progression ? progression.spellcastingLevel : undefined;
       const spellcastingAbility = systemId === "t20" ? t20SpellAbilities[character.classId] : dndThirdCaster ? "int" : dndSpellAbility;
@@ -1169,6 +1169,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const progression = catalog.progressions.find((entry) => entry.classId === character.classId);
       const selectedSubclass = character.subclassId ? catalog.subclasses.find((entry) => entry.id === character.subclassId) : undefined;
       const dndThirdCaster = systemId === "dnd5e" && isDnd5eThirdCasterSubclass(character.subclassId);
+      const dndThirdCasterSchoolRules = systemId === "dnd5e" ? getDnd5eThirdCasterSpellSchoolRules(character.subclassId, character.level) : undefined;
       const normalizeSkillChoice = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
       const dndSubclassSkillIds = systemId === "dnd5e"
         ? (selectedSubclass?.choices || [])
@@ -1192,6 +1193,17 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           .filter(([minimumLevel]) => character.level >= Number(minimumLevel))
           .flatMap(([, names]) => names)
         : [];
+      const dndPaladinOathSpellNames = systemId === "dnd5e" && character.classId === "paladino" && selectedSubclass?.id
+        ? Object.entries(DND5E_PALADIN_OATH_SPELLS[selectedSubclass.id] || {})
+          .filter(([minimumLevel]) => character.level >= Number(minimumLevel))
+          .flatMap(([, names]) => names)
+        : [];
+      const dndWarlockExpandedSpellNames = systemId === "dnd5e" && character.classId === "bruxo" && selectedSubclass?.classId === "bruxo"
+        ? new Set(Object.entries(DND5E_WARLOCK_PATRON_SPELLS[selectedSubclass.id] || {})
+          .filter(([spellLevel]) => character.level >= Number(spellLevel) * 2 - 1)
+          .flatMap(([, names]) => names)
+          .map(normalizeDnd5eSpellName))
+        : new Set<string>();
       const dndSubclassSpellNames = systemId === "dnd5e"
         ? new Set([
           ...(selectedSubclass?.choices || [])
@@ -1199,6 +1211,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
             .flatMap((choice) => character.subclassChoices?.[choice.id] || []),
           ...dndLandCircleSpellNames,
           ...dndClericDomainSpellNames,
+          ...dndPaladinOathSpellNames,
         ].map((value) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()))
         : new Set<string>();
       const dndSubclassHasMartialProficiency = systemId === "dnd5e" && ["bardo_valor", "clerigo_tempestade", "clerigo_guerra"].includes(selectedSubclass?.id || "");
@@ -1484,6 +1497,14 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           return item.grantedSpellIds || [];
         }))
         : new Set<string>();
+      if (dndThirdCasterSchoolRules) {
+        const unrestrictedSchoolSpellCount = (character.spellIds || []).filter((spellId) => {
+          if (dndFeatSpellNames.includes(normalizeSpellChoice(catalog.spells.find((entry) => entry.id === spellId)?.name || "")) || dndGrantedSpellIds.has(spellId)) return false;
+          const spell = catalog.spells.find((entry) => entry.id === spellId);
+          return Boolean(spell?.classIds?.includes("mago") && (spell.spellLevel || 0) > 0 && !dndThirdCasterSchoolRules.restrictedSchools.includes(getDnd5eSpellSchool(spell.summary) || ""));
+        }).length;
+        if (unrestrictedSchoolSpellCount > dndThirdCasterSchoolRules.unrestrictedSpellLimit) errors.push(`a subclasse permite no máximo ${dndThirdCasterSchoolRules.unrestrictedSpellLimit} magia(s) de outras escolas`);
+      }
       const t20PowerSpellNames = systemId === "t20"
         ? Object.entries(T20_POWER_CHOICES)
           .filter(([featId]) => featIds.includes(featId))
@@ -1500,7 +1521,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       for (const spellId of character.spellIds || []) {
         const spell = catalog.spells.find((entry) => entry.id === spellId);
         if (!spell) errors.push("magia não pertence ao catálogo do sistema");
-        else if (spell.classIds && !spell.classIds.includes(character.classId) && !dndGrantedSpellIds.has(spellId) && !(dndThirdCaster && spell.classIds.includes("mago")) && !(systemId === "dnd5e" && dndFeatSpellNames.includes(normalizeSpellChoice(spell.name))) && !(systemId === "dnd5e" && dndSubclassSpellNames.has(normalizeSpellChoice(spell.name))) && !(systemId === "t20" && t20PowerSpellNames.includes(normalizeSpellChoice(spell.name))) && !(systemId === "t20" && t20LineageSpellName === normalizeSpellChoice(spell.name)) && !(systemId === "t20" && character.classId === "paladino" && getCoreFeatQuantity(character, "t20.poder.orar") > 0 && "tradition" in spell && spell.tradition === "divina" && spell.spellLevel === 1)) errors.push("a magia selecionada não pertence à lista da classe");
+        else if (spell.classIds && !spell.classIds.includes(character.classId) && !dndGrantedSpellIds.has(spellId) && !(dndThirdCaster && spell.classIds.includes("mago")) && !(systemId === "dnd5e" && dndFeatSpellNames.includes(normalizeSpellChoice(spell.name))) && !(systemId === "dnd5e" && dndSubclassSpellNames.has(normalizeSpellChoice(spell.name))) && !(systemId === "dnd5e" && dndWarlockExpandedSpellNames.has(normalizeDnd5eSpellName(spell.name))) && !(systemId === "t20" && t20PowerSpellNames.includes(normalizeSpellChoice(spell.name))) && !(systemId === "t20" && t20LineageSpellName === normalizeSpellChoice(spell.name)) && !(systemId === "t20" && character.classId === "paladino" && getCoreFeatQuantity(character, "t20.poder.orar") > 0 && "tradition" in spell && spell.tradition === "divina" && spell.spellLevel === 1)) errors.push("a magia selecionada não pertence à lista da classe");
         else if (t20BardSchools.length > 0 && (!("school" in spell) || !spell.school || !t20BardSchools.includes(spell.school))) errors.push(`a magia ${spell.name} pertence a uma escola que o Bardo não escolheu`);
         else if (systemId === "t20" && spell.spellLevel !== undefined && spell.spellLevel > getT20MaximumSpellLevel(character.classId, character.level, character.classId === "paladino" && getCoreFeatQuantity(character, "t20.poder.orar") > 0)) errors.push(`a magia ${spell.name} exige um círculo de magia maior que o disponível neste nível`);
         else if (spell.spellLevel !== undefined && systemId === "dnd5e" && (dndThirdCaster || (progression && "spellcaster" in progression && progression.spellcaster))) {
@@ -1532,7 +1553,11 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       }
       if (systemId === "dnd5e" && dndPreparedClasses.includes(character.classId) && preparedSpellIds.length > 0) {
         const preparedLimit = this.deriveStats(character).preparedSpellLimit ?? 0;
-        if (preparedSpellIds.length > preparedLimit) errors.push(`a classe permite preparar no máximo ${preparedLimit} magias neste nível`);
+        const manuallyPreparedCount = preparedSpellIds.filter((spellId) => {
+          const spell = catalog.spells.find((entry) => entry.id === spellId);
+          return !spell || !dndSubclassSpellNames.has(normalizeSpellChoice(spell.name));
+        }).length;
+        if (manuallyPreparedCount > preparedLimit) errors.push(`a classe permite preparar no máximo ${preparedLimit} magias neste nível`);
       }
       if (systemId === "t20" && preparedSpellIds.length > 0) errors.push("Tormenta20 não usa uma lista separada de magias preparadas");
       const selectedEquipment = (character.equipmentIds || []).map((id) => catalog.equipment.find((entry) => entry.id === id));

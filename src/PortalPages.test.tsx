@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { I18nProvider } from "./i18n";
 import { formatCatalogValue, PortalPages } from "./PortalPages";
@@ -64,7 +64,7 @@ describe("PortalPages", () => {
     await waitFor(() => expect(screen.getByRole("heading", { name: "Compêndio de criação" })).toBeInTheDocument());
     expect(document.getElementById("legacy-builder-root")).toHaveAttribute("hidden");
     await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 20_000 });
-    expect(screen.getAllByText("Fonte Remaster").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Fonte verificada").length).toBeGreaterThan(0);
   }, 40_000);
 
   it("restaura o título do construtor ao voltar do portal", async () => {
@@ -117,6 +117,55 @@ describe("PortalPages", () => {
     expect(screen.getByText("Player Core · p. 390")).toBeInTheDocument();
   }, 90_000);
 
+  it("sinaliza quando o Compêndio exibe fallback PT-BR em inglês", async () => {
+    localStorage.setItem("pathbuilder.locale", "en");
+    window.location.hash = "#/compendium";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 20_000 });
+    const filters = document.querySelectorAll<HTMLSelectElement>(".catalog-filters-collapsible select");
+    fireEvent.change(filters[0], { target: { value: "dnd35" } });
+    fireEvent.change(filters[1], { target: { value: "weapon" } });
+    await waitFor(() => expect(screen.getAllByText("Translation pending").length).toBeGreaterThan(0), { timeout: 20_000 });
+    expect(screen.getAllByRole("heading", { name: "Adaga" }).length).toBeGreaterThan(0);
+  }, 45_000);
+
+  it("mostra no Compêndio as classes de magias D&D 5e registradas por ID no snapshot", async () => {
+    window.location.hash = "#/compendium";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 20_000 });
+    const filters = document.querySelectorAll<HTMLSelectElement>(".catalog-filters-collapsible select");
+    fireEvent.change(filters[0], { target: { value: "dnd5e" } });
+    fireEvent.change(filters[1], { target: { value: "spell" } });
+    fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Ataque Certeiro" } });
+
+    const card = await screen.findByRole("button", { name: /Ataque Certeiro, Classe: Bardo/ }, { timeout: 20_000 });
+    expect(card).toHaveTextContent("Livro do Jogador · p. 221");
+    fireEvent.click(card);
+    expect(await screen.findByRole("dialog")).toHaveTextContent("Bardo");
+  }, 45_000);
+
+  it("exibe listas transcritas de magia D&D 3.5 com classe, nível, fonte e ruleset corretos", async () => {
+    window.location.hash = "#/compendium";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 20_000 });
+    const filters = document.querySelectorAll<HTMLSelectElement>(".catalog-filters-collapsible select");
+    fireEvent.change(filters[0], { target: { value: "dnd35" } });
+    fireEvent.change(filters[1], { target: { value: "spell" } });
+    fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Augúrio" } });
+
+    const card = await screen.findByRole("button", { name: "Augúrio, Classe: Clérigo, Nível 2" }, { timeout: 20_000 });
+    expect(card).toHaveTextContent("Classe: Clérigo");
+    expect(card).toHaveTextContent("Nível 2");
+    fireEvent.click(card);
+
+    const dialog = await screen.findByRole("dialog");
+    expect(dialog).toHaveTextContent("Edição 3.5");
+    expect(dialog).toHaveTextContent("Clérigo");
+    expect(dialog).toHaveTextContent("Material, Foco");
+    expect(dialog).toHaveTextContent("Livro do Jogador · p. 184");
+  }, 45_000);
+
   it("exibe dados estruturados da origem T20 no detalhe do catálogo", async () => {
     window.location.hash = "#/compendium";
     render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
@@ -140,6 +189,27 @@ describe("PortalPages", () => {
     expect(dialog).not.toHaveTextContent("Especificações & Efeitos");
   }, 45_000);
 
+  it("exibe resumos mecânicos e a tabela de familiares PF1e no detalhe do catálogo", async () => {
+    window.location.hash = "#/compendium";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 20_000 });
+    const filters = document.querySelectorAll<HTMLSelectElement>(".catalog-filters-collapsible select");
+    fireEvent.change(filters[0], { target: { value: "pf1e" } });
+    fireEvent.change(filters[1], { target: { value: "feat" } });
+    fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Familiar Aprimorado" } });
+
+    const card = await screen.findByRole("button", { name: "Familiar Aprimorado" }, { timeout: 20_000 });
+    fireEvent.click(card);
+    const dialog = await screen.findByRole("dialog");
+    expect(dialog).toHaveTextContent("As dez opções, tendências e níveis mínimos de conjurador arcano estão na tabela abaixo.");
+    const table = within(dialog).getByRole("table", { name: "Opções de Familiar Aprimorado" });
+    expect(within(table).getAllByRole("row")).toHaveLength(11);
+    expect(table).toHaveTextContent("Falcão Celestial");
+    expect(table).toHaveTextContent("Homúnculo");
+    expect(table).toHaveTextContent("O mestre deve criar o homúnculo primeiro.");
+    expect(table).toHaveTextContent("Quasit");
+  }, 45_000);
+
   it("retorna o foco ao card que abriu o detalhe do compêndio", async () => {
     window.location.hash = "#/compendium";
     render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
@@ -157,6 +227,33 @@ describe("PortalPages", () => {
     fireEvent.keyDown(document, { key: "Escape" });
     await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
     expect(document.activeElement).toBe(card);
+  }, 40_000);
+
+  it("exibe classes PF1e no Compêndio mesmo sem construtor ativo", async () => {
+    window.location.hash = "#/compendium";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 20_000 });
+    const filters = document.querySelectorAll<HTMLSelectElement>(".catalog-filters-collapsible select");
+
+    expect(Array.from(filters[0].options).some((option) => option.value === "pf1e")).toBe(true);
+    fireEvent.change(filters[0], { target: { value: "pf1e" } });
+    fireEvent.change(filters[1], { target: { value: "class" } });
+    fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Bárbaro" } });
+    await waitFor(() => expect(screen.getByRole("heading", { name: "Bárbaro" })).toBeInTheDocument(), { timeout: 15_000 });
+    expect(document.querySelector('[data-catalog-entry="pf1e.class.barbaro"]')).toHaveTextContent("Livro Básico · p. 30");
+  }, 40_000);
+
+  it("identifica a fonte PF1e como verificada, sem classificá-la como Remaster", async () => {
+    window.location.hash = "#/compendium";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 20_000 });
+    const filters = document.querySelectorAll<HTMLSelectElement>(".catalog-filters-collapsible select");
+    fireEvent.change(filters[0], { target: { value: "pf1e" } });
+    fireEvent.change(filters[1], { target: { value: "feat" } });
+    fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Corrida" } });
+    const card = await screen.findByRole("button", { name: "Corrida" }, { timeout: 15_000 });
+    expect(within(card).getByText("Fonte verificada")).toBeInTheDocument();
+    expect(within(card).queryByText(/Remaster/)).not.toBeInTheDocument();
   }, 40_000);
 
   it.each([

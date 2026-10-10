@@ -58,7 +58,7 @@ export interface IPickerItemData {
   traits?: string[];
   source?: { book?: string; page?: number };
   sourceApproximate?: boolean;
-  ruleset?: "remaster" | "legacy" | "both" | "needs_review" | "standard" | "2024" | "padrao" | "jogo_do_ano" | "advanced" | "classic" | "basico" | "v35";
+  ruleset?: "remaster" | "legacy" | "both" | "needs_review" | "standard" | "2024" | "padrao" | "jogo_do_ano" | "advanced" | "classic" | "basico" | "v35" | "legacy_pf1";
   needs_review?: boolean;
   id?: string;
   names?: Partial<Record<"pt-BR" | "en" | "es", string>>;

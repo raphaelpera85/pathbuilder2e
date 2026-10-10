@@ -398,6 +398,13 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
 .compendium-modal-description { display: flex; flex-direction: column; gap: 8px; background: rgba(0, 0, 0, 0.2); padding: 14px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); }
 .compendium-modal-description h3 { margin: 0; font-size: 13px; color: var(--pb-orange-light); text-transform: uppercase; letter-spacing: 0.05em; }
 .compendium-modal-description p { margin: 0; font-size: 13px; line-height: 1.6; color: var(--pb-text); white-space: pre-wrap; }
+.compendium-table-scroll { max-width: 100%; overflow-x: auto; }
+.compendium-options-table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 12px; line-height: 1.45; }
+.compendium-options-table caption { padding: 8px; color: var(--pb-orange-light); font-weight: 800; text-align: left; }
+.compendium-options-table th, .compendium-options-table td { padding: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); text-align: left; vertical-align: top; }
+.compendium-options-table thead th { color: var(--pb-text-muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; }
+.compendium-options-table tbody th { color: var(--pb-text); white-space: nowrap; }
+.compendium-options-table td { color: var(--pb-text); }
 
 .compendium-modal-footer {
   display: flex;
@@ -1374,7 +1381,8 @@ body.theme-light .system-badge {
 .ruleset-badge.standard,
 .ruleset-badge.advanced,
 .ruleset-badge.classic,
-.ruleset-badge.padrao {
+.ruleset-badge.padrao,
+.ruleset-badge.v35 {
   color: #bfdbfe;
   background: rgba(30, 64, 175, .28);
   border: 1px solid rgba(59, 130, 246, .3);
@@ -1384,10 +1392,12 @@ body.theme-light .system-badge {
 [data-theme="light"] .ruleset-badge.advanced,
 [data-theme="light"] .ruleset-badge.classic,
 [data-theme="light"] .ruleset-badge.padrao,
+[data-theme="light"] .ruleset-badge.v35,
 body.theme-light .ruleset-badge.standard,
 body.theme-light .ruleset-badge.advanced,
 body.theme-light .ruleset-badge.classic,
-body.theme-light .ruleset-badge.padrao {
+body.theme-light .ruleset-badge.padrao,
+body.theme-light .ruleset-badge.v35 {
   color: #1e3a8a;
   background: rgba(59, 130, 246, .18);
   border-color: rgba(30, 64, 175, .35);

@@ -46,6 +46,18 @@ describe("D&D 3.5 — Tabela 5-1: Talentos", () => {
     expect(DND35_FEAT_TABLE_NOTES[1]).toContain("guerreiro");
   });
 
+  it("preserva todos os pré-requisitos de Ataque em Movimento na tabela e na regra detalhada", () => {
+    const prerequisites = ["Des 13", "Esquiva", "Mobilidade", "bônus base de ataque +4"];
+    expect(dnd35FeatTableRow("Ataque em Movimento")?.prerequisites).toBe(prerequisites.join(", "));
+    expect(DND35_FEATS["ataque-em-movimento"]?.prerequisites).toEqual(prerequisites);
+  });
+
+  it("preserva Inteligência 13 como pré-requisito de Ataque Giratório", () => {
+    expect(dnd35FeatTableRow("Ataque Giratório")?.prerequisites).toBe(
+      "Des 13, Int 13, Especialização em Combate, Esquiva, Mobilidade, Ataque em Movimento, bônus base de ataque +4",
+    );
+  });
+
   it("opções: talentos com texto completo mantêm o id antigo (fichas salvas seguem válidas)", () => {
     for (const feat of Object.values(DND35_FEATS)) {
       const option = DND35_FEAT_OPTIONS.find((o) => o.id === feat.id);

@@ -8,7 +8,7 @@ import { DND5E_STANDARD_ARRAY, generateAbilityScores, getPointBuyBudget, validat
 import { DND5E_TOOLS, DND5E_TOOL_CHOICE_GROUPS, getDnd5eToolChoiceEntries, type Dnd5eToolChoiceGroup } from "../data/dnd5e/dnd5eCatalog";
 import { getDnd5eBackgroundToolProficiencies } from "../data/dnd5e/dnd5eBackgrounds";
 import { formatDnd5eSpellDetails } from "../data/dnd5e/dnd5eCompendium";
-import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_CLASS_CHOICES, DND5E_LAND_CIRCLE_SPELLS, getDnd5eClassChoiceCount } from "../data/dnd5e/dnd5eOptions";
+import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_CLASS_CHOICES, DND5E_LAND_CIRCLE_SPELLS, DND5E_PALADIN_OATH_SPELLS, getDnd5eClassChoiceCount } from "../data/dnd5e/dnd5eOptions";
 import { DND5E_FEAT_CHOICES } from "../data/dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "../data/t20/t20Compendium";
 import { getSystemConditionItems } from "../data/systemConditions";
@@ -51,6 +51,9 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
         .filter(([terrain]) => terrain === candidate.subclassChoices?.["land-terrain"]?.[0])
         .flatMap(([, levels]) => Object.entries(levels).filter(([minimumLevel]) => candidate.level >= Number(minimumLevel)).flatMap(([, names]) => names)) : []),
       ...(nextSubclass?.classId === "clerigo" ? Object.entries(DND5E_CLERIC_DOMAIN_SPELLS[nextSubclass.id] || {})
+        .filter(([minimumLevel]) => candidate.level >= Number(minimumLevel))
+        .flatMap(([, names]) => names) : []),
+      ...(nextSubclass?.classId === "paladino" ? Object.entries(DND5E_PALADIN_OATH_SPELLS[nextSubclass.id] || {})
         .filter(([minimumLevel]) => candidate.level >= Number(minimumLevel))
         .flatMap(([, names]) => names) : []),
     ].map(normalizeGrantedSpellName);
@@ -405,6 +408,9 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
         .filter(([terrain]) => terrain === character.subclassChoices?.["land-terrain"]?.[0])
         .flatMap(([, levels]) => Object.entries(levels).filter(([minimumLevel]) => character.level >= Number(minimumLevel)).flatMap(([, names]) => names)) : []),
       ...(selectedSubclass?.classId === "clerigo" ? Object.entries(DND5E_CLERIC_DOMAIN_SPELLS[selectedSubclass.id] || {})
+        .filter(([minimumLevel]) => character.level >= Number(minimumLevel))
+        .flatMap(([, names]) => names) : []),
+      ...(selectedSubclass?.classId === "paladino" ? Object.entries(DND5E_PALADIN_OATH_SPELLS[selectedSubclass.id] || {})
         .filter(([minimumLevel]) => character.level >= Number(minimumLevel))
         .flatMap(([, names]) => names) : []),
     ].map((value) => normalizeSpellName(value))

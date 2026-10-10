@@ -54,6 +54,8 @@ export interface Dnd35CharacterCreatedData {
   currentHp: number;
   goldGp: number;
   trainedSkillIds: string[];
+  /** Graduações compradas por perícia; ausente em fichas antigas (tratadas como 1 por perícia). */
+  skillRanks?: Record<string, number>;
   featIds: string[];
   weaponIds: string[];
   armorIds: string[];
@@ -244,7 +246,8 @@ export function Dnd35CharacterCreatorModal({
   // Step 3: PV e Perícias
   const [hpRoll, setHpRoll] = useState<number>(10);
   const [hasRerolledHp, setHasRerolledHp] = useState(false);
-  const [trainedSkillIds, setTrainedSkillIds] = useState<string[]>([]);
+  const [skillRanks, setSkillRanks] = useState<Record<string, number>>({});
+  const trainedSkillIds = Object.keys(skillRanks).filter((skillId) => skillRanks[skillId] > 0);
 
   const rollHp = () => {
     setHasRerolledHp(true);
@@ -256,25 +259,39 @@ export function Dnd35CharacterCreatorModal({
     ? initialCharacter.maxHp
     : Math.max(1, selectedClass.hitDie + modifiers.con);
 
-  // Pontos de perícia: (base da classe + mod. Int) x4 no 1º nível, mínimo 1x4.
-  const skillPointBudget = Math.max(1, selectedClass.skillPointsPerLevel + modifiers.int) * 4;
+  // Pontos de perícia: (base da classe + mod. Int) x4 no 1º nível, mínimo 1x4;
+  // humanos recebem ainda +4 pontos no 1º nível (p. 13), sem multiplicar.
+  const skillPointBudget = Math.max(1, selectedClass.skillPointsPerLevel + modifiers.int) * 4
+    + (selectedRace.id === "humano" ? 4 : 0);
   const classSkillSet = useMemo(
-    () => new Set([...selectedClass.classSkills, ...(selectedClass.id === "clerigo" ? dnd35DomainClassSkillIds(validDomainIds) : [])]),
+    () => new Set([
+      ...Object.values(DND35_SKILLS)
+        .filter((skill) => selectedClass.classSkills.some((name) => name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() === skill.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()))
+        .map((skill) => skill.id),
+      ...(selectedClass.id === "clerigo" ? dnd35DomainClassSkillIds(validDomainIds) : []),
+    ]),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [selectedClass, validDomainIds.join("|")],
   );
   const spentSkillPoints = trainedSkillIds.reduce((total, skillId) => {
     const isClassSkill = classSkillSet.has(skillId);
-    return total + (isClassSkill ? 1 : 2);
+    return total + skillRanks[skillId] * (isClassSkill ? 1 : 2);
   }, 0);
 
-  const toggleSkill = (skillId: string) => {
-    setTrainedSkillIds((previous) => {
-      if (previous.includes(skillId)) return previous.filter((id) => id !== skillId);
-      const isClassSkill = classSkillSet.has(skillId);
-      const cost = isClassSkill ? 1 : 2;
-      if (spentSkillPoints + cost > skillPointBudget) return previous;
-      return [...previous, skillId];
+  const updateSkillRank = (skillId: string, nextRank: number) => {
+    const isClassSkill = classSkillSet.has(skillId);
+    const rankStep = isClassSkill ? 1 : 0.5;
+    const maximumRank = isClassSkill ? 4 : 2;
+    if (!Number.isFinite(nextRank) || nextRank < 0 || nextRank > maximumRank || Math.round(nextRank / rankStep) !== nextRank / rankStep) return;
+    setSkillRanks((previous) => {
+      const currentRank = previous[skillId] || 0;
+      const costPerRank = isClassSkill ? 1 : 2;
+      if (spentSkillPoints + (nextRank - currentRank) * costPerRank > skillPointBudget) return previous;
+      if (nextRank === 0) {
+        const { [skillId]: _removed, ...remainingRanks } = previous;
+        return remainingRanks;
+      }
+      return { ...previous, [skillId]: nextRank };
     });
   };
 
@@ -302,7 +319,7 @@ export function Dnd35CharacterCreatorModal({
     abilities: finalAbilities,
     // Cada perícia treinada na criação tem 1 graduação (custa 1 ponto de
     // classe ou 2 fora da classe).
-    skillRanks: Object.fromEntries(trainedSkillIds.map((id) => [id, 1])),
+    skillRanks,
     featIds: [...grantedFeatIds, ...ids],
     classAbilities: selectedClass.id === "clerigo" ? ["expulsar"] : [],
   });
@@ -491,7 +508,7 @@ export function Dnd35CharacterCreatorModal({
       setSelectedClassId("guerreiro");
       setHpRoll(10);
       setHasRerolledHp(false);
-      setTrainedSkillIds([]);
+      setSkillRanks({});
       setFeatIds([]);
       setSpellIds([]);
       setDeityId(null);
@@ -519,7 +536,7 @@ export function Dnd35CharacterCreatorModal({
     setSelectedRaceId(initialCharacter.raceId);
     setSelectedClassId(initialCharacter.classId);
     setHasRerolledHp(false);
-    setTrainedSkillIds([...(initialCharacter.trainedSkillIds || [])]);
+    setSkillRanks(initialCharacter.skillRanks || Object.fromEntries((initialCharacter.trainedSkillIds || []).map((id) => [id, 1])));
     setFeatIds([...(initialCharacter.featIds || [])]);
     setSpellIds([...(initialCharacter.spellIds || [])]);
     setDeityId(initialCharacter.deityId ?? null);
@@ -603,6 +620,7 @@ export function Dnd35CharacterCreatorModal({
       currentHp: initialCharacter ? Math.min(initialCharacter.currentHp, finalMaxHp) : finalMaxHp,
       goldGp: gold,
       trainedSkillIds,
+      skillRanks,
       featIds,
       weaponIds: boughtWeaponIds,
       armorIds: boughtArmorIds,
@@ -736,7 +754,7 @@ export function Dnd35CharacterCreatorModal({
               {currentAlignmentProblem && <p className="dnd35-note">{currentAlignmentProblem}</p>}
               <div className="dnd35-summary-box">
                 <p><strong>{selectedRace.name}:</strong> {selectedRace.traits.join("; ")}</p>
-                <p><strong>{selectedClass.name}:</strong> testes de resistência boas em {selectedClass.goodSaves.join(", ")}; {selectedClass.skillPointsPerLevel + modifiers.int >= 1 ? selectedClass.skillPointsPerLevel + modifiers.int : 1} pontos de perícia/nível (antes x4 no 1º nível)</p>
+                <p><strong>{selectedClass.name}:</strong> testes de resistência boas em {selectedClass.goodSaves.join(", ")}; {selectedClass.skillPointsPerLevel + modifiers.int >= 1 ? selectedClass.skillPointsPerLevel + modifiers.int : 1} pontos de perícia/nível (x4 no 1º nível){selectedRace.id === "humano" ? ", +4 adicionais do Humano no 1º nível" : ""}</p>
                 <p data-testid="dnd35-combat-stats"><strong>1º nível (Tabela 3-1):</strong> {combatSummary}</p>
                 <p data-testid="dnd35-class-features"><strong>Habilidades de classe no 1º nível:</strong> {classFeaturesSummary}</p>
                 {castingAbility && (
@@ -790,16 +808,16 @@ export function Dnd35CharacterCreatorModal({
               <button type="button" className="dnd35-btn" onClick={rollHp}>🎲 Rolar novamente (nível seguinte, opcional)</button>
 
               <h3>Perícias ({spentSkillPoints}/{skillPointBudget} pontos gastos)</h3>
-              <p><small>Perícias de classe custam 1 ponto; perícias fora da classe custam 2 pontos.</small></p>
+              <p><small>Perícias de classe custam 1 ponto por graduação (máx. 4 no 1º nível); cruzadas custam 2 pontos por graduação (máx. 2). Graduações cruzadas aceitam incrementos de 0,5.</small></p>
               <div className="dnd35-skill-list">
                 {Object.values(DND35_SKILLS).map((skill) => {
                   const isClassSkill = classSkillSet.has(skill.id);
-                  const trained = trainedSkillIds.includes(skill.id);
+                  const ranks = skillRanks[skill.id] || 0;
                   return (
                     <label key={skill.id} className={`dnd35-skill-row ${isClassSkill ? "class-skill" : ""}`}>
-                      <input type="checkbox" checked={trained} onChange={() => toggleSkill(skill.id)} />
                       <span>{skill.name}</span>
-                      <small>({isClassSkill ? "1 pt" : "2 pts"})</small>
+                      <small>{isClassSkill ? "Classe · 1 pt/grad." : "Cruzada · 2 pts/grad."}</small>
+                      <input type="number" aria-label={`Graduações em ${skill.name}`} min="0" max={isClassSkill ? 4 : 2} step={isClassSkill ? 1 : 0.5} value={ranks} onChange={(event) => updateSkillRank(skill.id, Number(event.target.value))} />
                     </label>
                   );
                 })}
@@ -1009,7 +1027,7 @@ export function Dnd35CharacterCreatorModal({
                   <p>Divindade: {DND35_DEITIES.find((d) => d.id === validDeityId)?.name ?? "nenhuma específica"} · Domínios: {firstLevelDomainSpells.map(({ domain }) => domain.name).join(", ") || "nenhum escolhido"}</p>
                 )}
                 <p>Atributos: {ABILITY_ORDER.map((a) => `${ABILITY_LABELS[a]} ${finalAbilities[a]} (${modifiers[a] >= 0 ? "+" : ""}${modifiers[a]})`).join(" · ")}</p>
-                <p>Perícias treinadas: {trainedSkillIds.map((id) => DND35_SKILLS[id]?.name).filter(Boolean).join(", ") || "nenhuma"}</p>
+                <p>Perícias treinadas: {trainedSkillIds.map((id) => `${DND35_SKILLS[id]?.name} ${skillRanks[id]} grad.`).filter(Boolean).join(", ") || "nenhuma"}</p>
                 <p>Talentos: {featIds.map((id) => DND35_FEAT_OPTIONS_BY_ID[id]?.name).filter(Boolean).join(", ") || "nenhum"}</p>
                 <p>Armas: {boughtWeaponIds.map((id) => DND35_WEAPONS[id]?.name).filter(Boolean).join(", ") || "nenhuma"}</p>
                 <p>Armaduras: {boughtArmorIds.map((id) => DND35_ARMORS[id]?.name).filter(Boolean).join(", ") || "nenhuma"}</p>

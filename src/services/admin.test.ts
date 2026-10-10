@@ -35,6 +35,14 @@ describe("Admin & Access Analytics Service", () => {
     expect(after.recentAccesses[2].route).toBe("builder");
   });
 
+  it("usa os snapshots versionados no Git para as métricas do compêndio", async () => {
+    const metrics = await getAdminDashboardMetrics();
+    expect(metrics.catalogCounts?.catalog_skills).toBe(195);
+    expect(metrics.catalogCounts?.catalog_spells).toBe(1337);
+    expect(Object.values(metrics.catalogCounts || {}).reduce((sum, count) => sum + count, 0)).toBe(7149);
+    expect((metrics.catalogVerifiedCount || 0) + (metrics.catalogReviewCount || 0)).toBe(7149);
+  });
+
   it("consolida contas e personagens salvos localmente ou no Supabase", async () => {
     // Simula contas e personagens locais
     const mockUsers = {

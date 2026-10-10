@@ -114,4 +114,17 @@ describe("PF1E_CLASSES — auditoria contra o Livro Básico (Capítulo 3)", () =
       expect([6, 8, 10, 12]).toContain(klass.hitDie);
     }
   });
+
+  it("preserva a riqueza inicial da Tabela 6-1 para cada classe", () => {
+    const expected = {
+      barbaro: [3, 105], bardo: [3, 105], clerigo: [4, 140], druida: [2, 70],
+      feiticeiro: [2, 70], guerreiro: [5, 175], ladino: [4, 140], mago: [2, 70],
+      monge: [1, 35], paladino: [5, 175], patrulheiro: [5, 175],
+    } as const;
+    for (const [id, [diceCount, averageGp]] of Object.entries(expected)) {
+      expect(PF1E_CLASSES[id].startingWealth).toEqual({
+        diceCount, dieSides: 6, multiplierGp: 10, averageGp, sourcePage: 140,
+      });
+    }
+  });
 });

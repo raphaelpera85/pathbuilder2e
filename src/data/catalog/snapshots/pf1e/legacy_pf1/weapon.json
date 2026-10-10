@@ -1,0 +1,3621 @@
+[
+  {
+    "id": "pf1e.weapon.adaga",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Adaga",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples leves. Dano (Pequeno/Médio): 1d3/1d4; crítico 19-20/x2; tipo P ou Ct; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples leves",
+    "damage_dice": "1d4",
+    "damage_type": "P ou Ct",
+    "hands": 1,
+    "price_gp": 2,
+    "traits": [
+      "simple",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples leves",
+      "grip": "light",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "19-20/x2",
+      "damageType": "P ou Ct",
+      "weightKg": 0.5,
+      "priceLabel": "2 PO",
+      "rangeMeters": 3,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Adaga"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples leves. Dano (Pequeno/Médio): 1d3/1d4; crítico 19-20/x2; tipo P ou Ct; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 0
+    }
+  },
+  {
+    "id": "pf1e.weapon.adaga-de-soco",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Adaga de soco",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x3; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples leves",
+    "damage_dice": "1d4",
+    "damage_type": "P",
+    "hands": 1,
+    "price_gp": 2,
+    "traits": [
+      "simple",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples leves",
+      "grip": "light",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "x3",
+      "damageType": "P",
+      "weightKg": 0.5,
+      "priceLabel": "2 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Adaga de soco"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x3; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 1
+    }
+  },
+  {
+    "id": "pf1e.weapon.alabarda",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Alabarda",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d8/1d10; crítico x3; tipo P ou Ct; escorar, derrubar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de duas mãos",
+    "damage_dice": "1d10",
+    "damage_type": "P ou Ct",
+    "hands": 2,
+    "price_gp": 10,
+    "traits": [
+      "martial",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d8",
+      "damageMedium": "1d10",
+      "critical": "x3",
+      "damageType": "P ou Ct",
+      "weightKg": 6,
+      "priceLabel": "10 PO",
+      "rangeMeters": null,
+      "special": "escorar, derrubar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Alabarda"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d8/1d10; crítico x3; tipo P ou Ct; escorar, derrubar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 0
+    }
+  },
+  {
+    "id": "pf1e.weapon.arco-curto",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Arco curto",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais à distância. Dano (Pequeno/Médio): 1d4/1d6; crítico x3; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais à distância",
+    "damage_dice": "1d6",
+    "damage_type": "P",
+    "hands": null,
+    "price_gp": 30,
+    "traits": [
+      "martial",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais à distância",
+      "grip": "ranged",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x3",
+      "damageType": "P",
+      "weightKg": 1,
+      "priceLabel": "30 PO",
+      "rangeMeters": 18,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Arco curto"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais à distância. Dano (Pequeno/Médio): 1d4/1d6; crítico x3; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 2
+    }
+  },
+  {
+    "id": "pf1e.weapon.arco-curto-composto",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Arco curto composto",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais à distância. Dano (Pequeno/Médio): 1d4/1d6; crítico x3; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais à distância",
+    "damage_dice": "1d6",
+    "damage_type": "P",
+    "hands": null,
+    "price_gp": 75,
+    "traits": [
+      "martial",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais à distância",
+      "grip": "ranged",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x3",
+      "damageType": "P",
+      "weightKg": 1,
+      "priceLabel": "75 PO",
+      "rangeMeters": 21,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Arco curto composto"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais à distância. Dano (Pequeno/Médio): 1d4/1d6; crítico x3; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 3
+    }
+  },
+  {
+    "id": "pf1e.weapon.arco-longo",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Arco longo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais à distância. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais à distância",
+    "damage_dice": "1d8",
+    "damage_type": "P",
+    "hands": null,
+    "price_gp": 75,
+    "traits": [
+      "martial",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais à distância",
+      "grip": "ranged",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "x3",
+      "damageType": "P",
+      "weightKg": 1.5,
+      "priceLabel": "75 PO",
+      "rangeMeters": 30,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Arco longo"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais à distância. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 0
+    }
+  },
+  {
+    "id": "pf1e.weapon.arco-longo-composto",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Arco longo composto",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais à distância. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais à distância",
+    "damage_dice": "1d8",
+    "damage_type": "P",
+    "hands": null,
+    "price_gp": 100,
+    "traits": [
+      "martial",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais à distância",
+      "grip": "ranged",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "x3",
+      "damageType": "P",
+      "weightKg": 1.5,
+      "priceLabel": "100 PO",
+      "rangeMeters": 33,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Arco longo composto"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais à distância. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 1
+    }
+  },
+  {
+    "id": "pf1e.weapon.armadura-com-cravos",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Armadura com cravos",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais leves",
+    "damage_dice": "1d6",
+    "damage_type": "P",
+    "hands": 1,
+    "price_gp": null,
+    "traits": [
+      "martial",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais leves",
+      "grip": "light",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x2",
+      "damageType": "P",
+      "weightKg": null,
+      "priceLabel": "especial",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Armadura com cravos"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 0
+    }
+  },
+  {
+    "id": "pf1e.weapon.azagaia",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Azagaia",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples à distância. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples à distância",
+    "damage_dice": "1d6",
+    "damage_type": "P",
+    "hands": null,
+    "price_gp": 1,
+    "traits": [
+      "simple",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples à distância",
+      "grip": "ranged",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x2",
+      "damageType": "P",
+      "weightKg": 1,
+      "priceLabel": "1 PO",
+      "rangeMeters": 9,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Azagaia"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples à distância. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 0
+    }
+  },
+  {
+    "id": "pf1e.weapon.besta-de-mao",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Besta de mão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas à distância. Dano (Pequeno/Médio): 1d3/1d4; crítico 19-20/x2; tipo P; recarga: ação padrão.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas à distância",
+    "damage_dice": "1d4",
+    "damage_type": "P",
+    "hands": null,
+    "price_gp": 100,
+    "traits": [
+      "exotic",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas à distância",
+      "grip": "ranged",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "19-20/x2",
+      "damageType": "P",
+      "weightKg": 1,
+      "priceLabel": "100 PO",
+      "rangeMeters": 9,
+      "special": "recarga: ação padrão",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Besta de mão"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas à distância. Dano (Pequeno/Médio): 1d3/1d4; crítico 19-20/x2; tipo P; recarga: ação padrão."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 2
+    }
+  },
+  {
+    "id": "pf1e.weapon.besta-leve",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Besta leve",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples à distância. Dano (Pequeno/Médio): 1d6/1d8; crítico 19-20/x2; tipo P; recarga: ação de movimento.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples à distância",
+    "damage_dice": "1d8",
+    "damage_type": "P",
+    "hands": null,
+    "price_gp": 35,
+    "traits": [
+      "simple",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples à distância",
+      "grip": "ranged",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "19-20/x2",
+      "damageType": "P",
+      "weightKg": 2,
+      "priceLabel": "35 PO",
+      "rangeMeters": 24,
+      "special": "recarga: ação de movimento",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Besta leve"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples à distância. Dano (Pequeno/Médio): 1d6/1d8; crítico 19-20/x2; tipo P; recarga: ação de movimento."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 1
+    }
+  },
+  {
+    "id": "pf1e.weapon.besta-leve-de-repeticao",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Besta leve de repetição",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas à distância. Dano (Pequeno/Médio): 1d6/1d8; crítico 19-20/x2; tipo P; recarga: ação de movimento.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas à distância",
+    "damage_dice": "1d8",
+    "damage_type": "P",
+    "hands": null,
+    "price_gp": 250,
+    "traits": [
+      "exotic",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas à distância",
+      "grip": "ranged",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "19-20/x2",
+      "damageType": "P",
+      "weightKg": 3,
+      "priceLabel": "250 PO",
+      "rangeMeters": 24,
+      "special": "recarga: ação de movimento",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Besta leve de repetição"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas à distância. Dano (Pequeno/Médio): 1d6/1d8; crítico 19-20/x2; tipo P; recarga: ação de movimento."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 0
+    }
+  },
+  {
+    "id": "pf1e.weapon.besta-pesada",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Besta pesada",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples à distância. Dano (Pequeno/Médio): 1d8/1d10; crítico 19-20/x2; tipo P; recarga: ação padrão.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples à distância",
+    "damage_dice": "1d10",
+    "damage_type": "P",
+    "hands": null,
+    "price_gp": 50,
+    "traits": [
+      "simple",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples à distância",
+      "grip": "ranged",
+      "damageSmall": "1d8",
+      "damageMedium": "1d10",
+      "critical": "19-20/x2",
+      "damageType": "P",
+      "weightKg": 4,
+      "priceLabel": "50 PO",
+      "rangeMeters": 36,
+      "special": "recarga: ação padrão",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Besta pesada"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples à distância. Dano (Pequeno/Médio): 1d8/1d10; crítico 19-20/x2; tipo P; recarga: ação padrão."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 2
+    }
+  },
+  {
+    "id": "pf1e.weapon.besta-pesada-de-repeticao",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Besta pesada de repetição",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas à distância. Dano (Pequeno/Médio): 1d8/1d10; crítico 19-20/x2; tipo P; recarga: ação padrão.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas à distância",
+    "damage_dice": "1d10",
+    "damage_type": "P",
+    "hands": null,
+    "price_gp": 400,
+    "traits": [
+      "exotic",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas à distância",
+      "grip": "ranged",
+      "damageSmall": "1d8",
+      "damageMedium": "1d10",
+      "critical": "19-20/x2",
+      "damageType": "P",
+      "weightKg": 6,
+      "priceLabel": "400 PO",
+      "rangeMeters": 36,
+      "special": "recarga: ação padrão",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Besta pesada de repetição"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas à distância. Dano (Pequeno/Médio): 1d8/1d10; crítico 19-20/x2; tipo P; recarga: ação padrão."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 1
+    }
+  },
+  {
+    "id": "pf1e.weapon.boleadeira",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Boleadeira",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas à distância. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo Cc; não letal, derrubar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas à distância",
+    "damage_dice": "1d4",
+    "damage_type": "Cc",
+    "hands": null,
+    "price_gp": 5,
+    "traits": [
+      "exotic",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas à distância",
+      "grip": "ranged",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": 1,
+      "priceLabel": "5 PO",
+      "rangeMeters": 3,
+      "special": "não letal, derrubar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Boleadeira"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas à distância. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo Cc; não letal, derrubar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 3
+    }
+  },
+  {
+    "id": "pf1e.weapon.bordao",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Bordão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples de duas mãos. Dano (Pequeno/Médio): 1d4/1d4/1d6/1d6; crítico x2; tipo Cc; dupla, monge.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples de duas mãos",
+    "damage_dice": "1d6/1d6",
+    "damage_type": "Cc",
+    "hands": 2,
+    "price_gp": null,
+    "traits": [
+      "simple",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d4/1d4",
+      "damageMedium": "1d6/1d6",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": 2,
+      "priceLabel": "—",
+      "rangeMeters": null,
+      "special": "dupla, monge",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Bordão"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples de duas mãos. Dano (Pequeno/Médio): 1d4/1d4/1d6/1d6; crítico x2; tipo Cc; dupla, monge."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 0
+    }
+  },
+  {
+    "id": "pf1e.weapon.cajado-funda-halfling",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Cajado-funda halfling",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas à distância. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo Cc; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas à distância",
+    "damage_dice": "1d8",
+    "damage_type": "Cc",
+    "hands": null,
+    "price_gp": 20,
+    "traits": [
+      "exotic",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas à distância",
+      "grip": "ranged",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "x3",
+      "damageType": "Cc",
+      "weightKg": 1.5,
+      "priceLabel": "20 PO",
+      "rangeMeters": 24,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Cajado-funda halfling"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas à distância. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo Cc; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 4
+    }
+  },
+  {
+    "id": "pf1e.weapon.chicote",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Chicote",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas de uma mão. Dano (Pequeno/Médio): 1d2/1d3; crítico x2; tipo Ct; desarmar, não letal, alcance, derrubar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas de uma mão",
+    "damage_dice": "1d3",
+    "damage_type": "Ct",
+    "hands": 1,
+    "price_gp": 1,
+    "traits": [
+      "exotic",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d2",
+      "damageMedium": "1d3",
+      "critical": "x2",
+      "damageType": "Ct",
+      "weightKg": 1,
+      "priceLabel": "1 PO",
+      "rangeMeters": null,
+      "special": "desarmar, não letal, alcance, derrubar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Chicote"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas de uma mão. Dano (Pequeno/Médio): 1d2/1d3; crítico x2; tipo Ct; desarmar, não letal, alcance, derrubar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 0
+    }
+  },
+  {
+    "id": "pf1e.weapon.cimitarra",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Cimitarra",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d4/1d6; crítico 18-20/x2; tipo Ct; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de uma mão",
+    "damage_dice": "1d6",
+    "damage_type": "Ct",
+    "hands": 1,
+    "price_gp": 15,
+    "traits": [
+      "martial",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "18-20/x2",
+      "damageType": "Ct",
+      "weightKg": 2,
+      "priceLabel": "15 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Cimitarra"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d4/1d6; crítico 18-20/x2; tipo Ct; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 0
+    }
+  },
+  {
+    "id": "pf1e.weapon.clava",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Clava",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples de uma mão. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo Cc; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples de uma mão",
+    "damage_dice": "1d6",
+    "damage_type": "Cc",
+    "hands": 1,
+    "price_gp": null,
+    "traits": [
+      "simple",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": 1.5,
+      "priceLabel": "—",
+      "rangeMeters": 3,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Clava"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples de uma mão. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo Cc; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 0
+    }
+  },
+  {
+    "id": "pf1e.weapon.clava-grande",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Clava grande",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d8/1d10; crítico x2; tipo Cc; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de duas mãos",
+    "damage_dice": "1d10",
+    "damage_type": "Cc",
+    "hands": 2,
+    "price_gp": 5,
+    "traits": [
+      "martial",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d8",
+      "damageMedium": "1d10",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": 4,
+      "priceLabel": "5 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Clava grande"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d8/1d10; crítico x2; tipo Cc; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 1
+    }
+  },
+  {
+    "id": "pf1e.weapon.corrente-com-cravos",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Corrente com cravos",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas de duas mãos. Dano (Pequeno/Médio): 1d6/2d4; crítico x2; tipo P; desarmar, derrubar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas de duas mãos",
+    "damage_dice": "2d4",
+    "damage_type": "P",
+    "hands": 2,
+    "price_gp": 25,
+    "traits": [
+      "exotic",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d6",
+      "damageMedium": "2d4",
+      "critical": "x2",
+      "damageType": "P",
+      "weightKg": 5,
+      "priceLabel": "25 PO",
+      "rangeMeters": null,
+      "special": "desarmar, derrubar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Corrente com cravos"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas de duas mãos. Dano (Pequeno/Médio): 1d6/2d4; crítico x2; tipo P; desarmar, derrubar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 0
+    }
+  },
+  {
+    "id": "pf1e.weapon.dardo",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Dardo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples à distância. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples à distância",
+    "damage_dice": "1d4",
+    "damage_type": "P",
+    "hands": null,
+    "price_gp": 0.5,
+    "traits": [
+      "simple",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples à distância",
+      "grip": "ranged",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "x2",
+      "damageType": "P",
+      "weightKg": 0.25,
+      "priceLabel": "5 PP",
+      "rangeMeters": 6,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Dardo"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples à distância. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 3
+    }
+  },
+  {
+    "id": "pf1e.weapon.escudo-leve",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Escudo leve",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d2/1d3; crítico x2; tipo Cc; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais leves",
+    "damage_dice": "1d3",
+    "damage_type": "Cc",
+    "hands": 1,
+    "price_gp": null,
+    "traits": [
+      "martial",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais leves",
+      "grip": "light",
+      "damageSmall": "1d2",
+      "damageMedium": "1d3",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": null,
+      "priceLabel": "especial",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Escudo leve"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d2/1d3; crítico x2; tipo Cc; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 2
+    }
+  },
+  {
+    "id": "pf1e.weapon.escudo-leve-com-cravos",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Escudo leve com cravos",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais leves",
+    "damage_dice": "1d4",
+    "damage_type": "P",
+    "hands": 1,
+    "price_gp": null,
+    "traits": [
+      "martial",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais leves",
+      "grip": "light",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "x2",
+      "damageType": "P",
+      "weightKg": null,
+      "priceLabel": "especial",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Escudo leve com cravos"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 1
+    }
+  },
+  {
+    "id": "pf1e.weapon.escudo-pesado",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Escudo pesado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo Cc; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de uma mão",
+    "damage_dice": "1d4",
+    "damage_type": "Cc",
+    "hands": 1,
+    "price_gp": null,
+    "traits": [
+      "martial",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": null,
+      "priceLabel": "especial",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Escudo pesado"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo Cc; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 1
+    }
+  },
+  {
+    "id": "pf1e.weapon.escudo-pesado-com-cravos",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Escudo pesado com cravos",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de uma mão",
+    "damage_dice": "1d6",
+    "damage_type": "P",
+    "hands": 1,
+    "price_gp": null,
+    "traits": [
+      "martial",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x2",
+      "damageType": "P",
+      "weightKg": null,
+      "priceLabel": "especial",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Escudo pesado com cravos"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 2
+    }
+  },
+  {
+    "id": "pf1e.weapon.espada-bastarda",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Espada bastarda",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas de uma mão. Dano (Pequeno/Médio): 1d8/1d10; crítico 19-20/x2; tipo Ct; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas de uma mão",
+    "damage_dice": "1d10",
+    "damage_type": "Ct",
+    "hands": 1,
+    "price_gp": 35,
+    "traits": [
+      "exotic",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d8",
+      "damageMedium": "1d10",
+      "critical": "19-20/x2",
+      "damageType": "Ct",
+      "weightKg": 3,
+      "priceLabel": "35 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Espada bastarda"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas de uma mão. Dano (Pequeno/Médio): 1d8/1d10; crítico 19-20/x2; tipo Ct; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 1
+    }
+  },
+  {
+    "id": "pf1e.weapon.espada-curta",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Espada curta",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d4/1d6; crítico 19-20/x2; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais leves",
+    "damage_dice": "1d6",
+    "damage_type": "P",
+    "hands": 1,
+    "price_gp": 10,
+    "traits": [
+      "martial",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais leves",
+      "grip": "light",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "19-20/x2",
+      "damageType": "P",
+      "weightKg": 1,
+      "priceLabel": "10 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Espada curta"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d4/1d6; crítico 19-20/x2; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 3
+    }
+  },
+  {
+    "id": "pf1e.weapon.espada-de-duas-laminas",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Espada de duas lâminas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas de duas mãos. Dano (Pequeno/Médio): 1d6/1d6/1d8/1d8; crítico 19-20/x2; tipo Ct; dupla.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas de duas mãos",
+    "damage_dice": "1d8/1d8",
+    "damage_type": "Ct",
+    "hands": 2,
+    "price_gp": 100,
+    "traits": [
+      "exotic",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d6/1d6",
+      "damageMedium": "1d8/1d8",
+      "critical": "19-20/x2",
+      "damageType": "Ct",
+      "weightKg": 5,
+      "priceLabel": "100 PO",
+      "rangeMeters": null,
+      "special": "dupla",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Espada de duas lâminas"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas de duas mãos. Dano (Pequeno/Médio): 1d6/1d6/1d8/1d8; crítico 19-20/x2; tipo Ct; dupla."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 1
+    }
+  },
+  {
+    "id": "pf1e.weapon.espada-grande",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Espada grande",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d10/2d6; crítico 19-20/x2; tipo Ct; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de duas mãos",
+    "damage_dice": "2d6",
+    "damage_type": "Ct",
+    "hands": 2,
+    "price_gp": 50,
+    "traits": [
+      "martial",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d10",
+      "damageMedium": "2d6",
+      "critical": "19-20/x2",
+      "damageType": "Ct",
+      "weightKg": 4,
+      "priceLabel": "50 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Espada grande"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d10/2d6; crítico 19-20/x2; tipo Ct; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 2
+    }
+  },
+  {
+    "id": "pf1e.weapon.espada-longa",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Espada longa",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d6/1d8; crítico 19-20/x2; tipo Ct; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de uma mão",
+    "damage_dice": "1d8",
+    "damage_type": "Ct",
+    "hands": 1,
+    "price_gp": 15,
+    "traits": [
+      "martial",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "19-20/x2",
+      "damageType": "Ct",
+      "weightKg": 2,
+      "priceLabel": "15 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Espada longa"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d6/1d8; crítico 19-20/x2; tipo Ct; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 3
+    }
+  },
+  {
+    "id": "pf1e.weapon.faca-estrela",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Faca estrela",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x3; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais leves",
+    "damage_dice": "1d4",
+    "damage_type": "P",
+    "hands": 1,
+    "price_gp": 24,
+    "traits": [
+      "martial",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais leves",
+      "grip": "light",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "x3",
+      "damageType": "P",
+      "weightKg": 1.5,
+      "priceLabel": "24 PO",
+      "rangeMeters": 6,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Faca estrela"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x3; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 4
+    }
+  },
+  {
+    "id": "pf1e.weapon.falcione",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Falcione",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d6/2d4; crítico 18-20/x2; tipo Ct; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de duas mãos",
+    "damage_dice": "2d4",
+    "damage_type": "Ct",
+    "hands": 2,
+    "price_gp": 75,
+    "traits": [
+      "martial",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d6",
+      "damageMedium": "2d4",
+      "critical": "18-20/x2",
+      "damageType": "Ct",
+      "weightKg": 4,
+      "priceLabel": "75 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Falcione"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d6/2d4; crítico 18-20/x2; tipo Ct; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 3
+    }
+  },
+  {
+    "id": "pf1e.weapon.foice",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Foice",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo Ct; derrubar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples leves",
+    "damage_dice": "1d6",
+    "damage_type": "Ct",
+    "hands": 1,
+    "price_gp": 6,
+    "traits": [
+      "simple",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples leves",
+      "grip": "light",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x2",
+      "damageType": "Ct",
+      "weightKg": 1,
+      "priceLabel": "6 PO",
+      "rangeMeters": null,
+      "special": "derrubar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Foice"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo Ct; derrubar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 2
+    }
+  },
+  {
+    "id": "pf1e.weapon.funda",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Funda",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples à distância. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo Cc; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples à distância",
+    "damage_dice": "1d4",
+    "damage_type": "Cc",
+    "hands": null,
+    "price_gp": null,
+    "traits": [
+      "simple",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples à distância",
+      "grip": "ranged",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": null,
+      "priceLabel": "—",
+      "rangeMeters": 15,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Funda"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples à distância. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo Cc; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 4
+    }
+  },
+  {
+    "id": "pf1e.weapon.glaive",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Glaive",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d8/1d10; crítico x3; tipo Ct; alcance.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de duas mãos",
+    "damage_dice": "1d10",
+    "damage_type": "Ct",
+    "hands": 2,
+    "price_gp": 8,
+    "traits": [
+      "martial",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d8",
+      "damageMedium": "1d10",
+      "critical": "x3",
+      "damageType": "Ct",
+      "weightKg": 5,
+      "priceLabel": "8 PO",
+      "rangeMeters": null,
+      "special": "alcance",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Glaive"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d8/1d10; crítico x3; tipo Ct; alcance."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 4
+    }
+  },
+  {
+    "id": "pf1e.weapon.golpe-desarmado",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Golpe desarmado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Ataques desarmados. Dano (Pequeno/Médio): 1d2/1d3; crítico x2; tipo Cc; não letal.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Ataques desarmados",
+    "damage_dice": "1d3",
+    "damage_type": "Cc",
+    "hands": 1,
+    "price_gp": null,
+    "traits": [
+      "simple",
+      "unarmed"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Ataques desarmados",
+      "grip": "unarmed",
+      "damageSmall": "1d2",
+      "damageMedium": "1d3",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": null,
+      "priceLabel": "—",
+      "rangeMeters": null,
+      "special": "não letal",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Golpe desarmado"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Ataques desarmados. Dano (Pequeno/Médio): 1d2/1d3; crítico x2; tipo Cc; não letal."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 0
+    }
+  },
+  {
+    "id": "pf1e.weapon.guisarme",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Guisarme",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d6/2d4; crítico x3; tipo Ct; alcance, derrubar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de duas mãos",
+    "damage_dice": "2d4",
+    "damage_type": "Ct",
+    "hands": 2,
+    "price_gp": 9,
+    "traits": [
+      "martial",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d6",
+      "damageMedium": "2d4",
+      "critical": "x3",
+      "damageType": "Ct",
+      "weightKg": 6,
+      "priceLabel": "9 PO",
+      "rangeMeters": null,
+      "special": "alcance, derrubar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Guisarme"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d6/2d4; crítico x3; tipo Ct; alcance, derrubar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 5
+    }
+  },
+  {
+    "id": "pf1e.weapon.kama",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Kama",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo Ct; monge, derrubar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas leves",
+    "damage_dice": "1d6",
+    "damage_type": "Ct",
+    "hands": 1,
+    "price_gp": 2,
+    "traits": [
+      "exotic",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas leves",
+      "grip": "light",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x2",
+      "damageType": "Ct",
+      "weightKg": 1,
+      "priceLabel": "2 PO",
+      "rangeMeters": null,
+      "special": "monge, derrubar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Kama"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo Ct; monge, derrubar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 0
+    }
+  },
+  {
+    "id": "pf1e.weapon.kukri",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Kukri",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d3/1d4; crítico 18-20/x2; tipo Ct; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais leves",
+    "damage_dice": "1d4",
+    "damage_type": "Ct",
+    "hands": 1,
+    "price_gp": 8,
+    "traits": [
+      "martial",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais leves",
+      "grip": "light",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "18-20/x2",
+      "damageType": "Ct",
+      "weightKg": 1,
+      "priceLabel": "8 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Kukri"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d3/1d4; crítico 18-20/x2; tipo Ct; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 5
+    }
+  },
+  {
+    "id": "pf1e.weapon.lamina-curvada-elfica",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Lâmina curvada élfica",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas de duas mãos. Dano (Pequeno/Médio): 1d8/1d10; crítico 18-20/x2; tipo Ct; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas de duas mãos",
+    "damage_dice": "1d10",
+    "damage_type": "Ct",
+    "hands": 2,
+    "price_gp": 80,
+    "traits": [
+      "exotic",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d8",
+      "damageMedium": "1d10",
+      "critical": "18-20/x2",
+      "damageType": "Ct",
+      "weightKg": 3.5,
+      "priceLabel": "80 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Lâmina curvada élfica"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas de duas mãos. Dano (Pequeno/Médio): 1d8/1d10; crítico 18-20/x2; tipo Ct; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 2
+    }
+  },
+  {
+    "id": "pf1e.weapon.lanca",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Lança",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples de duas mãos. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo P; escorar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples de duas mãos",
+    "damage_dice": "1d8",
+    "damage_type": "P",
+    "hands": 2,
+    "price_gp": 2,
+    "traits": [
+      "simple",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "x3",
+      "damageType": "P",
+      "weightKg": 3,
+      "priceLabel": "2 PO",
+      "rangeMeters": 6,
+      "special": "escorar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Lança"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples de duas mãos. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo P; escorar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 1
+    }
+  },
+  {
+    "id": "pf1e.weapon.lanca-curta",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Lança curta",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples de uma mão. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples de uma mão",
+    "damage_dice": "1d6",
+    "damage_type": "P",
+    "hands": 1,
+    "price_gp": 1,
+    "traits": [
+      "simple",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x2",
+      "damageType": "P",
+      "weightKg": 1.5,
+      "priceLabel": "1 PO",
+      "rangeMeters": 6,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Lança curta"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples de uma mão. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 1
+    }
+  },
+  {
+    "id": "pf1e.weapon.lanca-de-cavalaria",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Lança de cavalaria",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo P; alcance.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de duas mãos",
+    "damage_dice": "1d8",
+    "damage_type": "P",
+    "hands": 2,
+    "price_gp": 10,
+    "traits": [
+      "martial",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "x3",
+      "damageType": "P",
+      "weightKg": 5,
+      "priceLabel": "10 PO",
+      "rangeMeters": null,
+      "special": "alcance",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Lança de cavalaria"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo P; alcance."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 6
+    }
+  },
+  {
+    "id": "pf1e.weapon.lanca-longa",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Lança longa",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples de duas mãos. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo P; alcance, escorar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples de duas mãos",
+    "damage_dice": "1d8",
+    "damage_type": "P",
+    "hands": 2,
+    "price_gp": 5,
+    "traits": [
+      "simple",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "x3",
+      "damageType": "P",
+      "weightKg": 4.5,
+      "priceLabel": "5 PO",
+      "rangeMeters": null,
+      "special": "alcance, escorar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Lança longa"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples de duas mãos. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo P; alcance, escorar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 2
+    }
+  },
+  {
+    "id": "pf1e.weapon.maca-estrela",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Maça-estrela",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples de uma mão. Dano (Pequeno/Médio): 1d6/1d8; crítico x2; tipo Cc e P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples de uma mão",
+    "damage_dice": "1d8",
+    "damage_type": "Cc e P",
+    "hands": 1,
+    "price_gp": 8,
+    "traits": [
+      "simple",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "x2",
+      "damageType": "Cc e P",
+      "weightKg": 3,
+      "priceLabel": "8 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Maça-estrela"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples de uma mão. Dano (Pequeno/Médio): 1d6/1d8; crítico x2; tipo Cc e P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 3
+    }
+  },
+  {
+    "id": "pf1e.weapon.maca-leve",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Maça leve",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo Cc; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples leves",
+    "damage_dice": "1d6",
+    "damage_type": "Cc",
+    "hands": 1,
+    "price_gp": 5,
+    "traits": [
+      "simple",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples leves",
+      "grip": "light",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": 2,
+      "priceLabel": "5 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Maça leve"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo Cc; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 3
+    }
+  },
+  {
+    "id": "pf1e.weapon.maca-pesada",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Maça pesada",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples de uma mão. Dano (Pequeno/Médio): 1d6/1d8; crítico x2; tipo Cc; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples de uma mão",
+    "damage_dice": "1d8",
+    "damage_type": "Cc",
+    "hands": 1,
+    "price_gp": 12,
+    "traits": [
+      "simple",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": 4,
+      "priceLabel": "12 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Maça pesada"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples de uma mão. Dano (Pequeno/Médio): 1d6/1d8; crítico x2; tipo Cc; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 2
+    }
+  },
+  {
+    "id": "pf1e.weapon.machadinha",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Machadinha",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x3; tipo Ct; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais leves",
+    "damage_dice": "1d6",
+    "damage_type": "Ct",
+    "hands": 1,
+    "price_gp": 6,
+    "traits": [
+      "martial",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais leves",
+      "grip": "light",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x3",
+      "damageType": "Ct",
+      "weightKg": 1.5,
+      "priceLabel": "6 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Machadinha"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x3; tipo Ct; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 6
+    }
+  },
+  {
+    "id": "pf1e.weapon.machado-de-arremesso",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Machado de arremesso",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo Ct; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais leves",
+    "damage_dice": "1d6",
+    "damage_type": "Ct",
+    "hands": 1,
+    "price_gp": 8,
+    "traits": [
+      "martial",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais leves",
+      "grip": "light",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x2",
+      "damageType": "Ct",
+      "weightKg": 1,
+      "priceLabel": "8 PO",
+      "rangeMeters": 3,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Machado de arremesso"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo Ct; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 7
+    }
+  },
+  {
+    "id": "pf1e.weapon.machado-de-batalha",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Machado de batalha",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo Ct; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de uma mão",
+    "damage_dice": "1d8",
+    "damage_type": "Ct",
+    "hands": 1,
+    "price_gp": 10,
+    "traits": [
+      "martial",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "x3",
+      "damageType": "Ct",
+      "weightKg": 3,
+      "priceLabel": "10 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Machado de batalha"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo Ct; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 4
+    }
+  },
+  {
+    "id": "pf1e.weapon.machado-de-guerra-anao",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Machado de guerra anão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas de uma mão. Dano (Pequeno/Médio): 1d8/1d10; crítico x3; tipo Ct; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas de uma mão",
+    "damage_dice": "1d10",
+    "damage_type": "Ct",
+    "hands": 1,
+    "price_gp": 30,
+    "traits": [
+      "exotic",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d8",
+      "damageMedium": "1d10",
+      "critical": "x3",
+      "damageType": "Ct",
+      "weightKg": 4,
+      "priceLabel": "30 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Machado de guerra anão"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas de uma mão. Dano (Pequeno/Médio): 1d8/1d10; crítico x3; tipo Ct; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 2
+    }
+  },
+  {
+    "id": "pf1e.weapon.machado-duplo-orc",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Machado duplo orc",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas de duas mãos. Dano (Pequeno/Médio): 1d6/1d6/1d8/1d8; crítico x3; tipo Ct; dupla.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas de duas mãos",
+    "damage_dice": "1d8/1d8",
+    "damage_type": "Ct",
+    "hands": 2,
+    "price_gp": 60,
+    "traits": [
+      "exotic",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d6/1d6",
+      "damageMedium": "1d8/1d8",
+      "critical": "x3",
+      "damageType": "Ct",
+      "weightKg": 7.5,
+      "priceLabel": "60 PO",
+      "rangeMeters": null,
+      "special": "dupla",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Machado duplo orc"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas de duas mãos. Dano (Pequeno/Médio): 1d6/1d6/1d8/1d8; crítico x3; tipo Ct; dupla."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 3
+    }
+  },
+  {
+    "id": "pf1e.weapon.machado-grande",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Machado grande",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d10/1d12; crítico x3; tipo Ct; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de duas mãos",
+    "damage_dice": "1d12",
+    "damage_type": "Ct",
+    "hands": 2,
+    "price_gp": 20,
+    "traits": [
+      "martial",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d10",
+      "damageMedium": "1d12",
+      "critical": "x3",
+      "damageType": "Ct",
+      "weightKg": 6,
+      "priceLabel": "20 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Machado grande"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d10/1d12; crítico x3; tipo Ct; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 7
+    }
+  },
+  {
+    "id": "pf1e.weapon.mangual",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Mangual",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d6/1d8; crítico x2; tipo Cc; desarmar, derrubar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de uma mão",
+    "damage_dice": "1d8",
+    "damage_type": "Cc",
+    "hands": 1,
+    "price_gp": 8,
+    "traits": [
+      "martial",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": 2.5,
+      "priceLabel": "8 PO",
+      "rangeMeters": null,
+      "special": "desarmar, derrubar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Mangual"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d6/1d8; crítico x2; tipo Cc; desarmar, derrubar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 5
+    }
+  },
+  {
+    "id": "pf1e.weapon.mangual-atroz",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Mangual atroz",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas de duas mãos. Dano (Pequeno/Médio): 1d6/1d6/1d8/1d8; crítico x2; tipo Cc; desarmar, dupla, derrubar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas de duas mãos",
+    "damage_dice": "1d8/1d8",
+    "damage_type": "Cc",
+    "hands": 2,
+    "price_gp": 90,
+    "traits": [
+      "exotic",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d6/1d6",
+      "damageMedium": "1d8/1d8",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": 5,
+      "priceLabel": "90 PO",
+      "rangeMeters": null,
+      "special": "desarmar, dupla, derrubar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Mangual atroz"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas de duas mãos. Dano (Pequeno/Médio): 1d6/1d6/1d8/1d8; crítico x2; tipo Cc; desarmar, dupla, derrubar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 4
+    }
+  },
+  {
+    "id": "pf1e.weapon.mangual-pesado",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Mangual pesado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d8/1d10; crítico 19-20/x2; tipo Cc; desarmar, derrubar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de duas mãos",
+    "damage_dice": "1d10",
+    "damage_type": "Cc",
+    "hands": 2,
+    "price_gp": 15,
+    "traits": [
+      "martial",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d8",
+      "damageMedium": "1d10",
+      "critical": "19-20/x2",
+      "damageType": "Cc",
+      "weightKg": 5,
+      "priceLabel": "15 PO",
+      "rangeMeters": null,
+      "special": "desarmar, derrubar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Mangual pesado"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d8/1d10; crítico 19-20/x2; tipo Cc; desarmar, derrubar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 8
+    }
+  },
+  {
+    "id": "pf1e.weapon.manopla",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Manopla",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Ataques desarmados. Dano (Pequeno/Médio): 1d2/1d3; crítico x2; tipo Cc; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Ataques desarmados",
+    "damage_dice": "1d3",
+    "damage_type": "Cc",
+    "hands": 1,
+    "price_gp": 2,
+    "traits": [
+      "simple",
+      "unarmed"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Ataques desarmados",
+      "grip": "unarmed",
+      "damageSmall": "1d2",
+      "damageMedium": "1d3",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": 0.5,
+      "priceLabel": "2 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Manopla"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Ataques desarmados. Dano (Pequeno/Médio): 1d2/1d3; crítico x2; tipo Cc; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 1
+    }
+  },
+  {
+    "id": "pf1e.weapon.manopla-com-cravos",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Manopla com cravos",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples leves",
+    "damage_dice": "1d4",
+    "damage_type": "P",
+    "hands": 1,
+    "price_gp": 5,
+    "traits": [
+      "simple",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples leves",
+      "grip": "light",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "x2",
+      "damageType": "P",
+      "weightKg": 0.5,
+      "priceLabel": "5 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Manopla com cravos"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 4
+    }
+  },
+  {
+    "id": "pf1e.weapon.martelo-com-gancho-gnomico",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Martelo com gancho gnômico",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas de duas mãos. Dano (Pequeno/Médio): 1d6/1d4/1d8/1d6; crítico x3/x4; tipo Cc ou P; dupla, derrubar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas de duas mãos",
+    "damage_dice": "1d8/1d6",
+    "damage_type": "Cc ou P",
+    "hands": 2,
+    "price_gp": 20,
+    "traits": [
+      "exotic",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d6/1d4",
+      "damageMedium": "1d8/1d6",
+      "critical": "x3/x4",
+      "damageType": "Cc ou P",
+      "weightKg": 3,
+      "priceLabel": "20 PO",
+      "rangeMeters": null,
+      "special": "dupla, derrubar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Martelo com gancho gnômico"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas de duas mãos. Dano (Pequeno/Médio): 1d6/1d4/1d8/1d6; crítico x3/x4; tipo Cc ou P; dupla, derrubar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 5
+    }
+  },
+  {
+    "id": "pf1e.weapon.martelo-de-guerra",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Martelo de guerra",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo Cc; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de uma mão",
+    "damage_dice": "1d8",
+    "damage_type": "Cc",
+    "hands": 1,
+    "price_gp": 12,
+    "traits": [
+      "martial",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "x3",
+      "damageType": "Cc",
+      "weightKg": 2.5,
+      "priceLabel": "12 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Martelo de guerra"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d6/1d8; crítico x3; tipo Cc; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 6
+    }
+  },
+  {
+    "id": "pf1e.weapon.martelo-leve",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Martelo leve",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo Cc; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais leves",
+    "damage_dice": "1d4",
+    "damage_type": "Cc",
+    "hands": 1,
+    "price_gp": 1,
+    "traits": [
+      "martial",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais leves",
+      "grip": "light",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": 1,
+      "priceLabel": "1 PO",
+      "rangeMeters": 6,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Martelo leve"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo Cc; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 8
+    }
+  },
+  {
+    "id": "pf1e.weapon.nunchaku",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Nunchaku",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo Cc; desarmar, monge.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas leves",
+    "damage_dice": "1d4",
+    "damage_type": "Cc",
+    "hands": 1,
+    "price_gp": 2,
+    "traits": [
+      "exotic",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas leves",
+      "grip": "light",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": 1,
+      "priceLabel": "2 PO",
+      "rangeMeters": null,
+      "special": "desarmar, monge",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Nunchaku"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo Cc; desarmar, monge."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 1
+    }
+  },
+  {
+    "id": "pf1e.weapon.picareta-leve",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Picareta leve",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x4; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais leves",
+    "damage_dice": "1d4",
+    "damage_type": "P",
+    "hands": 1,
+    "price_gp": 4,
+    "traits": [
+      "martial",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais leves",
+      "grip": "light",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "x4",
+      "damageType": "P",
+      "weightKg": 1.5,
+      "priceLabel": "4 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Picareta leve"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x4; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 9
+    }
+  },
+  {
+    "id": "pf1e.weapon.picareta-pesada",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Picareta pesada",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d4/1d6; crítico x4; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de uma mão",
+    "damage_dice": "1d6",
+    "damage_type": "P",
+    "hands": 1,
+    "price_gp": 8,
+    "traits": [
+      "martial",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x4",
+      "damageType": "P",
+      "weightKg": 3,
+      "priceLabel": "8 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Picareta pesada"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d4/1d6; crítico x4; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 7
+    }
+  },
+  {
+    "id": "pf1e.weapon.porrete",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Porrete",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo Cc; não letal.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais leves",
+    "damage_dice": "1d6",
+    "damage_type": "Cc",
+    "hands": 1,
+    "price_gp": 1,
+    "traits": [
+      "martial",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais leves",
+      "grip": "light",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": 1,
+      "priceLabel": "1 PO",
+      "rangeMeters": null,
+      "special": "não letal",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Porrete"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo Cc; não letal."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 10
+    }
+  },
+  {
+    "id": "pf1e.weapon.ranseur",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Ranseur",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d6/2d4; crítico x3; tipo P; desarmar, alcance.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de duas mãos",
+    "damage_dice": "2d4",
+    "damage_type": "P",
+    "hands": 2,
+    "price_gp": 10,
+    "traits": [
+      "martial",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d6",
+      "damageMedium": "2d4",
+      "critical": "x3",
+      "damageType": "P",
+      "weightKg": 6,
+      "priceLabel": "10 PO",
+      "rangeMeters": null,
+      "special": "desarmar, alcance",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Ranseur"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d6/2d4; crítico x3; tipo P; desarmar, alcance."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 9
+    }
+  },
+  {
+    "id": "pf1e.weapon.rapieira",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Rapieira",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d4/1d6; crítico 18-20/x2; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de uma mão",
+    "damage_dice": "1d6",
+    "damage_type": "P",
+    "hands": 1,
+    "price_gp": 20,
+    "traits": [
+      "martial",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "18-20/x2",
+      "damageType": "P",
+      "weightKg": 1,
+      "priceLabel": "20 PO",
+      "rangeMeters": null,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Rapieira"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d4/1d6; crítico 18-20/x2; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 8
+    }
+  },
+  {
+    "id": "pf1e.weapon.rede",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Rede",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas à distância. Dano (Pequeno/Médio): —/—; crítico —; tipo —; enredar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas à distância",
+    "damage_dice": "—",
+    "damage_type": "—",
+    "hands": null,
+    "price_gp": 20,
+    "traits": [
+      "exotic",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas à distância",
+      "grip": "ranged",
+      "damageSmall": "—",
+      "damageMedium": "—",
+      "critical": "—",
+      "damageType": "—",
+      "weightKg": 3,
+      "priceLabel": "20 PO",
+      "rangeMeters": 3,
+      "special": "enredar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Rede"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas à distância. Dano (Pequeno/Médio): —/—; crítico —; tipo —; enredar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 5
+    }
+  },
+  {
+    "id": "pf1e.weapon.sai",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Sai",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo Cc; desarmar, monge.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas leves",
+    "damage_dice": "1d4",
+    "damage_type": "Cc",
+    "hands": 1,
+    "price_gp": 1,
+    "traits": [
+      "exotic",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas leves",
+      "grip": "light",
+      "damageSmall": "1d3",
+      "damageMedium": "1d4",
+      "critical": "x2",
+      "damageType": "Cc",
+      "weightKg": 0.5,
+      "priceLabel": "1 PO",
+      "rangeMeters": null,
+      "special": "desarmar, monge",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Sai"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas leves. Dano (Pequeno/Médio): 1d3/1d4; crítico x2; tipo Cc; desarmar, monge."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 2
+    }
+  },
+  {
+    "id": "pf1e.weapon.segadeira",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Segadeira",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d6/2d4; crítico x4; tipo P ou Ct; derrubar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de duas mãos",
+    "damage_dice": "2d4",
+    "damage_type": "P ou Ct",
+    "hands": 2,
+    "price_gp": 18,
+    "traits": [
+      "martial",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d6",
+      "damageMedium": "2d4",
+      "critical": "x4",
+      "damageType": "P ou Ct",
+      "weightKg": 5,
+      "priceLabel": "18 PO",
+      "rangeMeters": null,
+      "special": "derrubar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Segadeira"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de duas mãos. Dano (Pequeno/Médio): 1d6/2d4; crítico x4; tipo P ou Ct; derrubar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 10
+    }
+  },
+  {
+    "id": "pf1e.weapon.shuriken",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Shuriken",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas à distância. Dano (Pequeno/Médio): 1/1d2; crítico x2; tipo P; monge, arremessável.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas à distância",
+    "damage_dice": "1d2",
+    "damage_type": "P",
+    "hands": null,
+    "price_gp": 0.2,
+    "traits": [
+      "exotic",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas à distância",
+      "grip": "ranged",
+      "damageSmall": "1",
+      "damageMedium": "1d2",
+      "critical": "x2",
+      "damageType": "P",
+      "weightKg": 0.25,
+      "priceLabel": "1 PO (5)",
+      "rangeMeters": 3,
+      "special": "monge, arremessável",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Shuriken"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas à distância. Dano (Pequeno/Médio): 1/1d2; crítico x2; tipo P; monge, arremessável."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 6
+    }
+  },
+  {
+    "id": "pf1e.weapon.siangham",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Siangham",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo P; monge.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas leves",
+    "damage_dice": "1d6",
+    "damage_type": "P",
+    "hands": 1,
+    "price_gp": 3,
+    "traits": [
+      "exotic",
+      "light"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas leves",
+      "grip": "light",
+      "damageSmall": "1d4",
+      "damageMedium": "1d6",
+      "critical": "x2",
+      "damageType": "P",
+      "weightKg": 0.5,
+      "priceLabel": "3 PO",
+      "rangeMeters": null,
+      "special": "monge",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Siangham"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas leves. Dano (Pequeno/Médio): 1d4/1d6; crítico x2; tipo P; monge."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 3
+    }
+  },
+  {
+    "id": "pf1e.weapon.tridente",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Tridente",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d6/1d8; crítico x2; tipo P; escorar.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "martial",
+    "weapon_group": "Armas marciais de uma mão",
+    "damage_dice": "1d8",
+    "damage_type": "P",
+    "hands": 1,
+    "price_gp": 15,
+    "traits": [
+      "martial",
+      "one_hand"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "martial",
+      "weaponGroup": "Armas marciais de uma mão",
+      "grip": "one_hand",
+      "damageSmall": "1d6",
+      "damageMedium": "1d8",
+      "critical": "x2",
+      "damageType": "P",
+      "weightKg": 2,
+      "priceLabel": "15 PO",
+      "rangeMeters": 3,
+      "special": "escorar",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Tridente"
+      },
+      "summaries": {
+        "pt-BR": "Marciais — Armas marciais de uma mão. Dano (Pequeno/Médio): 1d6/1d8; crítico x2; tipo P; escorar."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 9
+    }
+  },
+  {
+    "id": "pf1e.weapon.urgrosh-anao",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Urgrosh anão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Exóticas — Armas exóticas de duas mãos. Dano (Pequeno/Médio): 1d6/1d4/1d8/1d6; crítico x3; tipo P ou Ct; escorar, dupla.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "exotic",
+    "weapon_group": "Armas exóticas de duas mãos",
+    "damage_dice": "1d8/1d6",
+    "damage_type": "P ou Ct",
+    "hands": 2,
+    "price_gp": 50,
+    "traits": [
+      "exotic",
+      "two_hands"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 143,
+    "data": {
+      "proficiency": "exotic",
+      "weaponGroup": "Armas exóticas de duas mãos",
+      "grip": "two_hands",
+      "damageSmall": "1d6/1d4",
+      "damageMedium": "1d8/1d6",
+      "critical": "x3",
+      "damageType": "P ou Ct",
+      "weightKg": 6,
+      "priceLabel": "50 PO",
+      "rangeMeters": null,
+      "special": "escorar, dupla",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Urgrosh anão"
+      },
+      "summaries": {
+        "pt-BR": "Exóticas — Armas exóticas de duas mãos. Dano (Pequeno/Médio): 1d6/1d4/1d8/1d6; crítico x3; tipo P ou Ct; escorar, dupla."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 6
+    }
+  },
+  {
+    "id": "pf1e.weapon.zarabatana",
+    "system_id": "pf1e",
+    "ruleset": "legacy_pf1",
+    "rarity": "common",
+    "name_pt": "Zarabatana",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simples — Armas simples à distância. Dano (Pequeno/Médio): 1/1d2; crítico x2; tipo P; —.",
+    "description_en": null,
+    "description_es": null,
+    "weapon_category": "simple",
+    "weapon_group": "Armas simples à distância",
+    "damage_dice": "1d2",
+    "damage_type": "P",
+    "hands": null,
+    "price_gp": 2,
+    "traits": [
+      "simple",
+      "ranged"
+    ],
+    "source_book": "Pathfinder RPG — Livro Básico",
+    "source_page": 142,
+    "data": {
+      "proficiency": "simple",
+      "weaponGroup": "Armas simples à distância",
+      "grip": "ranged",
+      "damageSmall": "1",
+      "damageMedium": "1d2",
+      "critical": "x2",
+      "damageType": "P",
+      "weightKg": 0.5,
+      "priceLabel": "2 PO",
+      "rangeMeters": 6,
+      "special": "—",
+      "table": "6-4",
+      "summaryOnly": true,
+      "names": {
+        "pt-BR": "Zarabatana"
+      },
+      "summaries": {
+        "pt-BR": "Simples — Armas simples à distância. Dano (Pequeno/Médio): 1/1d2; crítico x2; tipo P; —."
+      },
+      "ruleset": "legacy_pf1",
+      "sourceIndex": 5
+    }
+  }
+]

@@ -13,6 +13,7 @@ const totals = {
   missingSpanishName: 0,
   missingSourceBook: 0,
   missingSourcePage: 0,
+  summaryOnlyRecords: 0,
 };
 
 const readDirectories = async (path) => (await readdir(path, { withFileTypes: true }))
@@ -49,6 +50,7 @@ for (const systemId of await readDirectories(root)) {
 
       const gaps = {
         records: records.length,
+        summaryOnlyRecords: 0,
         missingPortugueseName: [],
         missingPortugueseSummary: [],
         missingEnglishName: [],
@@ -62,6 +64,7 @@ for (const systemId of await readDirectories(root)) {
           errors.push(`${scopeKey}/${category}: ${id} declara system_id/ruleset divergente.`);
         }
         const data = record.data && typeof record.data === "object" ? record.data : {};
+        if (data.summaryOnly === true) gaps.summaryOnlyRecords += 1;
         const names = data.names && typeof data.names === "object" ? data.names : {};
         const summaries = data.summaries && typeof data.summaries === "object" ? data.summaries : {};
         const localized = {
@@ -81,7 +84,8 @@ for (const systemId of await readDirectories(root)) {
       categories[category] = Object.fromEntries(
         Object.entries(gaps).map(([field, values]) => [field, Array.isArray(values) ? values.length : values]),
       );
-      for (const field of Object.keys(totals).filter((key) => key !== "records")) totals[field] += gaps[field].length;
+      totals.summaryOnlyRecords += gaps.summaryOnlyRecords;
+      for (const field of Object.keys(totals).filter((key) => key !== "records" && key !== "summaryOnlyRecords")) totals[field] += gaps[field].length;
       totals.records += records.length;
     }
     byScope[scopeKey] = categories;

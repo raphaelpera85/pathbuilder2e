@@ -1,6 +1,7 @@
 import { isSupabaseConfigured, supabase } from "../lib/supabase";
 import { getCurrentSession, type UserProfile } from "./auth";
 import { withRequestTimeout } from "./requestTimeout";
+import { fetchCatalogLocalMetrics } from "./catalog";
 
 export interface AccessLogEntry {
   id: string;
@@ -167,6 +168,15 @@ export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics>
   let catalogReviewCount: number | undefined;
   let isRemote = false;
 
+  try {
+    const catalogMetrics = await fetchCatalogLocalMetrics();
+    catalogCounts = catalogMetrics.counts;
+    catalogVerifiedCount = catalogMetrics.verifiedCount;
+    catalogReviewCount = catalogMetrics.reviewCount;
+  } catch (error) {
+    console.warn("Aviso ao calcular métricas do catálogo local:", error);
+  }
+
   // Busca dados do Supabase se configurado
   if (isSupabaseConfigured && supabase) {
     try {
@@ -289,45 +299,6 @@ export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics>
       // Segue
     }
 
-    try {
-      // 5. Contagem de registros e status de revisão do catálogo no Supabase (18 tabelas)
-      const catalogTables = [
-        "catalog_ancestries", "catalog_heritages", "catalog_classes", "catalog_subclasses",
-        "catalog_backgrounds", "catalog_archetypes", "catalog_spells", "catalog_rituals",
-        "catalog_feats", "catalog_items", "catalog_weapons", "catalog_armors",
-        "catalog_shields", "catalog_formulas", "catalog_pets", "catalog_actions",
-        "catalog_conditions", "catalog_buffs"
-      ];
-      let totalCat = 0;
-      let totalRev = 0;
-      const sb = supabase;
-      await Promise.all(
-        catalogTables.map(async (tbl) => {
-          try {
-            const [{ count: total }, { count: reviewCount }] = await Promise.all([
-              sb.from(tbl).select("id", { count: "exact", head: true }),
-              sb.from(tbl).select("id", { count: "exact", head: true }).eq("ruleset", "needs_review"),
-            ]);
-            if (typeof total === "number") {
-              catalogCounts[tbl] = total;
-              totalCat += total;
-            }
-            if (typeof reviewCount === "number") {
-              totalRev += reviewCount;
-            }
-          } catch {
-            // Segue
-          }
-        })
-      );
-      if (totalCat > 0) {
-        catalogVerifiedCount = Math.max(0, totalCat - totalRev);
-        catalogReviewCount = totalRev;
-        isRemote = true;
-      }
-    } catch {
-      // Segue
-    }
   }
 
   // Fallbacks locais caso Supabase esteja offline ou não configurado
