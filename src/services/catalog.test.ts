@@ -690,7 +690,20 @@ describe("serviço de catálogo local", () => {
     expect(items).toHaveLength(expectedCount);
     const transcribedBookSpells = items.filter((item) => typeof item.data.listId === "string");
     expect(transcribedBookSpells).toHaveLength(expectedCount);
-    const reviewedSummaryIds = transcribedBookSpells.filter((item) => item.data.summaryOnly === false).map((item) => item.id).sort();
+    const allReviewedSummaryIds = transcribedBookSpells.filter((item) => item.data.summaryOnly === false).map((item) => item.id).sort();
+    const reviewedSummoningIds = allReviewedSummaryIds.filter((id) => /\.invocar-(?:aliado-da-natureza|criaturas|enxames)(?:-|$)/.test(id));
+    const romanLevels = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix"];
+    const expectedSummoningIds = [
+      ...romanLevels.map((level) => `dnd35.phb.spell.druida.${romanLevels.indexOf(level) + 1}.invocar-aliado-da-natureza-${level}`),
+      ...romanLevels.slice(0, 4).map((level) => `dnd35.phb.spell.patrulheiro.${romanLevels.indexOf(level) + 1}.invocar-aliado-da-natureza-${level}`),
+      ...["bardo", "clerigo", "feiticeiro_mago"].flatMap((classId) => {
+        const maxLevel = classId === "bardo" ? 6 : 9;
+        return romanLevels.slice(0, maxLevel).map((level) => `dnd35.phb.spell.${classId}.${romanLevels.indexOf(level) + 1}.invocar-criaturas-${level}`);
+      }),
+      ...["bardo", "druida", "feiticeiro_mago"].map((classId) => `dnd35.phb.spell.${classId}.2.invocar-enxames`),
+    ].sort();
+    expect(reviewedSummoningIds).toEqual(expectedSummoningIds);
+    const reviewedSummaryIds = allReviewedSummaryIds.filter((id) => !reviewedSummoningIds.includes(id));
     expect(reviewedSummaryIds).toEqual([
       "dnd35.phb.spell.bardo.1.compreender-idiomas",
       "dnd35.phb.spell.bardo.0.detectar-magia",
@@ -849,6 +862,90 @@ describe("serviço de catálogo local", () => {
       "dnd35.phb.spell.clerigo.2.forca-do-touro",
       "dnd35.phb.spell.druida.2.forca-do-touro",
       "dnd35.phb.spell.paladino.2.forca-do-touro",
+      "dnd35.phb.spell.bardo.0.globos-de-luz",
+      "dnd35.phb.spell.bardo.2.furia",
+      "dnd35.phb.spell.bardo.4.grito",
+      "dnd35.phb.spell.bardo.6.grito-maior",
+      "dnd35.phb.spell.druida.9.grupo-de-elementais",
+      "dnd35.phb.spell.feiticeiro_mago.0.globos-de-luz",
+      "dnd35.phb.spell.feiticeiro_mago.3.furia",
+      "dnd35.phb.spell.feiticeiro_mago.4.globo-de-invulnerabilidade-menor",
+      "dnd35.phb.spell.feiticeiro_mago.4.grito",
+      "dnd35.phb.spell.feiticeiro_mago.6.globo-de-invulnerabilidade",
+      "dnd35.phb.spell.feiticeiro_mago.8.grito-maior",
+      "dnd35.phb.spell.feiticeiro_mago.9.grito-da-banshee",
+      "dnd35.phb.spell.bardo.3.forma-gasosa",
+      "dnd35.phb.spell.clerigo.6.forca-do-touro-em-massa",
+      "dnd35.phb.spell.clerigo.9.forma-eterea",
+      "dnd35.phb.spell.druida.2.forma-de-arvore",
+      "dnd35.phb.spell.druida.6.forca-do-touro-em-massa",
+      "dnd35.phb.spell.druida.8.forma-animal",
+      "dnd35.phb.spell.feiticeiro_mago.3.forma-gasosa",
+      "dnd35.phb.spell.feiticeiro_mago.6.forca-do-touro-em-massa",
+      "dnd35.phb.spell.feiticeiro_mago.9.forma-eterea",
+      "dnd35.phb.spell.patrulheiro.3.forma-de-arvore",
+      "dnd35.phb.spell.bardo.1.imagem-silenciosa",
+      "dnd35.phb.spell.bardo.2.imobilizar-pessoa",
+      "dnd35.phb.spell.bardo.4.imobilizar-monstro",
+      "dnd35.phb.spell.bardo.5.imagem-persistente",
+      "dnd35.phb.spell.bardo.6.imagem-programada",
+      "dnd35.phb.spell.clerigo.2.imobilizar-pessoa",
+      "dnd35.phb.spell.clerigo.4.imunidade-a-magia",
+      "dnd35.phb.spell.clerigo.9.implosao",
+      "dnd35.phb.spell.druida.2.imobilizar-animal",
+      "dnd35.phb.spell.feiticeiro_mago.1.imagem-silenciosa",
+      "dnd35.phb.spell.feiticeiro_mago.3.imobilizar-mortos-vivos",
+      "dnd35.phb.spell.feiticeiro_mago.3.imobilizar-pessoa",
+      "dnd35.phb.spell.feiticeiro_mago.5.imagem-persistente",
+      "dnd35.phb.spell.feiticeiro_mago.5.imobilizar-monstro",
+      "dnd35.phb.spell.feiticeiro_mago.6.imagem-programada",
+      "dnd35.phb.spell.feiticeiro_mago.7.imobilizar-pessoa-em-massa",
+      "dnd35.phb.spell.feiticeiro_mago.9.imobilizar-monstro-em-massa",
+      "dnd35.phb.spell.patrulheiro.2.imobilizar-animal",
+      "dnd35.phb.spell.bardo.2.heroismo",
+      "dnd35.phb.spell.feiticeiro_mago.3.heroismo",
+      "dnd35.phb.spell.bardo.5.heroismo-maior",
+      "dnd35.phb.spell.feiticeiro_mago.6.heroismo-maior",
+      "dnd35.phb.spell.bardo.1.hipnotismo",
+      "dnd35.phb.spell.feiticeiro_mago.1.hipnotismo",
+      "dnd35.phb.spell.druida.9.homens-vegetais",
+      "dnd35.phb.spell.bardo.1.identificacao",
+      "dnd35.phb.spell.feiticeiro_mago.1.identificacao",
+      "dnd35.phb.spell.bardo.2.idiomas",
+      "dnd35.phb.spell.clerigo.4.idiomas",
+      "dnd35.phb.spell.feiticeiro_mago.3.idiomas",
+      "dnd35.phb.spell.bardo.3.imagem-maior",
+      "dnd35.phb.spell.feiticeiro_mago.3.imagem-maior",
+      "dnd35.phb.spell.bardo.2.imagem-menor",
+      "dnd35.phb.spell.feiticeiro_mago.2.imagem-menor",
+      "dnd35.phb.spell.bardo.6.imagem-permanente",
+      "dnd35.phb.spell.feiticeiro_mago.6.imagem-permanente",
+      "dnd35.phb.spell.clerigo.8.imunidade-a-magia-maior",
+      "dnd35.phb.spell.clerigo.4.infligir-ferimentos-criticos",
+      "dnd35.phb.spell.clerigo.8.infligir-ferimentos-criticos-em-massa",
+      "dnd35.phb.spell.clerigo.3.infligir-ferimentos-graves",
+      "dnd35.phb.spell.clerigo.7.infligir-ferimentos-graves-em-massa",
+      "dnd35.phb.spell.clerigo.1.infligir-ferimentos-leves",
+      "dnd35.phb.spell.clerigo.5.infligir-ferimentos-leves-em-massa",
+      "dnd35.phb.spell.clerigo.0.infligir-ferimentos-minimos",
+      "dnd35.phb.spell.clerigo.2.infligir-ferimentos-moderados",
+      "dnd35.phb.spell.clerigo.6.infligir-ferimentos-moderados-em-massa",
+      "dnd35.phb.spell.feiticeiro_mago.7.insanidade",
+      "dnd35.phb.spell.clerigo.4.inseto-gigante",
+      "dnd35.phb.spell.druida.4.inseto-gigante",
+      "dnd35.phb.spell.feiticeiro_mago.8.instante-de-presciencia",
+      "dnd35.phb.spell.bardo.0.intuir-direcao",
+      "dnd35.phb.spell.druida.0.intuir-direcao",
+      "dnd35.phb.spell.druida.8.inverter-a-gravidade",
+      "dnd35.phb.spell.feiticeiro_mago.7.inverter-a-gravidade",
+      "dnd35.phb.spell.bardo.2.invisibilidade",
+      "dnd35.phb.spell.feiticeiro_mago.2.invisibilidade",
+      "dnd35.phb.spell.druida.1.invisibilidade-contra-animais",
+      "dnd35.phb.spell.patrulheiro.1.invisibilidade-contra-animais",
+      "dnd35.phb.spell.clerigo.1.invisibilidade-contra-mortos-vivos",
+      "dnd35.phb.spell.bardo.4.invisibilidade-maior",
+      "dnd35.phb.spell.feiticeiro_mago.4.invisibilidade-maior",
+      "dnd35.phb.spell.feiticeiro_mago.7.invisibilidade-em-massa",
     ].sort());
     expect(items.find((item) => item.id === "dnd35.phb.spell.feiticeiro_mago.1.disco-flutuante-de-tenser")?.data).toMatchObject({
       detailsPage: 231, detailsPageEnd: 232, summaryOnly: false,
@@ -1122,6 +1219,17 @@ describe("serviço de catálogo local", () => {
       },
     });
     expect(teleportationCircle?.summary).toContain("pó de prata no valor de 1.000 PO");
+  });
+
+  it("expõe as tabelas de invocação junto às magias D&D 3.5 no catálogo local", async () => {
+    const { items, source } = await fetchCatalogCategory("spell", { systemId: "dnd35", ruleset: "v35" });
+    const summoned = items.filter((item) => item.data.summonTableId);
+    expect(source).toBe("local_runtime");
+    expect(summoned.filter((item) => item.data.summonTableId === "nature")).toHaveLength(13);
+    expect(summoned.filter((item) => item.data.summonTableId === "creatures")).toHaveLength(24);
+    expect(items.find((item) => item.name === "Invocar Aliado da Natureza VIII")?.data).toMatchObject({ summonTableId: "nature", summonTableMaxLevel: 8 });
+    expect(items.find((item) => item.name === "Invocar Criaturas IX")?.data).toMatchObject({ summonTableId: "creatures", summonTableMaxLevel: 9 });
+    expect(items.some((item) => item.name === "Invocar Enxames" && item.data.summonTableId)).toBe(false);
   });
 
   it("expõe os truques PF1e por lista de classe somente no ruleset legado e identifica o conteúdo parcial", async () => {

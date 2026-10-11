@@ -396,9 +396,9 @@
     "semantic_hash": ""
   },
   "TODO_COBERTURA_E_BUGS.md": {
-    "mtime": 1791707415.645236,
-    "seen": 1791707671.7095454,
-    "ast_hash": "5af4bc15623afce6646f04099e1de517",
+    "mtime": 1791715069.7638643,
+    "seen": 1791715125.1076076,
+    "ast_hash": "82e9b46c8be26291d2e1c8344235e716",
     "semantic_hash": ""
   },
   "books_expansion_and_ai_assistant_tasks.md": {
@@ -540,9 +540,9 @@
     "semantic_hash": ""
   },
   "public/sw.js": {
-    "mtime": 1788317205.4183884,
-    "seen": 1789024800.5111914,
-    "ast_hash": "7545474208be2f27f1dd5337f972cecc",
+    "mtime": 1791709636.6218927,
+    "seen": 1791710487.0115848,
+    "ast_hash": "f999e78db00c7c51d8a19f35b78a0f8d",
     "semantic_hash": ""
   },
   "scratch/ficha_fields.json": {
@@ -1236,9 +1236,9 @@
     "semantic_hash": ""
   },
   "src/services/catalog.test.ts": {
-    "mtime": 1791707396.5121284,
-    "seen": 1791707671.4919093,
-    "ast_hash": "a2c75b802d214593b3246a5f2802ee82",
+    "mtime": 1791714811.2398736,
+    "seen": 1791714990.8913436,
+    "ast_hash": "1b7ba14924d3cfc9291a8d50d8665a8a",
     "semantic_hash": ""
   },
   "src/services/catalog.ts": {
@@ -10734,9 +10734,9 @@
     "semantic_hash": ""
   },
   "src/core/CoreCharacterCreatorModal.tsx": {
-    "mtime": 1791693045.3841927,
-    "seen": 1791693190.950828,
-    "ast_hash": "1ca5193f36d2f50ee1cf49a51ca9ed34",
+    "mtime": 1791712086.977882,
+    "seen": 1791712222.000053,
+    "ast_hash": "41897d500607bdfff3f83309372fd027",
     "semantic_hash": ""
   },
   "src/core/CoreCharacterSheet.tsx": {
@@ -11760,9 +11760,9 @@
     "semantic_hash": ""
   },
   "src/core/CoreCharacterCreatorModal.test.tsx": {
-    "mtime": 1791606031.4432724,
-    "seen": 1791606126.700353,
-    "ast_hash": "6d25f5203c5ed482ce5ad379ed09687b",
+    "mtime": 1791712066.7953806,
+    "seen": 1791712222.000053,
+    "ast_hash": "c96688e9ab8104aad89383e08e1c2387",
     "semantic_hash": ""
   },
   "src/data/catalogVersions.test.ts": {
@@ -11970,15 +11970,15 @@
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35Domains.test.ts": {
-    "mtime": 1791706611.0384347,
-    "seen": 1791706931.662441,
-    "ast_hash": "f8a384c056005da19d00c14ae86906f4",
+    "mtime": 1791714930.966547,
+    "seen": 1791714990.8647919,
+    "ast_hash": "50263071a62ccfeef509f93e4d00cb0a",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35Domains.ts": {
-    "mtime": 1791707017.70281,
-    "seen": 1791707671.4344814,
-    "ast_hash": "68f1b94a34cfc6068cf1c61e97ad50ca",
+    "mtime": 1791715342.0275886,
+    "seen": 1791715447.6354585,
+    "ast_hash": "2deb74c8bb3e70b0b85fc9d75cd8492e",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35FeatTable.ts": {
@@ -12000,15 +12000,15 @@
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35SpellLists.test.ts": {
-    "mtime": 1791707396.509129,
-    "seen": 1791707671.4496439,
-    "ast_hash": "b9faa2eaecfbecbab7dd17108c62dda5",
+    "mtime": 1791715360.1459713,
+    "seen": 1791715447.6456187,
+    "ast_hash": "0637033cc9f809925a2c4828cabfdbca",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35SpellLists.ts": {
-    "mtime": 1791707345.7085834,
-    "seen": 1791707671.4496439,
-    "ast_hash": "389cfff8986a075f8a834ab9966cbaf0",
+    "mtime": 1791715332.123772,
+    "seen": 1791715447.6456187,
+    "ast_hash": "345a0afa9ea1d7f935e60e962adae48a",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35Spellcasting.test.ts": {
@@ -12918,9 +12918,9 @@
     "semantic_hash": ""
   },
   "src/data/catalog/README.md": {
-    "mtime": 1791707415.6462443,
-    "seen": 1791707671.7105653,
-    "ast_hash": "b686ae43243daa5438e2a98fea8ec554",
+    "mtime": 1791715066.4643197,
+    "seen": 1791715125.1089265,
+    "ast_hash": "a77ab904f458d426a21deb63b4aae15c",
     "semantic_hash": ""
   },
   "scripts/build-pf1e-core-snapshots.mjs": {
@@ -13035,6 +13035,36 @@
     "mtime": 1791693088.9176555,
     "seen": 1791693191.024736,
     "ast_hash": "ed167e445c560c35b1a7992386669bba",
+    "semantic_hash": ""
+  },
+  ".tmp-phb-p192/page-192.png": {
+    "mtime": 1791709226.0624578,
+    "seen": 1791710487.2507415,
+    "ast_hash": "81730d78d3abc2b065a10fb6489d32c0",
+    "semantic_hash": ""
+  },
+  ".tmp-phb-p240/page-240.png": {
+    "mtime": 1791709781.6067402,
+    "seen": 1791710487.2507415,
+    "ast_hash": "12b8468f88c163a9d6d759f490781087",
+    "semantic_hash": ""
+  },
+  ".tmp-phb-p240/page-241.png": {
+    "mtime": 1791709781.6247778,
+    "seen": 1791710487.2507415,
+    "ast_hash": "71114e891a6eea6f38d157036a5c28fd",
+    "semantic_hash": ""
+  },
+  ".tmp-phb-p240/page-242.png": {
+    "mtime": 1791709781.6379821,
+    "seen": 1791710487.2507415,
+    "ast_hash": "cc9edd7681c46e6fa9b33425f8eb7f90",
+    "semantic_hash": ""
+  },
+  ".tmp-phb-p240/page-243.png": {
+    "mtime": 1791709781.6535234,
+    "seen": 1791710487.2507415,
+    "ast_hash": "8c60cf8b35bdd42c8599fc6939bb0d95",
     "semantic_hash": ""
   }
 }

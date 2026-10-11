@@ -1514,7 +1514,7 @@ const HIGHER_LEVEL_LISTS: Dnd35SpellList[] = [
       "Enviar Mensagem: Entrega uma mensagem curta a qualquer destino instantaneamente",
       "Expulsão: Força uma criatura a retornar ao seu plano nativo",
       "Idiomas: Permite falar e compreender qualquer idioma",
-      "Imunidade à Magia: O alvo fica imune a uma magia por 1 rodada/4 níveis",
+      "Imunidade à Magia: O alvo fica imune a 1 magia/4 níveis",
       "Infligir Ferimentos Críticos: Ataque de toque causa 4d8 +1/nível de dano (máx. +20)",
       "Inseto Gigante: Transforma insetos em versões gigantes",
       "Invocar Criaturas IV: Invoca um ser extra-planar para auxiliar o conjurador",
@@ -1851,6 +1851,403 @@ const MASS_BULLS_STRENGTH_DETAILS: VerifiedSpellDetails = {
   },
 };
 
+const FURY_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 243,
+  summary: "Concede a uma criatura voluntária +2 de bônus de moral em Força e Constituição, +1 em testes de Vontade e −2 na CA. O efeito não provoca fadiga ao terminar; alvos precisam ser vivos e estar próximos entre si.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+    target: "Uma criatura viva voluntária/3 níveis, todas a menos de 9 m entre si",
+    duration: "Concentração + 1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Sim",
+  },
+};
+
+const LESSER_GLOBE_OF_INVULNERABILITY_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 243,
+  summary: "Uma esfera imóvel de 3 m de raio ao redor do conjurador suprime efeitos de magias, habilidades similares a magia e itens mágicos de 1º a 3º nível que entrem nela; efeitos já ativos não são suprimidos, e os que entram voltam a funcionar ao sair. Magias de 4º nível ou superior atravessam a esfera; Dissipar Magia pode encerrá-la, e o conjurador pode sair e retornar. Componente material: uma conta de vidro ou cristal que se quebra ao fim da magia.",
+  mechanics: {
+    components: "V, G, M", castingTime: "1 ação padrão", range: "3 m de raio", target: "Emanação esférica de 3 m de raio centrada no conjurador",
+    duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const GLOBE_OF_INVULNERABILITY_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 243,
+  summary: "Como Globo de Invulnerabilidade Menor, mas também suprime efeitos de magias de 4º nível; magias de 5º nível ou superior atravessam a esfera, e efeitos suprimidos voltam ao sair dela.",
+  mechanics: {
+    components: "V, G, M", castingTime: "1 ação padrão", range: "3 m de raio", target: "Emanação esférica de 3 m de raio centrada no conjurador",
+    duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const DANCING_LIGHTS_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 243,
+  summary: "Cria até quatro luzes ilusórias semelhantes a tochas, lanternas ou fogos-fátuos, dentro de uma área de 3 m de raio. Cada luz pode mover-se até 30 m por rodada; elas desaparecem se ultrapassarem o alcance da magia. Globos de Luz pode ser tornada permanente por Permanência.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+    target: "Até quatro luzes ilusórias em uma área de 3 m de raio", duration: "1 minuto (D)",
+    savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const SHOUT_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 243,
+  summary: "Um grito sônico em cone causa 5d6 de dano e ensurdece criaturas por 2d6 rodadas. Um sucesso em Fortitude reduz o dano à metade e evita a surdez; objetos frágeis e criaturas cristalinas sofrem 1d6 de dano sônico por nível (máx. 15d6). A magia não penetra em uma área de Silêncio.",
+  mechanics: {
+    components: "V", castingTime: "1 ação padrão", range: "9 m", target: "Explosão em forma de cone",
+    duration: "Instantânea", savingThrow: "Fortitude parcial ou Reflexos anula (objeto; veja texto)", spellResistance: "Sim (objeto)",
+  },
+};
+
+const WAIL_OF_THE_BANSHEE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 243,
+  summary: "Um grito terrível mata até uma criatura viva por nível de conjurador que o ouça, dentro de uma dispersão de 12 m de raio (exceto o conjurador). As vítimas mais próximas do ponto de origem são afetadas primeiro; Fortitude anula a morte.",
+  mechanics: {
+    components: "V", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma criatura viva/nível em uma dispersão de 12 m de raio", duration: "Instantânea",
+    savingThrow: "Fortitude anula", spellResistance: "Sim",
+  },
+};
+
+const GREATER_SHOUT_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 243,
+  summary: "Um brado em cone causa 10d6 de dano sônico (até 20d6 contra objetos frágeis e criaturas cristalinas), atordoa por 1 rodada e ensurdece por 4d6 rodadas. Fortitude reduz o dano à metade, evita o atordoamento e reduz à metade a duração da surdez; Reflexos pode proteger objetos frágeis. Foco: pequeno chifre de metal ou marfim.",
+  mechanics: {
+    components: "V, G, F", castingTime: "1 ação padrão", range: "18 m", target: "Explosão em forma de cone",
+    duration: "Instantânea", savingThrow: "Fortitude parcial ou Reflexos anula (objeto; veja texto)", spellResistance: "Sim",
+  },
+};
+
+const ELEMENTAL_SWARM_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 243, detailsPageEnd: 244,
+  summary: "Abre um portal para um Plano Elemental: o druida escolhe o plano (ar, terra, fogo ou água), e o clérigo usa o plano correspondente aos seus domínios. Invoca 2d4 elementais Grandes, depois 1d4 Enormes após 10 minutos e um elemental ancião 10 minutos depois. Eles têm os pontos de vida máximos por DV e servem ao conjurador até o fim da duração, obedecendo-lhe e sem atacá-lo.",
+  mechanics: {
+    components: "V, G", castingTime: "10 minutos", range: "Médio (30 m + 3 m/nível)",
+    target: "Dois ou mais elementais invocados, todos a menos de 9 m entre si",
+    duration: "10 minutos/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const HEROISM_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 244,
+  summary: "Imbui uma criatura com bravura: concede +2 de bônus de moral nas jogadas de ataque, testes de resistência e perícias por 10 minutos/nível.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+    duration: "10 minutos/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+  },
+};
+
+const GREATER_HEROISM_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 244,
+  summary: "Como Heroísmo, mas concede +4 de bônus de moral em ataques, testes de resistência e perícias, torna o alvo imune a medo e concede pontos de vida temporários iguais ao nível de conjurador (máximo 20).",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+    duration: "1 minuto/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+  },
+};
+
+const HYPNOTISM_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 244,
+  summary: "Fascina criaturas que possam ver e ouvir o conjurador; 2d4 determina os Dados de Vida afetados, começando pelos menores. Em combate, cada alvo recebe +2 no teste de resistência; fora de combate, uma criatura única sofre −2. A atitude melhora em dois níveis, permitindo pedidos breves e razoáveis, mas não muda permanentemente. Uma criatura que falhe no teste não se lembra de que o personagem conjurou a magia. Cada alvo pode repetir o teste a cada rodada com uma ação de rodada completa; ataque ou dano encerra o efeito.",
+  mechanics: {
+    components: "V, G", castingTime: "1 rodada", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Várias criaturas vivas, todas a menos de 9 m entre si", duration: "2d4 rodadas (D)",
+    savingThrow: "Vontade anula", spellResistance: "Sim",
+  },
+};
+
+const PLANT_MEN_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 244,
+  summary: "Cria 1d4+2 homens vegetais com 11 DV cada, que ajudam voluntariamente em combate, cumprem uma missão ou servem de guarda-costas por sete dias. Se criados para guardar um local, duram sete meses, só recebem ordens para protegê-lo e não podem se afastar do alcance da magia.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+    target: "Três ou mais homens vegetais, todos a menos de 9 m entre si", duration: "7 dias ou 7 meses (D; veja texto)",
+    savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const IDENTIFY_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 244,
+  summary: "Revela as propriedades mágicas de um único item, como suas funções e cargas restantes; não funciona em artefatos. Componente material arcano: pérola de pelo menos 100 PO pulverizada e embebida em vinho com uma pena de coruja; a infusão é bebida antes da conjuração.",
+  mechanics: {
+    components: "V, G, M/FD", castingTime: "1 hora", range: "Toque", target: "Um item mágico tocado",
+    duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const TONGUES_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 244,
+  summary: "Permite à criatura tocada falar e entender o idioma de qualquer criatura inteligente, um idioma de cada vez ao falar e vários ao entender. Não permite conversar com criaturas incapazes de falar nem muda a atitude delas; o alvo só é compreendido enquanto sua voz puder ser ouvida. Pode ser tornada permanente por Permanência. Componente material: pequena estátua de argila de um zigurate, quebrada ao pronunciar o componente verbal.",
+  mechanics: {
+    components: "V, M/FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+    duration: "10 minutos/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Não",
+  },
+};
+
+const GREATER_IMAGE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 244,
+  summary: "Como Imagem Silenciosa, mas inclui sons, cheiros e efeitos térmicos. O conjurador pode mover a imagem enquanto se concentra; ela desaparece se um oponente acertá-la, salvo se a ilusão reagir de forma adequada.",
+  mechanics: {
+    components: "V, G, F", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+    target: "Ilusão visual de até quatro cubos de 3 m mais um cubo de 3 m/nível", duration: "Concentração + 3 rodadas",
+    savingThrow: "Vontade desacredita (se interagir)", spellResistance: "Não",
+  },
+};
+
+const MINOR_IMAGE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 244,
+  summary: "Como Imagem Silenciosa, mas inclui sons menores, não diálogo. O conjurador pode mover a imagem dentro do limite de tamanho do efeito; ela desaparece se um oponente acertá-la, salvo se a ilusão reagir de forma adequada.",
+  mechanics: {
+    components: "V, G, F", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+    target: "Ilusão visual de até quatro cubos de 3 m mais um cubo de 3 m/nível", duration: "Concentração + 2 rodadas",
+    savingThrow: "Vontade desacredita (se interagir)", spellResistance: "Não",
+  },
+};
+
+const PERMANENT_IMAGE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 244,
+  summary: "Como Imagem Silenciosa, mas inclui elementos visuais, auditivos, olfativos e térmicos e é permanente. O conjurador pode mover a imagem enquanto se concentra; sem concentração, ela permanece estática. Componente material: um pouco de lã e pó de jade no valor de 100 PO.",
+  mechanics: {
+    components: "V, G, F, M", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+    target: "Ilusão visual de até um cubo de 6 m mais um cubo de 3 m/nível", duration: "Permanente (D)",
+    savingThrow: "Vontade desacredita (se interagir)", spellResistance: "Não",
+  },
+};
+
+const PERSISTENT_IMAGE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 245,
+  summary: "Como Imagem Silenciosa, mas inclui elementos visuais, auditivos, olfativos e térmicos e segue um padrão definido pelo conjurador, sem exigir concentração. A ilusão pode incluir diálogo. Mantém o limite de tamanho de Imagem Silenciosa.",
+  mechanics: {
+    components: "V, G, F", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+    target: "Ilusão visual de até quatro cubos de 3 m mais um cubo de 3 m/nível", duration: "1 minuto/nível (D)",
+    savingThrow: "Vontade desacredita (se interagir)", spellResistance: "Não",
+  },
+};
+
+const PROGRAMMED_IMAGE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 245,
+  summary: "Como Imagem Silenciosa, mas inclui elementos visuais, sonoros, olfativos e térmicos, inclusive diálogo, e é ativada por uma condição definida durante a conjuração. O gatilho pode ser visual, sonoro, térmico ou tátil, mas deve ser perceptível pelos sentidos; não pode depender de alinhamento. Componente material: lã e pó de jade no valor de 25 PO.",
+  mechanics: {
+    components: "V, G, F, M", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+    target: "Ilusão visual de até um cubo de 6 m mais um cubo de 3 m/nível", duration: "Permanente até ser ativada; depois 1 rodada/nível",
+    savingThrow: "Vontade desacredita (se interagir)", spellResistance: "Não",
+  },
+};
+
+const SILENT_IMAGE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 245,
+  summary: "Cria uma ilusão visual de objeto, criatura ou energia, sem som, cheiro, textura ou temperatura. O conjurador pode mover a imagem dentro do limite de tamanho do efeito.",
+  mechanics: {
+    components: "V, G, F", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+    target: "Ilusão visual de até quatro cubos de 3 m mais um cubo de 3 m/nível", duration: "Concentração",
+    savingThrow: "Vontade desacredita (se interagir)", spellResistance: "Não",
+  },
+};
+
+const HOLD_ANIMAL_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 245,
+  summary: "Como Imobilizar Pessoa, mas afeta um animal. O alvo fica consciente e respira, mas não pode agir nem falar; pode repetir o teste de resistência a cada rodada com uma ação de rodada completa. Uma criatura voadora imobilizada cai, e uma nadadora afunda.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Um animal",
+    duration: "1 rodada/nível (D)", savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+  },
+};
+
+const HOLD_MONSTER_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 245,
+  summary: "Como Imobilizar Pessoa, mas afeta qualquer criatura viva. A vítima fica consciente e respira, porém não pode agir nem falar; pode repetir o teste de resistência a cada rodada com uma ação de rodada completa. Uma criatura voadora imobilizada cai, e uma nadadora afunda.",
+  mechanics: {
+    components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Uma criatura viva",
+    duration: "1 rodada/nível (D)", savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+  },
+};
+
+const MASS_HOLD_MONSTER_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 245,
+  summary: "Como Imobilizar Monstro, mas afeta várias criaturas vivas, todas a menos de 9 m entre si.",
+  mechanics: {
+    components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+    target: "Uma ou mais criaturas vivas, todas a menos de 9 m entre si", duration: "1 rodada/nível (D)",
+    savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+  },
+};
+
+const HOLD_UNDEAD_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 245,
+  summary: "Imobiliza até três mortos-vivos. Mortos-vivos sem inteligência não podem resistir; os inteligentes podem realizar o teste de resistência. Se bem-sucedida, a magia os mantém imobilizados enquanto permanecer ativa; o efeito é interrompido se a criatura imobilizada for atacada ou sofrer dano. Componente material: enxofre e alho em pó.",
+  mechanics: {
+    components: "V, G, M", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+    target: "Até três mortos-vivos, todos a menos de 9 m entre si", duration: "1 rodada/nível",
+    savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+  },
+};
+
+const HOLD_PERSON_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 245,
+  summary: "Imobiliza um humanóide, que permanece consciente e respirando, mas não pode agir nem falar. A cada rodada, no próprio turno, o alvo pode tentar novo teste de resistência com uma ação de rodada completa; uma criatura voadora cai e uma nadadora afunda. Foco arcano: barra ou bastão de metal rígido, do tamanho de um prego de 4,5 cm; componente divino: o símbolo sagrado.",
+  mechanics: {
+    components: "V, G, F/FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Um humanóide",
+    duration: "1 rodada/nível (D)", savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+  },
+};
+
+const MASS_HOLD_PERSON_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 245,
+  summary: "Como Imobilizar Pessoa, mas afeta um ou mais humanóides, todos a menos de 9 m entre si.",
+  mechanics: {
+    components: "V, G, F/FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+    target: "Um ou mais humanóides, todos a menos de 9 m entre si", duration: "1 rodada/nível (D)",
+    savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+  },
+};
+
+const IMPLOSION_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 245,
+  summary: "Cria uma ressonância destrutiva numa criatura corpórea por rodada de concentração, fazendo-a colapsar sobre si mesma e morrer. Cada criatura só pode ser afetada uma vez por conjuração; a magia não afeta criaturas gasosas ou incorpóreas e, por ser instantânea, não pode ser dissipada.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma criatura corpórea/rodada", duration: "Concentração (até 4 rodadas)",
+    savingThrow: "Fortitude anula", spellResistance: "Sim",
+  },
+};
+
+const SPELL_IMMUNITY_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 245, detailsPageEnd: 246,
+  summary: "Protege a criatura tocada contra os efeitos de uma magia específica para cada quatro níveis de conjurador; as magias escolhidas devem ser de 4º nível ou inferior. A proteção não se aplica a magias que ignoram resistência à magia nem a habilidades sobrenaturais ou extraordinárias, e só vale contra as magias especificadas, não contra uma escola, domínio ou grupo semelhante. Uma criatura só pode receber Imunidade à Magia ou Imunidade à Magia Maior uma vez por vez.",
+  mechanics: {
+    components: "V, G, FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+    duration: "10 minutos/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+  },
+};
+
+const inflictWoundsDetails = (dice: string, maximum: number, mass = false, willNegates = false): VerifiedSpellDetails => ({
+  summaryOnly: false,
+  detailsPage: 246,
+  summary: mass && dice !== "1d8"
+    ? `Como Infligir Ferimentos Leves em Massa, mas causa ${dice} pontos de dano +1 por nível do conjurador (máximo +${maximum}); mortos-vivos são curados em vez de feridos.`
+    : mass
+      ? `Causa ${dice} pontos de dano +1 por nível do conjurador (máximo +${maximum}) a uma criatura por nível; mortos-vivos são curados em vez de feridos.`
+    : `Causa ${dice} pontos de dano +1 por nível do conjurador (máximo +${maximum}); mortos-vivos são curados em vez de feridos.`,
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão",
+    range: mass ? "Curto (7,5 m + 1,5 m/2 níveis)" : "Toque",
+    target: mass ? "Uma criatura/nível, todas a menos de 9 m entre si" : "Criatura tocada",
+    duration: "Instantânea", savingThrow: willNegates ? "Vontade anula" : "Vontade reduz à metade", spellResistance: "Sim",
+  },
+});
+
+const MINOR_INFLICT_WOUNDS_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 246,
+  summary: "Causa 1 ponto de dano; Vontade anula a magia, em vez de reduzir o dano à metade. Como as outras magias Infligir, cura mortos-vivos em vez de feri-los.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+    duration: "Instantânea", savingThrow: "Vontade anula", spellResistance: "Sim",
+  },
+};
+
+const GREATER_SPELL_IMMUNITY_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 246,
+  summary: "Como Imunidade à Magia, mas protege contra magias de até 8º nível. A criatura não pode manter Imunidade à Magia e Imunidade à Magia Maior ativas ao mesmo tempo.",
+  mechanics: {
+    components: "V, G, FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+    duration: "10 minutos/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+  },
+};
+
+const INSANITY_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 246,
+  summary: "Submete uma criatura viva a confusão contínua. Remover Maldição não encerra o efeito; restauração maior, cura completa, desejo restrito, milagre ou desejo podem restaurar a criatura.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Uma criatura viva",
+    duration: "Instantânea", savingThrow: "Vontade anula", spellResistance: "Sim",
+  },
+};
+
+const GIANT_INSECT_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 246,
+  summary: "Transforma até três centopeias, aranhas ou escorpiões comuns em insetos gigantes de um único tipo e tamanho. O tamanho depende do nível de conjurador: até 9º, Médio; 10º–13º, Grande; 14º–17º, Enorme; 18º–19º, Imenso; 20º ou mais, Colossal. Eles obedecem a comandos simples, mas não a instruções complexas.",
+  mechanics: {
+    components: "V, G, FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Até três insetos, todos a menos de 9 m entre si", duration: "1 minuto/nível",
+    savingThrow: "Nenhum", spellResistance: "Sim",
+  },
+};
+
+const FORESIGHT_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 246, detailsPageEnd: 247,
+  summary: "Concede ao conjurador um bônus de intuição igual ao nível de conjurador (máximo +25), que pode ser aplicado uma vez a uma jogada de ataque, teste de habilidade, perícia ou resistência; alternativamente, pode ser aplicado à CA contra um ataque, mesmo se estiver surpreso. O conjurador escolhe usar o bônus antes da jogada; ativá-lo não é uma ação e pode ocorrer no turno de outra criatura. Após o uso, a magia termina; não é possível manter mais de um Instante de Presciência ativo.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+    duration: "1 hora/nível ou até ser descarregada", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const DIRECTION_SENSE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 247,
+  summary: "Você identifica o Norte no plano em que está. A magia não indica caminhos nem impede que você se perca depois de se afastar de uma referência.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+    duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const REVERSE_GRAVITY_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 247,
+  summary: "Inverte a gravidade na área: criaturas e objetos sem apoio caem para cima e, quando a magia termina, voltam a cair para baixo. Uma criatura pode agarrar uma superfície sólida com um teste de Reflexos; voadores podem evitar a queda, e um teto sólido interrompe a subida. Componente material: ímã e limalha de ferro.",
+  mechanics: {
+    components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+    target: "Até um cubo de 3 m/2 níveis (M)", duration: "1 rodada/nível (D)",
+    savingThrow: "Nenhum (veja texto)", spellResistance: "Não",
+  },
+};
+
+const INVISIBILITY_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 247,
+  summary: "O alvo e o equipamento que carrega ficam invisíveis. Luz não é ocultada; deixar um item para trás o torna visível, e um ataque direto encerra a magia (inclusive magia que mire um inimigo ou inclua um inimigo na área). Ações indiretas, como abrir uma porta, não são ataques por si só. A invisibilidade não silencia o alvo nem impede que sentidos especiais o detectem. Componente material arcano: um cílio envolvido em goma arábica.",
+  mechanics: {
+    components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Pessoal ou toque",
+    target: "Você ou criatura/objeto até 50 kg/nível tocado", duration: "1 minuto/nível (D)",
+    savingThrow: "Vontade anula (inofensiva) ou Vontade anula (inofensiva, objeto)",
+    spellResistance: "Sim (inofensiva) ou Sim (inofensiva, objeto)",
+  },
+};
+
+const INVISIBILITY_TO_ANIMALS_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 247,
+  summary: "Animais não conseguem ver, ouvir ou farejar as criaturas protegidas, mesmo usando sentidos extraordinários ou sobrenaturais, e agem como se elas não estivessem presentes. Se qualquer protegido tocar um animal ou atacar uma criatura enquanto a magia estiver ativa, o efeito termina para todos os alvos.",
+  mechanics: {
+    components: "G, FD", castingTime: "1 ação padrão", range: "Toque", target: "Uma criatura tocada/nível",
+    duration: "10 minutos/nível (D)", savingThrow: "Vontade anula (objeto)", spellResistance: "Sim",
+  },
+};
+
+const INVISIBILITY_TO_UNDEAD_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 247,
+  summary: "Mortos-vivos não percebem as criaturas protegidas por visão, audição, olfato ou sentidos extraordinários. Mortos-vivos inteligentes fazem um teste de Vontade; se falharem, não percebem o alvo, embora possam tentar localizá-lo se souberem que está presente. Fascinar/controlar mortos-vivos, tocar um morto-vivo ou atacar qualquer criatura encerra a magia para todos.",
+  mechanics: {
+    components: "V, G, FD", castingTime: "1 ação padrão", range: "Toque", target: "Uma criatura tocada/nível",
+    duration: "10 minutos/nível (D)", savingThrow: "Vontade anula (objeto); veja texto", spellResistance: "Sim",
+  },
+};
+
+const GREATER_INVISIBILITY_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 247,
+  summary: "Como Invisibilidade, mas o efeito não termina quando o alvo ataca.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Pessoal ou toque", target: "Você ou uma criatura",
+    duration: "1 rodada/nível (D)", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+  },
+};
+
+const MASS_INVISIBILITY_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 247, detailsPageEnd: 248,
+  summary: "Torna invisíveis quaisquer criaturas dentro de 54 m umas das outras. A magia acompanha o grupo e termina para todos se qualquer protegido atacar. Os alvos não se veem; quem se afasta mais de 54 m de outro integrante fica visível. Se houver apenas dois alvos, ambos ficam visíveis quando essa distância é excedida. Componente material: um cílio envolvido em goma arábica.",
+  mechanics: {
+    components: "V, G, M", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+    target: "Qualquer quantidade de criaturas, todas a menos de 54 m entre si", duration: "1 minuto/nível (D)",
+    savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+  },
+};
+
 const ANIMAL_SHAPES_DETAILS: VerifiedSpellDetails = {
   summaryOnly: false, detailsPage: 242,
   summary: "Transforma até uma criatura voluntária por nível em animais do mesmo tipo; alvos não voluntários não são afetados. Cada criatura pode reassumir sua forma como uma ação de rodada completa, encerrando a magia apenas para si. O máximo de DV da forma é o menor entre os DV do alvo e o nível de conjurador, limitado a 20.",
@@ -1882,7 +2279,7 @@ const ETHEREALNESS_DETAILS: VerifiedSpellDetails = {
 
 const GASEOUS_FORM_DETAILS: VerifiedSpellDetails = {
   summaryOnly: false, detailsPage: 242,
-  summary: "O alvo e seu equipamento tornam-se insubstanciais, recebem redução de dano 10/mágica e imunidade a venenos e acertos críticos; armadura material deixa de proteger, embora bônus de tamanho, Destreza, deflexão e armadura de força permaneçam. Não pode correr, atacar, manipular objetos ou ativar itens; voa a 3 m, atravessa frestas, é afetado pelo vento e não entra em líquidos. Itens continuamente ativos permanecem ativos.",
+  summary: "O alvo e seu equipamento tornam-se insubstanciais, recebem redução de dano 10/mágica e imunidade a venenos e acertos críticos; armadura material deixa de proteger, embora bônus de tamanho, Destreza, deflexão e armadura de força permaneçam. Não pode correr, atacar, manipular objetos ou ativar itens; voa a 3 m, atravessa frestas, é afetado pelo vento e não entra em líquidos. Itens continuamente ativos permanecem ativos. Não conjura magias com componentes verbais, gestuais, materiais ou foco, salvo exceções descritas; perde habilidades sobrenaturais, e uma magia de toque preparada é descarregada sem efeito ao se transformar.",
   mechanics: {
     components: "G, M/FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura voluntária corpórea tocada",
     duration: "2 minutos/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
@@ -1931,6 +2328,80 @@ const VERIFIED_SPELL_DETAILS: Record<string, VerifiedSpellDetails> = {
   "feiticeiro_mago:9:Forma Etérea": ETHEREALNESS_DETAILS,
   "bardo:3:Forma Gasosa": GASEOUS_FORM_DETAILS,
   "feiticeiro_mago:3:Forma Gasosa": GASEOUS_FORM_DETAILS,
+  "bardo:2:Fúria": FURY_DETAILS,
+  "feiticeiro_mago:3:Fúria": FURY_DETAILS,
+  "feiticeiro_mago:4:Globo de Invulnerabilidade Menor": LESSER_GLOBE_OF_INVULNERABILITY_DETAILS,
+  "feiticeiro_mago:6:Globo de Invulnerabilidade": GLOBE_OF_INVULNERABILITY_DETAILS,
+  "bardo:0:Globos de Luz": DANCING_LIGHTS_DETAILS,
+  "feiticeiro_mago:0:Globos de Luz": DANCING_LIGHTS_DETAILS,
+  "bardo:4:Grito": SHOUT_DETAILS,
+  "feiticeiro_mago:4:Grito": SHOUT_DETAILS,
+  "feiticeiro_mago:9:Grito da Banshee": WAIL_OF_THE_BANSHEE_DETAILS,
+  "bardo:6:Grito Maior": GREATER_SHOUT_DETAILS,
+  "feiticeiro_mago:8:Grito Maior": GREATER_SHOUT_DETAILS,
+  "druida:9:Grupo de Elementais": ELEMENTAL_SWARM_DETAILS,
+  "bardo:2:Heroísmo": HEROISM_DETAILS,
+  "feiticeiro_mago:3:Heroísmo": HEROISM_DETAILS,
+  "bardo:5:Heroísmo Maior": GREATER_HEROISM_DETAILS,
+  "feiticeiro_mago:6:Heroísmo Maior": GREATER_HEROISM_DETAILS,
+  "bardo:1:Hipnotismo": HYPNOTISM_DETAILS,
+  "feiticeiro_mago:1:Hipnotismo": HYPNOTISM_DETAILS,
+  "druida:9:Homens Vegetais": PLANT_MEN_DETAILS,
+  "bardo:1:Identificação": IDENTIFY_DETAILS,
+  "feiticeiro_mago:1:Identificação": IDENTIFY_DETAILS,
+  "bardo:2:Idiomas": TONGUES_DETAILS,
+  "clerigo:4:Idiomas": TONGUES_DETAILS,
+  "feiticeiro_mago:3:Idiomas": TONGUES_DETAILS,
+  "bardo:3:Imagem Maior": GREATER_IMAGE_DETAILS,
+  "feiticeiro_mago:3:Imagem Maior": GREATER_IMAGE_DETAILS,
+  "bardo:2:Imagem Menor": MINOR_IMAGE_DETAILS,
+  "feiticeiro_mago:2:Imagem Menor": MINOR_IMAGE_DETAILS,
+  "bardo:6:Imagem Permanente": PERMANENT_IMAGE_DETAILS,
+  "feiticeiro_mago:6:Imagem Permanente": PERMANENT_IMAGE_DETAILS,
+  "bardo:5:Imagem Persistente": PERSISTENT_IMAGE_DETAILS,
+  "feiticeiro_mago:5:Imagem Persistente": PERSISTENT_IMAGE_DETAILS,
+  "bardo:6:Imagem Programada": PROGRAMMED_IMAGE_DETAILS,
+  "feiticeiro_mago:6:Imagem Programada": PROGRAMMED_IMAGE_DETAILS,
+  "bardo:1:Imagem Silenciosa": SILENT_IMAGE_DETAILS,
+  "feiticeiro_mago:1:Imagem Silenciosa": SILENT_IMAGE_DETAILS,
+  "druida:2:Imobilizar Animal": HOLD_ANIMAL_DETAILS,
+  "patrulheiro:2:Imobilizar Animal": HOLD_ANIMAL_DETAILS,
+  "bardo:4:Imobilizar Monstro": HOLD_MONSTER_DETAILS,
+  "feiticeiro_mago:5:Imobilizar Monstro": HOLD_MONSTER_DETAILS,
+  "feiticeiro_mago:9:Imobilizar Monstro em Massa": MASS_HOLD_MONSTER_DETAILS,
+  "feiticeiro_mago:3:Imobilizar Mortos-Vivos": HOLD_UNDEAD_DETAILS,
+  "bardo:2:Imobilizar Pessoa": HOLD_PERSON_DETAILS,
+  "clerigo:2:Imobilizar Pessoa": HOLD_PERSON_DETAILS,
+  "feiticeiro_mago:3:Imobilizar Pessoa": HOLD_PERSON_DETAILS,
+  "feiticeiro_mago:7:Imobilizar Pessoa em Massa": MASS_HOLD_PERSON_DETAILS,
+  "clerigo:9:Implosão": IMPLOSION_DETAILS,
+  "clerigo:4:Imunidade à Magia": SPELL_IMMUNITY_DETAILS,
+  "clerigo:8:Imunidade à Magia Maior": GREATER_SPELL_IMMUNITY_DETAILS,
+  "clerigo:4:Infligir Ferimentos Críticos": inflictWoundsDetails("4d8", 20),
+  "clerigo:8:Infligir Ferimentos Críticos em Massa": inflictWoundsDetails("4d8", 20, true),
+  "clerigo:3:Infligir Ferimentos Graves": inflictWoundsDetails("3d8", 15),
+  "clerigo:7:Infligir Ferimentos Graves em Massa": inflictWoundsDetails("3d8", 35, true),
+  "clerigo:1:Infligir Ferimentos Leves": inflictWoundsDetails("1d8", 5),
+  "clerigo:5:Infligir Ferimentos Leves em Massa": inflictWoundsDetails("1d8", 25, true),
+  "clerigo:0:Infligir Ferimentos Mínimos": MINOR_INFLICT_WOUNDS_DETAILS,
+  "clerigo:2:Infligir Ferimentos Moderados": inflictWoundsDetails("2d8", 10),
+  "clerigo:6:Infligir Ferimentos Moderados em Massa": inflictWoundsDetails("2d8", 30, true),
+  "feiticeiro_mago:7:Insanidade": INSANITY_DETAILS,
+  "clerigo:4:Inseto Gigante": GIANT_INSECT_DETAILS,
+  "druida:4:Inseto Gigante": GIANT_INSECT_DETAILS,
+  "feiticeiro_mago:8:Instante de Presciência": FORESIGHT_DETAILS,
+  "bardo:0:Intuir Direção": DIRECTION_SENSE_DETAILS,
+  "druida:0:Intuir Direção": DIRECTION_SENSE_DETAILS,
+  "druida:8:Inverter a Gravidade": REVERSE_GRAVITY_DETAILS,
+  "feiticeiro_mago:7:Inverter a Gravidade": REVERSE_GRAVITY_DETAILS,
+  "bardo:2:Invisibilidade": INVISIBILITY_DETAILS,
+  "feiticeiro_mago:2:Invisibilidade": INVISIBILITY_DETAILS,
+  "druida:1:Invisibilidade Contra Animais": INVISIBILITY_TO_ANIMALS_DETAILS,
+  "patrulheiro:1:Invisibilidade Contra Animais": INVISIBILITY_TO_ANIMALS_DETAILS,
+  "clerigo:1:Invisibilidade Contra Mortos-Vivos": INVISIBILITY_TO_UNDEAD_DETAILS,
+  "bardo:4:Invisibilidade Maior": GREATER_INVISIBILITY_DETAILS,
+  "feiticeiro_mago:4:Invisibilidade Maior": GREATER_INVISIBILITY_DETAILS,
+  "feiticeiro_mago:7:Invisibilidade em Massa": MASS_INVISIBILITY_DETAILS,
   "bardo:3:Dissipar Magia": DISPEL_MAGIC_DETAILS,
   "clerigo:3:Dissipar Magia": DISPEL_MAGIC_DETAILS,
   "druida:4:Dissipar Magia": DISPEL_MAGIC_DETAILS,
@@ -3069,8 +3540,67 @@ export const DND35_SPELL_LISTS: Dnd35SpellList[] =
     entries: list.entries.map((spell) => ({
       ...spell,
       ...VERIFIED_SPELL_DETAILS[`${list.listId}:${list.spellLevel}:${spell.name}`],
+      ...verifiedSummoningDetails(list, spell),
     })),
   }));
+
+/** Description mécanique commune vérifiée nas pp. 248–251 do Livro do Jogador. */
+function verifiedSummoningDetails(list: Dnd35SpellList, spell: Dnd35SpellListEntry): Partial<Dnd35SpellListEntry> {
+  const natureAlly = /^Invocar Aliado da Natureza ([IVX]+)$/.exec(spell.name);
+  if (natureAlly) {
+    const level = list.spellLevel;
+    const page = level <= 5 ? 248 : 249;
+    const selection = level === 1
+      ? "Invoca uma criatura natural da lista de 1º nível; ela surge no local escolhido e age imediatamente no turno do conjurador."
+      : `Invoca uma criatura da lista de ${level}º nível, 1d3 criaturas do mesmo tipo da lista de ${level - 1}º nível ou 1d4+1 do mesmo tipo de uma lista inferior.`;
+    return {
+      summaryOnly: false,
+      detailsPage: page,
+      summary: `${selection} A criatura ataca os adversários da melhor forma possível; o conjurador pode ordenar que não ataque, escolha um inimigo ou execute outra tarefa. Não pode invocar outras criaturas nem usar teletransporte ou viagem planar; criaturas aquáticas exigem ambiente aquático. A escolha de criatura determina os descritores da magia.`,
+      mechanics: {
+        components: "V, G, FD", castingTime: "1 rodada", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: level === 1 ? "Uma criatura natural invocada" : "Uma ou mais criaturas, todas a menos de 9 m entre si",
+        duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+      },
+    };
+  }
+
+  const summonCreatures = /^Invocar Criaturas ([IVX]+)$/.exec(spell.name);
+  if (summonCreatures) {
+    const level = list.spellLevel;
+    const page = level === 1 ? 249 : level <= 6 ? 250 : 251;
+    const selection = level === 1
+      ? "Invoca uma criatura extraplanar da lista de 1º nível."
+      : `Invoca uma criatura da lista de ${level}º nível, 1d3 criaturas do mesmo tipo da lista de ${level - 1}º nível ou 1d4+1 do mesmo tipo de uma lista inferior.`;
+    const arcaneFocus = "O foco arcano é uma pequena bolsa e uma pequena vela, que não precisa estar acesa.";
+    return {
+      summaryOnly: false,
+      detailsPage: page,
+      ...(level === 1 ? { detailsPageEnd: 250 } : {}),
+      summary: `${selection} A criatura surge no local escolhido, age imediatamente e ataca os adversários da melhor forma possível; o conjurador pode ordenar que não ataque, escolha um inimigo ou execute outra tarefa. A criatura não pode invocar outras, usar teletransporte ou viagem planar, nem ser invocada em ambiente incompatível com sua natureza. O alinhamento da criatura invocada pode dar descritores correspondentes à magia. ${arcaneFocus}`,
+      mechanics: {
+        components: "V, G, F/FD", castingTime: "1 rodada", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: level === 1 ? "Uma criatura extraplanar invocada" : "Uma ou mais criaturas invocadas, todas a menos de 9 m entre si",
+        duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+      },
+    };
+  }
+
+  if (spell.name === "Invocar Enxames") {
+    return {
+      summaryOnly: false,
+      detailsPage: 251,
+      summary: "Invoca um enxame de morcegos, ratos ou aranhas, à escolha do conjurador. Ele ataca as demais criaturas dentro de sua área; pode ser invocado compartilhando o espaço de outra criatura. Se não houver criatura viva na área, persegue a mais próxima. O conjurador não controla seu deslocamento nem seus alvos. O componente material arcano é um retalho quadrado de pano vermelho.",
+      mechanics: {
+        components: "V, G, M/FD", castingTime: "1 rodada", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Um enxame de morcegos, ratos ou aranhas", duration: "Concentração + 2 rodadas",
+        savingThrow: "Nenhum", spellResistance: "Não",
+      },
+    };
+  }
+
+  return {};
+}
 
 /** Listas disponíveis para uma classe num nível de magia (vazio se não transcrito). */
 export function dnd35SpellListFor(classId: string, spellLevel: number): Dnd35SpellListEntry[] {

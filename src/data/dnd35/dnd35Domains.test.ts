@@ -88,6 +88,24 @@ describe("D&D 3.5 — domínios de clérigo e Tabela 3-7", () => {
       .not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "clerigo" && list.spellLevel === 8)?.entries.find((s) => s.name === "Discernir Localização"));
   });
 
+  it("preserva invocações de domínio como registros independentes das listas de classe", () => {
+    const nature = DND35_DOMAINS.find((domain) => domain.id === "animais")!;
+    expect(nature.spells.find((entry) => entry.name === "Invocar Aliado da Natureza IV")).toMatchObject({
+      detailsPage: 248, mechanics: { components: "V, G, FD", castingTime: "1 rodada", duration: "1 rodada/nível (D)" },
+    });
+    expect(nature.spells.find((entry) => entry.name === "Invocar Aliado da Natureza VIII")).toMatchObject({
+      detailsPage: 249, mechanics: { components: "V, G, FD", castingTime: "1 rodada", duration: "1 rodada/nível (D)" },
+    });
+
+    const clericNinth = DND35_SPELL_LISTS.find((list) => list.listId === "clerigo" && list.spellLevel === 9)!.entries.find((entry) => entry.name === "Invocar Criaturas IX")!;
+    for (const id of ["bem", "caos", "mal", "ordem"]) {
+      const domainEntry = DND35_DOMAINS.find((domain) => domain.id === id)!.spells.find((entry) => entry.name === "Invocar Criaturas IX")!;
+      expect(domainEntry).toMatchObject({ detailsPage: 251, mechanics: { castingTime: "1 rodada", duration: "1 rodada/nível (D)" } });
+      expect(domainEntry).not.toBe(clericNinth);
+      expect(domainEntry.mechanics).not.toBe(clericNinth.mechanics);
+    }
+  });
+
   it("completa as três magias de domínio das pp. 240–241 sem confundi-las com a lista de classe", () => {
     const strength = DND35_DOMAINS.find((d) => d.id === "forca");
     expect(strength?.spells.find((s) => s.name === "Força do Touro")).toMatchObject({
@@ -128,6 +146,108 @@ describe("D&D 3.5 — domínios de clérigo e Tabela 3-7", () => {
     });
     expect(animal).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "druida" && list.spellLevel === 8)?.entries.find((s) => s.name === "Forma Animal"));
     expect(air).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "bardo" && list.spellLevel === 3)?.entries.find((s) => s.name === "Forma Gasosa"));
+  });
+
+  it("completa Grupo de Elementais e Grito da Banshee nas cinco listas de domínio próprias", () => {
+    for (const domainId of ["agua", "ar", "fogo", "terra"] as const) {
+      const spell = DND35_DOMAINS.find((domain) => domain.id === domainId)?.spells.find((entry) => entry.name === "Grupo de Elementais");
+      expect(spell, domainId).toMatchObject({
+        level: 9, detailsPage: 243, detailsPageEnd: 244,
+        mechanics: {
+          components: "V, G", castingTime: "10 minutos", range: "Médio (30 m + 3 m/nível)",
+          target: "Dois ou mais elementais invocados, todos a menos de 9 m entre si",
+          duration: "10 minutos/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+        },
+      });
+    }
+    const deathSpell = DND35_DOMAINS.find((domain) => domain.id === "morte")?.spells.find((entry) => entry.name === "Grito da Banshee");
+    expect(deathSpell).toMatchObject({
+      level: 9, detailsPage: 243,
+      mechanics: {
+        components: "V", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma criatura viva/nível em uma dispersão de 12 m de raio", duration: "Instantânea",
+        savingThrow: "Fortitude anula", spellResistance: "Sim",
+      },
+    });
+    expect(deathSpell).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "feiticeiro_mago" && list.spellLevel === 9)?.entries.find((spell) => spell.name === "Grito da Banshee"));
+  });
+
+  it("mantém Identificação e Homens Vegetais detalhadas em registros de domínio independentes", () => {
+    const identification = DND35_DOMAINS.find((domain) => domain.id === "magia")?.spells.find((spell) => spell.name === "Identificação");
+    expect(identification).toMatchObject({
+      level: 2, detailsPage: 244,
+      mechanics: {
+        components: "V, G, M/FD", castingTime: "1 hora", range: "Toque", target: "Um item mágico tocado",
+        duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+      },
+    });
+    const plantMen = DND35_DOMAINS.find((domain) => domain.id === "plantas")?.spells.find((spell) => spell.name === "Homens Vegetais");
+    expect(plantMen).toMatchObject({
+      level: 9, detailsPage: 244,
+      mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+        target: "Três ou mais homens vegetais, todos a menos de 9 m entre si", duration: "7 dias ou 7 meses (D; veja texto)",
+        savingThrow: "Nenhum", spellResistance: "Não",
+      },
+    });
+    expect(identification).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "feiticeiro_mago" && list.spellLevel === 1)?.entries.find((spell) => spell.name === "Identificação"));
+    expect(plantMen).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "druida" && list.spellLevel === 9)?.entries.find((spell) => spell.name === "Homens Vegetais"));
+  });
+
+  it("completa as magias da p. 245 nos domínios impressos sem compartilhar os registros de classe", () => {
+    const cases = [
+      ["animais", "Imobilizar Animal", 2],
+      ["destruicao", "Implosão", 9],
+      ["ordem", "Imobilizar Monstro", 6],
+      ["forca", "Imunidade à Magia", 4],
+      ["protecao", "Imunidade à Magia", 4],
+    ] as const;
+    for (const [domainId, name, level] of cases) {
+      const domainSpell = DND35_DOMAINS.find((domain) => domain.id === domainId)?.spells.find((spell) => spell.name === name);
+      expect(domainSpell, `${domainId}: ${name}`).toMatchObject({ level, detailsPage: 245, mechanics: { castingTime: "1 ação padrão" } });
+    }
+    expect(DND35_DOMAINS.find((domain) => domain.id === "animais")?.spells.find((spell) => spell.name === "Imobilizar Animal"))
+      .not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "druida" && list.spellLevel === 2)?.entries.find((spell) => spell.name === "Imobilizar Animal"));
+    expect(DND35_DOMAINS.find((domain) => domain.id === "destruicao")?.spells.find((spell) => spell.name === "Implosão"))
+      .not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "clerigo" && list.spellLevel === 9)?.entries.find((spell) => spell.name === "Implosão"));
+    expect(DND35_DOMAINS.find((domain) => domain.id === "ordem")?.spells.find((spell) => spell.name === "Imobilizar Monstro"))
+      .not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "bardo" && list.spellLevel === 4)?.entries.find((spell) => spell.name === "Imobilizar Monstro"));
+  });
+
+  it("completa as ocorrências de classe e domínio da p. 246 como registros independentes", () => {
+    const destructionCases = [
+      ["Infligir Ferimentos Leves", 1, "Toque"],
+      ["Infligir Ferimentos Críticos", 4, "Toque"],
+      ["Infligir Ferimentos Leves em Massa", 5, "Curto (7,5 m + 1,5 m/2 níveis)"],
+    ] as const;
+    for (const [name, level, range] of destructionCases) {
+      expect(DND35_DOMAINS.find((domain) => domain.id === "destruicao")?.spells.find((spell) => spell.name === name)).toMatchObject({
+        level, detailsPage: 246,
+        mechanics: { castingTime: "1 ação padrão", range, duration: "Instantânea", savingThrow: "Vontade reduz à metade", spellResistance: "Sim" },
+      });
+    }
+    const foresight = DND35_DOMAINS.find((domain) => domain.id === "sorte")?.spells.find((spell) => spell.name === "Instante de Presciência");
+    expect(foresight).toMatchObject({
+      level: 8, detailsPage: 246, detailsPageEnd: 247,
+      mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você", duration: "1 hora/nível ou até ser descarregada" },
+    });
+    expect(foresight).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "feiticeiro_mago" && list.spellLevel === 8)?.entries.find((spell) => spell.name === "Instante de Presciência"));
+    expect(DND35_DOMAINS.find((domain) => domain.id === "destruicao")?.spells.find((spell) => spell.name === "Infligir Ferimentos Críticos"))
+      .not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "clerigo" && list.spellLevel === 4)?.entries.find((spell) => spell.name === "Infligir Ferimentos Críticos"));
+  });
+
+  it("mantém a Invisibilidade do domínio Enganação detalhada e independente da lista de bardo", () => {
+    const domainSpell = DND35_DOMAINS.find((domain) => domain.id === "enganacao")?.spells.find((spell) => spell.name === "Invisibilidade");
+    expect(domainSpell).toMatchObject({
+      level: 2, detailsPage: 247,
+      mechanics: {
+        components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Pessoal ou toque",
+        target: "Você ou criatura/objeto até 50 kg/nível tocado", duration: "1 minuto/nível (D)",
+        savingThrow: "Vontade anula (inofensiva) ou Vontade anula (inofensiva, objeto)",
+        spellResistance: "Sim (inofensiva) ou Sim (inofensiva, objeto)",
+      },
+    });
+    expect(domainSpell).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "bardo" && list.spellLevel === 2)?.entries.find((spell) => spell.name === "Invisibilidade"));
   });
 
   it("mantém dissipações e Ditado como registros dos domínios impressos, separados das listas de classe", () => {

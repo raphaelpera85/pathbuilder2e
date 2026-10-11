@@ -92,7 +92,17 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
 
   useEffect(() => {
     if (isOpen) {
-      setCharacter(syncDndGrantedSpells(initialCharacter ? cloneCoreCharacter(initialCharacter) : engine.createDefaultCharacter()));
+      const defaults = engine.createDefaultCharacter();
+      const restored = initialCharacter ? cloneCoreCharacter({
+        ...defaults,
+        ...initialCharacter,
+        abilities: { ...defaults.abilities, ...initialCharacter.abilities },
+        skillProficiencies: initialCharacter.skillProficiencies || defaults.skillProficiencies,
+        equipmentIds: initialCharacter.equipmentIds || defaults.equipmentIds,
+        spellIds: initialCharacter.spellIds || defaults.spellIds,
+        featIds: initialCharacter.featIds || defaults.featIds,
+      }) : defaults;
+      setCharacter(syncDndGrantedSpells(restored));
       setError(null);
       setGenerationMethod(initialCharacter?.generationMethod || "point_buy");
     }

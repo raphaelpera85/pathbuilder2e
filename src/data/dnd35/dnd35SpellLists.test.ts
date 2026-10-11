@@ -487,6 +487,49 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
     expect(dnd35SpellListFor("druida", 9).find((spell) => spell.name === "Simpatia")?.flags).toEqual(["M"]);
   });
 
+  it("completa as magias de invocação das pp. 248–251 em todas as listas de classe", () => {
+    const natureAlly = DND35_SPELL_LISTS.flatMap((list) => list.entries.map((spell) => ({ list, spell })))
+      .filter(({ spell }) => spell.name.startsWith("Invocar Aliado da Natureza "));
+    expect(natureAlly).toHaveLength(13);
+    for (const { list, spell } of natureAlly) {
+      expect(spell, `${list.listId} ${list.spellLevel}: ${spell.name}`).toMatchObject({
+        summaryOnly: false,
+        detailsPage: list.spellLevel <= 5 ? 248 : 249,
+        mechanics: {
+          components: "V, G, FD", castingTime: "1 rodada", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+          duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+        },
+      });
+    }
+
+    const summonedCreatures = DND35_SPELL_LISTS.flatMap((list) => list.entries.map((spell) => ({ list, spell })))
+      .filter(({ spell }) => spell.name.startsWith("Invocar Criaturas "));
+    expect(summonedCreatures).toHaveLength(24);
+    for (const { list, spell } of summonedCreatures) {
+      expect(spell, `${list.listId} ${list.spellLevel}: ${spell.name}`).toMatchObject({
+        summaryOnly: false,
+        detailsPage: list.spellLevel === 1 ? 249 : list.spellLevel <= 6 ? 250 : 251,
+        mechanics: {
+          components: "V, G, F/FD", castingTime: "1 rodada", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+          duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+        },
+      });
+    }
+
+    const swarms = DND35_SPELL_LISTS.flatMap((list) => list.entries.map((spell) => ({ list, spell })))
+      .filter(({ spell }) => spell.name === "Invocar Enxames");
+    expect(swarms).toHaveLength(3);
+    for (const { list, spell } of swarms) {
+      expect(spell, list.listId).toMatchObject({
+        summaryOnly: false, detailsPage: 251,
+        mechanics: {
+          components: "V, G, M/FD", castingTime: "1 rodada", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+          duration: "Concentração + 2 rodadas", savingThrow: "Nenhum", spellResistance: "Não",
+        },
+      });
+    }
+  });
+
   it("Paladino e Patrulheiro 2º–4º níveis conferem nominalmente com as pp. 191–192", () => {
     const cases = [
       ["paladino", 2, "191-192", ["Dissimular Tendência", "Esplendor da Águia", "Força do Touro", "Proteger Outro", "Remover Paralisia", "Resistência a Elementos", "Retardar Envenenamento", "Sabedoria da Coruja", "Zona da Verdade"]],
@@ -1545,5 +1588,341 @@ describe("D&D 3.5 — descrições verificadas na p. 242", () => {
       .toEqual(dnd35SpellListFor("mago", 9).find((spell) => spell.name === "Forma Etérea"));
     expect(dnd35SpellListFor("feiticeiro", 3).find((spell) => spell.name === "Forma Gasosa"))
       .toEqual(dnd35SpellListFor("mago", 3).find((spell) => spell.name === "Forma Gasosa"));
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas na p. 243", () => {
+  it("completa as magias listadas sem alterar níveis nem projeções compartilhadas", () => {
+    const cases: Array<[string, number, string, Record<string, unknown>]> = [
+      ["bardo", 2, "Fúria", { detailsPage: 243, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+        target: "Uma criatura viva voluntária/3 níveis, todas a menos de 9 m entre si",
+        duration: "Concentração + 1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Sim",
+      } }],
+      ["feiticeiro", 4, "Globo de Invulnerabilidade Menor", { detailsPage: 243, summaryOnly: false, mechanics: {
+        components: "V, G, M", castingTime: "1 ação padrão", range: "3 m de raio", target: "Emanação esférica de 3 m de raio centrada no conjurador",
+        duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+      } }],
+      ["feiticeiro", 6, "Globo de Invulnerabilidade", { detailsPage: 243, summaryOnly: false, mechanics: {
+        components: "V, G, M", castingTime: "1 ação padrão", range: "3 m de raio", target: "Emanação esférica de 3 m de raio centrada no conjurador",
+        duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+      } }],
+      ["feiticeiro", 0, "Globos de Luz", { detailsPage: 243, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+        target: "Até quatro luzes ilusórias em uma área de 3 m de raio", duration: "1 minuto (D)", savingThrow: "Nenhum", spellResistance: "Não",
+      } }],
+      ["bardo", 4, "Grito", { detailsPage: 243, summaryOnly: false, mechanics: {
+        components: "V", castingTime: "1 ação padrão", range: "9 m", target: "Explosão em forma de cone",
+        duration: "Instantânea", savingThrow: "Fortitude parcial ou Reflexos anula (objeto; veja texto)", spellResistance: "Sim (objeto)",
+      } }],
+      ["feiticeiro", 9, "Grito da Banshee", { detailsPage: 243, summaryOnly: false, mechanics: {
+        components: "V", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma criatura viva/nível em uma dispersão de 12 m de raio",
+        duration: "Instantânea", savingThrow: "Fortitude anula", spellResistance: "Sim",
+      } }],
+      ["bardo", 6, "Grito Maior", { detailsPage: 243, summaryOnly: false, mechanics: {
+        components: "V, G, F", castingTime: "1 ação padrão", range: "18 m", target: "Explosão em forma de cone",
+        duration: "Instantânea", savingThrow: "Fortitude parcial ou Reflexos anula (objeto; veja texto)", spellResistance: "Sim",
+      } }],
+      ["druida", 9, "Grupo de Elementais", { detailsPage: 243, detailsPageEnd: 244, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "10 minutos", range: "Médio (30 m + 3 m/nível)",
+        target: "Dois ou mais elementais invocados, todos a menos de 9 m entre si",
+        duration: "10 minutos/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+      } }],
+    ];
+
+    for (const [classId, level, name, expected] of cases) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name), `${classId} ${level}: ${name}`).toMatchObject(expected);
+    }
+    for (const classId of ["feiticeiro", "mago"]) {
+      for (const [level, name] of [[0, "Globos de Luz"], [3, "Fúria"], [4, "Globo de Invulnerabilidade Menor"], [4, "Grito"], [6, "Globo de Invulnerabilidade"], [8, "Grito Maior"], [9, "Grito da Banshee"]] as const) {
+        expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name)?.detailsPage, `${classId} ${level}: ${name}`).toBe(243);
+      }
+    }
+    expect(dnd35SpellListFor("feiticeiro", 0).find((spell) => spell.name === "Globos de Luz"))
+      .toEqual(dnd35SpellListFor("mago", 0).find((spell) => spell.name === "Globos de Luz"));
+    expect(dnd35SpellListFor("mago", 4).find((spell) => spell.name === "Globo de Invulnerabilidade Menor")?.summary)
+      .toContain("habilidades similares a magia");
+    expect(dnd35SpellListFor("mago", 0).find((spell) => spell.name === "Globos de Luz")?.summary)
+      .toContain("Permanência");
+    expect(dnd35SpellListFor("mago", 4).find((spell) => spell.name === "Grito")?.summary)
+      .toContain("Silêncio");
+    expect(dnd35SpellListFor("druida", 9).find((spell) => spell.name === "Grupo de Elementais")?.summary)
+      .toContain("plano correspondente aos seus domínios");
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas na p. 244", () => {
+  it("completa os nove verbetes nas projeções de classe já impressas", () => {
+    const cases: Array<[string, number, string, Record<string, unknown>]> = [
+      ["bardo", 2, "Heroísmo", { detailsPage: 244, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+        duration: "10 minutos/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+      } }],
+      ["bardo", 5, "Heroísmo Maior", { detailsPage: 244, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+        duration: "1 minuto/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+      } }],
+      ["bardo", 1, "Hipnotismo", { detailsPage: 244, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 rodada", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Várias criaturas vivas, todas a menos de 9 m entre si", duration: "2d4 rodadas (D)",
+        savingThrow: "Vontade anula", spellResistance: "Sim",
+      } }],
+      ["druida", 9, "Homens Vegetais", { detailsPage: 244, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+        target: "Três ou mais homens vegetais, todos a menos de 9 m entre si", duration: "7 dias ou 7 meses (D; veja texto)",
+        savingThrow: "Nenhum", spellResistance: "Não",
+      } }],
+      ["bardo", 1, "Identificação", { detailsPage: 244, summaryOnly: false, mechanics: {
+        components: "V, G, M/FD", castingTime: "1 hora", range: "Toque", target: "Um item mágico tocado",
+        duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+      } }],
+      ["clerigo", 4, "Idiomas", { detailsPage: 244, summaryOnly: false, mechanics: {
+        components: "V, M/FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+        duration: "10 minutos/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Não",
+      } }],
+      ["bardo", 3, "Imagem Maior", { detailsPage: 244, summaryOnly: false, mechanics: {
+        components: "V, G, F", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+        duration: "Concentração + 3 rodadas", savingThrow: "Vontade desacredita (se interagir)", spellResistance: "Não",
+      } }],
+      ["bardo", 2, "Imagem Menor", { detailsPage: 244, summaryOnly: false, mechanics: {
+        components: "V, G, F", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+        duration: "Concentração + 2 rodadas", savingThrow: "Vontade desacredita (se interagir)", spellResistance: "Não",
+      } }],
+      ["bardo", 6, "Imagem Permanente", { detailsPage: 244, summaryOnly: false, mechanics: {
+        components: "V, G, F, M", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+        duration: "Permanente (D)", savingThrow: "Vontade desacredita (se interagir)", spellResistance: "Não",
+      } }],
+    ];
+    for (const [classId, level, name, expected] of cases) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name), `${classId} ${level}: ${name}`).toMatchObject(expected);
+    }
+    for (const classId of ["feiticeiro", "mago"]) {
+      for (const [level, name] of [[3, "Heroísmo"], [6, "Heroísmo Maior"], [1, "Hipnotismo"], [1, "Identificação"], [3, "Idiomas"], [3, "Imagem Maior"], [2, "Imagem Menor"], [6, "Imagem Permanente"]] as const) {
+        expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name)?.detailsPage, `${classId} ${level}: ${name}`).toBe(244);
+      }
+    }
+    expect(dnd35SpellListFor("bardo", 2).find((spell) => spell.name === "Idiomas")?.detailsPage).toBe(244);
+    expect(dnd35SpellListFor("feiticeiro", 3).find((spell) => spell.name === "Idiomas"))
+      .toEqual(dnd35SpellListFor("mago", 3).find((spell) => spell.name === "Idiomas"));
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas na p. 245", () => {
+  it("completa as imagens e imobilizações nas projeções de classe já impressas", () => {
+    const cases: Array<[string, number, string, Record<string, unknown>]> = [
+      ["bardo", 5, "Imagem Persistente", { detailsPage: 245, summaryOnly: false, mechanics: {
+        components: "V, G, F", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+        duration: "1 minuto/nível (D)", savingThrow: "Vontade desacredita (se interagir)", spellResistance: "Não",
+      } }],
+      ["bardo", 6, "Imagem Programada", { detailsPage: 245, summaryOnly: false, flags: ["M"], mechanics: {
+        components: "V, G, F, M", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+        duration: "Permanente até ser ativada; depois 1 rodada/nível", savingThrow: "Vontade desacredita (se interagir)", spellResistance: "Não",
+      } }],
+      ["bardo", 1, "Imagem Silenciosa", { detailsPage: 245, summaryOnly: false, mechanics: {
+        components: "V, G, F", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+        duration: "Concentração", savingThrow: "Vontade desacredita (se interagir)", spellResistance: "Não",
+      } }],
+      ["druida", 2, "Imobilizar Animal", { detailsPage: 245, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Um animal",
+        duration: "1 rodada/nível (D)", savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+      } }],
+      ["bardo", 4, "Imobilizar Monstro", { detailsPage: 245, summaryOnly: false, mechanics: {
+        components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Uma criatura viva",
+        duration: "1 rodada/nível (D)", savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+      } }],
+      ["feiticeiro", 9, "Imobilizar Monstro em Massa", { detailsPage: 245, summaryOnly: false, mechanics: {
+        components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+        target: "Uma ou mais criaturas vivas, todas a menos de 9 m entre si", duration: "1 rodada/nível (D)",
+        savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+      } }],
+      ["feiticeiro", 3, "Imobilizar Mortos-Vivos", { detailsPage: 245, summaryOnly: false, mechanics: {
+        components: "V, G, M", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+        target: "Até três mortos-vivos, todos a menos de 9 m entre si", duration: "1 rodada/nível",
+        savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+      } }],
+      ["bardo", 2, "Imobilizar Pessoa", { detailsPage: 245, summaryOnly: false, mechanics: {
+        components: "V, G, F/FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Um humanóide",
+        duration: "1 rodada/nível (D)", savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+      } }],
+      ["feiticeiro", 7, "Imobilizar Pessoa em Massa", { detailsPage: 245, summaryOnly: false, mechanics: {
+        components: "V, G, F/FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+        target: "Um ou mais humanóides, todos a menos de 9 m entre si", duration: "1 rodada/nível (D)",
+        savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+      } }],
+      ["clerigo", 9, "Implosão", { detailsPage: 245, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma criatura corpórea/rodada", duration: "Concentração (até 4 rodadas)",
+        savingThrow: "Fortitude anula", spellResistance: "Sim",
+      } }],
+      ["clerigo", 4, "Imunidade à Magia", { detailsPage: 245, detailsPageEnd: 246, summaryOnly: false, mechanics: {
+        components: "V, G, FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+        duration: "10 minutos/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+      } }],
+    ];
+    for (const [classId, level, name, expected] of cases) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name), `${classId} ${level}: ${name}`).toMatchObject(expected);
+    }
+    const classProjections = [
+      ["bardo", 5, "Imagem Persistente"], ["feiticeiro", 5, "Imagem Persistente"],
+      ["bardo", 6, "Imagem Programada"], ["feiticeiro", 6, "Imagem Programada"],
+      ["bardo", 1, "Imagem Silenciosa"], ["feiticeiro", 1, "Imagem Silenciosa"],
+      ["patrulheiro", 2, "Imobilizar Animal"], ["bardo", 4, "Imobilizar Monstro"],
+      ["mago", 5, "Imobilizar Monstro"],
+      ["mago", 9, "Imobilizar Monstro em Massa"], ["mago", 3, "Imobilizar Mortos-Vivos"],
+      ["clerigo", 2, "Imobilizar Pessoa"], ["feiticeiro", 3, "Imobilizar Pessoa"],
+      ["mago", 7, "Imobilizar Pessoa em Massa"],
+    ] as const;
+    for (const [classId, level, name] of classProjections) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name)?.detailsPage, `${classId} ${level}: ${name}`).toBe(245);
+    }
+    expect(dnd35SpellListFor("clerigo", 4).find((spell) => spell.name === "Imunidade à Magia")?.summary).not.toContain("rodada");
+    expect(DND35_SPELL_LISTS.find((list) => list.listId === "clerigo" && list.spellLevel === 4)?.entries.find((spell) => spell.name === "Imunidade à Magia")?.summary)
+      .not.toContain("rodada");
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas na p. 246", () => {
+  it("completa as magias nas listas de classe existentes e registra a continuação na p. 247", () => {
+    const cases: Array<[string, number, string, Record<string, unknown>]> = [
+      ["clerigo", 8, "Imunidade à Magia Maior", { detailsPage: 246, summaryOnly: false, mechanics: {
+        components: "V, G, FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+        duration: "10 minutos/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+      } }],
+      ["clerigo", 4, "Infligir Ferimentos Críticos", { detailsPage: 246, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+        duration: "Instantânea", savingThrow: "Vontade reduz à metade", spellResistance: "Sim",
+      } }],
+      ["clerigo", 8, "Infligir Ferimentos Críticos em Massa", { detailsPage: 246, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma criatura/nível, todas a menos de 9 m entre si", duration: "Instantânea",
+        savingThrow: "Vontade reduz à metade", spellResistance: "Sim",
+      } }],
+      ["clerigo", 3, "Infligir Ferimentos Graves", { detailsPage: 246, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+        duration: "Instantânea", savingThrow: "Vontade reduz à metade", spellResistance: "Sim",
+      } }],
+      ["clerigo", 7, "Infligir Ferimentos Graves em Massa", { detailsPage: 246, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma criatura/nível, todas a menos de 9 m entre si", duration: "Instantânea",
+        savingThrow: "Vontade reduz à metade", spellResistance: "Sim",
+      } }],
+      ["clerigo", 1, "Infligir Ferimentos Leves", { detailsPage: 246, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+        duration: "Instantânea", savingThrow: "Vontade reduz à metade", spellResistance: "Sim",
+      } }],
+      ["clerigo", 5, "Infligir Ferimentos Leves em Massa", { detailsPage: 246, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma criatura/nível, todas a menos de 9 m entre si", duration: "Instantânea",
+        savingThrow: "Vontade reduz à metade", spellResistance: "Sim",
+      } }],
+      ["clerigo", 0, "Infligir Ferimentos Mínimos", { detailsPage: 246, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+        duration: "Instantânea", savingThrow: "Vontade anula", spellResistance: "Sim",
+      } }],
+      ["clerigo", 2, "Infligir Ferimentos Moderados", { detailsPage: 246, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+        duration: "Instantânea", savingThrow: "Vontade reduz à metade", spellResistance: "Sim",
+      } }],
+      ["clerigo", 6, "Infligir Ferimentos Moderados em Massa", { detailsPage: 246, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma criatura/nível, todas a menos de 9 m entre si", duration: "Instantânea",
+        savingThrow: "Vontade reduz à metade", spellResistance: "Sim",
+      } }],
+      ["feiticeiro", 7, "Insanidade", { detailsPage: 246, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Uma criatura viva",
+        duration: "Instantânea", savingThrow: "Vontade anula", spellResistance: "Sim",
+      } }],
+      ["clerigo", 4, "Inseto Gigante", { detailsPage: 246, summaryOnly: false, mechanics: {
+        components: "V, G, FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Até três insetos, todos a menos de 9 m entre si", duration: "1 minuto/nível",
+        savingThrow: "Nenhum", spellResistance: "Sim",
+      } }],
+      ["feiticeiro", 8, "Instante de Presciência", { detailsPage: 246, detailsPageEnd: 247, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+        duration: "1 hora/nível ou até ser descarregada", savingThrow: "Nenhum", spellResistance: "Não",
+      } }],
+    ];
+    for (const [classId, level, name, expected] of cases) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name), `${classId} ${level}: ${name}`).toMatchObject(expected);
+    }
+    for (const [classId, level, name] of [
+      ["feiticeiro", 7, "Insanidade"], ["mago", 7, "Insanidade"],
+      ["druida", 4, "Inseto Gigante"], ["mago", 8, "Instante de Presciência"],
+    ] as const) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name)?.detailsPage, `${classId} ${level}: ${name}`).toBe(246);
+    }
+    const massLightWounds = dnd35SpellListFor("clerigo", 5).find((spell) => spell.name === "Infligir Ferimentos Leves em Massa");
+    expect(massLightWounds?.summary).toContain("a uma criatura por nível");
+    expect(massLightWounds?.summary).not.toContain("Como Infligir Ferimentos Leves em Massa");
+    expect(dnd35SpellListFor("feiticeiro", 8).find((spell) => spell.name === "Instante de Presciência")?.detailsPageEnd).toBe(247);
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas nas pp. 247–248", () => {
+  it("completa as sete magias nas listas existentes e identifica a descrição continuada", () => {
+    const cases: Array<[string, number, string, Record<string, unknown>]> = [
+      ["bardo", 0, "Intuir Direção", { detailsPage: 247, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+        duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+      } }],
+      ["druida", 8, "Inverter a Gravidade", { detailsPage: 247, summaryOnly: false, mechanics: {
+        components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+        target: "Até um cubo de 3 m/2 níveis (M)", duration: "1 rodada/nível (D)",
+        savingThrow: "Nenhum (veja texto)", spellResistance: "Não",
+      } }],
+      ["bardo", 2, "Invisibilidade", { detailsPage: 247, summaryOnly: false, mechanics: {
+        components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Pessoal ou toque",
+        target: "Você ou criatura/objeto até 50 kg/nível tocado", duration: "1 minuto/nível (D)",
+        savingThrow: "Vontade anula (inofensiva) ou Vontade anula (inofensiva, objeto)",
+        spellResistance: "Sim (inofensiva) ou Sim (inofensiva, objeto)",
+      } }],
+      ["druida", 1, "Invisibilidade Contra Animais", { detailsPage: 247, summaryOnly: false, mechanics: {
+        components: "G, FD", castingTime: "1 ação padrão", range: "Toque", target: "Uma criatura tocada/nível",
+        duration: "10 minutos/nível (D)", savingThrow: "Vontade anula (objeto)", spellResistance: "Sim",
+      } }],
+      ["clerigo", 1, "Invisibilidade Contra Mortos-Vivos", { detailsPage: 247, summaryOnly: false, mechanics: {
+        components: "V, G, FD", castingTime: "1 ação padrão", range: "Toque", target: "Uma criatura tocada/nível",
+        duration: "10 minutos/nível (D)", savingThrow: "Vontade anula (objeto); veja texto", spellResistance: "Sim",
+      } }],
+      ["bardo", 4, "Invisibilidade Maior", { detailsPage: 247, summaryOnly: false, mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Pessoal ou toque", target: "Você ou uma criatura",
+        duration: "1 rodada/nível (D)", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+      } }],
+      ["feiticeiro", 7, "Invisibilidade em Massa", { detailsPage: 247, detailsPageEnd: 248, summaryOnly: false, mechanics: {
+        components: "V, G, M", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+        target: "Qualquer quantidade de criaturas, todas a menos de 54 m entre si", duration: "1 minuto/nível (D)",
+        savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+      } }],
+    ];
+    for (const [classId, level, name, expected] of cases) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name), `${classId} ${level}: ${name}`).toMatchObject(expected);
+    }
+    const projections = [
+      ["bardo", 0, "Intuir Direção"], ["druida", 0, "Intuir Direção"],
+      ["druida", 8, "Inverter a Gravidade"], ["feiticeiro", 7, "Inverter a Gravidade"], ["mago", 7, "Inverter a Gravidade"],
+      ["bardo", 2, "Invisibilidade"], ["feiticeiro", 2, "Invisibilidade"], ["mago", 2, "Invisibilidade"],
+      ["druida", 1, "Invisibilidade Contra Animais"], ["patrulheiro", 1, "Invisibilidade Contra Animais"],
+      ["clerigo", 1, "Invisibilidade Contra Mortos-Vivos"],
+      ["bardo", 4, "Invisibilidade Maior"], ["feiticeiro", 4, "Invisibilidade Maior"], ["mago", 4, "Invisibilidade Maior"],
+      ["feiticeiro", 7, "Invisibilidade em Massa"], ["mago", 7, "Invisibilidade em Massa"],
+    ] as const;
+    expect(projections).toHaveLength(16);
+    for (const [classId, level, name] of projections) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name), `${classId} ${level}: ${name}`)
+        .toMatchObject({ detailsPage: 247, summaryOnly: false, mechanics: { castingTime: "1 ação padrão" }, ...(name === "Invisibilidade em Massa" ? { detailsPageEnd: 248 } : {}) });
+    }
+    expect(dnd35SpellListFor("druida", 8).find((spell) => spell.name === "Inverter a Gravidade")?.summary)
+      .toContain("ímã e limalha de ferro");
+    expect(dnd35SpellListFor("bardo", 2).find((spell) => spell.name === "Invisibilidade")?.summary)
+      .toContain("cílio envolvido em goma arábica");
+    expect(dnd35SpellListFor("bardo", 2).find((spell) => spell.name === "Invisibilidade")?.summary)
+      .toContain("Ações indiretas");
+    expect(dnd35SpellListFor("druida", 1).find((spell) => spell.name === "Invisibilidade Contra Animais")?.summary)
+      .toContain("tocar um animal");
+    expect(dnd35SpellListFor("mago", 7).find((spell) => spell.name === "Invisibilidade em Massa")?.summary)
+      .toContain("cílio envolvido em goma arábica");
+    expect(dnd35SpellListFor("mago", 7).find((spell) => spell.name === "Invisibilidade em Massa")?.summary)
+      .toContain("Se houver apenas dois alvos, ambos ficam visíveis");
   });
 });

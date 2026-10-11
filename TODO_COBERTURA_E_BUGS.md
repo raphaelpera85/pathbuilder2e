@@ -1001,3 +1001,44 @@ Auditoria completa de `src/data/ose/oseRaces.ts` contra o **capítulo de raças 
 - [x] Conferir e completar descrições de Convocar Relâmpagos, Convocar Tempestade de Relâmpagos, Corrente de Relâmpagos, Corpo de Ferro e Crescer Espinhos no PDF do Livro do Jogador, pp. 222–223.
 - As cinco magias já constavam nas listas; agora os detalhes revisados preservam página descritiva, mecânicas e `summaryOnly: false`. Crescer Espinhos mantém descrições por projeção de classe (Druida 3 e Patrulheiro 2), inclusive Cura CD 28/27 e continuação na p. 223. O efeito de lentidão por 24 horas foi mantido separado da duração da magia (1 hora/nível).
 - Fonte: `I:\Meu Drive\Livros RPG\D&D 3.5\D&D 3.5 - Livro do Jogador - Vários autores.pdf`. A tarefa ampla de completar e revisar as demais descrições do livro permanece aberta.
+
+## D&D 3.5 — descrições do Livro do Jogador (p. 243)
+
+- [x] Completar Fúria, Globo de Invulnerabilidade Menor, Globo de Invulnerabilidade, Globos de Luz, Grito, Grito da Banshee, Grito Maior e Grupo de Elementais nas listas de classe existentes (12 registros tipados / 17 projeções de classe).
+- [x] Completar Grupo de Elementais nos domínios Água, Ar, Fogo e Terra, e Grito da Banshee no domínio Morte, preservando registros próprios de domínio.
+- Grupo de Elementais continua na p. 244 (`detailsPageEnd: 244`). Fonte: `I:\Meu Drive\Livros RPG\D&D 3.5\D&D 3.5 - Livro do Jogador - Vários autores.pdf`, pp. 243–244. A tarefa ampla de completar e revisar as demais descrições do livro permanece aberta.
+
+## D&D 3.5 — descrições do Livro do Jogador (p. 244)
+
+- [x] Completar Heroísmo, Heroísmo Maior, Hipnotismo, Homens Vegetais, Identificação, Idiomas, Imagem Maior, Imagem Menor e Imagem Permanente nas projeções de classe existentes (18 registros tipados / 26 projeções).
+- [x] Completar Identificação no domínio Magia e Homens Vegetais no domínio Plantas como registros independentes.
+- As variantes de Imagem usam os campos-base de Imagem Silenciosa (p. 245), conforme as remissões impressas; a p. 244 fornece suas diferenças específicas. Fonte: `I:\Meu Drive\Livros RPG\D&D 3.5\D&D 3.5 - Livro do Jogador - Vários autores.pdf`, pp. 244–245. A tarefa ampla de completar e revisar as demais descrições do livro permanece aberta.
+
+## D&D 3.5 — descrições do Livro do Jogador (p. 245)
+
+- [x] Completar Imagem Persistente, Imagem Programada, Imagem Silenciosa, as seis magias de Imobilizar, Implosão e Imunidade à Magia nas listas existentes (26 projeções de classe).
+- [x] Completar registros independentes dos domínios Animais, Ordem, Destruição, Força e Proteção (cinco registros).
+- Imunidade à Magia continua na p. 246 (`detailsPageEnd: 246`). Imobilizar Monstro é Bardo 4, Ordem 6 e Feiticeiro/Mago 5; não é Clérigo 6. O resumo impresso de Imunidade à Magia na lista de Clérigo não informa duração em rodadas.
+- Fonte: `I:\Meu Drive\Livros RPG\D&D 3.5\D&D 3.5 - Livro do Jogador - Vários autores.pdf`, pp. 245–246. A tarefa ampla de completar e revisar as demais descrições do livro permanece aberta.
+
+## D&D 3.5 — descrições do Livro do Jogador (p. 246)
+
+- [x] Completar Imunidade à Magia Maior, as nove variantes de Infligir Ferimentos, Insanidade, Inseto Gigante e Instante de Presciência (14 registros tipados / 16 projeções de classe).
+- [x] Completar Infligir Ferimentos Leves, Infligir Ferimentos Críticos e Infligir Ferimentos Leves em Massa no domínio Destruição, e Instante de Presciência no domínio Sorte, como quatro registros separados das listas de classe.
+- Instante de Presciência continua na p. 247 (`detailsPageEnd: 247`). Divergências de nível preservadas conforme as listas: Infligir Ferimentos Graves é Clérigo 3 na lista da p. 184, embora seu cabeçalho descritivo na p. 246 indique Clérigo 2; Infligir Ferimentos Graves em Massa é Clérigo 7 na lista da p. 185, embora o cabeçalho da descrição indique Clérigo 6. Infligir Ferimentos Mínimos usa Vontade para anular, não para reduzir o dano à metade.
+- Fonte: `I:\Meu Drive\Livros RPG\D&D 3.5\D&D 3.5 - Livro do Jogador - Vários autores.pdf`, pp. 246–247. A tarefa ampla de completar e revisar as demais descrições do livro permanece aberta.
+
+## D&D 3.5 — descrições do Livro do Jogador (pp. 247–248)
+
+- [x] Completar Intuir Direção, Inverter a Gravidade, Invisibilidade, Invisibilidade Contra Animais, Invisibilidade Contra Mortos-Vivos, Invisibilidade Maior e Invisibilidade em Massa nas listas existentes (12 registros tipados / 16 projeções de classe).
+- [x] Completar Invisibilidade no domínio Enganação como ocorrência de domínio independente da lista de classe.
+- Invisibilidade em Massa continua na p. 248 (`detailsPageEnd: 248`). As descrições foram verificadas visualmente nas páginas impressas do PDF local.
+- Fonte: `I:\Meu Drive\Livros RPG\D&D 3.5\D&D 3.5 - Livro do Jogador - Vários autores.pdf`, pp. 247–248. A tarefa ampla de completar e revisar as demais descrições do livro permanece aberta.
+
+## D&D 3.5 — magias de invocação do Livro do Jogador (pp. 248–251)
+
+- [x] Completar as descrições mecânicas das 13 projeções de Invocar Aliado da Natureza (Druida I–IX e Patrulheiro I–IV), as 24 projeções de Invocar Criaturas (Bardo I–VI, Clérigo I–IX e Feiticeiro/Mago I–IX) e as três projeções de Invocar Enxames (Bardo, Druida e Feiticeiro/Mago 2), com páginas descritivas, componentes, execução, alcance, alvo/efeito, duração, resistência e resumo revisado.
+- [x] Registrar as ocorrências independentes de Invocar Aliado da Natureza IV/VIII no domínio Animais e Invocar Criaturas IX nos domínios Bem, Caos, Mal e Ordem.
+- As tabelas de criaturas invocáveis (Aliados da Natureza, p. 248; Invocar Criaturas, p. 250) ainda precisam ser transcritas como dados estruturados e expostas na consulta do compêndio; não são consideradas cobertas pelos resumos das magias.
+- Corrigida a lista de Druida 2: a p. 190 traz Invocar Aliado da Natureza II, não Invocar Criaturas I.
+- Fonte: `I:\Meu Drive\Livros RPG\D&D 3.5\D&D 3.5 - Livro do Jogador - Vários autores.pdf`, pp. 190 e 248–251. A tarefa ampla de completar e revisar as demais descrições do livro permanece aberta.

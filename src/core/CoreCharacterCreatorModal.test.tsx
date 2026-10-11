@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { CoreCharacterCreatorModal } from "./CoreCharacterCreatorModal";
 import { DND5E_RULES_ENGINE } from "../data/systemRulesEngine";
 import { DND5E_PALADIN_OATH_SPELLS } from "../data/dnd5e/dnd5eOptions";
-import { getCoreCatalog } from "../data/multiSystemCharacter";
+import { getCoreCatalog, type MultiSystemCharacter } from "../data/multiSystemCharacter";
 
 afterEach(cleanup);
 
@@ -22,6 +22,25 @@ describe("construtor core por sistema", () => {
     fireEvent.click(screen.getByRole("button", { name: /Criar ficha/i }));
     expect(onCharacterCreated).toHaveBeenCalledTimes(1);
     expect(onCharacterCreated.mock.calls[0][0]).toMatchObject({ system_id: system, systemId: system });
+  });
+
+  it("abre uma ficha T20 legada mesmo quando faltam listas adicionadas em versões recentes", () => {
+    const legacy = getCoreCatalog("t20");
+    const character = {
+      id: "t20-legacy",
+      system_id: "t20",
+      systemId: "t20",
+      ruleset: "padrao",
+      name: "Tormenta antiga",
+      level: 3,
+      classId: "guerreiro",
+      raceId: "humano",
+      abilities: { str: 16, dex: 12, con: 14, int: 10, wis: 10, cha: 10 },
+    } as unknown as MultiSystemCharacter;
+    expect(legacy.classes.some((entry) => entry.id === character.classId)).toBe(true);
+    expect(() => render(<CoreCharacterCreatorModal isOpen system="t20" onClose={vi.fn()} onCharacterCreated={vi.fn()} initialCharacter={character} />)).not.toThrow();
+    expect(screen.getByText("Revisão final da ficha")).toBeInTheDocument();
+    expect(screen.getByDisplayValue("Tormenta antiga")).toBeInTheDocument();
   });
 
   it("mostra a quantidade progressiva de escolhas de Metamagia no construtor D&D 5e", () => {

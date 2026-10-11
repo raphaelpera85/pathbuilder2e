@@ -70,6 +70,7 @@ import { OSE_CLASSES } from "./data/ose/oseClasses";
 import { OSE_RACES } from "./data/ose/oseRaces";
 import { OSE_SPELLS } from "./data/ose/oseSpells";
 import { OSE_WEAPONS, OSE_ARMORS, OSE_GEAR } from "./data/ose/oseEquipment";
+import { DND35_SUMMON_TABLES } from "./data/dnd35/dnd35SummonTables";
 import type { CoreCatalogEntry } from "./data/coreCompendium";
 import "./portal.css";
 
@@ -228,6 +229,7 @@ function CatalogPage() {
   const [bookFilter, setBookFilter] = useState<string>("all");
   const [catalogPage, setCatalogPage] = useState(1);
   const [inspectedEntry, setInspectedEntry] = useState<(PickerItem & { category: PickerType; categoryLabel: string }) | null>(null);
+  const [summonListLevel, setSummonListLevel] = useState(1);
   const inspectedCloseRef = useRef<HTMLButtonElement>(null);
   const [syncStatus] = useState<CatalogSyncStatus>(getCatalogSyncStatus());
   const [catalogItemsByCategory, setCatalogItemsByCategory] = useState<Partial<Record<PickerType, PickerItem[]>>>({});
@@ -368,6 +370,8 @@ function CatalogPage() {
     inspectedCloseRequestedRef.current = false;
     inspectedTriggerRef.current = trigger || (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     inspectedTriggerKeyRef.current = String(entry.data.id ?? `${entry.category}:${entry.name}`);
+    const summonMaxLevel = Number(entry.data.summonTableMaxLevel);
+    setSummonListLevel(Number.isInteger(summonMaxLevel) && summonMaxLevel > 0 ? Math.min(9, summonMaxLevel) : 1);
     setInspectedEntry(entry);
   };
 
@@ -447,6 +451,15 @@ function CatalogPage() {
   const inspectedFamiliarOptions = inspectedEntry && Array.isArray(inspectedEntry.data.familiarOptions)
     ? inspectedEntry.data.familiarOptions as Array<{ name: string; alignment?: string; minimumArcaneCasterLevel?: number; note?: string }>
     : [];
+  const inspectedSummonTableId = inspectedEntry?.category === "spell"
+    && (inspectedEntry.data.summonTableId === "nature" || inspectedEntry.data.summonTableId === "creatures")
+    ? inspectedEntry.data.summonTableId as keyof typeof DND35_SUMMON_TABLES
+    : null;
+  const inspectedSummonTable = inspectedSummonTableId ? DND35_SUMMON_TABLES[inspectedSummonTableId] : null;
+  const inspectedSummonMaxLevel = inspectedSummonTable
+    ? Math.min(inspectedSummonTable.levels.length, Math.max(0, Number(inspectedEntry?.data.summonTableMaxLevel) || 0))
+    : 0;
+  const inspectedSummonList = inspectedSummonTable?.levels.find((level) => level.level === Math.min(summonListLevel, inspectedSummonMaxLevel));
   const inspectedSpellClassNames = inspectedEntry ? getCatalogSpellClassNames(inspectedEntry.data, locale) : [];
   const inspectedSpellMechanics = inspectedEntry?.category === "spell"
     && inspectedEntry.data.mechanics !== null
@@ -604,6 +617,36 @@ function CatalogPage() {
               </table>
             </div>}
           </div>}
+
+          {inspectedSummonTable && inspectedSummonMaxLevel > 0 && inspectedSummonList && <section className="compendium-modal-description compendium-summon-table" aria-labelledby="compendium-summon-title">
+            <h3 id="compendium-summon-title">{locale === "en" ? "Summonable creatures" : locale === "es" ? "Criaturas invocables" : "Criaturas invocáveis"}</h3>
+            <label className="compendium-summon-level-label" htmlFor="compendium-summon-list-level">{locale === "en" ? "List level" : locale === "es" ? "Nivel de lista" : "Nível da lista"}
+              <select id="compendium-summon-list-level" value={Math.min(summonListLevel, inspectedSummonMaxLevel)} onChange={(event) => setSummonListLevel(Number(event.target.value))}>
+                {inspectedSummonTable.levels.slice(0, inspectedSummonMaxLevel).map(({ level }) => <option key={level} value={level}>{level}</option>)}
+              </select>
+            </label>
+            <div className="compendium-table-scroll" tabIndex={0} aria-label={locale === "en" ? "Scrollable summon table" : locale === "es" ? "Tabla de invocación desplazable" : "Tabela de invocação rolável"}>
+              <table className="compendium-options-table">
+                <caption>{`${inspectedSummonTable.name} — ${inspectedSummonList.level}º ${locale === "en" ? "list level" : locale === "es" ? "nivel de lista" : "nível da lista"} · p. ${inspectedSummonTable.sourcePage}`}</caption>
+                <thead><tr>
+                  <th scope="col">{locale === "en" ? "Creature" : locale === "es" ? "Criatura" : "Criatura"}</th>
+                  <th scope="col">{locale === "en" ? "Alignment" : locale === "es" ? "Alineamiento" : "Tendência"}</th>
+                  <th scope="col">{locale === "en" ? "Notes" : locale === "es" ? "Notas" : "Observações"}</th>
+                </tr></thead>
+                <tbody>{inspectedSummonList.creatures.map((creature, index) => <tr key={`${creature.name}-${index}`}>
+                  <th scope="row">{creature.name}</th>
+                  <td>{creature.alignment || inspectedSummonTable.defaultAlignment || "—"}</td>
+                  <td>{[
+                    creature.special,
+                    creature.aquaticOnly
+                      ? locale === "en" ? "Only in aquatic environments." : locale === "es" ? "Solo puede invocarse en ambientes acuáticos." : "Só pode ser invocado apenas em ambientes aquáticos."
+                      : undefined,
+                  ].filter(Boolean).join(" · ") || "—"}</td>
+                </tr>)}</tbody>
+              </table>
+            </div>
+            {inspectedSummonTable.defaultAlignment && <p className="compendium-summon-footnote">{locale === "en" ? `Default alignment: ${inspectedSummonTable.defaultAlignment}, unless noted.` : locale === "es" ? `Alineamiento predeterminado: ${inspectedSummonTable.defaultAlignment}, salvo indicación contraria.` : `Tendência padrão: ${inspectedSummonTable.defaultAlignment}, salvo indicação em contrário.`}</p>}
+          </section>}
 
           {/* SOURCE CITATION */}
           <footer className="compendium-modal-footer">

@@ -89,6 +89,26 @@ const DICTUM_DOMAIN_DETAILS = {
   },
 };
 
+const summonCreaturesDomainDetails = (alignment: string) => ({
+  detailsPage: 251,
+  summary: `Como Invocar Criaturas IX: invoca uma criatura extraplanar escolhida da lista de 9º nível, 1d3 do mesmo tipo da lista de 8º nível ou 1d4+1 do mesmo tipo de uma lista inferior. A nota do domínio restringe a invocação a criaturas do alinhamento ${alignment}; a criatura surge no local escolhido, age imediatamente e não pode invocar outras criaturas nem usar teletransporte ou viagem planar.`,
+  mechanics: {
+    components: "V, G, F/FD", castingTime: "1 rodada", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma ou mais criaturas extraplanares, todas a menos de 9 m entre si",
+    duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+});
+
+const summonNatureDomainDetails = (level: number) => ({
+  detailsPage: level === 4 ? 248 : 249,
+  summary: `Como Invocar Aliado da Natureza ${level === 4 ? "IV" : "VIII"}: invoca uma criatura da lista de ${level}º nível, 1d3 criaturas do mesmo tipo da lista de ${level - 1}º nível ou 1d4+1 do mesmo tipo de uma lista inferior. A nota do domínio permite invocar somente animais. A criatura surge no local escolhido, age imediatamente e não pode invocar outras criaturas nem usar teletransporte ou viagem planar.`,
+  mechanics: {
+    components: "V, G, FD", castingTime: "1 rodada", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma ou mais criaturas naturais, todas a menos de 9 m entre si",
+    duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+});
+
 const DOMAIN_DISPEL_MAGIC_DETAILS = {
   detailsPage: 232,
   summary: "Encerra magias em criaturas ou objetos, suprime propriedades de um item mágico direcionado por 1d4 rodadas (itens mágicos não são afetados pela versão em área), dissipa efeitos numa área parcialmente sobreposta ou pode ser usada como contramágica após um teste. O teste é 1d20 + nível de conjurador (máximo +10); efeitos instantâneos e artefatos não são desfeitos. A ficha impressa indica raio de 6 m, mas o texto narrativo cita 9 m; o SRD 3.5 indica 20 pés (cerca de 6 m).",
@@ -96,6 +116,84 @@ const DOMAIN_DISPEL_MAGIC_DETAILS = {
     components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
     target: "Um conjurador, criatura ou objeto; ou explosão de 6 m de raio (texto narrativo cita 9 m)",
     duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const ELEMENTAL_SWARM_DOMAIN_DETAILS = {
+  detailsPage: 243,
+  detailsPageEnd: 244,
+  summary: "Abre um portal para um Plano Elemental: o druida escolhe o plano (ar, terra, fogo ou água), e o clérigo usa o plano correspondente aos seus domínios. Invoca 2d4 elementais Grandes, depois 1d4 Enormes após 10 minutos e um elemental ancião 10 minutos depois. Eles têm os pontos de vida máximos por DV e servem ao conjurador até o fim da duração, obedecendo-lhe e sem atacá-lo.",
+  mechanics: {
+    components: "V, G", castingTime: "10 minutos", range: "Médio (30 m + 3 m/nível)",
+    target: "Dois ou mais elementais invocados, todos a menos de 9 m entre si",
+    duration: "10 minutos/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const IDENTIFY_DOMAIN_DETAILS = {
+  detailsPage: 244,
+  summary: "Revela as propriedades mágicas de um único item, como suas funções e cargas restantes; não funciona em artefatos. Componente material arcano: pérola de pelo menos 100 PO pulverizada e embebida em vinho com uma pena de coruja; a infusão é bebida antes da conjuração.",
+  mechanics: {
+    components: "V, G, M/FD", castingTime: "1 hora", range: "Toque", target: "Um item mágico tocado",
+    duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const PLANT_MEN_DOMAIN_DETAILS = {
+  detailsPage: 244,
+  summary: "Cria 1d4+2 homens vegetais com 11 DV cada, que ajudam voluntariamente em combate, cumprem uma missão ou servem de guarda-costas por sete dias. Se criados para guardar um local, duram sete meses, só recebem ordens para protegê-lo e não podem se afastar do alcance da magia.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+    target: "Três ou mais homens vegetais, todos a menos de 9 m entre si", duration: "7 dias ou 7 meses (D; veja texto)",
+    savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const HOLD_ANIMAL_DOMAIN_DETAILS = {
+  detailsPage: 245,
+  summary: "Como Imobilizar Pessoa, mas afeta um animal. O alvo fica consciente e respira, mas não pode agir nem falar; pode repetir o teste de resistência a cada rodada com uma ação de rodada completa. Uma criatura voadora imobilizada cai, e uma nadadora afunda.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Um animal",
+    duration: "1 rodada/nível (D)", savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+  },
+};
+
+const HOLD_MONSTER_DOMAIN_DETAILS = {
+  detailsPage: 245,
+  summary: "Como Imobilizar Pessoa, mas afeta qualquer criatura viva. O alvo fica consciente e respira, mas não pode agir nem falar; pode repetir o teste de resistência a cada rodada com uma ação de rodada completa. Uma criatura voadora imobilizada cai, e uma nadadora afunda.",
+  mechanics: {
+    components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Uma criatura viva",
+    duration: "1 rodada/nível (D)", savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+  },
+};
+
+const IMPLOSION_DOMAIN_DETAILS = {
+  detailsPage: 245,
+  summary: "Cria uma ressonância destrutiva numa criatura corpórea por rodada de concentração, fazendo-a colapsar sobre si mesma e morrer. Cada criatura só pode ser afetada uma vez por conjuração; não afeta criaturas gasosas ou incorpóreas.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma criatura corpórea/rodada", duration: "Concentração (até 4 rodadas)",
+    savingThrow: "Fortitude anula", spellResistance: "Sim",
+  },
+};
+
+const SPELL_IMMUNITY_DOMAIN_DETAILS = {
+  detailsPage: 245,
+  detailsPageEnd: 246,
+  summary: "Protege a criatura tocada contra os efeitos de uma magia específica para cada quatro níveis de conjurador; as magias escolhidas devem ser de 4º nível ou inferior. Não se aplica a magias que ignoram resistência à magia nem a habilidades sobrenaturais ou extraordinárias. A proteção só vale contra magias específicas, não contra uma escola, domínio ou grupo semelhante; a criatura só pode receber Imunidade à Magia ou Imunidade à Magia Maior uma vez por vez.",
+  mechanics: {
+    components: "V, G, FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+    duration: "10 minutos/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+  },
+};
+
+const WAIL_OF_THE_BANSHEE_DOMAIN_DETAILS = {
+  detailsPage: 243,
+  summary: "Um grito terrível mata até uma criatura viva por nível de conjurador que o ouça, dentro de uma dispersão de 12 m de raio (exceto o conjurador). As vítimas mais próximas do ponto de origem são afetadas primeiro; Fortitude anula a morte.",
+  mechanics: {
+    components: "V", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma criatura viva/nível em uma dispersão de 12 m de raio", duration: "Instantânea",
+    savingThrow: "Fortitude anula", spellResistance: "Sim",
   },
 };
 
@@ -115,6 +213,9 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Evaporação: Causa 1d6 de dano/nível em 9 m",
       "9 Grupo de Elementais*: Invoca vários elementais",
     ],
+    spellDetails: {
+      "Grupo de Elementais": ELEMENTAL_SWARM_DOMAIN_DETAILS,
+    },
     footnote: "Somente como magia da água.",
   }),
   domain({
@@ -134,6 +235,9 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
     ],
     footnote: "Pode invocar apenas animais",
     spellDetails: {
+      "Imobilizar Animal": HOLD_ANIMAL_DOMAIN_DETAILS,
+      "Invocar Aliado da Natureza IV": summonNatureDomainDetails(4),
+      "Invocar Aliado da Natureza VIII": summonNatureDomainDetails(8),
       "Forma Animal": {
         detailsPage: 242,
         summary: "Transforma até uma criatura voluntária por nível em animais do mesmo tipo; alvos não voluntários não são afetados. Cada criatura pode reassumir sua forma como uma ação de rodada completa, encerrando a magia apenas para si. O máximo de DV da forma é o menor entre os DV do alvo e o nível de conjurador, limitado a 20.",
@@ -162,6 +266,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
     ],
     footnote: "Somente como magia do ar",
     spellDetails: {
+      "Grupo de Elementais": ELEMENTAL_SWARM_DOMAIN_DETAILS,
       "Forma Gasosa": {
         detailsPage: 242,
         summary: "O alvo e seu equipamento tornam-se insubstanciais, recebem redução de dano 10/mágica e imunidade a venenos e acertos críticos; armadura material deixa de proteger, embora bônus de tamanho, Destreza, deflexão e armadura de força permaneçam. Não pode correr, atacar, manipular objetos ou ativar itens; voa a 3 m, atravessa frestas, é afetado pelo vento e não entra em líquidos. Itens continuamente ativos permanecem ativos.",
@@ -189,6 +294,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
     ],
     spellDetails: {
       "Dissipar o Mal": domainAlignmentDispelDetails("malignas"),
+      "Invocar Criaturas IX": summonCreaturesDomainDetails("bom"),
       "Destruição Sagrada": {
         detailsPage: 228,
         summary: "Afeta apenas criaturas malignas ou neutras. Causa 1d8 de dano a cada 2 níveis de conjurador (máximo 5d8) a cada criatura maligna, ou 1d6 por nível (máximo 10d6) contra extraplanares malignos, que também ficam cegos por 1 rodada. Um sucesso no teste de Vontade reduz o dano à metade e evita a cegueira. Criaturas neutras recebem metade do dano, não ficam cegas e podem reduzi-lo à metade novamente com um sucesso no teste de Vontade.",
@@ -216,7 +322,10 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Manto do Caos^F: +4 na CA, +4 resistência e RM 25 contra magias Leais",
       "9 Invocar Criaturas IX*: Invoca um ser extraplanar para auxiliar o conjurador",
     ],
-    spellDetails: { "Dissipar a Ordem": domainAlignmentDispelDetails("leais") },
+    spellDetails: {
+      "Dissipar a Ordem": domainAlignmentDispelDetails("leais"),
+      "Invocar Criaturas IX": summonCreaturesDomainDetails("caótico"),
+    },
     footnote: "Somente como magia do caos",
   }),
   domain({
@@ -298,6 +407,34 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Terremoto: Tremor intenso em 1,5 m/nível de raio",
       "9 Implosão: Mata 1 criatura/rodada",
     ],
+    spellDetails: {
+      "Implosão": IMPLOSION_DOMAIN_DETAILS,
+      "Infligir Ferimentos Leves": {
+        detailsPage: 246,
+        summary: "Causa 1d8 pontos de dano +1 por nível de conjurador (máximo +5); mortos-vivos são curados em vez de feridos.",
+        mechanics: {
+          components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+          duration: "Instantânea", savingThrow: "Vontade reduz à metade", spellResistance: "Sim",
+        },
+      },
+      "Infligir Ferimentos Críticos": {
+        detailsPage: 246,
+        summary: "Causa 4d8 pontos de dano +1 por nível de conjurador (máximo +20); mortos-vivos são curados em vez de feridos.",
+        mechanics: {
+          components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+          duration: "Instantânea", savingThrow: "Vontade reduz à metade", spellResistance: "Sim",
+        },
+      },
+      "Infligir Ferimentos Leves em Massa": {
+        detailsPage: 246,
+        summary: "Causa 1d8 pontos de dano +1 por nível de conjurador (máximo +25) a uma criatura por nível, todas a menos de 9 m entre si; mortos-vivos são curados em vez de feridos.",
+        mechanics: {
+          components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+          target: "Uma criatura/nível, todas a menos de 9 m entre si", duration: "Instantânea",
+          savingThrow: "Vontade reduz à metade", spellResistance: "Sim",
+        },
+      },
+    },
   }),
   domain({
     id: "enganacao", name: "Enganação", sourcePage: "187",
@@ -315,6 +452,16 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "9 Parar o Tempo: Você age livremente durante 1d4+1 rodadas",
     ],
     spellDetails: {
+      "Invisibilidade": {
+        detailsPage: 247,
+        summary: "O alvo e o equipamento que carrega ficam invisíveis. Luz não é ocultada; deixar um item para trás o torna visível, e um ataque direto encerra a magia (inclusive magia que mire um inimigo ou inclua um inimigo na área). Ações indiretas, como abrir uma porta, não são ataques por si só. A invisibilidade não silencia o alvo nem impede que sentidos especiais o detectem. Componente material arcano: um cílio envolvido em goma arábica.",
+        mechanics: {
+          components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Pessoal ou toque",
+          target: "Você ou criatura/objeto até 50 kg/nível tocado", duration: "1 minuto/nível (D)",
+          savingThrow: "Vontade anula (inofensiva) ou Vontade anula (inofensiva, objeto)",
+          spellResistance: "Sim (inofensiva) ou Sim (inofensiva, objeto)",
+        },
+      },
       "Dificultar Detecção": {
         detailsPage: 231,
         summary: "Protege uma criatura ou objeto contra adivinhações como vidência, clarividência/clariaudiência e localizar objeto. Se a magia de observação for lançada diretamente contra o alvo protegido, o conjurador precisa superar um teste resistido de conjurador; também protege o equipamento carregado pela criatura.",
@@ -342,6 +489,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "9 Grupo de Elementais◆: Invoca vários elementais",
     ],
     spellDetails: {
+      "Grupo de Elementais": ELEMENTAL_SWARM_DOMAIN_DETAILS,
       "Escudo do Fogo": {
         detailsPage: 236,
         summary: "Escolha o escudo de calor ou de frio: ataques corpo a corpo contra você causam dano ao atacante, e você recebe resistência ao tipo de energia oposto. Reflexos reduz à metade o dano do escudo.",
@@ -370,6 +518,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "9 Mão Esmagadora de Bigby: Uma grande mão Grande fornece cobertura, empurra ou esmaga seus inimigos",
     ],
     spellDetails: {
+      "Imunidade à Magia": SPELL_IMMUNITY_DOMAIN_DETAILS,
       "Força do Touro": {
         detailsPage: 241,
         summary: "Concede ao alvo +4 de bônus de melhoria em Força por 1 minuto/nível. O bônus não se acumula com outros bônus de melhoria para Força.",
@@ -419,7 +568,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Proteção Contra Magias^MF: Concede bônus de resistência de +8",
       "9 Disjunção de Mordenkainen: Dissipa magia e desencanta itens mágicos",
     ],
-    spellDetails: { "Dissipar Magia": DOMAIN_DISPEL_MAGIC_DETAILS },
+    spellDetails: { "Identificação": IDENTIFY_DOMAIN_DETAILS, "Dissipar Magia": DOMAIN_DISPEL_MAGIC_DETAILS },
   }),
   domain({
     id: "mal", name: "Mal", sourcePage: "188",
@@ -436,7 +585,10 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Aura Profana^F: +4 na CA, +4 resistência e RM 25 contra magias bondosas",
       "9 Invocar Criaturas IX*: Invoca um ser extraplanar para auxiliar o conjurador",
     ],
-    spellDetails: { "Dissipar o Bem": domainAlignmentDispelDetails("bondosas") },
+    spellDetails: {
+      "Dissipar o Bem": domainAlignmentDispelDetails("bondosas"),
+      "Invocar Criaturas IX": summonCreaturesDomainDetails("maligno"),
+    },
     footnote: "Somente como magia do mal",
   }),
   domain({
@@ -454,6 +606,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Criar Mortos-Vivos Maior^M: Cria sombras, aparições, espectros e devoradores",
       "9 Grito da Banshee: Mata uma criatura/nível",
     ],
+    spellDetails: { "Grito da Banshee": WAIL_OF_THE_BANSHEE_DOMAIN_DETAILS },
   }),
   domain({
     id: "ordem", name: "Ordem", sourcePage: "188",
@@ -472,6 +625,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
     ],
     spellDetails: {
       "Dissipar o Caos": domainAlignmentDispelDetails("caóticas"),
+      "Imobilizar Monstro": HOLD_MONSTER_DOMAIN_DETAILS,
       Ditado: DICTUM_DOMAIN_DETAILS,
       "Escudo da Ordem": {
         detailsPage: 236,
@@ -482,6 +636,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
           duration: "1 rodada/nível (D)", savingThrow: "Veja texto", spellResistance: "Sim (inofensiva)",
         },
       },
+      "Invocar Criaturas IX": summonCreaturesDomainDetails("leal"),
     },
     footnote: "Somente como magia da ordem",
   }),
@@ -500,6 +655,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Controlar Plantas: Controle as ações de uma ou mais criaturas tipo planta",
       "9 Homens Vegetais: Invoca 1d4+2 homens planta para auxiliarem o conjurador",
     ],
+    spellDetails: { "Homens Vegetais": PLANT_MEN_DOMAIN_DETAILS },
   }),
   domain({
     id: "protecao", name: "Proteção", sourcePage: "188-189",
@@ -517,6 +673,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Limpar a Mente: O alvo é imune a magias mentais/emocionais e vidência",
       "9 Esfera Prismática: Como muralha prismática, mas cerca você por todos os lados",
     ],
+    spellDetails: { "Imunidade à Magia": SPELL_IMMUNITY_DOMAIN_DETAILS },
   }),
   domain({
     id: "sol", name: "Sol", sourcePage: "189",
@@ -559,6 +716,17 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Instante de Presciência: O conjurador recebe bônus de intuição numa única jogada de ataque ou teste",
       "9 Milagre^X: Pede a intervenção de uma divindade",
     ],
+    spellDetails: {
+      "Instante de Presciência": {
+        detailsPage: 246,
+        detailsPageEnd: 247,
+        summary: "Concede ao conjurador um bônus de intuição igual ao nível de conjurador (máximo +25), utilizável uma vez em uma jogada de ataque, teste de habilidade, perícia ou resistência, ou na CA contra um ataque. O conjurador decide antes da jogada; ativar o efeito não é uma ação e pode ocorrer no turno de outra criatura. Depois do uso, a magia termina; não é possível manter dois Instantes de Presciência ativos.",
+        mechanics: {
+          components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+          duration: "1 hora/nível ou até ser descarregada", savingThrow: "Nenhum", spellResistance: "Não",
+        },
+      },
+    },
   }),
   domain({
     id: "terra", name: "Terra", sourcePage: "189",
@@ -575,6 +743,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Corpo de Ferro: Seu corpo se torna ferro vivo",
       "9 Grupo de Elementais*: Invoca vários elementais.",
     ],
+    spellDetails: { "Grupo de Elementais": ELEMENTAL_SWARM_DOMAIN_DETAILS },
     footnote: "Somente como magia da terra",
   }),
   domain({

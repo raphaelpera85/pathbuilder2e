@@ -231,6 +231,47 @@ describe("PortalPages", () => {
     expect(table).toHaveTextContent("Quasit");
   }, 45_000);
 
+  it("permite consultar e trocar o nível da tabela de Aliados da Natureza", async () => {
+    window.location.hash = "#/compendium";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 20_000 });
+    const filters = document.querySelectorAll<HTMLSelectElement>(".catalog-filters-collapsible select");
+    fireEvent.change(filters[0], { target: { value: "dnd35" } });
+    fireEvent.change(filters[1], { target: { value: "spell" } });
+    fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Invocar Aliado da Natureza IV" } });
+
+    const card = await screen.findByRole("button", { name: /^Invocar Aliado da Natureza IV,/ }, { timeout: 20_000 });
+    fireEvent.click(card);
+    const dialog = await screen.findByRole("dialog");
+    const table = within(dialog).getByRole("table", { name: "Aliados da Natureza — 4º nível da lista · p. 248" });
+    expect(within(table).getAllByRole("row")).toHaveLength(17);
+    expect(table).toHaveTextContent("Gavião Seta Jovem");
+
+    fireEvent.change(within(dialog).getByRole("combobox", { name: "Nível da lista" }), { target: { value: "1" } });
+    const firstLevelTable = within(dialog).getByRole("table", { name: "Aliados da Natureza — 1º nível da lista · p. 248" });
+    expect(within(firstLevelTable).getAllByRole("row")).toHaveLength(9);
+    expect(firstLevelTable).toHaveTextContent("Rato atroz");
+    expect(firstLevelTable).not.toHaveTextContent("Gavião Seta Jovem");
+  }, 45_000);
+
+  it("exibe tendências e restrições aquáticas na tabela de Invocar Criaturas", async () => {
+    window.location.hash = "#/compendium";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 20_000 });
+    const filters = document.querySelectorAll<HTMLSelectElement>(".catalog-filters-collapsible select");
+    fireEvent.change(filters[0], { target: { value: "dnd35" } });
+    fireEvent.change(filters[1], { target: { value: "spell" } });
+    fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Invocar Criaturas I" } });
+
+    const card = await screen.findByRole("button", { name: /^Invocar Criaturas I,/ }, { timeout: 20_000 });
+    fireEvent.click(card);
+    const dialog = await screen.findByRole("dialog");
+    const table = within(dialog).getByRole("table", { name: "Invocar Criaturas — 1º nível da lista · p. 250" });
+    expect(within(table).getAllByRole("row")).toHaveLength(14);
+    expect(within(table).getByRole("row", { name: /Cão celestial LB/ })).toBeInTheDocument();
+    expect(within(table).getByRole("row", { name: /Golfinho celestial NB Só pode ser invocado apenas em ambientes aquáticos/ })).toBeInTheDocument();
+  }, 45_000);
+
   it("retorna o foco ao card que abriu o detalhe do compêndio", async () => {
     window.location.hash = "#/compendium";
     render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });

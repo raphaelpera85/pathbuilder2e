@@ -5,6 +5,7 @@ import { getSystemActionItems } from "../data/systemActions";
 import { getSystemConditionItems } from "../data/systemConditions";
 import { DND35_CLASSES } from "../data/dnd35/dnd35Classes";
 import { DND35_SPELL_LISTS } from "../data/dnd35/dnd35SpellLists";
+import { getDnd35SummonTableForSpell } from "../data/dnd35/dnd35SummonTables";
 import { pf1eCoreCantripRows } from "../data/pf1e/pf1eSpells";
 import { OSE_CLASSIC_CORE_CLASS_IDS } from "../data/ose/oseRules";
 import systemsSnapshot from "../data/catalog/snapshots/systems.json";
@@ -228,6 +229,7 @@ function dnd35CoreSpellRows(): CatalogItemRecord[] {
     const sourcePage = Number(list.sourcePage.split("-")[0]);
     const spellClasses = list.classIds.map((classId) => DND35_CLASSES[classId]).filter(Boolean);
     const slug = spell.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    const summonTableId = getDnd35SummonTableForSpell(spell.name);
     return {
       id: `dnd35.phb.spell.${list.listId}.${list.spellLevel}.${slug}`,
       system_id: "dnd35",
@@ -255,6 +257,7 @@ function dnd35CoreSpellRows(): CatalogItemRecord[] {
         detailsPage: spell.detailsPage,
         detailsPageEnd: spell.detailsPageEnd,
         mechanics: spell.mechanics,
+        ...(summonTableId ? { summonTableId, summonTableMaxLevel: list.spellLevel } : {}),
         sourcePageRange: list.sourcePage,
         sourcePage,
       },
