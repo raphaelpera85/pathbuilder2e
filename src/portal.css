@@ -402,7 +402,12 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
 .compendium-spell-mechanics-grid .stat-box { min-width: 0; }
 .compendium-spell-mechanics-grid .stat-box strong { font-size: 11px; letter-spacing: 0.04em; }
 .compendium-spell-mechanics-grid .stat-box span { overflow-wrap: anywhere; }
-.compendium-table-scroll { max-width: 100%; overflow-x: auto; }
+.compendium-table-scroll { max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; }
+.compendium-table-scroll:focus-visible { outline: 2px solid var(--pb-orange); outline-offset: 2px; }
+.compendium-summon-level-label { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--pb-text); font-size: 12px; font-weight: 700; }
+.compendium-summon-level-label select { min-height: 38px; padding: 7px 10px; color: var(--pb-text); background: var(--pb-bg-input); border: 1px solid var(--pb-border-light); border-radius: 8px; font: inherit; }
+.compendium-summon-level-label select:focus-visible { outline: 2px solid var(--pb-orange); outline-offset: 2px; }
+.compendium-summon-footnote { font-size: 12px !important; }
 .compendium-options-table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 12px; line-height: 1.45; }
 .compendium-options-table caption { padding: 8px; color: var(--pb-orange-light); font-weight: 800; text-align: left; }
 .compendium-options-table th, .compendium-options-table td { padding: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); text-align: left; vertical-align: top; }

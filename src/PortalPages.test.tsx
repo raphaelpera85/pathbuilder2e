@@ -240,9 +240,13 @@ describe("PortalPages", () => {
     fireEvent.change(filters[1], { target: { value: "spell" } });
     fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Invocar Aliado da Natureza IV" } });
 
-    const card = await screen.findByRole("button", { name: /^Invocar Aliado da Natureza IV,/ }, { timeout: 20_000 });
+    const cards = await screen.findAllByRole("button", { name: /^Invocar Aliado da Natureza IV,/ }, { timeout: 20_000 });
+    const card = cards[0];
     fireEvent.click(card);
     const dialog = await screen.findByRole("dialog");
+    const listLevel = within(dialog).getByRole("combobox", { name: "Nível da lista" });
+    expect(listLevel).toHaveValue("4");
+    expect(within(listLevel).getAllByRole("option")).toHaveLength(4);
     const table = within(dialog).getByRole("table", { name: "Aliados da Natureza — 4º nível da lista · p. 248" });
     expect(within(table).getAllByRole("row")).toHaveLength(17);
     expect(table).toHaveTextContent("Gavião Seta Jovem");
@@ -263,13 +267,14 @@ describe("PortalPages", () => {
     fireEvent.change(filters[1], { target: { value: "spell" } });
     fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Invocar Criaturas I" } });
 
-    const card = await screen.findByRole("button", { name: /^Invocar Criaturas I,/ }, { timeout: 20_000 });
+    const cards = await screen.findAllByRole("button", { name: /^Invocar Criaturas I,/ }, { timeout: 20_000 });
+    const card = cards[0];
     fireEvent.click(card);
     const dialog = await screen.findByRole("dialog");
     const table = within(dialog).getByRole("table", { name: "Invocar Criaturas — 1º nível da lista · p. 250" });
     expect(within(table).getAllByRole("row")).toHaveLength(14);
     expect(within(table).getByRole("row", { name: /Cão celestial LB/ })).toBeInTheDocument();
-    expect(within(table).getByRole("row", { name: /Golfinho celestial NB Só pode ser invocado apenas em ambientes aquáticos/ })).toBeInTheDocument();
+    expect(within(table).getByRole("row", { name: /Golfinho celestial NB Somente em ambientes aquáticos/ })).toBeInTheDocument();
   }, 45_000);
 
   it("retorna o foco ao card que abriu o detalhe do compêndio", async () => {

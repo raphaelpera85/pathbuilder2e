@@ -14,7 +14,11 @@ describe("D&D 3.5 — tabelas de criaturas invocáveis do Livro do Jogador", () 
     expect(table.levels[8].creatures).toContainEqual(expect.objectContaining({ name: "Pixie (sprite)", alignment: "NB", special: expect.stringContaining("perda de memória") }));
     expect(table.levels[8].creatures).toContainEqual(expect.objectContaining({ name: "Unicórnio", alignment: "N" }));
     expect(table.levels[8].creatures).toContainEqual(expect.objectContaining({ name: "Arauto celestial", alignment: "N" }));
-    expect(table.footnotes).toHaveLength(2);
+    expect(table.footnotes).toEqual([
+      "Pode lançar a Dança Irresistível de Otto.",
+      "Pode ser invocado apenas em ambientes aquáticos.",
+    ]);
+    expect(table.levels[7].creatures[0].name).toBe("Tubarão atroz");
   });
 
   it("transcreve as 123 opções da tabela de Invocar Criaturas (p. 250), tendências e restrições aquáticas", () => {
@@ -26,7 +30,7 @@ describe("D&D 3.5 — tabelas de criaturas invocáveis do Livro do Jogador", () 
     expect(table.levels[8].creatures).toContainEqual(expect.objectContaining({ name: "Hezrou (demônio)", alignment: "CM" }));
     expect(table.levels[0].creatures.find(({ name }) => name === "Golfinho celestial")?.aquaticOnly).toBe(true);
     expect(table.levels[0].creatures.some(({ aquaticOnly }) => aquaticOnly)).toBe(true);
-    expect(table.footnotes).toHaveLength(1);
+    expect(table.footnotes).toEqual(["Só pode ser invocado apenas em ambientes aquáticos ou aguacentos."]);
   });
 
   it("associa cada família de magia à sua própria tabela local", () => {

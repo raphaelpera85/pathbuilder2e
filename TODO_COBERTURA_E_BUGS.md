@@ -1039,6 +1039,7 @@ Auditoria completa de `src/data/ose/oseRaces.ts` contra o **capítulo de raças 
 
 - [x] Completar as descrições mecânicas das 13 projeções de Invocar Aliado da Natureza (Druida I–IX e Patrulheiro I–IV), as 24 projeções de Invocar Criaturas (Bardo I–VI, Clérigo I–IX e Feiticeiro/Mago I–IX) e as três projeções de Invocar Enxames (Bardo, Druida e Feiticeiro/Mago 2), com páginas descritivas, componentes, execução, alcance, alvo/efeito, duração, resistência e resumo revisado.
 - [x] Registrar as ocorrências independentes de Invocar Aliado da Natureza IV/VIII no domínio Animais e Invocar Criaturas IX nos domínios Bem, Caos, Mal e Ordem.
-- As tabelas de criaturas invocáveis (Aliados da Natureza, p. 248; Invocar Criaturas, p. 250) ainda precisam ser transcritas como dados estruturados e expostas na consulta do compêndio; não são consideradas cobertas pelos resumos das magias.
+- [x] Transcrever as 88 opções de Aliados da Natureza (p. 248) e as 123 de Invocar Criaturas (p. 250), incluindo tendências, restrições aquáticas e notas especiais; exibir cada lista no detalhe da magia do compêndio e permitir escolher qualquer nível até o nível da magia.
+- A conferência da p. 248 separa Unicórnio e Arauto celestial como duas opções neutras, conforme a regra impressa de tendência padrão N.
 - Corrigida a lista de Druida 2: a p. 190 traz Invocar Aliado da Natureza II, não Invocar Criaturas I.
 - Fonte: `I:\Meu Drive\Livros RPG\D&D 3.5\D&D 3.5 - Livro do Jogador - Vários autores.pdf`, pp. 190 e 248–251. A tarefa ampla de completar e revisar as demais descrições do livro permanece aberta.

@@ -595,6 +595,36 @@ function CatalogPage() {
             </div>
           </section>}
 
+          {inspectedSummonTable && inspectedSummonMaxLevel > 0 && inspectedSummonList && <section className="compendium-modal-description compendium-summon-table" aria-labelledby="compendium-summon-title">
+            <h3 id="compendium-summon-title">{locale === "en" ? "Summonable creatures (Brazilian Portuguese source)" : locale === "es" ? "Criaturas invocables (fuente en portugués brasileño)" : "Criaturas invocáveis"}</h3>
+            <label className="compendium-summon-level-label" htmlFor="compendium-summon-list-level">{locale === "en" ? "List level" : locale === "es" ? "Nivel de lista" : "Nível da lista"}
+              <select id="compendium-summon-list-level" value={Math.min(summonListLevel, inspectedSummonMaxLevel)} onChange={(event) => setSummonListLevel(Number(event.target.value))}>
+                {inspectedSummonTable.levels.slice(0, inspectedSummonMaxLevel).map(({ level }) => <option key={level} value={level}>{level}</option>)}
+              </select>
+            </label>
+            <div className="compendium-table-scroll" tabIndex={0} aria-label={locale === "en" ? "Scrollable summon table" : locale === "es" ? "Tabla de invocación desplazable" : "Tabela de invocação rolável"}>
+              <table className="compendium-options-table">
+                <caption>{inspectedSummonTable.name + " — " + inspectedSummonList.level + "º " + (locale === "en" ? "list level" : locale === "es" ? "nivel de lista" : "nível da lista") + " · p. " + inspectedSummonTable.sourcePage}</caption>
+                <thead><tr>
+                  <th scope="col">{locale === "en" ? "Creature" : locale === "es" ? "Criatura" : "Criatura"}</th>
+                  <th scope="col">{locale === "en" ? "Alignment" : locale === "es" ? "Alineamiento" : "Tendência"}</th>
+                  <th scope="col">{locale === "en" ? "Notes" : locale === "es" ? "Notas" : "Observações"}</th>
+                </tr></thead>
+                <tbody>{inspectedSummonList.creatures.map((creature, index) => <tr key={creature.name + "-" + index}>
+                  <th scope="row">{creature.name}</th>
+                  <td>{creature.alignment || inspectedSummonTable.defaultAlignment || "—"}</td>
+                  <td>{[
+                    creature.special,
+                    creature.aquaticOnly
+                      ? locale === "en" ? "Only in aquatic environments." : locale === "es" ? "Solo puede invocarse en ambientes acuáticos." : "Somente em ambientes aquáticos."
+                      : undefined,
+                  ].filter(Boolean).join(" · ") || "—"}</td>
+                </tr>)}</tbody>
+              </table>
+            </div>
+            {inspectedSummonTable.defaultAlignment && <p className="compendium-summon-footnote">{locale === "en" ? "Default alignment: " + inspectedSummonTable.defaultAlignment + ", unless noted." : locale === "es" ? "Alineamiento predeterminado: " + inspectedSummonTable.defaultAlignment + ", salvo indicación contraria." : "Tendência padrão: " + inspectedSummonTable.defaultAlignment + ", salvo indicação em contrário."}</p>}
+          </section>}
+
           {/* DESCRIPTION */}
           {inspectedDescription && <div className="compendium-modal-description">
             <h3>{t("itemDetails")}</h3>
@@ -617,36 +647,6 @@ function CatalogPage() {
               </table>
             </div>}
           </div>}
-
-          {inspectedSummonTable && inspectedSummonMaxLevel > 0 && inspectedSummonList && <section className="compendium-modal-description compendium-summon-table" aria-labelledby="compendium-summon-title">
-            <h3 id="compendium-summon-title">{locale === "en" ? "Summonable creatures" : locale === "es" ? "Criaturas invocables" : "Criaturas invocáveis"}</h3>
-            <label className="compendium-summon-level-label" htmlFor="compendium-summon-list-level">{locale === "en" ? "List level" : locale === "es" ? "Nivel de lista" : "Nível da lista"}
-              <select id="compendium-summon-list-level" value={Math.min(summonListLevel, inspectedSummonMaxLevel)} onChange={(event) => setSummonListLevel(Number(event.target.value))}>
-                {inspectedSummonTable.levels.slice(0, inspectedSummonMaxLevel).map(({ level }) => <option key={level} value={level}>{level}</option>)}
-              </select>
-            </label>
-            <div className="compendium-table-scroll" tabIndex={0} aria-label={locale === "en" ? "Scrollable summon table" : locale === "es" ? "Tabla de invocación desplazable" : "Tabela de invocação rolável"}>
-              <table className="compendium-options-table">
-                <caption>{`${inspectedSummonTable.name} — ${inspectedSummonList.level}º ${locale === "en" ? "list level" : locale === "es" ? "nivel de lista" : "nível da lista"} · p. ${inspectedSummonTable.sourcePage}`}</caption>
-                <thead><tr>
-                  <th scope="col">{locale === "en" ? "Creature" : locale === "es" ? "Criatura" : "Criatura"}</th>
-                  <th scope="col">{locale === "en" ? "Alignment" : locale === "es" ? "Alineamiento" : "Tendência"}</th>
-                  <th scope="col">{locale === "en" ? "Notes" : locale === "es" ? "Notas" : "Observações"}</th>
-                </tr></thead>
-                <tbody>{inspectedSummonList.creatures.map((creature, index) => <tr key={`${creature.name}-${index}`}>
-                  <th scope="row">{creature.name}</th>
-                  <td>{creature.alignment || inspectedSummonTable.defaultAlignment || "—"}</td>
-                  <td>{[
-                    creature.special,
-                    creature.aquaticOnly
-                      ? locale === "en" ? "Only in aquatic environments." : locale === "es" ? "Solo puede invocarse en ambientes acuáticos." : "Só pode ser invocado apenas em ambientes aquáticos."
-                      : undefined,
-                  ].filter(Boolean).join(" · ") || "—"}</td>
-                </tr>)}</tbody>
-              </table>
-            </div>
-            {inspectedSummonTable.defaultAlignment && <p className="compendium-summon-footnote">{locale === "en" ? `Default alignment: ${inspectedSummonTable.defaultAlignment}, unless noted.` : locale === "es" ? `Alineamiento predeterminado: ${inspectedSummonTable.defaultAlignment}, salvo indicación contraria.` : `Tendência padrão: ${inspectedSummonTable.defaultAlignment}, salvo indicação em contrário.`}</p>}
-          </section>}
 
           {/* SOURCE CITATION */}
           <footer className="compendium-modal-footer">
