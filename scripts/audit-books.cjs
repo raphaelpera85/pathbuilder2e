@@ -6,6 +6,7 @@ const { PDFDocument } = require("pdf-lib");
 const positionalArgs = process.argv.slice(2).filter((argument) => !argument.startsWith("--"));
 const configuredBooksDir = positionalArgs[0] || process.env.LIVROS_PATH;
 const defaultBooksDirs = [
+  "I:\\Meu Drive\\Livros RPG",
   "I:\\Meu Drive\\Livros\\Livros RPG",
   "D:\\Users\\rapha\\Documents\\Projetos\\RPG\\livros",
   "D:\\Users\\rapha\\Documents\\Projetos\\RPG\\Livros RPG",
@@ -24,6 +25,7 @@ if (!fs.existsSync(booksDir)) {
     bookPdfs: 0,
     readablePdfs: 0
   }, null, 2));
+  process.exitCode = 1;
 } else {
 const excluded = /ficha|poster|map|folio|raw|test/i;
   const pdfInfoPath = process.env.PDFINFO_PATH || "pdfinfo";
@@ -50,7 +52,7 @@ const excluded = /ficha|poster|map|folio|raw|test/i;
     const characters = textPath ? fs.readFileSync(textPath, "utf8").length : 0;
     return { pdf: entry.relativePath, pdfPath: entry.fullPath, text: textEntry?.relativePath || null, textCharacters: characters, pairedTextUsable: characters > 1000 };
   });
-  Promise.all(reports.map(async (report) => {
+  async function auditReport(report) {
     try {
       const pdfPath = report.pdfPath;
       const fileSize = fs.statSync(pdfPath).size;
@@ -74,7 +76,18 @@ const excluded = /ficha|poster|map|folio|raw|test/i;
       report.pdfReadable = false;
       report.pdfError = error instanceof Error ? error.message : String(error);
     }
-  })).then(() => {
+  }
+  async function auditReportsWithLimit(limit) {
+    let nextIndex = 0;
+    const workerCount = Math.min(limit, reports.length);
+    await Promise.all(Array.from({ length: workerCount }, async () => {
+      while (nextIndex < reports.length) {
+        const report = reports[nextIndex++];
+        await auditReport(report);
+      }
+    }));
+  }
+  auditReportsWithLimit(2).then(() => {
     const missingText = reports.filter((report) => !report.text || !report.pairedTextUsable);
     const invalidPdf = reports.filter((report) => report.pdfReadable === false);
     const result = {

@@ -5,6 +5,7 @@ import {
 } from "./dnd35Domains";
 import { DND35_RACES } from "./dnd35Races";
 import { DND35_SKILLS } from "./dnd35Skills";
+import { DND35_SPELL_LISTS } from "./dnd35SpellLists";
 
 /** Auditoria dos domínios (p. 186-189) contra a Tabela 3-7: Deuses (p. 32). */
 describe("D&D 3.5 — domínios de clérigo e Tabela 3-7", () => {
@@ -47,6 +48,28 @@ describe("D&D 3.5 — domínios de clérigo e Tabela 3-7", () => {
   it("magias de domínio de 1º nível: Cura → Curar Ferimentos Leves, Sol → Suportar Elementos", () => {
     expect(dnd35DomainSpellsAt(["cura", "sol"], 1).map(({ spell }) => spell.name)).toEqual(["Curar Ferimentos Leves", "Suportar Elementos"]);
     expect(dnd35DomainSpellsAt(["sorte"], 9)[0].spell.flags).toEqual(["X"]);
+  });
+
+  it("preserva a ficha de Destruição Sagrada somente no domínio do Bem", () => {
+    const sacredDestruction = DND35_DOMAINS.find((d) => d.id === "bem")?.spells.find((s) => s.name === "Destruição Sagrada");
+    expect(sacredDestruction).toMatchObject({
+      level: 4,
+      detailsPage: 228,
+      mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+        target: "Explosão de 6 m de raio", duration: "Instantânea (1 rodada; veja texto)",
+        savingThrow: "Vontade parcial; veja texto", spellResistance: "Sim",
+      },
+      summary: "Afeta apenas criaturas malignas ou neutras. Causa 1d8 de dano a cada 2 níveis de conjurador (máximo 5d8) a cada criatura maligna, ou 1d6 por nível (máximo 10d6) contra extraplanares malignos, que também ficam cegos por 1 rodada. Um sucesso no teste de Vontade reduz o dano à metade e evita a cegueira. Criaturas neutras recebem metade do dano, não ficam cegas e podem reduzi-lo à metade novamente com um sucesso no teste de Vontade.",
+    });
+    expect(DND35_SPELL_LISTS.flatMap((list) => list.entries).some((s) => s.name === "Destruição Sagrada")).toBe(false);
+  });
+
+  it("registra as descrições de domínio de Conhecimento da p. 230 sem criar magias de Clérigo", () => {
+    const knowledge = DND35_DOMAINS.find((d) => d.id === "conhecimento");
+    expect(knowledge?.spells.find((s) => s.name === "Detectar Portas Secretas")).toMatchObject({ detailsPage: 230, mechanics: { components: "V, G" } });
+    expect(knowledge?.spells.find((s) => s.name === "Detectar Pensamentos")).toMatchObject({ detailsPage: 230, detailsPageEnd: 231, mechanics: { components: "V, G, F/FD" } });
+    expect(DND35_SPELL_LISTS.some((list) => list.listId === "clerigo" && list.entries.some((s) => ["Detectar Portas Secretas", "Detectar Pensamentos"].includes(s.name)))).toBe(false);
   });
 
   it("domínios de tendência exigem o mesmo eixo na tendência do clérigo", () => {

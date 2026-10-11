@@ -35,6 +35,7 @@ import { isSupabaseConfigured } from "./lib/supabase";
 import "./account.css";
 import { useI18n } from "./i18n";
 import { updateAccountViewState } from "./accountState";
+import { useModalInertBackground } from "./hooks/useModalInertBackground";
 import { SystemSelectorModal } from "./SystemSelectorModal";
 import type { RPGSystemId } from "./types";
 import { getCharacterEditorRoute, getPersistedCharacterSystemId, hydrateCharacterForEditor } from "./services/characterEditorRouting";
@@ -77,6 +78,7 @@ export function AccountPortal() {
   const [newPassword, setNewPassword] = useState("");
   const triggerRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
+  useModalInertBackground(dialogRef, open);
   const charactersLoadIdRef = useRef(0);
   const autoSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const autoSaveRetryTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);

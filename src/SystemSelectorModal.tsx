@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { useTranslation } from "./i18n";
 import { DEFAULT_RPG_SYSTEMS } from "./services/catalog";
 import type { IRPGSystem, RPGSystemId } from "./types";
+import { useModalInertBackground } from "./hooks/useModalInertBackground";
 
 type SystemCoverage = {
   ancestries: string;
@@ -42,6 +43,7 @@ export const SystemSelectorModal: React.FC<SystemSelectorModalProps> = ({
 }) => {
   const { t, locale } = useTranslation();
   const modalContentRef = useRef<HTMLDivElement>(null);
+  useModalInertBackground(modalContentRef, isOpen);
   const coverageLabels = COVERAGE_LABELS[locale] || COVERAGE_LABELS["pt-BR"];
   // Sistemas marcados `active: false` (ex.: pf1e, sem criação de fichas
   // ainda) ficam catalogados para o inventário de cobertura, mas fora do

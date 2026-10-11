@@ -166,6 +166,27 @@ describe("PortalPages", () => {
     expect(dialog).toHaveTextContent("Livro do Jogador · p. 184");
   }, 45_000);
 
+  it("exibe mecânicas, resumo parcial e intervalo das páginas de detalhe de magia D&D 3.5", async () => {
+    window.location.hash = "#/compendium";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 20_000 });
+    const filters = document.querySelectorAll<HTMLSelectElement>(".catalog-filters-collapsible select");
+    fireEvent.change(filters[0], { target: { value: "dnd35" } });
+    fireEvent.change(filters[1], { target: { value: "spell" } });
+    fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Aprisionar a Alma" } });
+
+    const card = await screen.findByRole("button", { name: /Aprisionar a Alma, Classe: Feiticeiro, Mago/ }, { timeout: 20_000 });
+    fireEvent.click(card);
+    const dialog = await screen.findByRole("dialog");
+    expect(dialog).toHaveTextContent("Resumo parcial");
+    expect(dialog).toHaveTextContent("Dados da magia");
+    expect(dialog).toHaveTextContent("V, G, M, F");
+    expect(dialog).toHaveTextContent("Curto (7,5 m + 1,5 m/2 níveis)");
+    expect(dialog).toHaveTextContent("Vontade anula (magia completa); nenhum (armadilha)");
+    expect(dialog).toHaveTextContent("Livro do Jogador · p. 196-197");
+    expect(dialog).toHaveTextContent("Descrição: pp. 203–204");
+  }, 45_000);
+
   it("exibe dados estruturados da origem T20 no detalhe do catálogo", async () => {
     window.location.hash = "#/compendium";
     render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
@@ -222,10 +243,14 @@ describe("PortalPages", () => {
     const card = screen.getByRole("button", { name: /^Anão, Modos:/ });
     card.focus();
     fireEvent.keyDown(card, { key: "Enter" });
-    await waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument());
+    const dialog = await screen.findByRole("dialog");
+    const backgroundToolbar = document.querySelector(".catalog-toolbar");
+    expect(backgroundToolbar).toHaveAttribute("inert");
+    expect(dialog).not.toHaveAttribute("inert");
     expect(document.activeElement).toBe(screen.getByRole("button", { name: "Fechar" }));
     fireEvent.keyDown(document, { key: "Escape" });
     await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
+    expect(backgroundToolbar).not.toHaveAttribute("inert");
     expect(document.activeElement).toBe(card);
   }, 40_000);
 

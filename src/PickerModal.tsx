@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { PickerBridge, PickerItem, PickerSelectionOption, PickerType } from "./types";
+import { useModalInertBackground } from "./hooks/useModalInertBackground";
 import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 import { coinsToCopper, parsePriceToCopper, formatCopperToString, formatPriceToLocale } from "./utils/economy";
 import { localizeSourceBookName } from "./data/sources";
@@ -514,6 +515,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
 
   const searchRef = useRef<HTMLInputElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
+  useModalInertBackground(dialogRef, Boolean(pickerType));
   const itemRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const returnFocusRef = useRef<HTMLElement | null>(null);
 

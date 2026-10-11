@@ -14,6 +14,19 @@ afterEach(() => {
 });
 
 describe("auditoria do corpus de livros", () => {
+  it("retorna falha quando o diretório solicitado não existe", () => {
+    const missingDirectory = path.join(os.tmpdir(), `pathbuilder-books-missing-${Date.now()}`);
+    const result = spawnSync(
+      process.execPath,
+      ["scripts/audit-books.cjs", missingDirectory],
+      { cwd: process.cwd(), encoding: "utf8", windowsHide: true },
+    );
+
+    expect(result.status).toBe(1);
+    expect(result.stdout).toContain('"status": "skipped_missing_directory"');
+    expect(result.stderr).toContain(missingDirectory);
+  });
+
   it("informa texto TXT pareado útil sem confundi-lo com detecção de páginas escaneadas", async () => {
     const directory = mkdtempSync(path.join(os.tmpdir(), "pathbuilder-books-audit-"));
     temporaryDirectories.push(directory);

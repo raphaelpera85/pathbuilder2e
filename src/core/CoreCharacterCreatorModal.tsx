@@ -12,6 +12,7 @@ import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_CLASS_CHOICES, DND5E_LAND_CIRCLE_SPEL
 import { DND5E_FEAT_CHOICES } from "../data/dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "../data/t20/t20Compendium";
 import { getSystemConditionItems } from "../data/systemConditions";
+import { useModalInertBackground } from "../hooks/useModalInertBackground";
 
 interface CoreCharacterCreatorModalProps {
   isOpen: boolean;
@@ -31,6 +32,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const catalog = useMemo(() => getCoreCatalog(system), [system]);
   const [character, setCharacter] = useState<MultiSystemCharacter>(() => engine.createDefaultCharacter());
   const modalContentRef = useRef<HTMLElement>(null);
+  useModalInertBackground(modalContentRef, isOpen);
   const [error, setError] = useState<string | null>(null);
   const [generationMethod, setGenerationMethod] = useState<AbilityGenerationMethod>("point_buy");
   const featChoiceCatalog = system === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES;

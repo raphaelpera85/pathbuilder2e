@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { useModalInertBackground } from "../hooks/useModalInertBackground";
 import {
   type OseAbilityName,
   getOseStandardModifier,
@@ -109,6 +110,7 @@ export function OseCharacterCreatorModal({
 }: OseCharacterCreatorModalProps) {
   const [step, setStep] = useState<number>(1);
   const modalRef = useRef<HTMLDivElement>(null);
+  useModalInertBackground(modalRef, isOpen);
   const [validationMessage, setValidationMessage] = useState<string>("");
   const [charName, setCharName] = useState("Aventureiro de Karameikos");
   const [creationMode, setCreationMode] = useState<"advanced" | "classic" | "basico">("advanced");

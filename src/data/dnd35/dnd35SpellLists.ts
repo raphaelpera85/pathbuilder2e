@@ -4,7 +4,8 @@
 //   Clérigo nível 0 (preces) e 1º nível — p. 183
 //   Feiticeiro e Mago nível 0 (truques) — p. 192-193; 1º nível — p. 193;
 //   2º nível — pp. 193-194; 3º nível — p. 194; 4º nível — pp. 194-195;
-//   5º nível — p. 195; 6º nível — pp. 195-196; 7º-8º níveis — pp. 196-197
+//   5º nível — p. 195; 6º nível — pp. 195-196; 7º nível — p. 196;
+//   8º nível — pp. 196-197; 9º nível — p. 197
 //   Bardo nível 0 (truques) — p. 181-182; 1º nível — p. 182
 //   Bardo 2º e 3º níveis — p. 182; 4º nível — pp. 182-183; 5º e 6º níveis — p. 183
 //   Druida nível 0 (preces) — p. 189; 1º nível — pp. 189-190; 2º-4º níveis — p. 190;
@@ -19,18 +20,33 @@
 // As listas de Feiticeiro e Mago são agrupadas por escola na margem
 // (Abjur, Adiv, Conj, Encan, Evoc, Ilus, Necro, Trans, Univ).
 //   Clérigo 2º nível — p. 184
-// Ainda não transcrito: Feiticeiro/Mago 9º; também faltam as descrições
-// completas das magias.
+// As listas de níveis estão transcritas; descrições completas seguem sendo
+// adicionadas individualmente após conferência visual das páginas do livro.
 // ============================================================================
 
 export type Dnd35SpellSchool = "Abjur" | "Adiv" | "Conj" | "Encan" | "Evoc" | "Ilus" | "Necro" | "Trans" | "Univ";
 export type Dnd35SpellComponentFlag = "M" | "F" | "X";
+
+export interface Dnd35SpellMechanics {
+  components: string;
+  castingTime: string;
+  range: string;
+  target: string;
+  duration: string;
+  savingThrow: string;
+  spellResistance: string;
+}
 
 export interface Dnd35SpellListEntry {
   name: string;
   summary: string;
   flags: Dnd35SpellComponentFlag[];
   school?: Dnd35SpellSchool; // só nas listas de Feiticeiro/Mago
+  detailsPage?: number; // página da descrição, distinta da página da lista
+  detailsPageEnd?: number; // última página da descrição, quando ela continua
+  mechanics?: Dnd35SpellMechanics;
+  /** Só marque false quando o resumo mecânico foi conferido individualmente na descrição. */
+  summaryOnly?: boolean;
 }
 
 export interface Dnd35SpellList {
@@ -56,6 +72,45 @@ function entry(line: string, school?: Dnd35SpellSchool): Dnd35SpellListEntry {
 
 function bySchool(groups: [Dnd35SpellSchool, string[]][]): Dnd35SpellListEntry[] {
   return groups.flatMap(([school, lines]) => lines.map((l) => entry(l, school)));
+}
+
+function withVerifiedCommandUndeadDetails(spell: Dnd35SpellListEntry): Dnd35SpellListEntry {
+  if (spell.name !== "Comandar Mortos-Vivos") return spell;
+  return {
+    ...spell,
+    summaryOnly: false,
+    summary: "Controla um morto-vivo. Uma criatura inteligente que falhe em Vontade trata o conjurador como amistoso e não o ataca; ordens incomuns exigem teste resistido de Carisma. Mortos-vivos sem inteligência não têm resistência e só entendem comandos básicos audíveis; nenhum obedece ordens suicidas ou obviamente perigosas. Atitudes hostis do conjurador ou de seus aliados encerram o efeito. Exige carne crua e uma lasca de osso.",
+    detailsPage: 216,
+    mechanics: {
+      components: "V, G, M",
+      castingTime: "1 ação padrão",
+      range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Um morto-vivo",
+      duration: "1 dia/nível",
+      savingThrow: "Vontade anula (veja texto)",
+      spellResistance: "Sim",
+    },
+  };
+}
+
+function withVerifiedCommandPlantsDetails(line: string): Dnd35SpellListEntry {
+  const spell = entry(line);
+  if (spell.name !== "Comandar Plantas") return spell;
+  return {
+    ...spell,
+    summaryOnly: false,
+    summary: "Controla criaturas tipo planta, que compreendem o conjurador e tratam sua atitude como amistosa; não o atacam enquanto a magia durar. Tarefas incomuns exigem teste resistido de Carisma, e ordens suicidas ou claramente perigosas não são obedecidas. O total não pode exceder 2 DV por nível de conjurador, com alvos a até 9 m uns dos outros.",
+    detailsPage: 216,
+    mechanics: {
+      components: "V",
+      castingTime: "1 ação padrão",
+      range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Até 2 DV/nível de criaturas tipo planta",
+      duration: "1 dia/nível",
+      savingThrow: "Vontade anula",
+      spellResistance: "Sim",
+    },
+  };
 }
 
 const CORE_ARCANE_AND_CLERIC_LISTS: Dnd35SpellList[] = [
@@ -248,7 +303,7 @@ const CORE_ARCANE_AND_CLERIC_LISTS: Dnd35SpellList[] = [
       ["Necro", [
         "Aterrorizar: Criaturas com 6 DV ou menos ficam em pânico",
         "Cegueira/Surdez: Torna o alvo cego ou surdo",
-        "Comandar Mortos-Vivos: Morto-vivo obedece seus comandos",
+        "Comandar Mortos-Vivos^M: Morto-vivo obedece seus comandos",
         "Mão Espectral: Cria mão brilhante que faz ataques de toque",
         "Toque do Carníçal: Paralisa um alvo, que exala um cheiro horrendo",
         "Vitalidade Ilusória: Alvo recebe 1d10 PV temporário +1/nível (máx. 10)",
@@ -269,7 +324,7 @@ const CORE_ARCANE_AND_CLERIC_LISTS: Dnd35SpellList[] = [
         "Vigor do Urso: O alvo ganha +4 Con por 1 min/nível",
         "Visão no Escuro: O alvo enxerga a 18 m na escuridão total",
       ]],
-    ]),
+    ]).map(withVerifiedCommandUndeadDetails),
   },
   {
     listId: "feiticeiro_mago", classIds: ["feiticeiro", "mago"], spellLevel: 3, sourcePage: "194",
@@ -374,42 +429,26 @@ const CORE_ARCANE_AND_CLERIC_LISTS: Dnd35SpellList[] = [
       ]],
       ["Ilus", [
         "Assassino Fantasmagórico: Ilusão temerária mata alvo ou causa 3d6 de dano",
-        "Conjuração de Sombras: Imita conjurações de até 4º nível, mas apenas 20% reais",
+        "Conjuração de Sombras: Imita conjurações de até 3º nível, mas apenas 20% reais",
         "Invisibilidade Maior: Como invisibilidade, mas o alvo pode atacar",
         "Padrão Prismático: Luz impede 24 DV de criaturas de atacar ou se afastar",
         "Parede Ilusória: Muro, chão ou teto parecem reais, mas qualquer coisa pode atravessá-los",
-        "Similaridade: Muda a aparência de 1 pessoa/2 níveis",
-        "Sonho: Envia uma mensagem para qualquer alvo dormindo",
         "Terreno Ilusório: Faz um tipo de terreno parecer outro (de campo para floresta, etc.)",
-        "Visão Falsa^M: Engana uma vidência usando ilusões",
       ]],
       ["Necro", [
         "Criar Mortos-Vivos Menor: Cria zumbis e esqueletos",
         "Drenar Temporário: Alvo perde 1d4 níveis",
-        "Malogro: Murcha 1 planta ou causa 1d6/nível de dano contra criaturas tipo planta",
         "Medo: Os alvos dentro do cone fogem durante 1 rodada/nível",
-        "Onda da Fadiga: Diversos alvos ficam fatigados",
         "Praga: Infecta um alvo com a doença escolhida",
-        "Recipiente Arcano^F: Permite possuir outra criatura",
         "Rogar Maldição: −6 numa habilidade; −4 nos ataques, testes de resistência e testes; ou 50% de chance de perder cada ação",
-        "Símbolo da Dor^M: Runa ativada causa dor às criaturas próximas",
       ]],
       ["Trans", [
-        "Ampliar Animais: Um animal/2 níveis dobra de tamanho",
         "Aumentar Pessoa em Massa: Aumenta diversas criaturas",
-        "Compor: Transforma matéria-prima em itens trabalhados",
-        "Criar Passagens: Abre um buraco em madeira ou pedra",
-        "Lama em Pedra: Transforma dois cubos de 3 m/nível",
         "Melhoria Mnemônica de Rary^F: (Somente Mago) Prepare magias adicionais ou mantenha uma recentemente lançada",
         "Metamorfose: Alvo voluntário assume uma nova forma",
-        "Metamorfose Tórrida: Transforma o alvo num animal inofensivo",
         "Moldar Rochas: Molda pedra em qualquer forma",
-        "Pedra em Lama: Transforma dois cubos de 3 m/nível",
         "Reduzir Pessoa em Massa: Reduz diversas criaturas",
-        "Telecinésia: Arremessa ou movimenta objeto, ataca ou arremessa criatura",
-        "Vôo Prolongado: O conjurador voa com deslocamento de 12 m e pode “marchar”",
       ]],
-      ["Univ", ["Permanência^X: Torna certas magias permanentes"]],
     ]),
   },
   {
@@ -453,7 +492,27 @@ const CORE_ARCANE_AND_CLERIC_LISTS: Dnd35SpellList[] = [
         "Imagem Persistente: Como imagem maior, mas não é necessária concentração",
         "Miragem Arcana: Como terreno ilusório, mas com estruturas",
         "Pesadelo: Envia visão que causa 1d10 de dano e fadiga",
+        "Similaridade: Muda a aparência de 1 pessoa/2 níveis",
+        "Sonho: Envia uma mensagem para qualquer alvo dormindo",
+        "Visão Falsa^M: Engana uma vidência usando ilusões",
       ]],
+      ["Necro", [
+        "Malogro: Murcha 1 planta ou causa 1d6/nível de dano contra criaturas tipo planta",
+        "Onda da Fadiga: Diversos alvos ficam fatigados",
+        "Recipiente Arcano^F: Permite possuir outra criatura",
+        "Símbolo da Dor^M: Runa ativada causa dor às criaturas próximas",
+      ]],
+      ["Trans", [
+        "Ampliar Animais: Um animal/2 níveis dobra de tamanho",
+        "Compor: Transforma matéria-prima em itens trabalhados",
+        "Criar Passagens: Abre um buraco em madeira ou pedra",
+        "Lama em Pedra: Transforma dois cubos de 3 m/nível",
+        "Metamorfose Tórrida: Transforma o alvo num animal inofensivo",
+        "Pedra em Lama: Transforma dois cubos de 3 m/nível",
+        "Telecinésia: Arremessa ou movimenta objeto, ataca ou arremessa criatura",
+        "Vôo Prolongado: O conjurador voa com deslocamento de 12 m e pode “marchar”",
+      ]],
+      ["Univ", ["Permanência^X: Torna certas magias permanentes"]],
     ]),
   },
   {
@@ -496,7 +555,6 @@ const CORE_ARCANE_AND_CLERIC_LISTS: Dnd35SpellList[] = [
         "Imagem Programada^M: Como imagem maior, mas disparada por um evento",
         "Invisibilidade em Massa: Como invisibilidade, mas afeta todos dentro do alcance",
         "Projetar Imagem: Cópia ilusória que pode conversar e lançar magias",
-        "Simulacro^MX: Cria uma duplicata parcialmente real de uma criatura",
         "Véu: Muda a aparência de um grupo de criaturas",
       ]],
       ["Necro", [
@@ -504,7 +562,6 @@ const CORE_ARCANE_AND_CLERIC_LISTS: Dnd35SpellList[] = [
         "Círculo da Morte^M: Mata 1d4 DV/nível",
         "Controlar Mortos-Vivos: Os mortos-vivos não atacam enquanto você os comandar",
         "Criar Mortos-Vivos^M: Cria carniçais, lívidos, múmias ou mohrgs",
-        "Dedo da Morte: Mata um alvo",
         "Destruir Mortos-Vivos^M: Destrói 1d4 DV/nível de mortos-vivos (máx. 20d4)",
         "Símbolo da Fraqueza^M: Runa ativada enfraquece as criaturas próximas",
         "Símbolo do Medo^M: Runa ativada causa medo às criaturas próximas",
@@ -514,6 +571,7 @@ const CORE_ARCANE_AND_CLERIC_LISTS: Dnd35SpellList[] = [
         "Astúcia da Raposa em Massa: Como astúcia da raposa, mas afeta 1 alvo/nível",
         "Carne para Pedra: Transforma a criatura alvo em estátua",
         "Controlar Água: Aumenta ou abaixa água",
+        "Controlar o Clima: Muda o clima na área local",
         "Desintegrar: Faz uma criatura ou objeto desaparecer",
         "Elucubração de Mordenkainen: (Somente Mago) Relembra magia de 5º nível ou menor",
         "Esplendor da Águia em Massa: Como esplendor da águia, mas afeta 1 alvo/nível",
@@ -524,11 +582,10 @@ const CORE_ARCANE_AND_CLERIC_LISTS: Dnd35SpellList[] = [
         "Transformação de Tenser^M: Você recebe bônus de combate",
         "Vigor do Urso em Massa: Como vigor do urso, mas afeta 1 alvo/nível",
       ]],
-      ["Univ", ["Desejo Restrito^X: Altera a realidade — dentro de certos limites"]],
     ]),
   },
   {
-    listId: "feiticeiro_mago", classIds: ["feiticeiro", "mago"], spellLevel: 7, sourcePage: "196-197",
+    listId: "feiticeiro_mago", classIds: ["feiticeiro", "mago"], spellLevel: 7, sourcePage: "196",
     entries: bySchool([
       ["Abjur", [
         "Banimento: Expulsa 2 DV/nível de extraplanares",
@@ -565,19 +622,22 @@ const CORE_ARCANE_AND_CLERIC_LISTS: Dnd35SpellList[] = [
       ]],
       ["Ilus", [
         "Conjuração de Sombras Maior: Como conjuração de sombras, mas até 6º nível e 60% real",
+        "Invisibilidade em Massa: Como invisibilidade, mas afeta todos dentro do alcance",
+        "Projetar Imagem: Cópia ilusória que pode conversar e lançar magias",
+        "Simulacro^MX: Cria uma duplicata parcialmente real de uma criatura",
       ]],
       ["Necro", [
-        "Clone^MF: Duplicata desperta quando o original morre",
-        "Criar Mortos-Vivos Maior^M: Cria sombras, aparições, espectros e devoradores",
-        "Evaporação: Causa 1d6 de dano/nível em 9 m",
-        "Ondas da Exaustão: Vários alvos ficam exaustos",
-        "Símbolo da Morte^M: Runa ativada mata as criaturas próximas",
+        "Controlar Mortos-Vivos: Os mortos-vivos não atacam enquanto você os comandar",
+        "Dedo da Morte: Mata um alvo",
+        "Símbolo da Fraqueza^M: Runa ativada enfraquece as criaturas próximas",
       ]],
       ["Trans", [
-        "Corpo de Ferro: Seu corpo se torna ferro vivo",
-        "Estase Temporal^M: Coloca alvo em animação suspensa",
-        "Metamorfosear Objetos: Transforma qualquer alvo em outra coisa",
+        "Controlar o Clima: Muda o clima na área local",
+        "Estátua: O alvo pode se tornar uma estátua quando desejar",
+        "Inverter a Gravidade: Objetos e criaturas sofrem efeitos de gravidade invertida",
+        "Passeio Etéreo: Você fica etéreo durante 1 rodada/nível",
       ]],
+      ["Univ", ["Desejo Restrito^X: Altera a realidade — dentro de certos limites"]],
     ]),
   },
   {
@@ -596,7 +656,7 @@ const CORE_ARCANE_AND_CLERIC_LISTS: Dnd35SpellList[] = [
       ]],
       ["Conj", [
         "Âncora Planar Maior: Como âncora planar menor, mas até 18 DV",
-        "Aprisionar a Alma^MF: Aprisiona alvo dentro de uma gema",
+        "Aprisionar a Alma^MF: Aprisiona a força vital e o corpo do alvo numa gema; a versão completa permite resistência, enquanto a armadilha ativa ao toque. A gema custa ao menos 1.000 PO por Dado de Vida e, ao ser quebrada, libera e permite materializar a criatura",
         "Invocar Criaturas VIII: Invoca um ser extraplanar para auxiliá-lo",
         "Labirinto: Prende um alvo em labirinto extradimensional",
         "Nuvem Incendiária: Nuvem causa 4d6 de dano de fogo/rodada",
@@ -635,7 +695,136 @@ const CORE_ARCANE_AND_CLERIC_LISTS: Dnd35SpellList[] = [
         "Estase Temporal^M: Coloca alvo em animação suspensa",
         "Metamorfosear Objetos: Transforma qualquer alvo em outra coisa",
       ]],
-    ]),
+    ]).map((spell) => {
+      if (spell.name === "Clone") {
+        return {
+          ...spell,
+          summary: "Cria uma duplicata que pode receber a alma do original quando ele morrer, se ela estiver livre e desejar voltar. O clone exige uma amostra de carne e leva 2d4 meses para crescer; a magia falha se o original morrer de causas naturais, e seus restos não poderão ser ressuscitados. Requer laboratório e suprimentos (1.000 PO) e equipamento especial (500 PO).",
+          detailsPage: 216,
+          mechanics: {
+            components: "V, G, M, F",
+            castingTime: "10 minutos",
+            range: "0 m",
+            target: "Um clone",
+            duration: "Instantânea",
+            savingThrow: "Nenhum",
+            spellResistance: "Não",
+          },
+        };
+      }
+      if (spell.name === "Aprisionar a Alma") {
+        return {
+          ...spell,
+          detailsPage: 203,
+          detailsPageEnd: 204,
+          mechanics: {
+            components: "V, G, M, F",
+            castingTime: "1 ação padrão ou veja texto",
+            range: "Curto (7,5 m + 1,5 m/2 níveis)",
+            target: "Uma criatura",
+            duration: "Permanente (veja texto)",
+            savingThrow: "Vontade anula (magia completa); nenhum (armadilha)",
+            spellResistance: "Sim (magia completa); nenhum (armadilha)",
+          },
+        };
+      }
+      return spell;
+    }),
+  },
+  {
+    listId: "feiticeiro_mago", classIds: ["feiticeiro", "mago"], spellLevel: 9, sourcePage: "197",
+    entries: bySchool([
+      ["Abjur", [
+        "Aprisionamento: Enterra a criatura tocada numa esfera subterrânea em estase temporal. Libertação conjurada no local desfaz o efeito; desejo ou milagre revela onde está o alvo. Se o conjurador souber o nome da vítima e detalhes de sua vida, ela sofre −4 no teste de resistência",
+        "Disjunção de Mordenkainen: Dissipa magia e desencanta itens mágicos",
+        "Esfera Prismática: Como muralha prismática, mas cerca você por todos os lados",
+        "Libertação: Liberta uma criatura aprisionada",
+      ]],
+      ["Adiv", [
+        "Sexto Sentido: Um sexto sentido avisa sobre perigo iminente",
+      ]],
+      ["Conj", [
+        "Círculo de Teletransporte^M: Teletransporta qualquer criatura ao local designado",
+        "Invocar Criaturas IX: Invoca um ser extraplanar para auxiliar o conjurador",
+        "Portal^X: Conecta dois planos para viagens ou invocações",
+        "Refúgio^M: Altera um item para que transporte seu usuário até você",
+      ]],
+      ["Encan", [
+        "Dominar Monstro: Como dominar pessoa, mas para qualquer criatura",
+        "Imobilizar Monstro em Massa: Como imobilizar monstro, mas afeta todos até 9 m",
+        "Palavra de Poder, Matar: Mata uma criatura com 100 PV ou menos",
+      ]],
+      ["Evoc", [
+        "Chuva de Meteoros: Quatro esferas de fogo causam 6d6 de dano na área; cada esfera pode ser direcionada separadamente",
+        "Mão Esmagadora de Bigby, A: Mão fornece cobertura, empurra ou esmaga inimigos",
+      ]],
+      ["Ilus", [
+        "Encarnação Fantasmagórica: Como assassino fantasmagórico, mas afeta todos até 9 m",
+        "Sombras: Como conjuração de sombras, mas até 8º nível e 80% real",
+      ]],
+      ["Necro", [
+        "Drenar Energia: O alvo sofre 2d4 níveis negativos",
+        "Grito da Banshee: Mata uma criatura por nível",
+        "Prender a Alma^F: Prende uma alma recentemente falecida, impede ressurreição",
+        "Projeção Astral^M: Projeta você e seus companheiros para o Plano Astral",
+      ]],
+      ["Trans", [
+        "Alterar Forma^F: Transforma você em qualquer criatura, muda de forma uma vez por rodada",
+        "Forma Etérea: Viaja para o Plano Etéreo com companheiros",
+        "Parar o Tempo: Você age livremente durante 1d4+1 rodadas",
+      ]],
+      ["Univ", [
+        "Desejo^X: Como desejo restrito, com limites menores",
+      ]],
+    ]).map((spell) => {
+      if (spell.name === "Aprisionamento") {
+        return {
+          ...spell,
+          detailsPage: 203,
+          mechanics: {
+            components: "V, G",
+            castingTime: "1 ação padrão",
+            range: "Toque",
+            target: "Criatura tocada",
+            duration: "Instantânea",
+            savingThrow: "Vontade anula",
+            spellResistance: "Sim",
+          },
+        };
+      }
+      if (spell.name === "Chuva de Meteoros") {
+        return {
+          ...spell,
+          detailsPage: 214,
+          mechanics: {
+            components: "V, G",
+            castingTime: "1 ação padrão",
+            range: "Longo (120 m + 12 m/nível)",
+            target: "Quatro dispersões de 12 m",
+            duration: "Instantânea",
+            savingThrow: "Nenhum ou Reflexos para reduzir à metade",
+            spellResistance: "Sim",
+          },
+        };
+      }
+      if (spell.name === "Círculo de Teletransporte") {
+        return {
+          ...spell,
+          summary: "Prepara um círculo que envia ao destino escolhido qualquer criatura que o ative. O destino não pode ser alterado após a conjuração, e a magia não transporta criaturas para dentro de objetos sólidos; exige pó de prata no valor de 1.000 PO.",
+          detailsPage: 215,
+          mechanics: {
+            components: "V, M",
+            castingTime: "10 minutos",
+            range: "0 m",
+            target: "Círculo de 1,5 m de raio; criaturas que o ativam",
+            duration: "10 minutos/nível (D)",
+            savingThrow: "Nenhum",
+            spellResistance: "Sim",
+          },
+        };
+      }
+      return spell;
+    }),
   },
 ];
 
@@ -960,7 +1149,7 @@ const OTHER_CLASS_LISTS: Dnd35SpellList[] = [
       "Tempestade Glacial: Granizo causa 5d6 de dano em um cilindro de 12 m de diâmetro",
       "Toque Enferrujante: Seu toque corrói ferro e ligas metálicas",
       "Vidência^F: Espiona alguém à distância",
-    ].map((l) => entry(l)),
+    ].map(withVerifiedCommandPlantsDetails),
   },
   {
     listId: "druida", classIds: ["druida"], spellLevel: 5, sourcePage: "190-191",
@@ -1180,7 +1369,7 @@ const OTHER_CLASS_LISTS: Dnd35SpellList[] = [
       "Remover Doenças: Cura todas as doenças que afetam o alvo",
       "Repelir Insetos: Insetos se mantêm a 3 m de distância",
       "Visão no Escuro: O alvo enxerga a 18 m na escuridão total",
-    ].map((l) => entry(l)),
+    ].map(withVerifiedCommandPlantsDetails),
   },
   {
     listId: "patrulheiro", classIds: ["patrulheiro"], spellLevel: 4, sourcePage: "192",
@@ -1307,7 +1496,7 @@ const HIGHER_LEVEL_LISTS: Dnd35SpellList[] = [
       "Coluna de Chamas: Uma coluna de fogo causa 1d6 de dano por nível",
       "Comando Maior: Como comando, mas afeta um alvo por nível",
       "Comunhão^X: A divindade responde uma pergunta por nível com sim ou não",
-      "Consunção^M: Profana um local",
+      "Conspurcar^M: Profana um local",
       "Curar Ferimentos Leves em Massa: Cura 1d8 +1/nível de dano em várias criaturas",
       "Dissipar o Caos/Mal/Bem/Ordem: Concede +4 nos ataques contra criaturas da tendência oposta",
       "Força dos Justos: Aumenta o tamanho do alvo e concede bônus de combate",
@@ -1417,7 +1606,950 @@ const HIGHER_LEVEL_LISTS: Dnd35SpellList[] = [
   },
 ];
 
-export const DND35_SPELL_LISTS: Dnd35SpellList[] = [...CORE_ARCANE_AND_CLERIC_LISTS, ...OTHER_CLASS_LISTS, ...HIGHER_LEVEL_LISTS];
+type VerifiedSpellDetails = Pick<Dnd35SpellListEntry, "summary" | "summaryOnly" | "detailsPage" | "detailsPageEnd" | "mechanics">;
+
+// A descrição completa às vezes apresenta M/FD sem o sobrescrito correspondente
+// na lista de níveis. `flags` continua refletindo o sobrescrito impresso; `mechanics`
+// registra os componentes efetivos descritos na entrada completa.
+const VERIFIED_SPELL_DETAILS: Record<string, VerifiedSpellDetails> = {
+  "druida:3:Convocar Relâmpagos": {
+    summaryOnly: false,
+    detailsPage: 222,
+    summary: "Conjura uma linha vertical de eletricidade com 1,5 m de largura e 9 m de comprimento, causando 3d6 de dano (3d10 em tempestade). Após o primeiro raio, pode chamar outro por rodada usando concentração como ação padrão, até um total igual ao nível de conjurador (máx. 10). Funciona em ambientes fechados e subterrâneos, mas não sob a água.",
+    mechanics: {
+      components: "V, G", castingTime: "1 rodada", range: "Médio (30 m + 3 m/nível)",
+      target: "Linha vertical de eletricidade de 1,5 m × 9 m (veja texto)", duration: "1 minuto/nível",
+      savingThrow: "Reflexos para reduzir à metade", spellResistance: "Sim",
+    },
+  },
+  "druida:5:Convocar Tempestade de Relâmpagos": {
+    summaryOnly: false,
+    detailsPage: 222,
+    summary: "Como Convocar Relâmpagos, mas cada raio causa 5d6 de dano elétrico (5d10 durante tempestade) e o conjurador pode chamar no máximo 15 raios.",
+    mechanics: {
+      components: "V, G", castingTime: "1 rodada", range: "Longo (120 m + 12 m/nível)",
+      target: "Linha vertical de eletricidade de 1,5 m × 9 m (veja texto)", duration: "1 minuto/nível",
+      savingThrow: "Reflexos para reduzir à metade", spellResistance: "Sim",
+    },
+  },
+  "feiticeiro_mago:6:Corrente de Relâmpagos": {
+    summaryOnly: false,
+    detailsPage: 222,
+    summary: "Causa 1d6 de dano elétrico por nível (máx. 20d6) no alvo primário e cria até um raio secundário por nível, cada qual causando metade do dano primário. Alvos secundários precisam estar a até 9 m do primário e cada um só pode ser atingido uma vez; Reflexos reduz o dano à metade. Exige foco de pelo, âmbar, vidro ou cristal e bracelete de prata.",
+    mechanics: {
+      components: "V, G, F", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+      target: "Um alvo primário e um alvo secundário/nível a até 9 m do primário", duration: "Instantânea",
+      savingThrow: "Reflexos para reduzir à metade", spellResistance: "Sim",
+    },
+  },
+  "feiticeiro_mago:8:Corpo de Ferro": {
+    summaryOnly: false,
+    detailsPage: 222,
+    summary: "Transforma o corpo em ferro vivo por 1 minuto/nível: concede RD 15/adamantina e imunidade a cegueira, acertos decisivos, dano de habilidade, surdez, doença, afogamento, eletricidade, veneno e atordoamento, além de efeitos que alterem fisiologia ou respiração. Concede +6 For e −6 Des (mín. 1), reduz o deslocamento à metade, impõe 50% de falha arcana e vulnerabilidade a ataques contra golens de ferro; reduz pela metade dano de ácido e fogo. O peso decuplica, ataques desarmados causam dano como arma e o conjurador afunda na água.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+      duration: "1 minuto/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "druida:3:Crescer Espinhos": {
+    summaryOnly: false,
+    detailsPage: 222,
+    detailsPageEnd: 223,
+    summary: "Transforma vegetação rasteira numa cobertura de espinhos sem alterar sua aparência. Criaturas que se deslocam na área sofrem 1d4 de dano perfurante por 1,5 m percorridos; Reflexos pode reduzir o deslocamento à metade por 24 horas ou até cura mágica. Outra criatura pode remover a penalidade com 10 minutos de cuidados e teste de Cura CD 28. Não funciona sob água, gelo, neve ou em desertos profundos/rochosos.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+      target: "Quadrado de 6 m/nível", duration: "1 hora/nível (D)",
+      savingThrow: "Reflexos parcial", spellResistance: "Sim",
+    },
+  },
+  "patrulheiro:2:Crescer Espinhos": {
+    summaryOnly: false,
+    detailsPage: 222,
+    detailsPageEnd: 223,
+    summary: "Transforma vegetação rasteira numa cobertura de espinhos sem alterar sua aparência. Criaturas que se deslocam na área sofrem 1d4 de dano perfurante por 1,5 m percorridos; Reflexos pode reduzir o deslocamento à metade por 24 horas ou até cura mágica. Outra criatura pode remover a penalidade com 10 minutos de cuidados e teste de Cura CD 27. Não funciona sob água, gelo, neve ou em desertos profundos/rochosos.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+      target: "Quadrado de 6 m/nível", duration: "1 hora/nível (D)",
+      savingThrow: "Reflexos parcial", spellResistance: "Sim",
+    },
+  },
+  "feiticeiro_mago:6:Criar Mortos-Vivos": {
+    summaryOnly: false,
+    detailsPage: 223,
+    detailsPageEnd: 224,
+    summary: "Cria mortos-vivos obedientes a partir de cadáveres ou ossos, com o tipo determinado pelo nível de conjurador: carniçal até o 11º, lívido do 12º ao 14º, múmia do 15º ao 17º e mohrg a partir do 18º. Eles permanecem sob comando até serem destruídos; a magia exige 50 PO em ônix negro por Dado de Vida criado e deve ser conjurada à noite.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 hora", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Um ou mais cadáveres ou corpos", duration: "Instantânea",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "clerigo:6:Criar Mortos-Vivos": {
+    summaryOnly: false,
+    detailsPage: 223,
+    detailsPageEnd: 224,
+    summary: "Cria mortos-vivos obedientes a partir de cadáveres ou ossos, com o tipo determinado pelo nível de conjurador: carniçal até o 11º, lívido do 12º ao 14º, múmia do 15º ao 17º e mohrg a partir do 18º. Eles permanecem sob comando até serem destruídos; a magia exige 50 PO em ônix negro por Dado de Vida criado e deve ser conjurada à noite.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 hora", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Um ou mais cadáveres ou corpos", duration: "Instantânea",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:4:Criar Mortos-Vivos Menor": {
+    summaryOnly: false,
+    detailsPage: 224,
+    summary: "Transforma cadáveres ou ossos em esqueletos ou zumbis que obedecem aos comandos do conjurador. Os mortos-vivos persistem até serem destruídos e podem ser criados mesmo em áreas fechadas ou subterrâneas; exige ônix negro no valor de 50 PO por Dado de Vida.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "Toque",
+      target: "Um ou mais cadáveres ou corpos", duration: "Instantânea",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "clerigo:3:Criar Mortos-Vivos Menor": {
+    summaryOnly: false,
+    detailsPage: 224,
+    summary: "Transforma cadáveres ou ossos em esqueletos ou zumbis que obedecem aos comandos do conjurador. Os mortos-vivos persistem até serem destruídos e podem ser criados mesmo em áreas fechadas ou subterrâneas; exige ônix negro no valor de 50 PO por Dado de Vida.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "Toque",
+      target: "Um ou mais cadáveres ou corpos", duration: "Instantânea",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:8:Criar Mortos-Vivos Maior": {
+    summaryOnly: false,
+    detailsPage: 224,
+    summary: "Cria mortos-vivos mais poderosos a partir de cadáveres ou corpos preparados — sombras, aparições, espectros ou devoradores, conforme o nível de conjurador — que obedecem ao criador até serem destruídos. A criação exige ônix negro cujo valor depende dos Dados de Vida da criatura e deve ocorrer à noite.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 hora", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Um ou mais cadáveres ou corpos", duration: "Instantânea",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "clerigo:8:Criar Mortos-Vivos Maior": {
+    summaryOnly: false,
+    detailsPage: 224,
+    summary: "Cria mortos-vivos mais poderosos a partir de cadáveres ou corpos preparados — sombras, aparições, espectros ou devoradores, conforme o nível de conjurador — que obedecem ao criador até serem destruídos. A criação exige ônix negro cujo valor depende dos Dados de Vida da criatura e deve ocorrer à noite.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 hora", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Um ou mais cadáveres ou corpos", duration: "Instantânea",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:5:Criar Passagens": {
+    summaryOnly: false,
+    detailsPage: 224,
+    detailsPageEnd: 225,
+    summary: "Abre uma passagem em madeira ou pedra com 1,5 m de largura por 2,4 m de altura e profundidade inicial de 3 m, acrescida em 1,5 m a cada três níveis de conjurador (máximo de 7,5 m). A abertura pode desabar se a estrutura acima for instável; criaturas na passagem são expelidas pela saída mais próxima quando a magia termina. Exige uma pequena semente de gergelim.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "Toque",
+      target: "Abertura em madeira ou pedra; veja texto", duration: "1 hora/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:7:Cubo de Energia": {
+    summaryOnly: false,
+    detailsPage: 224,
+    summary: "Cria um cubo de energia de 6 m que aprisiona as criaturas na área e bloqueia teletransporte e viagem etérea. Pode ser configurado como grades ou como cela fechada; dissipar magia não o destrói, mas esfera de aniquilação ou bastão do cancelamento podem fazê-lo. A cela fechada requer pó de rubi no valor de 1.500 PO.",
+    mechanics: {
+      components: "V, S, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Cubo com barras de 6 m ou cela sem janelas de 3 m", duration: "2 horas/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "druida:4:Cúpula de Proteção Contra Vegetais": {
+    summaryOnly: false,
+    detailsPage: 225,
+    summary: "Cria uma barreira invisível e móvel que protege as criaturas dentro dela contra ataques de criaturas tipo planta e plantas animadas. A barreira também impede a entrada dessas criaturas; forçar a passagem dissipa a magia.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "1 ação padrão", range: "3 m",
+      target: "Emanação de 3 m de raio centrada no conjurador", duration: "10 minutos/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Sim",
+    },
+  },
+  "clerigo:6:Cúpula de Proteção Contra a Vida": {
+    summaryOnly: false,
+    detailsPage: 225,
+    summary: "Cria uma barreira móvel que impede a entrada da maioria das criaturas vivas, incluindo animais, aberrações, bestas mágicas, dragões, fadas, gigantes, humanoides, limos, plantas e insetos. Não afeta construtos, elementais, seres planares ou mortos-vivos; forçar a passagem dissipa a magia.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "1 rodada", range: "3 m",
+      target: "Emanação de 3 m de raio centrada no conjurador", duration: "10 minutos/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Sim",
+    },
+  },
+  "druida:6:Cúpula de Proteção Contra a Vida": {
+    summaryOnly: false,
+    detailsPage: 225,
+    summary: "Cria uma barreira móvel que impede a entrada da maioria das criaturas vivas, incluindo animais, aberrações, bestas mágicas, dragões, fadas, gigantes, humanoides, limos, plantas e insetos. Não afeta construtos, elementais, seres planares ou mortos-vivos; forçar a passagem dissipa a magia.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "1 rodada", range: "3 m",
+      target: "Emanação de 3 m de raio centrada no conjurador", duration: "10 minutos/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Sim",
+    },
+  },
+  "clerigo:6:Cura Completa": {
+    summaryOnly: false,
+    detailsPage: 225,
+    summary: "Remove dano de habilidade, cegueira, confusão, pasmar, ofuscamento, surdez, doenças, exaustão, fadiga, enfraquecimento, insanidade, náusea, enjoo, atordoamento e veneno; recupera 10 PV por nível (máximo 150 PV). Não remove níveis negativos, níveis perdidos nem dano permanente de habilidade. Contra mortos-vivos, causa esse dano em vez de curar, com Vontade para reduzi-lo à metade.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+      duration: "Instantânea", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+    },
+  },
+  "druida:7:Cura Completa": {
+    summaryOnly: false,
+    detailsPage: 225,
+    summary: "Remove dano de habilidade, cegueira, confusão, pasmar, ofuscamento, surdez, doenças, exaustão, fadiga, enfraquecimento, insanidade, náusea, enjoo, atordoamento e veneno; recupera 10 PV por nível (máximo 150 PV). Não remove níveis negativos, níveis perdidos nem dano permanente de habilidade. Contra mortos-vivos, causa esse dano em vez de curar, com Vontade para reduzi-lo à metade.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+      duration: "Instantânea", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+    },
+  },
+  "clerigo:9:Cura Completa em Massa": {
+    summaryOnly: false,
+    detailsPage: 225,
+    summary: "Funciona como Cura Completa, mas afeta várias criaturas a até 9 m umas das outras e restaura no máximo 250 PV a cada alvo. Contra mortos-vivos, causa dano em vez de curar, com Vontade para reduzi-lo à metade.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Uma ou mais criaturas, todas a até 9 m umas das outras", duration: "Instantânea",
+      savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+    },
+  },
+  "clerigo:7:Controlar o Clima": {
+    summaryOnly: false,
+    detailsPage: 221,
+    summary: "Altera gradualmente as condições climáticas numa área circular de 3 km de raio. A mudança leva 10 minutos para se manifestar; o conjurador escolhe um clima possível para a estação e local, mas não controla fenômenos específicos como o ponto de impacto de um raio. A condição escolhida permanece por 4d12 horas, mas pode ser alterada com uma ação padrão; cada mudança leva 10 minutos para se manifestar.",
+    mechanics: {
+      components: "V, G", castingTime: "10 minutos (veja texto)", range: "3 km",
+      target: "Círculo de 3 km de raio centrado no conjurador", duration: "4d12 horas (veja texto)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "druida:7:Controlar o Clima": {
+    summaryOnly: false,
+    detailsPage: 221,
+    summary: "Altera gradualmente as condições climáticas numa área circular de 3 km de raio. A mudança leva 10 minutos para se manifestar; o conjurador escolhe um clima possível para a estação e local, mas não controla fenômenos específicos como o ponto de impacto de um raio. A condição escolhida permanece por 4d12 horas, mas pode ser alterada com uma ação padrão; cada mudança leva 10 minutos para se manifestar.",
+    mechanics: {
+      components: "V, G", castingTime: "10 minutos (veja texto)", range: "3 km",
+      target: "Círculo de 3 km de raio centrado no conjurador", duration: "4d12 horas (veja texto)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:6:Controlar o Clima": {
+    summaryOnly: false,
+    detailsPage: 221,
+    summary: "Altera gradualmente as condições climáticas numa área circular de 3 km de raio. A mudança leva 10 minutos para se manifestar; o conjurador escolhe um clima possível para a estação e local, mas não controla fenômenos específicos como o ponto de impacto de um raio. A condição escolhida permanece por 4d12 horas, mas pode ser alterada com uma ação padrão; cada mudança leva 10 minutos para se manifestar.",
+    mechanics: {
+      components: "V, G", castingTime: "10 minutos (veja texto)", range: "3 km",
+      target: "Círculo de 3 km de raio centrado no conjurador", duration: "4d12 horas (veja texto)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:5:Contato Extraplanar": {
+    summaryOnly: false,
+    detailsPage: 220,
+    summary: "Permite contatar uma entidade de outro plano para obter respostas a perguntas. A entidade responde em idioma compreensível, mas pode não conhecer o assunto; respostas podem ser verdadeiras, aleatórias, mentirosas ou ‘não sei’. Cada pergunta exige concentração e uma ação padrão; perguntas adicionais são possíveis a cada dois níveis de conjurador. O contato pode reduzir temporariamente Inteligência e Carisma, conforme o plano contatado.",
+    mechanics: {
+      components: "V", castingTime: "10 minutos", range: "Pessoal", target: "Você",
+      duration: "Concentração", savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:6:Contingência": {
+    summaryOnly: false,
+    detailsPage: 220,
+    detailsPageEnd: 221,
+    summary: "Prepara uma magia de até 5º nível para ser conjurada automaticamente quando uma condição especificada ocorrer. A magia contingente é conjurada no mesmo instante em que a condição é atendida; uma única contingência pode permanecer ativa. Exige uma estatueta de marfim decorada com gemas no valor mínimo de 1.500 PO, que deve ser carregada pelo conjurador.",
+    mechanics: {
+      components: "V, G, M, F", castingTime: "Pelo menos 10 minutos; veja texto",
+      range: "Pessoal", target: "Você", duration: "1 dia/nível (D) ou até ser descarregada",
+      savingThrow: "Veja magia latente", spellResistance: "Veja magia latente",
+    },
+  },
+  "druida:6:Conto das Rochas": {
+    summaryOnly: false,
+    detailsPage: 220,
+    summary: "Permite conversar com rochas naturais ou trabalhadas, que revelam quem ou o que as tocou, além de informações sobre o que está ou esteve escondido ou oculto por elas. Rochas completas dão respostas mais detalhadas. A perspectiva, percepção e conhecimento são limitados; o Mestre determina os detalhes que podem fornecer.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "10 minutos", range: "Pessoal", target: "Você",
+      duration: "1 minuto/nível", savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "druida:4:Controlar Água": {
+    summaryOnly: false,
+    detailsPage: 220,
+    detailsPageEnd: 221,
+    summary: "Eleva ou reduz o nível da água ou de líquido similar em um volume de até 3 m³ por nível, numa profundidade máxima de 60 cm por nível. Também pode abrir um redemoinho em massas extensas de água ou separar a água em dimensões horizontais para criar uma passagem; a água volta ao normal quando o efeito termina.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+      target: "Água em um volume de 3 m³/nível × 3 m de largura × 60 cm/nível (M)",
+      duration: "10 minutos/nível", savingThrow: "Nenhum (veja texto)", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:6:Controlar Água": {
+    summaryOnly: false,
+    detailsPage: 220,
+    detailsPageEnd: 221,
+    summary: "Eleva ou reduz o nível da água ou de líquido similar em um volume de até 3 m³ por nível, numa profundidade máxima de 60 cm por nível. Também pode abrir um redemoinho em massas extensas de água ou separar a água em dimensões horizontais para criar uma passagem; a água volta ao normal quando o efeito termina.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+      target: "Água em um volume de 3 m³/nível × 3 m de largura × 60 cm/nível (M)",
+      duration: "10 minutos/nível", savingThrow: "Nenhum (veja texto)", spellResistance: "Não",
+    },
+  },
+  "bardo:1:Compreender Idiomas": {
+    summaryOnly: false,
+    detailsPage: 217,
+    summary: "Permite entender fala ou escrita em uma língua desconhecida, mas não falar nem escrever nessa língua. É preciso tocar a criatura ou o texto; a leitura é literal, até 250 palavras por minuto. Escritos mágicos são reconhecidos, mas não decifrados; a magia não quebra códigos nem proteções e pode ser tornada permanente. Exige fuligem e sal.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "Pessoal",
+      target: "Você", duration: "10 minutos/nível",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "clerigo:1:Compreender Idiomas": {
+    summaryOnly: false,
+    detailsPage: 217,
+    summary: "Permite entender fala ou escrita em uma língua desconhecida, mas não falar nem escrever nessa língua. É preciso tocar a criatura ou o texto; a leitura é literal, até 250 palavras por minuto. Escritos mágicos são reconhecidos, mas não decifrados; a magia não quebra códigos nem proteções e pode ser tornada permanente.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "1 ação padrão", range: "Pessoal",
+      target: "Você", duration: "10 minutos/nível",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:1:Compreender Idiomas": {
+    summaryOnly: false,
+    detailsPage: 217,
+    summary: "Permite entender fala ou escrita em uma língua desconhecida, mas não falar nem escrever nessa língua. É preciso tocar a criatura ou o texto; a leitura é literal, até 250 palavras por minuto. Escritos mágicos são reconhecidos, mas não decifrados; a magia não quebra códigos nem proteções e pode ser tornada permanente. Exige fuligem e sal.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "Pessoal",
+      target: "Você", duration: "10 minutos/nível",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:5:Compor": {
+    summaryOnly: false,
+    detailsPage: 217,
+    summary: "Converte matéria-prima em um objeto manufaturado do mesmo material, até 30 cm³ por nível (3 cm³ por nível para minerais). Cada volume de 30 cm³ — ou 3 cm³ para minerais — exige uma rodada completa. Objetos intricados podem exigir um teste de Ofícios; os materiais originais devem ter valor equivalente aos necessários para criar o objeto.",
+    mechanics: {
+      components: "V, G, M", castingTime: "Veja texto",
+      range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "Até 30 cm³/nível (3 cm³/nível para minerais; veja texto)",
+      duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "clerigo:5:Comunhão": {
+    summaryOnly: false,
+    detailsPage: 217,
+    summary: "Permite fazer uma pergunta por nível de conjurador à divindade ou a seus agentes, que respondem sim ou não com base no conhecimento divino; uma resposta indeterminada é possível. A magia se dissipa se o conjurador interromper a concentração para discutir ou fazer outras tarefas. Exige água benta ou profana, incenso e 100 XP.",
+    mechanics: {
+      components: "V, G, M, FD, XP", castingTime: "10 minutos", range: "Pessoal",
+      target: "Você", duration: "1 rodada/nível", savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "druida:5:Comunhão com a Natureza": {
+    summaryOnly: false,
+    detailsPage: 217,
+    summary: "Revela até três fatos sobre o ambiente natural, como terreno, plantas, minerais, água, população ou criaturas. Ao ar livre alcança 1,5 km por nível; em ambientes naturais subterrâneos, até 30 m por nível. Não funciona onde a natureza foi substituída por construções.",
+    mechanics: {
+      components: "V, G", castingTime: "10 minutos", range: "Pessoal", target: "Você",
+      duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "patrulheiro:4:Comunhão com a Natureza": {
+    summaryOnly: false,
+    detailsPage: 217,
+    summary: "Revela até três fatos sobre o ambiente natural, como terreno, plantas, minerais, água, população ou criaturas. Ao ar livre alcança 1,5 km por nível; em ambientes naturais subterrâneos, até 30 m por nível. Não funciona onde a natureza foi substituída por construções.",
+    mechanics: {
+      components: "V, G", castingTime: "10 minutos", range: "Pessoal", target: "Você",
+      duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:5:Cone Glacial": {
+    summaryOnly: false,
+    detailsPage: 218,
+    summary: "Projeta um cone de frio extremo a 18 m, causando 1d6 de dano por nível de conjurador (máximo 15d6). Reflexos reduz o dano à metade; requer um pequeno cone ou cristal de vidro como componente material.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "18 m",
+      target: "Explosão em cone", duration: "Instantânea",
+      savingThrow: "Reflexos para reduzir à metade", spellResistance: "Sim",
+    },
+  },
+  "bardo:3:Confusão": {
+    summaryOnly: false,
+    detailsPage: 218,
+    summary: "Criaturas num raio de 4,5 m que falhem em Vontade rolam 1d% no início de cada turno por 1 rodada/nível: 01–10 atacam o conjurador, 11–20 ou 71–100 agem normalmente, 21–50 ficam sem agir além de murmurar e 51–70 atacam a criatura mais próxima. Se não puder cumprir a ação, a criatura murmura; atacantes não recebem vantagem especial. Exige três cascas de noz.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+      target: "Todas as criaturas em 4,5 m de raio", duration: "1 rodada/nível",
+      savingThrow: "Vontade anula", spellResistance: "Sim",
+    },
+  },
+  "feiticeiro_mago:4:Confusão": {
+    summaryOnly: false,
+    detailsPage: 218,
+    summary: "Criaturas num raio de 4,5 m que falhem em Vontade rolam 1d% no início de cada turno por 1 rodada/nível: 01–10 atacam o conjurador, 11–20 ou 71–100 agem normalmente, 21–50 ficam sem agir além de murmurar e 51–70 atacam a criatura mais próxima. Se não puder cumprir a ação, a criatura murmura; atacantes não recebem vantagem especial. Exige três cascas de noz.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+      target: "Todas as criaturas em 4,5 m de raio", duration: "1 rodada/nível",
+      savingThrow: "Vontade anula", spellResistance: "Sim",
+    },
+  },
+  "clerigo:0:Consertar": {
+    summaryOnly: false,
+    detailsPage: 219,
+    summary: "Repara danos em objetos de até 500 g, inclusive rachaduras e peças quebradas quando todos os fragmentos estão presentes. Pode reparar um item mágico danificado, mas não restaura suas habilidades mágicas; não conserta bastões, cajados ou varinhas mágicas, nem afeta criaturas.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "3 m",
+      target: "Um objeto de até 500 g", duration: "Instantânea",
+      savingThrow: "Vontade anula (inofensiva, objeto)", spellResistance: "Sim (inofensiva, objeto)",
+    },
+  },
+  "feiticeiro_mago:0:Consertar": {
+    summaryOnly: false,
+    detailsPage: 219,
+    summary: "Repara danos em objetos de até 500 g, inclusive rachaduras e peças quebradas quando todos os fragmentos estão presentes. Pode reparar um item mágico danificado, mas não restaura suas habilidades mágicas; não conserta bastões, cajados ou varinhas mágicas, nem afeta criaturas.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "3 m",
+      target: "Um objeto de até 500 g", duration: "Instantânea",
+      savingThrow: "Vontade anula (inofensiva, objeto)", spellResistance: "Sim (inofensiva, objeto)",
+    },
+  },
+  "bardo:0:Consertar": {
+    summaryOnly: false,
+    detailsPage: 219,
+    summary: "Repara danos em objetos de até 500 g, inclusive rachaduras e peças quebradas quando todos os fragmentos estão presentes. Pode reparar um item mágico danificado, mas não restaura suas habilidades mágicas; não conserta bastões, cajados ou varinhas mágicas, nem afeta criaturas.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "3 m",
+      target: "Um objeto de até 500 g", duration: "Instantânea",
+      savingThrow: "Vontade anula (inofensiva, objeto)", spellResistance: "Sim (inofensiva, objeto)",
+    },
+  },
+  "druida:0:Consertar": {
+    summaryOnly: false,
+    detailsPage: 219,
+    summary: "Repara danos em objetos de até 500 g, inclusive rachaduras e peças quebradas quando todos os fragmentos estão presentes. Pode reparar um item mágico danificado, mas não restaura suas habilidades mágicas; não conserta bastões, cajados ou varinhas mágicas, nem afeta criaturas.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "3 m",
+      target: "Um objeto de até 500 g", duration: "Instantânea",
+      savingThrow: "Vontade anula (inofensiva, objeto)", spellResistance: "Sim (inofensiva, objeto)",
+    },
+  },
+  "clerigo:2:Consagrar": {
+    summaryOnly: false,
+    detailsPage: 219,
+    summary: "Preenche uma área com energia positiva: tentativas de expulsar mortos-vivos recebem +3, enquanto mortos-vivos sofrem −1 em ataques, dano e testes de resistência e não podem ser criados ou invocados ali. Um altar dedicado à divindade do conjurador pode dobrar esses modificadores. Consome um frasco de água benta e 2,5 kg de pó de prata (25 PO), aspergidos na área.",
+    mechanics: {
+      components: "V, G, M, FD", castingTime: "1 ação padrão",
+      range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "Emanação de 6 m de raio",
+      duration: "2 horas/nível", savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "clerigo:5:Conspurcar": {
+    summaryOnly: false,
+    detailsPage: 219,
+    summary: "Torna profano o local ou estrutura tocada e o protege como Círculo Mágico contra o Bem. Na versão clerical, tentativas de expulsar mortos-vivos sofrem −4 e tentativas de fascinar mortos-vivos recebem +4, ambos profanos; a descrição permite Resistência à Magia contra esse efeito e distingue a versão druídica. Também é possível imbuir na área um efeito mágico escolhido da lista da descrição, que permanece por 1 ano. Consome ervas, óleos e incenso de pelo menos 1.000 PO, mais 1.000 PO por nível da magia aplicada.",
+    mechanics: {
+      components: "V, G, M", castingTime: "24 horas", range: "Toque",
+      target: "Emanação de 12 m de raio do ponto tocado", duration: "Instantânea",
+      savingThrow: "Veja texto", spellResistance: "Veja texto",
+    },
+  },
+  "druida:5:Conspurcar": {
+    summaryOnly: false,
+    detailsPage: 219,
+    summary: "Torna profano o local ou estrutura tocada e o protege como Círculo Mágico contra o Bem. Permite imbuir na área um efeito mágico escolhido da lista da descrição, que permanece por 1 ano; as regras de Resistência à Magia dos modificadores contra mortos-vivos não se aplicam à versão druídica. Consome ervas, óleos e incenso de pelo menos 1.000 PO, mais 1.000 PO por nível da magia aplicada.",
+    mechanics: {
+      components: "V, G, M", castingTime: "24 horas", range: "Toque",
+      target: "Emanação de 12 m de raio do ponto tocado", duration: "Instantânea",
+      savingThrow: "Veja texto", spellResistance: "Veja texto",
+    },
+  },
+  "druida:1:Constrição": {
+    summaryOnly: false,
+    detailsPage: 219,
+    detailsPageEnd: 220,
+    summary: "Grama, trepadeiras, arbustos e árvores enredam criaturas numa dispersão de 12 m de raio. Uma criatura enredada pode se libertar com uma ação de rodada completa e teste de Força ou Arte da Fuga CD 20. Quem obtém sucesso em Reflexos não fica enredado, mas atravessa a área à metade do deslocamento; no turno do conjurador, as plantas tentam enredar novamente quem escapou. O Mestre pode ajustar o efeito conforme a vegetação disponível.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "1 ação padrão",
+      range: "Longo (120 m + 12 m/nível)", target: "Plantas numa dispersão de 12 m de raio",
+      duration: "1 minuto/nível (D)", savingThrow: "Reflexos parcial (veja texto)", spellResistance: "Não",
+    },
+  },
+  "patrulheiro:1:Constrição": {
+    summaryOnly: false,
+    detailsPage: 219,
+    detailsPageEnd: 220,
+    summary: "Grama, trepadeiras, arbustos e árvores enredam criaturas numa dispersão de 12 m de raio. Uma criatura enredada pode se libertar com uma ação de rodada completa e teste de Força ou Arte da Fuga CD 20. Quem obtém sucesso em Reflexos não fica enredado, mas atravessa a área à metade do deslocamento; no turno do conjurador, as plantas tentam enredar novamente quem escapou. O Mestre pode ajustar o efeito conforme a vegetação disponível.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "1 ação padrão",
+      range: "Longo (120 m + 12 m/nível)", target: "Plantas numa dispersão de 12 m de raio",
+      duration: "1 minuto/nível (D)", savingThrow: "Reflexos parcial (veja texto)", spellResistance: "Não",
+    },
+  },
+  "bardo:1:Confusão Menor": {
+    summaryOnly: false,
+    detailsPage: 218,
+    summary: "Deixa uma criatura viva confusa durante 1 rodada. O comportamento é determinado pela descrição da magia Confusão.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "1 ação padrão",
+      range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "1 criatura viva",
+      duration: "1 rodada", savingThrow: "Vontade anula; veja texto", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:4:Conjuração de Sombras": {
+    summaryOnly: false,
+    detailsPage: 218,
+    detailsPageEnd: 219,
+    summary: "Cria uma conjuração ilusória quase real que imita uma magia de conjuração (invocação) de feiticeiro ou mago de até 3º nível. A ilusão normalmente tem apenas 20% da força da magia real, mas criaturas que acreditam nela sofrem os efeitos completos; o teste de Vontade para desacreditar ocorre ao interagir com ela.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Veja texto",
+      target: "Veja texto", duration: "Veja texto",
+      savingThrow: "Vontade desacredita (se interagir); varia; veja texto", spellResistance: "Sim; veja texto",
+    },
+  },
+  "bardo:4:Conjuração de Sombras": {
+    summaryOnly: false,
+    detailsPage: 218,
+    detailsPageEnd: 219,
+    summary: "Cria uma conjuração ilusória quase real que imita uma magia de conjuração (invocação) de feiticeiro ou mago de até 3º nível. A ilusão normalmente tem apenas 20% da força da magia real, mas criaturas que acreditam nela sofrem os efeitos completos; o teste de Vontade para desacreditar ocorre ao interagir com ela.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Veja texto",
+      target: "Veja texto", duration: "Veja texto",
+      savingThrow: "Vontade desacredita (se interagir); varia; veja texto", spellResistance: "Sim; veja texto",
+    },
+  },
+  "bardo:6:Dança Irresistível de Otto": {
+    summaryOnly: false,
+    detailsPage: 226,
+    summary: "A criatura não consegue fazer nada além de dançar: sofre −4 na CA, −10 nos testes de Reflexos, perde o bônus de escudo na CA e provoca ataques de oportunidade a cada rodada. O efeito não permite outras ações e dura 1d4+1 rodadas.",
+    mechanics: {
+      components: "V", castingTime: "1 ação padrão", range: "Toque", target: "Uma criatura viva tocada",
+      duration: "1d4+1 rodadas", savingThrow: "Nenhum", spellResistance: "Sim",
+    },
+  },
+  "feiticeiro_mago:8:Dança Irresistível de Otto": {
+    summaryOnly: false,
+    detailsPage: 226,
+    summary: "A criatura não consegue fazer nada além de dançar: sofre −4 na CA, −10 nos testes de Reflexos, perde o bônus de escudo na CA e provoca ataques de oportunidade a cada rodada. O efeito não permite outras ações e dura 1d4+1 rodadas.",
+    mechanics: {
+      components: "V", castingTime: "1 ação padrão", range: "Toque", target: "Uma criatura viva tocada",
+      duration: "1d4+1 rodadas", savingThrow: "Nenhum", spellResistance: "Sim",
+    },
+  },
+  "druida:8:Dedo da Morte": {
+    summaryOnly: false,
+    detailsPage: 226,
+    summary: "Mata a criatura viva que falhar no teste de Fortitude. Em caso de sucesso, o alvo ainda sofre 3d6 +1 de dano por nível de conjurador (máximo de +25); esse dano pode matá-lo.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Uma criatura viva", duration: "Instantânea",
+      savingThrow: "Fortitude parcial", spellResistance: "Sim",
+    },
+  },
+  "feiticeiro_mago:7:Dedo da Morte": {
+    summaryOnly: false,
+    detailsPage: 226,
+    summary: "Mata a criatura viva que falhar no teste de Fortitude. Em caso de sucesso, o alvo ainda sofre 3d6 +1 de dano por nível de conjurador (máximo de +25); esse dano pode matá-lo.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Uma criatura viva", duration: "Instantânea",
+      savingThrow: "Fortitude parcial", spellResistance: "Sim",
+    },
+  },
+  "clerigo:2:Descanso Tranqüilo": {
+    summaryOnly: false,
+    detailsPage: 226,
+    summary: "Preserva o cadáver e impede a decomposição, inclusive de partes separadas, cinzas e restos mortais. O período sob efeito é desconsiderado no limite de tempo para ressuscitar o alvo e facilita o transporte do corpo de um aliado; não concede benefício a mortos-vivos.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Toque",
+      target: "Objeto ou cadáver tocado", duration: "Um dia/nível",
+      savingThrow: "Vontade anula (objeto)", spellResistance: "Sim (objeto)",
+    },
+  },
+  "feiticeiro_mago:3:Descanso Tranqüilo": {
+    summaryOnly: false,
+    detailsPage: 226,
+    summary: "Preserva o cadáver e impede a decomposição, inclusive de partes separadas, cinzas e restos mortais. O período sob efeito é desconsiderado no limite de tempo para ressuscitar o alvo e facilita o transporte do corpo de um aliado; não concede benefício a mortos-vivos.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Toque",
+      target: "Objeto ou cadáver tocado", duration: "Um dia/nível",
+      savingThrow: "Vontade anula (objeto)", spellResistance: "Sim (objeto)",
+    },
+  },
+  "feiticeiro_mago:7:Desejo Restrito": {
+    summaryOnly: false,
+    detailsPage: 227,
+    summary: "Permite duplicar magias de feiticeiro/mago até 6º nível, magias de outras classes até 5º, ou produzir efeitos limitados semelhantes. Também pode desfazer efeitos nocivos ou conceder bônus temporário; a duplicação de magia com XP exige pagar 300 XP ou mais, e componentes materiais caros continuam necessários.",
+    mechanics: {
+      components: "V, G, XP", castingTime: "1 ação padrão", range: "Veja texto",
+      target: "Veja texto", duration: "Veja texto", savingThrow: "Nenhum; veja texto", spellResistance: "Sim",
+    },
+  },
+  "clerigo:1:Desespero": {
+    summaryOnly: false,
+    detailsPage: 227,
+    summary: "Deixa uma criatura abalada, impondo −2 nas jogadas de ataque, testes de resistência, perícias e habilidades por 1 minuto por nível.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+      target: "Uma criatura", duration: "1 minuto/nível", savingThrow: "Vontade anula", spellResistance: "Sim",
+    },
+  },
+  "bardo:3:Desespero Esmagador": {
+    summaryOnly: false,
+    detailsPage: 227,
+    summary: "Um cone de desespero impõe −2 nas jogadas de ataque e dano, testes de resistência, perícias e habilidades das criaturas afetadas por 1 minuto por nível.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "9 m", target: "Cone",
+      duration: "1 minuto/nível", savingThrow: "Vontade anula", spellResistance: "Sim",
+    },
+  },
+  "feiticeiro_mago:4:Desespero Esmagador": {
+    summaryOnly: false,
+    detailsPage: 227,
+    summary: "Um cone de desespero impõe −2 nas jogadas de ataque e dano, testes de resistência, perícias e habilidades das criaturas afetadas por 1 minuto por nível.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "9 m", target: "Cone",
+      duration: "1 minuto/nível", savingThrow: "Vontade anula", spellResistance: "Sim",
+    },
+  },
+  "feiticeiro_mago:6:Desintegrar": {
+    summaryOnly: false,
+    detailsPage: 227,
+    summary: "Um raio causa 2d6 de dano por nível de conjurador (máximo 40d6); um alvo reduzido a 0 PV é completamente desintegrado, deixando apenas pó. Um sucesso em Fortitude reduz o dano a 5d6; objetos não mágicos também podem ser desintegrados, mas objetos mágicos resistem.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+      target: "Raio", duration: "Instantânea", savingThrow: "Fortitude parcial (objeto)", spellResistance: "Sim",
+    },
+  },
+  "bardo:3:Deslocamento": {
+    summaryOnly: false,
+    detailsPage: 227,
+    summary: "A imagem do alvo parece deslocada de sua posição real, concedendo 50% de chance de ataques errarem. A camuflagem total não impede que inimigos localizem e ataquem a criatura; visão da verdade revela a posição verdadeira.",
+    mechanics: {
+      components: "V, M", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+      duration: "1 rodada/nível (D) e concentração +3 rodadas", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+    },
+  },
+  "feiticeiro_mago:3:Deslocamento": {
+    summaryOnly: false,
+    detailsPage: 227,
+    summary: "A imagem do alvo parece deslocada de sua posição real, concedendo 50% de chance de ataques errarem. A camuflagem total não impede que inimigos localizem e ataquem a criatura; visão da verdade revela a posição verdadeira.",
+    mechanics: {
+      components: "V, M", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+      duration: "1 rodada/nível (D) e concentração +3 rodadas", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+    },
+  },
+  "bardo:2:Despedaçar": {
+    summaryOnly: false,
+    detailsPage: 227,
+    summary: "Vibrações sônicas destroem objetos de cristal e causam 1d6 de dano por nível (máximo 10d6) a criaturas cristalinas. Um teste de Fortitude bem-sucedido reduz o dano à metade; objetos mundanos podem quebrar conforme sua massa.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Objeto sólido ou criatura cristalina", duration: "Instantânea",
+      savingThrow: "Fortitude para reduzir à metade", spellResistance: "Sim (objeto)",
+    },
+  },
+  "clerigo:2:Despedaçar": {
+    summaryOnly: false,
+    detailsPage: 227,
+    summary: "Vibrações sônicas destroem objetos de cristal e causam 1d6 de dano por nível (máximo 10d6) a criaturas cristalinas. Um teste de Fortitude bem-sucedido reduz o dano à metade; objetos mundanos podem quebrar conforme sua massa.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Objeto sólido ou criatura cristalina", duration: "Instantânea",
+      savingThrow: "Fortitude para reduzir à metade", spellResistance: "Sim (objeto)",
+    },
+  },
+  "feiticeiro_mago:2:Despedaçar": {
+    summaryOnly: false,
+    detailsPage: 227,
+    summary: "Vibrações sônicas destroem objetos de cristal e causam 1d6 de dano por nível (máximo 10d6) a criaturas cristalinas. Um teste de Fortitude bem-sucedido reduz o dano à metade; objetos mundanos podem quebrar conforme sua massa.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Objeto sólido ou criatura cristalina", duration: "Instantânea",
+      savingThrow: "Fortitude para reduzir à metade", spellResistance: "Sim (objeto)",
+    },
+  },
+  "druida:5:Despertar": {
+    summaryOnly: false,
+    detailsPage: 227,
+    detailsPageEnd: 228,
+    summary: "Concede inteligência humana a um animal ou árvore. O alvo animal passa a compreender fala e ganha 3d6 de Inteligência, +1d3 de Carisma e 2 DV; a árvore desperta com mobilidade e sentidos humanos. O conjurador gasta 250 XP.",
+    mechanics: {
+      components: "V, G, FD, XP", castingTime: "24 horas", range: "Toque",
+      target: "Animal ou árvore tocada", duration: "Instantânea", savingThrow: "Vontade anula", spellResistance: "Sim",
+    },
+  },
+  "bardo:5:Despistar": {
+    summaryOnly: false,
+    detailsPage: 228,
+    summary: "Torna o conjurador invisível enquanto cria uma duplicata ilusória que pode se mover e agir de forma independente. O conjurador pode observar por meio da duplicata e dividir sua concentração entre ela e a própria invisibilidade.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Você e uma duplicata ilusória", duration: "1 rodada/nível (D) e concentração +3 rodadas",
+      savingThrow: "Nenhum ou Vontade desacredita (se interagir); veja texto", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:6:Despistar": {
+    summaryOnly: false,
+    detailsPage: 228,
+    summary: "Torna o conjurador invisível enquanto cria uma duplicata ilusória que pode se mover e agir de forma independente. O conjurador pode observar por meio da duplicata e dividir sua concentração entre ela e a própria invisibilidade.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Você e uma duplicata ilusória", duration: "1 rodada/nível (D) e concentração +3 rodadas",
+      savingThrow: "Nenhum ou Vontade desacredita (se interagir); veja texto", spellResistance: "Não",
+    },
+  },
+  "clerigo:7:Destruição": {
+    summaryOnly: false,
+    detailsPage: 228,
+    summary: "Mata a criatura que falhar no teste de Fortitude e destrói seus restos, impedindo ressurreição que exija um corpo. Em caso de sucesso, causa 10d6 de dano; a magia exige um símbolo sagrado ou profano especial no valor de 500 PO.",
+    mechanics: {
+      components: "V, G, F", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Uma criatura", duration: "Instantânea", savingThrow: "Fortitude parcial", spellResistance: "Sim",
+    },
+  },
+  "druida:7:Destruição Rastejante": {
+    summaryOnly: false,
+    detailsPage: 228,
+    summary: "Invoca enxames de insetos que atacam sob comando: conjura um enxame por 2 níveis (máximo de 10), que não precisam ficar adjacentes. Eles avançam até 30 m por rodada, atacam criaturas na área e continuam no lugar quando o conjurador se afasta.",
+    mechanics: {
+      components: "V, G", castingTime: "1 rodada", range: "Curto (7,5 m + 1,5 m/2 níveis) ou 30 m (veja texto)",
+      target: "Um enxame de insetos/2 níveis (máximo de 10 enxames)", duration: "1 minuto/nível",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "clerigo:6:Destruir Mortos-Vivos": {
+    summaryOnly: false,
+    detailsPage: 228,
+    summary: "Funciona como Círculo da Morte, mas afeta apenas mortos-vivos: destrói 1d4 DV por nível de conjurador (máximo 20d4) numa explosão de 12 m de raio. Um teste de Vontade bem-sucedido anula o efeito; exige pó de diamante de pelo menos 500 PO.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+      target: "Mortos-vivos em explosão de 12 m de raio", duration: "Instantânea",
+      savingThrow: "Vontade anula", spellResistance: "Sim",
+    },
+  },
+  "feiticeiro_mago:6:Destruir Mortos-Vivos": {
+    summaryOnly: false,
+    detailsPage: 228,
+    summary: "Funciona como Círculo da Morte, mas afeta apenas mortos-vivos: destrói 1d4 DV por nível de conjurador (máximo 20d4) numa explosão de 12 m de raio. Um teste de Vontade bem-sucedido anula o efeito; exige pó de diamante de pelo menos 500 PO.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+      target: "Mortos-vivos em explosão de 12 m de raio", duration: "Instantânea",
+      savingThrow: "Vontade anula", spellResistance: "Sim",
+    },
+  },
+  "druida:1:Detectar Animais ou Plantas": {
+    summaryOnly: false,
+    detailsPage: 228,
+    detailsPageEnd: 229,
+    summary: "Detecta uma espécie escolhida de animal ou planta num cone. Na primeira rodada revela presença ou ausência; na segunda, quantidade e condição dos espécimes mais saudáveis; na terceira, condição e localização de cada um, se estiverem na linha de visão. Cada rodada permite escolher nova área e espécie.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+      target: "Emanação em cone", duration: "Concentração, até 10 minutos/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "patrulheiro:1:Detectar Animais ou Plantas": {
+    summaryOnly: false,
+    detailsPage: 228,
+    detailsPageEnd: 229,
+    summary: "Detecta uma espécie escolhida de animal ou planta num cone. Na primeira rodada revela presença ou ausência; na segunda, quantidade e condição dos espécimes mais saudáveis; na terceira, condição e localização de cada um, se estiverem na linha de visão. Cada rodada permite escolher nova área e espécie.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+      target: "Emanação em cone", duration: "Concentração, até 10 minutos/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "druida:1:Detectar Armadilhas": {
+    summaryOnly: false,
+    detailsPage: 229,
+    summary: "Detecta fossos, abismos, areia movediça e armadilhas para animais ou mecanismos simples feitos de materiais naturais num cone. Não revela armadilhas complexas, mágicas (salvo as naturais), dispositivos mecânicos muito complexos nem armadilhas mecânicas inativas; cada rodada adicional informa o tipo e o funcionamento de cada armadilha detectada.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "18 m",
+      target: "Emanação em cone", duration: "Concentração, até 10 minutos/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "patrulheiro:1:Detectar Armadilhas": {
+    summaryOnly: false,
+    detailsPage: 229,
+    summary: "Detecta fossos, abismos, areia movediça e armadilhas para animais ou mecanismos simples feitos de materiais naturais num cone. Não revela armadilhas complexas, mágicas (salvo as naturais), dispositivos mecânicos muito complexos nem armadilhas mecânicas inativas; cada rodada adicional informa o tipo e o funcionamento de cada armadilha detectada.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "18 m",
+      target: "Emanação em cone", duration: "Concentração, até 10 minutos/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "bardo:1:Detectar Portas Secretas": {
+    summaryOnly: false,
+    detailsPage: 230,
+    summary: "Revela portas, compartimentos e esconderijos construídos especificamente para não serem notados, numa emanação em cone. A cada rodada de concentração, amplia a área examinada e o tipo de informação; uma porta comum apenas escondida por objetos não é detectada.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "18 m",
+      target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:1:Detectar Portas Secretas": {
+    summaryOnly: false,
+    detailsPage: 230,
+    summary: "Revela portas, compartimentos e esconderijos construídos especificamente para não serem notados, numa emanação em cone. A cada rodada de concentração, amplia a área examinada e o tipo de informação; uma porta comum apenas escondida por objetos não é detectada.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "18 m",
+      target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "clerigo:0:Detectar Venenos": {
+    summaryOnly: false,
+    detailsPage: 230,
+    summary: "Detecta veneno numa criatura, objeto ou pequena área. Pode identificar o tipo com um teste de Ofícios (Alquimia) CD 20.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Uma criatura, objeto ou cubo de 1,5 m", duration: "Instantânea",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "druida:0:Detectar Venenos": {
+    summaryOnly: false,
+    detailsPage: 230,
+    summary: "Detecta veneno numa criatura, objeto ou pequena área. Pode identificar o tipo com um teste de Ofícios (Alquimia) CD 20.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Uma criatura, objeto ou cubo de 1,5 m", duration: "Instantânea",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "paladino:1:Detectar Venenos": {
+    summaryOnly: false,
+    detailsPage: 230,
+    summary: "Detecta veneno numa criatura, objeto ou pequena área. Pode identificar o tipo com um teste de Ofícios (Alquimia) CD 20.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Uma criatura, objeto ou cubo de 1,5 m", duration: "Instantânea",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:0:Detectar Venenos": {
+    summaryOnly: false,
+    detailsPage: 230,
+    summary: "Detecta veneno numa criatura, objeto ou pequena área. Pode identificar o tipo com um teste de Ofícios (Alquimia) CD 20.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Uma criatura, objeto ou cubo de 1,5 m", duration: "Instantânea",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "clerigo:1:Detectar Mortos-Vivos": {
+    summaryOnly: false,
+    detailsPage: 230,
+    summary: "Revela mortos-vivos numa emanação em cone: a primeira rodada indica presença, a segunda quantifica as auras e a terceira revela sua força e localização. Barreiras podem encobrir auras mais fracas.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "18 m",
+      target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "paladino:1:Detectar Mortos-Vivos": {
+    summaryOnly: false,
+    detailsPage: 230,
+    summary: "Revela mortos-vivos numa emanação em cone: a primeira rodada indica presença, a segunda quantifica as auras e a terceira revela sua força e localização. Barreiras podem encobrir auras mais fracas.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "18 m",
+      target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:1:Detectar Mortos-Vivos": {
+    summaryOnly: false,
+    detailsPage: 230,
+    summary: "Revela mortos-vivos numa emanação em cone: a primeira rodada indica presença, a segunda quantifica as auras e a terceira revela sua força e localização. Barreiras podem encobrir auras mais fracas.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "18 m",
+      target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "bardo:2:Detectar Pensamentos": {
+    summaryOnly: false,
+    detailsPage: 230,
+    detailsPageEnd: 231,
+    summary: "Detecta mentes com Inteligência 3 ou maior num cone: na primeira rodada revela sua presença; na segunda, quantidade e Inteligência; na terceira, pensamentos superficiais. Uma criatura pode resistir, e barreiras limitam a detecção.",
+    mechanics: {
+      components: "V, G, F/FD", castingTime: "1 ação padrão", range: "18 m",
+      target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
+      savingThrow: "Vontade anula (veja texto)", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:2:Detectar Pensamentos": {
+    summaryOnly: false,
+    detailsPage: 230,
+    detailsPageEnd: 231,
+    summary: "Detecta mentes com Inteligência 3 ou maior num cone: na primeira rodada revela sua presença; na segunda, quantidade e Inteligência; na terceira, pensamentos superficiais. Uma criatura pode resistir, e barreiras limitam a detecção.",
+    mechanics: {
+      components: "V, G, F/FD", castingTime: "1 ação padrão", range: "18 m",
+      target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
+      savingThrow: "Vontade anula (veja texto)", spellResistance: "Não",
+    },
+  },
+  "clerigo:1:Detectar Caos/Mal/Bem/Ordem": {
+    summaryOnly: false,
+    detailsPage: 229,
+    summary: "Como Detectar o Mal, mas revela auras de criaturas, clérigos, magias e itens mágicos do alinhamento escolhido (Caos, Mal, Bem ou Ordem). Conjuradores com tendência oposta podem ficar vulneráveis a uma aura avassaladora desse alinhamento.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "1 ação padrão", range: "18 m",
+      target: "Emanação em cone", duration: "Concentração, até 10 minutos/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "bardo:0:Detectar Magia": {
+    summaryOnly: false,
+    detailsPage: 229,
+    summary: "Na primeira rodada revela a presença de auras mágicas; na segunda, a quantidade e a intensidade; na terceira, a intensidade e localização de cada aura. Um teste de Identificar Magia pode revelar a escola. Barreiras e auras mais fortes podem ocultar auras fracas.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "18 m",
+      target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "clerigo:0:Detectar Magia": {
+    summaryOnly: false,
+    detailsPage: 229,
+    summary: "Na primeira rodada revela a presença de auras mágicas; na segunda, a quantidade e a intensidade; na terceira, a intensidade e localização de cada aura. Um teste de Identificar Magia pode revelar a escola. Barreiras e auras mais fortes podem ocultar auras fracas.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "18 m",
+      target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "druida:0:Detectar Magia": {
+    summaryOnly: false,
+    detailsPage: 229,
+    summary: "Na primeira rodada revela a presença de auras mágicas; na segunda, a quantidade e a intensidade; na terceira, a intensidade e localização de cada aura. Um teste de Identificar Magia pode revelar a escola. Barreiras e auras mais fortes podem ocultar auras fracas.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "18 m",
+      target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:0:Detectar Magia": {
+    summaryOnly: false,
+    detailsPage: 229,
+    summary: "Na primeira rodada revela a presença de auras mágicas; na segunda, a quantidade e a intensidade; na terceira, a intensidade e localização de cada aura. Um teste de Identificar Magia pode revelar a escola. Barreiras e auras mais fortes podem ocultar auras fracas.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "18 m",
+      target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+};
+
+export const DND35_SPELL_LISTS: Dnd35SpellList[] =
+  [...CORE_ARCANE_AND_CLERIC_LISTS, ...OTHER_CLASS_LISTS, ...HIGHER_LEVEL_LISTS].map((list) => ({
+    ...list,
+    entries: list.entries.map((spell) => ({
+      ...spell,
+      ...VERIFIED_SPELL_DETAILS[`${list.listId}:${list.spellLevel}:${spell.name}`],
+    })),
+  }));
 
 /** Listas disponíveis para uma classe num nível de magia (vazio se não transcrito). */
 export function dnd35SpellListFor(classId: string, spellLevel: number): Dnd35SpellListEntry[] {

@@ -688,6 +688,204 @@ describe("serviço de catálogo local", () => {
 
     expect(source).toBe("local_runtime");
     expect(items).toHaveLength(expectedCount);
+    const transcribedBookSpells = items.filter((item) => typeof item.data.listId === "string");
+    expect(transcribedBookSpells).toHaveLength(expectedCount);
+    const reviewedSummaryIds = transcribedBookSpells.filter((item) => item.data.summaryOnly === false).map((item) => item.id).sort();
+    expect(reviewedSummaryIds).toEqual([
+      "dnd35.phb.spell.bardo.1.compreender-idiomas",
+      "dnd35.phb.spell.bardo.0.detectar-magia",
+      "dnd35.phb.spell.bardo.3.confusao",
+      "dnd35.phb.spell.bardo.0.consertar",
+      "dnd35.phb.spell.bardo.1.confusao-menor",
+      "dnd35.phb.spell.bardo.1.detectar-portas-secretas",
+      "dnd35.phb.spell.bardo.2.detectar-pensamentos",
+      "dnd35.phb.spell.bardo.4.conjuracao-de-sombras",
+      "dnd35.phb.spell.bardo.6.danca-irresistivel-de-otto",
+      "dnd35.phb.spell.bardo.2.despedacar",
+      "dnd35.phb.spell.bardo.3.desespero-esmagador",
+      "dnd35.phb.spell.bardo.3.deslocamento",
+      "dnd35.phb.spell.bardo.5.despistar",
+      "dnd35.phb.spell.clerigo.0.consertar",
+      "dnd35.phb.spell.clerigo.0.detectar-magia",
+      "dnd35.phb.spell.clerigo.0.detectar-venenos",
+      "dnd35.phb.spell.clerigo.1.compreender-idiomas",
+      "dnd35.phb.spell.clerigo.2.consagrar",
+      "dnd35.phb.spell.clerigo.2.descanso-tranquilo",
+      "dnd35.phb.spell.clerigo.1.desespero",
+      "dnd35.phb.spell.clerigo.1.detectar-caos-mal-bem-ordem",
+      "dnd35.phb.spell.clerigo.1.detectar-mortos-vivos",
+      "dnd35.phb.spell.clerigo.2.despedacar",
+      "dnd35.phb.spell.clerigo.6.destruir-mortos-vivos",
+      "dnd35.phb.spell.clerigo.7.destruicao",
+      "dnd35.phb.spell.clerigo.3.criar-mortos-vivos-menor",
+      "dnd35.phb.spell.clerigo.6.cupula-de-protecao-contra-a-vida",
+      "dnd35.phb.spell.clerigo.6.cura-completa",
+      "dnd35.phb.spell.clerigo.5.comunhao",
+      "dnd35.phb.spell.clerigo.5.conspurcar",
+      "dnd35.phb.spell.clerigo.6.criar-mortos-vivos",
+      "dnd35.phb.spell.clerigo.7.controlar-o-clima",
+      "dnd35.phb.spell.clerigo.8.criar-mortos-vivos-maior",
+      "dnd35.phb.spell.clerigo.9.cura-completa-em-massa",
+      "dnd35.phb.spell.druida.0.consertar",
+      "dnd35.phb.spell.druida.0.detectar-magia",
+      "dnd35.phb.spell.druida.0.detectar-venenos",
+      "dnd35.phb.spell.druida.1.constricao",
+      "dnd35.phb.spell.druida.4.comandar-plantas",
+      "dnd35.phb.spell.druida.5.comunhao-com-a-natureza",
+      "dnd35.phb.spell.druida.5.conspurcar",
+      "dnd35.phb.spell.druida.4.controlar-agua",
+      "dnd35.phb.spell.druida.6.conto-das-rochas",
+      "dnd35.phb.spell.druida.4.cupula-de-protecao-contra-vegetais",
+      "dnd35.phb.spell.druida.6.cupula-de-protecao-contra-a-vida",
+      "dnd35.phb.spell.druida.7.controlar-o-clima",
+      "dnd35.phb.spell.druida.7.cura-completa",
+      "dnd35.phb.spell.druida.8.dedo-da-morte",
+      "dnd35.phb.spell.druida.1.detectar-animais-ou-plantas",
+      "dnd35.phb.spell.druida.1.detectar-armadilhas",
+      "dnd35.phb.spell.druida.5.despertar",
+      "dnd35.phb.spell.druida.7.destruicao-rastejante",
+      "dnd35.phb.spell.druida.3.convocar-relampagos",
+      "dnd35.phb.spell.druida.5.convocar-tempestade-de-relampagos",
+      "dnd35.phb.spell.druida.3.crescer-espinhos",
+      "dnd35.phb.spell.feiticeiro_mago.1.compreender-idiomas",
+      "dnd35.phb.spell.feiticeiro_mago.2.comandar-mortos-vivos",
+      "dnd35.phb.spell.feiticeiro_mago.0.consertar",
+      "dnd35.phb.spell.feiticeiro_mago.0.detectar-magia",
+      "dnd35.phb.spell.feiticeiro_mago.0.detectar-venenos",
+      "dnd35.phb.spell.feiticeiro_mago.1.detectar-mortos-vivos",
+      "dnd35.phb.spell.feiticeiro_mago.1.detectar-portas-secretas",
+      "dnd35.phb.spell.feiticeiro_mago.2.detectar-pensamentos",
+      "dnd35.phb.spell.feiticeiro_mago.4.conjuracao-de-sombras",
+      "dnd35.phb.spell.feiticeiro_mago.4.confusao",
+      "dnd35.phb.spell.feiticeiro_mago.4.criar-mortos-vivos-menor",
+      "dnd35.phb.spell.feiticeiro_mago.5.compor",
+      "dnd35.phb.spell.feiticeiro_mago.5.cone-glacial",
+      "dnd35.phb.spell.feiticeiro_mago.5.contato-extraplanar",
+      "dnd35.phb.spell.feiticeiro_mago.5.criar-passagens",
+      "dnd35.phb.spell.feiticeiro_mago.6.contingencia",
+      "dnd35.phb.spell.feiticeiro_mago.6.controlar-agua",
+      "dnd35.phb.spell.feiticeiro_mago.6.controlar-o-clima",
+      "dnd35.phb.spell.feiticeiro_mago.6.corrente-de-relampagos",
+      "dnd35.phb.spell.feiticeiro_mago.6.criar-mortos-vivos",
+      "dnd35.phb.spell.feiticeiro_mago.7.cubo-de-energia",
+      "dnd35.phb.spell.feiticeiro_mago.8.corpo-de-ferro",
+      "dnd35.phb.spell.feiticeiro_mago.8.danca-irresistivel-de-otto",
+      "dnd35.phb.spell.feiticeiro_mago.3.descanso-tranquilo",
+      "dnd35.phb.spell.feiticeiro_mago.2.despedacar",
+      "dnd35.phb.spell.feiticeiro_mago.3.deslocamento",
+      "dnd35.phb.spell.feiticeiro_mago.4.desespero-esmagador",
+      "dnd35.phb.spell.feiticeiro_mago.6.desintegrar",
+      "dnd35.phb.spell.feiticeiro_mago.6.despistar",
+      "dnd35.phb.spell.feiticeiro_mago.6.destruir-mortos-vivos",
+      "dnd35.phb.spell.feiticeiro_mago.7.dedo-da-morte",
+      "dnd35.phb.spell.feiticeiro_mago.7.desejo-restrito",
+      "dnd35.phb.spell.feiticeiro_mago.8.criar-mortos-vivos-maior",
+      "dnd35.phb.spell.patrulheiro.3.comandar-plantas",
+      "dnd35.phb.spell.patrulheiro.1.constricao",
+      "dnd35.phb.spell.patrulheiro.2.crescer-espinhos",
+      "dnd35.phb.spell.patrulheiro.4.comunhao-com-a-natureza",
+      "dnd35.phb.spell.patrulheiro.1.detectar-animais-ou-plantas",
+      "dnd35.phb.spell.patrulheiro.1.detectar-armadilhas",
+      "dnd35.phb.spell.paladino.1.detectar-venenos",
+      "dnd35.phb.spell.paladino.1.detectar-mortos-vivos",
+    ].sort());
+    // Ter uma ficha mecânica não remove, por si só, o aviso de resumo parcial.
+    expect(transcribedBookSpells.find((item) => item.id === "dnd35.phb.spell.feiticeiro_mago.8.clone")?.data.summaryOnly).toBe(true);
+    expect(items.find((item) => item.data.listId === "feiticeiro_mago" && item.data.spellLevel === 2 && item.name === "Comandar Mortos-Vivos")?.data).toMatchObject({
+      detailsPage: 216, summaryOnly: false, spellFlags: ["M"], mechanics: { duration: "1 dia/nível", savingThrow: "Vontade anula (veja texto)" },
+    });
+    for (const [listId, level] of [["druida", 4], ["patrulheiro", 3]] as const) {
+      expect(items.find((item) => item.data.listId === listId && item.data.spellLevel === level && item.name === "Comandar Plantas")?.data).toMatchObject({
+        detailsPage: 216, summaryOnly: false, mechanics: { target: "Até 2 DV/nível de criaturas tipo planta" },
+      });
+    }
+    expect(items.find((item) => item.data.listId === "druida" && item.data.spellLevel === 8 && item.name === "Comandar Plantas")?.data.summaryOnly).toBe(true);
+    const shadowConjuration = items.find((item) => item.id === "dnd35.phb.spell.feiticeiro_mago.4.conjuracao-de-sombras");
+    expect(shadowConjuration?.data).toMatchObject({ detailsPage: 218, detailsPageEnd: 219, summaryOnly: false });
+    expect(items.find((item) => item.id === "dnd35.phb.spell.clerigo.2.consagrar")?.data).toMatchObject({
+      detailsPage: 219, summaryOnly: false, spellFlags: ["M"], mechanics: { components: "V, G, M, FD" },
+    });
+    expect(items.find((item) => item.id === "dnd35.phb.spell.druida.5.conspurcar")?.data).toMatchObject({
+      detailsPage: 219, summaryOnly: false, spellFlags: ["M"], mechanics: { components: "V, G, M" },
+    });
+    expect(items.find((item) => item.id === "dnd35.phb.spell.patrulheiro.1.constricao")?.data).toMatchObject({
+      detailsPage: 219, detailsPageEnd: 220, summaryOnly: false,
+      mechanics: { savingThrow: "Reflexos parcial (veja texto)", spellResistance: "Não" },
+    });
+    expect(items.find((item) => item.id === "dnd35.phb.spell.feiticeiro_mago.5.contato-extraplanar")?.data).toMatchObject({ detailsPage: 220, summaryOnly: false });
+    expect(items.find((item) => item.id === "dnd35.phb.spell.feiticeiro_mago.6.contingencia")?.data).toMatchObject({ detailsPage: 220, detailsPageEnd: 221, summaryOnly: false });
+    expect(items.find((item) => item.id === "dnd35.phb.spell.druida.6.conto-das-rochas")?.data).toMatchObject({ detailsPage: 220, summaryOnly: false });
+    for (const [listId, level] of [["druida", 4], ["feiticeiro_mago", 6]] as const) {
+      expect(items.find((item) => item.data.listId === listId && item.data.spellLevel === level && item.name === "Controlar Água")?.data).toMatchObject({ detailsPage: 220, detailsPageEnd: 221, summaryOnly: false });
+    }
+    for (const [listId, level] of [["clerigo", 7], ["druida", 7], ["feiticeiro_mago", 6]] as const) {
+      expect(items.find((item) => item.data.listId === listId && item.data.spellLevel === level && item.name === "Controlar o Clima")?.data).toMatchObject({ detailsPage: 221, summaryOnly: false });
+    }
+    for (const [listId, level, name, detailsPage, detailsPageEnd] of [
+      ["druida", 3, "Convocar Relâmpagos", 222, undefined],
+      ["druida", 5, "Convocar Tempestade de Relâmpagos", 222, undefined],
+      ["feiticeiro_mago", 6, "Corrente de Relâmpagos", 222, undefined],
+      ["feiticeiro_mago", 8, "Corpo de Ferro", 222, undefined],
+      ["druida", 3, "Crescer Espinhos", 222, 223],
+      ["patrulheiro", 2, "Crescer Espinhos", 222, 223],
+      ["feiticeiro_mago", 6, "Criar Mortos-Vivos", 223, 224],
+      ["clerigo", 6, "Criar Mortos-Vivos", 223, 224],
+      ["feiticeiro_mago", 4, "Criar Mortos-Vivos Menor", 224, undefined],
+      ["clerigo", 3, "Criar Mortos-Vivos Menor", 224, undefined],
+      ["feiticeiro_mago", 8, "Criar Mortos-Vivos Maior", 224, undefined],
+      ["clerigo", 8, "Criar Mortos-Vivos Maior", 224, undefined],
+      ["feiticeiro_mago", 5, "Criar Passagens", 224, 225],
+      ["feiticeiro_mago", 7, "Cubo de Energia", 224, undefined],
+    ] as const) {
+      expect(items.find((item) => item.data.listId === listId && item.data.spellLevel === level && item.name === name)?.data)
+        .toMatchObject({ detailsPage, ...(detailsPageEnd ? { detailsPageEnd } : {}), summaryOnly: false });
+    }
+    for (const [listId, level, name] of [
+      ["druida", 1, "Detectar Armadilhas"],
+      ["patrulheiro", 1, "Detectar Armadilhas"],
+      ["clerigo", 1, "Detectar Caos/Mal/Bem/Ordem"],
+      ["bardo", 0, "Detectar Magia"],
+      ["clerigo", 0, "Detectar Magia"],
+      ["druida", 0, "Detectar Magia"],
+      ["feiticeiro_mago", 0, "Detectar Magia"],
+    ] as const) {
+      expect(items.find((item) => item.data.listId === listId && item.data.spellLevel === level && item.name === name)?.data)
+        .toMatchObject({ detailsPage: 229, summaryOnly: false, mechanics: expect.objectContaining({ components: expect.any(String), range: "18 m" }) });
+    }
+    for (const [listId, level, name] of [
+      ["bardo", 1, "Detectar Portas Secretas"], ["feiticeiro_mago", 1, "Detectar Portas Secretas"],
+      ["clerigo", 0, "Detectar Venenos"], ["druida", 0, "Detectar Venenos"], ["paladino", 1, "Detectar Venenos"], ["feiticeiro_mago", 0, "Detectar Venenos"],
+      ["clerigo", 1, "Detectar Mortos-Vivos"], ["paladino", 1, "Detectar Mortos-Vivos"], ["feiticeiro_mago", 1, "Detectar Mortos-Vivos"],
+      ["bardo", 2, "Detectar Pensamentos"], ["feiticeiro_mago", 2, "Detectar Pensamentos"],
+    ] as const) {
+      expect(items.find((item) => item.data.listId === listId && item.data.spellLevel === level && item.name === name)?.data)
+        .toMatchObject({ detailsPage: 230, summaryOnly: false, mechanics: expect.objectContaining({ components: expect.any(String) }) });
+    }
+    expect(items.find((item) => item.data.listId === "feiticeiro_mago" && item.data.spellLevel === 2 && item.name === "Detectar Pensamentos")?.data.detailsPageEnd).toBe(231);
+    for (const [listId, level, name, detailsPage, detailsPageEnd] of [
+      ["feiticeiro_mago", 7, "Desejo Restrito", 227, undefined],
+      ["clerigo", 1, "Desespero", 227, undefined],
+      ["bardo", 3, "Desespero Esmagador", 227, undefined],
+      ["feiticeiro_mago", 4, "Desespero Esmagador", 227, undefined],
+      ["feiticeiro_mago", 6, "Desintegrar", 227, undefined],
+      ["bardo", 3, "Deslocamento", 227, undefined],
+      ["feiticeiro_mago", 3, "Deslocamento", 227, undefined],
+      ["bardo", 2, "Despedaçar", 227, undefined],
+      ["clerigo", 2, "Despedaçar", 227, undefined],
+      ["feiticeiro_mago", 2, "Despedaçar", 227, undefined],
+      ["druida", 5, "Despertar", 227, 228],
+      ["bardo", 5, "Despistar", 228, undefined],
+      ["feiticeiro_mago", 6, "Despistar", 228, undefined],
+      ["clerigo", 7, "Destruição", 228, undefined],
+      ["druida", 7, "Destruição Rastejante", 228, undefined],
+      ["clerigo", 6, "Destruir Mortos-Vivos", 228, undefined],
+      ["feiticeiro_mago", 6, "Destruir Mortos-Vivos", 228, undefined],
+      ["druida", 1, "Detectar Animais ou Plantas", 228, 229],
+      ["patrulheiro", 1, "Detectar Animais ou Plantas", 228, 229],
+    ] as const) {
+      expect(items.find((item) => item.data.listId === listId && item.data.spellLevel === level && item.name === name)?.data)
+        .toMatchObject({ detailsPage, ...(detailsPageEnd ? { detailsPageEnd } : {}), summaryOnly: false });
+    }
     expect(items.every((item) => item.system_id === "dnd35" && item.data.ruleset === "v35")).toBe(true);
     expect(items.every((item) => Array.isArray(item.data.classIds) && item.data.classIds.length > 0 && typeof item.data.spellLevel === "number")).toBe(true);
     expect(items.every((item) => item.data.source?.book === "D&D 3.5 — Livro do Jogador" && item.data.source?.page)).toBe(true);
@@ -752,16 +950,16 @@ describe("serviço de catálogo local", () => {
     expect(sorcererWizardFifthLevelSpell?.data.classIds).toEqual(["feiticeiro", "mago"]);
     expect(sorcererWizardFifthLevelSpell?.data.school).toBe("Conj");
     expect(sorcererWizardFifthLevelSpell?.data.spellFlags).toEqual(["F"]);
-    const sorcererWizardSixthLevelSpell = items.find((item) => item.data.listId === "feiticeiro_mago" && item.data.spellLevel === 6 && item.name === "Simulacro");
-    expect(sorcererWizardSixthLevelSpell?.data.ruleset).toBe("v35");
-    expect(sorcererWizardSixthLevelSpell?.data.sourcePageRange).toBe("195-196");
-    expect(sorcererWizardSixthLevelSpell?.data.source?.page).toBe(195);
-    expect(sorcererWizardSixthLevelSpell?.data.classIds).toEqual(["feiticeiro", "mago"]);
-    expect(sorcererWizardSixthLevelSpell?.data.school).toBe("Ilus");
-    expect(sorcererWizardSixthLevelSpell?.data.spellFlags).toEqual(["M", "X"]);
+    const sorcererWizardSeventhLevelSimulacrum = items.find((item) => item.data.listId === "feiticeiro_mago" && item.data.spellLevel === 7 && item.name === "Simulacro");
+    expect(sorcererWizardSeventhLevelSimulacrum?.data.ruleset).toBe("v35");
+    expect(sorcererWizardSeventhLevelSimulacrum?.data.sourcePageRange).toBe("196");
+    expect(sorcererWizardSeventhLevelSimulacrum?.data.source?.page).toBe(196);
+    expect(sorcererWizardSeventhLevelSimulacrum?.data.classIds).toEqual(["feiticeiro", "mago"]);
+    expect(sorcererWizardSeventhLevelSimulacrum?.data.school).toBe("Ilus");
+    expect(sorcererWizardSeventhLevelSimulacrum?.data.spellFlags).toEqual(["M", "X"]);
     const sorcererWizardSeventhLevelSpell = items.find((item) => item.data.listId === "feiticeiro_mago" && item.data.spellLevel === 7 && item.name === "Visão");
     expect(sorcererWizardSeventhLevelSpell?.data.ruleset).toBe("v35");
-    expect(sorcererWizardSeventhLevelSpell?.data.sourcePageRange).toBe("196-197");
+    expect(sorcererWizardSeventhLevelSpell?.data.sourcePageRange).toBe("196");
     expect(sorcererWizardSeventhLevelSpell?.data.source?.page).toBe(196);
     expect(sorcererWizardSeventhLevelSpell?.data.classIds).toEqual(["feiticeiro", "mago"]);
     expect(sorcererWizardSeventhLevelSpell?.data.school).toBe("Adiv");
@@ -773,6 +971,60 @@ describe("serviço de catálogo local", () => {
     expect(sorcererWizardEighthLevelSpell?.data.classIds).toEqual(["feiticeiro", "mago"]);
     expect(sorcererWizardEighthLevelSpell?.data.school).toBe("Encan");
     expect(sorcererWizardEighthLevelSpell?.data.spellFlags).toEqual(["M"]);
+    const sorcererWizardNinthLevelSpell = items.find((item) => item.data.listId === "feiticeiro_mago" && item.data.spellLevel === 9 && item.name === "Desejo");
+    expect(sorcererWizardNinthLevelSpell?.data.ruleset).toBe("v35");
+    expect(sorcererWizardNinthLevelSpell?.data.sourcePageRange).toBe("197");
+    expect(sorcererWizardNinthLevelSpell?.data.source?.page).toBe(197);
+    expect(sorcererWizardNinthLevelSpell?.data.classIds).toEqual(["feiticeiro", "mago"]);
+    expect(sorcererWizardNinthLevelSpell?.data.school).toBe("Univ");
+    expect(sorcererWizardNinthLevelSpell?.data.spellFlags).toEqual(["X"]);
+    const imprisonment = items.find((item) => item.data.listId === "feiticeiro_mago" && item.data.spellLevel === 9 && item.name === "Aprisionamento");
+    expect(imprisonment?.data.sourcePageRange).toBe("197");
+    expect(imprisonment?.data.detailsPage).toBe(203);
+    expect(imprisonment?.data.summaryOnly).toBe(true);
+    expect(imprisonment?.data.mechanics).toEqual({
+      components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+      duration: "Instantânea", savingThrow: "Vontade anula", spellResistance: "Sim",
+    });
+    const meteorSwarm = items.find((item) => item.data.listId === "feiticeiro_mago" && item.data.spellLevel === 9 && item.name === "Chuva de Meteoros");
+    expect(meteorSwarm?.data.sourcePageRange).toBe("197");
+    expect(meteorSwarm?.data.detailsPage).toBe(214);
+    expect(meteorSwarm?.data.summaryOnly).toBe(true);
+    expect(meteorSwarm?.data.mechanics).toMatchObject({
+      range: "Longo (120 m + 12 m/nível)", target: "Quatro dispersões de 12 m",
+      savingThrow: "Nenhum ou Reflexos para reduzir à metade", spellResistance: "Sim",
+    });
+    const soulBind = items.find((item) => item.data.listId === "feiticeiro_mago" && item.data.spellLevel === 8 && item.name === "Aprisionar a Alma");
+    expect(soulBind?.data.sourcePageRange).toBe("196-197");
+    expect(soulBind?.data.detailsPage).toBe(203);
+    expect(soulBind?.data.detailsPageEnd).toBe(204);
+    expect(soulBind?.data.spellFlags).toEqual(["M", "F"]);
+    expect(soulBind?.data.summaryOnly).toBe(true);
+    expect(soulBind?.data.mechanics).toMatchObject({
+      components: "V, G, M, F", savingThrow: "Vontade anula (magia completa); nenhum (armadilha)",
+      spellResistance: "Sim (magia completa); nenhum (armadilha)",
+    });
+    const clone = items.find((item) => item.data.listId === "feiticeiro_mago" && item.data.spellLevel === 8 && item.name === "Clone");
+    expect(clone?.data).toMatchObject({
+      ruleset: "v35", sourcePageRange: "196-197", source: { page: 196 }, detailsPage: 216,
+      classIds: ["feiticeiro", "mago"], spellFlags: ["M", "F"], summaryOnly: true,
+      mechanics: {
+        components: "V, G, M, F", castingTime: "10 minutos", range: "0 m", target: "Um clone",
+        duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+      },
+    });
+    expect(clone?.summary).toContain("suprimentos (1.000 PO)");
+    expect(clone?.summary).toContain("equipamento especial (500 PO)");
+    const teleportationCircle = items.find((item) => item.data.listId === "feiticeiro_mago" && item.data.spellLevel === 9 && item.name === "Círculo de Teletransporte");
+    expect(teleportationCircle?.data).toMatchObject({
+      ruleset: "v35", sourcePageRange: "197", source: { page: 197 }, detailsPage: 215,
+      summaryOnly: true, spellFlags: ["M"], mechanics: {
+        components: "V, M", castingTime: "10 minutos", range: "0 m",
+        target: "Círculo de 1,5 m de raio; criaturas que o ativam", duration: "10 minutos/nível (D)",
+        savingThrow: "Nenhum", spellResistance: "Sim",
+      },
+    });
+    expect(teleportationCircle?.summary).toContain("pó de prata no valor de 1.000 PO");
   });
 
   it("expõe os truques PF1e por lista de classe somente no ruleset legado e identifica o conteúdo parcial", async () => {
@@ -1744,9 +1996,9 @@ describe("serviço de catálogo local", () => {
   it("calcula as métricas do compêndio pelos snapshots locais, incluindo perícias", async () => {
     const metrics = await fetchCatalogLocalMetrics();
     expect(metrics.counts.catalog_skills).toBe(195);
-    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(7974);
-    expect(metrics.counts.catalog_spells).toBe(2156);
-    expect(metrics.verifiedCount + metrics.reviewCount).toBe(7974);
+    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(7999);
+    expect(metrics.counts.catalog_spells).toBe(2181);
+    expect(metrics.verifiedCount + metrics.reviewCount).toBe(7999);
   });
 
   it("compartilha o cálculo das métricas locais entre chamadas concorrentes", async () => {

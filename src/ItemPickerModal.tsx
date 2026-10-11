@@ -3,6 +3,7 @@ import { PF2E_ITEMS_CATALOG, type ItemDefinition } from "./data/equipmentData";
 import { useI18n, getItemDisplayName, type Locale } from "./i18n";
 import { canAffordPrice, deductCoins as deductPurseCoins, coinsToCopper, parsePriceToCopper, formatPriceToLocale } from "./utils/economy";
 import { localizeSourceBookName } from "./data/sources";
+import { useModalInertBackground } from "./hooks/useModalInertBackground";
 import "./itemPicker.css";
 
 interface ItemPickerState {
@@ -134,6 +135,7 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
 
   const searchInputRef = useRef<HTMLInputElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
+  useModalInertBackground(dialogRef, modalState.isOpen);
   const returnFocusRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {

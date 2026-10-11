@@ -18,9 +18,9 @@
     "semantic_hash": ""
   },
   "js/pf2e_data.js": {
-    "mtime": 1790003211.1922762,
-    "seen": 1790004468.8301744,
-    "ast_hash": "15d3225efddb534fcc2af73f6274f67d",
+    "mtime": 1791667152.8930366,
+    "seen": 1791692726.288095,
+    "ast_hash": "0a0a24aa34181b494aac5c403a93a91e",
     "semantic_hash": ""
   },
   "js/pf2e_engine.js": {
@@ -36,9 +36,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1791610020.107501,
-    "seen": 1791630513.6752174,
-    "ast_hash": "0d428184c1248267658d16dd60e3350b",
+    "mtime": 1791653829.7767549,
+    "seen": 1791692726.288601,
+    "ast_hash": "faf6c5e7a1c084641336fdfc0d5ffa34",
     "semantic_hash": ""
   },
   "public/js/pdf-lib.min.js": {
@@ -72,15 +72,15 @@
     "semantic_hash": ""
   },
   "src/AccountPortal.tsx": {
-    "mtime": 1791255417.5255947,
-    "seen": 1791255663.6733272,
-    "ast_hash": "1b35d27ee1e654bc359b1d46e5ae69d1",
+    "mtime": 1791693045.3772018,
+    "seen": 1791693190.9484096,
+    "ast_hash": "06c627e19de6988fd2f573c60758021d",
     "semantic_hash": ""
   },
   "src/CampaignsPage.tsx": {
-    "mtime": 1789524806.6503973,
-    "seen": 1789524996.5380967,
-    "ast_hash": "cac2044581ed251625a40e39af41d642",
+    "mtime": 1791693045.3791935,
+    "seen": 1791693190.9494133,
+    "ast_hash": "09a0d0105ee1edfcc0b5e9a3a578af9f",
     "semantic_hash": ""
   },
   "src/ItemPickerModal.test.tsx": {
@@ -90,9 +90,9 @@
     "semantic_hash": ""
   },
   "src/ItemPickerModal.tsx": {
-    "mtime": 1788465820.9063652,
-    "seen": 1789024800.51131,
-    "ast_hash": "19a8d76265de945ba940ca1b69c626c7",
+    "mtime": 1791693045.3851924,
+    "seen": 1791693190.9494133,
+    "ast_hash": "7090b548ec0d83134c1daa5f4ed8783f",
     "semantic_hash": ""
   },
   "src/PickerModal.test.tsx": {
@@ -102,21 +102,21 @@
     "semantic_hash": ""
   },
   "src/PickerModal.tsx": {
-    "mtime": 1789336238.1904845,
-    "seen": 1789505678.3994002,
-    "ast_hash": "a456929af0fb5597d25759260421d315",
+    "mtime": 1791693045.3872004,
+    "seen": 1791693190.9494133,
+    "ast_hash": "1c11d3d16c884f72c1e474a7b95c0247",
     "semantic_hash": ""
   },
   "src/PortalPages.test.tsx": {
-    "mtime": 1791630768.0184526,
-    "seen": 1791630849.3478963,
-    "ast_hash": "cd18ceb6b8de7f7850acbbf474b84b16",
+    "mtime": 1791692292.0020306,
+    "seen": 1791692726.3145244,
+    "ast_hash": "a8b928f1af4ca210d85ce8c9aca33f83",
     "semantic_hash": ""
   },
   "src/PortalPages.tsx": {
-    "mtime": 1791630725.7863228,
-    "seen": 1791630849.3478963,
-    "ast_hash": "6504a65ae8f157bad7b3cc2d9e23d5b6",
+    "mtime": 1791693045.376197,
+    "seen": 1791693190.9494133,
+    "ast_hash": "8dcd54e9ee8ce000e38dbe72285ab54f",
     "semantic_hash": ""
   },
   "src/accountState.ts": {
@@ -150,9 +150,9 @@
     "semantic_hash": ""
   },
   "src/data/catalog-provenance.test.ts": {
-    "mtime": 1789201295.4726632,
-    "seen": 1789201540.5408769,
-    "ast_hash": "8ed5109130c130ed923ff287f3dd0b4f",
+    "mtime": 1791666230.6647296,
+    "seen": 1791692726.3155248,
+    "ast_hash": "7f437f04913d4e500af589cf0653124d",
     "semantic_hash": ""
   },
   "src/data/character-creation-rules.test.ts": {
@@ -228,9 +228,9 @@
     "semantic_hash": ""
   },
   "src/data/responsive-layout-contract.test.ts": {
-    "mtime": 1791556008.3674576,
-    "seen": 1791605371.2030668,
-    "ast_hash": "d33344f5e9c530a044a750c5204855c4",
+    "mtime": 1791655317.6132393,
+    "seen": 1791692726.3425262,
+    "ast_hash": "0ce70e5c6fdd3077de380daae3bda0ca",
     "semantic_hash": ""
   },
   "src/data/responsive-view.test.ts": {
@@ -264,9 +264,9 @@
     "semantic_hash": ""
   },
   "src/i18n.tsx": {
-    "mtime": 1791609094.4992647,
-    "seen": 1791630513.7372155,
-    "ast_hash": "e2f395068619545c599b4ea47b5ab599",
+    "mtime": 1791636729.4522977,
+    "seen": 1791692726.347526,
+    "ast_hash": "833d5191ec5fc15ab997db19933f06e6",
     "semantic_hash": ""
   },
   "src/lib/supabase.ts": {
@@ -330,9 +330,9 @@
     "semantic_hash": ""
   },
   "src/types.ts": {
-    "mtime": 1791255556.2166712,
-    "seen": 1791255663.6963878,
-    "ast_hash": "c89666accbc31eba8fc17f50c883337f",
+    "mtime": 1791636729.4502988,
+    "seen": 1791692726.3585253,
+    "ast_hash": "dd71f00f8f2293039199a6daa8c746b5",
     "semantic_hash": ""
   },
   "src/utils/economy.test.ts": {
@@ -396,9 +396,9 @@
     "semantic_hash": ""
   },
   "TODO_COBERTURA_E_BUGS.md": {
-    "mtime": 1791605691.5690775,
-    "seen": 1791605734.895147,
-    "ast_hash": "36bf5d72f1f6142d7c36b2d24f953c2d",
+    "mtime": 1791703462.5305104,
+    "seen": 1791704040.3013625,
+    "ast_hash": "06fb05b2d2ec9e6e0ed255f203bcb907",
     "semantic_hash": ""
   },
   "books_expansion_and_ai_assistant_tasks.md": {
@@ -582,9 +582,9 @@
     "semantic_hash": ""
   },
   "scripts/audit-books.cjs": {
-    "mtime": 1789220681.5441835,
-    "seen": 1789234201.2033777,
-    "ast_hash": "70b4fbdf2b61cd289460d71cf16d296b",
+    "mtime": 1791694458.2623796,
+    "seen": 1791694671.0078557,
+    "ast_hash": "7be65ea215015c5879d695f3d9b5113a",
     "semantic_hash": ""
   },
   "scripts/audit-live-character-trees.cjs": {
@@ -636,9 +636,9 @@
     "semantic_hash": ""
   },
   "scripts/enrich-all-compendium-items.cjs": {
-    "mtime": 1788287081.4897058,
-    "seen": 1789024800.5112562,
-    "ast_hash": "33ebec9e71661c8b85e4a95c513d2940",
+    "mtime": 1791666276.6169693,
+    "seen": 1791692726.3025281,
+    "ast_hash": "2142efc57b7b485d21cdc985bdebafea",
     "semantic_hash": ""
   },
   "scripts/enrich_all_catalog_feats.cjs": {
@@ -816,9 +816,9 @@
     "semantic_hash": ""
   },
   "src/services/admin.test.ts": {
-    "mtime": 1791623266.1112368,
-    "seen": 1791630513.7392156,
-    "ast_hash": "04e3db92726ccb32f5c264cadf2aefd9",
+    "mtime": 1791701599.8536737,
+    "seen": 1791701631.1021192,
+    "ast_hash": "b1777a676e4ccb2c274307ff8ee72507",
     "semantic_hash": ""
   },
   "src/services/admin.ts": {
@@ -1236,15 +1236,15 @@
     "semantic_hash": ""
   },
   "src/services/catalog.test.ts": {
-    "mtime": 1791633899.295027,
-    "seen": 1791634178.770646,
-    "ast_hash": "354c0e977803392e0cd5d6c23de1d3b4",
+    "mtime": 1791703353.2386632,
+    "seen": 1791704040.045923,
+    "ast_hash": "45acf1a39fee15f8262b95ea59cc2229",
     "semantic_hash": ""
   },
   "src/services/catalog.ts": {
-    "mtime": 1791608038.38389,
-    "seen": 1791630513.7402158,
-    "ast_hash": "1a45055ef2e348bdf65cb8435e5eb8bc",
+    "mtime": 1791693895.1282804,
+    "seen": 1791694155.7465088,
+    "ast_hash": "b389429260d3f2d22552f04d83910898",
     "semantic_hash": ""
   },
   ".gemini/settings.json": {
@@ -1362,9 +1362,9 @@
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_weapons.json": {
-    "mtime": 1788935371.2845209,
-    "seen": 1789024800.5112526,
-    "ast_hash": "1445ada51690c5188315bb115e3d41c4",
+    "mtime": 1791667712.5350513,
+    "seen": 1791692726.3020139,
+    "ast_hash": "94d8d9e3ba47e018634e1598b8aa468e",
     "semantic_hash": ""
   },
   "supabase/seed_catalog.sql": {
@@ -1686,15 +1686,15 @@
     "semantic_hash": ""
   },
   "js/pf2e_weapon_metadata.js": {
-    "mtime": 1788935371.3345225,
-    "seen": 1789024800.5111861,
-    "ast_hash": "1290e0670a78ef7123a97211b9b748bc",
+    "mtime": 1791667051.3187137,
+    "seen": 1791692726.288601,
+    "ast_hash": "49100a3f7e9a5619bdd8f2a3b78cc175",
     "semantic_hash": ""
   },
   "scripts/audit-catalog-supabase-reconciliation.cjs": {
-    "mtime": 1789338990.524385,
-    "seen": 1789505678.399269,
-    "ast_hash": "4c7c523415f0f96d768af38b291b7f6f",
+    "mtime": 1791636377.256428,
+    "seen": 1791692726.2916756,
+    "ast_hash": "af5802a0d6e49c06aed405bf6ace1c36",
     "semantic_hash": ""
   },
   "scripts/audit-image-metadata-supabase.cjs": {
@@ -10530,9 +10530,9 @@
     "semantic_hash": ""
   },
   "src/SystemSelectorModal.tsx": {
-    "mtime": 1790554491.327635,
-    "seen": 1790565763.193779,
-    "ast_hash": "f5b7b7d761c4ff18bbbd2b53a12f07d8",
+    "mtime": 1791693045.3881931,
+    "seen": 1791693190.9494133,
+    "ast_hash": "627686c52d2ea2fa869ef6d5fe751c34",
     "semantic_hash": ""
   },
   ".agents/skills/operator-approval-loop/references/approval-ledger.sql": {
@@ -10578,9 +10578,9 @@
     "semantic_hash": ""
   },
   "src/ose/OseCharacterCreatorModal.tsx": {
-    "mtime": 1790553056.76801,
-    "seen": 1790565763.2232583,
-    "ast_hash": "84dcad30ff94bc705e04768c8947e194",
+    "mtime": 1791693045.3811958,
+    "seen": 1791693191.0277483,
+    "ast_hash": "0adb537f1cc4d14c95c70174145414a4",
     "semantic_hash": ""
   },
   "src/ose/OseCharacterSheet.tsx": {
@@ -10734,15 +10734,15 @@
     "semantic_hash": ""
   },
   "src/core/CoreCharacterCreatorModal.tsx": {
-    "mtime": 1791603238.1597445,
-    "seen": 1791605371.090247,
-    "ast_hash": "84e894935f484aa9a570abfa756d4f1d",
+    "mtime": 1791693045.3841927,
+    "seen": 1791693190.950828,
+    "ast_hash": "1ca5193f36d2f50ee1cf49a51ca9ed34",
     "semantic_hash": ""
   },
   "src/core/CoreCharacterSheet.tsx": {
-    "mtime": 1790201843.1585386,
-    "seen": 1790565763.1939607,
-    "ast_hash": "a44eccaabd7c09da6d2cccbd66945b3c",
+    "mtime": 1791693045.3821995,
+    "seen": 1791693190.950828,
+    "ast_hash": "f5441db5283e04e9e9f49f0abb4c4f4a",
     "semantic_hash": ""
   },
   "src/data/coreCharacterRules.test.ts": {
@@ -11034,9 +11034,9 @@
     "semantic_hash": ""
   },
   "TODO_MULTI_SISTEMAS.md": {
-    "mtime": 1791633882.4941192,
-    "seen": 1791634179.0265367,
-    "ast_hash": "3b776235aae05e818de2f28df18d10e2",
+    "mtime": 1791638046.597623,
+    "seen": 1791692726.4720516,
+    "ast_hash": "f0755f1de6f983b43c71fa1314dfe3b0",
     "semantic_hash": ""
   },
   "public/ose-character-sheet-template.pdf": {
@@ -11166,15 +11166,15 @@
     "semantic_hash": ""
   },
   "src/data/systemRulesCatalog.test.ts": {
-    "mtime": 1791254716.2227578,
-    "seen": 1791255663.6870434,
-    "ast_hash": "2fc6a39907a243a60d63761e2088d005",
+    "mtime": 1791636741.9650495,
+    "seen": 1791692726.3435256,
+    "ast_hash": "59663eb0d67266293cfa89beac64b8a6",
     "semantic_hash": ""
   },
   "src/data/systemRulesCatalog.ts": {
-    "mtime": 1791254630.4845326,
-    "seen": 1791255663.687045,
-    "ast_hash": "9730f1932947ca6bb4cc57ed7db979ac",
+    "mtime": 1791636708.0536964,
+    "seen": 1791692726.3435256,
+    "ast_hash": "3c43cdded10a6de27dff358a086597db",
     "semantic_hash": ""
   },
   "src/data/systemSkills.test.ts": {
@@ -11526,9 +11526,9 @@
     "semantic_hash": ""
   },
   "scripts/audit-system-coverage.cjs": {
-    "mtime": 1791599440.3417099,
-    "seen": 1791605370.9692059,
-    "ast_hash": "4f4b3724e8cb1e69abfe21f0db387e1e",
+    "mtime": 1791637909.7000017,
+    "seen": 1791692726.297156,
+    "ast_hash": "5cd398e69d51db83bbb6abc49afb9648",
     "semantic_hash": ""
   },
   "scripts/sync-dnd5e-domain-spells-to-supabase.cjs": {
@@ -11634,9 +11634,9 @@
     "semantic_hash": ""
   },
   "TODO_COBERTURA_SISTEMAS.md": {
-    "mtime": 1791633882.4931228,
-    "seen": 1791634179.0265367,
-    "ast_hash": "2bfd581366417437aeb2300a77e23d46",
+    "mtime": 1791638026.706436,
+    "seen": 1791692726.4720516,
+    "ast_hash": "980670581009d76a38889028dc1e435a",
     "semantic_hash": ""
   },
   "SITUACAO_PROJETO.md": {
@@ -11850,15 +11850,15 @@
     "semantic_hash": ""
   },
   "src/data/pf1e/pf1eClasses.test.ts": {
-    "mtime": 1790555917.2512786,
-    "seen": 1790565763.213482,
-    "ast_hash": "a2aeae68def77189a901e90bdd249fd3",
+    "mtime": 1791636741.9640493,
+    "seen": 1791692726.340529,
+    "ast_hash": "25c98aa194dc34f468a746d16c7aa5e6",
     "semantic_hash": ""
   },
   "src/data/pf1e/pf1eClasses.ts": {
-    "mtime": 1790555896.0673177,
-    "seen": 1790565763.2134848,
-    "ast_hash": "9be8ced12c041e46e5f356d32aa94d3a",
+    "mtime": 1791636675.982928,
+    "seen": 1791692726.340529,
+    "ast_hash": "84f03a9c60babb5e078690e39c45a358",
     "semantic_hash": ""
   },
   "src/data/pf1e/pf1eRaces.test.ts": {
@@ -11892,9 +11892,9 @@
     "semantic_hash": ""
   },
   "src/dnd35/Dnd35CharacterCreatorModal.tsx": {
-    "mtime": 1791607116.0377214,
-    "seen": 1791607140.0433853,
-    "ast_hash": "55f38b8294d54b57a8ad68d651835f68",
+    "mtime": 1791693045.3801925,
+    "seen": 1791693191.024736,
+    "ast_hash": "554e440c33a18f2da888f1ff66aa7b82",
     "semantic_hash": ""
   },
   "src/services/system-editor-matrix.test.ts": {
@@ -11970,15 +11970,15 @@
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35Domains.test.ts": {
-    "mtime": 1790790358.5145526,
-    "seen": 1790796939.0024836,
-    "ast_hash": "0f4c15b5b2272118a7d74933346166c0",
+    "mtime": 1791703353.2352066,
+    "seen": 1791704039.9816394,
+    "ast_hash": "262c6723c22e7b290c0e046b3b30f9a8",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35Domains.ts": {
-    "mtime": 1790790369.822408,
-    "seen": 1790796939.002485,
-    "ast_hash": "0a65ebfd9b31be9bfb83747abce9c160",
+    "mtime": 1791703353.232687,
+    "seen": 1791704039.9816394,
+    "ast_hash": "64c5ab1bf8b392d0e47e29773afa9fed",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35FeatTable.ts": {
@@ -12000,15 +12000,15 @@
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35SpellLists.test.ts": {
-    "mtime": 1791099047.4056296,
-    "seen": 1791255663.6805007,
-    "ast_hash": "c862957e44b5ebb236b60221a3444e13",
+    "mtime": 1791703353.234699,
+    "seen": 1791704039.9939387,
+    "ast_hash": "8197ec8b3cb22f6a965679f6005232e2",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35SpellLists.ts": {
-    "mtime": 1791099013.4652958,
-    "seen": 1791255663.680503,
-    "ast_hash": "ca0987a675cd9d4a8e55cff7de8e5969",
+    "mtime": 1791703353.2309525,
+    "seen": 1791704039.9939387,
+    "ast_hash": "204fa8835f8854f3e1aac082168be839",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35Spellcasting.test.ts": {
@@ -12420,560 +12420,560 @@
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-cov/class.json": {
-    "mtime": 1791631267.580866,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.2256708,
+    "seen": 1791692726.3165262,
     "ast_hash": "8d1c166d5dade0d377f20437c5ede6e4",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-cov/feat.json": {
-    "mtime": 1791631267.5823717,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.2290678,
+    "seen": 1791692726.3165262,
     "ast_hash": "184d2863e83948bc4b6bf1039f262a16",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-cov/item.json": {
-    "mtime": 1791631267.5848854,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.234193,
+    "seen": 1791692726.3165262,
     "ast_hash": "43dc076678e813a4e969b014abf1a674",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-cov/spell.json": {
-    "mtime": 1791631267.586892,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.238609,
+    "seen": 1791692726.3165262,
     "ast_hash": "49a218913694f02e1383aba9bfad1ed6",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-defensores/class.json": {
-    "mtime": 1791631267.5898914,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.2451286,
+    "seen": 1791692726.3165262,
     "ast_hash": "c56cd0e7264ccd31edd810a9d2b6f32b",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-defensores/feat.json": {
-    "mtime": 1791631267.5898914,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.2471292,
+    "seen": 1791692726.3165262,
     "ast_hash": "c8350589452e49817ee29259bc997dbf",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-defensores/item.json": {
-    "mtime": 1791631267.59189,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.251733,
+    "seen": 1791692726.3165262,
     "ast_hash": "3a3e7489a7d7cd94fd167bee7f233ea5",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-defensores/spell.json": {
-    "mtime": 1791631267.5938897,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.2560444,
+    "seen": 1791692726.3165262,
     "ast_hash": "6646d171212e454fb8a121ac935b2393",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-frostburn/ancestry.json": {
-    "mtime": 1791631267.5958908,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.2594042,
+    "seen": 1791692726.3165262,
     "ast_hash": "fd7da67a66e94aac96fee0ded98cd71d",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-frostburn/class.json": {
-    "mtime": 1791631267.5969179,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.2642877,
+    "seen": 1791692726.3165262,
     "ast_hash": "1b3db9921157a2cc6c0e54803d9283b3",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-frostburn/feat.json": {
-    "mtime": 1791631267.5988922,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.267728,
+    "seen": 1791692726.3165262,
     "ast_hash": "63e98d711ab2fc58a56c309f10627d1b",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-frostburn/item.json": {
-    "mtime": 1791631267.6009016,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.2771606,
+    "seen": 1791692726.3165262,
     "ast_hash": "433282f5514fd932bf923758f665d348",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-frostburn/spell.json": {
-    "mtime": 1791631267.6049173,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.2906067,
+    "seen": 1791692726.3165262,
     "ast_hash": "02f44355b553d46cd965529d5c5181c1",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-frostburn/weapon.json": {
-    "mtime": 1791631267.6059134,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.2946837,
+    "seen": 1791692726.3165262,
     "ast_hash": "254f0964a1114b455a588f5dd18667e8",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35/ancestry.json": {
-    "mtime": 1791631267.565387,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.1783805,
+    "seen": 1791692726.3165262,
     "ast_hash": "3fbda92fe2928b029f8bee347af55c20",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35/armor.json": {
-    "mtime": 1791631267.5678725,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.181665,
+    "seen": 1791692726.3165262,
     "ast_hash": "5c1e34e857166f3f68494d003b426634",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35/class.json": {
-    "mtime": 1791631267.568866,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.1839015,
+    "seen": 1791692726.3165262,
     "ast_hash": "d760886de5f12ebc41865ed2810a56b0",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35/feat.json": {
-    "mtime": 1791631267.571868,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.1884246,
+    "seen": 1791692726.3165262,
     "ast_hash": "4a98a7c8dd9ca7b253266d313689020c",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35/item.json": {
-    "mtime": 1791631267.574869,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.2146306,
+    "seen": 1791692726.3165262,
     "ast_hash": "ab8e8de98c571c1dfa3b6d724a540437",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35/skill.json": {
-    "mtime": 1791631267.5758684,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.2176268,
+    "seen": 1791692726.3165262,
     "ast_hash": "8e6269a9c8635c294d544af24b238c6c",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35/weapon.json": {
-    "mtime": 1791631267.578866,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.2218225,
+    "seen": 1791692726.3165262,
     "ast_hash": "1790ab2cd67cb3b4e8ddc02bbf22d535",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd5e/standard/action.json": {
-    "mtime": 1791631267.6078923,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3026805,
+    "seen": 1791692726.3165262,
     "ast_hash": "4a1ddb286fb7a313e27265f85a6c167b",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd5e/standard/ancestry.json": {
-    "mtime": 1791631267.608891,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3056793,
+    "seen": 1791692726.3165262,
     "ast_hash": "d999f85fdabc7f4a3a222b9a9dbb84b3",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd5e/standard/background.json": {
-    "mtime": 1791631267.6098914,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3076866,
+    "seen": 1791692726.3165262,
     "ast_hash": "528d971abb2dbb29f3cf9f1f5402b88c",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd5e/standard/class.json": {
-    "mtime": 1791631267.6108904,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3106875,
+    "seen": 1791692726.3165262,
     "ast_hash": "0985b03b3d3001b598bcb8c1cb9a5d26",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd5e/standard/condition.json": {
-    "mtime": 1791631267.6128905,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.312791,
+    "seen": 1791692726.3165262,
     "ast_hash": "159553d10f88513c24ef6e6cba0c1f5e",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd5e/standard/feat.json": {
-    "mtime": 1791631267.6138914,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3169825,
+    "seen": 1791692726.3165262,
     "ast_hash": "b8544aa98ce29f833159495aa10194cb",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd5e/standard/heritage.json": {
-    "mtime": 1791631267.615891,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.319986,
+    "seen": 1791692726.3165262,
     "ast_hash": "ac9b216c7df10313b3dd61a338994a66",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd5e/standard/item.json": {
-    "mtime": 1791631267.6188943,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3291469,
+    "seen": 1791692726.3165262,
     "ast_hash": "91489058a8fb6ab2c6019ec836e269c0",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd5e/standard/skill.json": {
-    "mtime": 1791631267.619891,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3316226,
+    "seen": 1791692726.3165262,
     "ast_hash": "219819594a37e86f42e4748403b250fd",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd5e/standard/spell.json": {
-    "mtime": 1791631267.6248903,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.346277,
+    "seen": 1791692726.3165262,
     "ast_hash": "09a273e7af3c5bd6c7a135892ade336d",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd5e/standard/subclass.json": {
-    "mtime": 1791631267.6268935,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3492868,
+    "seen": 1791692726.3165262,
     "ast_hash": "42a54e38432206cd55fce8d42ff40742",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/manifest.json": {
-    "mtime": 1791633888.2665477,
-    "seen": 1791634178.705345,
-    "ast_hash": "e4e108d051e76abb4c9c0d152906e529",
+    "mtime": 1791666354.6456096,
+    "seen": 1791692726.3165262,
+    "ast_hash": "bf75cae282da711a55a24534bd87c77b",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/ose/advanced/action.json": {
-    "mtime": 1791631267.6278937,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.351914,
+    "seen": 1791692726.3165262,
     "ast_hash": "12b2da19c53085310f689c97574f3da2",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/ose/advanced/ancestry.json": {
-    "mtime": 1791631267.6288903,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3549244,
+    "seen": 1791692726.3165262,
     "ast_hash": "70f43141cd3c04f4c33adf578f2855e6",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/ose/advanced/class.json": {
-    "mtime": 1791631267.6308937,
-    "seen": 1791631954.1329827,
-    "ast_hash": "0575de862841fa181c0f9c46957d96ed",
+    "mtime": 1791661701.3599236,
+    "seen": 1791692726.3165262,
+    "ast_hash": "b3e751a69c12f8b2fd1faea35f38a8db",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/ose/advanced/item.json": {
-    "mtime": 1791631267.6318927,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.365353,
+    "seen": 1791692726.3165262,
     "ast_hash": "90971cd1ee9f93e68b05390fd0286372",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/ose/advanced/skill.json": {
-    "mtime": 1791631267.632892,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3684585,
+    "seen": 1791692726.3165262,
     "ast_hash": "9098b2a446f6eed34673373e6c91b50d",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/ose/advanced/spell.json": {
-    "mtime": 1791631267.6348908,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3714685,
+    "seen": 1791692726.3165262,
     "ast_hash": "8efa489d8bb698812cf5ec38d576116c",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/ose/classic/action.json": {
-    "mtime": 1791631267.635891,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3787239,
+    "seen": 1791692726.3165262,
     "ast_hash": "28d2fdc0c84ca73d1c43b803abedaa7e",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/ose/classic/class.json": {
-    "mtime": 1791631267.6368902,
-    "seen": 1791631954.1329827,
-    "ast_hash": "85a4acf04827c2a659f6dec86735918e",
+    "mtime": 1791661701.3833163,
+    "seen": 1791692726.3165262,
+    "ast_hash": "6da26052784e26559542837dee2319da",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/ose/classic/item.json": {
-    "mtime": 1791631267.6378903,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3890438,
+    "seen": 1791692726.3165262,
     "ast_hash": "bf4b117b06f9396032c12a38ac1e6300",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/ose/classic/skill.json": {
-    "mtime": 1791631267.6388917,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3930557,
+    "seen": 1791692726.3165262,
     "ast_hash": "5c51354052b193fb033b67ffd0b117c0",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/ose/classic/spell.json": {
-    "mtime": 1791631267.639894,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.3960443,
+    "seen": 1791692726.3165262,
     "ast_hash": "c0bba9e41c0749aef80de3daf07631d7",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/legacy/ancestry.json": {
-    "mtime": 1791631267.651894,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.436658,
+    "seen": 1791692726.3165262,
     "ast_hash": "c7bed6cb08d87040412de6a5b21bc526",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/legacy/archetype.json": {
-    "mtime": 1791631267.652893,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.439001,
+    "seen": 1791692726.3165262,
     "ast_hash": "491b8f059ff31576e3fe2729dca0e0ea",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/legacy/armor.json": {
-    "mtime": 1791631267.652893,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4410982,
+    "seen": 1791692726.3165262,
     "ast_hash": "c4ec194f449154a2050e1ab55952e6e3",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/legacy/background.json": {
-    "mtime": 1791631267.6538908,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4446037,
+    "seen": 1791692726.3165262,
     "ast_hash": "424e19b1eec13a6d4a774da00101684a",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/legacy/class.json": {
-    "mtime": 1791631267.6548934,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4477916,
+    "seen": 1791692726.3165262,
     "ast_hash": "a74a2ed4d848fe90c11f407b65a59986",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/legacy/feat.json": {
-    "mtime": 1791631267.6578937,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4560332,
+    "seen": 1791692726.3165262,
     "ast_hash": "cd9b8af83c7c8bb9ea39a03b6608b364",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/legacy/heritage.json": {
-    "mtime": 1791631267.6588955,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.458104,
+    "seen": 1791692726.3165262,
     "ast_hash": "aed708f69b7aefaae9c9090774d69d03",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/legacy/item.json": {
-    "mtime": 1791631267.6609454,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4630582,
+    "seen": 1791692726.3165262,
     "ast_hash": "dab9d27c20e2779deff63653539d82b7",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/legacy/pet.json": {
-    "mtime": 1791631267.6619017,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.466866,
+    "seen": 1791692726.3165262,
     "ast_hash": "ae9074cc16931e06a949af1614d43cf0",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/legacy/shield.json": {
-    "mtime": 1791631267.6619017,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4709725,
+    "seen": 1791692726.3165262,
     "ast_hash": "15ea6c49e7d3ada7b2914440070604b7",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/legacy/spell.json": {
-    "mtime": 1791631267.6638906,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4729846,
+    "seen": 1791692726.3165262,
     "ast_hash": "1b7a444d733a7bf8593f071704b8a364",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/legacy/subclass.json": {
-    "mtime": 1791631267.6638906,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4762435,
+    "seen": 1791692726.3165262,
     "ast_hash": "d92a293858a74c6563ce733aa20e45c9",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/legacy/weapon.json": {
-    "mtime": 1791631267.6648905,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.477762,
+    "seen": 1791692726.3165262,
     "ast_hash": "da96485756da56d711689d6fb28c6e46",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/action.json": {
-    "mtime": 1791631267.6658905,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4807658,
+    "seen": 1791692726.3165262,
     "ast_hash": "60263d1c5a29c5adc2eb2390c0f1fd3f",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/ancestry.json": {
-    "mtime": 1791631267.6668909,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.48376,
+    "seen": 1791692726.3165262,
     "ast_hash": "a57254d462affa54e5302706afbcd053",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/archetype.json": {
-    "mtime": 1791631267.6678905,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4861166,
+    "seen": 1791692726.3165262,
     "ast_hash": "048a0cde5ec8092e6f807f89befbee52",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/armor.json": {
-    "mtime": 1791631267.6688912,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4895625,
+    "seen": 1791692726.3165262,
     "ast_hash": "e57d9e1fa8f90e9e61ca11a93cc91bbe",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/background.json": {
-    "mtime": 1791631267.6698906,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4935718,
+    "seen": 1791692726.3165262,
     "ast_hash": "9dcda819d4238d5176d042e68f31e408",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/buff.json": {
-    "mtime": 1791631267.67089,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4955716,
+    "seen": 1791692726.3165262,
     "ast_hash": "48ff674bd103a09ce292b999126c6b4c",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/class.json": {
-    "mtime": 1791631267.671891,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4976091,
+    "seen": 1791692726.3165262,
     "ast_hash": "25465ac03c89f8eefaf038c2ffda1707",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/condition.json": {
-    "mtime": 1791631267.671891,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.500141,
+    "seen": 1791692726.3165262,
     "ast_hash": "358705cc0034d5f138e3a4fd925cd0eb",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/formula.json": {
-    "mtime": 1791631267.6918924,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.5399034,
+    "seen": 1791692726.3165262,
     "ast_hash": "e2390abacdffbd2d39bbc48c1bcc758c",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/heritage.json": {
-    "mtime": 1791631267.6938927,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.5439138,
+    "seen": 1791692726.3165262,
     "ast_hash": "ec3a887344cc5beacaa178d1bdf0af7d",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/item.json": {
-    "mtime": 1791631267.698893,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.558526,
+    "seen": 1791692726.3165262,
     "ast_hash": "898e96c706f42d8139dd2f8884d5423f",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/pet.json": {
-    "mtime": 1791631267.6998909,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.5615213,
+    "seen": 1791692726.3165262,
     "ast_hash": "8620d5189e28caa573a5963a4a8881cb",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/ritual.json": {
-    "mtime": 1791631267.7008903,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.565498,
+    "seen": 1791692726.3165262,
     "ast_hash": "1cc018b9ed9d02a46d121563029e1aa1",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/shield.json": {
-    "mtime": 1791631267.7018948,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.5676973,
+    "seen": 1791692726.3165262,
     "ast_hash": "86f72afec0e2dd7de2586f563ae88778",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/spell.json": {
-    "mtime": 1791631267.706897,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.5822163,
+    "seen": 1791692726.3165262,
     "ast_hash": "c3c51154481dd84fa3933c3947d2c7be",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/subclass.json": {
-    "mtime": 1791631267.7088945,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.5902436,
+    "seen": 1791692726.3165262,
     "ast_hash": "985fde54b5c53b9b4863156d2b550a2f",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf2e/remaster/weapon.json": {
-    "mtime": 1791631267.7108946,
-    "seen": 1791631954.1329827,
-    "ast_hash": "46caf8c3dfa150b47ba9ddaee942ee29",
+    "mtime": 1791667712.544083,
+    "seen": 1791692726.3165262,
+    "ast_hash": "1436342e5343f4c0e0ac318aee784348",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/systems.json": {
-    "mtime": 1791631258.601525,
-    "seen": 1791631954.1329827,
-    "ast_hash": "8ba89f905d464d8c7498217f0b60879c",
+    "mtime": 1791661694.9055974,
+    "seen": 1791692726.3165262,
+    "ast_hash": "15dd454cbdd0ef51a8950bea2364d5ca",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/t20/padrao/action.json": {
-    "mtime": 1791631267.711895,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.6023982,
+    "seen": 1791692726.3165262,
     "ast_hash": "8259ca008a224127fa6d3406c917990c",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/t20/padrao/ancestry.json": {
-    "mtime": 1791631267.7128956,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.607504,
+    "seen": 1791692726.3165262,
     "ast_hash": "e971290e2d37b0e5352db317bab8a455",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/t20/padrao/background.json": {
-    "mtime": 1791631267.7138958,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.6159258,
+    "seen": 1791692726.3165262,
     "ast_hash": "02cf47b8fb57cd82dfe6dec5164fd8a8",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/t20/padrao/class.json": {
-    "mtime": 1791631267.714895,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.6189291,
+    "seen": 1791692726.3165262,
     "ast_hash": "9f0b092f288563447c911082824379b7",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/t20/padrao/feat.json": {
-    "mtime": 1791631267.7184157,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.6426265,
+    "seen": 1791692726.3165262,
     "ast_hash": "8aace8bfd996cf011bf5024f0e9ab78b",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/t20/padrao/item.json": {
-    "mtime": 1791631267.7209175,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.6509428,
+    "seen": 1791692726.3165262,
     "ast_hash": "71ed777a70d15fc92b49fafefb26d65a",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/t20/padrao/skill.json": {
-    "mtime": 1791631267.7219167,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.65477,
+    "seen": 1791692726.3165262,
     "ast_hash": "6638159a59916d05d47d77414691e77d",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/t20/padrao/spell.json": {
-    "mtime": 1791631267.7239187,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.6583905,
+    "seen": 1791692726.3165262,
     "ast_hash": "eef6dcf08d71a3172795c54016dad9bb",
     "semantic_hash": ""
   },
   "src/data/catalog/README.md": {
-    "mtime": 1791625084.543842,
-    "seen": 1791630513.8628426,
-    "ast_hash": "8dcf6bc8170ebe5c00ecd7a23a42fbf1",
+    "mtime": 1791703458.5004861,
+    "seen": 1791704040.3039083,
+    "ast_hash": "fb4c2053c03e3b2d5577993f17ed079a",
     "semantic_hash": ""
   },
   "scripts/build-pf1e-core-snapshots.mjs": {
-    "mtime": 1791623708.5974457,
-    "seen": 1791630513.6852183,
-    "ast_hash": "48a306a9e2c146ff9f6ed630af592032",
+    "mtime": 1791636701.221608,
+    "seen": 1791692726.2982333,
+    "ast_hash": "ea1672a06ec1f5d38ed549e0abc2ac91",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf1e/legacy_pf1/ancestry.json": {
-    "mtime": 1791631267.6418931,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.400401,
+    "seen": 1791692726.3165262,
     "ast_hash": "7102ea0fe8ee11c5893aa3d394a63d37",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf1e/legacy_pf1/armor.json": {
-    "mtime": 1791631267.6418931,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4048057,
+    "seen": 1791692726.3165262,
     "ast_hash": "c1cab10eedc0a39f3a4157562f0ffeda",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf1e/legacy_pf1/class.json": {
-    "mtime": 1791631267.6428928,
-    "seen": 1791631954.1329827,
-    "ast_hash": "ed76d46278349e5decdd25b4a3d22ac9",
+    "mtime": 1791661701.4080577,
+    "seen": 1791692726.3165262,
+    "ast_hash": "e49e9c67c7338dec9ff349f9e78f24d6",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf1e/legacy_pf1/feat.json": {
-    "mtime": 1791633854.8904617,
-    "seen": 1791634178.7073493,
-    "ast_hash": "d44e97cf0a57e0f15358dc8530822405",
+    "mtime": 1791661701.4129364,
+    "seen": 1791692726.3165262,
+    "ast_hash": "c4f25f799b1125c55d3c4df93e48fa2b",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf1e/legacy_pf1/item.json": {
-    "mtime": 1791631267.6468935,
-    "seen": 1791631954.1329827,
-    "ast_hash": "3c9f81c0bdf5d20a3e4313fb2c5459ae",
+    "mtime": 1791661701.4193902,
+    "seen": 1791692726.3165262,
+    "ast_hash": "ff98868cf320b9846518c66efa2b43ae",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf1e/legacy_pf1/shield.json": {
-    "mtime": 1791631267.6478932,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4228241,
+    "seen": 1791692726.3165262,
     "ast_hash": "87986cd8734ce399481dfdad8a37053f",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf1e/legacy_pf1/skill.json": {
-    "mtime": 1791631267.6488929,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.4264958,
+    "seen": 1791692726.3165262,
     "ast_hash": "9121f2e21f27b7899a1f3eb2f06da3a6",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/pf1e/legacy_pf1/weapon.json": {
-    "mtime": 1791631267.6508934,
-    "seen": 1791631954.1329827,
+    "mtime": 1791661701.432019,
+    "seen": 1791692726.3165262,
     "ast_hash": "0696bd227c013a8ee0c8b3fea2e2fb1e",
     "semantic_hash": ""
   },
@@ -12984,15 +12984,117 @@
     "semantic_hash": ""
   },
   "src/data/pf1e/pf1eEquipment.ts": {
-    "mtime": 1791625021.2226827,
-    "seen": 1791630513.7302172,
-    "ast_hash": "2acffb53156dd0bfd970abc78bbe14c6",
+    "mtime": 1791636696.3789449,
+    "seen": 1791692726.340529,
+    "ast_hash": "955a2cc372e01f7709ebee21dbb879b4",
     "semantic_hash": ""
   },
   "src/data/pf1e/pf1eWeapons.ts": {
     "mtime": 1791610529.4420848,
     "seen": 1791630513.7312157,
     "ast_hash": "1f2f919eaa158a8f92e0612ca998b0aa",
+    "semantic_hash": ""
+  },
+  "scripts/audit-books.test.ts": {
+    "mtime": 1791694440.4282546,
+    "seen": 1791694671.0078557,
+    "ast_hash": "586a850fa7797e03acca6ea6a7da8eef",
+    "semantic_hash": ""
+  },
+  "scripts/build-ose-class-snapshots.mjs": {
+    "mtime": 1791637909.6638997,
+    "seen": 1791692726.2982333,
+    "ast_hash": "0e432f10ae85a9606a0fbe914dfdb7f6",
+    "semantic_hash": ""
+  },
+  "src/AccountPortal.autosave.test.tsx": {
+    "mtime": 1791668497.2840526,
+    "seen": 1791692726.3135247,
+    "ast_hash": "c331d415df86a33bdd86032bc57d3eaa",
+    "semantic_hash": ""
+  },
+  "src/data/catalog/snapshots/ose/basico/class.json": {
+    "mtime": 1791661701.3762493,
+    "seen": 1791692726.3165262,
+    "ast_hash": "869a9f21f3d00db99562d308ffecf6ec",
+    "semantic_hash": ""
+  },
+  "src/data/pf1e/pf1eSpells.ts": {
+    "mtime": 1791681261.5070775,
+    "seen": 1791692726.3415265,
+    "ast_hash": "029e2d23f74706b6d79d10600ed406ff",
+    "semantic_hash": ""
+  },
+  "src/hooks/useModalInertBackground.test.tsx": {
+    "mtime": 1791692989.7604601,
+    "seen": 1791693191.024736,
+    "ast_hash": "0abafc8d07949bb8a99ea07e84b2cb8b",
+    "semantic_hash": ""
+  },
+  "src/hooks/useModalInertBackground.ts": {
+    "mtime": 1791693088.9176555,
+    "seen": 1791693191.024736,
+    "ast_hash": "ed167e445c560c35b1a7992386669bba",
+    "semantic_hash": ""
+  },
+  ".tmp-player-handbook-pages/page-231.png": {
+    "mtime": 1791703190.0463176,
+    "seen": 1791704040.305909,
+    "ast_hash": "e73d23077b708d3f578132e13b9cf83c",
+    "semantic_hash": ""
+  },
+  ".tmp-player-handbook-pages/scan-228.png": {
+    "mtime": 1791703164.820603,
+    "seen": 1791704040.305909,
+    "ast_hash": "2b8d00551c3ab957cf214548c0b3defe",
+    "semantic_hash": ""
+  },
+  ".tmp-player-handbook-pages/scan-229.png": {
+    "mtime": 1791703165.5764048,
+    "seen": 1791704040.305909,
+    "ast_hash": "e47e19e184b9c15af46fa0a58cd0fc35",
+    "semantic_hash": ""
+  },
+  ".tmp-player-handbook-pages/scan-230.png": {
+    "mtime": 1791703166.4540362,
+    "seen": 1791704040.305909,
+    "ast_hash": "ce13176797c428463904d8b9a4907425",
+    "semantic_hash": ""
+  },
+  ".tmp-player-handbook-pages/scan-231.png": {
+    "mtime": 1791703167.1321263,
+    "seen": 1791704040.305909,
+    "ast_hash": "1b4992f0474914dc34fd7a58bdf6b2fe",
+    "semantic_hash": ""
+  },
+  ".tmp-player-handbook-pages/scan-232.png": {
+    "mtime": 1791703167.869547,
+    "seen": 1791704040.305909,
+    "ast_hash": "04ef151412440150d51cbb38cc5d579b",
+    "semantic_hash": ""
+  },
+  ".tmp-player-handbook-pages/scan-233.png": {
+    "mtime": 1791703168.7709243,
+    "seen": 1791704040.305909,
+    "ast_hash": "7a4bb67a491571e45ec5f6b6ee474fa5",
+    "semantic_hash": ""
+  },
+  ".tmp-player-handbook-pages/scan-234.png": {
+    "mtime": 1791703169.7608118,
+    "seen": 1791704040.305909,
+    "ast_hash": "141bb22f12c91cbc0234732e722efe3c",
+    "semantic_hash": ""
+  },
+  ".tmp-player-handbook-pages/scan-235.png": {
+    "mtime": 1791703170.4180703,
+    "seen": 1791704040.305909,
+    "ast_hash": "33fa0c72efac15346c61e9e8b7ab05dd",
+    "semantic_hash": ""
+  },
+  ".tmp-player-handbook-pages/scan-236.png": {
+    "mtime": 1791703171.3470325,
+    "seen": 1791704040.305909,
+    "ast_hash": "b7ffd518e43195fee5a5efb487a8dab0",
     "semantic_hash": ""
   }
 }

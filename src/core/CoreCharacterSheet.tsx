@@ -12,6 +12,7 @@ import { getSystemRulesEngine } from "../data/systemRulesEngine";
 import { reconcileCoreSkillProficiencies, reconcileT20DeityDependentFeatIds } from "./coreCharacterEditing";
 import { createCoreEditablePdf, downloadCoreEditablePdf } from "../services/corePdfExport";
 import { getSystemConditionItems } from "../data/systemConditions";
+import { useModalInertBackground } from "../hooks/useModalInertBackground";
 
 const CORE_ABILITY_LABELS: Record<string, string> = {
   str: "Força", dex: "Destreza", con: "Constituição", int: "Inteligência", wis: "Sabedoria", cha: "Carisma",
@@ -28,6 +29,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
   const [exportingPdf, setExportingPdf] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const modalContentRef = useRef<HTMLElement>(null);
+  useModalInertBackground(modalContentRef, true);
   const system = draft.system_id as SupportedCoreSystem;
   const catalog = useMemo(() => getCoreCatalog(system), [system]);
   const conditionItems = useMemo(() => getSystemConditionItems(system), [system]);

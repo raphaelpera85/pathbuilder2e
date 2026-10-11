@@ -15,6 +15,7 @@ import { googleDrivePdfs } from "./data/googleDrivePdfs";
 import { useI18n, applyLegacyTranslations, getItemDisplayName, type MessageKey } from "./i18n";
 import type { PickerItem, PickerType } from "./types";
 import { useAccountViewState } from "./accountState";
+import { useModalInertBackground } from "./hooks/useModalInertBackground";
 import { formatPriceToLocale } from "./utils/economy";
 import { getLocalizedSkillName, getTraditionDisplayNames, localizePrerequisiteText } from "./PickerModal";
 import {
@@ -437,6 +438,8 @@ function CatalogPage() {
     };
   }, [inspectedEntry]);
 
+  useModalInertBackground(inspectedCloseRef, Boolean(inspectedEntry));
+
   const inspectedDescription = inspectedEntry
     && !(inspectedEntry.category === "background" && inspectedEntry.data.systemId === "t20" && inspectedEntry.data.summaryOrigin === "structured_rules")
     ? String(inspectedEntry.data.mechanicsSummary ?? inspectedEntry.data.summaries?.[locale] ?? inspectedEntry.data.description ?? inspectedEntry.summary ?? "").trim()
@@ -445,6 +448,28 @@ function CatalogPage() {
     ? inspectedEntry.data.familiarOptions as Array<{ name: string; alignment?: string; minimumArcaneCasterLevel?: number; note?: string }>
     : [];
   const inspectedSpellClassNames = inspectedEntry ? getCatalogSpellClassNames(inspectedEntry.data, locale) : [];
+  const inspectedSpellMechanics = inspectedEntry?.category === "spell"
+    && inspectedEntry.data.mechanics !== null
+    && typeof inspectedEntry.data.mechanics === "object"
+    && !Array.isArray(inspectedEntry.data.mechanics)
+    ? inspectedEntry.data.mechanics as Record<string, unknown>
+    : null;
+  const inspectedSpellMechanicFields = inspectedSpellMechanics
+    ? ([
+      { key: "components", label: locale === "en" ? "Components" : locale === "es" ? "Componentes" : "Componentes" },
+      { key: "castingTime", label: locale === "en" ? "Casting time" : locale === "es" ? "Tiempo de lanzamiento" : "Tempo de execução" },
+      { key: "range", label: locale === "en" ? "Range" : locale === "es" ? "Alcance" : "Alcance" },
+      { key: "target", label: locale === "en" ? "Target" : locale === "es" ? "Objetivo" : "Alvo" },
+      { key: "duration", label: locale === "en" ? "Duration" : locale === "es" ? "Duración" : "Duração" },
+      { key: "savingThrow", label: locale === "en" ? "Saving throw" : locale === "es" ? "Salvación" : "Teste de resistência" },
+      { key: "spellResistance", label: locale === "en" ? "Spell resistance" : locale === "es" ? "Resistencia a conjuros" : "Resistência à magia" },
+    ] as const).flatMap(({ key, label }) => {
+      const value = inspectedSpellMechanics[key];
+      return typeof value === "string" && value.trim() ? [{ key, label, value }] : [];
+    })
+    : [];
+  const detailsPage = typeof inspectedEntry?.data.detailsPage === "number" ? inspectedEntry.data.detailsPage : null;
+  const detailsPageEnd = typeof inspectedEntry?.data.detailsPageEnd === "number" ? inspectedEntry.data.detailsPageEnd : null;
 
   return <main className="portal-page portal-catalog-page" id="portal-content" tabIndex={-1}>
     <header className="portal-hero">
@@ -515,6 +540,9 @@ function CatalogPage() {
             <span className={`ruleset-badge ${String(inspectedEntry.data.ruleset || "needs_review")}`}>
               {t(rulesetMessageKey((inspectedEntry.data.ruleset || "needs_review") as RulesetId))}
             </span>
+            {inspectedEntry.category === "spell" && inspectedEntry.data.summaryOnly === true
+              ? <span className="source-badge review">{locale === "en" ? "Partial summary" : locale === "es" ? "Resumen parcial" : "Resumo parcial"}</span>
+              : null}
             {inspectedEntry.data.sourceApproximate && <span className="source-badge review">{t("sourceSectionReference")}</span>}
             {hasFallbackTranslation(inspectedEntry, locale) && <span className="source-badge translation-pending">{t("translationPending")}</span>}
             {inspectedEntry.data.traits?.map((trait: string) => <span key={trait} className="trait-tag">{getLocalizedTrait(trait, locale)}</span>)}
@@ -530,7 +558,7 @@ function CatalogPage() {
             {inspectedEntry.data.damage ? <div className="stat-box"><strong>{t("damage")}</strong><span>{String(inspectedEntry.data.damage)}</span></div> : null}
             {inspectedEntry.data.price ? <div className="stat-box"><strong>{t("price")}</strong><span>{formatPriceToLocale(inspectedEntry.data.price, locale)}</span></div> : null}
             {inspectedEntry.data.bulk !== undefined ? <div className="stat-box"><strong>{t("bulk")}</strong><span>{String(inspectedEntry.data.bulk)}</span></div> : null}
-            {Array.isArray(inspectedEntry.data.spellFlags) && inspectedEntry.data.spellFlags.length > 0 ? <div className="stat-box"><strong>{locale === "en" ? "Listed components" : locale === "es" ? "Componentes indicados" : "Componentes indicados"}</strong><span>{(inspectedEntry.data.spellFlags as string[]).map((flag) => flag === "M" ? (locale === "en" ? "Material" : locale === "es" ? "Material" : "Material") : flag === "F" ? (locale === "en" ? "Focus" : locale === "es" ? "Foco" : "Foco") : flag === "X" ? (locale === "en" ? "XP cost" : locale === "es" ? "Coste de PX" : "Custo de XP") : flag).join(", ")}</span></div> : null}
+            {Array.isArray(inspectedEntry.data.spellFlags) && inspectedEntry.data.spellFlags.length > 0 && !inspectedSpellMechanics?.components ? <div className="stat-box"><strong>{locale === "en" ? "Listed components" : locale === "es" ? "Componentes indicados" : "Componentes indicados"}</strong><span>{(inspectedEntry.data.spellFlags as string[]).map((flag) => flag === "M" ? (locale === "en" ? "Material" : locale === "es" ? "Material" : "Material") : flag === "F" ? (locale === "en" ? "Focus" : locale === "es" ? "Foco" : "Foco") : flag === "X" ? (locale === "en" ? "XP cost" : locale === "es" ? "Coste de PX" : "Custo de XP") : flag).join(", ")}</span></div> : null}
             {inspectedEntry.data.school ? <div className="stat-box"><strong>{locale === "en" ? "School" : locale === "es" ? "Escuela" : "Escola"}</strong><span>{String(inspectedEntry.data.school)}</span></div> : null}
             {inspectedEntry.data.variantFamily ? <div className="stat-box"><strong>{locale === "en" ? "Variant" : locale === "es" ? "Variante" : "Variante"}</strong><span>{inspectedEntry.data.variantRole === "ranged" ? (locale === "en" ? "Ranged" : locale === "es" ? "A distancia" : "À distância") : inspectedEntry.data.variantRole === "melee" ? (locale === "en" ? "Melee" : locale === "es" ? "Cuerpo a cuerpo" : "Corpo a corpo") : inspectedEntry.data.variantFamily}</span></div> : null}
             {inspectedEntry.data.prerequisites ? <div className="stat-box"><strong>{t("prerequisites")}</strong><span>{formatCatalogValue(inspectedEntry.data.prerequisites, locale)}</span></div> : null}
@@ -544,6 +572,15 @@ function CatalogPage() {
               ? <div className="stat-box"><strong>{locale === "en" ? "Starting items (PT-BR source)" : locale === "es" ? "Objetos iniciales (fuente PT-BR)" : "Itens iniciais (PT-BR)"}</strong><span>{inspectedEntry.data.startingItems.join(", ")}</span></div>
               : null}
           </div>
+
+          {inspectedSpellMechanicFields.length > 0 && <section className="compendium-modal-description" aria-labelledby="compendium-spell-mechanics-title">
+            <h3 id="compendium-spell-mechanics-title">{locale === "en" ? "Spell mechanics" : locale === "es" ? "Datos del conjuro" : "Dados da magia"}</h3>
+            <div className="compendium-spell-mechanics-grid">
+              {inspectedSpellMechanicFields.map(({ key, label, value }) => <div className="stat-box" key={key}>
+                <strong>{label}</strong><span>{value}</span>
+              </div>)}
+            </div>
+          </section>}
 
           {/* DESCRIPTION */}
           {inspectedDescription && <div className="compendium-modal-description">
@@ -572,6 +609,9 @@ function CatalogPage() {
           <footer className="compendium-modal-footer">
             <strong>{t("source")}:</strong>
             <span>{inspectedEntry.data.source?.book ? `${inspectedEntry.data.sourceApproximate ? `${t("sourceSectionReference")}: ` : ""}${localizeSourceBook(inspectedEntry.data.source.book, locale)} · p. ${inspectedEntry.data.sourcePageRange || inspectedEntry.data.source.page || "-"}` : inspectedEntry.data.needs_review ? t("sourcePending") : t("uncatalogued")}</span>
+            {detailsPage !== null && <span className="compendium-detail-pages">
+              {locale === "en" ? "Description" : locale === "es" ? "Descripción" : "Descrição"}: {detailsPageEnd !== null && detailsPageEnd > detailsPage ? `pp. ${detailsPage}–${detailsPageEnd}` : `p. ${detailsPage}`}
+            </span>}
           </footer>
         </div>
       </div>

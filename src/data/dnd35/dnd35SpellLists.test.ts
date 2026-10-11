@@ -14,11 +14,12 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
     expect(dnd35SpellListFor("mago", 1)).toHaveLength(39);
     expect(dnd35SpellListFor("mago", 2)).toHaveLength(50);
     expect(dnd35SpellListFor("mago", 3)).toHaveLength(42);
-    expect(dnd35SpellListFor("mago", 4)).toHaveLength(57);
-    expect(dnd35SpellListFor("mago", 5)).toHaveLength(27);
-    expect(dnd35SpellListFor("mago", 6)).toHaveLength(50);
-    expect(dnd35SpellListFor("mago", 7)).toHaveLength(32);
+    expect(dnd35SpellListFor("mago", 4)).toHaveLength(41);
+    expect(dnd35SpellListFor("mago", 5)).toHaveLength(43);
+    expect(dnd35SpellListFor("mago", 6)).toHaveLength(48);
+    expect(dnd35SpellListFor("mago", 7)).toHaveLength(35);
     expect(dnd35SpellListFor("mago", 8)).toHaveLength(36);
+    expect(dnd35SpellListFor("mago", 9)).toHaveLength(24);
     expect(dnd35SpellListFor("feiticeiro", 1)).toEqual(dnd35SpellListFor("mago", 1));
     expect(dnd35SpellListFor("feiticeiro", 2)).toEqual(dnd35SpellListFor("mago", 2));
     expect(dnd35SpellListFor("feiticeiro", 3)).toEqual(dnd35SpellListFor("mago", 3));
@@ -27,6 +28,7 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
     expect(dnd35SpellListFor("feiticeiro", 6)).toEqual(dnd35SpellListFor("mago", 6));
     expect(dnd35SpellListFor("feiticeiro", 7)).toEqual(dnd35SpellListFor("mago", 7));
     expect(dnd35SpellListFor("feiticeiro", 8)).toEqual(dnd35SpellListFor("mago", 8));
+    expect(dnd35SpellListFor("feiticeiro", 9)).toEqual(dnd35SpellListFor("mago", 9));
   });
 
   it("listas estão em ordem alfabética (Clérigo) / alfabética dentro de cada escola (Feiticeiro/Mago), como impresso", () => {
@@ -37,7 +39,7 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
     }
     // Truques de Necro impressos fora de ordem ("Toque da Fadiga" antes de
     // "Romper Morto-Vivo"), então só o 1º nível é conferido por escola.
-    for (const level of [1, 2, 3, 4, 5, 6, 7, 8]) {
+    for (const level of [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
       const list = dnd35SpellListFor("mago", level);
       for (const school of new Set(list.map((e) => e.school))) {
         // Adiv e Encan do 7º nível mantêm a sequência não alfabética da p. 196.
@@ -52,7 +54,7 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
     const list = DND35_SPELL_LISTS.find((candidate) => candidate.listId === "feiticeiro_mago" && candidate.spellLevel === 6);
     expect(list?.sourcePage).toBe("195-196");
     expect(list?.classIds).toEqual(["feiticeiro", "mago"]);
-    expect(list?.entries).toHaveLength(50);
+    expect(list?.entries).toHaveLength(48);
     const bySchool = Object.fromEntries(
       [...new Set(list?.entries.map((spell) => spell.school))].map((school) => [
         school,
@@ -65,24 +67,24 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
       Conj: ["Âncora Planar", "Invocar Criaturas VI", "Muralha de Ferro", "Névoa Ácida"],
       Encan: ["Heroísmo Maior", "Símbolo da Persuasão", "Sugestão em Massa", "Tarefa/Missão"],
       Evoc: ["Contingência", "Corrente de Relâmpagos", "Esfera Gélida de Otiluke", "Mão Vigorosa de Bigby, A"],
-      Ilus: ["Andar nas Sombras", "Despistar", "Imagem Permanente", "Imagem Programada", "Invisibilidade em Massa", "Projetar Imagem", "Simulacro", "Véu"],
-      Necro: ["Ataque Visual", "Círculo da Morte", "Controlar Mortos-Vivos", "Criar Mortos-Vivos", "Dedo da Morte", "Destruir Mortos-Vivos", "Símbolo da Fraqueza", "Símbolo do Medo"],
-      Trans: ["Agilidade do Gato em Massa", "Astúcia da Raposa em Massa", "Carne para Pedra", "Controlar Água", "Desintegrar", "Elucubração de Mordenkainen", "Esplendor da Águia em Massa", "Força do Touro em Massa", "Mover Terra", "Pedra em Carne", "Sabedoria da Coruja em Massa", "Transformação de Tenser", "Vigor do Urso em Massa"],
-      Univ: ["Desejo Restrito"],
+      Ilus: ["Andar nas Sombras", "Despistar", "Imagem Permanente", "Imagem Programada", "Invisibilidade em Massa", "Projetar Imagem", "Véu"],
+      Necro: ["Ataque Visual", "Círculo da Morte", "Controlar Mortos-Vivos", "Criar Mortos-Vivos", "Destruir Mortos-Vivos", "Símbolo da Fraqueza", "Símbolo do Medo"],
+      Trans: ["Agilidade do Gato em Massa", "Astúcia da Raposa em Massa", "Carne para Pedra", "Controlar Água", "Controlar o Clima", "Desintegrar", "Elucubração de Mordenkainen", "Esplendor da Águia em Massa", "Força do Touro em Massa", "Mover Terra", "Pedra em Carne", "Sabedoria da Coruja em Massa", "Transformação de Tenser", "Vigor do Urso em Massa"],
     });
     expect(dnd35SpellListFor("mago", 6).filter((spell) => spell.flags.length > 0).map((spell) => [spell.name, spell.flags])).toEqual([
       ["Analisar Encantamento", ["F"]], ["Lendas e Histórias", ["M", "F"]], ["Visão da Verdade", ["M"]],
-      ["Muralha de Ferro", ["M"]], ["Símbolo da Persuasão", ["M"]], ["Imagem Programada", ["M"]], ["Simulacro", ["M", "X"]],
+      ["Muralha de Ferro", ["M"]], ["Símbolo da Persuasão", ["M"]], ["Imagem Programada", ["M"]],
       ["Círculo da Morte", ["M"]], ["Criar Mortos-Vivos", ["M"]], ["Destruir Mortos-Vivos", ["M"]],
-      ["Símbolo da Fraqueza", ["M"]], ["Símbolo do Medo", ["M"]], ["Transformação de Tenser", ["M"]], ["Desejo Restrito", ["X"]],
+      ["Símbolo da Fraqueza", ["M"]], ["Símbolo do Medo", ["M"]], ["Transformação de Tenser", ["M"]],
     ]);
+    expect(dnd35SpellListFor("mago", 6).some((spell) => ["Dedo da Morte", "Desejo Restrito", "Simulacro"].includes(spell.name))).toBe(false);
   });
 
-  it("Feiticeiro/Mago de 7º nível confere com as pp. 196–197 por escola e componentes", () => {
+  it("Feiticeiro/Mago de 7º nível confere com a p. 196 por escola e componentes", () => {
     const list = DND35_SPELL_LISTS.find((candidate) => candidate.listId === "feiticeiro_mago" && candidate.spellLevel === 7);
-    expect(list?.sourcePage).toBe("196-197");
+    expect(list?.sourcePage).toBe("196");
     expect(list?.classIds).toEqual(["feiticeiro", "mago"]);
-    expect(list?.entries).toHaveLength(32);
+    expect(list?.entries).toHaveLength(35);
     const bySchool = Object.fromEntries(
       [...new Set(list?.entries.map((spell) => spell.school))].map((school) => [
         school,
@@ -95,18 +97,19 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
       Conj: ["Convocação Instantânea de Drawmij, A", "Invocar Criaturas VII", "Mansão Magnífica de Mordenkainen", "Passagem Invisível", "Teletransportar Objeto", "Teletransporte Maior", "Viagem Planar"],
       Encan: ["Imobilizar Pessoa em Massa", "Insanidade", "Palavra de Poder, Cegar", "Símbolo do Atordoamento", "Símbolo da Insanidade"],
       Evoc: ["Bola de Fogo Controlável", "Cubo de Energia", "Espada de Mordenkainen", "Mão Poderosa de Bigby, A", "Rajada Prismática"],
-      Ilus: ["Conjuração de Sombras Maior"],
-      Necro: ["Clone", "Criar Mortos-Vivos Maior", "Evaporação", "Ondas da Exaustão", "Símbolo da Morte"],
-      Trans: ["Corpo de Ferro", "Estase Temporal", "Metamorfosear Objetos"],
+      Ilus: ["Conjuração de Sombras Maior", "Invisibilidade em Massa", "Projetar Imagem", "Simulacro"],
+      Necro: ["Controlar Mortos-Vivos", "Dedo da Morte", "Símbolo da Fraqueza"],
+      Trans: ["Controlar o Clima", "Estátua", "Inverter a Gravidade", "Passeio Etéreo"],
+      Univ: ["Desejo Restrito"],
     });
     expect(dnd35SpellListFor("mago", 7).filter((spell) => spell.flags.length > 0).map((spell) => [spell.name, spell.flags])).toEqual([
       ["Visão", ["M", "X"]], ["Convocação Instantânea de Drawmij, A", ["M"]],
       ["Mansão Magnífica de Mordenkainen", ["F"]], ["Símbolo do Atordoamento", ["M"]],
       ["Símbolo da Insanidade", ["M"]], ["Cubo de Energia", ["M"]],
-      ["Espada de Mordenkainen", ["F"]], ["Clone", ["M", "F"]],
-      ["Criar Mortos-Vivos Maior", ["M"]], ["Símbolo da Morte", ["M"]],
-      ["Estase Temporal", ["M"]],
+      ["Espada de Mordenkainen", ["F"]],
+      ["Simulacro", ["M", "X"]], ["Símbolo da Fraqueza", ["M"]], ["Desejo Restrito", ["X"]],
     ]);
+    expect(dnd35SpellListFor("mago", 7).find((spell) => spell.name === "Dedo da Morte")).toBeTruthy();
   });
 
   it("Feiticeiro/Mago de 8º nível confere com as pp. 196–197 por escola e componentes", () => {
@@ -130,6 +133,28 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
       Necro: ["Clone", "Criar Mortos-Vivos Maior", "Evaporação", "Ondas da Exaustão", "Símbolo da Morte"],
       Trans: ["Corpo de Ferro", "Estase Temporal", "Metamorfosear Objetos"],
     });
+    const soulBind = list?.entries.find((spell) => spell.name === "Aprisionar a Alma");
+    expect(soulBind?.flags).toEqual(["M", "F"]);
+    expect(soulBind?.detailsPage).toBe(203);
+    expect(soulBind?.detailsPageEnd).toBe(204);
+    expect(soulBind?.mechanics).toEqual({
+      components: "V, G, M, F", castingTime: "1 ação padrão ou veja texto",
+      range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "Uma criatura",
+      duration: "Permanente (veja texto)",
+      savingThrow: "Vontade anula (magia completa); nenhum (armadilha)",
+      spellResistance: "Sim (magia completa); nenhum (armadilha)",
+    });
+    expect(soulBind?.summary).toContain("ao menos 1.000 PO por Dado de Vida");
+    const clone = list?.entries.find((spell) => spell.name === "Clone");
+    expect(clone?.flags).toEqual(["M", "F"]);
+    expect(clone?.detailsPage).toBe(216);
+    expect(clone?.mechanics).toEqual({
+      components: "V, G, M, F", castingTime: "10 minutos", range: "0 m",
+      target: "Um clone", duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+    });
+    expect(clone?.summary).toContain("2d4 meses");
+    expect(clone?.summary).toContain("suprimentos (1.000 PO)");
+    expect(clone?.summary).toContain("equipamento especial (500 PO)");
     expect(dnd35SpellListFor("mago", 8).filter((spell) => spell.flags.length > 0).map((spell) => [spell.name, spell.flags])).toEqual([
       ["Proteção Contra Magias", ["M", "F"]], ["Aprisionar a Alma", ["M", "F"]],
       ["Prisão", ["M"]], ["Símbolo da Insanidade", ["M"]], ["Simpatia", ["F"]],
@@ -138,11 +163,63 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
     ]);
   });
 
+  it("Feiticeiro/Mago de 9º nível confere com a p. 197 por escola e componentes", () => {
+    const list = DND35_SPELL_LISTS.find((candidate) => candidate.listId === "feiticeiro_mago" && candidate.spellLevel === 9);
+    expect(list?.sourcePage).toBe("197");
+    expect(list?.classIds).toEqual(["feiticeiro", "mago"]);
+    expect(list?.entries).toHaveLength(24);
+    const bySchool = Object.fromEntries(
+      [...new Set(list?.entries.map((spell) => spell.school))].map((school) => [
+        school,
+        list?.entries.filter((spell) => spell.school === school).map((spell) => spell.name),
+      ]),
+    );
+    expect(bySchool).toEqual({
+      Abjur: ["Aprisionamento", "Disjunção de Mordenkainen", "Esfera Prismática", "Libertação"],
+      Adiv: ["Sexto Sentido"],
+      Conj: ["Círculo de Teletransporte", "Invocar Criaturas IX", "Portal", "Refúgio"],
+      Encan: ["Dominar Monstro", "Imobilizar Monstro em Massa", "Palavra de Poder, Matar"],
+      Evoc: ["Chuva de Meteoros", "Mão Esmagadora de Bigby, A"],
+      Ilus: ["Encarnação Fantasmagórica", "Sombras"],
+      Necro: ["Drenar Energia", "Grito da Banshee", "Prender a Alma", "Projeção Astral"],
+      Trans: ["Alterar Forma", "Forma Etérea", "Parar o Tempo"],
+      Univ: ["Desejo"],
+    });
+    expect(dnd35SpellListFor("mago", 9).filter((spell) => spell.flags.length > 0).map((spell) => [spell.name, spell.flags])).toEqual([
+      ["Círculo de Teletransporte", ["M"]], ["Portal", ["X"]], ["Refúgio", ["M"]],
+      ["Prender a Alma", ["F"]], ["Projeção Astral", ["M"]],
+      ["Alterar Forma", ["F"]], ["Desejo", ["X"]],
+    ]);
+    const imprisonment = list?.entries.find((spell) => spell.name === "Aprisionamento");
+    expect(imprisonment?.detailsPage).toBe(203);
+    expect(imprisonment?.mechanics).toEqual({
+      components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+      duration: "Instantânea", savingThrow: "Vontade anula", spellResistance: "Sim",
+    });
+    expect(imprisonment?.summary).toContain("−4 no teste de resistência");
+    const meteorSwarm = list?.entries.find((spell) => spell.name === "Chuva de Meteoros");
+    expect(meteorSwarm?.detailsPage).toBe(214);
+    expect(meteorSwarm?.mechanics).toEqual({
+      components: "V, G", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+      target: "Quatro dispersões de 12 m", duration: "Instantânea",
+      savingThrow: "Nenhum ou Reflexos para reduzir à metade", spellResistance: "Sim",
+    });
+    expect(meteorSwarm?.summary).toContain("cada esfera pode ser direcionada separadamente");
+    const teleportationCircle = list?.entries.find((spell) => spell.name === "Círculo de Teletransporte");
+    expect(teleportationCircle?.detailsPage).toBe(215);
+    expect(teleportationCircle?.mechanics).toEqual({
+      components: "V, M", castingTime: "10 minutos", range: "0 m",
+      target: "Círculo de 1,5 m de raio; criaturas que o ativam", duration: "10 minutos/nível (D)",
+      savingThrow: "Nenhum", spellResistance: "Sim",
+    });
+    expect(teleportationCircle?.summary).toContain("pó de prata no valor de 1.000 PO");
+  });
+
   it("Feiticeiro/Mago de 5º nível confere com a p. 195 por escola e componentes", () => {
     const list = DND35_SPELL_LISTS.find((candidate) => candidate.listId === "feiticeiro_mago" && candidate.spellLevel === 5);
     expect(list?.sourcePage).toBe("195");
     expect(list?.classIds).toEqual(["feiticeiro", "mago"]);
-    expect(list?.entries).toHaveLength(27);
+    expect(list?.entries).toHaveLength(43);
     const bySchool = Object.fromEntries(
       [...new Set(list?.entries.map((spell) => spell.school))].map((school) => [
         school,
@@ -155,10 +232,14 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
       Conj: ["Âncora Planar Menor", "Arca Secreta de Leomund", "Cão Fiel de Mordenkainen", "Criar Itens Temporários", "Invocar Criaturas V", "Muralha de Pedra", "Névoa Mortal", "Teletransporte"],
       Encan: ["Dominar Pessoa", "Enfraquecer o Intelecto", "Imobilizar Monstro", "Névoa Mental", "Símbolo do Sono"],
       Evoc: ["Cone Glacial", "Enviar Mensagem", "Mão Interposta de Bigby, A", "Muralha de Energia"],
-      Ilus: ["Evocação de Sombras", "Imagem Persistente", "Miragem Arcana", "Pesadelo"],
+      Ilus: ["Evocação de Sombras", "Imagem Persistente", "Miragem Arcana", "Pesadelo", "Similaridade", "Sonho", "Visão Falsa"],
+      Necro: ["Malogro", "Onda da Fadiga", "Recipiente Arcano", "Símbolo da Dor"],
+      Trans: ["Ampliar Animais", "Compor", "Criar Passagens", "Lama em Pedra", "Metamorfose Tórrida", "Pedra em Lama", "Telecinésia", "Vôo Prolongado"],
+      Univ: ["Permanência"],
     });
     expect(dnd35SpellListFor("mago", 5).filter((spell) => spell.flags.length > 0).map((spell) => [spell.name, spell.flags])).toEqual([
-      ["Arca Secreta de Leomund", ["F"]], ["Símbolo do Sono", ["M"]],
+      ["Arca Secreta de Leomund", ["F"]], ["Símbolo do Sono", ["M"]], ["Visão Falsa", ["M"]],
+      ["Recipiente Arcano", ["F"]], ["Símbolo da Dor", ["M"]], ["Permanência", ["X"]],
     ]);
   });
 
@@ -166,7 +247,7 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
     const list = DND35_SPELL_LISTS.find((candidate) => candidate.listId === "feiticeiro_mago" && candidate.spellLevel === 4);
     expect(list?.sourcePage).toBe("194-195");
     expect(list?.classIds).toEqual(["feiticeiro", "mago"]);
-    expect(list?.entries).toHaveLength(57);
+    expect(list?.entries).toHaveLength(41);
     const bySchool = Object.fromEntries(
       [...new Set(list?.entries.map((spell) => spell.school))].map((school) => [
         school,
@@ -179,14 +260,13 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
       Conj: ["Criar Itens Efêmeros", "Invocar Criaturas IV", "Névoa Sólida", "Porta Dimensional", "Refúgio Seguro de Leomund", "Tentáculos Negros de Evard"],
       Encan: ["Confusão", "Desespero Esmagador", "Enfeitiçar Monstro", "Missão Menor"],
       Evoc: ["Escudo do Fogo", "Esfera Resiliente de Otiluke", "Grito", "Muralha de Fogo", "Muralha de Gelo", "Tempestade Glacial"],
-      Ilus: ["Assassino Fantasmagórico", "Conjuração de Sombras", "Invisibilidade Maior", "Padrão Prismático", "Parede Ilusória", "Similaridade", "Sonho", "Terreno Ilusório", "Visão Falsa"],
-      Necro: ["Criar Mortos-Vivos Menor", "Drenar Temporário", "Malogro", "Medo", "Onda da Fadiga", "Praga", "Recipiente Arcano", "Rogar Maldição", "Símbolo da Dor"],
-      Trans: ["Ampliar Animais", "Aumentar Pessoa em Massa", "Compor", "Criar Passagens", "Lama em Pedra", "Melhoria Mnemônica de Rary", "Metamorfose", "Metamorfose Tórrida", "Moldar Rochas", "Pedra em Lama", "Reduzir Pessoa em Massa", "Telecinésia", "Vôo Prolongado"],
-      Univ: ["Permanência"],
+      Ilus: ["Assassino Fantasmagórico", "Conjuração de Sombras", "Invisibilidade Maior", "Padrão Prismático", "Parede Ilusória", "Terreno Ilusório"],
+      Necro: ["Criar Mortos-Vivos Menor", "Drenar Temporário", "Medo", "Praga", "Rogar Maldição"],
+      Trans: ["Aumentar Pessoa em Massa", "Melhoria Mnemônica de Rary", "Metamorfose", "Moldar Rochas", "Reduzir Pessoa em Massa"],
     });
     expect(dnd35SpellListFor("mago", 4).filter((spell) => spell.flags.length > 0).map((spell) => [spell.name, spell.flags])).toEqual([
-      ["Armadilha de Fogo", ["M"]], ["Pele Rochosa", ["M"]], ["Vidência", ["F"]], ["Visão Falsa", ["M"]],
-      ["Recipiente Arcano", ["F"]], ["Símbolo da Dor", ["M"]], ["Melhoria Mnemônica de Rary", ["F"]], ["Permanência", ["X"]],
+      ["Armadilha de Fogo", ["M"]], ["Pele Rochosa", ["M"]], ["Vidência", ["F"]],
+      ["Melhoria Mnemônica de Rary", ["F"]],
     ]);
   });
 
@@ -239,6 +319,7 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
     });
     expect(dnd35SpellListFor("mago", 2).filter((spell) => spell.flags.length > 0).map((spell) => [spell.name, spell.flags])).toEqual([
       ["Tranca Arcana", ["M"]], ["Chama Contínua", ["M"]], ["Armadilha de Leomund", ["M"]], ["Boca Encantada", ["M"]],
+      ["Comandar Mortos-Vivos", ["M"]],
     ]);
   });
 
@@ -266,7 +347,7 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
 
   it("listas só para classes conjuradoras existentes; níveis não transcritos retornam vazio", () => {
     for (const list of DND35_SPELL_LISTS) for (const id of list.classIds) expect(DND35_CLASSES[id]?.casterType).not.toBe("nenhum");
-    expect(dnd35SpellListFor("mago", 9)).toEqual([]);
+    expect(dnd35SpellListFor("mago", 10)).toEqual([]);
     expect(dnd35SpellListFor("paladino", 0)).toEqual([]);
     expect(dnd35SpellListFor("clerigo", 3)).toHaveLength(31);
     expect(dnd35SpellListFor("clerigo", 4)).toHaveLength(23);
@@ -614,7 +695,8 @@ describe("D&D 3.5 — Clérigo 5º nível (pp. 184–185)", () => {
   it("preserva componentes materiais, foco e XP mostrados na lista", () => {
     const list = dnd35SpellListFor("clerigo", 5);
     expect(list.find((spell) => spell.name === "Comunhão")?.flags).toEqual(["X"]);
-    expect(list.find((spell) => spell.name === "Consunção")?.flags).toEqual(["M"]);
+    expect(list.find((spell) => spell.name === "Conspurcar")?.flags).toEqual(["M"]);
+    expect(list.find((spell) => spell.name === "Consunção")).toBeUndefined();
     expect(list.find((spell) => spell.name === "Penitência")?.flags).toEqual(["F", "X"]);
     expect(list.find((spell) => spell.name === "Viagem Planar")?.flags).toEqual(["F"]);
   });
@@ -647,5 +729,489 @@ describe("D&D 3.5 — Clérigo 6º–9º níveis (p. 185)", () => {
     expect(at(8, "Aura Profana")).toEqual(["F"]);
     expect(at(8, "Criar Mortos-Vivos Maior")).toEqual(["M"]);
     expect(at(9, "Milagre")).toEqual(["X"]);
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas na p. 216", () => {
+  it("separa os detalhes de Comandar Mortos-Vivos e Comandar Plantas por nível e classe", () => {
+    const commandUndead = dnd35SpellListFor("mago", 2).find((spell) => spell.name === "Comandar Mortos-Vivos");
+    expect(commandUndead).toMatchObject({
+      flags: ["M"],
+      summaryOnly: false,
+      detailsPage: 216,
+      mechanics: {
+        components: "V, G, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Um morto-vivo", duration: "1 dia/nível", savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+      },
+    });
+    expect(commandUndead?.summary).toContain("sem inteligência não têm resistência");
+    expect(commandUndead?.summary).toContain("encerram o efeito");
+
+    const commandPlants = dnd35SpellListFor("druida", 4).find((spell) => spell.name === "Comandar Plantas");
+    const rangerCommandPlants = dnd35SpellListFor("patrulheiro", 3).find((spell) => spell.name === "Comandar Plantas");
+    expect(commandPlants).toMatchObject({
+      summaryOnly: false,
+      detailsPage: 216,
+      mechanics: {
+        components: "V", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Até 2 DV/nível de criaturas tipo planta", duration: "1 dia/nível",
+        savingThrow: "Vontade anula", spellResistance: "Sim",
+      },
+    });
+    expect(rangerCommandPlants).toEqual(commandPlants);
+
+    // A entrada de 8º nível é outra magia, descrita pela lista impressa da p. 191.
+    const controlPlants = dnd35SpellListFor("druida", 8).find((spell) => spell.name === "Comandar Plantas");
+    expect(controlPlants?.detailsPage).toBeUndefined();
+    expect(controlPlants?.summaryOnly).toBeUndefined();
+    expect(controlPlants?.summary).toContain("vegetação enreda");
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas nas pp. 217–218", () => {
+  it("expõe mecânicas completas nas projeções de classe corretas", () => {
+    const get = (classId: string, level: number, name: string) =>
+      dnd35SpellListFor(classId, level).find((spell) => spell.name === name);
+    const expected: Array<[
+      string, number, string, number, string, string, string, string, string, string, string
+    ]> = [
+      ["bardo", 1, "Compreender Idiomas", 217, "V, G, M", "1 ação padrão", "Pessoal", "Você", "10 minutos/nível", "Nenhum", "Não"],
+      ["clerigo", 1, "Compreender Idiomas", 217, "V, G, FD", "1 ação padrão", "Pessoal", "Você", "10 minutos/nível", "Nenhum", "Não"],
+      ["mago", 1, "Compreender Idiomas", 217, "V, G, M", "1 ação padrão", "Pessoal", "Você", "10 minutos/nível", "Nenhum", "Não"],
+      ["mago", 5, "Compor", 217, "V, G, M", "Veja texto", "Curto (7,5 m + 1,5 m/2 níveis)", "Até 30 cm³/nível (3 cm³/nível para minerais; veja texto)", "Instantânea", "Nenhum", "Não"],
+      ["clerigo", 5, "Comunhão", 217, "V, G, M, FD, XP", "10 minutos", "Pessoal", "Você", "1 rodada/nível", "Nenhum", "Não"],
+      ["druida", 5, "Comunhão com a Natureza", 217, "V, G", "10 minutos", "Pessoal", "Você", "Instantânea", "Nenhum", "Não"],
+      ["patrulheiro", 4, "Comunhão com a Natureza", 217, "V, G", "10 minutos", "Pessoal", "Você", "Instantânea", "Nenhum", "Não"],
+      ["mago", 5, "Cone Glacial", 218, "V, G, M", "1 ação padrão", "18 m", "Explosão em cone", "Instantânea", "Reflexos para reduzir à metade", "Sim"],
+      ["bardo", 3, "Confusão", 218, "V, G, M", "1 ação padrão", "Médio (30 m + 3 m/nível)", "Todas as criaturas em 4,5 m de raio", "1 rodada/nível", "Vontade anula", "Sim"],
+      ["mago", 4, "Confusão", 218, "V, G, M", "1 ação padrão", "Médio (30 m + 3 m/nível)", "Todas as criaturas em 4,5 m de raio", "1 rodada/nível", "Vontade anula", "Sim"],
+    ];
+
+    for (const [classId, level, name, page, components, castingTime, range, target, duration, savingThrow, spellResistance] of expected) {
+      const spell = get(classId, level, name);
+      expect(spell, `${classId} ${level}: ${name}`).toMatchObject({
+        summaryOnly: false,
+        detailsPage: page,
+        mechanics: { components, castingTime, range, target, duration, savingThrow, spellResistance },
+      });
+    }
+
+    expect(get("clerigo", 1, "Compreender Idiomas")?.summary).toContain("mas não falar nem escrever");
+    expect(get("mago", 5, "Compor")?.summary).toContain("30 cm³ por nível");
+    expect(get("clerigo", 5, "Comunhão")?.summary).toContain("100 XP");
+    expect(get("druida", 5, "Comunhão com a Natureza")?.summary).toContain("três fatos");
+    expect(get("mago", 5, "Cone Glacial")?.summary).toContain("15d6");
+    expect(get("mago", 4, "Confusão")?.summary).toContain("01–10 atacam o conjurador");
+    expect(get("bardo", 1, "Compreender Idiomas")?.flags).toEqual([]);
+    expect(get("mago", 5, "Compor")?.flags).toEqual([]);
+    expect(get("mago", 5, "Cone Glacial")?.flags).toEqual([]);
+    expect(get("mago", 4, "Confusão")?.flags).toEqual([]);
+    expect(get("clerigo", 5, "Comunhão")?.flags).toEqual(["X"]);
+    expect(get("patrulheiro", 4, "Comunhão com a Natureza")).toEqual(get("druida", 5, "Comunhão com a Natureza"));
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas nas pp. 220–221", () => {
+  const get = (classId: string, level: number, name: string) =>
+    dnd35SpellListFor(classId, level).find((spell) => spell.name === name);
+
+  it("confere contato extraplanar, contingência e conto das rochas", () => {
+    expect(get("mago", 5, "Contato Extraplanar")).toMatchObject({
+      summaryOnly: false, detailsPage: 220,
+      mechanics: { components: "V", castingTime: "10 minutos", range: "Pessoal", target: "Você", duration: "Concentração", savingThrow: "Nenhum", spellResistance: "Não" },
+    });
+    expect(get("feiticeiro", 6, "Contingência")).toMatchObject({
+      summaryOnly: false, detailsPage: 220, detailsPageEnd: 221,
+      mechanics: { components: "V, G, M, F", range: "Pessoal", target: "Você", duration: "1 dia/nível (D) ou até ser descarregada" },
+    });
+    const rocks = get("druida", 6, "Conto das Rochas");
+    expect(rocks).toMatchObject({
+      summaryOnly: false, detailsPage: 220,
+      mechanics: { components: "V, G, FD", castingTime: "10 minutos", range: "Pessoal", duration: "1 minuto/nível", savingThrow: "Nenhum", spellResistance: "Não" },
+    });
+    expect(rocks?.summary).toContain("rochas naturais ou trabalhadas");
+  });
+
+  it("aplica Controlar Água a cada classe e nível impresso", () => {
+    for (const [classId, level] of [["druida", 4], ["mago", 6]] as const) {
+      expect(get(classId, level, "Controlar Água")).toMatchObject({
+        summaryOnly: false, detailsPage: 220, detailsPageEnd: 221,
+        mechanics: { components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)", duration: "10 minutos/nível", spellResistance: "Não" },
+      });
+    }
+  });
+
+  it("inclui a projeção Feiticeiro/Mago de Controlar o Clima omitida na p. 196", () => {
+    for (const [classId, level] of [["clerigo", 7], ["druida", 7], ["mago", 6]] as const) {
+      const spell = get(classId, level, "Controlar o Clima");
+      expect(spell).toMatchObject({
+        summaryOnly: false, detailsPage: 221,
+        mechanics: {
+          components: "V, G", castingTime: "10 minutos (veja texto)", range: "3 km",
+          target: "Círculo de 3 km de raio centrado no conjurador", duration: "4d12 horas (veja texto)",
+          savingThrow: "Nenhum", spellResistance: "Não",
+        },
+      });
+      expect(spell?.summary).toContain("pode ser alterada com uma ação padrão");
+    }
+    expect(get("mago", 6, "Controlar o Clima")?.school).toBe("Trans");
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas nas pp. 218–220", () => {
+  it("adiciona mecânicas por projeção sem misturar níveis ou listas de classe", () => {
+    const expected = [
+      ["clerigo", 0, "Consertar", 219, "V, G", "1 ação padrão", "3 m", "Um objeto de até 500 g", "Instantânea", "Vontade anula (inofensiva, objeto)", "Sim (inofensiva, objeto)"],
+      ["mago", 0, "Consertar", 219, "V, G", "1 ação padrão", "3 m", "Um objeto de até 500 g", "Instantânea", "Vontade anula (inofensiva, objeto)", "Sim (inofensiva, objeto)"],
+      ["feiticeiro", 0, "Consertar", 219, "V, G", "1 ação padrão", "3 m", "Um objeto de até 500 g", "Instantânea", "Vontade anula (inofensiva, objeto)", "Sim (inofensiva, objeto)"],
+      ["bardo", 0, "Consertar", 219, "V, G", "1 ação padrão", "3 m", "Um objeto de até 500 g", "Instantânea", "Vontade anula (inofensiva, objeto)", "Sim (inofensiva, objeto)"],
+      ["druida", 0, "Consertar", 219, "V, G", "1 ação padrão", "3 m", "Um objeto de até 500 g", "Instantânea", "Vontade anula (inofensiva, objeto)", "Sim (inofensiva, objeto)"],
+      ["clerigo", 2, "Consagrar", 219, "V, G, M, FD", "1 ação padrão", "Curto (7,5 m + 1,5 m/2 níveis)", "Emanação de 6 m de raio", "2 horas/nível", "Nenhum", "Não"],
+      ["clerigo", 5, "Conspurcar", 219, "V, G, M", "24 horas", "Toque", "Emanação de 12 m de raio do ponto tocado", "Instantânea", "Veja texto", "Veja texto"],
+      ["druida", 5, "Conspurcar", 219, "V, G, M", "24 horas", "Toque", "Emanação de 12 m de raio do ponto tocado", "Instantânea", "Veja texto", "Veja texto"],
+      ["bardo", 1, "Confusão Menor", 218, "V, G, FD", "1 ação padrão", "Curto (7,5 m + 1,5 m/2 níveis)", "1 criatura viva", "1 rodada", "Vontade anula; veja texto", "Não"],
+      ["druida", 1, "Constrição", 219, "V, G, FD", "1 ação padrão", "Longo (120 m + 12 m/nível)", "Plantas numa dispersão de 12 m de raio", "1 minuto/nível (D)", "Reflexos parcial (veja texto)", "Não"],
+      ["patrulheiro", 1, "Constrição", 219, "V, G, FD", "1 ação padrão", "Longo (120 m + 12 m/nível)", "Plantas numa dispersão de 12 m de raio", "1 minuto/nível (D)", "Reflexos parcial (veja texto)", "Não"],
+      ["bardo", 4, "Conjuração de Sombras", 218, "V, G", "1 ação padrão", "Veja texto", "Veja texto", "Veja texto", "Vontade desacredita (se interagir); varia; veja texto", "Sim; veja texto"],
+      ["mago", 4, "Conjuração de Sombras", 218, "V, G", "1 ação padrão", "Veja texto", "Veja texto", "Veja texto", "Vontade desacredita (se interagir); varia; veja texto", "Sim; veja texto"],
+    ] as const;
+
+    for (const [classId, level, name, page, components, castingTime, range, target, duration, savingThrow, spellResistance] of expected) {
+      const spell = dnd35SpellListFor(classId, level).find((candidate) => candidate.name === name);
+      expect(spell, `${classId} ${level}: ${name}`).toMatchObject({
+        summaryOnly: false,
+        detailsPage: page,
+        mechanics: { components, castingTime, range, target, duration, savingThrow, spellResistance },
+      });
+    }
+
+    expect(dnd35SpellListFor("mago", 4).find((spell) => spell.name === "Conjuração de Sombras")?.detailsPageEnd).toBe(219);
+    expect(dnd35SpellListFor("druida", 1).find((spell) => spell.name === "Constrição")?.detailsPageEnd).toBe(220);
+    expect(dnd35SpellListFor("druida", 1).find((spell) => spell.name === "Constrição")?.summary).toContain("CD 20");
+    expect(dnd35SpellListFor("mago", 4).find((spell) => spell.name === "Conjuração de Sombras")?.flags).toEqual([]);
+    expect(dnd35SpellListFor("bardo", 1).find((spell) => spell.name === "Confusão Menor")?.flags).toEqual([]);
+    expect(dnd35SpellListFor("mago", 0).find((spell) => spell.name === "Consertar")?.summary)
+      .toContain("não restaura suas habilidades mágicas");
+    expect(dnd35SpellListFor("clerigo", 2).find((spell) => spell.name === "Consagrar")?.summary)
+      .toContain("mortos-vivos");
+    expect(dnd35SpellListFor("druida", 5).find((spell) => spell.name === "Conspurcar")?.flags).toEqual(["M"]);
+    expect(dnd35SpellListFor("mago", 4).find((spell) => spell.name === "Conjuração de Sombras")?.summary)
+      .toContain("20% da força");
+    expect(dnd35SpellListFor("mago", 4).find((spell) => spell.name === "Conjuração de Sombras")?.summary)
+      .toContain("até 3º nível");
+    expect(dnd35SpellListFor("bardo", 1).find((spell) => spell.name === "Confusão Menor")?.summary)
+      .toContain("durante 1 rodada");
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas nas pp. 222–223", () => {
+  const get = (classId: string, level: number, name: string) =>
+    dnd35SpellListFor(classId, level).find((spell) => spell.name === name);
+
+  it("registra Convocar Relâmpagos e sua variante de tempestade", () => {
+    expect(get("druida", 3, "Convocar Relâmpagos")).toMatchObject({
+      summaryOnly: false, detailsPage: 222,
+      mechanics: {
+        components: "V, G", castingTime: "1 rodada", range: "Médio (30 m + 3 m/nível)",
+        target: "Linha vertical de eletricidade de 1,5 m × 9 m (veja texto)", duration: "1 minuto/nível",
+        savingThrow: "Reflexos para reduzir à metade", spellResistance: "Sim",
+      },
+    });
+    expect(get("druida", 3, "Convocar Relâmpagos")?.summary).toContain("3d10");
+    expect(get("druida", 5, "Convocar Tempestade de Relâmpagos")).toMatchObject({
+      summaryOnly: false, detailsPage: 222,
+      mechanics: {
+        components: "V, G", castingTime: "1 rodada", range: "Longo (120 m + 12 m/nível)",
+        target: "Linha vertical de eletricidade de 1,5 m × 9 m (veja texto)", duration: "1 minuto/nível",
+        savingThrow: "Reflexos para reduzir à metade", spellResistance: "Sim",
+      },
+    });
+    expect(get("druida", 5, "Convocar Tempestade de Relâmpagos")?.summary).toContain("no máximo 15 raios");
+  });
+
+  it("confere Corrente de Relâmpagos e Corpo de Ferro para Feiticeiro/Mago", () => {
+    expect(get("mago", 6, "Corrente de Relâmpagos")).toMatchObject({
+      summaryOnly: false, detailsPage: 222,
+      mechanics: {
+        components: "V, G, F", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+        target: "Um alvo primário e um alvo secundário/nível a até 9 m do primário", duration: "Instantânea",
+        savingThrow: "Reflexos para reduzir à metade", spellResistance: "Sim",
+      },
+    });
+    expect(get("feiticeiro", 8, "Corpo de Ferro")).toMatchObject({
+      summaryOnly: false, detailsPage: 222,
+      mechanics: {
+        components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+        duration: "1 minuto/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+      },
+    });
+  });
+
+  it("preserva as regras de Crescer Espinhos para Druida e Patrulheiro", () => {
+    for (const [classId, level, dc] of [["druida", 3, 28], ["patrulheiro", 2, 27]] as const) {
+      const spell = get(classId, level, "Crescer Espinhos");
+      expect(spell).toMatchObject({
+        summaryOnly: false, detailsPage: 222, detailsPageEnd: 223,
+        mechanics: {
+          components: "V, G, FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+          target: "Quadrado de 6 m/nível", duration: "1 hora/nível (D)",
+          savingThrow: "Reflexos parcial", spellResistance: "Sim",
+        },
+      });
+      expect(spell?.summary).toContain(`Cura CD ${dc}`);
+      expect(spell?.summary).toContain("reduzir o deslocamento à metade por 24 horas");
+    }
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas nas pp. 223–225", () => {
+  const get = (classId: string, level: number, name: string) =>
+    dnd35SpellListFor(classId, level).find((spell) => spell.name === name);
+
+  it("registra as três magias de criação de mortos-vivos por classe", () => {
+    const projections = [
+      ["feiticeiro", 6, "Criar Mortos-Vivos", 223, 224],
+      ["clerigo", 6, "Criar Mortos-Vivos", 223, 224],
+      ["mago", 4, "Criar Mortos-Vivos Menor", 224, undefined],
+      ["clerigo", 3, "Criar Mortos-Vivos Menor", 224, undefined],
+      ["mago", 8, "Criar Mortos-Vivos Maior", 224, undefined],
+      ["clerigo", 8, "Criar Mortos-Vivos Maior", 224, undefined],
+    ] as const;
+
+    for (const [classId, level, name, detailsPage, detailsPageEnd] of projections) {
+      const spell = get(classId, level, name);
+      expect(spell).toMatchObject({ summaryOnly: false, detailsPage, ...(detailsPageEnd ? { detailsPageEnd } : {}) });
+      expect(spell?.mechanics).toMatchObject({
+        components: "V, G, M", castingTime: name === "Criar Mortos-Vivos Menor" ? "1 ação padrão" : "1 hora",
+        range: name === "Criar Mortos-Vivos Menor" ? "Toque" : "Curto (7,5 m + 1,5 m/2 níveis)",
+        duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+      });
+    }
+    expect(get("feiticeiro", 6, "Criar Mortos-Vivos")?.summary).toContain("50 PO em ônix negro por Dado de Vida");
+    expect(get("mago", 4, "Criar Mortos-Vivos Menor")?.summary).toContain("esqueletos ou zumbis");
+    expect(get("clerigo", 8, "Criar Mortos-Vivos Maior")?.summary).toContain("devorador");
+  });
+
+  it("preserva a continuação de Criar Passagens e as variantes de Cubo de Energia", () => {
+    expect(get("mago", 5, "Criar Passagens")).toMatchObject({
+      summaryOnly: false, detailsPage: 224, detailsPageEnd: 225, flags: [],
+      mechanics: {
+        components: "V, G, M", castingTime: "1 ação padrão", range: "Toque",
+        target: "Abertura em madeira ou pedra; veja texto", duration: "1 hora/nível (D)",
+        savingThrow: "Nenhum", spellResistance: "Não",
+      },
+    });
+    expect(get("mago", 7, "Cubo de Energia")).toMatchObject({
+      summaryOnly: false, detailsPage: 224, flags: ["M"],
+      mechanics: {
+        components: "V, S, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Cubo com barras de 6 m ou cela sem janelas de 3 m", duration: "2 horas/nível (D)",
+        savingThrow: "Nenhum", spellResistance: "Não",
+      },
+    });
+    expect(get("mago", 5, "Criar Passagens")?.summary).toContain("7,5 m");
+    expect(get("mago", 7, "Cubo de Energia")?.summary).toContain("pó de rubi no valor de 1.500 PO");
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas na p. 225", () => {
+  const get = (classId: string, level: number, name: string) =>
+    dnd35SpellListFor(classId, level).find((spell) => spell.name === name);
+
+  it("registra as duas cúpulas de proteção nas listas de Druida e Clérigo", () => {
+    expect(get("druida", 4, "Cúpula de Proteção Contra Vegetais")).toMatchObject({
+      summaryOnly: false, detailsPage: 225,
+      mechanics: {
+        components: "V, G, FD", castingTime: "1 ação padrão", range: "3 m",
+        target: "Emanação de 3 m de raio centrada no conjurador", duration: "10 minutos/nível (D)",
+        savingThrow: "Nenhum", spellResistance: "Sim",
+      },
+    });
+    for (const [classId, level] of [["clerigo", 6], ["druida", 6]] as const) {
+      expect(get(classId, level, "Cúpula de Proteção Contra a Vida")).toMatchObject({
+        summaryOnly: false, detailsPage: 225,
+        mechanics: {
+          components: "V, G, FD", castingTime: "1 rodada", range: "3 m",
+          target: "Emanação de 3 m de raio centrada no conjurador", duration: "10 minutos/nível (D)",
+          savingThrow: "Nenhum", spellResistance: "Sim",
+        },
+      });
+    }
+    expect(get("druida", 4, "Cúpula de Proteção Contra Vegetais")?.summary).toContain("plantas animadas");
+    expect(get("clerigo", 6, "Cúpula de Proteção Contra a Vida")?.summary).toContain("mortos-vivos");
+  });
+
+  it("preserva Cura Completa e Cura Completa em Massa com efeitos e limites", () => {
+    for (const [classId, level] of [["clerigo", 6], ["druida", 7]] as const) {
+      expect(get(classId, level, "Cura Completa")).toMatchObject({
+        summaryOnly: false, detailsPage: 225,
+        mechanics: {
+          components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+          duration: "Instantânea", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+        },
+      });
+      const summary = get(classId, level, "Cura Completa")?.summary ?? "";
+      expect(summary).toContain("10 PV por nível");
+      expect(summary).toContain("150 PV");
+      expect(summary).toContain("Não remove níveis negativos");
+      expect(summary).toContain("dano permanente de habilidade");
+    }
+    expect(get("clerigo", 9, "Cura Completa em Massa")).toMatchObject({
+      summaryOnly: false, detailsPage: 225,
+      mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma ou mais criaturas, todas a até 9 m umas das outras", duration: "Instantânea",
+        savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+      },
+    });
+    expect(get("clerigo", 9, "Cura Completa em Massa")?.summary).toContain("no máximo 250 PV a cada alvo");
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas na p. 226", () => {
+  const get = (classId: string, level: number, name: string) =>
+    dnd35SpellListFor(classId, level).find((spell) => spell.name === name);
+
+  it("registra Dança Irresistível de Otto nas projeções de Bardo e Feiticeiro/Mago", () => {
+    for (const [classId, level] of [["bardo", 6], ["feiticeiro", 8], ["mago", 8]] as const) {
+      expect(get(classId, level, "Dança Irresistível de Otto")).toMatchObject({
+        summaryOnly: false, detailsPage: 226,
+        mechanics: {
+          components: "V", castingTime: "1 ação padrão", range: "Toque",
+          target: "Uma criatura viva tocada", duration: "1d4+1 rodadas",
+          savingThrow: "Nenhum", spellResistance: "Sim",
+        },
+      });
+    }
+    expect(get("bardo", 6, "Dança Irresistível de Otto")?.summary).toContain("−10 nos testes de Reflexos");
+    expect(get("bardo", 6, "Dança Irresistível de Otto")?.summary).toContain("ataques de oportunidade");
+  });
+
+  it("registra Dedo da Morte para Druida 8 e Feiticeiro/Mago 7 conforme as listas e descrição", () => {
+    for (const [classId, level] of [["druida", 8], ["feiticeiro", 7], ["mago", 7]] as const) {
+      expect(get(classId, level, "Dedo da Morte")).toMatchObject({
+        summaryOnly: false, detailsPage: 226,
+        mechanics: {
+          components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+          target: "Uma criatura viva", duration: "Instantânea",
+          savingThrow: "Fortitude parcial", spellResistance: "Sim",
+        },
+      });
+    }
+    expect(get("druida", 8, "Dedo da Morte")?.summary).toContain("3d6 +1 de dano por nível de conjurador");
+    expect(get("druida", 8, "Dedo da Morte")?.summary).toContain("máximo de +25");
+    expect(get("mago", 6, "Dedo da Morte")).toBeUndefined();
+  });
+
+  it("registra Descanso Tranqüilo sem modificar a grafia das listas", () => {
+    for (const [classId, level] of [["clerigo", 2], ["feiticeiro", 3], ["mago", 3]] as const) {
+      expect(get(classId, level, "Descanso Tranqüilo")).toMatchObject({
+        summaryOnly: false, detailsPage: 226,
+        mechanics: {
+          components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Toque",
+          target: "Objeto ou cadáver tocado", duration: "Um dia/nível",
+          savingThrow: "Vontade anula (objeto)", spellResistance: "Sim (objeto)",
+        },
+      });
+    }
+    expect(get("clerigo", 2, "Descanso Tranqüilo")?.summary).toContain("Preserva o cadáver");
+    expect(get("clerigo", 2, "Descanso Tranqüilo")?.summary).toContain("cinzas e restos mortais");
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas nas pp. 227–229", () => {
+  const get = (classId: string, level: number, name: string) =>
+    dnd35SpellListFor(classId, level).find((spell) => spell.name === name);
+
+  it("confere efeitos e mecânicas das projeções arcanas e divinas das pp. 227–229", () => {
+    const cases = [
+      ["mago", 7, "Desejo Restrito", 227, "V, G, XP", "Veja texto", "Veja texto", "Veja texto", "Nenhum; veja texto", "Sim"],
+      ["clerigo", 1, "Desespero", 227, "V, G, FD", "Médio (30 m + 3 m/nível)", "Uma criatura", "1 minuto/nível", "Vontade anula", "Sim"],
+      ["bardo", 3, "Desespero Esmagador", 227, "V, G, M", "9 m", "Cone", "1 minuto/nível", "Vontade anula", "Sim"],
+      ["mago", 4, "Desespero Esmagador", 227, "V, G, M", "9 m", "Cone", "1 minuto/nível", "Vontade anula", "Sim"],
+      ["mago", 6, "Desintegrar", 227, "V, G, M/FD", "Médio (30 m + 3 m/nível)", "Raio", "Instantânea", "Fortitude parcial (objeto)", "Sim"],
+      ["bardo", 3, "Deslocamento", 227, "V, M", "Toque", "Criatura tocada", "1 rodada/nível (D) e concentração +3 rodadas", "Vontade anula (inofensiva)", "Sim (inofensiva)"],
+      ["mago", 3, "Deslocamento", 227, "V, M", "Toque", "Criatura tocada", "1 rodada/nível (D) e concentração +3 rodadas", "Vontade anula (inofensiva)", "Sim (inofensiva)"],
+      ["bardo", 2, "Despedaçar", 227, "V, G, M/FD", "Curto (7,5 m + 1,5 m/2 níveis)", "Objeto sólido ou criatura cristalina", "Instantânea", "Fortitude para reduzir à metade", "Sim (objeto)"],
+      ["clerigo", 2, "Despedaçar", 227, "V, G, M/FD", "Curto (7,5 m + 1,5 m/2 níveis)", "Objeto sólido ou criatura cristalina", "Instantânea", "Fortitude para reduzir à metade", "Sim (objeto)"],
+      ["mago", 2, "Despedaçar", 227, "V, G, M/FD", "Curto (7,5 m + 1,5 m/2 níveis)", "Objeto sólido ou criatura cristalina", "Instantânea", "Fortitude para reduzir à metade", "Sim (objeto)"],
+      ["druida", 5, "Despertar", 227, "V, G, FD, XP", "Toque", "Animal ou árvore tocada", "Instantânea", "Vontade anula", "Sim"],
+      ["bardo", 5, "Despistar", 228, "V, G", "Curto (7,5 m + 1,5 m/2 níveis)", "Você e uma duplicata ilusória", "1 rodada/nível (D) e concentração +3 rodadas", "Nenhum ou Vontade desacredita (veja texto)", "Não"],
+      ["mago", 6, "Despistar", 228, "V, G", "Curto (7,5 m + 1,5 m/2 níveis)", "Você e uma duplicata ilusória", "1 rodada/nível (D) e concentração +3 rodadas", "Nenhum ou Vontade desacredita (veja texto)", "Não"],
+      ["clerigo", 7, "Destruição", 228, "V, G, F", "Curto (7,5 m + 1,5 m/2 níveis)", "Uma criatura", "Instantânea", "Fortitude parcial", "Sim"],
+      ["druida", 7, "Destruição Rastejante", 228, "V, G", "Curto (7,5 m + 1,5 m/2 níveis) ou 30 m (veja texto)", "Um enxame de insetos/2 níveis (máximo de 10 enxames)", "1 minuto/nível", "Nenhum", "Não"],
+      ["clerigo", 6, "Destruir Mortos-Vivos", 228, "V, G, M/FD", "Médio (30 m + 3 m/nível)", "Mortos-vivos em explosão de 12 m de raio", "Instantânea", "Vontade anula", "Sim"],
+      ["mago", 6, "Destruir Mortos-Vivos", 228, "V, G, M/FD", "Médio (30 m + 3 m/nível)", "Mortos-vivos em explosão de 12 m de raio", "Instantânea", "Vontade anula", "Sim"],
+      ["druida", 1, "Detectar Animais ou Plantas", 228, "V, G", "Longo (120 m + 12 m/nível)", "Emanação em cone", "Concentração, até 10 minutos/nível (D)", "Nenhum", "Não"],
+      ["patrulheiro", 1, "Detectar Animais ou Plantas", 228, "V, G", "Longo (120 m + 12 m/nível)", "Emanação em cone", "Concentração, até 10 minutos/nível (D)", "Nenhum", "Não"],
+      ["druida", 1, "Detectar Armadilhas", 229, "V, G", "18 m", "Emanação em cone", "Concentração, até 10 minutos/nível (D)", "Nenhum", "Não"],
+      ["patrulheiro", 1, "Detectar Armadilhas", 229, "V, G", "18 m", "Emanação em cone", "Concentração, até 10 minutos/nível (D)", "Nenhum", "Não"],
+      ["clerigo", 1, "Detectar Caos/Mal/Bem/Ordem", 229, "V, G, FD", "18 m", "Emanação em cone", "Concentração, até 10 minutos/nível (D)", "Nenhum", "Não"],
+      ["bardo", 0, "Detectar Magia", 229, "V, G", "18 m", "Emanação em cone", "Concentração, até 1 minuto/nível (D)", "Nenhum", "Não"],
+      ["clerigo", 0, "Detectar Magia", 229, "V, G", "18 m", "Emanação em cone", "Concentração, até 1 minuto/nível (D)", "Nenhum", "Não"],
+      ["druida", 0, "Detectar Magia", 229, "V, G", "18 m", "Emanação em cone", "Concentração, até 1 minuto/nível (D)", "Nenhum", "Não"],
+      ["mago", 0, "Detectar Magia", 229, "V, G", "18 m", "Emanação em cone", "Concentração, até 1 minuto/nível (D)", "Nenhum", "Não"],
+    ] as const;
+
+    for (const [classId, level, name, detailsPage, components, range, target, duration, savingThrow, spellResistance] of cases) {
+      const castingTime = name === "Despertar" ? "24 horas" : name === "Destruição Rastejante" ? "1 rodada" : "1 ação padrão";
+      const actualSavingThrow = name === "Despistar" ? "Nenhum ou Vontade desacredita (se interagir); veja texto" : savingThrow;
+      expect(get(classId, level, name), `${classId} ${level}: ${name}`).toMatchObject({
+        summaryOnly: false, detailsPage,
+        mechanics: { components, castingTime, range, target, duration, savingThrow: actualSavingThrow, spellResistance },
+      });
+    }
+    expect(get("druida", 5, "Despertar")?.detailsPageEnd).toBe(228);
+    expect(get("druida", 1, "Detectar Animais ou Plantas")?.detailsPageEnd).toBe(229);
+    expect(get("clerigo", 1, "Detectar Caos/Mal/Bem/Ordem")?.summary).toContain("alinhamento escolhido");
+    expect(get("clerigo", 1, "Detectar Caos/Mal/Bem/Ordem")?.detailsPage).toBe(229);
+    expect(get("druida", 1, "Detectar Armadilhas")?.summary).toContain("Não revela armadilhas complexas");
+    expect(get("mago", 0, "Detectar Magia")?.summary).toContain("Na primeira rodada");
+    expect(dnd35SpellListFor("clerigo", 1).filter((spell) => spell.name === "Detectar Caos/Mal/Bem/Ordem")).toHaveLength(1);
+    expect(get("clerigo", 1, "Desespero")?.summary).toContain("Deixa uma criatura abalada");
+    expect(get("clerigo", 1, "Desespero")?.summary).not.toContain("dano");
+    expect(get("bardo", 3, "Desespero Esmagador")?.summary).toContain("ataque e dano");
+    expect(get("druida", 7, "Destruição Rastejante")?.summary).toContain("enxames de insetos");
+    expect(get("mago", 6, "Desintegrar")?.summary).toContain("40d6");
+    expect(get("mago", 6, "Destruir Mortos-Vivos")?.summary).toContain("Círculo da Morte");
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas na p. 230", () => {
+  const get = (classId: string, level: number, name: string) =>
+    dnd35SpellListFor(classId, level).find((spell) => spell.name === name);
+
+  it("confere as 15 projeções de classe, incluindo a continuação de Detectar Pensamentos", () => {
+    const cases = [
+      ["bardo", 1, "Detectar Portas Secretas", "V, G", "18 m", "Emanação em cone", "Concentração, até 1 minuto/nível (D)", "Nenhum", "Não"],
+      ["feiticeiro", 1, "Detectar Portas Secretas", "V, G", "18 m", "Emanação em cone", "Concentração, até 1 minuto/nível (D)", "Nenhum", "Não"],
+      ["mago", 1, "Detectar Portas Secretas", "V, G", "18 m", "Emanação em cone", "Concentração, até 1 minuto/nível (D)", "Nenhum", "Não"],
+      ["clerigo", 0, "Detectar Venenos", "V, G", "Curto (7,5 m + 1,5 m/2 níveis)", "Uma criatura, objeto ou cubo de 1,5 m", "Instantânea", "Nenhum", "Não"],
+      ["druida", 0, "Detectar Venenos", "V, G", "Curto (7,5 m + 1,5 m/2 níveis)", "Uma criatura, objeto ou cubo de 1,5 m", "Instantânea", "Nenhum", "Não"],
+      ["paladino", 1, "Detectar Venenos", "V, G", "Curto (7,5 m + 1,5 m/2 níveis)", "Uma criatura, objeto ou cubo de 1,5 m", "Instantânea", "Nenhum", "Não"],
+      ["mago", 0, "Detectar Venenos", "V, G", "Curto (7,5 m + 1,5 m/2 níveis)", "Uma criatura, objeto ou cubo de 1,5 m", "Instantânea", "Nenhum", "Não"],
+      ["feiticeiro", 0, "Detectar Venenos", "V, G", "Curto (7,5 m + 1,5 m/2 níveis)", "Uma criatura, objeto ou cubo de 1,5 m", "Instantânea", "Nenhum", "Não"],
+      ["clerigo", 1, "Detectar Mortos-Vivos", "V, G, M/FD", "18 m", "Emanação em cone", "Concentração, até 1 minuto/nível (D)", "Nenhum", "Não"],
+      ["paladino", 1, "Detectar Mortos-Vivos", "V, G, M/FD", "18 m", "Emanação em cone", "Concentração, até 1 minuto/nível (D)", "Nenhum", "Não"],
+      ["mago", 1, "Detectar Mortos-Vivos", "V, G, M/FD", "18 m", "Emanação em cone", "Concentração, até 1 minuto/nível (D)", "Nenhum", "Não"],
+      ["feiticeiro", 1, "Detectar Mortos-Vivos", "V, G, M/FD", "18 m", "Emanação em cone", "Concentração, até 1 minuto/nível (D)", "Nenhum", "Não"],
+      ["bardo", 2, "Detectar Pensamentos", "V, G, F/FD", "18 m", "Emanação em cone", "Concentração, até 1 minuto/nível (D)", "Vontade anula (veja texto)", "Não"],
+      ["mago", 2, "Detectar Pensamentos", "V, G, F/FD", "18 m", "Emanação em cone", "Concentração, até 1 minuto/nível (D)", "Vontade anula (veja texto)", "Não"],
+      ["feiticeiro", 2, "Detectar Pensamentos", "V, G, F/FD", "18 m", "Emanação em cone", "Concentração, até 1 minuto/nível (D)", "Vontade anula (veja texto)", "Não"],
+    ] as const;
+
+    for (const [classId, level, name, components, range, target, duration, savingThrow, spellResistance] of cases) {
+      expect(get(classId, level, name), `${classId} ${level}: ${name}`).toMatchObject({
+        summaryOnly: false, detailsPage: 230,
+        mechanics: { components, castingTime: "1 ação padrão", range, target, duration, savingThrow, spellResistance },
+      });
+    }
+    expect(get("mago", 2, "Detectar Pensamentos")?.detailsPageEnd).toBe(231);
+    expect(get("mago", 1, "Detectar Portas Secretas")?.summary).toContain("esconderijos construídos especificamente");
+    expect(get("feiticeiro", 1, "Detectar Portas Secretas")?.summary).toBe(get("bardo", 1, "Detectar Portas Secretas")?.summary);
+    expect(get("mago", 1, "Detectar Portas Secretas")?.summary).not.toContain("ilusões");
+    expect(get("mago", 0, "Detectar Venenos")?.summary).toContain("identificar o tipo");
+    expect(get("mago", 1, "Detectar Mortos-Vivos")?.summary).toContain("força e localização");
+    expect(get("mago", 2, "Detectar Pensamentos")?.summary).toContain("pensamentos superficiais");
   });
 });

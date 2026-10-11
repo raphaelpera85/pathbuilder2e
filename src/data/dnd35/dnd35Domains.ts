@@ -1,4 +1,6 @@
 // ============================================================================
+
+import type { Dnd35SpellMechanics } from "./dnd35SpellLists";
 // D&D 3.5 — Domínios de Clérigo
 // Fonte: D&D 3.5 - Livro do Jogador, Capítulo 11, "Domínios de Clérigo",
 // páginas impressas 186-189. PDF escaneado; transcrito por leitura visual em
@@ -12,6 +14,10 @@ export interface Dnd35DomainSpell {
   name: string;
   summary: string;
   flags: string[];
+  /** Página da descrição completa, distinta da página de lista do domínio. */
+  detailsPage?: number;
+  detailsPageEnd?: number;
+  mechanics?: Dnd35SpellMechanics;
   /** Símbolo impresso após o nome ("*" ou "◆"); ver `footnotes` do domínio. */
   marker?: "*" | "◆";
 }
@@ -41,12 +47,22 @@ function spell(line: string): Dnd35DomainSpell {
   };
 }
 
-function domain(d: Omit<Dnd35Domain, "spells" | "footnotes"> & { spells: string[]; footnote?: string; footnote2?: string }): Dnd35Domain {
-  const { footnote, footnote2, spells, ...rest } = d;
+function domain(d: Omit<Dnd35Domain, "spells" | "footnotes"> & {
+  spells: string[];
+  spellDetails?: Record<string, Pick<Dnd35DomainSpell, "summary" | "detailsPage" | "detailsPageEnd" | "mechanics">>;
+  footnote?: string;
+  footnote2?: string;
+}): Dnd35Domain {
+  const { footnote, footnote2, spells, spellDetails, ...rest } = d;
   const footnotes: { marker: "*" | "◆"; text: string }[] = [];
   if (footnote) footnotes.push({ marker: "*", text: footnote });
   if (footnote2) footnotes.push({ marker: "◆", text: footnote2 });
-  return { ...rest, spells: spells.map(spell), ...(footnotes.length ? { footnotes } : {}) };
+  const parsedSpells = spells.map(spell);
+  return {
+    ...rest,
+    spells: parsedSpells.map((domainSpell) => ({ ...domainSpell, ...spellDetails?.[domainSpell.name] })),
+    ...(footnotes.length ? { footnotes } : {}),
+  };
 }
 
 export const DND35_DOMAINS: Dnd35Domain[] = [
@@ -116,6 +132,17 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Aura Sagrada: +4 na CA, +4 resistência e RM 25 contra magias malignas",
       "9 Invocar Criaturas IX*: Invoca um extraplanar para auxiliar o conjurador",
     ],
+    spellDetails: {
+      "Destruição Sagrada": {
+        detailsPage: 228,
+        summary: "Afeta apenas criaturas malignas ou neutras. Causa 1d8 de dano a cada 2 níveis de conjurador (máximo 5d8) a cada criatura maligna, ou 1d6 por nível (máximo 10d6) contra extraplanares malignos, que também ficam cegos por 1 rodada. Um sucesso no teste de Vontade reduz o dano à metade e evita a cegueira. Criaturas neutras recebem metade do dano, não ficam cegas e podem reduzi-lo à metade novamente com um sucesso no teste de Vontade.",
+        mechanics: {
+          components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+          target: "Explosão de 6 m de raio", duration: "Instantânea (1 rodada; veja texto)",
+          savingThrow: "Vontade parcial; veja texto", spellResistance: "Sim",
+        },
+      },
+    },
     footnote: "Somente como magia do bem",
   }),
   domain({
@@ -150,6 +177,27 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Discernir Localização: Descobre o local exato de criatura ou objeto",
       "9 Sexto Sentido: “Sexto sentido” lhe avisa sobre perigo iminente",
     ],
+    spellDetails: {
+      "Detectar Portas Secretas": {
+        detailsPage: 230,
+        summary: "Revela portas, compartimentos e esconderijos construídos especificamente para não serem notados, numa emanação em cone. A cada rodada de concentração, amplia a área examinada e o tipo de informação; uma porta comum apenas escondida por objetos não é detectada.",
+        mechanics: {
+          components: "V, G", castingTime: "1 ação padrão", range: "18 m",
+          target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
+          savingThrow: "Nenhum", spellResistance: "Não",
+        },
+      },
+      "Detectar Pensamentos": {
+        detailsPage: 230,
+        detailsPageEnd: 231,
+        summary: "Detecta mentes com Inteligência 3 ou maior num cone: na primeira rodada revela sua presença; na segunda, quantidade e Inteligência; na terceira, pensamentos superficiais. Uma criatura pode resistir, e barreiras limitam a detecção.",
+        mechanics: {
+          components: "V, G, F/FD", castingTime: "1 ação padrão", range: "18 m",
+          target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
+          savingThrow: "Vontade anula (veja texto)", spellResistance: "Não",
+        },
+      },
+    },
   }),
   domain({
     id: "cura", name: "Cura", sourcePage: "187",

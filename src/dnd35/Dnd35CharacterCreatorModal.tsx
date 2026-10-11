@@ -27,6 +27,7 @@ import {
 } from "../data/dnd35/dnd35Alignment";
 import "./dnd35Theme.css";
 import { getCatalogVersion } from "../data/catalogVersions";
+import { useModalInertBackground } from "../hooks/useModalInertBackground";
 
 const DND35_CREATION_RULES: readonly string[] = [
   "Role 4d6, descarte o menor dado, some os outros três — repita para os 6 atributos (Força, Destreza, Constituição, Inteligência, Sabedoria, Carisma) — e distribua os resultados livremente.",
@@ -106,6 +107,7 @@ export function Dnd35CharacterCreatorModal({
 }: Dnd35CharacterCreatorModalProps) {
   const [step, setStep] = useState<number>(1);
   const modalRef = useRef<HTMLDivElement>(null);
+  useModalInertBackground(modalRef, isOpen);
   const [validationMessage, setValidationMessage] = useState<string>("");
   const [charName, setCharName] = useState("Aventureiro");
   const [alignment, setAlignment] = useState<string>("Neutro e Bom");

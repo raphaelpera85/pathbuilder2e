@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo, useRef } from "react";
 import { useI18n, type MessageKey } from "./i18n";
+import { useModalInertBackground } from "./hooks/useModalInertBackground";
 import {
   listCampaignsWithStatus,
   saveCampaignWithStatus,
@@ -43,6 +44,10 @@ export function CampaignsPage() {
 
   // Forms
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const createModalRef = useRef<HTMLDivElement>(null);
+  const inspectModalRef = useRef<HTMLDivElement>(null);
+  useModalInertBackground(createModalRef, showCreateModal);
+  useModalInertBackground(inspectModalRef, Boolean(inspectedChar));
   const [newTitle, setNewTitle] = useState("");
   const [newDesc, setNewDesc] = useState("");
   const [newSchedule, setNewSchedule] = useState("");
@@ -932,6 +937,7 @@ export function CampaignsPage() {
       {showCreateModal && (
         <div
           className="modal-backdrop-dark"
+          ref={createModalRef}
           onClick={(e) => {
             if (e.target === e.currentTarget) setShowCreateModal(false);
           }}
@@ -1025,6 +1031,7 @@ export function CampaignsPage() {
       {inspectedChar && (
         <div
           className="modal-backdrop-dark"
+          ref={inspectModalRef}
           onClick={(e) => {
             if (e.target === e.currentTarget) setInspectedChar(null);
           }}
