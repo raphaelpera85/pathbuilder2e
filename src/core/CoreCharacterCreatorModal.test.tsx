@@ -15,13 +15,44 @@ describe("construtor core por sistema", () => {
     const onCharacterCreated = vi.fn();
     render(<CoreCharacterCreatorModal isOpen system={system} onClose={vi.fn()} onCharacterCreated={onCharacterCreated} />);
 
-    expect(screen.getByText("Revisão final da ficha")).toBeInTheDocument();
     expect(screen.getAllByText(new RegExp(label)).length).toBeGreaterThan(0);
-    expect(screen.getByText(/Todas as validações obrigatórias/)).toBeInTheDocument();
+    expect(screen.getByRole("navigation", { name: "Progresso da criação" })).toBeInTheDocument();
+    expect(screen.getByRole("complementary", { name: "Resumo da ficha" })).toBeInTheDocument();
+    expect(screen.getByLabelText("Nome")).toBeVisible();
+    expect(screen.getByText("Revisão final da ficha")).not.toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: /Revisão final/ }));
+    expect(screen.getByText("Revisão final da ficha")).toBeVisible();
+    expect(screen.getByText(/Todas as validações obrigatórias/)).toBeVisible();
 
     fireEvent.click(screen.getByRole("button", { name: /Criar ficha/i }));
     expect(onCharacterCreated).toHaveBeenCalledTimes(1);
     expect(onCharacterCreated.mock.calls[0][0]).toMatchObject({ system_id: system, systemId: system });
+  });
+
+  it("exibe somente a etapa ativa e usa a navegação para avançar entre etapas", () => {
+    render(<CoreCharacterCreatorModal isOpen system="dnd5e" onClose={vi.fn()} onCharacterCreated={vi.fn()} />);
+    const attributesStep = screen.getByRole("button", { name: /Atributos/ });
+    expect(screen.getByLabelText("Nome")).toBeVisible();
+    expect(screen.queryByRole("group", { name: "Atributos" })).not.toBeInTheDocument();
+    fireEvent.click(attributesStep);
+    expect(attributesStep).toHaveAttribute("aria-current", "step");
+    expect(screen.getByRole("group", { name: "Atributos" })).toBeVisible();
+    expect(screen.getByLabelText("Nome")).not.toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Próximo →" }));
+    expect(screen.getByRole("button", { name: /Perícias/ })).toHaveAttribute("aria-current", "step");
+    expect(screen.getByRole("group", { name: "Perícias treinadas" })).toBeVisible();
+  });
+
+  it("reinicia o fluxo na identidade ao reabrir o construtor", () => {
+    const onClose = vi.fn();
+    const { rerender } = render(<CoreCharacterCreatorModal isOpen system="t20" onClose={onClose} onCharacterCreated={vi.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: /Equipamento, magias e poderes/ }));
+    expect(screen.getByRole("button", { name: /Equipamento, magias e poderes/ })).toHaveAttribute("aria-current", "step");
+
+    rerender(<CoreCharacterCreatorModal isOpen={false} system="t20" onClose={onClose} onCharacterCreated={vi.fn()} />);
+    rerender(<CoreCharacterCreatorModal isOpen system="t20" onClose={onClose} onCharacterCreated={vi.fn()} />);
+    expect(screen.getByRole("button", { name: /Identidade e escolhas/ })).toHaveAttribute("aria-current", "step");
+    expect(screen.getByLabelText("Nome")).toBeVisible();
   });
 
   it("abre uma ficha T20 legada mesmo quando faltam listas adicionadas em versões recentes", () => {
@@ -39,7 +70,8 @@ describe("construtor core por sistema", () => {
     } as unknown as MultiSystemCharacter;
     expect(legacy.classes.some((entry) => entry.id === character.classId)).toBe(true);
     expect(() => render(<CoreCharacterCreatorModal isOpen system="t20" onClose={vi.fn()} onCharacterCreated={vi.fn()} initialCharacter={character} />)).not.toThrow();
-    expect(screen.getByText("Revisão final da ficha")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /Revisão final/ }));
+    expect(screen.getByText("Revisão final da ficha")).toBeVisible();
     expect(screen.getByDisplayValue("Tormenta antiga")).toBeInTheDocument();
   });
 
@@ -94,6 +126,7 @@ describe("construtor core por sistema", () => {
     character.abilities = { str: 8, dex: 14, con: 13, int: 12, wis: 10, cha: 15 };
     render(<CoreCharacterCreatorModal isOpen system="dnd5e" onClose={vi.fn()} onCharacterCreated={onCharacterCreated} initialCharacter={character} />);
 
+    fireEvent.click(screen.getByRole("button", { name: /Equipamento, magias e talentos/ }));
     const expandedSpellOption = screen.getByRole("option", { name: /Mãos Flamejantes/ });
     expect((expandedSpellOption as HTMLOptionElement).selected).toBe(false);
     fireEvent.click(screen.getByRole("button", { name: /Salvar alterações/i }));

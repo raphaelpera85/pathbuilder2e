@@ -19,9 +19,25 @@ vi.setConfig({ testTimeout: 30000 });
  */
 const allButtons = () => Array.from(document.body.querySelectorAll("button"));
 
-const tab = (label: RegExp) => fireEvent.click(screen.getByRole("tab", { name: label }));
+const tab = (label: RegExp) => fireEvent.click(screen.getByRole("button", { name: label }));
 const pickClass = (name: string) =>
   fireEvent.click(allButtons().find((b) => b.querySelector("strong")?.textContent === name)!);
+
+describe("Dnd35CharacterCreatorModal — fluxo compartilhado do construtor", () => {
+  it("mantém navegação e resumo Pathfinder, mostrando somente a etapa selecionada", () => {
+    render(<Dnd35CharacterCreatorModal isOpen onClose={vi.fn()} onCharacterCreated={vi.fn()} />);
+    const navigation = screen.getByRole("navigation", { name: "Progresso da criação" });
+    expect(screen.getByRole("complementary", { name: "Resumo da ficha" })).toBeVisible();
+    expect(screen.getByRole("heading", { name: "Atributos" })).toBeVisible();
+
+    const raceStep = within(navigation).getByRole("button", { name: /Raça & Classe/ });
+    fireEvent.click(raceStep);
+    expect(raceStep).toHaveAttribute("aria-current", "step");
+    expect(screen.queryByRole("heading", { name: "Atributos" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Anterior/ })).toBeEnabled();
+    expect(screen.getByRole("button", { name: /Próximo/ })).toBeEnabled();
+  });
+});
 
 describe("Dnd35CharacterCreatorModal — riqueza inicial por classe", () => {
   it("Guerreiro começa com a média 150 PO; trocar para Mago usa 75 PO; Monge usa 5d4 (12,50 PO)", () => {

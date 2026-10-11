@@ -41,6 +41,7 @@ import {
 import { OSE_SPELLS, type OseSpell } from "../data/ose/oseSpells";
 import "./oseTheme.css";
 import { getCatalogVersion } from "../data/catalogVersions";
+import { CharacterBuilderFrame } from "../CharacterBuilderFrame";
 
 const OSE_CREATION_RULES: Record<"advanced" | "classic" | "basico", readonly string[]> = {
   advanced: [
@@ -427,6 +428,24 @@ export function OseCharacterCreatorModal({
   const totalSpellSlots = spellSlotsByCircle.reduce((total, slots) => total + slots, 0);
   const canCastAtCurrentLevel = Boolean(selectedClass.spellCasting && characterLevel >= selectedClass.spellCasting.startLevel);
   const finalStep = canCastAtCurrentLevel ? 6 : 5;
+  const builderSteps = [
+    { id: 1, label: "Atributos (3d6)" },
+    { id: 2, label: "Raça & Classe" },
+    { id: 3, label: "PV, Alinhamento & Perícias" },
+    { id: 4, label: "Ouro & Equipamento" },
+    ...(canCastAtCurrentLevel ? [{ id: 5, label: "Magias iniciais" }] : []),
+    { id: finalStep, label: "Revisão final" },
+  ];
+  const builderSummary = [
+    { label: "Personagem", value: charName || "Aventureiro" },
+    { label: "Edição", value: creationMode === "advanced" ? "Advanced Fantasy" : creationMode === "classic" ? "Classic Fantasy" : "Básico/Especialista" },
+    { label: "Raça", value: selectedRace.name },
+    { label: "Classe", value: selectedClass.name },
+    { label: "Nível", value: String(characterLevel) },
+    { label: "Pontos de vida", value: String(finalMaxHp) },
+    { label: "Ouro restante", value: `${gold} PO` },
+    { label: "Magias", value: `${selectedSpells.length}/${totalSpellSlots}` },
+  ];
 
   const availableClassSpells = useMemo(() => {
     if (!selectedClass.spellCasting) return [];
@@ -567,29 +586,14 @@ export function OseCharacterCreatorModal({
           </button>
         </header>
 
-        {/* Step Tabs */}
-        <div className="ose-step-tabs" role="tablist" aria-label="Etapas da criação OSE">
-            {[
-            { s: 1, title: "1. Atributos (3d6)" },
-            { s: 2, title: "2. Raça & Classe" },
-            { s: 3, title: "3. PV, Alinhamento & Perícias" },
-            { s: 4, title: "4. Ouro & Equipamento" },
-            ...(canCastAtCurrentLevel ? [{ s: 5, title: "5. Magias Iniciais" }] : []),
-            { s: finalStep, title: `${finalStep}. Revisão final` },
-          ].map((item) => (
-            <button
-              key={item.s}
-              type="button"
-              className={`ose-step-tab ${step === item.s ? "active" : ""}`}
-              onClick={() => setStep(item.s)}
-              role="tab"
-              aria-selected={step === item.s}
-            >
-              {item.title}
-            </button>
-          ))}
-        </div>
-
+        <CharacterBuilderFrame
+          steps={builderSteps}
+          activeStep={step}
+          onStepSelect={setStep}
+          navigationLabel="Progresso da criação"
+          summaryLabel="Resumo da ficha"
+          summaryRows={builderSummary}
+        >
         <details className="ose-creation-rules">
           <summary>Regras de criação · OSE {creationMode === "advanced" ? "Advanced Fantasy" : creationMode === "classic" ? "Classic" : "Básico/Especialista"}</summary>
           <ol>
@@ -1321,7 +1325,7 @@ export function OseCharacterCreatorModal({
             onClick={() => setStep((prev) => Math.max(1, prev - 1))}
             disabled={step === 1}
           >
-            ← Voltar
+            ← Anterior
           </button>
 
           <div style={{ display: "flex", gap: 10 }}>
@@ -1331,7 +1335,7 @@ export function OseCharacterCreatorModal({
                 className="ose-btn ose-btn-primary"
                 onClick={() => setStep((prev) => prev + 1)}
               >
-                Avançar →
+                Próximo →
               </button>
             ) : (
               <button type="button" className="ose-btn ose-btn-primary" onClick={handleFinish}>
@@ -1340,6 +1344,7 @@ export function OseCharacterCreatorModal({
             )}
           </div>
         </footer>
+        </CharacterBuilderFrame>
       </div>
     </div>,
     modalRoot

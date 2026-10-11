@@ -52,6 +52,24 @@ describe("serviço de catálogo local", () => {
     expect(items).toHaveLength(176);
     expect(items.every((item) => item.system_id === "pf1e" && item.data.ruleset === "legacy_pf1")).toBe(true);
     expect(items.find((item) => item.id === "pf1e.crb.feat.acrobatico")?.summary).toContain("Acrobacia");
+    const newlyDetailedFeats = [
+      ["acelerar-magia", 118, 113, "quatro níveis"],
+      ["acrobatico", 114, 113, "10 graduações"],
+      ["acuidade-com-armas", 114, 118, "Destreza em vez de Força"],
+      ["afastar-mortos-vivos", 114, 118, "teste de Vontade"],
+      ["afinidade-com-animais", 114, 118, "Adestrar Animais e Cavalgar"],
+      ["agarrar-aprimorado", 116, 118, "Defesa contra Manobras de Combate"],
+    ] as const;
+    for (const [slug, sourcePage, detailsPage, mechanicsText] of newlyDetailedFeats) {
+      const feat = items.find((item) => item.id === `pf1e.crb.feat.${slug}`);
+      expect(feat, slug).toBeDefined();
+      expect(feat?.data).toMatchObject({
+        detailsPage,
+        source: { page: sourcePage },
+        summaryOnly: true,
+      });
+      expect(feat?.data.mechanicsSummary).toContain(mechanicsText);
+    }
     const page116Feats = items.filter((item) => item.data.source?.page === 116 && item.data.table === "5-1");
     expect(page116Feats).toHaveLength(40);
     expect(page116Feats.every((item) => item.data.summaryOnly === true)).toBe(true);

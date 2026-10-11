@@ -19,6 +19,8 @@
       },
       "featType": "metamagic",
       "table": "5-3",
+      "mechanicsSummary": "Conjurar a magia acelerada é uma ação rápida, permitindo realizar outra ação — inclusive conjurar outra magia — na mesma rodada. A magia não pode ter tempo de conjuração maior que uma ação de rodada completa; usa um espaço de magia quatro níveis acima e não provoca ataques de oportunidade. Feiticeiros e bardos podem aplicar o talento espontaneamente sem aumentar o tempo de conjuração.",
+      "detailsPage": 113,
       "summaryOnly": true
     }
   },
@@ -42,6 +44,8 @@
       },
       "featType": "general",
       "table": "5-1",
+      "mechanicsSummary": "Recebe +2 nos testes de Acrobacia e Voo. Se tiver pelo menos 10 graduações em uma dessas perícias, o bônus nessa perícia aumenta para +4.",
+      "detailsPage": 113,
       "summaryOnly": true
     }
   },
@@ -67,6 +71,8 @@
       },
       "featType": "combat",
       "table": "5-1",
+      "mechanicsSummary": "Ao atacar corpo a corpo com arma leve, espada curva élfica, rapieira, chicote ou corrente com cravos apropriada ao seu tamanho, pode usar Destreza em vez de Força na jogada de ataque. A penalidade de armadura do escudo ainda se aplica. Armas naturais são consideradas leves.",
+      "detailsPage": 118,
       "summaryOnly": true
     }
   },
@@ -90,6 +96,8 @@
       },
       "featType": "general",
       "table": "5-1",
+      "mechanicsSummary": "Como ação padrão, gasta uma utilização de canalizar energia positiva para fazer mortos-vivos a até 10 m fugirem por 1 minuto; um teste de Vontade (CD 10 + metade do nível de clérigo + modificador de Carisma) nega o efeito. Mortos-vivos inteligentes podem repetir o teste a cada rodada. Usar o talento não cura nem causa dano às criaturas próximas.",
+      "detailsPage": 118,
       "summaryOnly": true
     }
   },
@@ -113,6 +121,8 @@
       },
       "featType": "general",
       "table": "5-1",
+      "mechanicsSummary": "Recebe +2 nos testes de Adestrar Animais e Cavalgar. Se tiver pelo menos 10 graduações em uma dessas perícias, o bônus nessa perícia aumenta para +4.",
+      "detailsPage": 118,
       "summaryOnly": true
     }
   },
@@ -138,6 +148,8 @@
       },
       "featType": "combat",
       "table": "5-1",
+      "mechanicsSummary": "Não provoca ataques de oportunidade ao iniciar uma manobra de agarrar. Recebe +2 nos testes de manobra de combate para agarrar e +2 na Defesa contra Manobras de Combate contra tentativas de agarrá-lo. Sem o talento, iniciar um agarrão provoca ataque de oportunidade.",
+      "detailsPage": 118,
       "summaryOnly": true
     }
   },

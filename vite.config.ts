@@ -74,5 +74,6 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./src/test/setup.ts",
     exclude: ["**/node_modules/**", "**/dist/**", "**/scratch/**", "**/temp_repos/**"],
+    maxWorkers: 4,
   },
 });

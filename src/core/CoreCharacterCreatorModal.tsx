@@ -13,6 +13,7 @@ import { DND5E_FEAT_CHOICES } from "../data/dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "../data/t20/t20Compendium";
 import { getSystemConditionItems } from "../data/systemConditions";
 import { useModalInertBackground } from "../hooks/useModalInertBackground";
+import { CharacterBuilderFrame, type CharacterBuilderStep } from "../CharacterBuilderFrame";
 
 interface CoreCharacterCreatorModalProps {
   isOpen: boolean;
@@ -35,6 +36,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   useModalInertBackground(modalContentRef, isOpen);
   const [error, setError] = useState<string | null>(null);
   const [generationMethod, setGenerationMethod] = useState<AbilityGenerationMethod>("point_buy");
+  const [activeBuilderStep, setActiveBuilderStep] = useState(0);
   const featChoiceCatalog = system === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES;
   const conditionItems = useMemo(() => getSystemConditionItems(system), [system]);
   const isDndPreparedSpell = (spellId: string) => {
@@ -105,6 +107,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
       setCharacter(syncDndGrantedSpells(restored));
       setError(null);
       setGenerationMethod(initialCharacter?.generationMethod || "point_buy");
+      setActiveBuilderStep(0);
     }
   }, [engine, initialCharacter, isOpen]);
 
@@ -134,6 +137,11 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
       previousFocus?.focus();
     };
   }, [isOpen, onClose]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    modalContentRef.current?.querySelector<HTMLElement>(`[data-builder-anchor="${activeBuilderStep}"]`)?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+  }, [activeBuilderStep, isOpen]);
 
   if (!isOpen) return null;
 
@@ -464,6 +472,24 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const recommendedEquipmentIds = getCoreStartingEquipment(system, character.classId, character.backgroundId);
   const recommendedEquipmentNames = recommendedEquipmentIds.map((id) => catalog.equipment.find((entry) => entry.id === id)?.name).filter(Boolean);
   const creationSteps = engine.getCreationSteps();
+  const builderSteps: CharacterBuilderStep[] = [
+    { id: 0, label: "Identidade e escolhas" },
+    { id: 1, label: "Atributos" },
+    { id: 2, label: "Perícias" },
+    { id: 3, label: system === "t20" ? "Equipamento, magias e poderes" : "Equipamento, magias e talentos" },
+    { id: 4, label: "Revisão final" },
+  ];
+  const builderSummaryRows = [
+    { label: "Sistema", value: system === "t20" ? "Tormenta20" : "D&D 5e 2014" },
+    { label: "Personagem", value: character.name.trim() || "Aventureiro" },
+    { label: "Raça", value: catalog.races.find((entry) => entry.id === character.raceId)?.name || "—" },
+    { label: "Classe", value: `${catalog.classes.find((entry) => entry.id === character.classId)?.name || "—"}${character.subclassId ? ` · ${catalog.subclasses.find((entry) => entry.id === character.subclassId)?.name || "subclasse"}` : ""}` },
+    { label: "Nível", value: character.level },
+    { label: "Perícias treinadas", value: character.skillProficiencies.length },
+    { label: system === "t20" ? "Poderes" : "Talentos", value: character.featIds.length },
+    { label: "Magias", value: character.spellIds.length },
+  ];
+  const selectBuilderStep = (step: number) => setActiveBuilderStep(step);
   const reviewErrors = [
     ...engine.validateCharacter(character),
     ...(!character.name.trim() ? ["Informe o nome do personagem."] : []),
@@ -497,6 +523,16 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           <button type="button" className="pb-core-close" onClick={onClose} aria-label="Fechar">×</button>
         </header>
 
+        <CharacterBuilderFrame
+          steps={builderSteps}
+          activeStep={activeBuilderStep}
+          onStepSelect={selectBuilderStep}
+          navigationLabel="Progresso da criação"
+          summaryLabel="Resumo da ficha"
+          summaryRows={builderSummaryRows}
+        >
+
+        <div className="pb-core-builder-step-panel" data-builder-anchor="0" hidden={activeBuilderStep !== 0}>
         <details className="pb-core-creation-rules">
           <summary>Regras de criação · {system === "t20" ? "Tormenta20" : "D&D 5e 2014"}</summary>
           <ol>
@@ -849,7 +885,9 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           <div>{derivedPreview.classFeatures.map((feature) => <article key={feature.level + "-" + feature.name}><strong>Nível {feature.level} · {feature.name}</strong><small>{feature.description}</small></article>)}</div>
         </details>}
 
-        <fieldset className="pb-core-abilities">
+        </div>
+
+        <fieldset className="pb-core-abilities" data-builder-anchor="1" hidden={activeBuilderStep !== 1}>
           <legend>Atributos</legend>
           <div className="pb-core-generation-row">
             <label>Método
@@ -876,7 +914,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           </div>
         </fieldset>
 
-        <fieldset className="pb-core-skills">
+        <fieldset className="pb-core-skills" data-builder-anchor="2" hidden={activeBuilderStep !== 2}>
           <legend>Perícias treinadas</legend>
           <div className="pb-core-skill-grid">
             {catalog.skills.map((skill) => (
@@ -920,7 +958,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           {expertiseLimit === 0 && <span>Disponível apenas para as características de Bardo e Ladino nesta edição.</span>}
         </fieldset>}
 
-        <fieldset className="pb-core-compendium">
+        <fieldset className="pb-core-compendium" data-builder-anchor="3" hidden={activeBuilderStep !== 3}>
           <legend>Equipamento, magias e {system === "t20" ? "poderes" : "talentos"}</legend>
           <div className="pb-core-compendium-columns">
             <label>Equipamento
@@ -1015,7 +1053,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           <small>Seleções do núcleo local; cada entrada mantém sua página de origem.</small>
         </fieldset>
 
-        <details className="pb-core-creation-review" open>
+        <details className="pb-core-creation-review" open data-builder-anchor="4" hidden={activeBuilderStep !== 4}>
           <summary>Revisão final da ficha</summary>
           <div className="pb-core-review-grid">
             <p><strong>Sistema:</strong> {system === "t20" ? "Tormenta20" : "D&D 5e 2014"} · <strong>ruleset:</strong> {character.ruleset} · <strong>catálogo:</strong> {character.catalogVersion || "compatível/legado"}</p>
@@ -1029,10 +1067,13 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
         </details>
 
         {error && <p className="pb-core-error" role="alert">{error}</p>}
-        <footer className="pb-core-modal-footer">
+        <footer className="pb-core-modal-footer pb-core-builder-footer">
           <button type="button" className="pb-core-secondary" onClick={onClose}>Cancelar</button>
+          <button type="button" className="pb-core-secondary" disabled={activeBuilderStep === 0} onClick={() => selectBuilderStep(Math.max(0, activeBuilderStep - 1))}>← Anterior</button>
+          <button type="button" className="pb-core-secondary" disabled={activeBuilderStep === builderSteps.length - 1} onClick={() => selectBuilderStep(Math.min(builderSteps.length - 1, activeBuilderStep + 1))}>Próximo →</button>
           <button type="button" className="pb-core-primary" onClick={submit}>{initialCharacter ? "Salvar alterações" : "Criar ficha"}</button>
         </footer>
+        </CharacterBuilderFrame>
       </section>
     </div>
   );

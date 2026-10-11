@@ -61,7 +61,7 @@ function runWizardToFinish(initialCharacter: OseCharacterCreatedData): OseCharac
       reachedEnd = true;
       break;
     }
-    const advance = screen.queryByRole("button", { name: /Avançar/i });
+    const advance = screen.queryByRole("button", { name: /Próximo/i });
     if (!advance) break;
     fireEvent.click(advance);
   }
@@ -128,7 +128,7 @@ describe("OSE Classic — fluxo completo de criação", () => {
         fireEvent.click(finish);
         break;
       }
-      fireEvent.click(screen.getByRole("button", { name: /Avançar/i }));
+      fireEvent.click(screen.getByRole("button", { name: /Próximo/i }));
     }
 
     const created = onCharacterCreated.mock.calls[0][0] as OseCharacterCreatedData;

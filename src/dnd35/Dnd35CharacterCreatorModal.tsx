@@ -28,6 +28,7 @@ import {
 import "./dnd35Theme.css";
 import { getCatalogVersion } from "../data/catalogVersions";
 import { useModalInertBackground } from "../hooks/useModalInertBackground";
+import { CharacterBuilderFrame } from "../CharacterBuilderFrame";
 
 const DND35_CREATION_RULES: readonly string[] = [
   "Role 4d6, descarte o menor dado, some os outros três — repita para os 6 atributos (Força, Destreza, Constituição, Inteligência, Sabedoria, Carisma) — e distribua os resultados livremente.",
@@ -563,6 +564,23 @@ export function Dnd35CharacterCreatorModal({
   }, [initialCharacter, isOpen]);
 
   const finalStep = 5;
+  const builderSteps = [
+    { id: 1, label: "Atributos (4d6)" },
+    { id: 2, label: "Raça & Classe" },
+    { id: 3, label: "PV & Perícias" },
+    { id: 4, label: "Talentos & Equipamento" },
+    { id: finalStep, label: "Revisão final" },
+  ];
+  const builderSummary = [
+    { label: "Personagem", value: charName || "Aventureiro" },
+    { label: "Raça", value: selectedRace.name },
+    { label: "Classe", value: selectedClass.name },
+    { label: "Nível", value: "1" },
+    { label: "Pontos de vida", value: String(finalMaxHp) },
+    { label: "Perícias", value: `${spentSkillPoints}/${skillPointBudget} pontos` },
+    { label: "Talentos", value: `${featIds.length}/${featBudget}` },
+    { label: "Ouro restante", value: `${gold.toFixed(2)} PO` },
+  ];
 
   const handleFinish = () => {
     if (spentSkillPoints > skillPointBudget) {
@@ -651,27 +669,14 @@ export function Dnd35CharacterCreatorModal({
           <button className="dnd35-btn" type="button" onClick={onClose} aria-label="Fechar">✕</button>
         </header>
 
-        <div className="dnd35-step-tabs" role="tablist" aria-label="Etapas da criação D&D 3.5">
-          {[
-            { s: 1, title: "1. Atributos (4d6)" },
-            { s: 2, title: "2. Raça & Classe" },
-            { s: 3, title: "3. PV & Perícias" },
-            { s: 4, title: "4. Talentos & Equipamento" },
-            { s: finalStep, title: `${finalStep}. Revisão final` },
-          ].map((item) => (
-            <button
-              key={item.s}
-              type="button"
-              className={`dnd35-step-tab ${step === item.s ? "active" : ""}`}
-              onClick={() => setStep(item.s)}
-              role="tab"
-              aria-selected={step === item.s}
-            >
-              {item.title}
-            </button>
-          ))}
-        </div>
-
+        <CharacterBuilderFrame
+          steps={builderSteps}
+          activeStep={step}
+          onStepSelect={setStep}
+          navigationLabel="Progresso da criação"
+          summaryLabel="Resumo da ficha"
+          summaryRows={builderSummary}
+        >
         <details className="dnd35-creation-rules">
           <summary>Regras de criação · D&amp;D 3.5 (núcleo)</summary>
           <ol>
@@ -1044,6 +1049,7 @@ export function Dnd35CharacterCreatorModal({
           <button type="button" className="dnd35-btn" disabled={step === 1} onClick={() => setStep((s) => Math.max(1, s - 1))}>← Anterior</button>
           <button type="button" className="dnd35-btn" disabled={step === finalStep} onClick={() => setStep((s) => Math.min(finalStep, s + 1))}>Próximo →</button>
         </footer>
+        </CharacterBuilderFrame>
       </div>
     </div>,
     modalRoot,

@@ -31,6 +31,21 @@ describe("D&D 3.5 — listas de magias transcritas", () => {
     expect(dnd35SpellListFor("feiticeiro", 9)).toEqual(dnd35SpellListFor("mago", 9));
   });
 
+  it("mantém as listas base de todos os níveis representados no Livro do Jogador", () => {
+    expect(DND35_SPELL_LISTS).toHaveLength(45);
+    expect(DND35_SPELL_LISTS.reduce((total, list) => total + list.entries.length, 0)).toBe(1019);
+    for (const classId of ["clerigo", "druida", "mago", "feiticeiro"] as const) {
+      expect(DND35_SPELL_LISTS.filter((list) => list.classIds.includes(classId)).map((list) => list.spellLevel).sort((a, b) => a - b))
+        .toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    }
+    expect(DND35_SPELL_LISTS.filter((list) => list.classIds.includes("bardo")).map((list) => list.spellLevel).sort((a, b) => a - b))
+      .toEqual([0, 1, 2, 3, 4, 5, 6]);
+    for (const classId of ["paladino", "patrulheiro"] as const) {
+      expect(DND35_SPELL_LISTS.filter((list) => list.classIds.includes(classId)).map((list) => list.spellLevel).sort((a, b) => a - b))
+        .toEqual([1, 2, 3, 4]);
+    }
+  });
+
   it("listas estão em ordem alfabética (Clérigo) / alfabética dentro de cada escola (Feiticeiro/Mago), como impresso", () => {
     const sortedPt = (names: string[]) => [...names].sort((a, b) => a.localeCompare(b, "pt-BR"));
     for (const lvl of [0, 1]) {

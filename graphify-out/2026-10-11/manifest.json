@@ -108,15 +108,15 @@
     "semantic_hash": ""
   },
   "src/PortalPages.test.tsx": {
-    "mtime": 1791692292.0020306,
-    "seen": 1791692726.3145244,
-    "ast_hash": "a8b928f1af4ca210d85ce8c9aca33f83",
+    "mtime": 1791717601.509634,
+    "seen": 1791718209.0414493,
+    "ast_hash": "b9b008330c7a0081db31dd6e3e80a020",
     "semantic_hash": ""
   },
   "src/PortalPages.tsx": {
-    "mtime": 1791693045.376197,
-    "seen": 1791693190.9494133,
-    "ast_hash": "8dcd54e9ee8ce000e38dbe72285ab54f",
+    "mtime": 1791717570.1183157,
+    "seen": 1791718209.0414493,
+    "ast_hash": "2c95e0a524eb3b0c58ed6c432e956d0a",
     "semantic_hash": ""
   },
   "src/accountState.ts": {
@@ -396,9 +396,9 @@
     "semantic_hash": ""
   },
   "TODO_COBERTURA_E_BUGS.md": {
-    "mtime": 1791716272.1025486,
-    "seen": 1791716363.914251,
-    "ast_hash": "a97fc760f08bf86d6970240b6db3cfaa",
+    "mtime": 1791717436.1110415,
+    "seen": 1791718209.4997375,
+    "ast_hash": "27964d6700442bd3d03c7fe5e1c7c569",
     "semantic_hash": ""
   },
   "books_expansion_and_ai_assistant_tasks.md": {
@@ -1236,15 +1236,15 @@
     "semantic_hash": ""
   },
   "src/services/catalog.test.ts": {
-    "mtime": 1791716220.8997054,
-    "seen": 1791716363.6276178,
-    "ast_hash": "1dc1c57d9f93fefdb6e6e7904ec01cd4",
+    "mtime": 1791716817.144598,
+    "seen": 1791718209.1674776,
+    "ast_hash": "8d8c9a7d804888c2e61d215fbb14843a",
     "semantic_hash": ""
   },
   "src/services/catalog.ts": {
-    "mtime": 1791693895.1282804,
-    "seen": 1791694155.7465088,
-    "ast_hash": "b389429260d3f2d22552f04d83910898",
+    "mtime": 1791716849.8962362,
+    "seen": 1791718209.1674776,
+    "ast_hash": "2b907c461cb9e01f6573478f3c6e77f9",
     "semantic_hash": ""
   },
   ".gemini/settings.json": {
@@ -10578,9 +10578,9 @@
     "semantic_hash": ""
   },
   "src/ose/OseCharacterCreatorModal.tsx": {
-    "mtime": 1791693045.3811958,
-    "seen": 1791693191.0277483,
-    "ast_hash": "0adb537f1cc4d14c95c70174145414a4",
+    "mtime": 1791721472.5466816,
+    "seen": 1791721633.8544366,
+    "ast_hash": "1400df0969d64ceef2fc9d799b69ac4f",
     "semantic_hash": ""
   },
   "src/ose/OseCharacterSheet.tsx": {
@@ -10734,9 +10734,9 @@
     "semantic_hash": ""
   },
   "src/core/CoreCharacterCreatorModal.tsx": {
-    "mtime": 1791712086.977882,
-    "seen": 1791712222.000053,
-    "ast_hash": "41897d500607bdfff3f83309372fd027",
+    "mtime": 1791720950.9645143,
+    "seen": 1791721102.3501356,
+    "ast_hash": "eb78e3abeecc95fe2a970013e41ed107",
     "semantic_hash": ""
   },
   "src/core/CoreCharacterSheet.tsx": {
@@ -11634,9 +11634,9 @@
     "semantic_hash": ""
   },
   "TODO_COBERTURA_SISTEMAS.md": {
-    "mtime": 1791638026.706436,
-    "seen": 1791692726.4720516,
-    "ast_hash": "980670581009d76a38889028dc1e435a",
+    "mtime": 1791722018.9886007,
+    "seen": 1791722082.8913722,
+    "ast_hash": "7de7272b3d9c8423f5350fc0ba16b748",
     "semantic_hash": ""
   },
   "SITUACAO_PROJETO.md": {
@@ -11706,9 +11706,9 @@
     "semantic_hash": ""
   },
   "src/ose/OseCharacterCreatorModal.test.tsx": {
-    "mtime": 1790553271.9294846,
-    "seen": 1790565763.2232552,
-    "ast_hash": "91a6caa138cdbd5b72087c8e4e0000ac",
+    "mtime": 1791721495.158721,
+    "seen": 1791721633.8544366,
+    "ast_hash": "1ac71df7354afc85ffe4822c2159eb88",
     "semantic_hash": ""
   },
   "src/ose/OseCharacterSheet.test.tsx": {
@@ -11718,9 +11718,9 @@
     "semantic_hash": ""
   },
   "src/ose/oseClassicFlow.test.tsx": {
-    "mtime": 1790184838.5570233,
-    "seen": 1790565763.2234538,
-    "ast_hash": "7b2083bcc406057d98848909e9a54c6a",
+    "mtime": 1791721487.8461437,
+    "seen": 1791721633.8544366,
+    "ast_hash": "53fb097ba894d7c6a94f1a1105b9635f",
     "semantic_hash": ""
   },
   "docs/auditoria/TODO_COBERTURA_E_BUGS-evidencias.md": {
@@ -11760,9 +11760,9 @@
     "semantic_hash": ""
   },
   "src/core/CoreCharacterCreatorModal.test.tsx": {
-    "mtime": 1791712066.7953806,
-    "seen": 1791712222.000053,
-    "ast_hash": "c96688e9ab8104aad89383e08e1c2387",
+    "mtime": 1791720902.6495736,
+    "seen": 1791721102.3501356,
+    "ast_hash": "cf4dfadaed7d9fbced9d0ca7889182e7",
     "semantic_hash": ""
   },
   "src/data/catalogVersions.test.ts": {
@@ -11892,9 +11892,9 @@
     "semantic_hash": ""
   },
   "src/dnd35/Dnd35CharacterCreatorModal.tsx": {
-    "mtime": 1791693045.3801925,
-    "seen": 1791693191.024736,
-    "ast_hash": "554e440c33a18f2da888f1ff66aa7b82",
+    "mtime": 1791718486.576024,
+    "seen": 1791719972.9577758,
+    "ast_hash": "e03f9ac5372e52baf25711de6e32376e",
     "semantic_hash": ""
   },
   "src/services/system-editor-matrix.test.ts": {
@@ -12000,9 +12000,9 @@
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35SpellLists.test.ts": {
-    "mtime": 1791716041.7284145,
-    "seen": 1791716363.5812457,
-    "ast_hash": "96466040d6e899a60b268ac397ce6370",
+    "mtime": 1791722018.989113,
+    "seen": 1791722082.775869,
+    "ast_hash": "731143f926ad0b756581a5b214250d78",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35SpellLists.ts": {
@@ -12036,9 +12036,9 @@
     "semantic_hash": ""
   },
   "src/dnd35/Dnd35CharacterCreatorModal.test.tsx": {
-    "mtime": 1791606745.73586,
-    "seen": 1791607037.586938,
-    "ast_hash": "43304c84db578ccc8a7f840c7503634d",
+    "mtime": 1791721495.158721,
+    "seen": 1791721633.852931,
+    "ast_hash": "f0e9f76300bb2857f783e65c54ef78bc",
     "semantic_hash": ""
   },
   "supabase/migrations/202609270001_add_ose_basico_ruleset.sql": {
@@ -12918,9 +12918,9 @@
     "semantic_hash": ""
   },
   "src/data/catalog/README.md": {
-    "mtime": 1791716277.181039,
-    "seen": 1791716363.9179263,
-    "ast_hash": "c72b506d2b108ded82b7ad380085170b",
+    "mtime": 1791717436.1120415,
+    "seen": 1791718209.503736,
+    "ast_hash": "8172ab76f706d60b01dfca3975e45f8f",
     "semantic_hash": ""
   },
   "scripts/build-pf1e-core-snapshots.mjs": {
@@ -13065,6 +13065,30 @@
     "mtime": 1791709781.6535234,
     "seen": 1791710487.2507415,
     "ast_hash": "8c60cf8b35bdd42c8599fc6939bb0d95",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35SummonTables.test.ts": {
+    "mtime": 1791717601.50762,
+    "seen": 1791718209.1228435,
+    "ast_hash": "a9f372f3c60d0e74b26a6a99dffaeb62",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35SummonTables.ts": {
+    "mtime": 1791717208.636369,
+    "seen": 1791718209.1228435,
+    "ast_hash": "cb77c934b06ef3ce6aa9a7ba8b0e371c",
+    "semantic_hash": ""
+  },
+  "src/CharacterBuilderFrame.test.tsx": {
+    "mtime": 1791720288.9539661,
+    "seen": 1791720360.1776512,
+    "ast_hash": "2a62e78daeb3eba5266a88e1f71bdcac",
+    "semantic_hash": ""
+  },
+  "src/CharacterBuilderFrame.tsx": {
+    "mtime": 1791720288.95172,
+    "seen": 1791720360.1776512,
+    "ast_hash": "44d54d39e6fd3467bc61c3932d4a19ff",
     "semantic_hash": ""
   }
 }

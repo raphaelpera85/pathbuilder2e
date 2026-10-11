@@ -27,6 +27,23 @@ const ADVANCED_ONLY_NAMES = ["Acrobata", "Assassino", "Bárbaro", "Bardo", "Drui
 // vaza para o próximo e as consultas encontram modais antigos.
 afterEach(cleanup);
 
+describe("OseCharacterCreatorModal — fluxo compartilhado do construtor", () => {
+  it("mantém navegação e resumo Pathfinder, mostrando somente a etapa selecionada", () => {
+    render(<OseCharacterCreatorModal isOpen onClose={vi.fn()} onCharacterCreated={vi.fn()} />);
+    const navigation = screen.getByRole("navigation", { name: "Progresso da criação" });
+    expect(screen.getByRole("complementary", { name: "Resumo da ficha" })).toBeVisible();
+    expect(screen.getByRole("heading", { name: "Rolar Atributos Básicos" })).toBeVisible();
+
+    const raceStep = screen.getByRole("button", { name: /Raça & Classe/ });
+    fireEvent.click(raceStep);
+    expect(raceStep).toHaveAttribute("aria-current", "step");
+    expect(screen.queryByRole("heading", { name: "Rolar Atributos Básicos" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Anterior/ })).toBeEnabled();
+    expect(screen.getByRole("button", { name: /Próximo/ })).toBeEnabled();
+    expect(navigation).toBeInTheDocument();
+  });
+});
+
 function classicCharacter(overrides: Partial<OseCharacterCreatedData> = {}): OseCharacterCreatedData {
   return {
     id: "ose-classic-teste",
@@ -64,8 +81,8 @@ function openClassStep(initialCharacter?: OseCharacterCreatedData) {
   );
   // O modal é montado em portal no document.body, então a consulta é global;
   // o afterEach(cleanup) garante que apenas este teste contribua para o DOM.
-  const advance = screen.getAllByRole("button").find((button) => /Avançar/i.test(button.textContent || ""));
-  expect(advance, "botão Avançar do passo 1").toBeDefined();
+  const advance = screen.getAllByRole("button").find((button) => /Próximo/i.test(button.textContent || ""));
+  expect(advance, "botão Próximo do passo 1").toBeDefined();
   fireEvent.click(advance!);
 }
 
