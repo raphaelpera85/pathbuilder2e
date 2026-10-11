@@ -133,6 +133,17 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "9 Alterar Forma^F: Transforma você em qualquer criatura, pode mudar de forma uma vez por rodada",
     ],
     footnote: "Pode invocar apenas animais",
+    spellDetails: {
+      "Forma Animal": {
+        detailsPage: 242,
+        summary: "Transforma até uma criatura voluntária por nível em animais do mesmo tipo; alvos não voluntários não são afetados. Cada criatura pode reassumir sua forma como uma ação de rodada completa, encerrando a magia apenas para si. O máximo de DV da forma é o menor entre os DV do alvo e o nível de conjurador, limitado a 20.",
+        mechanics: {
+          components: "V, G, FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+          target: "Uma criatura voluntária/nível, todas a menos de 9 m entre si", duration: "1 hora/nível (D)",
+          savingThrow: "Nenhum (veja texto)", spellResistance: "Sim (inofensiva)",
+        },
+      },
+    },
   }),
   domain({
     id: "ar", name: "Ar", sourcePage: "186",
@@ -150,6 +161,16 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "9 Grupo de Elementais*: Invoca vários elementais.",
     ],
     footnote: "Somente como magia do ar",
+    spellDetails: {
+      "Forma Gasosa": {
+        detailsPage: 242,
+        summary: "O alvo e seu equipamento tornam-se insubstanciais, recebem redução de dano 10/mágica e imunidade a venenos e acertos críticos; armadura material deixa de proteger, embora bônus de tamanho, Destreza, deflexão e armadura de força permaneçam. Não pode correr, atacar, manipular objetos ou ativar itens; voa a 3 m, atravessa frestas, é afetado pelo vento e não entra em líquidos. Itens continuamente ativos permanecem ativos.",
+        mechanics: {
+          components: "G, M/FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura voluntária corpórea tocada",
+          duration: "2 minutos/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+        },
+      },
+    },
   }),
   domain({
     id: "bem", name: "Bem", sourcePage: "186",

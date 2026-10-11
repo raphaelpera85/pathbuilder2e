@@ -1841,6 +1841,54 @@ const BULLS_STRENGTH_DETAILS: VerifiedSpellDetails = {
   },
 };
 
+const MASS_BULLS_STRENGTH_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 242,
+  summary: "Como Força do Touro, concede +4 de bônus de melhoria em Força; afeta uma criatura por nível, desde que todas estejam a até 9 m umas das outras. Bônus de melhoria para Força não se acumulam.",
+  mechanics: {
+    components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma criatura/nível, todas a menos de 9 m entre si", duration: "1 minuto/nível",
+    savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+  },
+};
+
+const ANIMAL_SHAPES_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 242,
+  summary: "Transforma até uma criatura voluntária por nível em animais do mesmo tipo; alvos não voluntários não são afetados. Cada criatura pode reassumir sua forma como uma ação de rodada completa, encerrando a magia apenas para si. O máximo de DV da forma é o menor entre os DV do alvo e o nível de conjurador, limitado a 20.",
+  mechanics: {
+    components: "V, G, FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma criatura voluntária/nível, todas a menos de 9 m entre si", duration: "1 hora/nível (D)",
+    savingThrow: "Nenhum (veja texto)", spellResistance: "Sim (inofensiva)",
+  },
+};
+
+const TREE_SHAPE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 242,
+  summary: "Assume a aparência de uma árvore ou arbusto Grande, ou de um tronco morto; observação comum não revela a transformação, mas Detectar Magia percebe uma aura fraca de transmutação. Mantém percepção, pontos de vida e bônus de resistência, recebe +10 de armadura natural, Destreza efetiva 0, deslocamento 0 e imunidade a acertos críticos. Roupas e equipamentos se transformam junto.",
+  mechanics: {
+    components: "V, G, FD", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+    duration: "1 hora/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const ETHEREALNESS_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 242,
+  summary: "Como Passeio Etéreo, mas você e criaturas voluntárias ligadas pelas mãos — uma criatura adicional por três níveis de conjurador — e seus equipamentos tornam-se etéreos. Depois de atravessarem, não precisam permanecer juntas; ao fim da magia, retornam ao Plano Material.",
+  mechanics: {
+    components: "Não indicado no bloco impresso", castingTime: "Não indicado no bloco impresso",
+    range: "Toque (veja texto)", target: "Você e uma criatura tocada/3 níveis", duration: "1 minuto/nível (D)",
+    savingThrow: "Não indicado no bloco impresso", spellResistance: "Sim",
+  },
+};
+
+const GASEOUS_FORM_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 242,
+  summary: "O alvo e seu equipamento tornam-se insubstanciais, recebem redução de dano 10/mágica e imunidade a venenos e acertos críticos; armadura material deixa de proteger, embora bônus de tamanho, Destreza, deflexão e armadura de força permaneçam. Não pode correr, atacar, manipular objetos ou ativar itens; voa a 3 m, atravessa frestas, é afetado pelo vento e não entra em líquidos. Itens continuamente ativos permanecem ativos.",
+  mechanics: {
+    components: "G, M/FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura voluntária corpórea tocada",
+    duration: "2 minutos/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
 // A descrição completa às vezes apresenta M/FD sem o sobrescrito correspondente
 // na lista de níveis. `flags` continua refletindo o sobrescrito impresso; `mechanics`
 // registra os componentes efetivos descritos na entrada completa.
@@ -1873,6 +1921,16 @@ const VERIFIED_SPELL_DETAILS: Record<string, VerifiedSpellDetails> = {
   "clerigo:2:Força do Touro": BULLS_STRENGTH_DETAILS,
   "druida:2:Força do Touro": BULLS_STRENGTH_DETAILS,
   "paladino:2:Força do Touro": BULLS_STRENGTH_DETAILS,
+  "clerigo:6:Força do Touro em Massa": MASS_BULLS_STRENGTH_DETAILS,
+  "druida:6:Força do Touro em Massa": MASS_BULLS_STRENGTH_DETAILS,
+  "feiticeiro_mago:6:Força do Touro em Massa": MASS_BULLS_STRENGTH_DETAILS,
+  "druida:8:Forma Animal": ANIMAL_SHAPES_DETAILS,
+  "druida:2:Forma de Árvore": TREE_SHAPE_DETAILS,
+  "patrulheiro:3:Forma de Árvore": TREE_SHAPE_DETAILS,
+  "clerigo:9:Forma Etérea": ETHEREALNESS_DETAILS,
+  "feiticeiro_mago:9:Forma Etérea": ETHEREALNESS_DETAILS,
+  "bardo:3:Forma Gasosa": GASEOUS_FORM_DETAILS,
+  "feiticeiro_mago:3:Forma Gasosa": GASEOUS_FORM_DETAILS,
   "bardo:3:Dissipar Magia": DISPEL_MAGIC_DETAILS,
   "clerigo:3:Dissipar Magia": DISPEL_MAGIC_DETAILS,
   "druida:4:Dissipar Magia": DISPEL_MAGIC_DETAILS,

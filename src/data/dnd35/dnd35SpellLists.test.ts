@@ -1487,3 +1487,63 @@ describe("D&D 3.5 — descrições verificadas nas pp. 240–241", () => {
       .toEqual(dnd35SpellListFor("mago", 2).find((spell) => spell.name === "Força do Touro"));
   });
 });
+
+describe("D&D 3.5 — descrições verificadas na p. 242", () => {
+  it("completa as cinco magias preservando níveis, listas e projeções compartilhadas", () => {
+    const cases: Array<[string, number, string, Record<string, unknown>]> = [
+      ["clerigo", 6, "Força do Touro em Massa", {
+        detailsPage: 242, summaryOnly: false,
+        mechanics: {
+          components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+          target: "Uma criatura/nível, todas a menos de 9 m entre si", duration: "1 minuto/nível",
+          savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+        },
+      }],
+      ["druida", 8, "Forma Animal", {
+        detailsPage: 242, summaryOnly: false,
+        mechanics: {
+          components: "V, G, FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+          target: "Uma criatura voluntária/nível, todas a menos de 9 m entre si", duration: "1 hora/nível (D)",
+          savingThrow: "Nenhum (veja texto)", spellResistance: "Sim (inofensiva)",
+        },
+      }],
+      ["druida", 2, "Forma de Árvore", {
+        detailsPage: 242, summaryOnly: false,
+        mechanics: {
+          components: "V, G, FD", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+          duration: "1 hora/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+        },
+      }],
+      ["clerigo", 9, "Forma Etérea", {
+        detailsPage: 242, summaryOnly: false,
+        mechanics: {
+          components: "Não indicado no bloco impresso", castingTime: "Não indicado no bloco impresso",
+          range: "Toque (veja texto)", target: "Você e uma criatura tocada/3 níveis",
+          duration: "1 minuto/nível (D)", savingThrow: "Não indicado no bloco impresso", spellResistance: "Sim",
+        },
+      }],
+      ["bardo", 3, "Forma Gasosa", {
+        detailsPage: 242, summaryOnly: false,
+        mechanics: {
+          components: "G, M/FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura voluntária corpórea tocada",
+          duration: "2 minutos/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+        },
+      }],
+    ];
+
+    for (const [classId, level, name, expected] of cases) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name), `${classId} ${level}: ${name}`).toMatchObject(expected);
+    }
+
+    for (const classId of ["feiticeiro", "mago"]) {
+      expect(dnd35SpellListFor(classId, 6).find((spell) => spell.name === "Força do Touro em Massa")?.detailsPage).toBe(242);
+      expect(dnd35SpellListFor(classId, 9).find((spell) => spell.name === "Forma Etérea")?.detailsPage).toBe(242);
+      expect(dnd35SpellListFor(classId, 3).find((spell) => spell.name === "Forma Gasosa")?.detailsPage).toBe(242);
+    }
+    expect(dnd35SpellListFor("patrulheiro", 3).find((spell) => spell.name === "Forma de Árvore")?.detailsPage).toBe(242);
+    expect(dnd35SpellListFor("feiticeiro", 9).find((spell) => spell.name === "Forma Etérea"))
+      .toEqual(dnd35SpellListFor("mago", 9).find((spell) => spell.name === "Forma Etérea"));
+    expect(dnd35SpellListFor("feiticeiro", 3).find((spell) => spell.name === "Forma Gasosa"))
+      .toEqual(dnd35SpellListFor("mago", 3).find((spell) => spell.name === "Forma Gasosa"));
+  });
+});

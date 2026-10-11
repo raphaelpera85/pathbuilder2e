@@ -107,6 +107,29 @@ describe("D&D 3.5 — domínios de clérigo e Tabela 3-7", () => {
       .not.toBe(strength?.spells.find((s) => s.name === "Força do Touro"));
   });
 
+  it("completa Forma Animal e Forma Gasosa nos domínios Animais e Ar como registros próprios", () => {
+    const animal = DND35_DOMAINS.find((d) => d.id === "animais")?.spells.find((s) => s.name === "Forma Animal");
+    expect(animal).toMatchObject({
+      level: 7, detailsPage: 242,
+      mechanics: {
+        components: "V, G, FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma criatura voluntária/nível, todas a menos de 9 m entre si", duration: "1 hora/nível (D)",
+        savingThrow: "Nenhum (veja texto)", spellResistance: "Sim (inofensiva)",
+      },
+    });
+    const air = DND35_DOMAINS.find((d) => d.id === "ar")?.spells.find((s) => s.name === "Forma Gasosa");
+    expect(air).toMatchObject({
+      level: 3, detailsPage: 242,
+      mechanics: {
+        components: "G, M/FD", castingTime: "1 ação padrão", range: "Toque",
+        target: "Criatura voluntária corpórea tocada", duration: "2 minutos/nível (D)",
+        savingThrow: "Nenhum", spellResistance: "Não",
+      },
+    });
+    expect(animal).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "druida" && list.spellLevel === 8)?.entries.find((s) => s.name === "Forma Animal"));
+    expect(air).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "bardo" && list.spellLevel === 3)?.entries.find((s) => s.name === "Forma Gasosa"));
+  });
+
   it("mantém dissipações e Ditado como registros dos domínios impressos, separados das listas de classe", () => {
     const cases = [
       ["bem", "Dissipar o Mal"], ["caos", "Dissipar a Ordem"],
