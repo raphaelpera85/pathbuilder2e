@@ -396,9 +396,9 @@
     "semantic_hash": ""
   },
   "TODO_COBERTURA_E_BUGS.md": {
-    "mtime": 1791703462.5305104,
-    "seen": 1791704040.3013625,
-    "ast_hash": "06fb05b2d2ec9e6e0ed255f203bcb907",
+    "mtime": 1791708066.250278,
+    "seen": 1791708387.1840873,
+    "ast_hash": "9065d1377d74be54a6cbd2ec77532f52",
     "semantic_hash": ""
   },
   "books_expansion_and_ai_assistant_tasks.md": {
@@ -1236,9 +1236,9 @@
     "semantic_hash": ""
   },
   "src/services/catalog.test.ts": {
-    "mtime": 1791703353.2386632,
-    "seen": 1791704040.045923,
-    "ast_hash": "45acf1a39fee15f8262b95ea59cc2229",
+    "mtime": 1791707896.8018162,
+    "seen": 1791708387.0169082,
+    "ast_hash": "074f7024a7e39c6d492a56cb38d28208",
     "semantic_hash": ""
   },
   "src/services/catalog.ts": {
@@ -11970,15 +11970,15 @@
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35Domains.test.ts": {
-    "mtime": 1791703353.2352066,
-    "seen": 1791704039.9816394,
-    "ast_hash": "262c6723c22e7b290c0e046b3b30f9a8",
+    "mtime": 1791707879.6481476,
+    "seen": 1791708386.975245,
+    "ast_hash": "515efa9f6423fcb62c8c91ebd7d73ef5",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35Domains.ts": {
-    "mtime": 1791703353.232687,
-    "seen": 1791704039.9816394,
-    "ast_hash": "64c5ab1bf8b392d0e47e29773afa9fed",
+    "mtime": 1791708020.3101184,
+    "seen": 1791708386.975245,
+    "ast_hash": "b860efb8c2905d142f82416c08011b57",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35FeatTable.ts": {
@@ -12000,15 +12000,15 @@
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35SpellLists.test.ts": {
-    "mtime": 1791703353.234699,
-    "seen": 1791704039.9939387,
-    "ast_hash": "8197ec8b3cb22f6a965679f6005232e2",
+    "mtime": 1791708039.6650238,
+    "seen": 1791708386.9839265,
+    "ast_hash": "01e86db876b682f8290507f117d0158b",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35SpellLists.ts": {
-    "mtime": 1791703353.2309525,
-    "seen": 1791704039.9939387,
-    "ast_hash": "204fa8835f8854f3e1aac082168be839",
+    "mtime": 1791708020.3079033,
+    "seen": 1791708386.9839265,
+    "ast_hash": "aa299b525f3b50fdaa6723bd1b74872e",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35Spellcasting.test.ts": {
@@ -12918,9 +12918,9 @@
     "semantic_hash": ""
   },
   "src/data/catalog/README.md": {
-    "mtime": 1791703458.5004861,
-    "seen": 1791704040.3039083,
-    "ast_hash": "fb4c2053c03e3b2d5577993f17ed079a",
+    "mtime": 1791708066.2533917,
+    "seen": 1791708387.1860852,
+    "ast_hash": "a1c2b077a82481e26df9d15a3ad1ebb1",
     "semantic_hash": ""
   },
   "scripts/build-pf1e-core-snapshots.mjs": {
@@ -13035,66 +13035,6 @@
     "mtime": 1791693088.9176555,
     "seen": 1791693191.024736,
     "ast_hash": "ed167e445c560c35b1a7992386669bba",
-    "semantic_hash": ""
-  },
-  ".tmp-player-handbook-pages/page-231.png": {
-    "mtime": 1791703190.0463176,
-    "seen": 1791704040.305909,
-    "ast_hash": "e73d23077b708d3f578132e13b9cf83c",
-    "semantic_hash": ""
-  },
-  ".tmp-player-handbook-pages/scan-228.png": {
-    "mtime": 1791703164.820603,
-    "seen": 1791704040.305909,
-    "ast_hash": "2b8d00551c3ab957cf214548c0b3defe",
-    "semantic_hash": ""
-  },
-  ".tmp-player-handbook-pages/scan-229.png": {
-    "mtime": 1791703165.5764048,
-    "seen": 1791704040.305909,
-    "ast_hash": "e47e19e184b9c15af46fa0a58cd0fc35",
-    "semantic_hash": ""
-  },
-  ".tmp-player-handbook-pages/scan-230.png": {
-    "mtime": 1791703166.4540362,
-    "seen": 1791704040.305909,
-    "ast_hash": "ce13176797c428463904d8b9a4907425",
-    "semantic_hash": ""
-  },
-  ".tmp-player-handbook-pages/scan-231.png": {
-    "mtime": 1791703167.1321263,
-    "seen": 1791704040.305909,
-    "ast_hash": "1b4992f0474914dc34fd7a58bdf6b2fe",
-    "semantic_hash": ""
-  },
-  ".tmp-player-handbook-pages/scan-232.png": {
-    "mtime": 1791703167.869547,
-    "seen": 1791704040.305909,
-    "ast_hash": "04ef151412440150d51cbb38cc5d579b",
-    "semantic_hash": ""
-  },
-  ".tmp-player-handbook-pages/scan-233.png": {
-    "mtime": 1791703168.7709243,
-    "seen": 1791704040.305909,
-    "ast_hash": "7a4bb67a491571e45ec5f6b6ee474fa5",
-    "semantic_hash": ""
-  },
-  ".tmp-player-handbook-pages/scan-234.png": {
-    "mtime": 1791703169.7608118,
-    "seen": 1791704040.305909,
-    "ast_hash": "141bb22f12c91cbc0234732e722efe3c",
-    "semantic_hash": ""
-  },
-  ".tmp-player-handbook-pages/scan-235.png": {
-    "mtime": 1791703170.4180703,
-    "seen": 1791704040.305909,
-    "ast_hash": "33fa0c72efac15346c61e9e8b7ab05dd",
-    "semantic_hash": ""
-  },
-  ".tmp-player-handbook-pages/scan-236.png": {
-    "mtime": 1791703171.3470325,
-    "seen": 1791704040.305909,
-    "ast_hash": "b7ffd518e43195fee5a5efb487a8dab0",
     "semantic_hash": ""
   }
 }

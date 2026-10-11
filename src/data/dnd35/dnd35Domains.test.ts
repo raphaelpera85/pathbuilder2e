@@ -72,6 +72,75 @@ describe("D&D 3.5 — domínios de clérigo e Tabela 3-7", () => {
     expect(DND35_SPELL_LISTS.some((list) => list.listId === "clerigo" && list.entries.some((s) => ["Detectar Portas Secretas", "Detectar Pensamentos"].includes(s.name)))).toBe(false);
   });
 
+  it("registra as descrições da p. 231 somente nas projeções de domínio correspondentes", () => {
+    const knowledge = DND35_DOMAINS.find((d) => d.id === "conhecimento");
+    expect(knowledge?.spells.find((s) => s.name === "Discernir Localização")).toMatchObject({
+      detailsPage: 231,
+      mechanics: { components: "V, G, FD", castingTime: "10 minutos", range: "Ilimitado", savingThrow: "Nenhum", spellResistance: "Não" },
+    });
+    const trickery = DND35_DOMAINS.find((d) => d.id === "enganacao");
+    expect(trickery?.spells.find((s) => s.name === "Dificultar Detecção")).toMatchObject({
+      detailsPage: 231,
+      mechanics: { components: "V, G, M", castingTime: "1 ação padrão", range: "Toque", duration: "1 hora/nível" },
+    });
+    expect(DND35_SPELL_LISTS.some((list) => list.listId === "clerigo" && list.entries.some((s) => s.name === "Dificultar Detecção"))).toBe(false);
+    expect(knowledge?.spells.find((s) => s.name === "Discernir Localização"))
+      .not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "clerigo" && list.spellLevel === 8)?.entries.find((s) => s.name === "Discernir Localização"));
+  });
+
+  it("completa as três magias de domínio das pp. 240–241 sem confundi-las com a lista de classe", () => {
+    const strength = DND35_DOMAINS.find((d) => d.id === "forca");
+    expect(strength?.spells.find((s) => s.name === "Força do Touro")).toMatchObject({
+      detailsPage: 241,
+      mechanics: { components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada", duration: "1 minuto/nível" },
+    });
+    expect(strength?.spells.find((s) => s.name === "Força dos Justos")).toMatchObject({
+      detailsPage: 241,
+      mechanics: { components: "V, G, FD", castingTime: "1 ação padrão", range: "Pessoal", target: "Você", duration: "1 rodada/nível (D)" },
+    });
+    const sun = DND35_DOMAINS.find((d) => d.id === "sol");
+    expect(sun?.spells.find((s) => s.name === "Explosão Solar")).toMatchObject({
+      detailsPage: 240,
+      mechanics: { components: "V, G, M/FD", range: "Longo (120 m + 12 m/nível)", target: "Explosão de 24 m de raio", savingThrow: "Reflexos parcial (veja texto)" },
+    });
+    expect(DND35_SPELL_LISTS.find((list) => list.listId === "clerigo" && list.spellLevel === 2)?.entries.find((s) => s.name === "Força do Touro"))
+      .not.toBe(strength?.spells.find((s) => s.name === "Força do Touro"));
+  });
+
+  it("mantém dissipações e Ditado como registros dos domínios impressos, separados das listas de classe", () => {
+    const cases = [
+      ["bem", "Dissipar o Mal"], ["caos", "Dissipar a Ordem"],
+      ["magia", "Dissipar Magia"], ["mal", "Dissipar o Bem"],
+      ["ordem", "Dissipar o Caos"], ["ordem", "Ditado"],
+    ] as const;
+    for (const [domainId, name] of cases) {
+      expect(DND35_DOMAINS.find((d) => d.id === domainId)?.spells.find((s) => s.name === name), `${domainId}: ${name}`).toMatchObject({
+        detailsPage: 232,
+        mechanics: { castingTime: "1 ação padrão", duration: ["Ditado", "Dissipar Magia"].includes(name) ? "Instantânea" : "1 rodada/nível ou até ser descarregada" },
+      });
+    }
+    const dictum = DND35_DOMAINS.find((d) => d.id === "ordem")?.spells.find((s) => s.name === "Ditado");
+    expect(dictum?.detailsPageEnd).toBe(233);
+    expect(dictum).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "clerigo" && list.spellLevel === 7)?.entries.find((s) => s.name === "Ditado"));
+    expect(DND35_DOMAINS.find((d) => d.id === "magia")?.spells.find((s) => s.name === "Dissipar Magia"))
+      .not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "clerigo" && list.spellLevel === 3)?.entries.find((s) => s.name === "Dissipar Magia"));
+  });
+
+  it("mantém Escudo do Fogo e Escudo da Ordem verificados em seus domínios, distintos das listas de classe", () => {
+    const fire = DND35_DOMAINS.find((d) => d.id === "fogo")?.spells.find((s) => s.name === "Escudo do Fogo");
+    expect(fire).toMatchObject({
+      detailsPage: 236,
+      mechanics: { components: "V, G, M/FD", duration: "1 rodada/nível (D)", savingThrow: "Veja texto" },
+    });
+    expect(fire).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "feiticeiro_mago" && list.spellLevel === 4)?.entries.find((s) => s.name === "Escudo do Fogo"));
+
+    const order = DND35_DOMAINS.find((d) => d.id === "ordem")?.spells.find((s) => s.name === "Escudo da Ordem");
+    expect(order).toMatchObject({
+      detailsPage: 236, mechanics: { components: "V, G, F", duration: "1 rodada/nível (D)", spellResistance: "Sim (inofensiva)" },
+    });
+    expect(order).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "clerigo" && list.spellLevel === 8)?.entries.find((s) => s.name === "Escudo da Ordem"));
+  });
+
   it("domínios de tendência exigem o mesmo eixo na tendência do clérigo", () => {
     expect(dnd35DomainAllowedForAlignment("bem", "Neutro e Bom")).toBe(true);
     expect(dnd35DomainAllowedForAlignment("caos", "Neutro e Bom")).toBe(false);

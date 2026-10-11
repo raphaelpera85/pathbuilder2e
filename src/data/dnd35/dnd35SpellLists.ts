@@ -70,8 +70,47 @@ function entry(line: string, school?: Dnd35SpellSchool): Dnd35SpellListEntry {
   };
 }
 
+function withVerifiedPage234Details(spell: Dnd35SpellListEntry): Dnd35SpellListEntry {
+  if (spell.name === "Encolher Item") {
+    return {
+      ...spell,
+      summary: "Reduz um objeto tocado a 1/16 do tamanho normal e o torna leve; pode ser restaurado ao tamanho original por uma palavra de comando, e quebrar o objeto reduzido encerra a magia.",
+      summaryOnly: false,
+      detailsPage: 234,
+      mechanics: {
+        components: "V, G",
+        castingTime: "1 ação padrão",
+        range: "Toque",
+        target: "Um objeto tocado de até 60 cm³/nível",
+        duration: "Um dia/nível (D) ou até ser descarregada",
+        savingThrow: "Vontade anula (objeto)",
+        spellResistance: "Sim (objeto)",
+      },
+    };
+  }
+  if (spell.name === "Elucubração de Mordenkainen") {
+    return {
+      ...spell,
+      summary: "Somente um Mago pode recuperar uma magia arcana de 5º nível ou inferior que tenha conjurado nas últimas 24 horas; a magia recuperada precisa estar um nível abaixo do maior nível que ele pode conjurar. Componentes necessários ainda devem ser fornecidos.",
+      summaryOnly: false,
+      detailsPage: 234,
+      detailsPageEnd: 235,
+      mechanics: {
+        components: "V, G",
+        castingTime: "1 ação padrão",
+        range: "Pessoal",
+        target: "Você",
+        duration: "Instantânea",
+        savingThrow: "Nenhum",
+        spellResistance: "Não",
+      },
+    };
+  }
+  return spell;
+}
+
 function bySchool(groups: [Dnd35SpellSchool, string[]][]): Dnd35SpellListEntry[] {
-  return groups.flatMap(([school, lines]) => lines.map((l) => entry(l, school)));
+  return groups.flatMap(([school, lines]) => lines.map((l) => withVerifiedPage234Details(entry(l, school))));
 }
 
 function withVerifiedCommandUndeadDetails(spell: Dnd35SpellListEntry): Dnd35SpellListEntry {
@@ -226,7 +265,7 @@ const CORE_ARCANE_AND_CLERIC_LISTS: Dnd35SpellList[] = [
         "Sono: 4 DV de criaturas caem num sono parecido com o coma",
       ]],
       ["Evoc", [
-        "Disco Flutuante de Tenser: Disco horizontal de 1,5 m de diâmetro que suporta 50 kg/nível",
+        "Disco Flutuante de Tenser: Disco horizontal de 90 cm de diâmetro que suporta 50 kg/nível",
         "Mãos Flamejantes: 1d4 de dano de fogo/nível (máx. 5d4)",
         "Mísseis Mágicos: 1d4+1 de dano, +1 míssil/dois níveis acima do 1º (máx. +5)",
         "Toque Chocante: Toque causa 1d6/nível dano de eletricidade (max. 5d6)",
@@ -1608,10 +1647,263 @@ const HIGHER_LEVEL_LISTS: Dnd35SpellList[] = [
 
 type VerifiedSpellDetails = Pick<Dnd35SpellListEntry, "summary" | "summaryOnly" | "detailsPage" | "detailsPageEnd" | "mechanics">;
 
+const ALIGNMENT_DISPEL_MECHANICS: Dnd35SpellMechanics = {
+  components: "V, G, FD", castingTime: "1 ação padrão", range: "Toque",
+  target: "Conjurador e criatura extraplanar tocada ou magia alinhada em criatura/objeto tocado",
+  duration: "1 rodada/nível ou até ser descarregada", savingThrow: "Veja texto",
+  spellResistance: "Veja texto",
+};
+
+const DISPEL_MAGIC_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false,
+  detailsPage: 232,
+  summary: "Encerra magias em criaturas ou objetos, suprime propriedades de um item mágico direcionado por 1d4 rodadas (itens mágicos não são afetados pela versão em área), dissipa efeitos numa área parcialmente sobreposta ou pode ser usada como contramágica após um teste. O teste é 1d20 + nível de conjurador (máximo +10); efeitos instantâneos e artefatos não são desfeitos. A ficha impressa indica raio de 6 m, mas o texto narrativo cita 9 m; o SRD 3.5 indica 20 pés (cerca de 6 m).",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+    target: "Um conjurador, criatura ou objeto; ou explosão de 6 m de raio (texto narrativo cita 9 m)",
+    duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const GREATER_DISPEL_MAGIC_DETAILS: VerifiedSpellDetails = {
+  ...DISPEL_MAGIC_DETAILS,
+  summary: "Como Dissipar Magia, mas o bônus máximo no teste de dissipar é +20 em vez de +10. Também pode dissipar efeitos que Remover Maldição seria capaz de curar, mesmo quando Dissipar Magia não conseguiria.",
+};
+
+const alignmentDispelSummary = (alignment: string) =>
+  `Concede +4 de bônus de deflexão na CA contra ataques de criaturas ${alignment}. Com um toque, também pode tentar banir uma criatura extraplanar dessa tendência ou dissipar uma magia correspondente; o uso descarrega o efeito, e o alvo pode resistir conforme descrito na magia.`;
+
+const RESILIENT_SPHERE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 237, detailsPageEnd: 238,
+  summary: "Envolve uma criatura ou objeto numa esfera de força praticamente indestrutível que nada deixa entrar ou sair. O alvo pode resistir com Reflexos; a barreira pode ser removida por Dissipar Magia, Desintegrar, Disjunção de Mordenkainen ou um bastão de cancelamento.",
+  mechanics: {
+    components: "V, G, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma esfera de 30 cm de diâmetro/nível centrada na criatura ou objeto", duration: "1 minuto/nível (D)",
+    savingThrow: "Reflexos anula (objeto)", spellResistance: "Sim (objeto)",
+  },
+};
+
+const TELEKINETIC_SPHERE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 238,
+  summary: "Como Esfera Resiliente de Otiluke, mas o conjurador pode mover a esfera e seu conteúdo por telecinese. O conteúdo pesa apenas 1/16 do normal; mover a esfera exige concentração e permite deslocá-la até 9 m por rodada.",
+  mechanics: {
+    components: "V, G, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma esfera de 30 cm de diâmetro/nível centrada na criatura ou objeto", duration: "1 minuto/nível (D)",
+    savingThrow: "Reflexos anula (objeto)", spellResistance: "Sim (objeto)",
+  },
+};
+
+const COOL_METAL_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 238, detailsPageEnd: 239,
+  summary: "Resfria metal em etapas ao longo de sete rodadas: não causa dano na primeira, depois causa 1d4, 2d4 por três rodadas, 1d4 e nenhum dano na última. Calor intenso cancela parte do dano; metal vestido ou segurado também pode ferir a criatura.",
+  mechanics: {
+    components: "V, G, FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Metal de até 1 criatura/2 níveis, todas a menos de 9 m entre si; ou 12,5 kg de metal/nível em um círculo de 9 m",
+    duration: "7 rodadas", savingThrow: "Vontade anula (objeto)", spellResistance: "Sim (objeto)",
+  },
+};
+
+const MORDENKAINEN_SWORD_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 238,
+  summary: "Cria uma espada flutuante de força que ataca por conta própria. Usa o nível de conjurador, o modificador de Inteligência ou Carisma e +3 para atacar; causa 4d6+3 de dano, ameaça crítico em 19–20 e pode ser redirecionada a cada rodada.",
+  mechanics: {
+    components: "V, G, F", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma espada", duration: "1 rodada/nível", savingThrow: "Nenhum", spellResistance: "Sim",
+  },
+};
+
+const HOLY_SWORD_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 238, detailsPageEnd: 239,
+  summary: "Converte uma arma branca tocada em arma sagrada +5, que causa +2d6 de dano contra criaturas malignas e emite um círculo mágico contra o mal de 3 m. O efeito termina se a espada sair das mãos do personagem; não se acumula com outros bônus de melhoria.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Arma branca tocada",
+    duration: "1 rodada/nível", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const SHADOW_EVOCATION_GREATER_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 240,
+  summary: "Imita uma magia de evocação de até 7º nível, com 60% de realidade para criaturas que acreditam nela; criaturas que desacreditam sofrem apenas 60% dos efeitos. Alcance, alvo e duração dependem da magia copiada.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Veja texto", target: "Veja texto",
+    duration: "Veja texto", savingThrow: "Vontade desacredita (veja texto)", spellResistance: "Sim",
+  },
+};
+
+const DISMISSAL_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 240,
+  summary: "Tenta enviar uma criatura extraplanar de volta ao seu plano nativo. Uma criatura que resista ainda pode ser banida para um plano aleatório; a dificuldade especial do teste depende dos Dados de Vida do alvo e do nível de conjurador.",
+  mechanics: {
+    components: "V, G, FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma criatura extraplanar", duration: "Instantânea", savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+  },
+};
+
+const SOUND_BURST_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 240,
+  summary: "Uma explosão de som causa 1d8 de dano sônico às criaturas na área; quem falhar no teste de Fortitude também fica surdo por 1 rodada. Objetos frágeis e criaturas cristalinas podem sofrer efeitos adicionais.",
+  mechanics: {
+    components: "V, G, F/FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Dispersão de 3 m de raio", duration: "Instantânea", savingThrow: "Fortitude parcial", spellResistance: "Sim",
+  },
+};
+
+const SUNBURST_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 240,
+  summary: "Uma explosão de luz cega as criaturas na área e causa 6d6 de dano; mortos-vivos sofrem 1d6 por nível de conjurador (máximo 25d6). Um sucesso em Reflexos reduz o dano à metade, mas não evita a cegueira.",
+  mechanics: {
+    components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+    target: "Explosão de 24 m de raio", duration: "Instantânea", savingThrow: "Reflexos parcial (veja texto)", spellResistance: "Sim",
+  },
+};
+
+const QUENCH_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 240,
+  summary: "Apaga incêndios não mágicos na área e pode dissipar magias de fogo; contra um item mágico baseado em fogo, funciona como Dissipar Magia. Não extingue fogo mágico de origem instantânea.",
+  mechanics: {
+    components: "V, G, FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+    target: "Área ou item mágico de fogo (veja texto)", duration: "Instantânea",
+    savingThrow: "Nenhum ou Vontade anula (objeto)", spellResistance: "Não ou Sim (objeto)",
+  },
+};
+
+const SPEAK_WITH_ANIMALS_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 240,
+  summary: "Permite compreender e se comunicar com animais naturais. O conjurador pode fazer perguntas e receber respostas; a atitude do animal e seu conhecimento continuam limitados por sua inteligência e experiência.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+    duration: "1 minuto/nível", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const SPEAK_WITH_DEAD_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 240, detailsPageEnd: 241,
+  summary: "Permite fazer perguntas a um cadáver por até 1 minuto/nível, com número de perguntas limitado pelo nível de conjurador. O cadáver precisa ter boca e não pode ter sido transformado em morto-vivo; respostas dependem do conhecimento que possuía em vida e podem ser breves ou evasivas.",
+  mechanics: {
+    components: "V, G, FD", castingTime: "10 minutos", range: "3 m", target: "Uma criatura morta",
+    duration: "1 minuto/nível", savingThrow: "Vontade anula (veja texto)", spellResistance: "Não",
+  },
+};
+
+const SPEAK_WITH_PLANTS_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 241,
+  summary: "Permite comunicar-se com plantas normais e criaturas do tipo planta. Plantas comuns podem responder sobre o ambiente próximo; criaturas vegetais têm sentidos e conhecimentos próprios e podem ser amigáveis ou hostis.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+    duration: "1 minuto/nível", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const MELFS_ACID_ARROW_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 241,
+  summary: "Cria uma flecha de ácido que exige ataque de toque à distância e causa 2d4 de dano na primeira rodada, repetido por 1 rodada adicional a cada três níveis de conjurador. A flecha pode atingir objetos, mas não estruturas inflamáveis.",
+  mechanics: {
+    components: "V, G, M, F", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+    target: "Uma flecha de ácido", duration: "Instantânea; veja texto", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const FLAME_ARROW_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 241,
+  summary: "Transforma até cinco projéteis em chamas: cada um causa 1d6 pontos de dano adicional por fogo quando acerta. As chamas não ferem quem os segura e não inflamam objetos não combustíveis; projéteis não usados perdem o efeito ao fim da duração.",
+  mechanics: {
+    components: "V, G, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Cinco projéteis, todos em contato entre si no momento da conjuração", duration: "10 minutos/nível",
+    savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const FAERIE_FIRE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 241,
+  summary: "Contorna criaturas e objetos com luz colorida, delineando-os e anulando benefícios de escuridão, camuflagem, deslocamento e efeitos semelhantes. Não concede os benefícios de uma magia de luz a criaturas na área; a cor é escolhida pelo conjurador.",
+  mechanics: {
+    components: "V, G, FD", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+    target: "Criaturas ou objetos dentro de uma explosão de 1,5 m de raio", duration: "1 minuto/nível (D)",
+    savingThrow: "Nenhum", spellResistance: "Sim",
+  },
+};
+
+const RIGHTEOUS_MIGHT_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 241,
+  summary: "Aumenta o conjurador em uma categoria de tamanho e concede +8 de bônus de tamanho em Força, +4 em Constituição e armadura natural, além de redução de dano 5/magia. O espaço, alcance e dano das armas são ajustados ao novo tamanho.",
+  mechanics: {
+    components: "V, G, FD", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+    duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const BULLS_STRENGTH_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 241,
+  summary: "Concede ao alvo +4 de bônus de melhoria em Força por 1 minuto/nível. O bônus não se acumula com outros bônus de melhoria para Força.",
+  mechanics: {
+    components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+    duration: "1 minuto/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+  },
+};
+
 // A descrição completa às vezes apresenta M/FD sem o sobrescrito correspondente
 // na lista de níveis. `flags` continua refletindo o sobrescrito impresso; `mechanics`
 // registra os componentes efetivos descritos na entrada completa.
 const VERIFIED_SPELL_DETAILS: Record<string, VerifiedSpellDetails> = {
+  "feiticeiro_mago:4:Esfera Resiliente de Otiluke": RESILIENT_SPHERE_DETAILS,
+  "feiticeiro_mago:8:Esfera Telecinética de Otiluke": TELEKINETIC_SPHERE_DETAILS,
+  "druida:2:Esfriar Metal": COOL_METAL_DETAILS,
+  "feiticeiro_mago:7:Espada de Mordenkainen": MORDENKAINEN_SWORD_DETAILS,
+  "paladino:4:Espada Sagrada": HOLY_SWORD_DETAILS,
+  "feiticeiro_mago:8:Evocação de Sombras Maior": SHADOW_EVOCATION_GREATER_DETAILS,
+  "clerigo:4:Expulsão": DISMISSAL_DETAILS,
+  "feiticeiro_mago:5:Expulsão": DISMISSAL_DETAILS,
+  "bardo:2:Explosão Sonora": SOUND_BURST_DETAILS,
+  "clerigo:2:Explosão Sonora": SOUND_BURST_DETAILS,
+  "druida:8:Explosão Solar": SUNBURST_DETAILS,
+  "feiticeiro_mago:8:Explosão Solar": SUNBURST_DETAILS,
+  "druida:3:Extinguir Fogo": QUENCH_DETAILS,
+  "bardo:3:Falar com Animais": SPEAK_WITH_ANIMALS_DETAILS,
+  "druida:1:Falar com Animais": SPEAK_WITH_ANIMALS_DETAILS,
+  "patrulheiro:1:Falar Com Animais": SPEAK_WITH_ANIMALS_DETAILS,
+  "clerigo:3:Falar com os Mortos": SPEAK_WITH_DEAD_DETAILS,
+  "bardo:4:Falar com Plantas": SPEAK_WITH_PLANTS_DETAILS,
+  "druida:3:Falar com Plantas": SPEAK_WITH_PLANTS_DETAILS,
+  "patrulheiro:2:Falar com Plantas": SPEAK_WITH_PLANTS_DETAILS,
+  "feiticeiro_mago:2:Flecha Ácida de Melf": MELFS_ACID_ARROW_DETAILS,
+  "feiticeiro_mago:3:Flecha de Chamas": FLAME_ARROW_DETAILS,
+  "druida:1:Fogo das Fadas": FAERIE_FIRE_DETAILS,
+  "clerigo:5:Força dos Justos": RIGHTEOUS_MIGHT_DETAILS,
+  "feiticeiro_mago:2:Força do Touro": BULLS_STRENGTH_DETAILS,
+  "clerigo:2:Força do Touro": BULLS_STRENGTH_DETAILS,
+  "druida:2:Força do Touro": BULLS_STRENGTH_DETAILS,
+  "paladino:2:Força do Touro": BULLS_STRENGTH_DETAILS,
+  "bardo:3:Dissipar Magia": DISPEL_MAGIC_DETAILS,
+  "clerigo:3:Dissipar Magia": DISPEL_MAGIC_DETAILS,
+  "druida:4:Dissipar Magia": DISPEL_MAGIC_DETAILS,
+  "feiticeiro_mago:3:Dissipar Magia": DISPEL_MAGIC_DETAILS,
+  "paladino:3:Dissipar Magia": DISPEL_MAGIC_DETAILS,
+  "bardo:5:Dissipar Magia Maior": GREATER_DISPEL_MAGIC_DETAILS,
+  "clerigo:6:Dissipar Magia Maior": GREATER_DISPEL_MAGIC_DETAILS,
+  "druida:6:Dissipar Magia Maior": GREATER_DISPEL_MAGIC_DETAILS,
+  "feiticeiro_mago:6:Dissipar Magia Maior": GREATER_DISPEL_MAGIC_DETAILS,
+  "clerigo:5:Dissipar o Caos/Mal/Bem/Ordem": {
+    summaryOnly: false, detailsPage: 232,
+    summary: "A versão escolhida concede +4 de bônus de deflexão na CA contra ataques da tendência oposta; com um toque, também pode tentar banir uma criatura extraplanar dessa tendência ou dissipar uma magia correspondente. O uso descarrega o efeito, e o alvo pode resistir conforme descrito na magia.",
+    mechanics: ALIGNMENT_DISPEL_MECHANICS,
+  },
+  "paladino:4:Dissipar o Caos": {
+    summaryOnly: false, detailsPage: 232,
+    summary: alignmentDispelSummary("caóticas"), mechanics: ALIGNMENT_DISPEL_MECHANICS,
+  },
+  "paladino:4:Dissipar o Mal": {
+    summaryOnly: false, detailsPage: 232,
+    summary: alignmentDispelSummary("malignas"), mechanics: ALIGNMENT_DISPEL_MECHANICS,
+  },
+  "clerigo:7:Ditado": {
+    summaryOnly: false, detailsPage: 232, detailsPageEnd: 233,
+    summary: "Afeta criaturas não leais numa dispersão impressa de 9 m ao redor do conjurador: conforme os Dados de Vida em relação ao nível de conjurador, podem ficar ensurdecidas, lentas, paralisadas ou morrer; esses efeitos se acumulam. Criaturas extraplanares não leais podem ser banidas (Vontade com −4), e alvos com DV acima do nível de conjurador não são afetados. O livro português indica raio de 9 m, enquanto o SRD 3.5 lista 40 pés (cerca de 12 m).",
+    mechanics: {
+      components: "V", castingTime: "1 ação padrão", range: "12 m",
+      target: "Criaturas não Leais numa dispersão de 9 m de raio centrada no conjurador",
+      duration: "Instantânea", savingThrow: "Nenhum ou Vontade anula (banimento; veja texto)", spellResistance: "Sim",
+    },
+  },
   "druida:3:Convocar Relâmpagos": {
     summaryOnly: false,
     detailsPage: 222,
@@ -2368,6 +2660,17 @@ const VERIFIED_SPELL_DETAILS: Record<string, VerifiedSpellDetails> = {
       savingThrow: "Nenhum", spellResistance: "Não",
     },
   },
+  "feiticeiro_mago:1:Disco Flutuante de Tenser": {
+    summaryOnly: false,
+    detailsPage: 231,
+    detailsPageEnd: 232,
+    summary: "Cria um disco horizontal de energia com 90 cm de diâmetro, capaz de carregar 50 kg por nível de conjurador. Flutua a 90 cm do solo e acompanha o conjurador a até 1,5 m; desaparece ao fim da duração, se sair do alcance, se o conjurador se afastar rápido demais ou se tentar elevá-lo acima do solo.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Disco de energia horizontal com 90 cm de diâmetro", duration: "1 hora/nível",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
   "patrulheiro:1:Detectar Armadilhas": {
     summaryOnly: false,
     detailsPage: 229,
@@ -2378,10 +2681,120 @@ const VERIFIED_SPELL_DETAILS: Record<string, VerifiedSpellDetails> = {
       savingThrow: "Nenhum", spellResistance: "Não",
     },
   },
+  "feiticeiro_mago:4:Detectar Vidência": {
+    summaryOnly: false,
+    detailsPage: 231,
+    summary: "Avisa imediatamente quando alguém tenta espioná-lo por vidência e localiza qualquer sensor mágico dentro da área. Se a origem da tentativa estiver fora dela, revela que você está sendo observado e pode indicar a localização do observador após um teste resistido de conjurador.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "12 m",
+      target: "Emanação de 12 m de raio centrada no conjurador", duration: "24 horas",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "bardo:4:Detectar Vidência": {
+    summaryOnly: false,
+    detailsPage: 231,
+    summary: "Avisa imediatamente quando alguém tenta espioná-lo por vidência e localiza qualquer sensor mágico dentro da área. Se a origem da tentativa estiver fora dela, revela que você está sendo observado e pode indicar a localização do observador após um teste resistido de conjurador.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "12 m",
+      target: "Emanação de 12 m de raio centrada no conjurador", duration: "24 horas",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:3:Dificultar Detecção": {
+    summaryOnly: false,
+    detailsPage: 231,
+    summary: "Protege uma criatura ou objeto contra adivinhações como vidência, clarividência/clariaudiência e localizar objeto. Se a magia de observação for lançada diretamente contra o alvo protegido, o conjurador precisa superar um teste resistido de conjurador; também protege o equipamento carregado pela criatura.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "Toque",
+      target: "Criatura ou objeto tocado", duration: "1 hora/nível",
+      savingThrow: "Vontade anula (inofensiva, objeto)", spellResistance: "Sim (inofensiva, objeto)",
+    },
+  },
+  "patrulheiro:4:Dificultar Detecção": {
+    summaryOnly: false,
+    detailsPage: 231,
+    summary: "Protege uma criatura ou objeto contra adivinhações como vidência, clarividência/clariaudiência e localizar objeto. Se a magia de observação for lançada diretamente contra o alvo protegido, o conjurador precisa superar um teste resistido de conjurador; também protege o equipamento carregado pela criatura.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "Toque",
+      target: "Criatura ou objeto tocado", duration: "1 hora/nível",
+      savingThrow: "Vontade anula (inofensiva, objeto)", spellResistance: "Sim (inofensiva, objeto)",
+    },
+  },
+  "feiticeiro_mago:8:Discernir Localização": {
+    summaryOnly: false,
+    detailsPage: 231,
+    summary: "Localiza exatamente uma criatura ou objeto conhecido, superando proteções comuns contra vidência e localização. Para localizar uma criatura, o conjurador precisa tê-la visto ou possuir um objeto que lhe pertence; para localizar um objeto, precisa tê-lo tocado ao menos uma vez.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "10 minutos", range: "Ilimitado",
+      target: "Uma criatura ou objeto", duration: "Instantânea",
+      savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "clerigo:4:Discernir Mentiras": {
+    summaryOnly: false,
+    detailsPage: 231,
+    summary: "Enquanto se concentra em uma criatura por rodada, revela se ela está contando uma mentira deliberada. Não revela a verdade, nem detecta erros involuntários ou omissões; cada rodada permite escolher outro alvo dentro do alcance.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Uma criatura/nível, todas a até 9 m entre si", duration: "Concentração, até 1 rodada/nível",
+      savingThrow: "Vontade anula", spellResistance: "Não",
+    },
+  },
+  "paladino:3:Discernir Mentiras": {
+    summaryOnly: false,
+    detailsPage: 231,
+    summary: "Enquanto se concentra em uma criatura por rodada, revela se ela está contando uma mentira deliberada. Não revela a verdade, nem detecta erros involuntários ou omissões; cada rodada permite escolher outro alvo dentro do alcance.",
+    mechanics: {
+      components: "V, G, FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Uma criatura/nível, todas a até 9 m entre si", duration: "Concentração, até 1 rodada/nível",
+      savingThrow: "Vontade anula", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:9:Disjunção de Mordenkainen": {
+    summaryOnly: false,
+    detailsPage: 231,
+    summary: "Dissipa efeitos mágicos na área e pode destruir itens mágicos permanentes que falhem no teste de Vontade. Um artefato tem apenas 1% de chance de ser destruído; mesmo que resista, pode atrair a atenção de seres poderosos ligados a ele.",
+    mechanics: {
+      components: "V", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Todos os efeitos e itens mágicos numa explosão de 12 m de raio", duration: "Instantânea",
+      savingThrow: "Vontade anula (objeto)", spellResistance: "Não",
+    },
+  },
+  "bardo:1:Dissimular Tendência": {
+    summaryOnly: false,
+    detailsPage: 231,
+    summary: "Esconde a tendência de uma criatura ou objeto de todas as formas de adivinhação.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Uma criatura ou objeto", duration: "24 horas",
+      savingThrow: "Vontade anula (objeto)", spellResistance: "Sim (objeto)",
+    },
+  },
+  "paladino:2:Dissimular Tendência": {
+    summaryOnly: false,
+    detailsPage: 231,
+    summary: "Esconde a tendência de uma criatura ou objeto de todas as formas de adivinhação.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Uma criatura ou objeto", duration: "24 horas",
+      savingThrow: "Vontade anula (objeto)", spellResistance: "Sim (objeto)",
+    },
+  },
+  "clerigo:2:Dissimular Tendência": {
+    summaryOnly: false,
+    detailsPage: 231,
+    summary: "Esconde a tendência de uma criatura ou objeto de todas as formas de adivinhação.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Uma criatura ou objeto", duration: "24 horas",
+      savingThrow: "Vontade anula (objeto)", spellResistance: "Sim (objeto)",
+    },
+  },
   "bardo:1:Detectar Portas Secretas": {
     summaryOnly: false,
     detailsPage: 230,
-    summary: "Revela portas, compartimentos e esconderijos construídos especificamente para não serem notados, numa emanação em cone. A cada rodada de concentração, amplia a área examinada e o tipo de informação; uma porta comum apenas escondida por objetos não é detectada.",
+    summary: "Numa emanação em cone, revela portas, compartimentos e esconderijos construídos para não serem notados; uma porta comum apenas encoberta por objetos não é detectada. A primeira rodada indica presença, a segunda revela quantidade e localização, e rodadas adicionais permitem examinar o mecanismo.",
     mechanics: {
       components: "V, G", castingTime: "1 ação padrão", range: "18 m",
       target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
@@ -2391,7 +2804,7 @@ const VERIFIED_SPELL_DETAILS: Record<string, VerifiedSpellDetails> = {
   "feiticeiro_mago:1:Detectar Portas Secretas": {
     summaryOnly: false,
     detailsPage: 230,
-    summary: "Revela portas, compartimentos e esconderijos construídos especificamente para não serem notados, numa emanação em cone. A cada rodada de concentração, amplia a área examinada e o tipo de informação; uma porta comum apenas escondida por objetos não é detectada.",
+    summary: "Numa emanação em cone, revela portas, compartimentos e esconderijos construídos para não serem notados; uma porta comum apenas encoberta por objetos não é detectada. A primeira rodada indica presença, a segunda revela quantidade e localização, e rodadas adicionais permitem examinar o mecanismo.",
     mechanics: {
       components: "V, G", castingTime: "1 ação padrão", range: "18 m",
       target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
@@ -2538,6 +2951,56 @@ const VERIFIED_SPELL_DETAILS: Record<string, VerifiedSpellDetails> = {
       components: "V, G", castingTime: "1 ação padrão", range: "18 m",
       target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
       savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "feiticeiro_mago:1:Escudo Arcano": {
+    summaryOnly: false, detailsPage: 236,
+    summary: "Cria um disco invisível de força que concede +4 de bônus de escudo à CA e bloqueia Mísseis Mágicos. Não impõe penalidade de armadura arcana nem chance de falha de magia arcana; não pode ser usado para cobertura.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+      duration: "1 minuto/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "clerigo:1:Escudo Entrópico": {
+    summaryOnly: false, detailsPage: 236,
+    summary: "Um campo multicolorido desvia ataques à distância: cada ataque à distância direcionado contra você tem 20% de chance de falhar, inclusive flechas mágicas e raios; não afeta ataques que apenas atinjam uma área nem ataques corpo a corpo.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+      duration: "1 minuto/nível", savingThrow: "Nenhum", spellResistance: "Não",
+    },
+  },
+  "clerigo:1:Escudo da Fé": {
+    summaryOnly: false, detailsPage: 236,
+    summary: "Envolve a criatura tocada com uma aura protetora que concede +2 de bônus de deflexão na CA, aumentando em +1 a cada seis níveis de conjurador, até +5 no 18º nível.",
+    mechanics: {
+      components: "V, G, M", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+      duration: "1 minuto/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+    },
+  },
+  "feiticeiro_mago:4:Escudo do Fogo": {
+    summaryOnly: false, detailsPage: 236,
+    summary: "Escolha o escudo de calor ou de frio: ataques corpo a corpo contra você causam dano ao atacante, e você recebe resistência ao tipo de energia oposto. O escudo de calor causa dano de fogo e protege contra frio; o de frio causa dano de frio e protege contra fogo. Reflexos reduz à metade o dano do escudo, que não é considerado dano de fogo/frio para a resistência correspondente.",
+    mechanics: {
+      components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+      duration: "1 rodada/nível (D)", savingThrow: "Veja texto", spellResistance: "Sim (inofensiva)",
+    },
+  },
+  "clerigo:8:Escudo da Ordem": {
+    summaryOnly: false, detailsPage: 236,
+    summary: "Uma aura protege aliados contra efeitos caóticos: concede +4 de deflexão na CA e +4 de resistência nos testes de resistência, além de resistência à magia 25 contra magias caóticas e proteção contra controle mental e possessão. Uma criatura caótica que acerte um protegido com ataque corpo a corpo pode ficar lenta por 1 rodada se falhar em Vontade.",
+    mechanics: {
+      components: "V, G, F", castingTime: "1 ação padrão", range: "6 m",
+      target: "Uma criatura/nível dentro de uma explosão de 6 m de raio centrada no conjurador",
+      duration: "1 rodada/nível (D)", savingThrow: "Veja texto", spellResistance: "Sim (inofensiva)",
+    },
+  },
+  "bardo:3:Esculpir Som": {
+    summaryOnly: false, detailsPage: 236,
+    summary: "Altera os sons produzidos pelas criaturas e objetos escolhidos ou cria sons que não existem, como ruídos, vozes ou música. Todos os alvos recebem a mesma alteração; a magia não cria palavras em idiomas que o conjurador desconhece nem permite ativar itens mágicos por palavras de comando desconhecidas. Alterar a própria voz impede conjurar magias com componentes verbais.",
+    mechanics: {
+      components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+      target: "Uma criatura ou objeto/nível, todas a menos de 9 m entre si", duration: "1 hora/nível (D)",
+      savingThrow: "Vontade anula (objeto)", spellResistance: "Sim (objeto)",
     },
   },
 };

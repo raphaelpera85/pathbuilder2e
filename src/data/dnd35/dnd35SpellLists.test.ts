@@ -1207,11 +1207,283 @@ describe("D&D 3.5 — descrições verificadas na p. 230", () => {
       });
     }
     expect(get("mago", 2, "Detectar Pensamentos")?.detailsPageEnd).toBe(231);
-    expect(get("mago", 1, "Detectar Portas Secretas")?.summary).toContain("esconderijos construídos especificamente");
+    expect(get("mago", 1, "Detectar Portas Secretas")?.summary).toContain("A primeira rodada indica presença");
+    expect(get("mago", 1, "Detectar Portas Secretas")?.summary).toContain("rodadas adicionais permitem examinar o mecanismo");
     expect(get("feiticeiro", 1, "Detectar Portas Secretas")?.summary).toBe(get("bardo", 1, "Detectar Portas Secretas")?.summary);
     expect(get("mago", 1, "Detectar Portas Secretas")?.summary).not.toContain("ilusões");
     expect(get("mago", 0, "Detectar Venenos")?.summary).toContain("identificar o tipo");
     expect(get("mago", 1, "Detectar Mortos-Vivos")?.summary).toContain("força e localização");
     expect(get("mago", 2, "Detectar Pensamentos")?.summary).toContain("pensamentos superficiais");
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas na p. 231", () => {
+  const get = (classId: string, level: number, name: string) =>
+    dnd35SpellListFor(classId, level).find((spell) => spell.name === name);
+
+  it("confere mecânicas e resumo nas projeções de classe, preservando o disco de 90 cm", () => {
+    const cases = [
+      ["bardo", 4, "Detectar Vidência", "V, G, M", "12 m", "Emanação de 12 m de raio centrada no conjurador", "24 horas", "Nenhum", "Não"],
+      ["feiticeiro", 4, "Detectar Vidência", "V, G, M", "12 m", "Emanação de 12 m de raio centrada no conjurador", "24 horas", "Nenhum", "Não"],
+      ["mago", 4, "Detectar Vidência", "V, G, M", "12 m", "Emanação de 12 m de raio centrada no conjurador", "24 horas", "Nenhum", "Não"],
+      ["feiticeiro", 3, "Dificultar Detecção", "V, G, M", "Toque", "Criatura ou objeto tocado", "1 hora/nível", "Vontade anula (inofensiva, objeto)", "Sim (inofensiva, objeto)"],
+      ["mago", 3, "Dificultar Detecção", "V, G, M", "Toque", "Criatura ou objeto tocado", "1 hora/nível", "Vontade anula (inofensiva, objeto)", "Sim (inofensiva, objeto)"],
+      ["patrulheiro", 4, "Dificultar Detecção", "V, G, M", "Toque", "Criatura ou objeto tocado", "1 hora/nível", "Vontade anula (inofensiva, objeto)", "Sim (inofensiva, objeto)"],
+      ["feiticeiro", 8, "Discernir Localização", "V, G, FD", "Ilimitado", "Uma criatura ou objeto", "Instantânea", "Nenhum", "Não"],
+      ["mago", 8, "Discernir Localização", "V, G, FD", "Ilimitado", "Uma criatura ou objeto", "Instantânea", "Nenhum", "Não"],
+      ["clerigo", 4, "Discernir Mentiras", "V, G, FD", "Curto (7,5 m + 1,5 m/2 níveis)", "Uma criatura/nível, todas a até 9 m entre si", "Concentração, até 1 rodada/nível", "Vontade anula", "Não"],
+      ["paladino", 3, "Discernir Mentiras", "V, G, FD", "Curto (7,5 m + 1,5 m/2 níveis)", "Uma criatura/nível, todas a até 9 m entre si", "Concentração, até 1 rodada/nível", "Vontade anula", "Não"],
+      ["feiticeiro", 1, "Disco Flutuante de Tenser", "V, G, M", "Curto (7,5 m + 1,5 m/2 níveis)", "Disco de energia horizontal com 90 cm de diâmetro", "1 hora/nível", "Nenhum", "Não"],
+      ["mago", 1, "Disco Flutuante de Tenser", "V, G, M", "Curto (7,5 m + 1,5 m/2 níveis)", "Disco de energia horizontal com 90 cm de diâmetro", "1 hora/nível", "Nenhum", "Não"],
+      ["feiticeiro", 9, "Disjunção de Mordenkainen", "V", "Curto (7,5 m + 1,5 m/2 níveis)", "Todos os efeitos e itens mágicos numa explosão de 12 m de raio", "Instantânea", "Vontade anula (objeto)", "Não"],
+      ["mago", 9, "Disjunção de Mordenkainen", "V", "Curto (7,5 m + 1,5 m/2 níveis)", "Todos os efeitos e itens mágicos numa explosão de 12 m de raio", "Instantânea", "Vontade anula (objeto)", "Não"],
+      ["bardo", 1, "Dissimular Tendência", "V, G", "Curto (7,5 m + 1,5 m/2 níveis)", "Uma criatura ou objeto", "24 horas", "Vontade anula (objeto)", "Sim (objeto)"],
+      ["clerigo", 2, "Dissimular Tendência", "V, G", "Curto (7,5 m + 1,5 m/2 níveis)", "Uma criatura ou objeto", "24 horas", "Vontade anula (objeto)", "Sim (objeto)"],
+      ["paladino", 2, "Dissimular Tendência", "V, G", "Curto (7,5 m + 1,5 m/2 níveis)", "Uma criatura ou objeto", "24 horas", "Vontade anula (objeto)", "Sim (objeto)"],
+    ] as const;
+
+    for (const [classId, level, name, components, range, target, duration, savingThrow, spellResistance] of cases) {
+      expect(get(classId, level, name), `${classId} ${level}: ${name}`).toMatchObject({
+        summaryOnly: false, detailsPage: 231,
+        mechanics: { components, castingTime: name === "Discernir Localização" ? "10 minutos" : "1 ação padrão", range, target, duration, savingThrow, spellResistance },
+      });
+      expect(get(classId, level, name)?.summary.length).toBeGreaterThan(60);
+    }
+    expect(get("mago", 1, "Disco Flutuante de Tenser")?.detailsPageEnd).toBe(232);
+    expect(get("mago", 1, "Disco Flutuante de Tenser")?.summary).toContain("90 cm de diâmetro");
+    expect(get("mago", 1, "Disco Flutuante de Tenser")?.summary).not.toContain("1,5 m de diâmetro");
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas nas pp. 232–233", () => {
+  const get = (classId: string, level: number, name: string) =>
+    dnd35SpellListFor(classId, level).find((spell) => spell.name === name);
+
+  it("confere Dissipar Magia e Dissipar Magia Maior nas listas de cada classe", () => {
+    const cases = [
+      ["bardo", 3, "Dissipar Magia"], ["clerigo", 3, "Dissipar Magia"],
+      ["druida", 4, "Dissipar Magia"], ["feiticeiro", 3, "Dissipar Magia"],
+      ["mago", 3, "Dissipar Magia"], ["paladino", 3, "Dissipar Magia"],
+      ["bardo", 5, "Dissipar Magia Maior"], ["clerigo", 6, "Dissipar Magia Maior"],
+      ["druida", 6, "Dissipar Magia Maior"], ["feiticeiro", 6, "Dissipar Magia Maior"],
+      ["mago", 6, "Dissipar Magia Maior"],
+    ] as const;
+    for (const [classId, level, name] of cases) {
+      expect(get(classId, level, name), `${classId} ${level}: ${name}`).toMatchObject({
+        summaryOnly: false, detailsPage: 232,
+        mechanics: {
+          components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+          duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+        },
+      });
+    }
+    expect(get("mago", 3, "Dissipar Magia")?.mechanics?.target).toContain("6 m de raio");
+    expect(get("mago", 3, "Dissipar Magia")?.summary).toContain("texto narrativo cita 9 m");
+    expect(get("mago", 6, "Dissipar Magia Maior")?.summary).toContain("+20");
+  });
+
+  it("mantém as variantes de tendência agrupadas na lista do Clérigo e testa Ditado até a p. 233", () => {
+    for (const [classId, level, name] of [
+      ["clerigo", 5, "Dissipar o Caos/Mal/Bem/Ordem"],
+      ["paladino", 4, "Dissipar o Caos"], ["paladino", 4, "Dissipar o Mal"],
+    ] as const) {
+      expect(get(classId, level, name), `${classId} ${level}: ${name}`).toMatchObject({
+        summaryOnly: false, detailsPage: 232,
+        mechanics: {
+          components: "V, G, FD", castingTime: "1 ação padrão", range: "Toque",
+          duration: "1 rodada/nível ou até ser descarregada", savingThrow: "Veja texto", spellResistance: "Veja texto",
+        },
+      });
+    }
+    expect(get("clerigo", 7, "Ditado")).toMatchObject({
+      summaryOnly: false, detailsPage: 232, detailsPageEnd: 233,
+      mechanics: {
+        components: "V", castingTime: "1 ação padrão", range: "12 m",
+        target: "Criaturas não Leais numa dispersão de 9 m de raio centrada no conjurador",
+        duration: "Instantânea", savingThrow: "Nenhum ou Vontade anula (banimento; veja texto)", spellResistance: "Sim",
+      },
+    });
+    expect(get("clerigo", 7, "Ditado")?.summary).toContain("SRD 3.5 lista 40 pés (cerca de 12 m)");
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas na p. 234", () => {
+  it("confere Encolher Item e Elucubração sem alterar nível, projeção ou flags", () => {
+    const get = (level: number, name: string) =>
+      dnd35SpellListFor("mago", level).find((spell) => spell.name === name);
+
+    expect(get(3, "Encolher Item")).toMatchObject({
+      flags: [], summaryOnly: false, detailsPage: 234,
+      mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Toque",
+        target: "Um objeto tocado de até 60 cm³/nível", duration: "Um dia/nível (D) ou até ser descarregada",
+        savingThrow: "Vontade anula (objeto)", spellResistance: "Sim (objeto)",
+      },
+    });
+    expect(get(6, "Elucubração de Mordenkainen")).toMatchObject({
+      flags: [], summaryOnly: false, detailsPage: 234, detailsPageEnd: 235,
+      mechanics: {
+        components: "V, G", castingTime: "1 ação padrão", range: "Pessoal",
+        target: "Você", duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+      },
+    });
+    expect(get(6, "Elucubração de Mordenkainen")?.summary).toContain("Somente um Mago");
+    expect(dnd35SpellListFor("feiticeiro", 6).find((spell) => spell.name === "Elucubração de Mordenkainen"))
+      .toEqual(get(6, "Elucubração de Mordenkainen"));
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas na p. 236", () => {
+  it("completa os seis registros de classe sem fundir listas ou rebatizar Esculpir Som", () => {
+    const cases: Array<[string, number, string, Record<string, unknown>]> = [
+      ["mago", 1, "Escudo Arcano", {
+        components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+        duration: "1 minuto/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+      }],
+      ["clerigo", 1, "Escudo Entrópico", {
+        components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+        duration: "1 minuto/nível", savingThrow: "Nenhum", spellResistance: "Não",
+      }],
+      ["clerigo", 1, "Escudo da Fé", {
+        components: "V, G, M", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+        duration: "1 minuto/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+      }],
+      ["mago", 4, "Escudo do Fogo", {
+        components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+        duration: "1 rodada/nível (D)", savingThrow: "Veja texto", spellResistance: "Sim (inofensiva)",
+      }],
+      ["clerigo", 8, "Escudo da Ordem", {
+        components: "V, G, F", castingTime: "1 ação padrão", range: "6 m",
+        target: "Uma criatura/nível dentro de uma explosão de 6 m de raio centrada no conjurador",
+        duration: "1 rodada/nível (D)", savingThrow: "Veja texto", spellResistance: "Sim (inofensiva)",
+      }],
+      ["bardo", 3, "Esculpir Som", {
+        components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma criatura ou objeto/nível, todas a menos de 9 m entre si", duration: "1 hora/nível (D)",
+        savingThrow: "Vontade anula (objeto)", spellResistance: "Sim (objeto)",
+      }],
+    ];
+    for (const [classId, level, name, mechanics] of cases) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name), `${classId} ${level}: ${name}`).toMatchObject({
+        summaryOnly: false, detailsPage: 236, mechanics,
+      });
+    }
+    expect(dnd35SpellListFor("feiticeiro", 1).find((spell) => spell.name === "Escudo Arcano"))
+      .toEqual(dnd35SpellListFor("mago", 1).find((spell) => spell.name === "Escudo Arcano"));
+    expect(dnd35SpellListFor("bardo", 3).find((spell) => spell.name === "Esculpir Som")?.summary)
+      .toContain("Todos os alvos recebem a mesma alteração");
+    expect(dnd35SpellListFor("bardo", 3).find((spell) => spell.name === "Esculpir o Som")).toBeUndefined();
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas nas pp. 237–239", () => {
+  it("completa as cinco descrições de classe e as continuações sem duplicar listas compartilhadas", () => {
+    const cases: Array<[string, number, string, number, number | undefined, Record<string, unknown>]> = [
+      ["mago", 4, "Esfera Resiliente de Otiluke", 237, 238, {
+        components: "V, G, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma esfera de 30 cm de diâmetro/nível centrada na criatura ou objeto", duration: "1 minuto/nível (D)",
+        savingThrow: "Reflexos anula (objeto)", spellResistance: "Sim (objeto)",
+      }],
+      ["mago", 8, "Esfera Telecinética de Otiluke", 238, undefined, {
+        components: "V, G, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma esfera de 30 cm de diâmetro/nível centrada na criatura ou objeto", duration: "1 minuto/nível (D)",
+        savingThrow: "Reflexos anula (objeto)", spellResistance: "Sim (objeto)",
+      }],
+      ["druida", 2, "Esfriar Metal", 238, 239, {
+        components: "V, G, FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Metal de até 1 criatura/2 níveis, todas a menos de 9 m entre si; ou 12,5 kg de metal/nível em um círculo de 9 m",
+        duration: "7 rodadas", savingThrow: "Vontade anula (objeto)", spellResistance: "Sim (objeto)",
+      }],
+      ["mago", 7, "Espada de Mordenkainen", 238, undefined, {
+        components: "V, G, F", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma espada", duration: "1 rodada/nível", savingThrow: "Nenhum", spellResistance: "Sim",
+      }],
+      ["paladino", 4, "Espada Sagrada", 238, 239, {
+        components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Arma branca tocada",
+        duration: "1 rodada/nível", savingThrow: "Nenhum", spellResistance: "Não",
+      }],
+    ];
+    for (const [classId, level, name, page, endPage, mechanics] of cases) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name), `${classId} ${level}: ${name}`).toMatchObject({
+        summaryOnly: false, detailsPage: page, ...(endPage ? { detailsPageEnd: endPage } : {}), mechanics,
+      });
+    }
+    expect(dnd35SpellListFor("feiticeiro", 4).find((spell) => spell.name === "Esfera Resiliente de Otiluke"))
+      .toEqual(dnd35SpellListFor("mago", 4).find((spell) => spell.name === "Esfera Resiliente de Otiluke"));
+    expect(dnd35SpellListFor("feiticeiro", 7).find((spell) => spell.name === "Espada de Mordenkainen"))
+      .toEqual(dnd35SpellListFor("mago", 7).find((spell) => spell.name === "Espada de Mordenkainen"));
+    expect(dnd35SpellListFor("paladino", 4).find((spell) => spell.name === "Espada Sagrada")?.summary).toContain("círculo mágico contra o mal");
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas nas pp. 240–241", () => {
+  it("completa as treze descrições sem alterar níveis ou projeções compartilhadas", () => {
+    const cases: Array<[string, number, string, number, number | undefined, Record<string, unknown>]> = [
+      ["mago", 8, "Evocação de Sombras Maior", 240, undefined, {
+        components: "V, G", castingTime: "1 ação padrão", range: "Veja texto", target: "Veja texto",
+        duration: "Veja texto", savingThrow: "Vontade desacredita (veja texto)", spellResistance: "Sim",
+      }],
+      ["clerigo", 4, "Expulsão", 240, undefined, {
+        components: "V, G, FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma criatura extraplanar", duration: "Instantânea", savingThrow: "Vontade anula (veja texto)", spellResistance: "Sim",
+      }],
+      ["bardo", 2, "Explosão Sonora", 240, undefined, {
+        components: "V, G, F/FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Dispersão de 3 m de raio", duration: "Instantânea", savingThrow: "Fortitude parcial", spellResistance: "Sim",
+      }],
+      ["druida", 8, "Explosão Solar", 240, undefined, {
+        components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+        target: "Explosão de 24 m de raio", duration: "Instantânea", savingThrow: "Reflexos parcial (veja texto)", spellResistance: "Sim",
+      }],
+      ["druida", 3, "Extinguir Fogo", 240, undefined, {
+        components: "V, G, FD", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+        target: "Área ou item mágico de fogo (veja texto)", duration: "Instantânea", savingThrow: "Nenhum ou Vontade anula (objeto)", spellResistance: "Não ou Sim (objeto)",
+      }],
+      ["bardo", 3, "Falar com Animais", 240, undefined, {
+        components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+        duration: "1 minuto/nível", savingThrow: "Nenhum", spellResistance: "Não",
+      }],
+      ["patrulheiro", 1, "Falar Com Animais", 240, undefined, {
+        components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+        duration: "1 minuto/nível", savingThrow: "Nenhum", spellResistance: "Não",
+      }],
+      ["clerigo", 3, "Falar com os Mortos", 240, 241, {
+        components: "V, G, FD", castingTime: "10 minutos", range: "3 m", target: "Uma criatura morta",
+        duration: "1 minuto/nível", savingThrow: "Vontade anula (veja texto)", spellResistance: "Não",
+      }],
+      ["bardo", 4, "Falar com Plantas", 241, undefined, {
+        components: "V, G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+        duration: "1 minuto/nível", savingThrow: "Nenhum", spellResistance: "Não",
+      }],
+      ["mago", 2, "Flecha Ácida de Melf", 241, undefined, {
+        components: "V, G, M, F", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+        target: "Uma flecha de ácido", duration: "Instantânea; veja texto", savingThrow: "Nenhum", spellResistance: "Não",
+      }],
+      ["mago", 3, "Flecha de Chamas", 241, undefined, {
+        components: "V, G, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Cinco projéteis, todos em contato entre si no momento da conjuração", duration: "10 minutos/nível", savingThrow: "Nenhum", spellResistance: "Não",
+      }],
+      ["druida", 1, "Fogo das Fadas", 241, undefined, {
+        components: "V, G, FD", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+        target: "Criaturas ou objetos dentro de uma explosão de 1,5 m de raio", duration: "1 minuto/nível (D)", savingThrow: "Nenhum", spellResistance: "Sim",
+      }],
+      ["clerigo", 5, "Força dos Justos", 241, undefined, {
+        components: "V, G, FD", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+        duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+      }],
+      ["mago", 2, "Força do Touro", 241, undefined, {
+        components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+        duration: "1 minuto/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+      }],
+    ];
+    for (const [classId, level, name, page, endPage, mechanics] of cases) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name), `${classId} ${level}: ${name}`).toMatchObject({
+        summaryOnly: false, detailsPage: page, ...(endPage ? { detailsPageEnd: endPage } : {}), mechanics,
+      });
+    }
+    expect(dnd35SpellListFor("feiticeiro", 8).find((spell) => spell.name === "Evocação de Sombras Maior"))
+      .toEqual(dnd35SpellListFor("mago", 8).find((spell) => spell.name === "Evocação de Sombras Maior"));
+    expect(dnd35SpellListFor("feiticeiro", 2).find((spell) => spell.name === "Força do Touro"))
+      .toEqual(dnd35SpellListFor("mago", 2).find((spell) => spell.name === "Força do Touro"));
   });
 });

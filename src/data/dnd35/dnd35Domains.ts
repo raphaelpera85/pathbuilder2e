@@ -65,6 +65,40 @@ function domain(d: Omit<Dnd35Domain, "spells" | "footnotes"> & {
   };
 }
 
+const DOMAIN_ALIGNMENT_DISPEL_MECHANICS: Dnd35SpellMechanics = {
+  components: "V, G, FD", castingTime: "1 ação padrão", range: "Toque",
+  target: "Conjurador e criatura extraplanar tocada ou magia alinhada em criatura/objeto tocado",
+  duration: "1 rodada/nível ou até ser descarregada", savingThrow: "Veja texto",
+  spellResistance: "Veja texto",
+};
+
+const domainAlignmentDispelDetails = (alignment: string) => ({
+  detailsPage: 232,
+  summary: `Concede +4 de bônus de deflexão na CA contra ataques de criaturas ${alignment}. Com um toque, também pode tentar banir uma criatura extraplanar dessa tendência ou dissipar uma magia correspondente; o uso descarrega o efeito, e o alvo pode resistir conforme descrito na magia.`,
+  mechanics: DOMAIN_ALIGNMENT_DISPEL_MECHANICS,
+});
+
+const DICTUM_DOMAIN_DETAILS = {
+  detailsPage: 232,
+  detailsPageEnd: 233,
+  summary: "Afeta criaturas não leais numa dispersão impressa de 9 m ao redor do conjurador: conforme os Dados de Vida em relação ao nível de conjurador, podem ficar ensurdecidas, lentas, paralisadas ou morrer; esses efeitos se acumulam. Criaturas extraplanares não leais podem ser banidas (Vontade com −4), e alvos com DV acima do nível de conjurador não são afetados. O livro português indica raio de 9 m, enquanto o SRD 3.5 lista 40 pés (cerca de 12 m).",
+  mechanics: {
+    components: "V", castingTime: "1 ação padrão", range: "12 m",
+    target: "Criaturas não Leais numa dispersão de 9 m de raio centrada no conjurador",
+    duration: "Instantânea", savingThrow: "Nenhum ou Vontade anula (banimento; veja texto)", spellResistance: "Sim",
+  },
+};
+
+const DOMAIN_DISPEL_MAGIC_DETAILS = {
+  detailsPage: 232,
+  summary: "Encerra magias em criaturas ou objetos, suprime propriedades de um item mágico direcionado por 1d4 rodadas (itens mágicos não são afetados pela versão em área), dissipa efeitos numa área parcialmente sobreposta ou pode ser usada como contramágica após um teste. O teste é 1d20 + nível de conjurador (máximo +10); efeitos instantâneos e artefatos não são desfeitos. A ficha impressa indica raio de 6 m, mas o texto narrativo cita 9 m; o SRD 3.5 indica 20 pés (cerca de 6 m).",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)",
+    target: "Um conjurador, criatura ou objeto; ou explosão de 6 m de raio (texto narrativo cita 9 m)",
+    duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
 export const DND35_DOMAINS: Dnd35Domain[] = [
   domain({
     id: "agua", name: "Água", sourcePage: "186",
@@ -133,6 +167,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "9 Invocar Criaturas IX*: Invoca um extraplanar para auxiliar o conjurador",
     ],
     spellDetails: {
+      "Dissipar o Mal": domainAlignmentDispelDetails("malignas"),
       "Destruição Sagrada": {
         detailsPage: 228,
         summary: "Afeta apenas criaturas malignas ou neutras. Causa 1d8 de dano a cada 2 níveis de conjurador (máximo 5d8) a cada criatura maligna, ou 1d6 por nível (máximo 10d6) contra extraplanares malignos, que também ficam cegos por 1 rodada. Um sucesso no teste de Vontade reduz o dano à metade e evita a cegueira. Criaturas neutras recebem metade do dano, não ficam cegas e podem reduzi-lo à metade novamente com um sucesso no teste de Vontade.",
@@ -160,6 +195,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Manto do Caos^F: +4 na CA, +4 resistência e RM 25 contra magias Leais",
       "9 Invocar Criaturas IX*: Invoca um ser extraplanar para auxiliar o conjurador",
     ],
+    spellDetails: { "Dissipar a Ordem": domainAlignmentDispelDetails("leais") },
     footnote: "Somente como magia do caos",
   }),
   domain({
@@ -180,7 +216,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
     spellDetails: {
       "Detectar Portas Secretas": {
         detailsPage: 230,
-        summary: "Revela portas, compartimentos e esconderijos construídos especificamente para não serem notados, numa emanação em cone. A cada rodada de concentração, amplia a área examinada e o tipo de informação; uma porta comum apenas escondida por objetos não é detectada.",
+        summary: "Numa emanação em cone, revela portas, compartimentos e esconderijos construídos para não serem notados; uma porta comum apenas encoberta por objetos não é detectada. A primeira rodada indica presença, a segunda revela quantidade e localização, e rodadas adicionais permitem examinar o mecanismo.",
         mechanics: {
           components: "V, G", castingTime: "1 ação padrão", range: "18 m",
           target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
@@ -195,6 +231,15 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
           components: "V, G, F/FD", castingTime: "1 ação padrão", range: "18 m",
           target: "Emanação em cone", duration: "Concentração, até 1 minuto/nível (D)",
           savingThrow: "Vontade anula (veja texto)", spellResistance: "Não",
+        },
+      },
+      "Discernir Localização": {
+        detailsPage: 231,
+        summary: "Localiza exatamente uma criatura ou objeto conhecido, superando proteções comuns contra vidência e localização. Para localizar uma criatura, o conjurador precisa tê-la visto ou possuir um objeto que lhe pertence; para localizar um objeto, precisa tê-lo tocado ao menos uma vez.",
+        mechanics: {
+          components: "V, G, FD", castingTime: "10 minutos", range: "Ilimitado",
+          target: "Uma criatura ou objeto", duration: "Instantânea",
+          savingThrow: "Nenhum", spellResistance: "Não",
         },
       },
     },
@@ -248,6 +293,17 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Metamorfosear Objetos: Transforma qualquer alvo em outra coisa",
       "9 Parar o Tempo: Você age livremente durante 1d4+1 rodadas",
     ],
+    spellDetails: {
+      "Dificultar Detecção": {
+        detailsPage: 231,
+        summary: "Protege uma criatura ou objeto contra adivinhações como vidência, clarividência/clariaudiência e localizar objeto. Se a magia de observação for lançada diretamente contra o alvo protegido, o conjurador precisa superar um teste resistido de conjurador; também protege o equipamento carregado pela criatura.",
+        mechanics: {
+          components: "V, G, M", castingTime: "1 ação padrão", range: "Toque",
+          target: "Criatura ou objeto tocado", duration: "1 hora/nível",
+          savingThrow: "Vontade anula (inofensiva, objeto)", spellResistance: "Sim (inofensiva, objeto)",
+        },
+      },
+    },
   }),
   domain({
     id: "fogo", name: "Fogo", sourcePage: "187",
@@ -264,6 +320,16 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Nuvem Incendiária: Nuvem causa 4d6 de dano de fogo/rodada",
       "9 Grupo de Elementais◆: Invoca vários elementais",
     ],
+    spellDetails: {
+      "Escudo do Fogo": {
+        detailsPage: 236,
+        summary: "Escolha o escudo de calor ou de frio: ataques corpo a corpo contra você causam dano ao atacante, e você recebe resistência ao tipo de energia oposto. Reflexos reduz à metade o dano do escudo.",
+        mechanics: {
+          components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+          duration: "1 rodada/nível (D)", savingThrow: "Veja texto", spellResistance: "Sim (inofensiva)",
+        },
+      },
+    },
     footnote: "Somente para resistir ao frio ou ao fogo",
     footnote2: "Somente como magia do fogo",
   }),
@@ -282,6 +348,24 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Punho Cerrado de Bigby: Uma grande mão Grande fornece cobertura, empurra ou ataca seus inimigos",
       "9 Mão Esmagadora de Bigby: Uma grande mão Grande fornece cobertura, empurra ou esmaga seus inimigos",
     ],
+    spellDetails: {
+      "Força do Touro": {
+        detailsPage: 241,
+        summary: "Concede ao alvo +4 de bônus de melhoria em Força por 1 minuto/nível. O bônus não se acumula com outros bônus de melhoria para Força.",
+        mechanics: {
+          components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada",
+          duration: "1 minuto/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+        },
+      },
+      "Força dos Justos": {
+        detailsPage: 241,
+        summary: "Aumenta o conjurador em uma categoria de tamanho e concede +8 de bônus de tamanho em Força, +4 em Constituição e armadura natural, além de redução de dano 5/magia. O espaço, alcance e dano das armas são ajustados ao novo tamanho.",
+        mechanics: {
+          components: "V, G, FD", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+          duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+        },
+      },
+    },
   }),
   domain({
     id: "guerra", name: "Guerra", sourcePage: "187-188",
@@ -314,6 +398,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Proteção Contra Magias^MF: Concede bônus de resistência de +8",
       "9 Disjunção de Mordenkainen: Dissipa magia e desencanta itens mágicos",
     ],
+    spellDetails: { "Dissipar Magia": DOMAIN_DISPEL_MAGIC_DETAILS },
   }),
   domain({
     id: "mal", name: "Mal", sourcePage: "188",
@@ -330,6 +415,7 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Aura Profana^F: +4 na CA, +4 resistência e RM 25 contra magias bondosas",
       "9 Invocar Criaturas IX*: Invoca um ser extraplanar para auxiliar o conjurador",
     ],
+    spellDetails: { "Dissipar o Bem": domainAlignmentDispelDetails("bondosas") },
     footnote: "Somente como magia do mal",
   }),
   domain({
@@ -363,6 +449,19 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Escudo da Ordem^F: +4 na CA, +4 resistência e RM 25 contra magias caóticas",
       "9 Invocar Criaturas IX*: Invoca um extra-planar para auxiliar o conjurador",
     ],
+    spellDetails: {
+      "Dissipar o Caos": domainAlignmentDispelDetails("caóticas"),
+      Ditado: DICTUM_DOMAIN_DETAILS,
+      "Escudo da Ordem": {
+        detailsPage: 236,
+        summary: "Uma aura protege aliados contra efeitos caóticos: concede +4 de deflexão na CA e +4 de resistência nos testes de resistência, resistência à magia 25 contra magias caóticas e proteção contra controle mental e possessão. Um atacante caótico que acerte um protegido com ataque corpo a corpo pode ficar lento por 1 rodada.",
+        mechanics: {
+          components: "V, G, F", castingTime: "1 ação padrão", range: "6 m",
+          target: "Uma criatura/nível dentro de uma explosão de 6 m de raio centrada no conjurador",
+          duration: "1 rodada/nível (D)", savingThrow: "Veja texto", spellResistance: "Sim (inofensiva)",
+        },
+      },
+    },
     footnote: "Somente como magia da ordem",
   }),
   domain({
@@ -413,6 +512,16 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Explosão Solar: Cega todos que estejam a menos de 3 m, causa 6d6 de dano",
       "9 Esfera Prismática: Como muralha prismática, mas cerca você por todos os lados",
     ],
+    spellDetails: {
+      "Explosão Solar": {
+        detailsPage: 240,
+        summary: "Uma explosão de luz cega as criaturas na área e causa 6d6 de dano; mortos-vivos sofrem 1d6 por nível de conjurador (máximo 25d6). Um sucesso em Reflexos reduz o dano à metade, mas não evita a cegueira.",
+        mechanics: {
+          components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+          target: "Explosão de 24 m de raio", duration: "Instantânea", savingThrow: "Reflexos parcial (veja texto)", spellResistance: "Sim",
+        },
+      },
+    },
   }),
   domain({
     id: "sorte", name: "Sorte", sourcePage: "189",
