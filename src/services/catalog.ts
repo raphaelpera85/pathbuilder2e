@@ -5,7 +5,7 @@ import { getSystemActionItems } from "../data/systemActions";
 import { getSystemConditionItems } from "../data/systemConditions";
 import { DND35_CLASSES } from "../data/dnd35/dnd35Classes";
 import { DND35_SPELL_LISTS } from "../data/dnd35/dnd35SpellLists";
-import { pf1eClericCantripRows } from "../data/pf1e/pf1eSpells";
+import { pf1eCoreCantripRows } from "../data/pf1e/pf1eSpells";
 import { OSE_CLASSIC_CORE_CLASS_IDS } from "../data/ose/oseRules";
 import systemsSnapshot from "../data/catalog/snapshots/systems.json";
 import snapshotManifest from "../data/catalog/snapshots/manifest.json";
@@ -266,7 +266,7 @@ function localRuntimeItems(category: PickerType, systemId: string, ruleset: stri
       spellRows.push(...dnd35CoreSpellRows());
     }
     if ((!ruleset || ruleset === "legacy_pf1") && (systemId === "pf1e" || systemId === "all")) {
-      spellRows.push(...pf1eClericCantripRows());
+      spellRows.push(...pf1eCoreCantripRows());
     }
     if (spellRows.length) return spellRows.map((record) => normalizeCatalogRecordToPickerItem(record, category));
   }
@@ -328,7 +328,7 @@ export function fetchCatalogLocalMetrics(): Promise<CatalogLocalMetrics> {
 async function calculateCatalogLocalMetrics(): Promise<CatalogLocalMetrics> {
   const counts = await fetchCatalogTableCounts();
   counts.catalog_spells += dnd35CoreSpellRows().length;
-  counts.catalog_spells += pf1eClericCantripRows().length;
+  counts.catalog_spells += pf1eCoreCantripRows().length;
   const categories = [...new Map(
     Object.entries(PICKER_TYPE_TO_TABLE).map(([category, table]) => [table, category as PickerType]),
   ).values()];
