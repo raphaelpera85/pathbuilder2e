@@ -1421,7 +1421,7 @@ describe("D&D 3.5 — descrições verificadas nas pp. 240–241", () => {
     const cases: Array<[string, number, string, number, number | undefined, Record<string, unknown>]> = [
       ["mago", 8, "Evocação de Sombras Maior", 240, undefined, {
         components: "V, G", castingTime: "1 ação padrão", range: "Veja texto", target: "Veja texto",
-        duration: "Veja texto", savingThrow: "Vontade desacredita (veja texto)", spellResistance: "Sim",
+        duration: "Veja texto", savingThrow: "Vontade desacredita (se interagir)", spellResistance: "Sim",
       }],
       ["clerigo", 4, "Expulsão", 240, undefined, {
         components: "V, G, FD", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",

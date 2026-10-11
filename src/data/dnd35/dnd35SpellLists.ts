@@ -1726,7 +1726,7 @@ const SHADOW_EVOCATION_GREATER_DETAILS: VerifiedSpellDetails = {
   summary: "Imita uma magia de evocação de até 7º nível, com 60% de realidade para criaturas que acreditam nela; criaturas que desacreditam sofrem apenas 60% dos efeitos. Alcance, alvo e duração dependem da magia copiada.",
   mechanics: {
     components: "V, G", castingTime: "1 ação padrão", range: "Veja texto", target: "Veja texto",
-    duration: "Veja texto", savingThrow: "Vontade desacredita (veja texto)", spellResistance: "Sim",
+    duration: "Veja texto", savingThrow: "Vontade desacredita (se interagir)", spellResistance: "Sim",
   },
 };
 
@@ -1815,7 +1815,7 @@ const FLAME_ARROW_DETAILS: VerifiedSpellDetails = {
 
 const FAERIE_FIRE_DETAILS: VerifiedSpellDetails = {
   summaryOnly: false, detailsPage: 241,
-  summary: "Contorna criaturas e objetos com luz colorida, delineando-os e anulando benefícios de escuridão, camuflagem, deslocamento e efeitos semelhantes. Não concede os benefícios de uma magia de luz a criaturas na área; a cor é escolhida pelo conjurador.",
+  summary: "Contorna criaturas e objetos com luz colorida, delineando-os e anulando benefícios de escuridão, camuflagem, deslocamento, invisibilidade e efeitos semelhantes. Não concede os benefícios de uma magia de luz a criaturas na área; a cor é escolhida pelo conjurador.",
   mechanics: {
     components: "V, G, FD", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
     target: "Criaturas ou objetos dentro de uma explosão de 1,5 m de raio", duration: "1 minuto/nível (D)",

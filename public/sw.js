@@ -1,5 +1,5 @@
 // Pathbuilder 2e Local - Service Worker (Offline PWA Cache)
-const CACHE_NAME = "pb2e-cache-v1";
+const CACHE_NAME = "pb2e-cache-v2";
 const ASSETS_TO_CACHE = [
   "./",
   "./index.html",
@@ -39,6 +39,26 @@ self.addEventListener("fetch", (event) => {
   if (!event.request.url.startsWith(self.location.origin)) {
     return;
   }
+
+  // Nunca sirva um index.html antigo apontando para bundles que já foram
+  // removidos em um deploy. Navegações usam rede primeiro e cache como fallback
+  // para manter o modo offline funcional.
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      fetch(event.request).then((response) => {
+        if (response.ok) {
+          const responseToCache = response.clone();
+          void caches.open(CACHE_NAME).then((cache) => cache.put("./index.html", responseToCache));
+        }
+        return response;
+      }).catch(async () => {
+        const cached = await caches.match("./index.html");
+        return cached || caches.match("./");
+      })
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((cached) => {
       if (cached) return cached;
