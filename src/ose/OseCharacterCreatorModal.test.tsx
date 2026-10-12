@@ -28,6 +28,15 @@ const ADVANCED_ONLY_NAMES = ["Acrobata", "Assassino", "Bárbaro", "Bardo", "Drui
 afterEach(cleanup);
 
 describe("OseCharacterCreatorModal — fluxo compartilhado do construtor", () => {
+  it("no layout de página não é um diálogo modal e volta à biblioteca", () => {
+    const onClose = vi.fn();
+    const { container } = render(<OseCharacterCreatorModal isOpen layout="page" onClose={onClose} onCharacterCreated={vi.fn()} />);
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(container.querySelector(".pb-wizard-page")).not.toBeNull();
+    expect(screen.getByRole("navigation", { name: "Progresso da criação" })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Voltar à biblioteca" }));
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
   it("mantém navegação e resumo Pathfinder, mostrando somente a etapa selecionada", () => {
     render(<OseCharacterCreatorModal isOpen onClose={vi.fn()} onCharacterCreated={vi.fn()} />);
     const navigation = screen.getByRole("navigation", { name: "Progresso da criação" });

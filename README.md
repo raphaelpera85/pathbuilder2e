@@ -1,7 +1,8 @@
 # Pathbuilder 2e Local
 
 Construtor de personagens PF2e local-first com React, TypeScript e suporte
-opcional a contas e fichas privadas no Supabase.
+opcional a contas e fichas privadas no Supabase. O catálogo de regras (sistemas, raças, classes, talentos, magias,
+itens) não usa Supabase: vive em `src/data/catalog/snapshots/<sistema>/<ruleset>/`.
 
 ## Construtores por sistema
 
@@ -15,6 +16,13 @@ sistema. A cobertura verificada atualmente é:
 | D&D 3.5 | `v35`, Champions of Valor, Defensores da Fé e Frostburn | Catálogo versionado: núcleo com 7 raças, 11 classes, 109 talentos, 45 perícias e 259 armas/armaduras/itens; suplementos trazem mais classes, opções, itens e 190 magias | Livros e rulesets ficam separados; revisão das regras dos suplementos continua aberta |
 | D&D 5e | Livro do Jogador 2014 / `standard` | 9 raças, sub-raças, 12 classes, subclasses, antecedentes, 18 perícias, talentos, magias, ferramentas e equipamentos | O construtor não mistura conteúdo de 2024; opções de livros externos não são habilitadas por padrão |
 | Old-School Essentials | Advanced Fantasy e Classic Fantasy | 16 classes, 10 raças, progressões, atributos 3d6, salvamentos, THAC0/CA, itens, magias e PDF editável | OSE não possui catálogo nativo de talentos nem vantagem/desvantagem; suplementos, monstros, especialistas e retentores ficam fora do núcleo |
+
+Os construtores de Tormenta20, D&D 5e, D&D 3.5 e OSE abrem como página em
+`#/library`, no mesmo padrão de bancada do Pathfinder (etapas, formulário e
+resumo da ficha), não como popup: `layout="page"` em
+`CoreCharacterCreatorModal`, `Dnd35CharacterCreatorModal` e
+`OseCharacterCreatorModal`. O padrão `layout="modal"` continua disponível.
+Ainda não há rota própria nem ficha viva/subir de nível fora do Pathfinder.
 
 Vantagem/desvantagem só é aplicada quando existe como regra nativa ou derivada
 verificada: modos de d20 e interação com armadura em D&D 5e, penalidades de

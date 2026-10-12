@@ -8,6 +8,20 @@ import { getCoreCatalog, type MultiSystemCharacter } from "../data/multiSystemCh
 afterEach(cleanup);
 
 describe("construtor core por sistema", () => {
+  it("no layout de página não é um diálogo modal e mantém a bancada do construtor", () => {
+    const onClose = vi.fn();
+    render(<CoreCharacterCreatorModal isOpen layout="page" system="t20" onClose={onClose} onCharacterCreated={vi.fn()} />);
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(screen.getByRole("navigation", { name: "Progresso da criação" })).toBeInTheDocument();
+    expect(screen.getByRole("complementary", { name: "Resumo da ficha" })).toBeInTheDocument();
+    expect(document.body.style.overflow).not.toBe("hidden");
+    fireEvent.click(screen.getByRole("button", { name: /Voltar à biblioteca/ }));
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+  it("no layout padrão continua sendo um diálogo modal", () => {
+    render(<CoreCharacterCreatorModal isOpen system="t20" onClose={vi.fn()} onCharacterCreated={vi.fn()} />);
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+  });
   it.each([
     ["t20", "Tormenta20"],
     ["dnd5e", "D&D 5e 2014"],

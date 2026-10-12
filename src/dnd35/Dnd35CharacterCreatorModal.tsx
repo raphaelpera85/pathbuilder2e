@@ -77,6 +77,8 @@ interface Dnd35CharacterCreatorModalProps {
   onClose: () => void;
   onCharacterCreated: (charData: Dnd35CharacterCreatedData) => void;
   initialCharacter?: Dnd35CharacterCreatedData;
+  /** "page" renderiza a bancada inline (padrão do construtor do Pathfinder), sem overlay. */
+  layout?: "modal" | "page";
 }
 
 function roll4d6DropLowest(): number {
@@ -105,17 +107,19 @@ export function Dnd35CharacterCreatorModal({
   onClose,
   onCharacterCreated,
   initialCharacter,
+  layout = "modal",
 }: Dnd35CharacterCreatorModalProps) {
+  const isPage = layout === "page";
   const [step, setStep] = useState<number>(1);
   const modalRef = useRef<HTMLDivElement>(null);
-  useModalInertBackground(modalRef, isOpen);
+  useModalInertBackground(modalRef, isOpen && !isPage);
   const [validationMessage, setValidationMessage] = useState<string>("");
   const [charName, setCharName] = useState("Aventureiro");
   const [alignment, setAlignment] = useState<string>("Neutro e Bom");
   const [alignmentNotice, setAlignmentNotice] = useState<string>("");
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen || isPage) return;
     const previousFocus = document.activeElement as HTMLElement | null;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -151,7 +155,7 @@ export function Dnd35CharacterCreatorModal({
       window.removeEventListener("keydown", handleKeyDown);
       previousFocus?.focus();
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, isPage, onClose]);
 
   // Step 1: Atributos
   const [abilities, setAbilities] = useState<Record<Dnd35AbilityName, number>>(() => ({
@@ -658,15 +662,15 @@ export function Dnd35CharacterCreatorModal({
 
   const modalRoot = document.getElementById("react-modal-root") || document.body;
 
-  return createPortal(
-    <div className="dnd35-wizard-overlay" role="dialog" aria-modal="true" aria-labelledby="dnd35-wizard-title" aria-describedby="dnd35-wizard-description">
+  const wizardTree = (
+    <div className="dnd35-wizard-overlay" {...(isPage ? {} : { role: "dialog", "aria-modal": true })} aria-labelledby="dnd35-wizard-title" aria-describedby="dnd35-wizard-description">
       <div ref={modalRef} className="dnd35-wizard-modal">
         <header className="dnd35-wizard-header">
           <div>
             <h2 id="dnd35-wizard-title">⚔️ Criador de Personagem D&amp;D 3.5</h2>
             <p id="dnd35-wizard-description" className="dnd35-wizard-description">Fluxo de criação núcleo (Livro do Jogador): raças, classes, perícias, talentos e equipamento.</p>
           </div>
-          <button className="dnd35-btn" type="button" onClick={onClose} aria-label="Fechar">✕</button>
+          <button className="dnd35-btn" type="button" onClick={onClose} aria-label={isPage ? "Voltar à biblioteca" : "Fechar"}>{isPage ? "← Voltar à biblioteca" : "✕"}</button>
         </header>
 
         <CharacterBuilderFrame
@@ -1051,7 +1055,7 @@ export function Dnd35CharacterCreatorModal({
         </footer>
         </CharacterBuilderFrame>
       </div>
-    </div>,
-    modalRoot,
+    </div>
   );
+  return isPage ? <div className="pb-wizard-page">{wizardTree}</div> : createPortal(wizardTree, modalRoot);
 }

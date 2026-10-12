@@ -24,6 +24,15 @@ const pickClass = (name: string) =>
   fireEvent.click(allButtons().find((b) => b.querySelector("strong")?.textContent === name)!);
 
 describe("Dnd35CharacterCreatorModal — fluxo compartilhado do construtor", () => {
+  it("no layout de página não é um diálogo modal e volta à biblioteca", () => {
+    const onClose = vi.fn();
+    const { container } = render(<Dnd35CharacterCreatorModal isOpen layout="page" onClose={onClose} onCharacterCreated={vi.fn()} />);
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(container.querySelector(".pb-wizard-page")).not.toBeNull();
+    expect(screen.getByRole("navigation", { name: "Progresso da criação" })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Voltar à biblioteca" }));
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
   it("mantém navegação e resumo Pathfinder, mostrando somente a etapa selecionada", () => {
     render(<Dnd35CharacterCreatorModal isOpen onClose={vi.fn()} onCharacterCreated={vi.fn()} />);
     const navigation = screen.getByRole("navigation", { name: "Progresso da criação" });

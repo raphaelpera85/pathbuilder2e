@@ -1,0 +1,1665 @@
+[
+  {
+    "id": "dnd35.cor.prestige.cor-black-blood-cultist",
+    "name_pt": "Black Blood cultist",
+    "name_en": "Black Blood cultist",
+    "name_es": null,
+    "description_pt": "Chaotic evil, chaotic neutral, or neutral evil; Knowledge (nature) 2 ranks; Survival 8 ranks; Improved Unarmed Strike; Track; Ability to rage",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 12,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 44,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-black-blood-cultist",
+      "name": "Black Blood cultist",
+      "hitDie": 12,
+      "skillPointsPerLevel": "4 + Int modifier",
+      "requirements": {
+        "alignment": "Chaotic evil, chaotic neutral, or neutral evil",
+        "skills": [
+          "Knowledge (nature) 2 ranks",
+          "Survival 8 ranks"
+        ],
+        "feats": [
+          "Improved Unarmed Strike",
+          "Track"
+        ],
+        "special": [
+          "Ability to rage"
+        ]
+      },
+      "classSkills": [
+        "Climb",
+        "Handle Animal",
+        "Hide",
+        "Intimidate",
+        "Jump",
+        "Knowledge (nature)",
+        "Listen",
+        "Move Silently",
+        "Search",
+        "Spot",
+        "Survival",
+        "Swim"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": 0,
+          "fort": 2,
+          "ref": 2,
+          "will": 0,
+          "special": [
+            "Feral rage (claws)",
+            "damage reduction 1/silver"
+          ]
+        },
+        {
+          "level": 2,
+          "bab": 1,
+          "fort": 3,
+          "ref": 3,
+          "will": 0,
+          "special": [
+            "Improved grapple"
+          ]
+        },
+        {
+          "level": 3,
+          "bab": 2,
+          "fort": 3,
+          "ref": 3,
+          "will": 1,
+          "special": [
+            "Feral rage (bite)"
+          ]
+        },
+        {
+          "level": 4,
+          "bab": 3,
+          "fort": 4,
+          "ref": 4,
+          "will": 1,
+          "special": [
+            "Scent",
+            "DR 3/silver"
+          ]
+        },
+        {
+          "level": 5,
+          "bab": 3,
+          "fort": 4,
+          "ref": 4,
+          "will": 1,
+          "special": [
+            "Stranglehold"
+          ]
+        },
+        {
+          "level": 6,
+          "bab": 4,
+          "fort": 5,
+          "ref": 5,
+          "will": 2,
+          "special": [
+            "Feral rage (rend)"
+          ]
+        },
+        {
+          "level": 7,
+          "bab": 5,
+          "fort": 5,
+          "ref": 5,
+          "will": 2,
+          "special": [
+            "Improved natural attacks"
+          ]
+        },
+        {
+          "level": 8,
+          "bab": 6,
+          "fort": 6,
+          "ref": 6,
+          "will": 2,
+          "special": [
+            "Savage grapple"
+          ]
+        },
+        {
+          "level": 9,
+          "bab": 6,
+          "fort": 6,
+          "ref": 6,
+          "will": 3,
+          "special": [
+            "DR 5/silver"
+          ]
+        },
+        {
+          "level": 10,
+          "bab": 7,
+          "fort": 7,
+          "ref": 7,
+          "will": 3,
+          "special": [
+            "Feral form"
+          ]
+        }
+      ],
+      "features": [
+        {
+          "name": "Feral Rage (Ex)",
+          "text": "Black Blood cultist class levels stack with barbarian levels for purposes of determining your rage ability. Thus, an 8th-level barbarian/4th-level Black Blood cultist can use greater rage four times per day, just as a 12th-level barbarian could. At 1st level, when raging, you gain two claw attacks at your highest base attack bonus. Each claw deals 1d6 points of damage plus your Strength modifier. You can use a one-handed weapon and a claw, but when doing so the claw counts as a secondary weapon (adding only half your Strength bonus to damage, and with a -5 modifier on the attack roll). At 3rd level, you gain a bite attack when raging in addition to your two claw attacks. The claws are still your primary weapons and the bite is your secondary weapon. The bite deals 1d4 points of damage plus half your Strength modifier. You can use a two-handed weapon with your bite as a secondary attack, or you can use a one-handed weapon with your claw and bite as secondary attacks. At 6th level and higher, whenever you hit with both of your claw attacks during a rage, you rend your opponent's flesh, automatically dealing double claw damage in addition to normal damage."
+        },
+        {
+          "name": "Damage Reduction (Ex)",
+          "text": "At 4th level and at 9th level, you gain damage reduction, which stacks with damage reduction from other sources. Silvered weapons ignore the damage reduction granted by levels in this prestige class."
+        },
+        {
+          "name": "Improved Grapple",
+          "text": "At 2nd level, you gain the Improved Grapple feat even if you do not meet the prerequisites for it."
+        },
+        {
+          "name": "Scent (Ex)",
+          "text": "At 4th level, you gain the scent ability."
+        },
+        {
+          "name": "Stranglehold",
+          "text": "At 5th level, you learn to snap the necks of fallen enemies, allowing you to administer a coup de grace with your bite attack as a move action."
+        },
+        {
+          "name": "Improved Natural Attacks",
+          "text": "At 7th level, your natural attacks become even more deadly. Your claw attacks now deal 1d8 points of damage and your bite attack deals 1d6 points."
+        },
+        {
+          "name": "Savage Grapple",
+          "text": "Starting at 8th level, you deal damage as if you had hit with all your natural weapons (including rend, if you are raging) on a successful grapple check."
+        },
+        {
+          "name": "Feral Form",
+          "text": "By 10th level, you have gained great control over your bestial nature. You can now use your claw, bite, and rend attacks even when you are not raging."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cor.prestige.cor-justice-of-weald-and-woe",
+    "name_pt": "Justice of weald and woe",
+    "name_en": "Justice of weald and woe",
+    "name_es": null,
+    "description_pt": "Craft (bowmaking) 8 ranks; Hide 8 ranks; Knowledge (nature) 4 ranks; Move Silently 8 ranks; Survival 8 ranks; Point Blank Shot; Weapon Focus (longbow); Base attack bonus +6",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 44,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-justice-of-weald-and-woe",
+      "name": "Justice of weald and woe",
+      "hitDie": 8,
+      "skillPointsPerLevel": "4 + Int modifier",
+      "requirements": {
+        "skills": [
+          "Craft (bowmaking) 8 ranks",
+          "Hide 8 ranks",
+          "Knowledge (nature) 4 ranks",
+          "Move Silently 8 ranks",
+          "Survival 8 ranks"
+        ],
+        "feats": [
+          "Point Blank Shot",
+          "Weapon Focus (longbow)"
+        ],
+        "special": [
+          "Base attack bonus +6"
+        ]
+      },
+      "classSkills": [
+        "Balance",
+        "Bluff",
+        "Climb",
+        "Concentration",
+        "Craft",
+        "Disguise",
+        "Escape Artist",
+        "Gather Information",
+        "Handle Animal",
+        "Hide",
+        "Intimidate",
+        "Jump",
+        "Knowledge (local)",
+        "Knowledge (nature)",
+        "Knowledge (religion)",
+        "Listen",
+        "Sense Motive",
+        "Spot",
+        "Survival",
+        "Swim",
+        "Tumble"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": 0,
+          "fort": 3,
+          "ref": 3,
+          "will": 0,
+          "special": [
+            "Spells"
+          ]
+        },
+        {
+          "level": 2,
+          "bab": 1,
+          "fort": 3,
+          "ref": 3,
+          "will": 1,
+          "special": [
+            "Bonus feat",
+            "woodland stride"
+          ]
+        },
+        {
+          "level": 3,
+          "bab": 2,
+          "fort": 4,
+          "ref": 4,
+          "will": 1,
+          "special": [
+            "Sneak attack +1d6"
+          ]
+        },
+        {
+          "level": 4,
+          "bab": 3,
+          "fort": 4,
+          "ref": 4,
+          "will": 1,
+          "special": [
+            "Lucky shot",
+            "trackless step"
+          ]
+        },
+        {
+          "level": 5,
+          "bab": 3,
+          "fort": 5,
+          "ref": 5,
+          "will": 1,
+          "special": [
+            "Poison use"
+          ]
+        },
+        {
+          "level": 6,
+          "bab": 4,
+          "fort": 5,
+          "ref": 5,
+          "will": 2,
+          "special": [
+            "Steady hand"
+          ]
+        },
+        {
+          "level": 7,
+          "bab": 5,
+          "fort": 6,
+          "ref": 6,
+          "will": 2,
+          "special": [
+            "Sneak attack +2d6"
+          ]
+        },
+        {
+          "level": 8,
+          "bab": 6,
+          "fort": 6,
+          "ref": 6,
+          "will": 2,
+          "special": [
+            "Bonus feat"
+          ]
+        },
+        {
+          "level": 9,
+          "bab": 6,
+          "fort": 7,
+          "ref": 7,
+          "will": 3,
+          "special": [
+            "Hide in plain sight"
+          ]
+        },
+        {
+          "level": 10,
+          "bab": 7,
+          "fort": 7,
+          "ref": 7,
+          "will": 3,
+          "special": [
+            "Death attack",
+            "immunity to poison"
+          ]
+        }
+      ],
+      "spellsPerDay": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          2,
+          0,
+          null,
+          null
+        ],
+        [
+          3,
+          1,
+          null,
+          null
+        ],
+        [
+          3,
+          2,
+          0,
+          null
+        ],
+        [
+          3,
+          3,
+          1,
+          null
+        ],
+        [
+          3,
+          3,
+          2,
+          0
+        ],
+        [
+          3,
+          3,
+          3,
+          1
+        ],
+        [
+          3,
+          3,
+          3,
+          2
+        ],
+        [
+          3,
+          3,
+          3,
+          3
+        ]
+      ],
+      "spellsKnown": [
+        [
+          2,
+          null,
+          null,
+          null
+        ],
+        [
+          3,
+          null,
+          null,
+          null
+        ],
+        [
+          3,
+          2,
+          null,
+          null
+        ],
+        [
+          4,
+          3,
+          null,
+          null
+        ],
+        [
+          4,
+          3,
+          2,
+          null
+        ],
+        [
+          4,
+          4,
+          3,
+          null
+        ],
+        [
+          4,
+          4,
+          3,
+          2
+        ],
+        [
+          4,
+          4,
+          4,
+          3
+        ],
+        [
+          4,
+          4,
+          4,
+          3
+        ],
+        [
+          4,
+          4,
+          4,
+          4
+        ]
+      ],
+      "spellList": [
+        {
+          "level": 1,
+          "spells": [
+            "camouflage",
+            "detect snares and pits",
+            "endure elements",
+            "faerie fire",
+            "hide from animals",
+            "jump",
+            "longstrider",
+            "obscuring mist",
+            "pass without trace",
+            "woodwisp arrow*"
+          ]
+        },
+        {
+          "level": 2,
+          "spells": [
+            "barkskin",
+            "brilliant energy arrow*",
+            "cat's grace",
+            "fog cloud",
+            "snare",
+            "spellslayer arrow*",
+            "speak with plants",
+            "spider climb",
+            "tree shape"
+          ]
+        },
+        {
+          "level": 3,
+          "spells": [
+            "arrowsplit*",
+            "darkflame arrow*",
+            "darkvision",
+            "meld into stone",
+            "serpent arrow*",
+            "spike growth",
+            "water breathing",
+            "wind wall"
+          ]
+        },
+        {
+          "level": 4,
+          "spells": [
+            "bloodfreeze arrow*",
+            "doublestrike arrow*",
+            "freedom of movement",
+            "poison",
+            "scrying",
+            "shadow arrow*",
+            "spike stones",
+            "tree stride"
+          ]
+        }
+      ],
+      "features": [
+        {
+          "name": "Weapon and Armor Proficiency",
+          "text": "You gain no proficiency with any weapon, armor, or shield."
+        },
+        {
+          "name": "Spellcasting",
+          "text": "You gain spells according to the tables above. You do not gain new spells in any other spellcasting classes that you might have had before you took this prestige class, but you can still cast spells from your previous class. You can only choose spells from the justice spell list; justices use their Wisdom modifier for calculating bonus spells and spell DCs. (Spells known: the first entry of each spell level assumes the character has sufficient Intelligence to have a bonus spell of this level.)"
+        },
+        {
+          "name": "Bonus Feats",
+          "text": "At 2nd and 8th levels, you gain a bonus archery feat. When you gain a new bonus feat, you must choose from the following list: Deflect Arrows, Far Shot, Improved Critical (longbow), Improved Precise Shot, Manyshot, Mounted Archery, Precise Shot, Rapid Shot, Shot on the Run, Snatch Arrows, Weapon Specialization (longbow only), Greater Weapon Focus (longbow only), Greater Weapon Specialization (longbow only). You must meet all prerequisites for a bonus feat. Use your justice level when determining whether you meet a prerequisite of a minimum fighter level."
+        },
+        {
+          "name": "Woodland Stride (Ex)",
+          "text": "At 2nd level, you can move through any sort of undergrowth, as the druid ability described on page 36 of the Player's Handbook."
+        },
+        {
+          "name": "Sneak Attack (Ex)",
+          "text": "Beginning at 3rd and 7th level, you deal an extra 1d6 points of damage when striking an opponent when the opponent is denied a Dexterity bonus to armor class, such as when it is surprised and flat-footed, or when you attack from a flanking position, as the sneak attack ability of rogues. Your damage dice stack with any sneak attack damage dice you might have gained from a previous class."
+        },
+        {
+          "name": "Lucky Shot (Su)",
+          "text": "Once per day as a free action, you can gain a +10 insight bonus to one attack roll with your longbow. You must declare the use of this ability before rolling the die."
+        },
+        {
+          "name": "Trackless Step (Ex)",
+          "text": "At 4th level and higher, you leave no trail in natural surroundings and cannot be tracked. You can leave a trail on purpose if you so desire."
+        },
+        {
+          "name": "Poison Use (Ex)",
+          "text": "At 5th level, you learn to create and/or extract natural poisons and apply them to your weapons without any danger of harming yourself."
+        },
+        {
+          "name": "Steady Hand (Ex)",
+          "text": "At 6th level, you become able to fire your personal longbow in melee combat without provoking attacks of opportunity. You only gain the benefit of this special ability when wearing light or no armor."
+        },
+        {
+          "name": "Hide in Plain Sight (Ex)",
+          "text": "At 9th level, you gain the ability to hide in plain sight, as the ranger ability described on page 48 of the Player's Handbook."
+        },
+        {
+          "name": "Death Attack (Ex)",
+          "text": "At 10th level, you gain the ability to study your victim for 3 rounds and then make a sneak attack with a longbow that, if it successfully deals damage, has the additional effect of possibly either paralyzing or killing the target (your choice). While studying the victim, you can undertake other actions so long as your attention stays focused on the target and the target does not detect you or recognize you as an enemy. If the victim of such an attack fails a Fortitude save (DC 20 + your Int modifier) against the kill effect, it dies. If the saving throw fails against the paralysis effect, the target is rendered helpless and unable to act for 1d6+10 rounds. If the target's saving throw succeeds, the attack is just a normal sneak attack. Once you have completed the 3 rounds of study, you must make the death attack within the next 3 rounds. If a death attack is attempted and fails (the victim makes her save) or if you do not launch the attack within 3 rounds of completing the study, 3 new rounds of study are required before you can attempt another death attack."
+        },
+        {
+          "name": "Poison Immunity (Ex)",
+          "text": "At 10th level, you gain immunity to all natural poisons and animal venoms. This ability differs from the druid ability of the same name, in that it only applies to poisons derived from natural plants or fungi, or from animal or vermin venoms, not to all poisons, such as venoms from celestial animals or outsiders, or poisons derived from minerals or magic."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cor.prestige.cor-night-mask-deathbringer",
+    "name_pt": "Night Mask deathbringer",
+    "name_en": "Night Mask deathbringer",
+    "name_es": null,
+    "description_pt": "Any evil; Hide 8 ranks; Knowledge (local) 3 ranks; Move Silently 8 ranks; Great Fortitude; Evasion and uncanny dodge class features",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 6,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 44,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-night-mask-deathbringer",
+      "name": "Night Mask deathbringer",
+      "hitDie": 6,
+      "skillPointsPerLevel": "8 + Int modifier",
+      "requirements": {
+        "alignment": "Any evil",
+        "skills": [
+          "Hide 8 ranks",
+          "Knowledge (local) 3 ranks",
+          "Move Silently 8 ranks"
+        ],
+        "feats": [
+          "Great Fortitude"
+        ],
+        "special": [
+          "Evasion and uncanny dodge class features"
+        ]
+      },
+      "classSkills": [
+        "Balance",
+        "Bluff",
+        "Climb",
+        "Craft",
+        "Decipher Script",
+        "Diplomacy",
+        "Disable Device",
+        "Disguise",
+        "Escape Artist",
+        "Forgery",
+        "Gather Information",
+        "Hide",
+        "Intimidate",
+        "Jump",
+        "Knowledge (local)",
+        "Listen",
+        "Move Silently",
+        "Open Lock",
+        "Perform",
+        "Profession",
+        "Search",
+        "Sense Motive",
+        "Sleight of Hand",
+        "Spot",
+        "Swim",
+        "Tumble",
+        "Use Magic Device",
+        "Use Rope"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": 0,
+          "fort": 0,
+          "ref": 2,
+          "will": 0,
+          "special": [
+            "Creature of darkness",
+            "hesitating stare 1/day",
+            "light sensitivity",
+            "spider climb"
+          ]
+        },
+        {
+          "level": 2,
+          "bab": 1,
+          "fort": 0,
+          "ref": 3,
+          "will": 0,
+          "special": [
+            "Feral senses (low-light vision)"
+          ]
+        },
+        {
+          "level": 3,
+          "bab": 2,
+          "fort": 1,
+          "ref": 3,
+          "will": 1,
+          "special": [
+            "Speak with creatures of the night",
+            "ghost step 1/day"
+          ]
+        },
+        {
+          "level": 4,
+          "bab": 3,
+          "fort": 1,
+          "ref": 4,
+          "will": 1,
+          "special": [
+            "Hesitating stare 2/day",
+            "lesser blood bond",
+            "sneak attack +1d6"
+          ]
+        },
+        {
+          "level": 5,
+          "bab": 3,
+          "fort": 1,
+          "ref": 4,
+          "will": 1,
+          "special": [
+            "Improved evasion"
+          ]
+        },
+        {
+          "level": 6,
+          "bab": 4,
+          "fort": 2,
+          "ref": 5,
+          "will": 2,
+          "special": [
+            "Slippery mind",
+            "ghost step 2/day"
+          ]
+        },
+        {
+          "level": 7,
+          "bab": 5,
+          "fort": 2,
+          "ref": 5,
+          "will": 2,
+          "special": [
+            "Hesitating stare 3/day",
+            "feral senses (darkvision)"
+          ]
+        },
+        {
+          "level": 8,
+          "bab": 6,
+          "fort": 2,
+          "ref": 6,
+          "will": 2,
+          "special": [
+            "Sneak attack +2d6"
+          ]
+        },
+        {
+          "level": 9,
+          "bab": 6,
+          "fort": 3,
+          "ref": 6,
+          "will": 3,
+          "special": [
+            "Ghost step 3/day"
+          ]
+        },
+        {
+          "level": 10,
+          "bab": 7,
+          "fort": 3,
+          "ref": 7,
+          "will": 3,
+          "special": [
+            "Hesitating stare 4/day",
+            "greater blood bond"
+          ]
+        }
+      ],
+      "features": [
+        {
+          "name": "Creature of Darkness (Ex)",
+          "text": "Animals can sense the death in you, causing them to fear your presence. As a result, all animals except for bats, rats, and wolves have their initial attitudes moved down one category when you first approach them. In addition, you take a -2 penalty on all Ride checks due to the beast's inherent nervousness at your presence."
+        },
+        {
+          "name": "Hesitating Stare (Su)",
+          "text": "Deathbringers can force their opponents to confront their own mortality with but a glance. This ability can be activated once per day at any time, even when you are surprised. You cast a glance at any foe within 30 feet, who must then make a successful Will save (DC 10 + 1/2 your class level + Cha modifier) or be stunned for 1 round. You can use this ability twice per day at 4th level and higher, three times per day at 7th level and higher, and four times per day at 10th level."
+        },
+        {
+          "name": "Light Sensitivity (Ex)",
+          "text": "In sunlight or bright magical light (such as a daylight spell), a deathbringer is dazzled."
+        },
+        {
+          "name": "Spider Climb (Sp)",
+          "text": "Starting at 1st level, you can act as if you were under the influence of a spider climb spell (caster level equals your deathbringer class level). You can use this ability a number of times per day equal to your Charisma modifier, minimum one."
+        },
+        {
+          "name": "Feral Senses",
+          "text": "At 2nd level, you gain low-light vision—the ability to see twice as far as a human in starlight, moonlight, torchlight, or similar conditions of poor illumination. You retain the ability to distinguish color and detail under these conditions. At 7th level, you gain darkvision out to 60 feet."
+        },
+        {
+          "name": "Speak with Creatures of the Night (Ex)",
+          "text": "When you reach 3rd level, you can speak with rats, bats, and wolves as if you were under the influence of a speak with animals spell. This ability does nothing to affect the attitude of such creatures."
+        },
+        {
+          "name": "Ghost Step (Su)",
+          "text": "Once per day starting at 3rd level, you can make yourself invisible for 1 round. This is a swift action (something you can do as a free action once per round) that does not provoke attacks of opportunity. You can use this ability twice per day at 6th level and higher, and three times per day at 9th level and higher."
+        },
+        {
+          "name": "Lesser Blood Bond (Su)",
+          "text": "To use this ability, a deathbringer of 4th level or higher must get the target to drink three drops of her blood. She can do this by hiding the blood in food or drink, or by pinning the target for 1 round and bleeding directly into his mouth. Once this condition has been fulfilled, the deathbringer can cause a charm person effect to come over the target by speaking directly to him. The words used are unimportant, only that the deathbringer wills the target to be friendly to her. The caster level of the effect equals the deathbringer's class level, and the DC to resist the effect equals 10 + the deathbringer's class level + Cha modifier. You can have a number of outstanding blood bonds, active or not, equal to your Charisma modifier. Should you exceed this limit, the oldest blood bond becomes inactive."
+        },
+        {
+          "name": "Sneak Attack (Ex)",
+          "text": "At 4th level and higher, you deal extra damage when you catch a foe flat-footed or flank a foe, as the rogue class feature described on page 50 of the Player's Handbook. Sneak-attack dice attained from multiple sources stack."
+        },
+        {
+          "name": "Improved Evasion (Ex)",
+          "text": "At 5th level, your pseudo-vampiric celerity grants you supernatural reflexes. You now take no damage on a successful Reflex saving throw against area attacks and half damage on a failed save. You do not gain the benefit of this ability if you are helpless."
+        },
+        {
+          "name": "Slippery Mind (Su)",
+          "text": "When you attain 6th level, your mind is only partly mortal, allowing you to shrug off mental attacks and compulsions more easily than others. Any time you are affected by an enchantment spell or effect and you fail your saving throw, you can attempt the save again 1 round later at the same DC. You only get one extra chance to succeed per effect."
+        },
+        {
+          "name": "Greater Blood Bond (Su)",
+          "text": "This ability, acquired at 10th level, works just like lesser blood bond, except the target comes under the influence of a dominate person spell rather than charm person."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cor.prestige.cor-shade-hunter",
+    "name_pt": "Shade hunter",
+    "name_en": "Shade hunter",
+    "name_es": null,
+    "description_pt": "Any evil; Climb 4 ranks; Decipher Script 4 ranks; Disable Device 5 ranks; Jump 4 ranks; Knowledge (dungeoneering) 6 ranks; Knowledge (history) 2 ranks; Search 8 ranks; Speak Language (Netherese); Survival 6 ranks; Use Magic Device 5 ranks; Track; Shades as a favored enemy; trapfinding class feature",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 44,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-shade-hunter",
+      "name": "Shade hunter",
+      "hitDie": 8,
+      "skillPointsPerLevel": "8 + Int modifier",
+      "requirements": {
+        "alignment": "Any evil",
+        "skills": [
+          "Climb 4 ranks",
+          "Decipher Script 4 ranks",
+          "Disable Device 5 ranks",
+          "Jump 4 ranks",
+          "Knowledge (dungeoneering) 6 ranks",
+          "Knowledge (history) 2 ranks",
+          "Search 8 ranks",
+          "Speak Language (Netherese)",
+          "Survival 6 ranks",
+          "Use Magic Device 5 ranks"
+        ],
+        "feats": [
+          "Track"
+        ],
+        "special": [
+          "Shades as a favored enemy",
+          "trapfinding class feature"
+        ]
+      },
+      "classSkills": [
+        "Balance",
+        "Climb",
+        "Concentration",
+        "Decipher Script",
+        "Disable Device",
+        "Disguise",
+        "Gather Information",
+        "Hide",
+        "Jump",
+        "Knowledge (arcana)",
+        "Knowledge (dungeoneering)",
+        "Knowledge (geography)",
+        "Knowledge (history)",
+        "Knowledge (local)",
+        "Listen",
+        "Move Silently",
+        "Open Lock",
+        "Profession",
+        "Ride",
+        "Search",
+        "Spot",
+        "Survival",
+        "Swim",
+        "Tumble",
+        "Use Magic Device",
+        "Use Rope"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": 0,
+          "fort": 2,
+          "ref": 2,
+          "will": 0,
+          "special": [
+            "Trap sense +1",
+            "tricks of the trade"
+          ]
+        },
+        {
+          "level": 2,
+          "bab": 1,
+          "fort": 3,
+          "ref": 3,
+          "will": 0,
+          "special": [
+            "Low-light vision",
+            "sense ancient magic"
+          ]
+        },
+        {
+          "level": 3,
+          "bab": 2,
+          "fort": 3,
+          "ref": 3,
+          "will": 1,
+          "special": [
+            "Trap sense +2",
+            "expert packer"
+          ]
+        },
+        {
+          "level": 4,
+          "bab": 3,
+          "fort": 4,
+          "ref": 4,
+          "will": 1,
+          "special": [
+            "Sneak attack +1d6",
+            "tools of the trade"
+          ]
+        },
+        {
+          "level": 5,
+          "bab": 3,
+          "fort": 4,
+          "ref": 4,
+          "will": 1,
+          "special": [
+            "Trap sense +3",
+            "darkvision 60 ft."
+          ]
+        },
+        {
+          "level": 6,
+          "bab": 4,
+          "fort": 5,
+          "ref": 5,
+          "will": 2,
+          "special": [
+            "Special ability"
+          ]
+        },
+        {
+          "level": 7,
+          "bab": 5,
+          "fort": 5,
+          "ref": 5,
+          "will": 2,
+          "special": [
+            "Trap sense +4",
+            "locate ancient magic"
+          ]
+        },
+        {
+          "level": 8,
+          "bab": 6,
+          "fort": 6,
+          "ref": 6,
+          "will": 2,
+          "special": [
+            "Sneak attack +2d6",
+            "improved favored enemy"
+          ]
+        },
+        {
+          "level": 9,
+          "bab": 6,
+          "fort": 6,
+          "ref": 6,
+          "will": 3,
+          "special": [
+            "Trap sense +5"
+          ]
+        },
+        {
+          "level": 10,
+          "bab": 7,
+          "fort": 7,
+          "ref": 7,
+          "will": 3,
+          "special": [
+            "Blindsight 30 ft."
+          ]
+        }
+      ],
+      "spellsPerDay": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          2,
+          0,
+          null,
+          null
+        ],
+        [
+          3,
+          1,
+          null,
+          null
+        ],
+        [
+          3,
+          2,
+          0,
+          null
+        ],
+        [
+          3,
+          3,
+          1,
+          null
+        ],
+        [
+          3,
+          3,
+          2,
+          0
+        ],
+        [
+          3,
+          3,
+          3,
+          1
+        ],
+        [
+          3,
+          3,
+          3,
+          2
+        ],
+        [
+          3,
+          3,
+          3,
+          3
+        ]
+      ],
+      "spellsKnown": [
+        [
+          2,
+          null,
+          null,
+          null
+        ],
+        [
+          3,
+          null,
+          null,
+          null
+        ],
+        [
+          3,
+          2,
+          null,
+          null
+        ],
+        [
+          4,
+          3,
+          null,
+          null
+        ],
+        [
+          4,
+          3,
+          2,
+          null
+        ],
+        [
+          4,
+          4,
+          3,
+          null
+        ],
+        [
+          4,
+          4,
+          3,
+          2
+        ],
+        [
+          4,
+          4,
+          4,
+          3
+        ],
+        [
+          4,
+          4,
+          4,
+          3
+        ],
+        [
+          4,
+          4,
+          4,
+          4
+        ]
+      ],
+      "spellList": [
+        {
+          "level": 1,
+          "spells": [
+            "camouflage",
+            "delay poison",
+            "detect snares and pits",
+            "identify",
+            "jump",
+            "longstrider",
+            "pass without trace",
+            "read magic",
+            "sure-footed"
+          ]
+        },
+        {
+          "level": 2,
+          "spells": [
+            "bear's endurance",
+            "bull's strength",
+            "cat's grace",
+            "cure moderate wounds",
+            "detect metals and minerals",
+            "make whole",
+            "snare"
+          ]
+        },
+        {
+          "level": 3,
+          "spells": [
+            "continual flame",
+            "daylight",
+            "locate object",
+            "neutralize poison",
+            "obscure object",
+            "remove disease"
+          ]
+        },
+        {
+          "level": 4,
+          "spells": [
+            "commune with nature",
+            "dispel magic",
+            "freedom of movement",
+            "nondetection",
+            "remove curse",
+            "stone shape"
+          ]
+        }
+      ],
+      "features": [
+        {
+          "name": "Spellcasting",
+          "text": "When you take up this class, you gain the ability to cast a number of arcane spells. To cast a spell, you must have an Intelligence score of 10 + the spell's level. Your bonus spells are based on Intelligence, and saving throws against these spells have a DC of 10 + spell level + your Intelligence bonus. When you get 0 spells per day, you gain only the bonus spells you would be entitled to based on your intelligence score for that spell level. You cast spells just as a sorcerer does. Upon reaching 6th level, and at every even-numbered level after that, you can choose to learn a new spell in place of one you already know. The new spell's level must be the same as that of the spell being exchanged, and it must be at least two levels lower than the highest-level shade hunter spell you can cast."
+        },
+        {
+          "name": "Trap Sense (Ex)",
+          "text": "Your expertise with dungeons gives you an intuitive sense that alerts you to danger from traps, providing you with a +1 bonus on Reflex saves made to avoid traps and a +1 dodge bonus to AC against attacks made by traps. These bonuses increase by 1 every other level, up to +5 at 9th level. Trap sense bonuses gained from multiple sources stack."
+        },
+        {
+          "name": "Tricks of the Trade (Ex)",
+          "text": "The experiences and dangers that you have encountered in your travels begin to coalesce into a practical body of knowledge when you enter the shade hunter class. This knowledge grants you a bonus equal to your class level that can be used each day to augment ability checks, skill checks, or attack rolls. The points of bonus do not need to be applied to the same roll, and you can divide them up however you like throughout the day. You must decide whether or not to use a bonus, and if so how large the bonus will be, before you roll the die. For example, a 3rd-level shade hunter has a total bonus of +3 to distribute. If he finds himself in mortal combat, he could apply the entire bonus to a single attack roll, hoping to fell his enemy. Alternatively, he could apply a +1 bonus to an Open Lock check, then another +1 to a Spot check later that day, and his final +1 bonus to a Strength check to dislodge a coffer from its resting place."
+        },
+        {
+          "name": "Low-Light Vision (Ex)",
+          "text": "At 2nd level, you gain low-light vision. If you already have low-light vision, its effective distance is doubled, so you can now see four times as far as a human in conditions of low light."
+        },
+        {
+          "name": "Sense Ancient Magic (Su)",
+          "text": "Starting at 2nd level, you can detect the magical aura radiated by items of Netherese creation. This ability functions like detect magic, except that it is always active unless you consciously suppress it, and it can only detect the auras of magic items that have been in the same location for at least one hundred years."
+        },
+        {
+          "name": "Expert Packer",
+          "text": "Starting at 3rd level, you have learned how to get every last bit of utility out of your backpack, belt, and bandoleer. Reduce the weight of your gear by 10% for purposes of figuring your load."
+        },
+        {
+          "name": "Sneak Attack (Ex)",
+          "text": "At 4th level and higher, you deal extra damage when you catch a foe flat-footed or flank a foe, as the rogue class feature described on page 50 of the Player's Handbook. Sneak-attack dice attained from multiple sources stack."
+        },
+        {
+          "name": "Tools of the Trade",
+          "text": "By 4th level, you have picked up so many knickknacks and strange tools on your travels that you've lost track of everything you own. Once per day, you can \"find\" any mundane piece of equipment (other than weapons or armor) worth up to 10 gp per class level somewhere on your person, having forgotten completely about it. When you do so, you subtract an equivalent amount of gold (or other treasure—gems, jewelry, art, etc.) from your savings. If you do not have enough gold to cover the cost of the item you want, you might not find the item with this ability."
+        },
+        {
+          "name": "Darkvision (Ex)",
+          "text": "At 5th level, you gain darkvision out to 60 feet. If you already have darkvision, its effective distance extends by an additional 60 feet instead."
+        },
+        {
+          "name": "Special Ability (Ex)",
+          "text": "At 6th level, you can choose one of the following rogue special abilities: defensive roll, improved evasion, or skill mastery (see Player's Handbook page 51)."
+        },
+        {
+          "name": "Locate Ancient Magic (Su)",
+          "text": "When you reach 7th level, your ability to sense the lost magic of Netheril has grown stronger. You can now locate any magic items that have been in the same location for at least one hundred years as if you had cast a locate object spell and were familiar with the items in question. Activating this ability is a standard action, and you can locate multiple auras by concentrating for continuous rounds."
+        },
+        {
+          "name": "Improved Favored Enemy (Ex)",
+          "text": "Starting at 8th level, your favored enemy bonuses against shades increase by 2. No other favored enemy bonuses can be increased with this ability."
+        },
+        {
+          "name": "Blindsight (Ex)",
+          "text": "At 10th level your ability to function in the deepest, darkest dungeons grants you the ability to sense your surroundings using every available sensory input. You gain blindsight out to 30 feet."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cor.prestige.cor-thayan-gladiator",
+    "name_pt": "Thayan gladiator",
+    "name_en": "Thayan gladiator",
+    "name_es": null,
+    "description_pt": "Any evil; Toughness; Weapon Focus (natural weapon); Base attack bonus +5; Must possess at least one natural weapon; Must undergo a ritual developed by the Zulkir of Transmutation that grants the class its abilities",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 12,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 44,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-thayan-gladiator",
+      "name": "Thayan gladiator",
+      "hitDie": 12,
+      "skillPointsPerLevel": "2 + Int modifier",
+      "requirements": {
+        "alignment": "Any evil",
+        "skills": [],
+        "feats": [
+          "Toughness",
+          "Weapon Focus (natural weapon)"
+        ],
+        "special": [
+          "Base attack bonus +5",
+          "Must possess at least one natural weapon",
+          "Must undergo a ritual developed by the Zulkir of Transmutation that grants the class its abilities"
+        ]
+      },
+      "classSkills": [
+        "Bluff",
+        "Climb",
+        "Intimidate",
+        "Jump",
+        "Sense Motive",
+        "Spot"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": 1,
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": [
+            "Improved natural attack",
+            "study opponent"
+          ]
+        },
+        {
+          "level": 2,
+          "bab": 2,
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": [
+            "Improved critical",
+            "natural armor +1"
+          ]
+        },
+        {
+          "level": 3,
+          "bab": 3,
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": [
+            "Stunning critical",
+            "silver strike"
+          ]
+        },
+        {
+          "level": 4,
+          "bab": 4,
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": [
+            "Natural weapon focus"
+          ]
+        },
+        {
+          "level": 5,
+          "bab": 5,
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": [
+            "Imbue natural weapon",
+            "natural armor +2"
+          ]
+        },
+        {
+          "level": 6,
+          "bab": 6,
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": [
+            "Adamantine strike"
+          ]
+        },
+        {
+          "level": 7,
+          "bab": 7,
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": [
+            "Savage strike"
+          ]
+        },
+        {
+          "level": 8,
+          "bab": 8,
+          "fort": 6,
+          "ref": 2,
+          "will": 2,
+          "special": [
+            "Natural armor +3",
+            "natural weapon mastery"
+          ]
+        },
+        {
+          "level": 9,
+          "bab": 9,
+          "fort": 6,
+          "ref": 3,
+          "will": 3,
+          "special": [
+            "Magic strike"
+          ]
+        },
+        {
+          "level": 10,
+          "bab": 10,
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": [
+            "Imbue natural weapon"
+          ]
+        }
+      ],
+      "features": [
+        {
+          "name": "Improved Natural Attack",
+          "text": "When you enter this class, choose one of your natural weapons to gain the benefits of the Improved Natural Attack feat. The natural weapon you choose is affected by the rest of the abilities you gain through advancing in this class."
+        },
+        {
+          "name": "Study Opponent (Ex)",
+          "text": "You prefer to circle your opponents before engaging them in melee, searching them for weaknesses and noting the way their bodies move. You can study any opponent within 30 feet as a standard action for a number of rounds equal to your Wisdom modifier (minimum 1 round). For each round you study, you gain a +1 bonus on attack rolls and AC during the round that you first engage them in melee combat."
+        },
+        {
+          "name": "Improved Critical",
+          "text": "At 2nd level, your improved natural attack gains the benefit of the Improved Critical feat."
+        },
+        {
+          "name": "Natural Armor",
+          "text": "Beginning at 2nd level, your natural armor improves by 1 point to help you withstand the awesome blows of your gladiatorial opponents. At 5th and 8th levels, your natural armor improves by an additional point."
+        },
+        {
+          "name": "Stunning Critical (Ex)",
+          "text": "Starting at 3rd level, any time you make a successful critical hit with your chosen natural weapon, your enemy must succeed on a Fortitude save (DC 15 + your Str modifier) or be stunned for 1 round."
+        },
+        {
+          "name": "Silver Strike (Ex)",
+          "text": "At 3rd level, attacks from your chosen natural weapon overcome damage reduction as if they were silvered weapons."
+        },
+        {
+          "name": "Natural Weapon Focus (Ex)",
+          "text": "At 4th level, you gain the ability to make an additional strike at a -5 penalty with your chosen natural weapon when you use a full attack action."
+        },
+        {
+          "name": "Imbue Natural Weapon (Su)",
+          "text": "At 5th level, your chosen natural weapon gains a special ability as if it were a magic weapon. Choose one special ability from the following list and apply it to your natural weapon(s): flaming, frost, ghost touch, shock, or thundering. At 10th level, the ritual you underwent upon becoming a Thayan gladiator grants you a final power from the following list to apply to your chosen natural weapon: anarchic*, axiomatic*, disruption, flaming burst, icy burst, shocking burst, speed**, unholy, or wounding. *In order to choose one of these, the Thayan gladiator's alignment must match the appropriate ability (the character must be chaotic to choose anarchic or lawful to choose axiomatic). **The effect of this ability stacks with the additional attack gained from the natural weapon focus ability."
+        },
+        {
+          "name": "Adamantine Strike (Ex)",
+          "text": "At 6th level, attacks from your chosen natural weapon overcome damage reduction as if they were adamantine weapons."
+        },
+        {
+          "name": "Savage Strike (Ex)",
+          "text": "At 7th level, the critical multiplier for your chosen natural weapon increases by one. Thus, if you had a critical multiplier of x2, it would become x3; if it was already x3, it becomes x4."
+        },
+        {
+          "name": "Natural Weapon Mastery (Ex)",
+          "text": "Starting at 8th level, the extra attack you gain from natural weapon focus is at your highest base attack bonus."
+        },
+        {
+          "name": "Magic Strike (Ex)",
+          "text": "At 9th level and higher, attacks from your chosen natural weapon overcome damage reduction as if they were magic weapons."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cor.prestige.cor-vengeance-knight",
+    "name_pt": "Vengeance knight",
+    "name_en": "Vengeance knight",
+    "name_es": null,
+    "description_pt": "Lawful evil, lawful neutral, or neutral evil; Intimidate 6 ranks; Ride 4 ranks; Sense Motive 2 ranks; Iron Will; Weapon Focus (any sword); Base attack bonus +5; Proficiency with heavy armor and heavy shields",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 10,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 44,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-vengeance-knight",
+      "name": "Vengeance knight",
+      "hitDie": 10,
+      "skillPointsPerLevel": "2 + Int modifier",
+      "requirements": {
+        "alignment": "Lawful evil, lawful neutral, or neutral evil",
+        "skills": [
+          "Intimidate 6 ranks",
+          "Ride 4 ranks",
+          "Sense Motive 2 ranks"
+        ],
+        "feats": [
+          "Iron Will",
+          "Weapon Focus (any sword)"
+        ],
+        "special": [
+          "Base attack bonus +5",
+          "Proficiency with heavy armor and heavy shields"
+        ]
+      },
+      "classSkills": [
+        "Climb",
+        "Craft",
+        "Gather Information",
+        "Intimidate",
+        "Jump",
+        "Knowledge (local)",
+        "Ride",
+        "Search",
+        "Sense Motive",
+        "Spot"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": 1,
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": [
+            "Armor training",
+            "bringer of vengeance +1"
+          ]
+        },
+        {
+          "level": 2,
+          "bab": 2,
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": [
+            "Counterstrike +1",
+            "Improved Shield Bash"
+          ]
+        },
+        {
+          "level": 3,
+          "bab": 3,
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": [
+            "Bonus feat"
+          ]
+        },
+        {
+          "level": 4,
+          "bab": 4,
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": [
+            "Arcane backlash 1d6"
+          ]
+        },
+        {
+          "level": 5,
+          "bab": 5,
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": [
+            "Bringer of vengeance +2"
+          ]
+        },
+        {
+          "level": 6,
+          "bab": 6,
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": [
+            "Improved armor training"
+          ]
+        },
+        {
+          "level": 7,
+          "bab": 7,
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": [
+            "Arcane backlash 2d6"
+          ]
+        },
+        {
+          "level": 8,
+          "bab": 8,
+          "fort": 6,
+          "ref": 2,
+          "will": 2,
+          "special": [
+            "Counterstrike +2"
+          ]
+        },
+        {
+          "level": 9,
+          "bab": 9,
+          "fort": 6,
+          "ref": 3,
+          "will": 3,
+          "special": [
+            "Bonus feat",
+            "bringer of vengeance +3"
+          ]
+        },
+        {
+          "level": 10,
+          "bab": 10,
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": [
+            "Arcane backlash 3d6",
+            "superior armor training"
+          ]
+        }
+      ],
+      "features": [
+        {
+          "name": "Armor Training (Ex)",
+          "text": "As a vengeance knight, you always wear the heaviest armor available to you, and thus you learn to wear it more effectively through training. Your armor check penalty imposed by heavy armor and shields for all skills except Swim is reduced by 1, and you can don your armor as if you had help (although you still require a servant to help you don half-plate or full plate). At 6th level, your armor check penalty for armor is reduced by 3, and you can make a DC 15 Constitution check to avoid being fatigued from sleeping in your armor. In addition, you take only half the normal movement penalty for wearing heavy armor. At 10th level, you have truly mastered the art of wearing heavy armor. You can now sleep in your armor without penalty, and your armor check penalties for armor are reduced by 5. In addition, you can don half-plate or plate mail without assistance, although it takes twice the indicated time."
+        },
+        {
+          "name": "Bringer of Vengeance (Ex)",
+          "text": "As an agent for the Knights of the Shield, you are often called upon to avenge some slight or to send a message to an enemy of the organization. Whenever you have a specific target, you gain the indicated bonus on Intimidate, Search, Sense Motive, and Spot checks when using these skills against your target. In addition, you gain the indicated bonus on all attack rolls and damage rolls against the target. (+1 at 1st level, +2 at 5th level, +3 at 9th level.)"
+        },
+        {
+          "name": "Counterstrike (Ex)",
+          "text": "Vengeance knights visit pain upon those who would hurt them. As a result, you gain the indicated bonus on all melee attack rolls and damage rolls against any creature that damaged you in the previous round. This bonus stacks with that from your bringer of vengeance ability. (+1 at 2nd level, +2 at 8th level.)"
+        },
+        {
+          "name": "Improved Shield Bash",
+          "text": "At 2nd level, you gain the Improved Shield Bash feat, even if you do not meet the prerequisites."
+        },
+        {
+          "name": "Bonus Feat",
+          "text": "At 3rd and 9th levels, you can choose a bonus feat from the fighter's bonus feat list."
+        },
+        {
+          "name": "Arcane Backlash (Su)",
+          "text": "Any time you successfully save against any arcane spell when you are the spell's only target, the original caster takes the indicated amount of nonlethal damage as you lash the energies of his failed spell back at him. (1d6 at 4th level, 2d6 at 7th level, 3d6 at 10th level.)"
+        }
+      ]
+    }
+  }
+]

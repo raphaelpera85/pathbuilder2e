@@ -124,6 +124,8 @@ function catalogRulesetLabel(ruleset: string): string {
     legacy_pf1: "Pathfinder 1e · Livro Básico",
     v35: "D&D 3.5",
     "v35-cov": "D&D 3.5 · Champions of Valor",
+    "v35-cg": "D&D 3.5 · Livro Completo do Guerreiro",
+    "v35-cor": "D&D 3.5 · Champions of Ruin",
     "v35-defensores": "D&D 3.5 · Defensores da Fé",
     "v35-frostburn": "D&D 3.5 · Frostburn",
   };
@@ -1640,6 +1642,32 @@ function LibraryPage() {
     setCharacters([]);
   };
 
+  if (coreWizardSystem || activeCoreCharacter || activeOseCharacter || activeDnd35Character || isOseWizardOpen || isDnd35WizardOpen) {
+    // Construtores como página (padrão do construtor do Pathfinder), não como popup sobre a biblioteca.
+    return (
+      <main className="portal-page library-builder-page" id="portal-content" tabIndex={-1}>
+        {coreWizardSystem && (
+          <CoreCharacterCreatorModal layout="page" isOpen={true} system={coreWizardSystem} onClose={() => setCoreWizardSystem(null)} onCharacterCreated={handleSaveCoreCharacter} />
+        )}
+        {!coreWizardSystem && activeCoreCharacter && (
+          <CoreCharacterCreatorModal layout="page" isOpen={true} system={activeCoreCharacter.system_id} initialCharacter={activeCoreCharacter} onClose={() => setActiveCoreCharacter(null)} onCharacterCreated={handleUpdateCoreCharacter} />
+        )}
+        {activeOseCharacter && (
+          <OseCharacterCreatorModal layout="page" isOpen={true} initialCharacter={activeOseCharacter} onClose={() => setActiveOseCharacter(null)} onCharacterCreated={handleSaveOseCharacter} />
+        )}
+        {!activeOseCharacter && isOseWizardOpen && (
+          <OseCharacterCreatorModal layout="page" isOpen={true} onClose={() => setIsOseWizardOpen(false)} onCharacterCreated={handleSaveOseCharacter} />
+        )}
+        {activeDnd35Character && (
+          <Dnd35CharacterCreatorModal layout="page" isOpen={true} initialCharacter={activeDnd35Character} onClose={() => setActiveDnd35Character(null)} onCharacterCreated={handleSaveDnd35Character} />
+        )}
+        {!activeDnd35Character && isDnd35WizardOpen && (
+          <Dnd35CharacterCreatorModal layout="page" isOpen={true} onClose={() => setIsDnd35WizardOpen(false)} onCharacterCreated={handleSaveDnd35Character} />
+        )}
+      </main>
+    );
+  }
+
   if (!session) {
     return (
       <main className="portal-page library-auth-page" id="portal-content" tabIndex={-1}>
@@ -1766,40 +1794,7 @@ function LibraryPage() {
           onClose={() => setIsDnd35WizardOpen(false)}
           onCharacterCreated={handleSaveDnd35Character}
         />
-        {activeDnd35Character && (
-          <Dnd35CharacterCreatorModal
-            isOpen={true}
-            initialCharacter={activeDnd35Character}
-            onClose={() => setActiveDnd35Character(null)}
-            onCharacterCreated={handleSaveDnd35Character}
-          />
-        )}
 
-        {coreWizardSystem && (
-          <CoreCharacterCreatorModal
-            isOpen={true}
-            system={coreWizardSystem}
-            onClose={() => setCoreWizardSystem(null)}
-            onCharacterCreated={handleSaveCoreCharacter}
-          />
-        )}
-        {activeOseCharacter && (
-          <OseCharacterCreatorModal
-            isOpen={true}
-            initialCharacter={activeOseCharacter}
-            onClose={() => setActiveOseCharacter(null)}
-            onCharacterCreated={handleSaveOseCharacter}
-          />
-        )}
-        {activeCoreCharacter && (
-          <CoreCharacterCreatorModal
-            isOpen={true}
-            system={activeCoreCharacter.system_id}
-            initialCharacter={activeCoreCharacter}
-            onClose={() => setActiveCoreCharacter(null)}
-            onCharacterCreated={handleUpdateCoreCharacter}
-          />
-        )}
       </main>
     );
   }
@@ -2030,42 +2025,9 @@ function LibraryPage() {
         onClose={() => setIsDnd35WizardOpen(false)}
         onCharacterCreated={handleSaveDnd35Character}
       />
-      {activeDnd35Character && (
-        <Dnd35CharacterCreatorModal
-          isOpen={true}
-          initialCharacter={activeDnd35Character}
-          onClose={() => setActiveDnd35Character(null)}
-          onCharacterCreated={handleSaveDnd35Character}
-        />
-      )}
 
 
-      {coreWizardSystem && (
-        <CoreCharacterCreatorModal
-          isOpen={true}
-          system={coreWizardSystem}
-          onClose={() => setCoreWizardSystem(null)}
-          onCharacterCreated={handleSaveCoreCharacter}
-        />
-      )}
 
-      {activeOseCharacter && (
-        <OseCharacterCreatorModal
-          isOpen={true}
-          initialCharacter={activeOseCharacter}
-          onClose={() => setActiveOseCharacter(null)}
-          onCharacterCreated={handleSaveOseCharacter}
-        />
-      )}
-      {activeCoreCharacter && (
-        <CoreCharacterCreatorModal
-          isOpen={true}
-          system={activeCoreCharacter.system_id}
-          initialCharacter={activeCoreCharacter}
-          onClose={() => setActiveCoreCharacter(null)}
-          onCharacterCreated={handleUpdateCoreCharacter}
-        />
-      )}
     </main>
   );
 }

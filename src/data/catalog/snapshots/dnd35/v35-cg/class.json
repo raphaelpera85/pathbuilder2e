@@ -1,0 +1,2889 @@
+[
+  {
+    "id": "dnd35.cg.class.cg-duelista",
+    "name_pt": "Duelista",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Tendência: Qualquer. Dado de Vida d10. Perícias de classe: Acrobacia, Arte da Fuga, Blefar, Diplomacia, Equilíbrio, Escalar, Ofícios, Profissão, Saltar, Sentir Motivação, Usar Cordas.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 10,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "base"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 5,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-duelista",
+      "name": "Duelista",
+      "hitDie": 10,
+      "alignment": "Qualquer",
+      "skillPointsFirstLevel": "(4 + modificador de Inteligência) x 4",
+      "skillPointsPerLevel": "4 + modificador de Inteligência",
+      "classSkills": [
+        "Acrobacia",
+        "Arte da Fuga",
+        "Blefar",
+        "Diplomacia",
+        "Equilíbrio",
+        "Escalar",
+        "Ofícios",
+        "Profissão",
+        "Saltar",
+        "Sentir Motivação",
+        "Usar Cordas"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": "Acuidade com Arma"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": "Graça +1"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": "Golpe Perspicaz"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "—"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Bônus de esquiva +1"
+        },
+        {
+          "level": 6,
+          "bab": "+6/+1",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "—"
+        },
+        {
+          "level": 7,
+          "bab": "+7/+2",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Investida acrobática"
+        },
+        {
+          "level": 8,
+          "bab": "+8/+3",
+          "fort": 6,
+          "ref": 2,
+          "will": 2,
+          "special": "Flanquear aprimorado"
+        },
+        {
+          "level": 9,
+          "bab": "+9/+4",
+          "fort": 6,
+          "ref": 3,
+          "will": 3,
+          "special": "—"
+        },
+        {
+          "level": 10,
+          "bab": "+10/+5",
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": "Bônus de esquiva +2"
+        },
+        {
+          "level": 11,
+          "bab": "+11/+6/+1",
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": "Graça +2, sorte"
+        },
+        {
+          "level": 12,
+          "bab": "+12/+7/+2",
+          "fort": 8,
+          "ref": 4,
+          "will": 4,
+          "special": "—"
+        },
+        {
+          "level": 13,
+          "bab": "+13/+8/+3",
+          "fort": 8,
+          "ref": 4,
+          "will": 4,
+          "special": "Maestria em Acrobacia"
+        },
+        {
+          "level": 14,
+          "bab": "+14/+9/+4",
+          "fort": 9,
+          "ref": 4,
+          "will": 4,
+          "special": "Decisivo debilitante"
+        },
+        {
+          "level": 15,
+          "bab": "+15/+10/+5",
+          "fort": 9,
+          "ref": 5,
+          "will": 5,
+          "special": "Bônus de esquiva +3"
+        },
+        {
+          "level": 16,
+          "bab": "+16/+11/+6/+1",
+          "fort": 10,
+          "ref": 5,
+          "will": 5,
+          "special": "—"
+        },
+        {
+          "level": 17,
+          "bab": "+17/+12/+7/+2",
+          "fort": 10,
+          "ref": 5,
+          "will": 5,
+          "special": "Mente escorregadia"
+        },
+        {
+          "level": 18,
+          "bab": "+18/+13/+8/+3",
+          "fort": 11,
+          "ref": 6,
+          "will": 6,
+          "special": "—"
+        },
+        {
+          "level": 19,
+          "bab": "+19/+14/+9/+4",
+          "fort": 11,
+          "ref": 6,
+          "will": 6,
+          "special": "Decisivo mortífero"
+        },
+        {
+          "level": 20,
+          "bab": "+20/+15/+10/+5",
+          "fort": 12,
+          "ref": 6,
+          "will": 6,
+          "special": "Bônus de esquiva +4, graça +3"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Um duelista sabe usar todas as armas simples e comuns e armaduras leves. Algumas das características de classe do duelista, conforme indicado a seguir, exigem que o personagem não utilize armaduras ou use equipamentos leves."
+        },
+        {
+          "name": "Acuidade com Arma (Ext)",
+          "text": "No 1º nível, o duelista adquire o talento Acuidade com Arma como um talento adicional, mesmo que não atenda aos pré-requisitos."
+        },
+        {
+          "name": "Graça (Ext)",
+          "text": "No 2º nível, o duelista recebe +1 de bônus de competência nos testes de resistência de Reflexos. Esse bônus aumenta para +2 no 11º nível e para +3 no 20º nível. O duelista perderá esse bônus se usar armaduras médias ou pesadas ou transportar uma carga superior a leve."
+        },
+        {
+          "name": "Golpe Perspicaz (Ext)",
+          "text": "A partir do 3º nível, um duelista é capaz de golpear o adversário em pontos estratégicos do corpo e causar um dano maior. Ele adiciona seu bônus de Inteligência (se houver) nas jogadas de dano, além do bônus de Força aplicado normalmente, quando utilizar armas leves ou quaisquer armas beneficiadas pelo talento Acuidade com Arma, como o sabre, o chicote e a corrente com cravos. Os alvos imunes a sucessos decisivos ou ataques furtivos são imunes ao golpe perspicaz do duelista. O duelista não poderá usar essa habilidade se utilizar armaduras médias ou pesadas ou transportar uma carga superior a leve."
+        },
+        {
+          "name": "Bônus de Esquiva (Ext)",
+          "text": "Um duelista foi treinado para concentrar suas defesas em combate contra um único adversário. Durante sua ação, ele poderá selecionar um alvo e receberá +1 de bônus de esquiva na CA contra os ataques corporais daquele oponente. É possível escolher um novo alvo a cada rodada. Este bônus aumenta em +1 a cada 5 níveis depois do 5º (+2 no 10º nível, +3 no 15º nível e +4 no 20º nível). O duelista perderá esse bônus se usar armaduras médias ou pesadas ou transportar uma carga superior a leve. Se o duelista também possuir o talento Esquiva, não é obrigatório selecionar o mesmo alvo para a habilidade e o talento. Caso escolha o mesmo adversário, os bônus se acumulam."
+        },
+        {
+          "name": "Investida Acrobática (Ext)",
+          "text": "Um duelista de 7º nível ou superior é capaz de realizar Investidas em situações incomuns. Ele será capaz de percorrer terrenos difíceis, que normalmente reduziriam seu deslocamento, ou sobre aliados que estejam bloqueando sua trajetória. Essa habilidade lhe permite correr em escadarias, saltar de uma bancada ou superar as mesas de uma taverna com acrobacias. De acordo com a circunstância, ainda será necessário realizar os testes pertinentes (em geral, Saltar e Acrobacia) para percorrer a distância até o alvo."
+        },
+        {
+          "name": "Flanquear Aprimorado (Ext)",
+          "text": "A partir do 8º nível, um duelista que estiver flanqueando um oponente recebe +4 de bônus na jogada de ataque — em vez de +2. Os demais personagens envolvidos na manobra com o duelista não recebem esse bônus aprimorado."
+        },
+        {
+          "name": "Sorte (Ext)",
+          "text": "Muitos duelistas acreditam no ditado \"a sorte sorri para todos\". Uma vez por dia, um duelista de 11º nível ou superior poderá realizar novamente uma jogada de ataque, teste de perícia, teste de habilidade ou teste de resistência fracassado. O personagem deve manter o segundo resultado, mesmo que seja pior que a jogada original."
+        },
+        {
+          "name": "Maestria em Acrobacia (Ext)",
+          "text": "A partir do 13º nível, um duelista se torna muito confiante em suas capacidades acrobáticas e poderá utilizá-las normalmente sob condições adversas. Quando realizar um teste de Saltar ou Acrobacia, o duelista poderá 'escolher 10' mesmo se estiver ameaçado ou distraído por agentes externos."
+        },
+        {
+          "name": "Decisivo Debilitante (Ext)",
+          "text": "Um duelista de 14º nível ou superior que obtiver um sucesso decisivo causará 2 pontos de dano temporário de Força contra a vítima. As criaturas imunes a sucessos decisivos não são afetadas."
+        },
+        {
+          "name": "Mente Escorregadia (Ext)",
+          "text": "Quando o duelista atingir o 17º nível, será mais difícil controlar sua mente. Caso fracasse em um teste de resistência contra uma magia ou efeito de encantamento, poderá realizar novamente o teste na rodada subsequente (mesma CD). O personagem receberá somente uma única tentativa adicional para refazer o teste."
+        },
+        {
+          "name": "Decisivo Mortífero (Ext)",
+          "text": "Um duelista de 19º nível ou superior que obtiver um sucesso decisivo causará 2 pontos de dano temporário de Constituição contra a vítima, além do dano de Força infligido pela habilidade decisivo debilitante. As criaturas imunes a sucessos decisivos não são afetadas."
+        }
+      ],
+      "halfElfStarterPackage": {
+        "armor": "Corselete de couro (+3 CA, -1 de penalidade de armadura, 9 m de deslocamento, 10 kg)",
+        "weapons": [
+          "Sabre (dano: 1d16, dec. 18-20/x 2, 1 kg, uma mão, cortante)",
+          "Adaga (dano: 1d4, dec. 19-20/x 2, 0,5 kg, leve, perfurante ou cortante)",
+          "Arco curto (dano: 1d6, dec. x 3, incremento de distância 18 m, 1 kg, perfurante)"
+        ],
+        "skillSelection": "3 + modificador de Inteligência",
+        "skills": [
+          {
+            "skill": "Saltar",
+            "ranks": 4,
+            "ability": "For",
+            "armorPenalty": "-1"
+          },
+          {
+            "skill": "Blefar",
+            "ranks": 1,
+            "ability": "Car",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Escalar",
+            "ranks": 4,
+            "ability": "For",
+            "armorPenalty": "-1"
+          },
+          {
+            "skill": "Acrobacia",
+            "ranks": 4,
+            "ability": "Dês",
+            "armorPenalty": "-1"
+          },
+          {
+            "skill": "Diplomacia",
+            "ranks": 4,
+            "ability": "Car",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Usar Cordas",
+            "ranks": 4,
+            "ability": "Dês",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Observar (oc)",
+            "ranks": 2,
+            "ability": "Sab",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Ouvir",
+            "ranks": 2,
+            "ability": "Sab",
+            "armorPenalty": "—"
+          }
+        ],
+        "feat": "Foco em Arma (sabre)",
+        "humanBonusFeat": "Reflexos de Combate",
+        "equipment": "Mochila com cantil, um dia de rações de viagem, saco de dormir, saco, pederneira e isqueiro. Lanterna coberta, 3 frascos de óleo. Aljava e 20 flechas.",
+        "gold": "6d4 x 10 PO"
+      }
+    }
+  },
+  {
+    "id": "dnd35.cg.class.cg-lamina-maldita",
+    "name_pt": "Lâmina Maldita",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Tendência: Qualquer, exceto Bom. Dado de Vida d10. Perícias de classe: Blefar, Cavalgar, Concentração, Conhecimento (arcano), Diplomacia, Identificar Magia, Intimidação, Ofícios, Profissão.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 10,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "base"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 7,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-lamina-maldita",
+      "name": "Lâmina Maldita",
+      "hitDie": 10,
+      "alignment": "Qualquer, exceto Bom",
+      "skillPointsFirstLevel": "(2 + modificador de Inteligência) x 4",
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "classSkills": [
+        "Blefar",
+        "Cavalgar",
+        "Concentração",
+        "Conhecimento (arcano)",
+        "Diplomacia",
+        "Identificar Magia",
+        "Intimidação",
+        "Ofícios",
+        "Profissão"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Maldição da lâmina 1/dia"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Resistência arcana"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "Têmpera"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Invocar familiar"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Talento adicional, maldição da lâmina 2/dia"
+        },
+        {
+          "level": 6,
+          "bab": "+6/+1",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "—"
+        },
+        {
+          "level": 7,
+          "bab": "+7/+2",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "Maldição da lâmina maior"
+        },
+        {
+          "level": 8,
+          "bab": "+8/+3",
+          "fort": 2,
+          "ref": 2,
+          "will": 6,
+          "special": "—"
+        },
+        {
+          "level": 9,
+          "bab": "+9/+4",
+          "fort": 3,
+          "ref": 3,
+          "will": 6,
+          "special": "Maldição da lâmina 3/dia"
+        },
+        {
+          "level": 10,
+          "bab": "+10/+5",
+          "fort": 3,
+          "ref": 3,
+          "will": 7,
+          "special": "Talento adicional"
+        },
+        {
+          "level": 11,
+          "bab": "+11/+6/+1",
+          "fort": 3,
+          "ref": 3,
+          "will": 7,
+          "special": "—"
+        },
+        {
+          "level": 12,
+          "bab": "+12/+7/+2",
+          "fort": 4,
+          "ref": 4,
+          "will": 8,
+          "special": "Aura de azar 1/dia"
+        },
+        {
+          "level": 13,
+          "bab": "+13/+8/+3",
+          "fort": 4,
+          "ref": 4,
+          "will": 8,
+          "special": "Maldição da lâmina 4/dia"
+        },
+        {
+          "level": 14,
+          "bab": "+14/+9/+4",
+          "fort": 4,
+          "ref": 4,
+          "will": 9,
+          "special": "—"
+        },
+        {
+          "level": 15,
+          "bab": "+15/+10/+5",
+          "fort": 5,
+          "ref": 5,
+          "will": 9,
+          "special": "Talento adicional"
+        },
+        {
+          "level": 16,
+          "bab": "+16/+11/+6/+1",
+          "fort": 5,
+          "ref": 5,
+          "will": 10,
+          "special": "Aura de azar 2/dia"
+        },
+        {
+          "level": 17,
+          "bab": "+17/+12/+7/+2",
+          "fort": 5,
+          "ref": 5,
+          "will": 10,
+          "special": "Maldição da lâmina 5/dia"
+        },
+        {
+          "level": 18,
+          "bab": "+18/+13/+8/+3",
+          "fort": 6,
+          "ref": 6,
+          "will": 11,
+          "special": "—"
+        },
+        {
+          "level": 19,
+          "bab": "+19/+14/+9/+4",
+          "fort": 6,
+          "ref": 6,
+          "will": 11,
+          "special": "Maldição da lâmina atroz"
+        },
+        {
+          "level": 20,
+          "bab": "+20/+15/+10/+5",
+          "fort": 6,
+          "ref": 6,
+          "will": 12,
+          "special": "Aura de azar 3/dias, talento adicional"
+        }
+      ],
+      "spellsPerDay": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          0,
+          null,
+          null
+        ],
+        [
+          1,
+          0,
+          null,
+          null
+        ],
+        [
+          1,
+          1,
+          null,
+          null
+        ],
+        [
+          1,
+          1,
+          0,
+          null
+        ],
+        [
+          1,
+          1,
+          1,
+          null
+        ],
+        [
+          1,
+          1,
+          1,
+          null
+        ],
+        [
+          2,
+          1,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          2,
+          1
+        ],
+        [
+          3,
+          2,
+          2,
+          1
+        ],
+        [
+          3,
+          3,
+          3,
+          2
+        ],
+        [
+          3,
+          3,
+          3,
+          3
+        ]
+      ],
+      "spellsKnown": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          2,
+          null,
+          null,
+          null
+        ],
+        [
+          2,
+          null,
+          null,
+          null
+        ],
+        [
+          3,
+          null,
+          null,
+          null
+        ],
+        [
+          3,
+          null,
+          null,
+          null
+        ],
+        [
+          4,
+          2,
+          null,
+          null
+        ],
+        [
+          4,
+          2,
+          null,
+          null
+        ],
+        [
+          4,
+          3,
+          null,
+          null
+        ],
+        [
+          4,
+          3,
+          2,
+          null
+        ],
+        [
+          4,
+          4,
+          3,
+          null
+        ],
+        [
+          4,
+          4,
+          3,
+          null
+        ],
+        [
+          4,
+          4,
+          4,
+          2
+        ],
+        [
+          4,
+          4,
+          4,
+          3
+        ],
+        [
+          4,
+          4,
+          4,
+          3
+        ],
+        [
+          5,
+          4,
+          4,
+          4
+        ],
+        [
+          5,
+          5,
+          4,
+          4
+        ],
+        [
+          5,
+          5,
+          5,
+          4
+        ],
+        [
+          5,
+          5,
+          5,
+          5
+        ]
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Uma lâmina maldita sabe usar todas as armas simples e comuns, armaduras leves, mas não escudos. Uma vez que os componentes gestuais das magias da classe são simples, o personagem consegue lançar as magias da lista de classe usando armaduras leves, sem sofrer a chance de falha arcana normal. Entretanto, similar a qualquer conjurador arcano, uma lâmina que utilizar uma armadura média ou pesada ou escudos sofre a chance de falha arcana regularmente, se a magia em questão tiver componentes gestuais (e a maioria tem). Uma lâmina maldita multiclasse ainda sofre a chance de falha para as magias arcanas de suas outras classes."
+        },
+        {
+          "name": "Maldição da Lâmina (Sob)",
+          "text": "Uma vez por dia, como uma ação livre, uma lâmina maldita pode rogar uma maldição contra um adversário. O alvo deve estar visível e num raio de 18 m do personagem. A vítima sofre -2 de penalidade nas jogadas de ataque, testes de resistência, testes de habilidades e perícias e dano com armas durante 1 hora. Obter sucesso em um teste de resistência de Vontade (CD 10 + 1/2 do nível de classe + modificador de Carisma da lâmina) anula o efeito. A cada quatro níveis depois do primeiro (5º, 9º, 13º e 17º), a lâmina adquire uma utilização adicional desta habilidade por dia, conforme indicado na Tabela 1-2. Diversas maldições da lâmina não se acumulam, e qualquer criatura que resistir ao efeito não poderá ser afetada novamente pela mesma lâmina maldita durante 24 horas. O personagem somente é capaz de ativar essa habilidade uma vez por rodada, não importa sua quantidade disponível de utilizações diárias. Qualquer efeito que remova ou dissipe maldições elimina a penalidade desta habilidade."
+        },
+        {
+          "name": "Resistência Arcana (Sob)",
+          "text": "A partir do 2º nível, a lâmina maldita adiciona seu bônus de Carisma (mínimo +1) aos seus testes de resistência contra magias e efeitos similares."
+        },
+        {
+          "name": "Têmpera (Ext)",
+          "text": "A partir do 3º nível, a lâmina maldita é capaz de resistir a ataques mágicos e incomuns com sua enorme força de vontade e resiliência. Caso obtenha sucesso num teste de resistência de Fortitude ou Vontade que normalmente reduziria o efeito de uma magia ou habilidade similar, ela anulará por completo os efeitos dessa magia. Somente as magias que possuem a indicação \"Vontade parcial\", \"Fortitude para metade\" ou semelhantes na descrição de seus Testes de Resistência são afetadas por esta habilidade. Uma lâmina inconsciente ou adormecida não adquire os benefícios da têmpera."
+        },
+        {
+          "name": "Familiar",
+          "text": "A partir do 4º nível, uma lâmina maldita pode convocar um familiar. O processo exige 24 horas e o gasto de materiais mágicos no valor de 100 PO. Um familiar é uma besta mágica semelhante a um pequeno animal, mas é extraordinariamente resistente e inteligente. A criatura será um companheiro e servo da lâmina. A lâmina escolhe o tipo de animal que deseja. O poder do familiar aumenta conforme seu mestre adquire níveis de classe. Considere que a lâmina é um feiticeiro de três níveis inferiores para determinar os poderes e habilidades do familiar (consulte Familiares, no Livro do Jogador). Se o familiar morrer, ou se a lâmina decidir dispensá-lo, o personagem deve realizar um teste de resistência de Fortitude (CD 15). Caso fracasse, perderá 200 XP por nível nesta classe; um sucesso reduz essa perda à metade. Porém, a quantidade de pontos de experiência de uma lâmina maldita nunca pode cair abaixo de zero como resultado da morte de um familiar. Um familiar morto ou dispensado não poderá ser substituído durante um período de um ano e um dia. Um familiar morto pode ser ressuscitado, da mesma forma que os personagens, mas não perde um nível ou um ponto de Constituição quando isso acontece. Mesmo que o personagem tenha diversas classes com a característica Familiar, somente poderá obter um familiar simultaneamente."
+        },
+        {
+          "name": "Magias",
+          "text": "A partir do 4º nível, uma lâmina maldita adquire a habilidade de conjurar uma pequena quantidade de magias arcanas da lista de magias da lâmina maldita (descrita no Capítulo 3). Ela é capaz de conjurar suas magias sem prepará-las com antecedência, similar a um feiticeiro (consulte Feiticeiro no Livro do Jogador). Para aprender ou conjurar uma magia, uma lâmina maldita deve ter uma pontuação em Carisma igual ou superior a 10 + o nível da magia (Car 11 para magias de 1º nível, Car 12 para magias de 2º nível, etc.). A Classe de Dificuldade para os testes de resistência contra essas magias equivale a 10 + nível da magia + modificador de Carisma da lâmina. Semelhante aos demais conjuradores, uma lâmina maldita somente é capaz de conjurar uma quantidade limitada de magias de cada nível por dia. Seu limite diário de magias se encontra na Tabela 1-2. As magias adicionais da lâmina são baseadas em um valor elevado de Carisma. Quando a Tabela 1-2 indicar que a lâmina maldita recebe 0 magias de um determinado nível, ela recebe somente as magias adicionais concedidas pelo seu valor de Carisma para aquele nível. A seleção de magias da lâmina é extremamente limitada. Uma lâmina maldita de 1º nível não conhece quaisquer magias, mas adquire uma ou mais magias em determinados níveis, conforme indicado na Tabela 1-3. Diferente das magias por dia, a quantidade de magias conhecidas da lâmina não é afetada pelo seu Carisma; os valores da Tabela 1-3 são fixos. Quando alcançar o 12º nível, e a cada três níveis subseqüentes (15º e 18º), uma lâmina será capaz de aprender uma magia nova em substituição a um efeito antigo do seu repertório. Em resumo, a lâmina \"perde\" a magia antiga e aprende a nova. O nível das magias que estão sendo trocadas deve ser idêntico; o personagem somente conseguirá substituir uma magia dois níveis inferiores ao seu nível máximo disponível. Por exemplo, no 12º nível, uma lâmina poderia substituir uma magia de 1º nível (dois níveis de magia inferiores ao nível máximo disponível ao personagem, que são as magias de 3º nível) por outra magia de 1º nível. No 15º nível, ele poderia trocar uma única magia de 1º nível ou de 2º nível (pois terá acesso a magias de 4º nível) por um efeito diferente do mesmo nível. O personagem somente poderá substituir uma única magia nos níveis indicados, e precisa escolher se realizará a troca no momento em que adquire novas magias conhecidas naquele nível. Até o 3º nível, a lâmina maldita não terá nível de conjurador. A partir do 4º nível, seu nível de conjurador equivale à metade de seu nível de lâmina."
+        },
+        {
+          "name": "Talentos Adicionais",
+          "text": "No 5º nível e a cada cinco níveis subseqüentes (10º, 15º e 20º), uma lâmina maldita recebe um talento adicional, que deve ser selecionado da lista a seguir: Foco em Magia (Encantamento, Necromancia ou Transmutação), Foco em Magia Maior (Encantamento, Necromancia ou Transmutação), Magia Penetrante Maior, Magia Penetrante, Magias em Combate."
+        },
+        {
+          "name": "Maldição da Lâmina Maior (Sob)",
+          "text": "A partir do 7º nível, as penalidades nas jogadas de ataque, testes de resistência, testes de habilidades e perícias e dano com armas provenientes da maldição da lâmina aumentam de -2 para -4."
+        },
+        {
+          "name": "Aura de Azar (Sob)",
+          "text": "A partir do 12º nível, uma vez por dia, uma lâmina maldita é capaz de gerar uma aura maliciosa de azar. Qualquer ataque corporal ou à distância desferido contra a lâmina maldita enquanto a aura permanecer ativa sofre 20% de chance de falha (similar ao efeito de camuflagem). Ativar a aura é uma ação livre e ela continua ativa durante uma quantidade de rodadas equivalente a 3 + bônus de Carisma da lâmina (se houver). No 16º nível, o personagem é capaz de ativar a aura duas vezes por dia; no 20º nível, conseguirá gerar a aura três vezes por dia."
+        },
+        {
+          "name": "Maldição da Lâmina Atroz (Sob)",
+          "text": "A partir do 19º nível, as penalidades nas jogadas de ataque, testes de resistência, testes de habilidades e perícias e dano com armas provenientes da maldição da lâmina aumentam de -4 para -6."
+        },
+        {
+          "name": "Ex-Lâminas Malditas",
+          "text": "Uma lâmina que se torne Boa perderá todas as suas magias e habilidades nesta classe, exceto os talentos com armaduras, armas simples e comuns, e os talentos adicionais. Seu familiar se tornará um animal normal e abandonará a lâmina assim que possível. Ela não conseguirá adquirir níveis adicionais como lâmina maldita."
+        }
+      ],
+      "starterPackage": {
+        "label": "Lâmina Maldita Humana",
+        "armor": "Corselete de couro batido (+3 CA, -1 de penalidade de armadura, 9 m de deslocamento, 10 kg)",
+        "weapons": [
+          "Espada longa (dano: 1d8, dec. 19-20/x 2, 2 kg, uma mão, cortante)"
+        ],
+        "skillSelection": "3 + modificador de Inteligência",
+        "skills": [
+          {
+            "skill": "Blefar",
+            "ranks": 4,
+            "ability": "Car",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Cavalgar",
+            "ranks": 4,
+            "ability": "Des",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Conhecimento (arcano)",
+            "ranks": 4,
+            "ability": "Int",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Diplomacia",
+            "ranks": 4,
+            "ability": "Car",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Identificar Magia",
+            "ranks": 4,
+            "ability": "Int",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Intimidação",
+            "ranks": 4,
+            "ability": "Car",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Observar (oc)",
+            "ranks": 2,
+            "ability": "Sab",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Ouvir (oc)",
+            "ranks": 2,
+            "ability": "Sab",
+            "armorPenalty": "—"
+          }
+        ],
+        "feat": "Foco em Arma (espada longa)",
+        "humanBonusFeat": "Iniciativa Aprimorada",
+        "equipment": "Mochila com cantil, um dia de rações de viagem, saco de dormir, saco, pederneira e isqueiro. Lanterna coberta, 3 frascos de óleo.",
+        "gold": "6d4 x 10 PO"
+      }
+    }
+  },
+  {
+    "id": "dnd35.cg.class.cg-samurai",
+    "name_pt": "Samurai",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Tendência: Qualquer Leal. Dado de Vida d10. Perícias de classe: Cavalgar, Concentração, Conhecimento (história), Conhecimento (nobreza e realeza), Diplomacia, Intimidação, Ofícios, Sentir Motivação.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 10,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "base"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 10,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-samurai",
+      "name": "Samurai",
+      "hitDie": 10,
+      "alignment": "Qualquer Leal",
+      "skillPointsFirstLevel": "(2 + modificador de Inteligência) x 4",
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "classSkills": [
+        "Cavalgar",
+        "Concentração",
+        "Conhecimento (história)",
+        "Conhecimento (nobreza e realeza)",
+        "Diplomacia",
+        "Intimidação",
+        "Ofícios",
+        "Sentir Motivação"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": "Daisho"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": "Duas espadas em união"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": "Golpe kiai 1/dia"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "—"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Mestre em iaijutsu"
+        },
+        {
+          "level": 6,
+          "bab": "+6/+1",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Atemorizar"
+        },
+        {
+          "level": 7,
+          "bab": "+7/+2",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Golpe kiai 2/dia"
+        },
+        {
+          "level": 8,
+          "bab": "+8/+3",
+          "fort": 6,
+          "ref": 2,
+          "will": 2,
+          "special": "Iniciativa Aprimorada"
+        },
+        {
+          "level": 9,
+          "bab": "+9/+4",
+          "fort": 6,
+          "ref": 3,
+          "will": 3,
+          "special": "—"
+        },
+        {
+          "level": 10,
+          "bab": "+10/+5",
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": "Atemorizar em massa"
+        },
+        {
+          "level": 11,
+          "bab": "+11/+6/+1",
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": "Duas espadas em união aprimorada"
+        },
+        {
+          "level": 12,
+          "bab": "+12/+7/+2",
+          "fort": 8,
+          "ref": 4,
+          "will": 4,
+          "special": "Golpe kiai 3/dia"
+        },
+        {
+          "level": 13,
+          "bab": "+13/+8/+3",
+          "fort": 8,
+          "ref": 4,
+          "will": 4,
+          "special": "—"
+        },
+        {
+          "level": 14,
+          "bab": "+14/+9/+4",
+          "fort": 9,
+          "ref": 4,
+          "will": 4,
+          "special": "Atemorizar aprimorado"
+        },
+        {
+          "level": 15,
+          "bab": "+15/+10/+5",
+          "fort": 9,
+          "ref": 5,
+          "will": 5,
+          "special": "—"
+        },
+        {
+          "level": 16,
+          "bab": "+16/+11/+6/+1",
+          "fort": 10,
+          "ref": 5,
+          "will": 5,
+          "special": "Duas espadas em união maior"
+        },
+        {
+          "level": 17,
+          "bab": "+17/+12/+7/+2",
+          "fort": 10,
+          "ref": 5,
+          "will": 5,
+          "special": "Golpe kiai 4/dia"
+        },
+        {
+          "level": 18,
+          "bab": "+18/+13/+8/+3",
+          "fort": 11,
+          "ref": 6,
+          "will": 6,
+          "special": "—"
+        },
+        {
+          "level": 19,
+          "bab": "+19/+14/+9/+4",
+          "fort": 11,
+          "ref": 6,
+          "will": 6,
+          "special": "—"
+        },
+        {
+          "level": 20,
+          "bab": "+20/+15/+10/+5",
+          "fort": 12,
+          "ref": 6,
+          "will": 6,
+          "special": "Presença aterradora"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Um samurai sabe usar todas as armas simples e comuns, todas as armaduras, mas não escudos."
+        },
+        {
+          "name": "Daisho (Ext)",
+          "text": "Em combate corporal, o samurai prefere a katana (uma espada bastarda obra-prima) e a wakizashi (uma espada curta obra-prima). Muitos samurais adquirem estas lâminas como parte de uma herança, conhecida como daisho. Como o samurai foi treinado para utilizar essas espadas, ele recebe o talento Usar Arma Exótica (espada bastarda) como um talento adicional."
+        },
+        {
+          "name": "Duas Espadas em União (Ext)",
+          "text": "A partir do 2º nível, o samurai aprende a utilizar a katana e a wakizashi em conjunto. Considere que o personagem possui o talento Combater com Duas Armas quando utilizar um daisho, mesmo que não atenda aos pré-requisitos para o talento."
+        },
+        {
+          "name": "Golpe Kiai (Ext)",
+          "text": "A partir do 3º nível, uma vez por dia, o samurai é capaz de emitir um grito durante o combate, que lhe concede mais força e vigor. Quando o samurai ativa o golpe kiai (uma ação livre), seu próximo ataque recebe um bônus equivalente ao seu modificador de Carisma (mínimo +1) nas jogadas de ataque e dano. Conforme o samurai adquire níveis, recebe utilizações diárias adicionais desta habilidade. O personagem não é capaz de ativar essa habilidade mais de uma vez por rodada, não importa a quantidade disponível de utilizações diárias."
+        },
+        {
+          "name": "Mestre em Iaijutsu (Ext)",
+          "text": "No 5º nível, o samurai se torna praticante do iaijutsu, uma técnica de combate que envolve desembainhar uma espada e golpear o adversário em um único movimento fluido. Considere que o personagem possui o talento Saque Rápido, que afeta somente sua katana e wakizashi."
+        },
+        {
+          "name": "Atemorizar (Ext)",
+          "text": "A partir do 6º nível, um samurai é capaz de atemorizar seus oponentes com sua mera presença. Ele recebe +4 de bônus nos testes de Intimidar e pode desmoralizar um adversário (conforme descrito sob a perícia Intimidação no Livro do Jogador)."
+        },
+        {
+          "name": "Iniciativa Aprimorada (Ext)",
+          "text": "No 8º nível, o samurai aprimora suas técnicas em iaijutsu, praticando duelos rituais com outros samurais, e se torna capaz de antecipar o ataque iminente de qualquer adversário. Ele adquire o talento Iniciativa Aprimorada."
+        },
+        {
+          "name": "Atemorizar em Massa (Ext)",
+          "text": "No 10º nível, a postura implacável do samurai é suficiente para atemorizar diversos inimigos. Com um teste de Intimidação, ele é capaz de desmoralizar todos os oponentes num raio de 18 m com uma única ação padrão."
+        },
+        {
+          "name": "Duas Espadas em União Aprimorada (Ext)",
+          "text": "A partir do 11º nível, a habilidade do samurai com a katana e a wakizashi se aprimora. Considere que o personagem possui o talento Combater com Duas Armas Aprimorado quando utilizar um daisho, mesmo que não atenda aos pré-requisitos para o talento."
+        },
+        {
+          "name": "Atemorizar Aprimorado (Ext)",
+          "text": "No 14º nível, simplesmente fitar os olhos resolutos de um samurai é o suficiente para impedir o avanço dos inimigos. Com um teste de Intimidação, ele é capaz de desmoralizar todos os oponentes num raio de 18 m com uma única ação de movimento (não uma ação padrão)."
+        },
+        {
+          "name": "Duas Espadas em União Maior (Ext)",
+          "text": "A partir do 16º nível, combater com a katana e a wakizashi complementa a natureza do samurai. Considere que o personagem possui o talento Combater com Duas Armas Maior quando utilizar um daisho, mesmo que não atenda aos pré-requisitos para o talento."
+        },
+        {
+          "name": "Presença Aterradora (Ext)",
+          "text": "No 20º nível, a bravura, a honra e as habilidades de combate de um samurai se tornaram lendárias. Quando o samurai desembainha sua espada, todos os inimigos num raio de 18 m devem obter sucesso num teste de resistência de Vontade (CD 20 + modificador de Carisma do samurai) ou ficarão apavorados durante 4d6 rodadas (4 DV ou menos) ou abalados durante 4d6 rodadas (entre 5 e 19 DV). As criaturas que tiverem 20 DV ou mais são imunes a este efeito. Qualquer oponente que obtiver sucesso no teste de resistência não será afetado pela presença aterradora do mesmo samurai durante 24 horas."
+        },
+        {
+          "name": "Ex-Samurai",
+          "text": "Um samurai que abandone a tendência Leal ou execute um grave ato de desonra perderá todas as habilidades de classe que dependam do Carisma ou testes de Carisma. Os constrangimentos menores são perdoados, mas uma violação severa do código do bushido acarreta a perda. Os atos capazes de causar a derrocada de um samurai incluem desobedecer uma ordem de um oficial superior ou um senhor feudal, fugir por covardia de uma batalha importante, proferir uma mentira que gere conseqüências, não sustentar a própria integridade e um comportamento extremamente rude. Um samurai em desgraça não pode mais adquirir níveis nesta classe. Ele conseguirá recuperar suas habilidades de classe e poderá avançar novamente como samurai se cumprir uma penitência pela violação do bushido (consulte a magia penitência no Livro do Jogador), assumindo que o senhor feudal lhe conceda uma oportunidade de redenção — alguns senhores feudais exigem um suicídio ritual como a única forma de remover a mácula da desonra."
+        },
+        {
+          "name": "Multiclasse",
+          "text": "Assim como os personagens de outras classes, um samurai pode se tornar multiclasse, mas enfrenta uma restrição especial. Um samurai que adquirir um nível de qualquer outra classe nunca mais poderá adquirir níveis de samurai, embora conserve todas as suas habilidades de classe atuais. O caminho do guerreiro honrado exige obediência constante ao bushido. Em algumas ocasiões, um samurai é capaz de escolher níveis de uma classe de prestígio sem violar esse código. O kensai e o cavaleiro protetor (descritos neste livro) e o anão defensor (descrito no Livro do Mestre) são três exemplos comuns. O Mestre pode permitir outras classes de prestígio para um samurai. Alguns samurais em desgraça adquirem níveis na classe ronin (descrita no Capítulo 2) e são capazes de recuperar algumas de suas características de classe."
+        }
+      ],
+      "starterPackage": {
+        "label": "Samurai Humano",
+        "armor": "Cota de talas (+4 CA, -4 de penalidade de armadura, 6 m de deslocamento, 15 kg)",
+        "weapons": [
+          "Espada bastarda (dano: 1d10, dec. 19-20/x 2, 3 kg, uma mão, cortante)",
+          "Espada curta (dano: 1d6, dec. 19-20/x 2, 1 kg, leve, perfurante)",
+          "Arco curto (dano: 1d6, dec. x 3, incremento de distância 18 m, 1 kg, perfurante)"
+        ],
+        "skillSelection": "3 + modificador de Inteligência",
+        "skills": [
+          {
+            "skill": "Cavalgar",
+            "ranks": 4,
+            "ability": "Des",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Conhecimento (história)",
+            "ranks": 4,
+            "ability": "Int",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Conhecimento (nobreza e realeza)",
+            "ranks": 4,
+            "ability": "Int",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Diplomacia",
+            "ranks": 4,
+            "ability": "Car",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Intimidação",
+            "ranks": 4,
+            "ability": "Car",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Ofícios (caligrafia)",
+            "ranks": 4,
+            "ability": "Int",
+            "armorPenalty": "—"
+          },
+          {
+            "skill": "Sentir Motivação",
+            "ranks": 4,
+            "ability": "Sab",
+            "armorPenalty": "—"
+          }
+        ],
+        "feat": "Foco em Arma (espada longa)",
+        "humanBonusFeat": "Reflexos de Combate",
+        "equipment": "Mochila com cantil, um dia de rações de viagem, saco de dormir, saco, pederneira e isqueiro. Lanterna coberta, 1 frasco de óleo.",
+        "gold": "2d4 x 10 PO"
+      }
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-assassino-do-oculto",
+    "name_pt": "Assassino do Oculto",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +5; Conhecimento (arcano) 4 graduações; Identificar Magia 3 graduações; Iniciativa Aprimorada; Foco em Arma (qualquer arma)",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 16,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-assassino-do-oculto",
+      "name": "Assassino do Oculto",
+      "page": 16,
+      "hitDie": 8,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+5",
+        "skills": [
+          "Conhecimento (arcano) 4 graduações",
+          "Identificar Magia 3 graduações"
+        ],
+        "feats": [
+          "Iniciativa Aprimorada",
+          "Foco em Arma (qualquer arma)"
+        ],
+        "other": []
+      },
+      "classSkills": [
+        "Blefar (Car)",
+        "Conhecimento (arcano) (Int)",
+        "Identificar Magia (Int)",
+        "Obter Informação (Car)",
+        "Ofícios (Int)",
+        "Profissão (Sab)",
+        "Sentir Motivação (Sab)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Defesa mágica +1, vínculo da arma"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Golpe incisivo, mente sobre a magia 1/dia"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "Visão da aura, defesa mágica +2"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Mente sobre a magia 2/dia, manto da dissimulação"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Limpar pensamentos, defesa mágica +3"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Um assassino do oculto sabe usar todas as armas simples e comuns, todas as armaduras e escudos."
+        },
+        {
+          "name": "Defesa Mágica (Ext)",
+          "text": "O treinamento constante do assassino do oculto para neutralizar magias de qualquer tipo se manifesta com um bônus dos testes de resistência contra magias e efeitos similares. Esse bônus equivale a +1 no 1º nível e aumenta para +2 no 3º nível e +3 no 5º nível."
+        },
+        {
+          "name": "Vínculo da Arma (Sob)",
+          "text": "O assassino do oculto deve escolher uma arma obra-prima específica para ser o foco dos seus poderes. Quando selecionar a arma, ele imediatamente gera um vínculo com o equipamento, imbuindo a arma escolhida com a energia do seu ódio pelos conjuradores. Posteriormente, qualquer ataque desferido com esta arma contra um conjurador ou uma criatura que tenha habilidades similares a magia causará 1d6 pontos de dano adicional. Caso esta arma seja destruída ou perdida, o assassino do oculto perderá a habilidade de causar o dano adicional até que adquira e vincule outra arma do mesmo tipo e que seja uma obra-prima. O assassino precisa gastar um dia por nível de personagem treinando com a arma para recriar o vínculo; não é possível realizar outras tarefas durante esse período."
+        },
+        {
+          "name": "Mente Sobre a Magia (Sob)",
+          "text": "A partir do 2º nível, como uma ação livre, o assassino do oculto é capaz de refletir uma magia ou habilidade similar disparada contra ele de volta para o conjurador original. Essa habilidade é similar a refletir magias (nível de conjurador equivalente a 5 + nível na classe de prestígio). O personagem é capaz de utilizar essa habilidade uma vez por dia no 2º nível e duas vezes por dia no 4º nível."
+        },
+        {
+          "name": "Golpe Incisivo (Ext)",
+          "text": "A partir do 2º nível, o assassino do oculto que preparar uma ação para atrapalhar um conjurador causará o dobro de dano ao alvo."
+        },
+        {
+          "name": "Visão da Aura (Sob)",
+          "text": "No 3º nível, o assassino do oculto adquire a habilidade de distinguir auras mágicas num raio de 18 m como uma ação livre. Essa habilidade é similar a detectar magia. O personagem somente é capaz de utilizar a visão da aura para determinar a quantidade de auras mágicas existentes."
+        },
+        {
+          "name": "Manto da Dissimulação (Sob)",
+          "text": "A partir do 4º nível, o assassino do oculto e o equipamento que carregar se tornam mais difíceis de localizar por meio de adivinhações como clarividência/clariaudiência, localizar objetos e outras magias de detecção. O assassino do oculto adquire proteções mágicas contra adivinhações equivalentes à magia dificultar detecção (nível de conjurador equivalente ao nível na classe de prestígio), mas que afetam somente o assassino e seus equipamentos."
+        },
+        {
+          "name": "Limpar Pensamentos (Ext)",
+          "text": "No 5º nível, o assassino do oculto é capaz de imergir em um estado de inatividade mental aparente, tornando-se imune a efeitos de ação mental (feitiços, compulsões, padrões, fantasmas e efeitos de moral). Ele consegue neutralizar ou reativar esta habilidade como uma ação livre."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-barbaro-frenetico",
+    "name_pt": "Bárbaro Frenético",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +6; Ataque Poderoso; Fúria Destrutiva*; Fúria Assustadora*; Trespassar; Tendência: qualquer uma, exceto Leal; * Novos talentos, descritos no Capítulo 3",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 12,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 18,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-barbaro-frenetico",
+      "name": "Bárbaro Frenético",
+      "page": 18,
+      "hitDie": 12,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+6",
+        "skills": [],
+        "feats": [
+          "Ataque Poderoso",
+          "Fúria Destrutiva*",
+          "Fúria Assustadora*",
+          "Trespassar"
+        ],
+        "other": [
+          "Tendência: qualquer uma, exceto Leal",
+          "* Novos talentos, descritos no Capítulo 3"
+        ]
+      },
+      "classSkills": [
+        "Cavalgar (Des)",
+        "Escalar (For)",
+        "Intimidação (Car)",
+        "Saltar (For)",
+        "Natação (For)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": "Frenesi 1/dia, duro de matar"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": "Trespassar supremo"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": "Frenesi 2/dia"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Frenesi imortal"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Frenesi 3/dia, ataque poderoso aprimorado"
+        },
+        {
+          "level": 6,
+          "bab": "+6",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Inspirar frenesi 1/dia"
+        },
+        {
+          "level": 7,
+          "bab": "+7",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Frenesi 4/dia"
+        },
+        {
+          "level": 8,
+          "bab": "+8",
+          "fort": 6,
+          "ref": 2,
+          "will": 2,
+          "special": "Frenesi maior, inspirar frenesi 2/dia"
+        },
+        {
+          "level": 9,
+          "bab": "+9",
+          "fort": 6,
+          "ref": 3,
+          "will": 3,
+          "special": "Frenesi 5/dia"
+        },
+        {
+          "level": 10,
+          "bab": "+10",
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": "Inspirar frenesi 3/dia, frenesi incansável, ataque poderoso supremo"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os bárbaros frenéticos não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Frenesi (Ext)",
+          "text": "A partir do 1º nível, o bárbaro frenético pode entrar em frenesi durante o combate. Enquanto estiver neste estado, ele recebe +6 de bônus de Força e um único ataque adicional a cada rodada com seu bônus mais elevado quando usar a ação de ataque total (este efeito não é cumulativo com velocidade e outras habilidades que concedem ataques adicionais). Entretanto, também sofre -4 de penalidade na CA e dois pontos de dano por contusão a cada rodada. Um frenesi permanece ativo durante uma quantidade de rodadas equivalente a 3 + o modificador de Constituição do bárbaro frenético. Para encerrar o frenesi antes que sua duração termine, o personagem pode realizar um teste de resistência de Vontade (CD 20) uma vez por rodada, como uma ação livre. Um sucesso conclui o frenesi imediatamente; um fracasso significa que ele continua. Os efeitos do frenesi são cumulativos com quaisquer efeitos da fúria. No 1º nível, o personagem pode entrar em frenesi uma vez por dia. A partir de então, ele adquire uma ativação diária adicional desta habilidade a cada dois níveis de bárbaro frenético, mas somente poderá entrar em frenesi uma vez por combate. O personagem é capaz de ativar esta habilidade como uma ação livre. A ativação não consome tempo, mas o bárbaro apenas será capaz de fazê-lo durante sua ação, nunca em resposta a uma ação alheia. Além disso, se sofrer dano proveniente de um ataque, magia, armadilha ou qualquer outra fonte, entrará automaticamente em frenesi no começo de sua ação subseqüente, contanto que ainda tenha pelo menos um uso diário da habilidade. Para evitar essa situação, o personagem deve obter sucesso em um teste de resistência de Vontade (CD 10 + pontos de dano sofridos desde sua última ação) no início de seu turno. Enquanto estiver em frenesi, o personagem não pode usar perícias ou habilidades que exijam paciência ou concentração, qualquer perícia baseada em Carisma, Destreza ou Inteligência (exceto Intimidação), a perícia Concentração, conjurar magias, ingerir poções, ativar itens mágicos ou ler pergaminhos. Ele pode utilizar todos os seus talentos, exceto Especialização em Combate, talentos de criação de itens e talentos metamágicos. Entretanto, é capaz de usar a habilidade especial de inspirar frenesi (veja adiante) normalmente. Durante um frenesi, o bárbaro frenético deve atacar todos os alvos que identificar como adversários, usando suas melhores habilidades. Caso todos os inimigos tombem antes do fim do frenesi, a loucura continua. Ele deve atacar a criatura mais próxima (determinada aleatoriamente se vários adversários em potencial estiverem eqüidistantes) e lutar contra esse oponente sem se importar com amizade, inocência ou estado de saúde (do alvo ou o próprio). Quando um frenesi terminar, o bárbaro frenético estará fatigado (-2 de penalidade de Força e Destreza, incapaz de realizar Investidas ou correr) pelo restante do encontro. Se o personagem estiver sob os efeitos da fúria, a condição fatigado será ignorada até que a duração da fúria termine — neste momento, o bárbaro frenético estará exausto, não apenas fatigado."
+        },
+        {
+          "name": "Duro de Matar",
+          "text": "O bárbaro frenético adquire Duro de Matar como um talento adicional, mesmo que não atenda aos pré-requisitos."
+        },
+        {
+          "name": "Trespassar Supremo",
+          "text": "A partir do 2º nível, o bárbaro frenético pode realizar um passo de ajuste de 1,5 m entre os ataques concedidos pelo talento Trespassar ou Trespassar Maior. Ele ainda está limitado a somente um passo de ajuste a cada rodada, ou seja, não poderá utilizar esta habilidade durante uma rodada em que já tenha percorrido 1,5 m ou mais."
+        },
+        {
+          "name": "Frenesi Imortal (Ext)",
+          "text": "A partir do 4º nível, o bárbaro frenético pode desprezar a morte e a inconsciência enquanto permanecer em frenesi. Ele não estará incapacitado quando seus pontos de vida caírem a 0 ou morrendo quando seus pontos de vida estiverem entre -1 e -9, e continuará a lutar normalmente até que seu frenesi acabe. Mesmo que seja reduzido a -10 PV, ele continuará a lutar até o término do frenesi. Neste ponto, os efeitos de seus ferimentos se aplicam normalmente caso não tenham sido curados. Esta habilidade não previne mortes por dano maciço e efeitos mágicos como matar ou desintegrar."
+        },
+        {
+          "name": "Ataque Poderoso Aprimorado",
+          "text": "A partir do 5º nível, o bárbaro frenético causa 1,5 vezes (+50%) o dano proveniente do talento Ataque Poderoso. Ou seja, ele recebe +3 de bônus em suas jogadas de dano para cada penalidade de -1 que aceitar em suas jogadas de ataque corporal quando utilizar uma arma de duas mãos (exceto as armas duplas)."
+        },
+        {
+          "name": "Inspirar Frenesi (Sob)",
+          "text": "A partir do 6º nível, o bárbaro frenético pode inspirar frenesi em seus aliados enquanto estiver neste mesmo estado. Quando ativar esta habilidade, todos os seus aliados voluntários num raio de 3 m obtêm os benefícios e as desvantagens do frenesi, como se tivessem essa habilidade. O frenesi dessas criaturas permanece ativo durante uma quantidade de rodadas equivalente a 3 + modificador de Constituição do bárbaro frenético, mas os aliados não precisam permanecer na área afetada pela habilidade (3 m de raio). O bárbaro frenético adquire uma ativação diária adicional desta habilidade a cada dois níveis nesta classe de prestígio, mas só pode usá-la uma vez por encontro."
+        },
+        {
+          "name": "Frenesi Maior (Ext)",
+          "text": "A partir do 8º nível, o bônus de Força obtido com a habilidade frenesi será +10 (em vez de +6)."
+        },
+        {
+          "name": "Ataque Poderoso Supremo",
+          "text": "No 10º nível, o bárbaro frenético causa 2 vezes (+100%) o dano proveniente do talento Ataque Poderoso. Ou seja, ele recebe +4 de bônus em suas jogadas de dano para cada penalidade de -1 que aceitar em suas jogadas de ataque corporal quando utilizar uma arma de duas mãos (exceto as armas duplas)."
+        },
+        {
+          "name": "Frenesi Incansável (Ext)",
+          "text": "A partir do 10º nível, o bárbaro frenético não estará mais fatigado depois do frenesi, embora ainda sofra os pontos de dano por contusão a cada rodada de duração."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-batedor-halfling",
+    "name_pt": "Batedor Halfling",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +5; Cavalgar 6 graduações; Observar 3 graduações; Ouvir 3 graduações; Combate Montado; Arquearia Montada; Raça: Halfling",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 20,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-batedor-halfling",
+      "name": "Batedor Halfling",
+      "page": 20,
+      "hitDie": 8,
+      "skillPointsPerLevel": "4 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+5",
+        "skills": [
+          "Cavalgar 6 graduações",
+          "Observar 3 graduações",
+          "Ouvir 3 graduações"
+        ],
+        "feats": [
+          "Combate Montado",
+          "Arquearia Montada"
+        ],
+        "other": [
+          "Raça: Halfling"
+        ]
+      },
+      "classSkills": [
+        "Adestrar Animais (Car)",
+        "Cavalgar (Des)",
+        "Observar (Sab)",
+        "Ouvir (Sab)",
+        "Sobrevivência (Sab)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 2,
+          "will": 0,
+          "special": "Montaria, prontidão, bônus em Cavalgar",
+          "acBonus": 1
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 0,
+          "ref": 3,
+          "will": 0,
+          "special": "Cavalgar defensivamente",
+          "acBonus": 1
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 3,
+          "will": 1,
+          "special": "Investida irrefreável",
+          "acBonus": 2
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 1,
+          "ref": 4,
+          "will": 1,
+          "special": "Permanecer na sela",
+          "acBonus": 2
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 1,
+          "ref": 4,
+          "will": 1,
+          "special": "Saltar da sela",
+          "acBonus": 3
+        },
+        {
+          "level": 6,
+          "bab": "+6",
+          "fort": 2,
+          "ref": 5,
+          "will": 2,
+          "special": "—",
+          "acBonus": 3
+        },
+        {
+          "level": 7,
+          "bab": "+7",
+          "fort": 2,
+          "ref": 5,
+          "will": 2,
+          "special": "Evasão",
+          "acBonus": 4
+        },
+        {
+          "level": 8,
+          "bab": "+8",
+          "fort": 2,
+          "ref": 6,
+          "will": 2,
+          "special": "Ataque total montado",
+          "acBonus": 4
+        },
+        {
+          "level": 9,
+          "bab": "+9",
+          "fort": 3,
+          "ref": 6,
+          "will": 3,
+          "special": "—",
+          "acBonus": 5
+        },
+        {
+          "level": 10,
+          "bab": "+10",
+          "fort": 3,
+          "ref": 7,
+          "will": 3,
+          "special": "Inversão montada",
+          "acBonus": 5
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os batedores halflings não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Bônus na CA",
+          "text": "Este é um bônus de esquiva aplicado na Classe de Armadura do personagem quando estiver montado, independente da armadura usada. Ele perderá esse bônus em qualquer situação em que perderia seu bônus de Destreza na CA."
+        },
+        {
+          "name": "Montaria",
+          "text": "No 1º nível, os batedores halflings recebem uma montaria apropriada aos recursos de sua comunidade. A maioria das comunidades halflings tentará fornecer póneis de guerra ou cachorros de montaria para seus batedores, mas existem algumas aldeias que forneceram animais mais baratos e outras que alardearam criaturas mais exóticas. O personagem, obviamente, é capaz de adquirir sua própria montaria se desejar. Não é necessário que o personagem pague sua montaria, nem os equipamentos pertinentes (como sela, estribos e freio), embora o personagem possa adquirir equipamentos mágicos ou obras-primas. Os níveis de classe do batedor halfling se acumulam com os níveis nas classes paladino, druida e ranger para determinar as habilidades especiais da montaria ou do companheiro animal."
+        },
+        {
+          "name": "Prontidão",
+          "text": "Os batedores halflings recebem +2 de bônus em testes de Observar e Ouvir."
+        },
+        {
+          "name": "Bônus em Cavalgar",
+          "text": "O batedor halfling recebe um bônus de competência em todos os seus testes da perícia Cavalgar equivalente ao seu nível de classe."
+        },
+        {
+          "name": "Cavalgar Defensivamente (Ext)",
+          "text": "Um batedor halfling de 2º nível ou superior aprendeu vários truques para cavalgar na defensiva, conquanto ele não execute nenhuma ação além disso (é impossível atacar enquanto ele cavalga defensivamente). O personagem recebe +2 de bônus nos testes de resistência de Reflexos e +4 de bônus de esquiva na CA. Além disso, sua montaria adquire +6 m de deslocamento, +2 de bônus em todos os testes de resistência de Vontade e +4 de bônus de esquiva na CA."
+        },
+        {
+          "name": "Investida Irrefreável (Ext)",
+          "text": "A partir do 3º nível, o batedor halfling é capaz de percorrer terrenos difíceis, que normalmente reduziriam seu deslocamento, ou sobre aliados que estejam bloqueando sua trajetória durante uma Investida, caso obtenha sucesso em um teste de Cavalgar (CD 15)."
+        },
+        {
+          "name": "Permanecer na Sela (Ext)",
+          "text": "A partir do 4º nível, o batedor halfling é capaz de permanecer na sela mesmo durante um deslocamento brusco ou um combate, sem sofrer penalidades nas suas ações, mas deve obter sucesso em um teste de Cavalgar (CD 20). Enquanto estiver montado, o batedor não sofre penalidades nas suas jogadas de ataque à distância devido ao movimento dobrado ou a uma corrida da sua montaria (consulte o talento Arquearia Montada, no Livro do Jogador)."
+        },
+        {
+          "name": "Saltar da Sela (Ext)",
+          "text": "Um batedor de 5º nível ou superior pode desmontar como uma ação livre, se obtiver sucesso num teste de Cavalgar (CD 20), caindo no espaço adjacente da sua montaria. O animal deve estar percorrendo o dobro do próprio deslocamento normal ou menos. Caso haja um oponente na área ameaçada pelo halfling (depois que ele desmontar), ele poderá realizar um ataque de Investida contra esse oponente (+2 de ataque, -2 na CA). Esse uso da habilidade exige uma ação de rodada completa."
+        },
+        {
+          "name": "Evasão (Ext)",
+          "text": "Um batedor de 7º nível ou superior adquire a habilidade evasão. Sempre que se tornar alvo de um ataque que permita um teste de resistência de Reflexos para reduzir o dano à metade, ele não sofrerá qualquer dano se obtiver sucesso no teste de resistência. A evasão somente poderá ser utilizada quando o batedor estiver sem armadura ou usando uma armadura leve. Um batedor halfling indefeso (inconsciente, paralisado ou imobilizado) não recebe os benefícios dessa habilidade. Enquanto estiver montado, o batedor concede esta habilidade para sua montaria. A criatura poderá utilizar seu bônus de resistência de Reflexos ou o valor do batedor, o que for maior. Se o personagem possuir a habilidade evasão de outra classe, ele adquire evasão aprimorada, e sua montaria recebe os benefícios da evasão, conforme descrito acima. A evasão aprimorada é similar à evasão, mas o batedor não sofrerá qualquer dano se obtiver sucesso no teste de resistência e metade do dano mesmo se fracassar."
+        },
+        {
+          "name": "Ataque Total Montado (Ext)",
+          "text": "A partir do 8º nível, os ataques totais do batedor usam uma ação padrão quando sua montaria se deslocar entre 1,5 m e seu deslocamento terrestre normal. O batedor não pode combinar um ataque total montado com uma Investida."
+        },
+        {
+          "name": "Inversão Montada (Ext)",
+          "text": "No 10º nível, como uma ação livre, o batedor halfling pode realizar um teste de Cavalgar (CD 25) para forçar sua montaria a executar uma única inversão de até 90º enquanto estiver correndo ou investindo (a montaria ainda precisa percorrer 3 m em linha reta, depois da inversão, para realizar a Investida). Essa manobra somente pode ser utilizada uma vez por rodada. Caso fracasse no teste de Cavalgar, a montaria percorre 3 m em linha reta e perde o restante de suas ações neste turno."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-cacador-da-floresta-sombria",
+    "name_pt": "Caçador da Floresta Sombria",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +5; Esconder-se 5 graduações; Falar Idioma (Orc); Furtividade 5 graduações; Observar 5 graduações; Ouvir 5 graduações; Sobrevivência 5 graduações; Esquiva; Rastrear; Raça: Elfo ou meio-elfo",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 22,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-cacador-da-floresta-sombria",
+      "name": "Caçador da Floresta Sombria",
+      "page": 22,
+      "hitDie": 8,
+      "skillPointsPerLevel": "4 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+5",
+        "skills": [
+          "Esconder-se 5 graduações",
+          "Falar Idioma (Orc)",
+          "Furtividade 5 graduações",
+          "Observar 5 graduações",
+          "Ouvir 5 graduações",
+          "Sobrevivência 5 graduações"
+        ],
+        "feats": [
+          "Esquiva",
+          "Rastrear"
+        ],
+        "other": [
+          "Raça: Elfo ou meio-elfo"
+        ]
+      },
+      "classSkills": [
+        "Cavalgar (Des)",
+        "Conhecimento (natureza) (Int)",
+        "Cura (Sab)",
+        "Escalar (For)",
+        "Esconder-se (Des)",
+        "Furtividade (Des)",
+        "Natação (For)",
+        "Observar (Sab)",
+        "Ofícios (Int)",
+        "Ouvir (Sab)",
+        "Procurar (Int)",
+        "Profissão (Sab)",
+        "Saltar (For)",
+        "Sobrevivência (Sab)",
+        "Usar Cordas (Des)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 2,
+          "ref": 2,
+          "will": 0,
+          "special": "Inimigo ancestral +2"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 3,
+          "will": 0,
+          "special": "Esquiva sobrenatural"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 3,
+          "ref": 3,
+          "will": 1,
+          "special": "Ataque furtivo +1d6",
+          "sneakAttack": "1d6"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 4,
+          "ref": 4,
+          "will": 1,
+          "special": "Inimigo ancestral +4, visão no escuro 9 m"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 4,
+          "ref": 4,
+          "will": 1,
+          "special": "Esquiva sobrenatural aprimorada"
+        },
+        {
+          "level": 6,
+          "bab": "+6",
+          "fort": 5,
+          "ref": 5,
+          "will": 2,
+          "special": "Ataque furtivo +2d6",
+          "sneakAttack": "2d6"
+        },
+        {
+          "level": 7,
+          "bab": "+7",
+          "fort": 5,
+          "ref": 5,
+          "will": 2,
+          "special": "Inimigo ancestral +6, visão no escuro 18 m"
+        },
+        {
+          "level": 8,
+          "bab": "+8",
+          "fort": 6,
+          "ref": 6,
+          "will": 2,
+          "special": "Amortecer decisivo"
+        },
+        {
+          "level": 9,
+          "bab": "+9",
+          "fort": 6,
+          "ref": 6,
+          "will": 3,
+          "special": "Ataque furtivo +3d6",
+          "sneakAttack": "3d6"
+        },
+        {
+          "level": 10,
+          "bab": "+10",
+          "fort": 7,
+          "ref": 7,
+          "will": 3,
+          "special": "Inimigo ancestral +8, ataque mortal"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os caçadores da floresta sombria não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Inimigo Ancestral (Ext)",
+          "text": "Devido ao seu minucioso estudo dos orcs e seu treinamento nas técnicas corretas para combatê-los, o caçador recebe +2 de bônus nos testes de Blefar, Ouvir, Sentir Motivação, Observar e Sobrevivência realizados contra essas criaturas. Da mesma forma, ele recebe +2 de bônus nas jogadas de ataque e dano contra orcs. Os ataques à distância do caçador somente concedem o bônus quando o alvo estiver num raio de 9 metros. O personagem não é capaz de atingir com precisão letal a uma distância maior. As criaturas imunes a sucessos decisivos não são afetadas por essa habilidade. A cada três níveis (4º, 7º e 10º níveis), o caçador da floresta sombria recebe +2 em todos os bônus. Esses modificadores se acumulam com os bônus de inimigos prediletos da classe ranger (se houver)."
+        },
+        {
+          "name": "Esquiva Sobrenatural (Ext)",
+          "text": "A partir do 2º nível, o caçador da floresta sombria adquire a habilidade intuitiva de reagir ao perigo antes que seus sentidos consigam identificar a ameaça. Ele conserva seu bônus de Destreza na CA (se houver), mesmo em situações de surpresa ou contra os ataques de um oponente invisível. No entanto, ele ainda perde seu bônus de Destreza na CA quando estiver imobilizado. Caso o caçador da floresta sombria tenha a habilidade esquiva sobrenatural de uma classe diferente, ele automaticamente adquire esquiva sobrenatural aprimorada."
+        },
+        {
+          "name": "Ataque Furtivo (Ext)",
+          "text": "Se um caçador da floresta sombria puder atingir um oponente incapaz de se defender adequadamente de seu ataque, ele será capaz de golpear um ponto vital e causar mais dano. Para obter todos os detalhes sobre a habilidade ataque furtivo, consulte a classe ladino no Livro do Jogador. O dano adicional é de +1d6 no 3º nível, +2d6 no 6º nível e +3d6 no 9º nível."
+        },
+        {
+          "name": "Visão no Escuro (Ext)",
+          "text": "Embora sejam furtivos e tenham uma visão aguçada, com freqüência os caçadores da floresta sombria estão em desvantagem contra os orcs quando lutam na escuridão. Há gerações, os sábios élficos desenvolveram um ritual que fornece aos caçadores mais dedicados uma forma de sobrepujar essa desvantagem. Conforme o personagem adquire experiência, sua visão na penumbra se aprimora e acaba se tornando equivalente à visão no escuro dos seus inimigos. No 4º nível, um caçador da floresta sombria adquire visão no escuro com alcance de 9 m; no 7º nível, o alcance aumenta para 18 m. Se o caçador tiver esta habilidade proveniente de outra fonte (racial ou mágica), ela não se aprimora."
+        },
+        {
+          "name": "Esquiva Sobrenatural Aprimorada (Ext)",
+          "text": "A partir do 5º nível, o caçador da floresta sombria não poderá mais ser flanqueado, pois reagirá aos adversários das suas laterais com a mesma facilidade que reagiria a somente um atacante. Essa defesa impede que um ladino realize um ataque furtivo quando estiver flanqueando o personagem, a menos que o atacante tenha (no mínimo) 4 níveis de ladino acima do nível de classe atual do caçador. Se o caçador da floresta sombria tiver essa habilidade de uma classe diferente, os níveis das classes que concedem a esquiva sobrenatural se acumulam para determinar o nível mínimo dos ladinos capazes de flanquear o caçador."
+        },
+        {
+          "name": "Amortecer Decisivo (Ext)",
+          "text": "Embora sejam mais treinados que seus adversários orcs, os caçadores da floresta sombria já presenciaram muitos dos seus tombarem diante de um golpe de sorte de um machado ou falcione. A partir do 8º nível, o caçador será capaz de converter o melhor golpe de seu adversário em um arranhão. Uma vez por dia, o caçador poderá realizar um teste de resistência de Reflexos (CD 20 + bônus de melhoria da arma, se houver) para converter um sucesso decisivo em um golpe regular. O caçador deve estar ciente do ataque, não pode estar surpreso e precisa declarar a utilização desta habilidade antes que a jogada de dano seja realizada."
+        },
+        {
+          "name": "Ataque Mortal (Ext)",
+          "text": "Se um caçador da floresta sombria de 10º nível estudar um orc durante 3 rodadas, atingi-lo com um ataque furtivo usando uma arma branca e causar dano, o ataque furtivo será capaz de matar o alvo de imediato. Enquanto estuda a vítima, ele pode executar outras ações, desde que consiga manter sua concentração no orc e este não perceba, detecte ou reconheça o caçador como um de seus oponentes. Caso a vítima fracasse em um teste de resistência de Fortitude (CD 10 + nível de classe do caçador + modificador de Sabedoria) contra o efeito letal, morrerá imediatamente. Se a vítima obtiver sucesso no teste de resistência, o golpe é considerado um ataque furtivo normal. Assim que o caçador completar as 3 rodadas de estudo, deverá executar o ataque mortal durante as próximas 3 rodadas. Caso o ataque mortal fracasse (a vítima obtém um sucesso de Fortitude) ou o caçador não consiga desferi-lo durante as 3 rodadas subseqüentes ao estudo, serão necessárias outras 3 rodadas para utilizar novamente essa habilidade."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-cacador-dos-mortos",
+    "name_pt": "Caçador dos Mortos",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +5; Conhecimento (religião) 5 graduações; Tendência: qualquer uma, exceto Mau; Capacidade de Expulsar Mortos-Vivos; Cicatriz da não-vida: ter perdido um nível ou um ponto permanente de habilidade drenado por um morto-vivo",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 24,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-cacador-dos-mortos",
+      "name": "Caçador dos Mortos",
+      "page": 24,
+      "hitDie": 8,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+5",
+        "skills": [
+          "Conhecimento (religião) 5 graduações"
+        ],
+        "feats": [],
+        "other": [
+          "Tendência: qualquer uma, exceto Mau",
+          "Capacidade de Expulsar Mortos-Vivos",
+          "Cicatriz da não-vida: ter perdido um nível ou um ponto permanente de habilidade drenado por um morto-vivo"
+        ]
+      },
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (religião) (Int)",
+        "Cura (Sab)",
+        "Profissão (Sab)",
+        "Cavalgar (Des)",
+        "Procurar (Int)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": "Detectar mortos-vivos"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": "Destruir mortos-vivos"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": "Ignorar o toque da morte"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "—"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Morte definitiva"
+        },
+        {
+          "level": 6,
+          "bab": "+6",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Expulsão adicional, destruir mortos-vivos"
+        },
+        {
+          "level": 7,
+          "bab": "+7",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "—"
+        },
+        {
+          "level": 8,
+          "bab": "+8",
+          "fort": 6,
+          "ref": 2,
+          "will": 2,
+          "special": "Explosão de energia positiva"
+        },
+        {
+          "level": 9,
+          "bab": "+9",
+          "fort": 6,
+          "ref": 3,
+          "will": 3,
+          "special": "—"
+        },
+        {
+          "level": 10,
+          "bab": "+10",
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": "Corpo fechado, destruir mortos-vivos"
+        }
+      ],
+      "spellsPerDay": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          0,
+          null,
+          null
+        ],
+        [
+          1,
+          1,
+          null,
+          null
+        ],
+        [
+          1,
+          1,
+          0,
+          null
+        ],
+        [
+          1,
+          1,
+          1,
+          null
+        ],
+        [
+          2,
+          1,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          2,
+          1
+        ]
+      ],
+      "spellList": {
+        "1": [
+          "arma mágica",
+          "curar ferimentos leves",
+          "invisibilidade contra mortos-vivos",
+          "pedra encantada",
+          "remover medo"
+        ],
+        "2": [
+          "chama contínua",
+          "curar ferimentos moderados",
+          "força do touro",
+          "remover paralisia",
+          "restauração menor",
+          "visão no escuro"
+        ],
+        "3": [
+          "curar ferimentos graves",
+          "falar com os mortos",
+          "imobilizar mortos-vivos",
+          "luz cegante",
+          "luz do dia",
+          "proteção contra elementos"
+        ],
+        "4": [
+          "arma do rompimento",
+          "curar ferimentos críticos",
+          "movimentação livre",
+          "proteção contra a morte",
+          "restauração"
+        ]
+      },
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os caçadores dos mortos não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Magias",
+          "text": "A partir do 1º nível, um caçador dos mortos adquire a habilidade de conjurar uma pequena quantidade de magias divinas. Para conjurar magias, um personagem deve ter uma pontuação em Sabedoria igual ou superior a 10 + o nível da magia; portanto, um personagem de Sabedoria 10 ou inferior não conseguirá fazê-lo. As magias adicionais do caçador dos mortos são baseadas em Sabedoria; a Classe de Dificuldade de um teste de resistência contra essas magias equivale a 10 + nível da magia + modificador de Sabedoria. Quando um caçador recebe 0 magias de um determinado nível (como 0 magias de 1º nível no 1º nível da classe de prestígio), adquire somente magias adicionais com base no valor de Sabedoria. Um personagem que não receba magias adicionais em qualquer nível ainda não é capaz de conjurá-las. A relação das magias do caçador dos mortos é descrita a seguir; ele tem acesso a qualquer magia da lista, desde que seja capaz de lançá-la, e pode escolher livremente qual preparar. Um caçador prepara e conjura magias como um clérigo (mas não pode usar a conversão espontânea para lançar magias de cura no lugar de uma magia preparada)."
+        },
+        {
+          "name": "Detectar Mortos-Vivos (SM)",
+          "text": "O caçador dos mortos pode usar detectar mortos-vivos (como a magia homônima) livremente, como uma habilidade similar a magia."
+        },
+        {
+          "name": "Destruir Mortos-Vivos (Sob)",
+          "text": "Uma vez por dia, um caçador dos mortos de 2º nível ou superior pode tentar destruir mortos-vivos usando um ataque regular. Ao fazê-lo, ele soma seu modificador de Sabedoria (caso seja positivo) na sua jogada de ataque, causando 1 ponto de dano adicional por nível de experiência. Por exemplo, um caçador dos mortos de 8º nível empunhando uma espada longa causaria 1d8+8 pontos de dano, além do dano devido a sua Força ou outros efeitos mágicos. Se o caçador dos mortos, acidentalmente, tentar destruir uma criatura que não seja um morto-vivo, esta habilidade não surte efeito, mas não poderá ser utilizada outra vez naquele dia. Observação: Um paladino/caçador dos mortos é capaz de destruir o mal e destruir mortos-vivos no mesmo dia, potencialmente contra o mesmo alvo — caso seja um morto-vivo maligno. A tabela indica um uso adicional por dia no 6º e no 10º nível."
+        },
+        {
+          "name": "Ignorar o Toque da Morte (Ext)",
+          "text": "A partir do 3º nível, o caçador aplica seu modificador de Sabedoria (caso seja positivo) como um bônus adicional aos testes de resistência contra magias ou efeitos dos mortos-vivos. Portanto, os testes de Vontade consideram o dobro do modificador normal de Sabedoria contra essas criaturas."
+        },
+        {
+          "name": "Morte Definitiva (Sob)",
+          "text": "Qualquer morto-vivo eliminado por um caçador dos mortos, seja em combate corporal ou através de magias, nunca mais se erguerá como uma dessas criaturas. Ele estará destruído para sempre."
+        },
+        {
+          "name": "Expulsão Adicional",
+          "text": "No 6º nível, o caçador dos mortos recebe Expulsão Adicional como um talento adicional. Esse talento lhe concede mais quatro utilizações de expulsar mortos-vivos por dia e se acumula com o limite diário de expulsão fornecido por qualquer outra classe."
+        },
+        {
+          "name": "Explosão de Energia Positiva (Sob)",
+          "text": "Um caçador dos mortos de 8º nível ou superior é capaz de gerar uma explosão de energia positiva, que causa 1d6 pontos de dano por nível na classe de prestígio a qualquer morto-vivo num raio de 6 metros do personagem. As criaturas devem realizar um teste de resistência de Reflexos (CD 10 + nível do caçador + modificador de Carisma) para reduzir o dano à metade. A ativação usa uma ação padrão e duas tentativas de Expulsão."
+        },
+        {
+          "name": "Corpo Fechado (Sob)",
+          "text": "Ao atingir o 10º nível, o caçador dos mortos não perderá mais níveis devido aos efeitos de drenar energia (embora a morte e a ressurreição ainda reduzam o nível do personagem, assim como outros efeitos de absorção ou redução de níveis e experiência — como a criação de itens mágicos)."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-cacador-sombrio",
+    "name_pt": "Caçador Sombrio",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +5; Conhecimento (masmorras) 2 graduações; Ofícios (armadilheiro) 5 graduações; Furtividade 2 graduações; Sobrevivência 2 graduações; Lutar às Cegas; Rastrear",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 27,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-cacador-sombrio",
+      "name": "Caçador Sombrio",
+      "page": 27,
+      "hitDie": 8,
+      "skillPointsPerLevel": "4 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+5",
+        "skills": [
+          "Conhecimento (masmorras) 2 graduações",
+          "Ofícios (armadilheiro) 5 graduações",
+          "Furtividade 2 graduações",
+          "Sobrevivência 2 graduações"
+        ],
+        "feats": [
+          "Lutar às Cegas",
+          "Rastrear"
+        ],
+        "other": []
+      },
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (masmorras) (Int)",
+        "Escalar (For)",
+        "Esconder-se (Des)",
+        "Furtividade (Des)",
+        "Natação (For)",
+        "Observar (Sab)",
+        "Ofícios (Int)",
+        "Operar Mecanismo (Int)",
+        "Ouvir (Sab)",
+        "Profissão (Sab)",
+        "Sobrevivência (Sab)",
+        "Usar Cordas (Des)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 2,
+          "will": 0,
+          "special": "Ligação com pedras aprimorada"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 0,
+          "ref": 3,
+          "will": 0,
+          "special": "Visão no escuro aumentada"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 3,
+          "will": 1,
+          "special": "Ataque furtivo +1d6",
+          "sneakAttack": "1d6"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 1,
+          "ref": 4,
+          "will": 1,
+          "special": "Matiz rochosa"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 1,
+          "ref": 4,
+          "will": 1,
+          "special": "Ataque mortal"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os caçadores sombrios não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Ligação com Pedras Aprimorada (Ext)",
+          "text": "Um caçador sombrio adquire a habilidade ligação com pedras da raça dos anões (consulte a pág. 15 do Livro do Jogador). Se o personagem já possui essa habilidade, ele recebe +2 de bônus (total +4 de bônus) nos testes para perceber trabalhos incomuns em alvenaria, como portas deslizantes, novas construções, armadilhas de pedras, superfícies rochosas ou tetos instáveis e similares. Esse bônus também se aplica aos testes de Procurar realizados para encontrar armadilhas feitas de pedra."
+        },
+        {
+          "name": "Visão no Escuro Aumentada (Ext)",
+          "text": "Os caçadores sombrios gastam a maior parte de suas vidas nas cavernas mais escuras que encontram. Conforme suas habilidades se aprimoram, uma compreensão quase mística das câmaras mais profundas aguça sua acuidade visual inata. Se o caçador sombrio ainda não possui visão no escuro, ele adquire esta característica no 2º nível, com alcance de 9 m. Caso já tenha, ele adiciona 9 m ao alcance máximo. Quando atinge o 4º nível, sua visão no escuro se aprimora em mais 9 m. Esse alcance adicional se acumula com outras habilidades naturais ou extraordinárias que aprimoram a visão no escuro, mas não afeta a habilidade concedida por magias. Qualquer condição que neutralizaria a visão no escuro normal também afeta a visão no escuro aumentada."
+        },
+        {
+          "name": "Ataque Furtivo (Ext)",
+          "text": "Se um caçador sombrio puder atingir um oponente incapaz de se defender adequadamente de seu ataque, ele será capaz de golpear um ponto vital e causar mais dano. Basicamente, esse ataque causa um dano adicional sempre que a vítima não puder se beneficiar de seu bônus de Destreza na CA (existente ou não) ou estiver sendo flanqueada pelo caçador. O dano adicional será 1d6 pontos. Se ele obtiver um sucesso decisivo num ataque furtivo, o dano adicional não é multiplicado. Os ataques à distância somente funcionam como ataques furtivos quando o alvo estiver num raio de 9 metros. O caçador sombrio não é capaz de atingir com precisão a uma distância maior. Usando um bastão ou um ataque desarmado, é possível realizar um ataque furtivo que causa dano por contusão, em vez de dano letal. Não é possível usar uma arma normal para causar dano por contusão em um ataque furtivo, nem mesmo sofrendo -4 de penalidade, pois é necessário utilizar a arma da melhor forma possível para desferir um ataque furtivo. O ataque furtivo somente afeta criaturas vivas e de anatomia compreensível — mortos-vivos, constructos, limos, plantas e criaturas incorpóreas não têm áreas vitais para serem atingidas. Toda criatura imune a sucessos decisivos também não é vulnerável a ataques furtivos. O caçador sombrio precisa enxergar sua vítima com clareza suficiente para reconhecer um ponto vital e atingi-lo. Ele não é capaz de usar o ataque furtivo contra uma criatura camuflada ou se estiver atacando os membros de uma criatura cujas áreas vitais estejam fora de alcance. Se o caçador sombrio possuir essa habilidade de outras fontes (como seus níveis de ladino) o dano adicional se acumula."
+        },
+        {
+          "name": "Matiz Rochosa (Sob)",
+          "text": "Quando estiver num raio de 1,5 m de uma parede de pedra ou terra, o caçador sombrio é capaz de assumir a coloração do ambiente e aparentemente se mesclar à superfície da rocha. Enquanto o caçador estiver adjacente (1,5 m) da parede, ele recebe +10 de bônus de circunstância nos testes de Esconder-se e conseguirá se ocultar em campo aberto, mesmo que não haja nenhum local para se esconder."
+        },
+        {
+          "name": "Ataque Mortal (Ext)",
+          "text": "Se um caçador sombrio estudar sua vítima durante 3 rodadas, atingi-la com um ataque furtivo usando uma arma branca e causar dano, o ataque furtivo será capaz de paralisar ou matar o alvo (definido pelo caçador). Enquanto estuda a vítima, ele pode executar outras ações, desde que consiga manter sua concentração no alvo e este não perceba, detecte ou reconheça o caçador sombrio como um de seus oponentes. Caso a vítima fracasse em um teste de resistência de Fortitude (CD 10 + nível de classe do caçador sombrio + modificador de Inteligência) contra o efeito letal, morrerá imediatamente. Quando o efeito de paralisia é selecionado (e o alvo fracassa no teste de resistência), a mente e o corpo da vítima ficarão entorpecidos, deixando-a completamente indefesa e incapaz de agir durante 1d6 rodadas + uma rodada por nível do caçador. Se a vítima obtiver sucesso no teste de resistência, o golpe é considerado um ataque furtivo normal. Assim que o caçador sombrio completar as 3 rodadas de estudo, deverá executar o ataque mortal durante as próximas 3 rodadas. Caso o ataque mortal fracasse (a vítima obtém um sucesso de Fortitude) ou o caçador não consiga desferi-lo durante as 3 rodadas subseqüentes ao estudo, serão necessárias outras 3 rodadas para utilizar novamente essa habilidade."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-cavaleiro",
+    "name_pt": "Cavaleiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +8; Adestrar Animais 4 graduações; Conhecimento (nobreza e realeza) 4 graduações; Cavalgar 6 graduações; Combate Montado; Foco em Arma (lança); Investida Implacável; Investida Montada; Tendência: qualquer Leal",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 10,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 29,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-cavaleiro",
+      "name": "Cavaleiro",
+      "page": 29,
+      "hitDie": 10,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+8",
+        "skills": [
+          "Adestrar Animais 4 graduações",
+          "Conhecimento (nobreza e realeza) 4 graduações",
+          "Cavalgar 6 graduações"
+        ],
+        "feats": [
+          "Combate Montado",
+          "Foco em Arma (lança)",
+          "Investida Implacável",
+          "Investida Montada"
+        ],
+        "other": [
+          "Tendência: qualquer Leal"
+        ]
+      },
+      "classSkills": [
+        "Adestrar Animais (Car)",
+        "Cavalgar (Des)",
+        "Conhecimento (nobreza e realeza) (Int)",
+        "Diplomacia (Car)",
+        "Intimidação (Car)",
+        "Profissão (Sab)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 2,
+          "ref": 0,
+          "will": 2,
+          "special": "Montaria especial, bônus montado +1 (lança), bônus em Cavalgar +2, cultura da corte"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 0,
+          "will": 3,
+          "special": "Investida mortífera 1/dia, bônus montado +1 (espada)"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 3,
+          "ref": 1,
+          "will": 3,
+          "special": "Cavalgada acelerada"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 4,
+          "ref": 1,
+          "will": 4,
+          "special": "Investida mortífera 2/dia, bônus em Cavalgar +4"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 4,
+          "ref": 1,
+          "will": 4,
+          "special": "Bônus montado +2 (lança)"
+        },
+        {
+          "level": 6,
+          "bab": "+6",
+          "fort": 5,
+          "ref": 2,
+          "will": 5,
+          "special": "Investida mortífera 3/dia, ataque total montado, bônus montado +2 (espada)"
+        },
+        {
+          "level": 7,
+          "bab": "+7",
+          "fort": 5,
+          "ref": 2,
+          "will": 5,
+          "special": "Bônus em Cavalgar +6"
+        },
+        {
+          "level": 8,
+          "bab": "+8",
+          "fort": 6,
+          "ref": 2,
+          "will": 6,
+          "special": "Investida mortífera 4/dia"
+        },
+        {
+          "level": 9,
+          "bab": "+9",
+          "fort": 6,
+          "ref": 3,
+          "will": 6,
+          "special": "Bônus montado +3 (lança), bônus em Cavalgar +8"
+        },
+        {
+          "level": 10,
+          "bab": "+10",
+          "fort": 7,
+          "ref": 3,
+          "will": 7,
+          "special": "Investida suprema 5/dia, bônus montado +3 (espada)"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "O cavaleiro sabe usar todas as armas simples e comuns, todos os tipos de armaduras e escudos."
+        },
+        {
+          "name": "Montaria Especial (SM)",
+          "text": "Os níveis de cavaleiro se acumulam com os níveis de paladino para determinar as características da montaria especial do personagem."
+        },
+        {
+          "name": "Bônus Montado (arma) (Ext)",
+          "text": "O cavaleiro recebe o bônus de competência (indicado na tabela) para as jogadas de ataque enquanto estiver montado e empunhando a arma adequada. Para lanças, o bônus será +1 no 1º nível e aumentará em +1 a cada quatro níveis subseqüentes; para espadas, o bônus será +1 no 2º nível e aumentará em +1 a cada quatro níveis subseqüentes."
+        },
+        {
+          "name": "Bônus em Cavalgar (Ext)",
+          "text": "O cavaleiro recebe o bônus de competência indicado em todos os seus testes da perícia Cavalgar. Esse bônus será +2 no 1º nível, +4 a partir do 4º nível, +6 no 7º nível e finalmente +8 a partir do 9º nível."
+        },
+        {
+          "name": "Cultura da Corte (Ext)",
+          "text": "O cavaleiro adiciona seu nível na classe de prestígio como um bônus de competência em todos os testes de Conhecimento (nobreza e realeza)."
+        },
+        {
+          "name": "Investida Mortífera (Ext)",
+          "text": "Quando um cavaleiro de 2º nível ou superior estiver montado e realizar uma Investida, ele poderá declarar que usará esta habilidade antes de realizar a jogada de ataque (portanto, uma jogada fracassada desperdiça a ativação diária). Quando atingir o alvo, o cavaleiro causará o triplo do dano de qualquer arma branca utilizada no ataque (o dano das lanças é quadruplicado); essa habilidade pode ser usada uma quantidade de vezes por dia indicada na tabela. Esta habilidade supera e substitui o talento Investida Implacável."
+        },
+        {
+          "name": "Cavalgada Acelerada (Ext)",
+          "text": "A partir do 3º nível, o cavaleiro pode forçar de maneira incomum o deslocamento de sua montaria. Esta habilidade dobra a distância normal percorrida pela montaria durante uma Investida (ou seja, até quatro vezes o deslocamento padrão em linha reta); é possível utilizá-la uma vez por dia sem acarretar nenhuma penalidade para a montaria. Cada uso adicional no mesmo dia exige um teste de resistência de Vontade (CD 20) da montaria, realizado imediatamente após o término da cavalgada acelerada; caso fracasse, o animal sofrerá 2d6 pontos de dano."
+        },
+        {
+          "name": "Ataque Total Montado (Ext)",
+          "text": "A partir do 6º nível, os ataques totais do cavaleiro usam uma ação padrão quando sua montaria se deslocar entre 1,5 m e seu deslocamento terrestre normal. O cavaleiro não pode combinar um ataque total montado com uma Investida."
+        },
+        {
+          "name": "Investida Suprema (Ext)",
+          "text": "Quando um cavaleiro de 10º nível realizar uma investida mortífera (veja acima), ele causará o quádruplo do dano com uma arma branca e o quíntuplo com uma lança."
+        },
+        {
+          "name": "Observação de Multiclasse",
+          "text": "Um paladino que se tornar um cavaleiro poderá continuar a adquirir níveis como paladino."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-cavaleiro-do-calice",
+    "name_pt": "Cavaleiro do Cálice",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +8; Conhecimento (religião) 10 graduações; Conhecimento (planos) 5 graduações; Tendência: Leal e Bom; Magias: capacidade de conjurar magias divinas, inclusive proteção contra o mal; Especial: inimigo predileto demônios ou extraplanares malignos; ter derrotado um demônio ou enviado um de volta ao seu plano",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 10,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 31,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-cavaleiro-do-calice",
+      "name": "Cavaleiro do Cálice",
+      "page": 31,
+      "hitDie": 10,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+8",
+        "skills": [
+          "Conhecimento (religião) 10 graduações",
+          "Conhecimento (planos) 5 graduações"
+        ],
+        "feats": [],
+        "other": [
+          "Tendência: Leal e Bom",
+          "Magias: capacidade de conjurar magias divinas, inclusive proteção contra o mal",
+          "Especial: inimigo predileto demônios ou extraplanares malignos; ter derrotado um demônio ou enviado um de volta ao seu plano"
+        ]
+      },
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (planos) (Int)",
+        "Conhecimento (religião) (Int)",
+        "Diplomacia (Car)",
+        "Intimidação (Car)",
+        "Ofícios (Int)",
+        "Profissão (Sab)",
+        "Sentir Motivação (Sab)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": "Eliminar demônios +1/+1d6, censurar demônios"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": "Coragem celestial (medo), censurar demônios"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": "Eliminar demônios +2/+2d6"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Conjuração consagrada"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Coragem celestial (encantamento)"
+        },
+        {
+          "level": 6,
+          "bab": "+6",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Eliminar demônios +3/+3d6"
+        },
+        {
+          "level": 7,
+          "bab": "+7",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "—"
+        },
+        {
+          "level": 8,
+          "bab": "+8",
+          "fort": 6,
+          "ref": 2,
+          "will": 2,
+          "special": "Coragem celestial (aura)"
+        },
+        {
+          "level": 9,
+          "bab": "+9",
+          "fort": 6,
+          "ref": 3,
+          "will": 3,
+          "special": "Eliminar demônios +4/+4d6"
+        },
+        {
+          "level": 10,
+          "bab": "+10",
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": "Aura sagrada 1/dia"
+        }
+      ],
+      "spellsPerDay": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          0,
+          null,
+          null
+        ],
+        [
+          1,
+          1,
+          null,
+          null
+        ],
+        [
+          1,
+          1,
+          0,
+          null
+        ],
+        [
+          1,
+          1,
+          1,
+          null
+        ],
+        [
+          2,
+          1,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          2,
+          1
+        ]
+      ],
+      "spellList": {
+        "1": [
+          "abençoar água",
+          "arma abençoada",
+          "arma mágica",
+          "auxílio divino",
+          "desespero",
+          "detectar o caos",
+          "detectar o mal",
+          "invocar criaturas I",
+          "proteção contra o mal",
+          "remover medo",
+          "resistência a elementos"
+        ],
+        "2": [
+          "ajuda",
+          "arma espiritual",
+          "consagrar",
+          "dissimular tendência",
+          "explosão sônica",
+          "força do touro",
+          "invocar criaturas II",
+          "suportar elementos",
+          "tendência em arma",
+          "vigor"
+        ],
+        "3": [
+          "círculo mágico contra o mal",
+          "dissipar magia",
+          "grito",
+          "invocar criaturas III",
+          "luz cegante",
+          "oração",
+          "proteção contra elementos",
+          "purgar invisibilidade",
+          "roupa encantada"
+        ],
+        "4": [
+          "aliado extraplanar menor",
+          "âncora dimensional",
+          "arma mágica maior",
+          "aspecto da divindade menor",
+          "destruição sagrada",
+          "discernir mentiras",
+          "dissipar o mal",
+          "expulsão"
+        ]
+      },
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os cavaleiros do cálice não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Magias",
+          "text": "A partir do 1º nível, um cavaleiro do cálice adquire a habilidade de conjurar uma pequena quantidade de magias divinas. Para conjurar magias, um personagem deve ter uma pontuação em Sabedoria igual ou superior a 10 + o nível da magia; portanto, um personagem de Sabedoria 10 ou inferior não conseguirá fazê-lo. As magias adicionais do cavaleiro do cálice são baseadas em Sabedoria; a Classe de Dificuldade de um teste de resistência contra essas magias equivale a 10 + nível da magia + modificador de Sabedoria. Quando o cavaleiro recebe 0 magias de um determinado nível, adquire somente magias adicionais com base no valor de Sabedoria. Um personagem que não receba magias adicionais em qualquer nível ainda não é capaz de conjurá-las. A relação das magias do cavaleiro do cálice é descrita a seguir; ele tem acesso a qualquer magia da lista, desde que seja capaz de lançá-la, e pode escolher livremente qual preparar. Um cavaleiro do cálice prepara e conjura magias como um clérigo (mas não pode usar a conversão espontânea para lançar magias de cura no lugar de uma magia preparada)."
+        },
+        {
+          "name": "Eliminar Demônios (Ext)",
+          "text": "Um cavaleiro do cálice adquire vários benefícios especiais para combater extra-planares malignos. No 1º nível, ele recebe +1 de bônus de competência nas jogadas de ataque contra qualquer extra-planar maligno. Seus ataques causarão +1d6 pontos de dano adicional, em função da especialização do cavaleiro contra esses monstros. Os benefícios aumentam à medida que o personagem adquire níveis nessa classe, conforme demonstrado na Tabela 2-10. Contra esse tipo de criatura, o bônus de competência também se aplica nos testes das perícias Intimidação, Ouvir, Sentir Motivação e Observar, nos testes de resistência de Vontade para anular os poderes de extra-planares malignos e, finalmente, nos testes resistidos contra esses monstros. Esses bônus se acumulam com os bônus de inimigo predileto do personagem."
+        },
+        {
+          "name": "Censurar Demônios (Sob)",
+          "text": "Os cavaleiros do cálice podem censurar demônios, de forma semelhante à capacidade de expulsar mortos-vivos dos clérigos. Em vez de canalizar energia positiva, o personagem conduz as energias dos planos celestiais Leais e Bons. Quando o cavaleiro ativar essa habilidade, qualquer demônio num raio de 9 m deve obter sucesso em um teste de resistência de Vontade (CD 10 + nível do cavaleiro do Cálice + modificador de Carisma) ou será censurado. Um demônio censurado que tenha uma quantidade de Dados de Vida igual ou superior ao dobro dos níveis do cavaleiro ficará atordoado com a energia sagrada do cavaleiro durante 1 rodada. Um demônio censurado que tenha uma quantidade de Dados de Vida menor que o dobro dos níveis de classe do cavaleiro ficará atordoado e deve obter sucesso em um segundo teste de resistência de Vontade (mesma CD) ou será banido para seu plano de origem, com efeitos idênticos à magia expulsão. Somente uma criatura será banida a cada ativação da habilidade censurar demônios. Se houver vários demônios obrigados a realizar o segundo teste de resistência, realize o teste para a criatura com menos Dados de Vida e assim por diante, até que uma seja banida ou todas obtenham sucesso. O cavaleiro do cálice pode censurar demônios uma vez por dia a cada dois níveis nessa classe de prestígio."
+        },
+        {
+          "name": "Coragem Celestial (Sob)",
+          "text": "Um cavaleiro do cálice de 2º nível ou superior é imune a efeitos de medo gerados ou conjurados por extra-planares malignos. A partir do 5º nível, o cavaleiro se torna imune a magias e efeitos de encantamento gerados ou conjurados por demônios, inclusive feitiços e sugestões. A partir do 8º nível, essas imunidades se estendem para qualquer aliado num raio de 6 m do personagem."
+        },
+        {
+          "name": "Conjuração Consagrada",
+          "text": "Quando o cavaleiro do cálice atinge o 4º nível, os extra-planares malignos terão mais dificuldade para resistir às magias que ele conjurar. Quando um efeito lançado pelo cavaleiro visar um extra-planar maligno, adicione +2 ao teste de conjurador do personagem para superar a Resistência à Magia da criatura e +2 na CD dos testes de resistência exigidos pela magia."
+        },
+        {
+          "name": "Aura Sagrada (Sob)",
+          "text": "No 10º nível, uma vez por dia, o cavaleiro do cálice adquire a habilidade de criar uma aura sagrada ao seu redor, que afeta somente o personagem. Esse efeito é idêntico à magia conjurada por um clérigo de 10º nível, mas protege o cavaleiro contra ataques, magias e influências mentais geradas unicamente por extra-planares malignos; além disso, apenas os demônios que atingirem o cavaleiro poderão ficar cegos."
+        },
+        {
+          "name": "Observação de Multiclasse",
+          "text": "Um paladino que se tornar um cavaleiro do cálice poderá continuar a adquirir níveis como paladino."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.class.cg-paladino-opcional",
+    "name_pt": "Paladino Opcional",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "O paladino opcional adquire todas as características de classe normais, com as seguintes alterações. Magias: O paladino não é capaz de conjurar magias divinas. Arma Abençoada: Qualquer arma branca empunhada por um paladino de 6º nível ou superior é considerada sagrada para sobrepujar a Redução de Dano das criaturas. Poder Divino: No 11º nível, ou superior, o paladino pode usar uma ação padrão para adicionar +4 de bônus ao seu valor de Força, Sabedoria ou Carisma. Essa habilidade pode ser utilizada uma vez por dia e permanece ativa durante 1 minuto por nível de classe. Resguardar Montaria: Um paladino de 13º nível ou superior que utilizar a habilidade cura pelas mãos em sua montaria recupera cinco vezes mais pontos de vida da criatura. Além disso, o paladino é capaz de gastar 5 PV da cura pelas mãos para remover uma das seguintes condições da sua montaria (exceto quando especificado o contrário): dano de habilidade temporário (1 PV de cura pelas mãos a cada ponto restaurado), atordoamento, cegueira, confusão, doença, enfraquecer o intelecto, enjôo, exaustão, fadiga, insanidade, náusea, ofuscar, pasmar, surdez ou veneno. O paladino consegue remover as condições ao mesmo tempo em que recupera os PV perdidos da montaria, mas qualquer PV despendido para remover uma condição não recupera os pontos de dano da criatura. Espada Sagrada: No 16º nível, um paladino é capaz de conjurar espada sagrada uma vez por dia, com nível de conjurador equivalente a metade de seu nível de paladino.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 10,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "variant",
+      "paladino"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 13,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-paladino-opcional",
+      "name": "Paladino Opcional",
+      "baseClass": "Paladino",
+      "intro": "O paladino opcional adquire todas as características de classe normais, com as seguintes alterações.",
+      "changes": [
+        {
+          "name": "Magias",
+          "kind": "remoção",
+          "level": null,
+          "text": "O paladino não é capaz de conjurar magias divinas."
+        },
+        {
+          "name": "Arma Abençoada",
+          "kind": "Sob",
+          "level": 6,
+          "text": "Qualquer arma branca empunhada por um paladino de 6º nível ou superior é considerada sagrada para sobrepujar a Redução de Dano das criaturas."
+        },
+        {
+          "name": "Poder Divino",
+          "kind": "Sob",
+          "level": 11,
+          "text": "No 11º nível, ou superior, o paladino pode usar uma ação padrão para adicionar +4 de bônus ao seu valor de Força, Sabedoria ou Carisma. Essa habilidade pode ser utilizada uma vez por dia e permanece ativa durante 1 minuto por nível de classe."
+        },
+        {
+          "name": "Resguardar Montaria",
+          "kind": "Sob",
+          "level": 13,
+          "text": "Um paladino de 13º nível ou superior que utilizar a habilidade cura pelas mãos em sua montaria recupera cinco vezes mais pontos de vida da criatura. Além disso, o paladino é capaz de gastar 5 PV da cura pelas mãos para remover uma das seguintes condições da sua montaria (exceto quando especificado o contrário): dano de habilidade temporário (1 PV de cura pelas mãos a cada ponto restaurado), atordoamento, cegueira, confusão, doença, enfraquecer o intelecto, enjôo, exaustão, fadiga, insanidade, náusea, ofuscar, pasmar, surdez ou veneno. O paladino consegue remover as condições ao mesmo tempo em que recupera os PV perdidos da montaria, mas qualquer PV despendido para remover uma condição não recupera os pontos de dano da criatura."
+        },
+        {
+          "name": "Espada Sagrada",
+          "kind": "SM",
+          "level": 16,
+          "text": "No 16º nível, um paladino é capaz de conjurar espada sagrada uma vez por dia, com nível de conjurador equivalente a metade de seu nível de paladino."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.class.cg-ranger-opcional",
+    "name_pt": "Ranger Opcional",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "O ranger opcional adquire todas as características de classe normais, com as seguintes alterações. Magias: O ranger não é capaz de conjurar magias divinas. Movimento Rápido: No 6º nível, o deslocamento básico terrestre do ranger aumenta em +3 m. Esse benefício somente estará ativo quando o ranger não usar armaduras, utilizar armaduras leves ou médias, e não transportar uma carga superior a média. Benção da Natureza: A partir do 11º nível, o ranger pode usar uma ação padrão para adicionar +4 de bônus ao seu valor de Constituição, Destreza ou Sabedoria. Essa habilidade pode ser utilizada uma vez por dia e permanece ativa durante 1 minuto por nível de classe. Toque da Cura: Uma vez por dia, um ranger de 13º nível ou superior pode conjurar remover doenças ou neutralizar veneno, com nível de conjurador equivalente a metade de seu nível de ranger. Movimentação Livre: Uma vez por dia, um ranger de 16º nível ou superior pode conjurar movimentação livre, com nível de conjurador equivalente a metade de seu nível de ranger.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "variant",
+      "ranger"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 13,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-ranger-opcional",
+      "name": "Ranger Opcional",
+      "baseClass": "Ranger",
+      "intro": "O ranger opcional adquire todas as características de classe normais, com as seguintes alterações.",
+      "changes": [
+        {
+          "name": "Magias",
+          "kind": "remoção",
+          "level": null,
+          "text": "O ranger não é capaz de conjurar magias divinas."
+        },
+        {
+          "name": "Movimento Rápido",
+          "kind": "Ext",
+          "level": 6,
+          "text": "No 6º nível, o deslocamento básico terrestre do ranger aumenta em +3 m. Esse benefício somente estará ativo quando o ranger não usar armaduras, utilizar armaduras leves ou médias, e não transportar uma carga superior a média."
+        },
+        {
+          "name": "Benção da Natureza",
+          "kind": "Sob",
+          "level": 11,
+          "text": "A partir do 11º nível, o ranger pode usar uma ação padrão para adicionar +4 de bônus ao seu valor de Constituição, Destreza ou Sabedoria. Essa habilidade pode ser utilizada uma vez por dia e permanece ativa durante 1 minuto por nível de classe."
+        },
+        {
+          "name": "Toque da Cura",
+          "kind": "SM",
+          "level": 13,
+          "text": "Uma vez por dia, um ranger de 13º nível ou superior pode conjurar remover doenças ou neutralizar veneno, com nível de conjurador equivalente a metade de seu nível de ranger."
+        },
+        {
+          "name": "Movimentação Livre",
+          "kind": "SM",
+          "level": 16,
+          "text": "Uma vez por dia, um ranger de 16º nível ou superior pode conjurar movimentação livre, com nível de conjurador equivalente a metade de seu nível de ranger."
+        }
+      ]
+    }
+  }
+]

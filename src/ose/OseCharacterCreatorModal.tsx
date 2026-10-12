@@ -101,6 +101,8 @@ interface OseCharacterCreatorModalProps {
   onClose: () => void;
   onCharacterCreated: (charData: OseCharacterCreatedData) => void;
   initialCharacter?: OseCharacterCreatedData;
+  /** "page" renderiza a bancada inline (padrão do construtor do Pathfinder), sem overlay. */
+  layout?: "modal" | "page";
 }
 
 export function OseCharacterCreatorModal({
@@ -108,17 +110,19 @@ export function OseCharacterCreatorModal({
   onClose,
   onCharacterCreated,
   initialCharacter,
+  layout = "modal",
 }: OseCharacterCreatorModalProps) {
+  const isPage = layout === "page";
   const [step, setStep] = useState<number>(1);
   const modalRef = useRef<HTMLDivElement>(null);
-  useModalInertBackground(modalRef, isOpen);
+  useModalInertBackground(modalRef, isOpen && !isPage);
   const [validationMessage, setValidationMessage] = useState<string>("");
   const [charName, setCharName] = useState("Aventureiro de Karameikos");
   const [creationMode, setCreationMode] = useState<"advanced" | "classic" | "basico">("advanced");
 
   // Fechar com Escape e travar overflow do body
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen || isPage) return;
     const previousFocus = document.activeElement as HTMLElement | null;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -154,7 +158,7 @@ export function OseCharacterCreatorModal({
       window.removeEventListener("keydown", handleKeyDown);
       previousFocus?.focus();
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, isPage, onClose]);
 
   // Step 1: Atributos
   const roll3d6 = () => {
@@ -572,8 +576,8 @@ export function OseCharacterCreatorModal({
 
   const modalRoot = document.getElementById("react-modal-root") || document.body;
 
-  return createPortal(
-    <div className="ose-wizard-overlay" role="dialog" aria-modal="true" aria-labelledby="ose-wizard-title" aria-describedby="ose-wizard-description">
+  const wizardTree = (
+    <div className="ose-wizard-overlay" {...(isPage ? {} : { role: "dialog", "aria-modal": true })} aria-labelledby="ose-wizard-title" aria-describedby="ose-wizard-description">
       <div ref={modalRef} className="ose-wizard-modal">
         {/* Header */}
         <header className="ose-wizard-header">
@@ -581,8 +585,8 @@ export function OseCharacterCreatorModal({
             <h2 id="ose-wizard-title">🎲 Criador de Personagem Old-School Essentials</h2>
             <p id="ose-wizard-description" className="ose-wizard-description">Fluxo de criação separado por edição OSE, com regras, catálogo e validações próprias do sistema.</p>
           </div>
-          <button className="ose-btn" type="button" onClick={onClose} aria-label="Fechar">
-            ✕
+          <button className="ose-btn" type="button" onClick={onClose} aria-label={isPage ? "Voltar à biblioteca" : "Fechar"}>
+            {isPage ? "← Voltar à biblioteca" : "✕"}
           </button>
         </header>
 
@@ -1346,7 +1350,7 @@ export function OseCharacterCreatorModal({
         </footer>
         </CharacterBuilderFrame>
       </div>
-    </div>,
-    modalRoot
+    </div>
   );
+  return isPage ? <div className="pb-wizard-page">{wizardTree}</div> : createPortal(wizardTree, modalRoot);
 }

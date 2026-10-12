@@ -3539,3 +3539,19 @@ body.theme-light .pb-system-cancel-btn:hover {
     touch-action: pan-y pinch-zoom;
   }
 }
+
+/* Construtor dos sistemas "core" (T20, 5e) como página, no mesmo padrão do construtor do Pathfinder (sem overlay). */
+.pb-core-page { width: 100%; padding: 16px 0 32px; box-sizing: border-box; }
+.pb-core-page .pb-core-modal.pb-core-modal-page { width: min(1480px, 100%); max-height: none; min-height: calc(100dvh - 140px); margin: 0 auto; overflow: visible; box-shadow: none; }
+@media (min-width: 701px) {
+  .pb-core-page .pb-core-modal.pb-core-modal-page { overflow: visible; }
+  .pb-core-page .pb-core-modal-page .pb-character-builder-main { overflow-y: visible; }
+  .pb-core-page .pb-core-modal-page .pb-core-builder-footer { position: sticky; bottom: 0; z-index: 3; }
+}
+
+/* OSE e D&D 3.5 como página: o overlay vira bloco em fluxo, mantendo rolagem interna da bancada. */
+.pb-wizard-page { width: 100%; padding: 16px 0 32px; box-sizing: border-box; }
+.pb-wizard-page .dnd35-wizard-overlay,
+.pb-wizard-page .ose-wizard-overlay { position: static; inset: auto; display: block; padding: 0; background: none; backdrop-filter: none; overflow: visible; z-index: auto; }
+.pb-wizard-page .dnd35-wizard-modal,
+.pb-wizard-page .ose-wizard-modal { margin: 0 auto; max-height: none; height: calc(100dvh - 110px); min-height: 560px; box-shadow: none; }

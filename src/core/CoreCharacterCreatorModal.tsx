@@ -21,6 +21,8 @@ interface CoreCharacterCreatorModalProps {
   onClose: () => void;
   onCharacterCreated: (character: MultiSystemCharacter) => void;
   initialCharacter?: MultiSystemCharacter;
+  /** "page" renderiza a bancada inline (como o construtor do Pathfinder), sem overlay; "modal" mantém o diálogo. */
+  layout?: "modal" | "page";
 }
 
 const ABILITIES = [
@@ -28,12 +30,13 @@ const ABILITIES = [
   ["int", "Inteligência"], ["wis", "Sabedoria"], ["cha", "Carisma"],
 ] as const;
 
-export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacterCreated, initialCharacter }: CoreCharacterCreatorModalProps) {
+export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacterCreated, initialCharacter, layout = "modal" }: CoreCharacterCreatorModalProps) {
+  const isPage = layout === "page";
   const engine = useMemo(() => getSystemRulesEngine(system), [system]);
   const catalog = useMemo(() => getCoreCatalog(system), [system]);
   const [character, setCharacter] = useState<MultiSystemCharacter>(() => engine.createDefaultCharacter());
   const modalContentRef = useRef<HTMLElement>(null);
-  useModalInertBackground(modalContentRef, isOpen);
+  useModalInertBackground(modalContentRef, isOpen && !isPage);
   const [error, setError] = useState<string | null>(null);
   const [generationMethod, setGenerationMethod] = useState<AbilityGenerationMethod>("point_buy");
   const [activeBuilderStep, setActiveBuilderStep] = useState(0);
@@ -112,7 +115,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   }, [engine, initialCharacter, isOpen]);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen || isPage) return;
     const previousFocus = document.activeElement as HTMLElement | null;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -136,7 +139,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
       window.removeEventListener("keydown", onKeyDown);
       previousFocus?.focus();
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, isPage, onClose]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -510,17 +513,17 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   ].filter(Boolean);
 
   return (
-    <div className="pb-core-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="pb-core-modal-title" aria-describedby="pb-core-modal-description" onClick={(event) => {
+    <div className={isPage ? "pb-core-page" : "pb-core-modal-backdrop"} {...(isPage ? {} : { role: "dialog", "aria-modal": true })} aria-labelledby="pb-core-modal-title" aria-describedby="pb-core-modal-description" onClick={isPage ? undefined : (event) => {
       if (event.target === event.currentTarget) onClose();
     }}>
-      <section ref={modalContentRef} className="pb-core-modal" role="document">
+      <section ref={modalContentRef} className={isPage ? "pb-core-modal pb-core-modal-page" : "pb-core-modal"} role={isPage ? undefined : "document"}>
         <header className="pb-core-modal-header">
           <div>
             <span className="pb-core-kicker">{system === "t20" ? "Tormenta20 · Livro Básico" : "D&D 5e · Livro do Jogador 2014"}</span>
             <h2 id="pb-core-modal-title">{title}</h2>
             <p id="pb-core-modal-description">Criação isolada por sistema. Nenhuma opção de Pathfinder ou OSE será usada nesta ficha.</p>
           </div>
-          <button type="button" className="pb-core-close" onClick={onClose} aria-label="Fechar">×</button>
+          {isPage ? <button type="button" className="pb-core-secondary" onClick={onClose}>← Voltar à biblioteca</button> : <button type="button" className="pb-core-close" onClick={onClose} aria-label="Fechar">×</button>}
         </header>
 
         <CharacterBuilderFrame

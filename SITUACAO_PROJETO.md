@@ -18,7 +18,7 @@ Plataforma web de construção de fichas de RPG multi-sistema com suporte a:
 | **OSE Advanced Fantasy** | advanced | Construtor próprio, PDF de 1 página |
 | **OSE Classic Fantasy** | classic | Ruleset isolado, fluxo incompleto |
 
-**Stack:** React 18 + TypeScript, Vite, Vitest, Supabase (auth + catálogos), PDF editável (pdf-lib / AcroForm), i18n trilíngue (pt-BR / en / es), mobile-first com menu dropdown para ≤1080px.
+**Stack:** React 18 + TypeScript, Vite, Vitest, Supabase (auth, fichas e campanhas; o catálogo vem de snapshots JSON no Git), PDF editável (pdf-lib / AcroForm), i18n trilíngue (pt-BR / en / es), mobile-first com menu dropdown para ≤1080px.
 
 ---
 

@@ -1,0 +1,1625 @@
+[
+  {
+    "id": "dnd35.cor.feat.cor-bloodsoaked-intimidate",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Bloodsoaked Intimidate",
+    "name_en": "Bloodsoaked Intimidate",
+    "name_es": null,
+    "description_pt": "When you collect a trophy using the Snatch Trophy feat, you can make an Intimidate check as a swift action against an adjacent opponent who witnesses your savage act.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Snatch Trophy",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-bloodsoaked-intimidate",
+      "name": "Bloodsoaked Intimidate",
+      "type": "General",
+      "prerequisites": "Snatch Trophy",
+      "benefit": "When you collect a trophy using the Snatch Trophy feat, you can make an Intimidate check as a swift action against an adjacent opponent who witnesses your savage act.",
+      "normal": "Making an Intimidate check in combat is a standard action."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-chakram-ricochet",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Chakram Ricochet",
+    "name_en": "Chakram Ricochet",
+    "name_es": null,
+    "description_pt": "If you hit a creature with a thrown chakram, you can cause it to ricochet and strike a secondary target in an adjacent square (within 5 feet of the primary target). You immediately make an attack roll against the secondary target, at a -2 penalty. If the attack hits, you deal damage normally.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Dex 13, base attack bonus +1, proficient with chakram",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-chakram-ricochet",
+      "name": "Chakram Ricochet",
+      "type": "General",
+      "prerequisites": "Dex 13, base attack bonus +1, proficient with chakram",
+      "benefit": "If you hit a creature with a thrown chakram, you can cause it to ricochet and strike a secondary target in an adjacent square (within 5 feet of the primary target). You immediately make an attack roll against the secondary target, at a -2 penalty. If the attack hits, you deal damage normally.",
+      "special": "A rogue with Chakram Ricochet can deal sneak attack damage to both targets if they are within 30 feet and denied their Dexterity bonus to AC."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-craven",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Craven",
+    "name_en": "Craven",
+    "name_es": null,
+    "description_pt": "You take a -2 penalty on saving throws against fear effects. However, when making a sneak attack, you deal an extra 1 point of damage per character level.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sneak attack class feature, cannot be immune to fear",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-craven",
+      "name": "Craven",
+      "type": "General",
+      "prerequisites": "Sneak attack class feature, cannot be immune to fear",
+      "benefit": "You take a -2 penalty on saving throws against fear effects. However, when making a sneak attack, you deal an extra 1 point of damage per character level."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-dire-flail-smash",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Dire Flail Smash",
+    "name_en": "Dire Flail Smash",
+    "name_es": null,
+    "description_pt": "If you hit the same creature with both ends of your dire flail in the same round, it must make a Fortitude saving throw (DC 10 + 1/2 your character level + your Str modifier) or be dazed by the pain for 1 round.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Str 13, Improved Sunder, Power Attack, Weapon Focus (dire flail)",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-dire-flail-smash",
+      "name": "Dire Flail Smash",
+      "type": "General",
+      "prerequisites": "Str 13, Improved Sunder, Power Attack, Weapon Focus (dire flail)",
+      "benefit": "If you hit the same creature with both ends of your dire flail in the same round, it must make a Fortitude saving throw (DC 10 + 1/2 your character level + your Str modifier) or be dazed by the pain for 1 round.",
+      "fighterBonus": true
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-dirty-rat",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Dirty Rat",
+    "name_en": "Dirty Rat",
+    "name_es": null,
+    "description_pt": "You gain an additional +1 bonus on attack rolls when flanking an opponent.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Tumble 4 ranks",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-dirty-rat",
+      "name": "Dirty Rat",
+      "type": "General",
+      "prerequisites": "Tumble 4 ranks",
+      "benefit": "You gain an additional +1 bonus on attack rolls when flanking an opponent."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-feral-animal-companion",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Feral Animal Companion",
+    "name_en": "Feral Animal Companion",
+    "name_es": null,
+    "description_pt": "Instead of calling a normal animal companion, you can call a feral animal companion that foams at the mouth. Any creature harmed by the animal's bite attack must succeed on a DC 15 Fortitude save or contract red ache (see Dungeon Master's Guide page 292). The disease has no harmful effect on the feral animal. In addition, your feral animal companion gains a +2 bonus to Strength and Constitution. Attempts by others to influence your feral animal companion with Handle Animal checks take a -10 penalty.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Animal companion class feature, evil alignment",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-feral-animal-companion",
+      "name": "Feral Animal Companion",
+      "type": "General",
+      "prerequisites": "Animal companion class feature, evil alignment",
+      "benefit": "Instead of calling a normal animal companion, you can call a feral animal companion that foams at the mouth. Any creature harmed by the animal's bite attack must succeed on a DC 15 Fortitude save or contract red ache (see Dungeon Master's Guide page 292). The disease has no harmful effect on the feral animal. In addition, your feral animal companion gains a +2 bonus to Strength and Constitution. Attempts by others to influence your feral animal companion with Handle Animal checks take a -10 penalty.",
+      "special": "This feat does not transform a normal animal companion into a feral animal companion."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-flay-foe",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Flay Foe",
+    "name_en": "Flay Foe",
+    "name_es": null,
+    "description_pt": "If you hit the same enemy more than once in a single round with a slashing melee weapon, you deal an extra point of damage with each hit after the first.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Str 15, base attack bonus +6, proficient with slashing melee weapon",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-flay-foe",
+      "name": "Flay Foe",
+      "type": "General",
+      "prerequisites": "Str 15, base attack bonus +6, proficient with slashing melee weapon",
+      "benefit": "If you hit the same enemy more than once in a single round with a slashing melee weapon, you deal an extra point of damage with each hit after the first.",
+      "fighterBonus": true
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-improved-fiendish-servant",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Improved Fiendish Servant",
+    "name_en": "Improved Fiendish Servant",
+    "name_es": null,
+    "description_pt": "Add the following creatures to your list of eligible fiendish servants: ape, black bear, boar, crocodile, dire badger, dire bat, dire weasel, heavy warhorse, leopard, monitor lizard, constrictor snake, Large viper snake, wolverine. In addition, any fiendish servant you call has the fiendish creature template (Monster Manual page 107). The fiendish servant otherwise conforms to the rules in the Dungeon Master's Guide (page 183).",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Fiendish servant class feature",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-improved-fiendish-servant",
+      "name": "Improved Fiendish Servant",
+      "type": "General",
+      "prerequisites": "Fiendish servant class feature",
+      "benefit": "Add the following creatures to your list of eligible fiendish servants: ape, black bear, boar, crocodile, dire badger, dire bat, dire weasel, heavy warhorse, leopard, monitor lizard, constrictor snake, Large viper snake, wolverine. In addition, any fiendish servant you call has the fiendish creature template (Monster Manual page 107). The fiendish servant otherwise conforms to the rules in the Dungeon Master's Guide (page 183)."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-malign-spell-focus",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Malign Spell Focus",
+    "name_en": "Malign Spell Focus",
+    "name_es": null,
+    "description_pt": "Add +1 to the DC for all saving throws against any of your spells that have the evil descriptor.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Any evil alignment",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-malign-spell-focus",
+      "name": "Malign Spell Focus",
+      "type": "General",
+      "prerequisites": "Any evil alignment",
+      "benefit": "Add +1 to the DC for all saving throws against any of your spells that have the evil descriptor.",
+      "special": "This feat originally appeared in Book of Vile Darkness and has been revised for D&D v.3.5."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-mortifying-attack",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Mortifying Attack",
+    "name_en": "Mortifying Attack",
+    "name_es": null,
+    "description_pt": "All creatures within 30 feet that witness you make a successful death attack must succeed on a Will save (DC equal to death attack damage dealt) or be shaken for 2d4 rounds. Any creature you consider your ally is unaffected. In addition, creatures that fail the save are so horrified by the attack that they lose their Dexterity bonus to Armor Class for 1 round. The target of the death attack must also make the saving throw if it survives. This extraordinary ability is a fear effect.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Death attack class feature",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-mortifying-attack",
+      "name": "Mortifying Attack",
+      "type": "General",
+      "prerequisites": "Death attack class feature",
+      "benefit": "All creatures within 30 feet that witness you make a successful death attack must succeed on a Will save (DC equal to death attack damage dealt) or be shaken for 2d4 rounds. Any creature you consider your ally is unaffected. In addition, creatures that fail the save are so horrified by the attack that they lose their Dexterity bonus to Armor Class for 1 round. The target of the death attack must also make the saving throw if it survives. This extraordinary ability is a fear effect."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-mutilator",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Mutilator",
+    "name_en": "Mutilator",
+    "name_es": null,
+    "description_pt": "After delivering the killing blow to a creature (that is, reducing it to -10 hit points) with a melee weapon, you can decapitate or otherwise hack apart the corpse as a free action. Doing so does not provoke attacks of opportunity and ensures that the creature cannot be revived using a raise dead spell. You can mutilate only one enemy per round in this fashion.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Base attack bonus +4, any evil alignment",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-mutilator",
+      "name": "Mutilator",
+      "type": "General",
+      "prerequisites": "Base attack bonus +4, any evil alignment",
+      "benefit": "After delivering the killing blow to a creature (that is, reducing it to -10 hit points) with a melee weapon, you can decapitate or otherwise hack apart the corpse as a free action. Doing so does not provoke attacks of opportunity and ensures that the creature cannot be revived using a raise dead spell. You can mutilate only one enemy per round in this fashion."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-natural-bully",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Natural Bully",
+    "name_en": "Natural Bully",
+    "name_es": null,
+    "description_pt": "All enemies within 30 feet of you that have one-half your Hit Dice or less are bullied; they take a -2 morale penalty on attack rolls made against you. A bullied enemy that succeeds in hitting and damaging you is no longer subject to the penalty and cannot be bullied by you for 24 hours. Creatures immune to fear effects cannot be bullied and do not take the penalty on attack rolls to hit you.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Intimidate 6 ranks",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-natural-bully",
+      "name": "Natural Bully",
+      "type": "General",
+      "prerequisites": "Intimidate 6 ranks",
+      "benefit": "All enemies within 30 feet of you that have one-half your Hit Dice or less are bullied; they take a -2 morale penalty on attack rolls made against you. A bullied enemy that succeeds in hitting and damaging you is no longer subject to the penalty and cannot be bullied by you for 24 hours. Creatures immune to fear effects cannot be bullied and do not take the penalty on attack rolls to hit you."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-node-sensitive",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Node",
+    "level": 1,
+    "name_pt": "Node Sensitive",
+    "name_en": "Node Sensitive",
+    "name_es": null,
+    "description_pt": "You automatically note the presence of any node to which you are attuned within 30 feet.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "—",
+    "action_cost": null,
+    "traits": [
+      "node"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-node-sensitive",
+      "name": "Node Sensitive",
+      "type": "Node",
+      "prerequisites": "—",
+      "benefit": "You automatically note the presence of any node to which you are attuned within 30 feet.",
+      "normal": "A creature without this feat that comes within 30 feet of the outermost layer of a node can make a DC 20 Intelligence check to note the presence of the node. A creature with the appropriate Node Spellcasting feat can attempt either an Intelligence check or a Spellcraft check at the same DC to notice the node."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-node-spellcasting",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Node",
+    "level": 1,
+    "name_pt": "Node Spellcasting",
+    "name_en": "Node Spellcasting",
+    "name_es": null,
+    "description_pt": "You are attuned to one type of node and the magical power it provides. When you choose this feat, choose a type of node (earth, evil, or Shadow Weave). This feat grants you access to the various node magic feats and node powers, and allows you to make a Spellcraft check instead of an Intelligence check to notice nearby nodes of the type to which you are attuned.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Caster level 1st",
+    "action_cost": null,
+    "traits": [
+      "node"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-node-spellcasting",
+      "name": "Node Spellcasting",
+      "type": "Node",
+      "prerequisites": "Caster level 1st",
+      "benefit": "You are attuned to one type of node and the magical power it provides. When you choose this feat, choose a type of node (earth, evil, or Shadow Weave). This feat grants you access to the various node magic feats and node powers, and allows you to make a Spellcraft check instead of an Intelligence check to notice nearby nodes of the type to which you are attuned.",
+      "normal": "A creature without this feat cannot take other node-related feats, cannot access a node's full potential, and must make an Intelligence check to notice nearby nodes or to manipulate node powers.",
+      "special": "You can gain this feat multiple times. Each time you take the feat, it attunes you to a different node type."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-node-defense",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Node",
+    "level": 1,
+    "name_pt": "Node Defense",
+    "name_en": "Node Defense",
+    "name_es": null,
+    "description_pt": "You receive an insight bonus to your Armor Class and on saving throws equal to the class of any node that you currently occupy and to which you are attuned, up to a maximum of +4. For example, if you are inside the middle (+2) layer of a Class 3 node, you gain a +2 bonus.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Node Spellcasting, caster level 1st",
+    "action_cost": null,
+    "traits": [
+      "node"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-node-defense",
+      "name": "Node Defense",
+      "type": "Node",
+      "prerequisites": "Node Spellcasting, caster level 1st",
+      "benefit": "You receive an insight bonus to your Armor Class and on saving throws equal to the class of any node that you currently occupy and to which you are attuned, up to a maximum of +4. For example, if you are inside the middle (+2) layer of a Class 3 node, you gain a +2 bonus."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-node-store",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Node",
+    "level": 1,
+    "name_pt": "Node Store",
+    "name_en": "Node Store",
+    "name_es": null,
+    "description_pt": "Each time you take this feat, choose two spells of any level that you know and can cast. If you are a spellcaster who prepares spells, you can now prepare those two spells in addition to your normal spell complement as long as you are in a node to which you are attuned, just as if you had two extra spell slots per day. These extra prepared spells are stored in the node instead of in your mind. You can cast them normally while you are within that node, even if you have left the node and returned since storing them there. These extra prepared spells are stored in the node instead of in your mind. You can cast them normally while you are within that node, even if you have left the node and returned since storing them there. Spellcasters who do not prepare spells: see COR_NODE_STORE_REST (dnd35CorSpellLists.ts, p. 26).",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Node Spellcasting, caster level 1st",
+    "action_cost": null,
+    "traits": [
+      "node"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-node-store",
+      "name": "Node Store",
+      "type": "Node",
+      "prerequisites": "Node Spellcasting, caster level 1st",
+      "benefit": "Each time you take this feat, choose two spells of any level that you know and can cast. If you are a spellcaster who prepares spells, you can now prepare those two spells in addition to your normal spell complement as long as you are in a node to which you are attuned, just as if you had two extra spell slots per day. These extra prepared spells are stored in the node instead of in your mind. You can cast them normally while you are within that node, even if you have left the node and returned since storing them there. These extra prepared spells are stored in the node instead of in your mind. You can cast them normally while you are within that node, even if you have left the node and returned since storing them there. Spellcasters who do not prepare spells: see COR_NODE_STORE_REST (dnd35CorSpellLists.ts, p. 26)."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-poison-immunity",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Poison Immunity",
+    "name_en": "Poison Immunity",
+    "name_es": null,
+    "description_pt": "You are immune to one specific poison (chosen by you), whether available as a blade poison, the venom of a specific creature, or one other toxin. You also gain a +1 circumstance bonus on saving throws against other poisons.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "—",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-poison-immunity",
+      "name": "Poison Immunity",
+      "type": "General",
+      "prerequisites": "—",
+      "benefit": "You are immune to one specific poison (chosen by you), whether available as a blade poison, the venom of a specific creature, or one other toxin. You also gain a +1 circumstance bonus on saving throws against other poisons.",
+      "special": "A character can take this feat multiple times, choosing a different poison each time. The +1 bonus against other poisons does not stack with itself."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-pulverize-foe",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Pulverize Foe",
+    "name_en": "Pulverize Foe",
+    "name_es": null,
+    "description_pt": "If you hit the same enemy more than once in a single round with a bludgeoning melee weapon, you deal an extra 1d6 points of bludgeoning damage with each hit after the first.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Str 15, base attack bonus +6, proficient with bludgeoning melee weapon",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-pulverize-foe",
+      "name": "Pulverize Foe",
+      "type": "General",
+      "prerequisites": "Str 15, base attack bonus +6, proficient with bludgeoning melee weapon",
+      "benefit": "If you hit the same enemy more than once in a single round with a bludgeoning melee weapon, you deal an extra 1d6 points of bludgeoning damage with each hit after the first.",
+      "fighterBonus": true
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-shadowform-familiar",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Shadowform Familiar",
+    "name_en": "Shadowform Familiar",
+    "name_es": null,
+    "description_pt": "Your summoned familiar looks like a dark, shadowy version of a normal familiar. It is insubstantial and gains the incorporeal subtype (see Monster Manual page 310). A shadowform familiar is more closely bound to you than a normal familiar, and the maximum distance the shadowform familiar can travel is 30 feet per caster level. If you are separated from your shadowform familiar by a distance greater than this, the shadowform familiar dissolves into nothingness and is considered slain.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Krinth, summon familiar class feature",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-shadowform-familiar",
+      "name": "Shadowform Familiar",
+      "type": "General",
+      "prerequisites": "Krinth, summon familiar class feature",
+      "benefit": "Your summoned familiar looks like a dark, shadowy version of a normal familiar. It is insubstantial and gains the incorporeal subtype (see Monster Manual page 310). A shadowform familiar is more closely bound to you than a normal familiar, and the maximum distance the shadowform familiar can travel is 30 feet per caster level. If you are separated from your shadowform familiar by a distance greater than this, the shadowform familiar dissolves into nothingness and is considered slain.",
+      "special": "This feat does not transform a normal familiar into a shadowform familiar."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-shadowstrike",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Shadowstrike",
+    "name_en": "Shadowstrike",
+    "name_es": null,
+    "description_pt": "When making an attack with a melee weapon in an area of shadowy illumination (see Player's Handbook page 164), you gain a +1 circumstance bonus on the attack roll and deal an extra 1d6 points of damage.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Krinth, base attack bonus +1",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-shadowstrike",
+      "name": "Shadowstrike",
+      "type": "General",
+      "prerequisites": "Krinth, base attack bonus +1",
+      "benefit": "When making an attack with a melee weapon in an area of shadowy illumination (see Player's Handbook page 164), you gain a +1 circumstance bonus on the attack roll and deal an extra 1d6 points of damage.",
+      "special": "A krinth fighter can select this feat as one of his fighter bonus feats.",
+      "fighterBonus": true
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-skewer-foe",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Skewer Foe",
+    "name_en": "Skewer Foe",
+    "name_es": null,
+    "description_pt": "If you hit the same enemy more than once in a single round with a piercing melee weapon, you deal an extra 1d6 points of piercing damage with each hit after the first.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Str 15, base attack bonus +6, proficient with piercing melee weapon",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-skewer-foe",
+      "name": "Skewer Foe",
+      "type": "General",
+      "prerequisites": "Str 15, base attack bonus +6, proficient with piercing melee weapon",
+      "benefit": "If you hit the same enemy more than once in a single round with a piercing melee weapon, you deal an extra 1d6 points of piercing damage with each hit after the first.",
+      "fighterBonus": true
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-snatch-trophy",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Snatch Trophy",
+    "name_en": "Snatch Trophy",
+    "name_es": null,
+    "description_pt": "After dealing a creature enough damage to drop it to negative hit points, you can slice or pry off a trophy as a free action. You must be adjacent to the dead or dying creature. The trophy could be a small body part such as a finger or ear. Carving a trophy in this manner requires a light slashing or piercing weapon and deals 1d6 points of damage to the target creature. (A creature with regeneration can regrow the severed body part.) Alternatively, you can take a small item worn or carried by your fallen foe, such as a piece of jewelry, pouch, potion, light weapon, or helmet, in which case the victim takes no damage. The snatched item can weigh no more than 2 pounds. You must have a free hand to collect the trophy.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "—",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-snatch-trophy",
+      "name": "Snatch Trophy",
+      "type": "General",
+      "prerequisites": "—",
+      "benefit": "After dealing a creature enough damage to drop it to negative hit points, you can slice or pry off a trophy as a free action. You must be adjacent to the dead or dying creature. The trophy could be a small body part such as a finger or ear. Carving a trophy in this manner requires a light slashing or piercing weapon and deals 1d6 points of damage to the target creature. (A creature with regeneration can regrow the severed body part.) Alternatively, you can take a small item worn or carried by your fallen foe, such as a piece of jewelry, pouch, potion, light weapon, or helmet, in which case the victim takes no damage. The snatched item can weigh no more than 2 pounds. You must have a free hand to collect the trophy."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-touch-of-benevolence",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "General",
+    "level": 1,
+    "name_pt": "Touch of Benevolence",
+    "name_en": "Touch of Benevolence",
+    "name_es": null,
+    "description_pt": "Although you are evil and spells such as detect evil reveal your true alignment, you have a 50% chance of ignoring any effect that specifically targets or damages evil creatures.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Any evil alignment",
+    "action_cost": null,
+    "traits": [
+      "general"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-touch-of-benevolence",
+      "name": "Touch of Benevolence",
+      "type": "General",
+      "prerequisites": "Any evil alignment",
+      "benefit": "Although you are evil and spells such as detect evil reveal your true alignment, you have a 50% chance of ignoring any effect that specifically targets or damages evil creatures.",
+      "special": "To keep this feat, a character must demonstrate periodic acts of kindness and mercy. A DM can revoke this feat if the character fails to act in an appropriately conflicted manner."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-doomspeak",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Bardic",
+    "level": 1,
+    "name_pt": "Doomspeak",
+    "name_en": "Doomspeak",
+    "name_es": null,
+    "description_pt": "You can spend one of your bardic music uses to utter a string of crass and appalling epithets and curses at one enemy within 120 feet. The intended target must be able to hear and comprehend your damning remarks. A target that fails a Will save (DC 10 + your character level + your Cha modifier) is cursed with a -10 penalty on attack rolls, saves, ability checks, and skill checks for 1 round. This is a supernatural, necromantic effect.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Bardic music class feature, Intimidate 8 ranks, Perform 8 ranks",
+    "action_cost": null,
+    "traits": [
+      "bardic"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-doomspeak",
+      "name": "Doomspeak",
+      "type": "Bardic",
+      "prerequisites": "Bardic music class feature, Intimidate 8 ranks, Perform 8 ranks",
+      "benefit": "You can spend one of your bardic music uses to utter a string of crass and appalling epithets and curses at one enemy within 120 feet. The intended target must be able to hear and comprehend your damning remarks. A target that fails a Will save (DC 10 + your character level + your Cha modifier) is cursed with a -10 penalty on attack rolls, saves, ability checks, and skill checks for 1 round. This is a supernatural, necromantic effect."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-profane-outburst",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Divine",
+    "level": 1,
+    "name_pt": "Profane Outburst",
+    "name_en": "Profane Outburst",
+    "name_es": null,
+    "description_pt": "As a standard action, you can spend one of your rebuke attempts to bathe all undead creatures within 60 feet in divine energy, granting them a +1 profane bonus to Armor Class for 1 minute.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Ability to rebuke undead, evil alignment",
+    "action_cost": null,
+    "traits": [
+      "divine"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-profane-outburst",
+      "name": "Profane Outburst",
+      "type": "Divine",
+      "prerequisites": "Ability to rebuke undead, evil alignment",
+      "benefit": "As a standard action, you can spend one of your rebuke attempts to bathe all undead creatures within 60 feet in divine energy, granting them a +1 profane bonus to Armor Class for 1 minute."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-via-negativa",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Divine",
+    "level": 1,
+    "name_pt": "Via Negativa",
+    "name_en": "Via Negativa",
+    "name_es": null,
+    "description_pt": "As a free action, you can spend one of your rebuke attempts to deal additional harm with an inflict spell. You must spend the rebuke attempt before making the attack roll. If the attack roll succeeds, the inflict spell deals an extra 1 point of damage per character level (maximum +20). If the attack roll fails, the rebuke attempt is spent and wasted.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Ability to rebuke undead",
+    "action_cost": null,
+    "traits": [
+      "divine"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-via-negativa",
+      "name": "Via Negativa",
+      "type": "Divine",
+      "prerequisites": "Ability to rebuke undead",
+      "benefit": "As a free action, you can spend one of your rebuke attempts to deal additional harm with an inflict spell. You must spend the rebuke attempt before making the attack roll. If the attack roll succeeds, the inflict spell deals an extra 1 point of damage per character level (maximum +20). If the attack roll fails, the rebuke attempt is spent and wasted."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-corrupt-spell",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Metamagic",
+    "level": 1,
+    "name_pt": "Corrupt Spell",
+    "name_en": "Corrupt Spell",
+    "name_es": null,
+    "description_pt": "This feat adds the evil descriptor to one damaging spell you can cast. You must choose the spell at the time you select the feat. If the spell deals damage, half of the damage is unholy damage. For example, a corrupted fireball cast by a 6th-level wizard deals 6d6 points of damage: 3d6 points of fire damage and 3d6 points of unholy damage. Thus, creatures immune to fire still potentially take 3d6 points of damage.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Any evil alignment",
+    "action_cost": null,
+    "traits": [
+      "metamagic"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-corrupt-spell",
+      "name": "Corrupt Spell",
+      "type": "Metamagic",
+      "prerequisites": "Any evil alignment",
+      "benefit": "This feat adds the evil descriptor to one damaging spell you can cast. You must choose the spell at the time you select the feat. If the spell deals damage, half of the damage is unholy damage. For example, a corrupted fireball cast by a 6th-level wizard deals 6d6 points of damage: 3d6 points of fire damage and 3d6 points of unholy damage. Thus, creatures immune to fire still potentially take 3d6 points of damage.",
+      "special": "A character can take this feat multiple times, choosing a different spell each time. This feat originally appeared in Book of Vile Darkness and has been revised for D&D v.3.5."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-entangling-spell",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Metamagic",
+    "level": 1,
+    "name_pt": "Entangling Spell",
+    "name_en": "Entangling Spell",
+    "name_es": null,
+    "description_pt": "The feat can be applied to any instantaneous spell that deals acid, cold, electricity, fire, or sonic damage, such as fireball or lightning bolt. After the spell is cast, lingering tendrils of raw energy persist; creatures damaged by the spell are entangled for 1 round. The spell is considered to be in effect during this time and can be dispelled normally. An entangling spell uses up a spell slot two levels higher than the spell's actual level.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "—",
+    "action_cost": null,
+    "traits": [
+      "metamagic"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-entangling-spell",
+      "name": "Entangling Spell",
+      "type": "Metamagic",
+      "prerequisites": "—",
+      "benefit": "The feat can be applied to any instantaneous spell that deals acid, cold, electricity, fire, or sonic damage, such as fireball or lightning bolt. After the spell is cast, lingering tendrils of raw energy persist; creatures damaged by the spell are entangled for 1 round. The spell is considered to be in effect during this time and can be dispelled normally. An entangling spell uses up a spell slot two levels higher than the spell's actual level."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-lingering-spell",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Metamagic",
+    "level": 1,
+    "name_pt": "Lingering Spell",
+    "name_en": "Lingering Spell",
+    "name_es": null,
+    "description_pt": "The feat can be applied to any instantaneous spell that deals acid, cold, electricity, fire, or sonic damage, such as fireball or lightning bolt. After the spell is cast, lingering tendrils of energy persist, dealing 1d6 points of damage of the appropriate energy type at the beginning of your next turn to all creatures initially damaged by the spell. The spell is considered to be in effect during this time and can be dispelled normally. A lingering spell uses up a spell slot one level higher than the spell's actual level.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "—",
+    "action_cost": null,
+    "traits": [
+      "metamagic"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-lingering-spell",
+      "name": "Lingering Spell",
+      "type": "Metamagic",
+      "prerequisites": "—",
+      "benefit": "The feat can be applied to any instantaneous spell that deals acid, cold, electricity, fire, or sonic damage, such as fireball or lightning bolt. After the spell is cast, lingering tendrils of energy persist, dealing 1d6 points of damage of the appropriate energy type at the beginning of your next turn to all creatures initially damaged by the spell. The spell is considered to be in effect during this time and can be dispelled normally. A lingering spell uses up a spell slot one level higher than the spell's actual level."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-metanode-spell",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Metamagic",
+    "level": 1,
+    "name_pt": "Metanode Spell",
+    "name_en": "Metanode Spell",
+    "name_es": null,
+    "description_pt": "When casting a spell improved by a metamagic feat, you can deduct the class of the node layer in which you currently stand from the increased spell level. The class of the layer does not equal the class of the node unless you are standing in the innermost portion of it. For example, if you use Maximize Spell to augment the 5th-level spell flame strike in the innermost (+1) layer of a Class 1 node, you can cast the spell as if it were only two levels higher than normal, not three, because the node pays one spell level's worth of the metamagic cost. This feat is most useful to casters who do not prepare spells (such as bards and sorcerers) and to wizards who rarely leave their nodes and can therefore prepare and cast their spells at the adjusted level. If you use this feat to reduce the cost of preparing a metamagic spell and then leave the node, the spell you prepared is unavailable until you return to a node layer of at least the same class as the one in which the spell was prepared.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Node Spellcasting, caster level 1st",
+    "action_cost": null,
+    "traits": [
+      "metamagic"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-metanode-spell",
+      "name": "Metanode Spell",
+      "type": "Metamagic",
+      "prerequisites": "Node Spellcasting, caster level 1st",
+      "benefit": "When casting a spell improved by a metamagic feat, you can deduct the class of the node layer in which you currently stand from the increased spell level. The class of the layer does not equal the class of the node unless you are standing in the innermost portion of it. For example, if you use Maximize Spell to augment the 5th-level spell flame strike in the innermost (+1) layer of a Class 1 node, you can cast the spell as if it were only two levels higher than normal, not three, because the node pays one spell level's worth of the metamagic cost. This feat is most useful to casters who do not prepare spells (such as bards and sorcerers) and to wizards who rarely leave their nodes and can therefore prepare and cast their spells at the adjusted level. If you use this feat to reduce the cost of preparing a metamagic spell and then leave the node, the spell you prepared is unavailable until you return to a node layer of at least the same class as the one in which the spell was prepared."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-reaping-spell",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Metamagic",
+    "level": 1,
+    "name_pt": "Reaping Spell",
+    "name_en": "Reaping Spell",
+    "name_es": null,
+    "description_pt": "A raise dead, reincarnate, or resurrection spell cannot return to life a creature killed by a reaping spell, and a true resurrection spell has only a 50% chance of succeeding. A reaping spell that fails to kill the target has no additional effect. A reaping spell uses up a spell slot three levels higher than the spell's actual level.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Any evil alignment",
+    "action_cost": null,
+    "traits": [
+      "metamagic"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-reaping-spell",
+      "name": "Reaping Spell",
+      "type": "Metamagic",
+      "prerequisites": "Any evil alignment",
+      "benefit": "A raise dead, reincarnate, or resurrection spell cannot return to life a creature killed by a reaping spell, and a true resurrection spell has only a 50% chance of succeeding. A reaping spell that fails to kill the target has no additional effect. A reaping spell uses up a spell slot three levels higher than the spell's actual level."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-demonsworn-knight",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Vile",
+    "level": 1,
+    "name_pt": "Demonsworn Knight",
+    "name_en": "Demonsworn Knight",
+    "name_es": null,
+    "description_pt": "Any weapon you wield is treated as chaotic- and evil-aligned for the purpose of overcoming damage reduction. In addition, against lawful outsiders, you deal an extra 1d6 points of damage with any successful weapon attack.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Thrall to Demon, base attack bonus +4",
+    "action_cost": null,
+    "traits": [
+      "vile"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-demonsworn-knight",
+      "name": "Demonsworn Knight",
+      "type": "Vile",
+      "prerequisites": "Thrall to Demon, base attack bonus +4",
+      "benefit": "Any weapon you wield is treated as chaotic- and evil-aligned for the purpose of overcoming damage reduction. In addition, against lawful outsiders, you deal an extra 1d6 points of damage with any successful weapon attack.",
+      "special": "This feat can only be taken once. A character who takes this feat cannot also take the Hellbound Knight or Tormented Knight feat. A fighter can select this feat as one of his fighter bonus feats. In addition, your eyes turn dead black, and your teeth become as sharp as fangs.",
+      "fighterBonus": true
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-disciple-of-darkness",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Vile",
+    "level": 1,
+    "name_pt": "Disciple of Darkness",
+    "name_en": "Disciple of Darkness",
+    "name_es": null,
+    "description_pt": "Once per day, while performing an evil act, you can call upon your diabolic patron to add a +1 luck bonus to any one attack roll, saving throw, ability check, skill check, or level check.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Lawful evil alignment",
+    "action_cost": null,
+    "traits": [
+      "vile"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-disciple-of-darkness",
+      "name": "Disciple of Darkness",
+      "type": "Vile",
+      "prerequisites": "Lawful evil alignment",
+      "benefit": "Once per day, while performing an evil act, you can call upon your diabolic patron to add a +1 luck bonus to any one attack roll, saving throw, ability check, skill check, or level check.",
+      "special": "This feat can only be taken once. A character who takes this feat cannot also take the Scion of Sorrow or Thrall to Demon feat."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-evil-brand",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Vile",
+    "level": 1,
+    "name_pt": "Evil Brand",
+    "name_en": "Evil Brand",
+    "name_es": null,
+    "description_pt": "Evil creatures automatically recognize the symbol now emblazoned upon you as a sign of your utter depravity or discipleship to a powerful patron, although the specific identity of the patron is not revealed. You gain a +2 circumstance bonus on Diplomacy and Intimidate checks made against evil creatures.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "—",
+    "action_cost": null,
+    "traits": [
+      "vile"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-evil-brand",
+      "name": "Evil Brand",
+      "type": "Vile",
+      "prerequisites": "—",
+      "benefit": "Evil creatures automatically recognize the symbol now emblazoned upon you as a sign of your utter depravity or discipleship to a powerful patron, although the specific identity of the patron is not revealed. You gain a +2 circumstance bonus on Diplomacy and Intimidate checks made against evil creatures."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-evil-embraced",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Vile",
+    "level": 1,
+    "name_pt": "Evil Embraced",
+    "name_en": "Evil Embraced",
+    "name_es": null,
+    "description_pt": "Once per day, as an immediate action (see page 21), you can call upon your fiendish patron to steel you against harm. You gain damage reduction 10/good for 1 round (until the start of your next turn).",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Evil Brand",
+    "action_cost": null,
+    "traits": [
+      "vile"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-evil-embraced",
+      "name": "Evil Embraced",
+      "type": "Vile",
+      "prerequisites": "Evil Brand",
+      "benefit": "Once per day, as an immediate action (see page 21), you can call upon your fiendish patron to steel you against harm. You gain damage reduction 10/good for 1 round (until the start of your next turn)."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-hellbound-knight",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Vile",
+    "level": 1,
+    "name_pt": "Hellbound Knight",
+    "name_en": "Hellbound Knight",
+    "name_es": null,
+    "description_pt": "Any weapon you wield is treated as lawful- and evil-aligned for the purpose of overcoming damage reduction. In addition, against chaotic outsiders, you gain a +1 profane bonus on attack rolls.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Disciple of Darkness, base attack bonus +4",
+    "action_cost": null,
+    "traits": [
+      "vile"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-hellbound-knight",
+      "name": "Hellbound Knight",
+      "type": "Vile",
+      "prerequisites": "Disciple of Darkness, base attack bonus +4",
+      "benefit": "Any weapon you wield is treated as lawful- and evil-aligned for the purpose of overcoming damage reduction. In addition, against chaotic outsiders, you gain a +1 profane bonus on attack rolls.",
+      "special": "This feat can only be taken once. A character who takes this feat cannot also take the Demonsworn Knight or Tormented Knight feat. A fighter can select this feat as one of his fighter bonus feats. In addition, as soon as you take this feat, your eyes turn red.",
+      "fighterBonus": true
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-scion-of-sorrow",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Vile",
+    "level": 1,
+    "name_pt": "Scion of Sorrow",
+    "name_en": "Scion of Sorrow",
+    "name_es": null,
+    "description_pt": "Once per day, while performing an evil act, you can call upon your fiendish patron to add a +1 luck bonus to any one attack roll, saving throw, ability check, skill check, or level check.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Neutral evil alignment",
+    "action_cost": null,
+    "traits": [
+      "vile"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-scion-of-sorrow",
+      "name": "Scion of Sorrow",
+      "type": "Vile",
+      "prerequisites": "Neutral evil alignment",
+      "benefit": "Once per day, while performing an evil act, you can call upon your fiendish patron to add a +1 luck bonus to any one attack roll, saving throw, ability check, skill check, or level check.",
+      "special": "This feat can only be taken once. A character who takes this feat cannot also take the Disciple of Darkness or Thrall to Demon feat."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-thrall-to-demon",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Vile",
+    "level": 1,
+    "name_pt": "Thrall to Demon",
+    "name_en": "Thrall to Demon",
+    "name_es": null,
+    "description_pt": "Once per day, while performing an evil act, you can call upon your demonic patron to add a +1 luck bonus to any one attack roll, saving throw, ability check, skill check, or level check.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Chaotic evil alignment",
+    "action_cost": null,
+    "traits": [
+      "vile"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-thrall-to-demon",
+      "name": "Thrall to Demon",
+      "type": "Vile",
+      "prerequisites": "Chaotic evil alignment",
+      "benefit": "Once per day, while performing an evil act, you can call upon your demonic patron to add a +1 luck bonus to any one attack roll, saving throw, ability check, skill check, or level check.",
+      "special": "This feat can only be taken once. A character who takes this feat cannot also take the Disciple of Darkness or Scion of Sorrow feat."
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-tormented-knight",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Vile",
+    "level": 1,
+    "name_pt": "Tormented Knight",
+    "name_en": "Tormented Knight",
+    "name_es": null,
+    "description_pt": "Any weapon you wield is treated as evil-aligned for the purpose of overcoming damage reduction. Any chaotic or lawful outsider you successfully damage with a melee or ranged weapon must succeed on a Fortitude save (DC 10 + damage dealt) or take 1d4 points of Charisma damage.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Scion of Sorrow, base attack bonus +4",
+    "action_cost": null,
+    "traits": [
+      "vile"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-tormented-knight",
+      "name": "Tormented Knight",
+      "type": "Vile",
+      "prerequisites": "Scion of Sorrow, base attack bonus +4",
+      "benefit": "Any weapon you wield is treated as evil-aligned for the purpose of overcoming damage reduction. Any chaotic or lawful outsider you successfully damage with a melee or ranged weapon must succeed on a Fortitude save (DC 10 + damage dealt) or take 1d4 points of Charisma damage.",
+      "special": "This feat can only be taken once. A character who takes this feat cannot also take the Demonsworn Knight or Hellbound Knight feat. A fighter can select this feat as one of his fighter bonus feats. In addition, as soon as you take this feat, your flesh turns pale and becomes unnaturally cold to the touch.",
+      "fighterBonus": true
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-initiate-of-ghaunadaur",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Initiate",
+    "level": 1,
+    "name_pt": "Initiate of Ghaunadaur",
+    "name_en": "Initiate of Ghaunadaur",
+    "name_es": null,
+    "description_pt": "You can command or rebuke oozes as an evil cleric commands or rebukes undead. You can use this supernatural ability a number of times per day equal to 3 + your Cha modifier.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Cleric level 3rd, patron deity Ghaunadaur",
+    "action_cost": null,
+    "traits": [
+      "initiate"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-initiate-of-ghaunadaur",
+      "name": "Initiate of Ghaunadaur",
+      "type": "Initiate",
+      "prerequisites": "Cleric level 3rd, patron deity Ghaunadaur",
+      "benefit": "You can command or rebuke oozes as an evil cleric commands or rebukes undead. You can use this supernatural ability a number of times per day equal to 3 + your Cha modifier.",
+      "addedSpells": [
+        {
+          "level": 1,
+          "name": "Corrosive Grasp"
+        },
+        {
+          "level": 2,
+          "name": "Blindsight"
+        },
+        {
+          "level": 3,
+          "name": "Amorphous Form"
+        },
+        {
+          "level": 5,
+          "name": "Slime Hurl"
+        },
+        {
+          "level": 7,
+          "name": "Mantle of the Slime Lord"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-initiate-of-gruumsh",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Initiate",
+    "level": 1,
+    "name_pt": "Initiate of Gruumsh",
+    "name_en": "Initiate of Gruumsh",
+    "name_es": null,
+    "description_pt": "Once per day, as a swift action, you can cast any cure spell you have prepared, or you can spontaneously cast an inflict spell.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Orc or half-orc, ability to cast 2nd-level divine spells, patron deity Gruumsh",
+    "action_cost": null,
+    "traits": [
+      "initiate"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-initiate-of-gruumsh",
+      "name": "Initiate of Gruumsh",
+      "type": "Initiate",
+      "prerequisites": "Orc or half-orc, ability to cast 2nd-level divine spells, patron deity Gruumsh",
+      "benefit": "Once per day, as a swift action, you can cast any cure spell you have prepared, or you can spontaneously cast an inflict spell.",
+      "addedSpells": [
+        {
+          "level": 2,
+          "name": "Battle Line"
+        },
+        {
+          "level": 3,
+          "name": "Bloodspear"
+        },
+        {
+          "level": 5,
+          "name": "Pocket Cave"
+        },
+        {
+          "level": 6,
+          "name": "Eyebite"
+        },
+        {
+          "level": 7,
+          "name": "Waves of Exhaustion"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-initiate-of-kossuth",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Initiate",
+    "level": 1,
+    "name_pt": "Initiate of Kossuth",
+    "name_en": "Initiate of Kossuth",
+    "name_es": null,
+    "description_pt": "All fire elementals that you summon using the summon monster spells have +2 hit points per die (instead of average hit points).",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Cleric level 3rd, patron deity Kossuth",
+    "action_cost": null,
+    "traits": [
+      "initiate"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-initiate-of-kossuth",
+      "name": "Initiate of Kossuth",
+      "type": "Initiate",
+      "prerequisites": "Cleric level 3rd, patron deity Kossuth",
+      "benefit": "All fire elementals that you summon using the summon monster spells have +2 hit points per die (instead of average hit points).",
+      "addedSpells": [
+        {
+          "level": 2,
+          "name": "Agannazar's Scorcher"
+        },
+        {
+          "level": 4,
+          "name": "Fire Stride"
+        },
+        {
+          "level": 5,
+          "name": "Shroud of Flame"
+        },
+        {
+          "level": 8,
+          "name": "Incendiary Cloud"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-initiate-of-loviatar",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Initiate",
+    "level": 1,
+    "name_pt": "Initiate of Loviatar",
+    "name_en": "Initiate of Loviatar",
+    "name_es": null,
+    "description_pt": "The first time you take damage in any combat, you gain a +1 morale bonus on attack rolls and a +1 morale bonus on saving throws against fear effects for 1 minute per cleric level.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Cleric level 5th, patron deity Loviatar",
+    "action_cost": null,
+    "traits": [
+      "initiate"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-initiate-of-loviatar",
+      "name": "Initiate of Loviatar",
+      "type": "Initiate",
+      "prerequisites": "Cleric level 5th, patron deity Loviatar",
+      "benefit": "The first time you take damage in any combat, you gain a +1 morale bonus on attack rolls and a +1 morale bonus on saving throws against fear effects for 1 minute per cleric level.",
+      "addedSpells": [
+        {
+          "level": 2,
+          "name": "Nybor's Gentle Reminder"
+        },
+        {
+          "level": 3,
+          "name": "Mystic Lash"
+        },
+        {
+          "level": 5,
+          "name": "Fleshshiver"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-initiate-of-shar",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Initiate",
+    "level": 1,
+    "name_pt": "Initiate of Shar",
+    "name_en": "Initiate of Shar",
+    "name_es": null,
+    "description_pt": "You add Bluff and Hide to your list of class skills.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Able to cast 1st-level divine spells, patron deity Shar",
+    "action_cost": null,
+    "traits": [
+      "initiate"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-initiate-of-shar",
+      "name": "Initiate of Shar",
+      "type": "Initiate",
+      "prerequisites": "Able to cast 1st-level divine spells, patron deity Shar",
+      "benefit": "You add Bluff and Hide to your list of class skills.",
+      "addedSpells": [
+        {
+          "level": 1,
+          "name": "Disguise Self"
+        },
+        {
+          "level": 3,
+          "name": "Crushing Despair"
+        },
+        {
+          "level": 4,
+          "name": "Armor of Darkness"
+        },
+        {
+          "level": 5,
+          "name": "Darkbolt"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cor.feat.cor-initiate-of-varae",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Initiate",
+    "level": 1,
+    "name_pt": "Initiate of Varae",
+    "name_en": "Initiate of Varae",
+    "name_es": null,
+    "description_pt": "Once per day, as a standard action, you can transform your skin into shimmering emerald scales. The scales absorb magic missile damage as the shield spell, and they enable you to pass through walls of force as if they weren't there. The emerald scales last for 1 minute per character level. This is a supernatural ability.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Extaminaar, cleric level 3rd, patron deity Varae",
+    "action_cost": null,
+    "traits": [
+      "initiate"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cor",
+    "source_book": "D&D 3.5 — Champions of Ruin",
+    "source_page": 17,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cor-initiate-of-varae",
+      "name": "Initiate of Varae",
+      "type": "Initiate",
+      "prerequisites": "Extaminaar, cleric level 3rd, patron deity Varae",
+      "benefit": "Once per day, as a standard action, you can transform your skin into shimmering emerald scales. The scales absorb magic missile damage as the shield spell, and they enable you to pass through walls of force as if they weren't there. The emerald scales last for 1 minute per character level. This is a supernatural ability.",
+      "addedSpells": [
+        {
+          "level": 2,
+          "name": "Blinding Spittle"
+        },
+        {
+          "level": 4,
+          "name": "Serpent Arrow"
+        },
+        {
+          "level": 6,
+          "name": "Veil"
+        },
+        {
+          "level": 8,
+          "name": "Animal Shapes"
+        }
+      ]
+    }
+  }
+]
