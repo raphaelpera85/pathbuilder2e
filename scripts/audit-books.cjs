@@ -113,6 +113,11 @@ const excluded = /ficha|poster|map|folio|raw|test/i;
         "Tormenta 20": "t20",
         "Old school Essentials": "ose",
       };
+      const manualBookOverrides = {
+        "Pathfinder/Livros/LIVRO - Pathfinder - Guia de Ancestralidades - Vários autores.pdf": {
+          systemId: "pf2e", ruleset: "legacy", title: "Pathfinder 2e: Presságios Perdidos — Guia de Ancestralidades", evidence: "cover_page",
+        },
+      };
       const inventory = {
         schemaVersion: 1,
         provenance: "Inventário gerado por audit-books a partir dos PDFs legíveis; sistema/edição são preenchidos somente quando identificáveis pelo diretório ou título. Não representa curadoria do conteúdo interno.",
@@ -121,7 +126,10 @@ const excluded = /ficha|poster|map|folio|raw|test/i;
         readablePdfCount: result.readablePdfs,
         pairedTextCount: result.pairedText,
         books: reports.map((report) => {
-          const title = path.basename(report.pdf, path.extname(report.pdf));
+          const sourcePath = report.pdf.replace(/\\/g, "/").normalize("NFC");
+          const filenameTitle = path.basename(report.pdf, path.extname(report.pdf));
+          const override = manualBookOverrides[sourcePath];
+          const title = override?.title ?? filenameTitle;
           const firstFolder = report.pdf.split(/[\\/]/)[0];
           const editionText = `${firstFolder} ${title}`.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[–—_-]+/g, " ").replace(/\s+/g, " ");
           const pathfinderEdition = /(?:pathfinder\s*2(?:e|a|nd)?|\bpf\s*2(?:e)?\b|segunda edicao)/i.test(editionText)
@@ -129,26 +137,26 @@ const excluded = /ficha|poster|map|folio|raw|test/i;
             : /(?:pathfinder\s*(?:rpg|1(?:e|a|st)?|first edition)|\bpf\s*1(?:e)?\b)/i.test(editionText)
               ? "pf1e"
               : null;
-          const systemId = firstFolder === "Pathfinder" ? pathfinderEdition : systemByFolder[firstFolder] ?? null;
-          const systemCandidates = firstFolder === "Pathfinder" && !pathfinderEdition ? ["pf1e", "pf2e"] : systemId ? [systemId] : [];
+          const systemId = override?.systemId ?? (firstFolder === "Pathfinder" ? pathfinderEdition : systemByFolder[firstFolder] ?? null);
+          const systemCandidates = firstFolder === "Pathfinder" && !pathfinderEdition && !override ? ["pf1e", "pf2e"] : systemId ? [systemId] : [];
           const explicitEdition = /remaster|2024|revised/i.test(editionText);
-          const ruleset = systemId === "dnd35" ? "v35"
+          const ruleset = override?.ruleset ?? (systemId === "dnd35" ? "v35"
             : systemId === "pf1e" ? "legacy_pf1"
-              : systemId === "pf2e" && explicitEdition ? "remaster"
+              : systemId === "pf2e" ? (explicitEdition ? "remaster" : "legacy")
                 : systemId === "dnd5e" && explicitEdition ? "2024"
                   : systemId === "t20" && /jogo do ano/i.test(editionText) ? "jogo_do_ano"
                     : systemId === "ose" && /advanced|avancad/i.test(editionText) ? "advanced"
-                      : null;
+                      : null);
           return {
-            id: report.pdf.replace(/\\/g, "/").normalize("NFC"),
+            id: sourcePath,
             title,
-            sourcePath: report.pdf.replace(/\\/g, "/").normalize("NFC"),
+            sourcePath,
             pageCount: report.pages,
             pdfReadable: report.pdfReadable,
             systemId,
             systemCandidates,
             ruleset,
-            rulesetEvidence: ruleset ? (systemId === "dnd35" || systemId === "pf1e" ? "system_folder" : "explicit_title") : null,
+            rulesetEvidence: ruleset ? (override?.evidence ?? (systemId === "dnd35" || systemId === "pf1e" ? "system_folder" : "explicit_title")) : null,
             curationStatus: "inventory_only",
             contentIndexStatus: "pending_manual_review",
             pairedTextUsable: report.pairedTextUsable,

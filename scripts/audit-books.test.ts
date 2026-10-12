@@ -59,4 +59,30 @@ describe("auditoria do corpus de livros", () => {
     expect(withoutText).toMatchObject({ pairedTextUsable: false, textCharacters: 0 });
     expect(report.books.every((book) => !("scannedText" in book))).toBe(true);
   });
+
+  it("exclui assets da pasta Mapas mesmo quando o nome do PDF não contém 'map'", async () => {
+    const directory = mkdtempSync(path.join(os.tmpdir(), "pathbuilder-books-map-assets-"));
+    temporaryDirectories.push(directory);
+    mkdirSync(path.join(directory, "Pathfinder", "Livros"), { recursive: true });
+    mkdirSync(path.join(directory, "Pathfinder", "Mapas"), { recursive: true });
+    const pdf = await PDFDocument.create();
+    pdf.addPage();
+    const bytes = await pdf.save();
+    writeFileSync(path.join(directory, "Pathfinder", "Livros", "Livro Principal.pdf"), bytes);
+    writeFileSync(path.join(directory, "Pathfinder", "Mapas", "Flip Tiles Forest.pdf"), bytes);
+
+    const result = spawnSync(
+      process.execPath,
+      ["scripts/audit-books.cjs", directory],
+      { cwd: process.cwd(), encoding: "utf8", windowsHide: true },
+    );
+    expect(result.status, result.stderr).toBe(0);
+    const report = JSON.parse(result.stdout.slice(result.stdout.indexOf("{"))) as {
+      bookPdfs: number;
+      excludedMapAssetPdfs: number;
+      books: Array<{ pdf: string }>;
+    };
+    expect(report).toMatchObject({ bookPdfs: 1, excludedMapAssetPdfs: 1 });
+    expect(report.books.map((book) => book.pdf)).toEqual([path.join("Pathfinder", "Livros", "Livro Principal.pdf")]);
+  });
 });

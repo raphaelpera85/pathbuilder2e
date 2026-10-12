@@ -22,6 +22,8 @@ type GraphNode = {
   pageCount?: number;
   curationStatus?: string;
   contentIndexStatus?: string;
+  rulesetEvidence?: string | null;
+  systemCandidates?: string[];
 };
 
 const graph = JSON.parse(await readFile(join(process.cwd(), "src", "data", "knowledge-graph", "graph.json"), "utf8")) as {
@@ -79,9 +81,16 @@ describe("grafo de conhecimento versionado", () => {
     expect(books).toHaveLength(98);
     expect(books.every((book) => book.pageCount && book.pageCount > 0 && book.sourcePath)).toBe(true);
     expect(books.every((book) => book.curationStatus === "inventory_only" && book.contentIndexStatus === "pending_manual_review")).toBe(true);
+    expect(books.every((book) => !/\/Mapas\//i.test(book.sourcePath ?? ""))).toBe(true);
+    expect(books.every((book) => book.systemId)).toBe(true);
+    expect(books.filter((book) => book.systemId === "dnd35").every((book) => book.ruleset === "v35")).toBe(true);
+    expect(books.every((book) => book.systemId || book.systemCandidates?.length)).toBe(true);
     for (const book of books) {
       const bookEdges = graph.edges.filter((edge) => edge.from === book.id);
       expect(bookEdges.some((edge) => edge.type === "book_of_system" || edge.type === "candidate_system"), book.sourcePath).toBe(true);
     }
+    const ancestryGuide = books.find((book) => book.sourcePath === "Pathfinder/Livros/LIVRO - Pathfinder - Guia de Ancestralidades - Vários autores.pdf");
+    expect(ancestryGuide).toMatchObject({ systemId: "pf2e", ruleset: "legacy", rulesetEvidence: "cover_page" });
+    expect(edges.has(`${ancestryGuide?.id}|book_in_ruleset|ruleset:pf2e:legacy`)).toBe(true);
   });
 });
