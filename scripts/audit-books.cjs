@@ -156,7 +156,7 @@ const excluded = /ficha|poster|map|folio|raw|test/i;
             systemId,
             systemCandidates,
             ruleset,
-            rulesetEvidence: ruleset ? (override?.evidence ?? (systemId === "dnd35" || systemId === "pf1e" ? "system_folder" : "explicit_title")) : null,
+            rulesetEvidence: ruleset ? (override?.evidence ?? (systemId === "dnd35" ? "system_folder" : "explicit_title")) : null,
             curationStatus: "inventory_only",
             contentIndexStatus: "pending_manual_review",
             pairedTextUsable: report.pairedTextUsable,

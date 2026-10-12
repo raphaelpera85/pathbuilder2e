@@ -331,7 +331,17 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "9 Invocar Criaturas IX*: Invoca um ser extraplanar para auxiliar o conjurador",
     ],
     spellDetails: {
+      "Martelo do Caos": {
+        detailsPage: 257,
+        summary: "Uma explosão caótica fere criaturas leais e pode deixá-las lentas por 1d6 rodadas; criaturas neutras sofrem metade do dano e não ficam lentas. Vontade bem-sucedida reduz o dano à metade e evita lentidão.",
+        mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Explosão de 6 m de raio", duration: "Instantânea (lentidão por 1d6 rodadas)", savingThrow: "Vontade parcial (veja texto)", spellResistance: "Sim" },
+      },
       "Dissipar a Ordem": domainAlignmentDispelDetails("leais"),
+      "Manto do Caos": {
+        detailsPage: 255,
+        summary: "Protege aliados com +4 de deflexão na CA, +4 de resistência e RM 25 contra magias da ordem; também protege contra possessão e influência mental.",
+        mechanics: { components: "V, G, F", castingTime: "1 ação padrão", range: "6 m", target: "Uma criatura/nível numa explosão de 6 m centrada no conjurador", duration: "1 rodada/nível (D)", savingThrow: "Veja texto", spellResistance: "Sim (inofensiva)" },
+      },
       "Invocar Criaturas IX": summonCreaturesDomainDetails("caótico"),
     },
     footnote: "Somente como magia do caos",
@@ -505,6 +515,11 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "9 Grupo de Elementais◆: Invoca vários elementais",
     ],
     spellDetails: {
+      "Mãos Flamejantes": {
+        detailsPage: 256,
+        summary: "Um cone de chamas causa 1d4 pontos de dano por nível de conjurador (máximo 5d4) e pode incendiar materiais inflamáveis.",
+        mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "4,5 m", target: "Cone de chamas", duration: "Instantânea", savingThrow: "Reflexos reduz à metade", spellResistance: "Sim" },
+      },
       "Grupo de Elementais": ELEMENTAL_SWARM_DOMAIN_DETAILS,
       "Escudo do Fogo": {
         detailsPage: 236,
@@ -534,6 +549,14 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "9 Mão Esmagadora de Bigby: Uma grande mão Grande fornece cobertura, empurra ou esmaga seus inimigos",
     ],
     spellDetails: {
+      "Mão Poderosa de Bigby": {
+        detailsPage: 256,
+        summary: "Como Mão Interposta de Bigby, com as capacidades adicionais de agarrar e empurrar descritas na entrada; os campos não repetidos no bloco impresso não são inferidos.",
+      },
+      "Mão Esmagadora de Bigby": {
+        detailsPage: 255,
+        summary: "Como Mão Interposta de Bigby, com as capacidades adicionais de agarrar, empurrar e esmagar descritas na entrada; os campos não repetidos no bloco impresso não são inferidos.",
+      },
       "Imunidade à Magia": SPELL_IMMUNITY_DOMAIN_DETAILS,
       "Força do Touro": {
         detailsPage: 241,
@@ -622,7 +645,14 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Criar Mortos-Vivos Maior^M: Cria sombras, aparições, espectros e devoradores",
       "9 Grito da Banshee: Mata uma criatura/nível",
     ],
-    spellDetails: { "Grito da Banshee": WAIL_OF_THE_BANSHEE_DOMAIN_DETAILS },
+    spellDetails: {
+      "Matar": {
+        detailsPage: 258,
+        summary: "Um ataque de toque pode matar uma criatura viva; se ela resistir, sofre 3d6 pontos de dano +1 por nível de conjurador.",
+        mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura viva tocada", duration: "Instantânea", savingThrow: "Fortitude parcial", spellResistance: "Sim" },
+      },
+      "Grito da Banshee": WAIL_OF_THE_BANSHEE_DOMAIN_DETAILS,
+    },
   }),
   domain({
     id: "ordem", name: "Ordem", sourcePage: "188",

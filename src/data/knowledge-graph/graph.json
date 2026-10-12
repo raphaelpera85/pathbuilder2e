@@ -102,9 +102,9 @@
     },
     "recordsWithoutBook": 0,
     "recordsWithoutSourcePage": 0,
-    "recordsWithDescriptionPage": 599,
-    "recordsWithoutDescriptionPage": 7540,
-    "summaryOnlyRecords": 1173,
+    "recordsWithDescriptionPage": 634,
+    "recordsWithoutDescriptionPage": 7505,
+    "summaryOnlyRecords": 1144,
     "sourceBooks": 98,
     "sourceBooksWithVerifiedPages": 98,
     "sourceBooksContentPending": 98
@@ -9360,9 +9360,9 @@
       "sourcePage": [
         186
       ],
-      "descriptionPage": null,
+      "descriptionPage": 257,
       "descriptionPageEnd": null,
-      "reviewStatus": "catalogued"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:domain-spell:caos%3A5%3ADissipar%20a%20Ordem",
@@ -9436,9 +9436,9 @@
       "sourcePage": [
         186
       ],
-      "descriptionPage": null,
+      "descriptionPage": 255,
       "descriptionPageEnd": null,
-      "reviewStatus": "catalogued"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:domain-spell:caos%3A9%3AInvocar%20Criaturas%20IX",
@@ -10167,9 +10167,9 @@
       "sourcePage": [
         187
       ],
-      "descriptionPage": null,
+      "descriptionPage": 256,
       "descriptionPageEnd": null,
-      "reviewStatus": "catalogued"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:domain-spell:fogo%3A2%3ACriar%20Chamas",
@@ -10452,9 +10452,9 @@
       "sourcePage": [
         187
       ],
-      "descriptionPage": null,
+      "descriptionPage": 256,
       "descriptionPageEnd": null,
-      "reviewStatus": "catalogued"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:domain-spell:forca%3A8%3APunho%20Cerrado%20de%20Bigby",
@@ -10490,9 +10490,9 @@
       "sourcePage": [
         187
       ],
-      "descriptionPage": null,
+      "descriptionPage": 255,
       "descriptionPageEnd": null,
-      "reviewStatus": "catalogued"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:domain-spell:guerra%3A1%3AArma%20M%C3%A1gica",
@@ -11107,9 +11107,9 @@
       "sourcePage": [
         188
       ],
-      "descriptionPage": null,
+      "descriptionPage": 258,
       "descriptionPageEnd": null,
-      "reviewStatus": "catalogued"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:domain-spell:morte%3A6%3ACriar%20Mortos-Vivos",
@@ -18150,9 +18150,9 @@
         181,
         182
       ],
-      "descriptionPage": null,
+      "descriptionPage": 257,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:bardo%3A0%3AMensagem",
@@ -18173,9 +18173,9 @@
         181,
         182
       ],
-      "descriptionPage": null,
+      "descriptionPage": 258,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:bardo%3A0%3APasmar",
@@ -19365,9 +19365,9 @@
       "sourcePage": [
         182
       ],
-      "descriptionPage": null,
+      "descriptionPage": 258,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:bardo%3A2%3ANublar",
@@ -20025,9 +20025,9 @@
       "sourcePage": [
         182
       ],
-      "descriptionPage": null,
+      "descriptionPage": 258,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:bardo%3A3%3AMiss%C3%A3o%20Menor",
@@ -22180,9 +22180,9 @@
       "sourcePage": [
         183
       ],
-      "descriptionPage": null,
+      "descriptionPage": 255,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:clerigo%3A1%3AN%C3%A9voa%20Obscurecente",
@@ -23390,9 +23390,9 @@
       "sourcePage": [
         184
       ],
-      "descriptionPage": null,
+      "descriptionPage": 256,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:clerigo%3A3%3AMesclar-se%20%C3%A0s%20Rochas",
@@ -23412,9 +23412,9 @@
       "sourcePage": [
         184
       ],
-      "descriptionPage": null,
-      "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "descriptionPage": 258,
+      "descriptionPageEnd": 259,
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:clerigo%3A3%3AMoldar%20Rochas",
@@ -24502,9 +24502,9 @@
         184,
         185
       ],
-      "descriptionPage": null,
+      "descriptionPage": 257,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:clerigo%3A5%3AMatar",
@@ -24525,9 +24525,9 @@
         184,
         185
       ],
-      "descriptionPage": null,
+      "descriptionPage": 258,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:clerigo%3A5%3AMuralha%20de%20Pedra",
@@ -26010,9 +26010,9 @@
       "sourcePage": [
         185
       ],
-      "descriptionPage": null,
-      "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "descriptionPage": 255,
+      "descriptionPageEnd": 256,
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:clerigo%3A8%3AS%C3%ADmbolo%20da%20Insanidade",
@@ -27306,9 +27306,9 @@
       "sourcePage": [
         190
       ],
-      "descriptionPage": null,
+      "descriptionPage": 258,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:druida%3A2%3AMoldar%20Madeira",
@@ -27856,9 +27856,9 @@
       "sourcePage": [
         190
       ],
-      "descriptionPage": null,
-      "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "descriptionPage": 258,
+      "descriptionPageEnd": 259,
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:druida%3A3%3AMoldar%20Rochas",
@@ -28274,9 +28274,9 @@
       "sourcePage": [
         190
       ],
-      "descriptionPage": null,
+      "descriptionPage": 255,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:druida%3A4%3AMovimenta%C3%A7%C3%A3o%20Livre",
@@ -29459,9 +29459,9 @@
       "sourcePage": [
         191
       ],
-      "descriptionPage": null,
+      "descriptionPage": 259,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:druida%3A7%3ARaio%20de%20Sol",
@@ -30247,9 +30247,9 @@
         192,
         193
       ],
-      "descriptionPage": null,
+      "descriptionPage": 257,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A0%3AMarca%20Arcana",
@@ -30271,9 +30271,9 @@
         192,
         193
       ],
-      "descriptionPage": null,
+      "descriptionPage": 257,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A0%3AMensagem",
@@ -30295,9 +30295,9 @@
         192,
         193
       ],
-      "descriptionPage": null,
+      "descriptionPage": 258,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A0%3APasmar",
@@ -31016,9 +31016,9 @@
       "sourcePage": [
         193
       ],
-      "descriptionPage": null,
+      "descriptionPage": 256,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A1%3AM%C3%ADsseis%20M%C3%A1gicos",
@@ -32008,9 +32008,9 @@
         193,
         194
       ],
-      "descriptionPage": null,
-      "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "descriptionPage": 255,
+      "descriptionPageEnd": 256,
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A2%3AN%C3%A9voa",
@@ -34030,9 +34030,9 @@
         194,
         195
       ],
-      "descriptionPage": null,
+      "descriptionPage": 258,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A4%3AMelhoria%20Mnem%C3%B4nica%20de%20Rary",
@@ -34054,9 +34054,9 @@
         194,
         195
       ],
-      "descriptionPage": null,
+      "descriptionPage": 258,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A4%3AMetamorfose",
@@ -35017,9 +35017,9 @@
       "sourcePage": [
         195
       ],
-      "descriptionPage": null,
+      "descriptionPage": 256,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A5%3AMalogro",
@@ -35040,9 +35040,9 @@
       "sourcePage": [
         195
       ],
-      "descriptionPage": null,
+      "descriptionPage": 255,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A5%3AMetamorfose%20T%C3%B3rrida",
@@ -36267,9 +36267,9 @@
         195,
         196
       ],
-      "descriptionPage": null,
+      "descriptionPage": 256,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A6%3AMover%20Terra",
@@ -37066,9 +37066,9 @@
       "sourcePage": [
         196
       ],
-      "descriptionPage": null,
+      "descriptionPage": 256,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A7%3AMans%C3%A3o%20Magn%C3%ADfica%20de%20Mordenkainen",
@@ -37089,9 +37089,9 @@
       "sourcePage": [
         196
       ],
-      "descriptionPage": null,
-      "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "descriptionPage": 255,
+      "descriptionPageEnd": 256,
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A7%3APalavra%20de%20Poder%2C%20Cegar",
@@ -38712,9 +38712,9 @@
       "sourcePage": [
         197
       ],
-      "descriptionPage": null,
+      "descriptionPage": 255,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A9%3APalavra%20de%20Poder%2C%20Matar",
@@ -39807,9 +39807,9 @@
       "sourcePage": [
         192
       ],
-      "descriptionPage": null,
+      "descriptionPage": 257,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:paladino%3A4%3ANeutralizar%20Venenos",
@@ -40137,9 +40137,9 @@
       "sourcePage": [
         192
       ],
-      "descriptionPage": null,
+      "descriptionPage": 258,
       "descriptionPageEnd": null,
-      "reviewStatus": "summary_only"
+      "reviewStatus": "details_verified"
     },
     {
       "id": "entry:dnd35:v35:spell-list:patrulheiro%3A1%3APassos%20Longos",
@@ -146133,6 +146133,41 @@
       "page": 254
     },
     {
+      "id": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:255",
+      "type": "page",
+      "key": "255",
+      "bookId": "book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador",
+      "page": 255
+    },
+    {
+      "id": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:256",
+      "type": "page",
+      "key": "256",
+      "bookId": "book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador",
+      "page": 256
+    },
+    {
+      "id": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:257",
+      "type": "page",
+      "key": "257",
+      "bookId": "book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador",
+      "page": 257
+    },
+    {
+      "id": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:258",
+      "type": "page",
+      "key": "258",
+      "bookId": "book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador",
+      "page": 258
+    },
+    {
+      "id": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:259",
+      "type": "page",
+      "key": "259",
+      "bookId": "book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador",
+      "page": 259
+    },
+    {
       "id": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:26",
       "type": "page",
       "key": "26",
@@ -160761,7 +160796,7 @@
         "pf1e"
       ],
       "ruleset": "legacy_pf1",
-      "rulesetEvidence": "system_folder",
+      "rulesetEvidence": "explicit_title",
       "curationStatus": "inventory_only",
       "contentIndexStatus": "pending_manual_review",
       "pdfReadable": true,
@@ -161103,7 +161138,7 @@
         "pf1e"
       ],
       "ruleset": "legacy_pf1",
-      "rulesetEvidence": "system_folder",
+      "rulesetEvidence": "explicit_title",
       "curationStatus": "inventory_only",
       "contentIndexStatus": "pending_manual_review",
       "pdfReadable": true,
@@ -161121,7 +161156,7 @@
         "pf1e"
       ],
       "ruleset": "legacy_pf1",
-      "rulesetEvidence": "system_folder",
+      "rulesetEvidence": "explicit_title",
       "curationStatus": "inventory_only",
       "contentIndexStatus": "pending_manual_review",
       "pdfReadable": true,
@@ -161157,7 +161192,7 @@
         "pf1e"
       ],
       "ruleset": "legacy_pf1",
-      "rulesetEvidence": "system_folder",
+      "rulesetEvidence": "explicit_title",
       "curationStatus": "inventory_only",
       "contentIndexStatus": "pending_manual_review",
       "pdfReadable": true,
@@ -169769,6 +169804,11 @@
     },
     {
       "from": "entry:dnd35:v35:domain-spell:caos%3A4%3AMartelo%20do%20Caos",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:257",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:domain-spell:caos%3A4%3AMartelo%20do%20Caos",
       "to": "domain:dnd35:v35:caos",
       "type": "in_domain"
     },
@@ -169851,6 +169891,11 @@
       "from": "entry:dnd35:v35:domain-spell:caos%3A8%3AManto%20do%20Caos",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:domain-spell:caos%3A8%3AManto%20do%20Caos",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:255",
+      "type": "described_on"
     },
     {
       "from": "entry:dnd35:v35:domain-spell:caos%3A8%3AManto%20do%20Caos",
@@ -170719,6 +170764,11 @@
     },
     {
       "from": "entry:dnd35:v35:domain-spell:fogo%3A1%3AM%C3%A3os%20Flamejantes",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:256",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:domain-spell:fogo%3A1%3AM%C3%A3os%20Flamejantes",
       "to": "domain:dnd35:v35:fogo",
       "type": "in_domain"
     },
@@ -171054,6 +171104,11 @@
     },
     {
       "from": "entry:dnd35:v35:domain-spell:forca%3A7%3AM%C3%A3o%20Poderosa%20de%20Bigby",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:256",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:domain-spell:forca%3A7%3AM%C3%A3o%20Poderosa%20de%20Bigby",
       "to": "domain:dnd35:v35:forca",
       "type": "in_domain"
     },
@@ -171091,6 +171146,11 @@
       "from": "entry:dnd35:v35:domain-spell:forca%3A9%3AM%C3%A3o%20Esmagadora%20de%20Bigby",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:domain-spell:forca%3A9%3AM%C3%A3o%20Esmagadora%20de%20Bigby",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:255",
+      "type": "described_on"
     },
     {
       "from": "entry:dnd35:v35:domain-spell:forca%3A9%3AM%C3%A3o%20Esmagadora%20de%20Bigby",
@@ -171796,6 +171856,11 @@
       "from": "entry:dnd35:v35:domain-spell:morte%3A5%3AMatar",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:domain-spell:morte%3A5%3AMatar",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:258",
+      "type": "described_on"
     },
     {
       "from": "entry:dnd35:v35:domain-spell:morte%3A5%3AMatar",
@@ -178994,6 +179059,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:bardo%3A0%3AM%C3%A3os%20M%C3%A1gicas",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:257",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:bardo%3A0%3AM%C3%A3os%20M%C3%A1gicas",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:181",
       "type": "listed_on"
     },
@@ -179016,6 +179086,11 @@
       "from": "entry:dnd35:v35:spell-list:bardo%3A0%3AMensagem",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:bardo%3A0%3AMensagem",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:258",
+      "type": "described_on"
     },
     {
       "from": "entry:dnd35:v35:spell-list:bardo%3A0%3AMensagem",
@@ -180239,6 +180314,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:bardo%3A2%3AMensageiro%20Animal",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:258",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:bardo%3A2%3AMensageiro%20Animal",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:182",
       "type": "listed_on"
     },
@@ -180896,6 +180976,11 @@
       "from": "entry:dnd35:v35:spell-list:bardo%3A3%3AMedo",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:bardo%3A3%3AMedo",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:258",
+      "type": "described_on"
     },
     {
       "from": "entry:dnd35:v35:spell-list:bardo%3A3%3AMedo",
@@ -183124,6 +183209,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:clerigo%3A1%3AMaldi%C3%A7%C3%A3o%20Menor",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:255",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:clerigo%3A1%3AMaldi%C3%A7%C3%A3o%20Menor",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:183",
       "type": "listed_on"
     },
@@ -184319,6 +184409,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:clerigo%3A3%3AM%C3%A3o%20Op%C3%ADfera",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:256",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:clerigo%3A3%3AM%C3%A3o%20Op%C3%ADfera",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:184",
       "type": "listed_on"
     },
@@ -184336,6 +184431,16 @@
       "from": "entry:dnd35:v35:spell-list:clerigo%3A3%3AMesclar-se%20%C3%A0s%20Rochas",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:clerigo%3A3%3AMesclar-se%20%C3%A0s%20Rochas",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:258",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:clerigo%3A3%3AMesclar-se%20%C3%A0s%20Rochas",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:259",
+      "type": "description_continues_on"
     },
     {
       "from": "entry:dnd35:v35:spell-list:clerigo%3A3%3AMesclar-se%20%C3%A0s%20Rochas",
@@ -185444,6 +185549,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:clerigo%3A5%3AMarca%20da%20Justi%C3%A7a",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:257",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:clerigo%3A5%3AMarca%20da%20Justi%C3%A7a",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:184",
       "type": "listed_on"
     },
@@ -185466,6 +185576,11 @@
       "from": "entry:dnd35:v35:spell-list:clerigo%3A5%3AMatar",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:clerigo%3A5%3AMatar",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:258",
+      "type": "described_on"
     },
     {
       "from": "entry:dnd35:v35:spell-list:clerigo%3A5%3AMatar",
@@ -186969,6 +187084,16 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:clerigo%3A8%3AManto%20do%20Caos",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:255",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:clerigo%3A8%3AManto%20do%20Caos",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:256",
+      "type": "description_continues_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:clerigo%3A8%3AManto%20do%20Caos",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:185",
       "type": "listed_on"
     },
@@ -188364,6 +188489,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:druida%3A2%3AMensageiro%20Animal",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:258",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:druida%3A2%3AMensageiro%20Animal",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:190",
       "type": "listed_on"
     },
@@ -188899,6 +189029,16 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:druida%3A3%3AMesclar-se%20%C3%A0s%20Rochas",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:258",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:druida%3A3%3AMesclar-se%20%C3%A0s%20Rochas",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:259",
+      "type": "description_continues_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:druida%3A3%3AMesclar-se%20%C3%A0s%20Rochas",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:190",
       "type": "listed_on"
     },
@@ -189311,6 +189451,11 @@
       "from": "entry:dnd35:v35:spell-list:druida%3A4%3AMalogro",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:druida%3A4%3AMalogro",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:255",
+      "type": "described_on"
     },
     {
       "from": "entry:dnd35:v35:spell-list:druida%3A4%3AMalogro",
@@ -190549,6 +190694,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:druida%3A7%3AMetal%20em%20Madeira",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:259",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:druida%3A7%3AMetal%20em%20Madeira",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:191",
       "type": "listed_on"
     },
@@ -191409,6 +191559,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A0%3AM%C3%A3os%20M%C3%A1gicas",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:257",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A0%3AM%C3%A3os%20M%C3%A1gicas",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:192",
       "type": "listed_on"
     },
@@ -191439,6 +191594,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A0%3AMarca%20Arcana",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:257",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A0%3AMarca%20Arcana",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:192",
       "type": "listed_on"
     },
@@ -191466,6 +191626,11 @@
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A0%3AMensagem",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A0%3AMensagem",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:258",
+      "type": "described_on"
     },
     {
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A0%3AMensagem",
@@ -192346,6 +192511,11 @@
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A1%3AM%C3%A3os%20Flamejantes",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A1%3AM%C3%A3os%20Flamejantes",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:256",
+      "type": "described_on"
     },
     {
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A1%3AM%C3%A3os%20Flamejantes",
@@ -193591,6 +193761,16 @@
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A2%3AM%C3%A3o%20Espectral",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A2%3AM%C3%A3o%20Espectral",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:255",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A2%3AM%C3%A3o%20Espectral",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:256",
+      "type": "description_continues_on"
     },
     {
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A2%3AM%C3%A3o%20Espectral",
@@ -196114,6 +196294,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A4%3AMedo",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:258",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A4%3AMedo",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:194",
       "type": "listed_on"
     },
@@ -196141,6 +196326,11 @@
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A4%3AMelhoria%20Mnem%C3%B4nica%20de%20Rary",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A4%3AMelhoria%20Mnem%C3%B4nica%20de%20Rary",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:258",
+      "type": "described_on"
     },
     {
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A4%3AMelhoria%20Mnem%C3%B4nica%20de%20Rary",
@@ -197324,6 +197514,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A5%3AM%C3%A3o%20Interposta%20de%20Bigby%2C%20A",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:256",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A5%3AM%C3%A3o%20Interposta%20de%20Bigby%2C%20A",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:195",
       "type": "listed_on"
     },
@@ -197346,6 +197541,11 @@
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A5%3AMalogro",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A5%3AMalogro",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:255",
+      "type": "described_on"
     },
     {
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A5%3AMalogro",
@@ -198904,6 +199104,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A6%3AM%C3%A3o%20Vigorosa%20de%20Bigby%2C%20A",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:256",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A6%3AM%C3%A3o%20Vigorosa%20de%20Bigby%2C%20A",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:195",
       "type": "listed_on"
     },
@@ -199894,6 +200099,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A7%3AM%C3%A3o%20Poderosa%20de%20Bigby%2C%20A",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:256",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A7%3AM%C3%A3o%20Poderosa%20de%20Bigby%2C%20A",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:196",
       "type": "listed_on"
     },
@@ -199916,6 +200126,16 @@
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A7%3AMans%C3%A3o%20Magn%C3%ADfica%20de%20Mordenkainen",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A7%3AMans%C3%A3o%20Magn%C3%ADfica%20de%20Mordenkainen",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:255",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A7%3AMans%C3%A3o%20Magn%C3%ADfica%20de%20Mordenkainen",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:256",
+      "type": "description_continues_on"
     },
     {
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A7%3AMans%C3%A3o%20Magn%C3%ADfica%20de%20Mordenkainen",
@@ -201949,6 +202169,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A9%3AM%C3%A3o%20Esmagadora%20de%20Bigby%2C%20A",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:255",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:feiticeiro_mago%3A9%3AM%C3%A3o%20Esmagadora%20de%20Bigby%2C%20A",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:197",
       "type": "listed_on"
     },
@@ -203074,6 +203299,11 @@
     },
     {
       "from": "entry:dnd35:v35:spell-list:paladino%3A4%3AMarca%20da%20Justi%C3%A7a",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:257",
+      "type": "described_on"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:paladino%3A4%3AMarca%20da%20Justi%C3%A7a",
       "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:192",
       "type": "listed_on"
     },
@@ -203416,6 +203646,11 @@
       "from": "entry:dnd35:v35:spell-list:patrulheiro%3A1%3AMensageiro%20Animal",
       "to": "ruleset:dnd35:v35",
       "type": "available_in"
+    },
+    {
+      "from": "entry:dnd35:v35:spell-list:patrulheiro%3A1%3AMensageiro%20Animal",
+      "to": "page:book:dnd35:v35:d%26d%203.5%20%E2%80%94%20livro%20do%20jogador:258",
+      "type": "described_on"
     },
     {
       "from": "entry:dnd35:v35:spell-list:patrulheiro%3A1%3AMensageiro%20Animal",

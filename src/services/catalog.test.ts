@@ -737,7 +737,7 @@ describe("serviço de catálogo local", () => {
     ].sort();
     expect(reviewedSummoningIds).toEqual(expectedSummoningIds);
     const reviewedSummaryIds = allReviewedSummaryIds.filter((id) => !reviewedSummoningIds.includes(id));
-    expect(reviewedSummaryIds).toEqual([
+    expect(reviewedSummaryIds.sort()).toEqual([
       "dnd35.phb.spell.bardo.1.compreender-idiomas",
       "dnd35.phb.spell.bardo.0.detectar-magia",
       "dnd35.phb.spell.bardo.3.confusao",
@@ -763,6 +763,9 @@ describe("serviço de catálogo local", () => {
       "dnd35.phb.spell.clerigo.1.detectar-caos-mal-bem-ordem",
       "dnd35.phb.spell.clerigo.1.detectar-mortos-vivos",
       "dnd35.phb.spell.clerigo.2.despedacar",
+      "dnd35.phb.spell.clerigo.1.maldicao-menor",
+      "dnd35.phb.spell.clerigo.3.mao-opifera",
+      "dnd35.phb.spell.clerigo.8.manto-do-caos",
       "dnd35.phb.spell.clerigo.2.dissimular-tendencia",
       "dnd35.phb.spell.clerigo.4.discernir-mentiras",
       "dnd35.phb.spell.clerigo.6.destruir-mortos-vivos",
@@ -784,6 +787,7 @@ describe("serviço de catálogo local", () => {
       "dnd35.phb.spell.druida.5.comunhao-com-a-natureza",
       "dnd35.phb.spell.druida.5.conspurcar",
       "dnd35.phb.spell.druida.4.controlar-agua",
+      "dnd35.phb.spell.druida.4.malogro",
       "dnd35.phb.spell.druida.6.conto-das-rochas",
       "dnd35.phb.spell.druida.4.cupula-de-protecao-contra-vegetais",
       "dnd35.phb.spell.druida.6.cupula-de-protecao-contra-a-vida",
@@ -813,9 +817,17 @@ describe("serviço de catálogo local", () => {
       "dnd35.phb.spell.feiticeiro_mago.5.cone-glacial",
       "dnd35.phb.spell.feiticeiro_mago.5.contato-extraplanar",
       "dnd35.phb.spell.feiticeiro_mago.5.criar-passagens",
+      "dnd35.phb.spell.feiticeiro_mago.5.malogro",
+      "dnd35.phb.spell.feiticeiro_mago.2.mao-espectral",
+      "dnd35.phb.spell.feiticeiro_mago.5.mao-interposta-de-bigby-a",
+      "dnd35.phb.spell.feiticeiro_mago.1.maos-flamejantes",
       "dnd35.phb.spell.feiticeiro_mago.6.contingencia",
       "dnd35.phb.spell.feiticeiro_mago.6.controlar-agua",
       "dnd35.phb.spell.feiticeiro_mago.6.controlar-o-clima",
+      "dnd35.phb.spell.feiticeiro_mago.6.mao-vigorosa-de-bigby-a",
+      "dnd35.phb.spell.feiticeiro_mago.7.mansao-magnifica-de-mordenkainen",
+      "dnd35.phb.spell.feiticeiro_mago.7.mao-poderosa-de-bigby-a",
+      "dnd35.phb.spell.feiticeiro_mago.9.mao-esmagadora-de-bigby-a",
       "dnd35.phb.spell.feiticeiro_mago.6.corrente-de-relampagos",
       "dnd35.phb.spell.feiticeiro_mago.6.criar-mortos-vivos",
       "dnd35.phb.spell.feiticeiro_mago.7.cubo-de-energia",
@@ -1013,6 +1025,23 @@ describe("serviço de catálogo local", () => {
       "dnd35.phb.spell.paladino.1.ler-magias",
       "dnd35.phb.spell.paladino.3.luz-do-dia",
       "dnd35.phb.spell.patrulheiro.1.ler-magias",
+      "dnd35.phb.spell.bardo.0.maos-magicas",
+      "dnd35.phb.spell.feiticeiro_mago.0.maos-magicas",
+      "dnd35.phb.spell.feiticeiro_mago.0.marca-arcana",
+      "dnd35.phb.spell.clerigo.5.marca-da-justica",
+      "dnd35.phb.spell.paladino.4.marca-da-justica",
+      "dnd35.phb.spell.clerigo.5.matar",
+      "dnd35.phb.spell.bardo.3.medo",
+      "dnd35.phb.spell.feiticeiro_mago.4.medo",
+      "dnd35.phb.spell.feiticeiro_mago.4.melhoria-mnemonica-de-rary",
+      "dnd35.phb.spell.bardo.2.mensageiro-animal",
+      "dnd35.phb.spell.druida.2.mensageiro-animal",
+      "dnd35.phb.spell.patrulheiro.1.mensageiro-animal",
+      "dnd35.phb.spell.bardo.0.mensagem",
+      "dnd35.phb.spell.feiticeiro_mago.0.mensagem",
+      "dnd35.phb.spell.clerigo.3.mesclar-se-as-rochas",
+      "dnd35.phb.spell.druida.3.mesclar-se-as-rochas",
+      "dnd35.phb.spell.druida.7.metal-em-madeira",
     ].sort());
     expect(items.find((item) => item.id === "dnd35.phb.spell.feiticeiro_mago.1.disco-flutuante-de-tenser")?.data).toMatchObject({
       detailsPage: 231, detailsPageEnd: 232, summaryOnly: false,
@@ -1391,7 +1420,7 @@ describe("serviço de catálogo local", () => {
       fetchCatalogCategory("class", { systemId: "ose", ruleset: "advanced" }),
       fetchCatalogCategory("class", { systemId: "ose", ruleset: "classic" }),
       fetchCatalogCategory("class", { systemId: "ose", ruleset: "basico" }),
-    ]);
+    ].sort());
     const basicOnlyIds = Object.keys(OSE_BASIC_METHOD_RACE_BY_CLASS).map((id) => `ose.class.${id}`).sort();
 
     const importedAdvancedRaceClasses = 3;

@@ -17,7 +17,7 @@
         "pf1e"
       ],
       "ruleset": "legacy_pf1",
-      "rulesetEvidence": "system_folder",
+      "rulesetEvidence": "explicit_title",
       "curationStatus": "inventory_only",
       "contentIndexStatus": "pending_manual_review",
       "pairedTextUsable": false
@@ -33,7 +33,7 @@
         "pf1e"
       ],
       "ruleset": "legacy_pf1",
-      "rulesetEvidence": "system_folder",
+      "rulesetEvidence": "explicit_title",
       "curationStatus": "inventory_only",
       "contentIndexStatus": "pending_manual_review",
       "pairedTextUsable": false
@@ -225,7 +225,7 @@
         "pf1e"
       ],
       "ruleset": "legacy_pf1",
-      "rulesetEvidence": "system_folder",
+      "rulesetEvidence": "explicit_title",
       "curationStatus": "inventory_only",
       "contentIndexStatus": "pending_manual_review",
       "pairedTextUsable": false
@@ -241,7 +241,7 @@
         "pf1e"
       ],
       "ruleset": "legacy_pf1",
-      "rulesetEvidence": "system_folder",
+      "rulesetEvidence": "explicit_title",
       "curationStatus": "inventory_only",
       "contentIndexStatus": "pending_manual_review",
       "pairedTextUsable": false

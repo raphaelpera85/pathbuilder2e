@@ -9,6 +9,24 @@ import { DND35_SPELL_LISTS } from "./dnd35SpellLists";
 
 /** Auditoria dos domínios (p. 186-189) contra a Tabela 3-7: Deuses (p. 32). */
 describe("D&D 3.5 — domínios de clérigo e Tabela 3-7", () => {
+  it("registra descrições próprias dos domínios Caos e Morte sem fundi-las às listas de classe", () => {
+    const chaos = DND35_DOMAINS.find((domain) => domain.id === "caos")?.spells.find((spell) => spell.name === "Martelo do Caos");
+    const death = DND35_DOMAINS.find((domain) => domain.id === "morte")?.spells.find((spell) => spell.name === "Matar");
+    const clericSlay = DND35_SPELL_LISTS.find((list) => list.listId === "clerigo" && list.spellLevel === 5)?.entries.find((spell) => spell.name === "Matar");
+    expect(chaos).toMatchObject({ detailsPage: 257, mechanics: { range: "Médio (30 m + 3 m/nível)", savingThrow: "Vontade parcial (veja texto)" } });
+    expect(death).toMatchObject({ detailsPage: 258, mechanics: { range: "Toque", savingThrow: "Fortitude parcial" } });
+    expect(death).not.toBe(clericSlay);
+  });
+  it("mantém descrições verificadas de domínio como fichas independentes das listas de classe", () => {
+    const cases = [["caos", "Manto do Caos", 255], ["forca", "Mão Poderosa de Bigby", 256],
+      ["forca", "Mão Esmagadora de Bigby", 255], ["fogo", "Mãos Flamejantes", 256]] as const;
+    for (const [domainId, name, detailsPage] of cases) {
+      const domainSpell = DND35_DOMAINS.find((domain) => domain.id === domainId)?.spells.find((spell) => spell.name === name);
+      expect(domainSpell, `${domainId}: ${name}`).toMatchObject({ detailsPage });
+      const classSpell = DND35_SPELL_LISTS.flatMap((list) => list.entries).find((spell) => spell.name === name);
+      expect(domainSpell).not.toBe(classSpell);
+    }
+  });
   it("22 domínios, cada um com as magias de domínio 1 a 9 em ordem", () => {
     expect(DND35_DOMAINS).toHaveLength(22);
     for (const d of DND35_DOMAINS) {

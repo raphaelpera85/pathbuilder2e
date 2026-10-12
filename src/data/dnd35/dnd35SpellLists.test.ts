@@ -2003,3 +2003,53 @@ describe("D&D 3.5 — descrições verificadas nas pp. 253–254", () => {
     expect(dnd35SpellListFor("feiticeiro", 4).find((spell) => spell.name === "Localizar Criatura")?.mechanics?.castingTime).toBe("Não indicado no bloco impresso");
   });
 });
+
+describe("D&D 3.5 — descrições verificadas nas pp. 255–256", () => {
+  it("registra as descrições da classe com páginas próprias e sem completar campos ausentes por inferência", () => {
+    const cases: Array<[string, number, string, number, number?]> = [
+      ["clerigo", 1, "Maldição Menor", 255], ["druida", 4, "Malogro", 255],
+      ["feiticeiro", 7, "Mansão Magnífica de Mordenkainen", 255, 256],
+      ["clerigo", 8, "Manto do Caos", 255, 256], ["feiticeiro", 9, "Mão Esmagadora de Bigby, A", 255],
+      ["feiticeiro", 2, "Mão Espectral", 255, 256], ["feiticeiro", 5, "Mão Interposta de Bigby, A", 256],
+      ["clerigo", 3, "Mão Opífera", 256], ["feiticeiro", 7, "Mão Poderosa de Bigby, A", 256],
+      ["feiticeiro", 6, "Mão Vigorosa de Bigby, A", 256], ["feiticeiro", 1, "Mãos Flamejantes", 256],
+    ];
+    for (const [classId, level, name, page, end] of cases) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name), name)
+        .toMatchObject({ detailsPage: page, ...(end ? { detailsPageEnd: end } : {}), summaryOnly: false });
+    }
+    expect(dnd35SpellListFor("clerigo", 1).find((spell) => spell.name === "Maldição Menor")?.mechanics)
+      .toMatchObject({ components: "V, G, FD", range: "15 m", spellResistance: "Sim" });
+    expect(dnd35SpellListFor("feiticeiro", 9).find((spell) => spell.name === "Mão Esmagadora de Bigby, A")?.mechanics?.range)
+      .toBe("Não indicado no bloco impresso");
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas nas pp. 257–259", () => {
+  it("registra todas as ocorrências de classe com página descritiva e ficha mecânica", () => {
+    const cases: Array<[string, number, string, number, number?]> = [
+      ["bardo", 0, "Mãos Mágicas", 257], ["feiticeiro", 0, "Mãos Mágicas", 257],
+      ["feiticeiro", 0, "Marca Arcana", 257], ["clerigo", 5, "Marca da Justiça", 257], ["paladino", 4, "Marca da Justiça", 257],
+      ["clerigo", 5, "Matar", 258], ["bardo", 3, "Medo", 258], ["feiticeiro", 4, "Medo", 258],
+      ["feiticeiro", 4, "Melhoria Mnemônica de Rary", 258], ["bardo", 2, "Mensageiro Animal", 258],
+      ["druida", 2, "Mensageiro Animal", 258], ["patrulheiro", 1, "Mensageiro Animal", 258],
+      ["bardo", 0, "Mensagem", 258], ["feiticeiro", 0, "Mensagem", 258],
+      ["clerigo", 3, "Mesclar-se às Rochas", 258, 259], ["druida", 3, "Mesclar-se às Rochas", 258, 259],
+      ["druida", 7, "Metal em Madeira", 259],
+    ];
+    for (const [classId, level, name, detailsPage, detailsPageEnd] of cases) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name), `${classId} ${level}: ${name}`)
+        .toMatchObject({ detailsPage, ...(detailsPageEnd ? { detailsPageEnd } : {}), summaryOnly: false });
+    }
+    expect(dnd35SpellListFor("feiticeiro", 0).find((spell) => spell.name === "Mãos Mágicas")?.mechanics)
+      .toMatchObject({ components: "V, G", target: expect.stringContaining("2,5 kg"), duration: "Concentração" });
+    expect(dnd35SpellListFor("feiticeiro", 4).find((spell) => spell.name === "Melhoria Mnemônica de Rary")?.mechanics)
+      .toMatchObject({ castingTime: "10 minutos", range: "Pessoal", savingThrow: "Nenhum" });
+    expect(dnd35SpellListFor("druida", 7).find((spell) => spell.name === "Metal em Madeira")?.mechanics)
+      .toMatchObject({ range: "Longo (120 m + 12 m/nível)", savingThrow: "Nenhum", spellResistance: "Sim (objeto; veja texto)" });
+    expect(dnd35SpellListFor("clerigo", 3).find((spell) => spell.name === "Mesclar-se às Rochas")?.summary)
+      .toContain("sair, a magia terminar ou a pedra for parcialmente destruída");
+    expect(dnd35SpellListFor("druida", 7).find((spell) => spell.name === "Metal em Madeira")?.summary)
+      .toContain("resultado natural 1 ou 2");
+  });
+});

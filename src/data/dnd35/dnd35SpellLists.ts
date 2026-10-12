@@ -1693,6 +1693,135 @@ const TELEKINETIC_SPHERE_DETAILS: VerifiedSpellDetails = {
   },
 };
 
+const MINOR_CURSE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 255,
+  summary: "Amaldiçoa inimigos próximos, impondo –1 nas jogadas de ataque e nos testes de resistência contra medo; neutraliza ou dissipa Benção.",
+  mechanics: { components: "V, G, FD", castingTime: "1 ação padrão", range: "15 m", target: "Inimigos a até 15 m",
+    duration: "1 minuto/nível", savingThrow: "Vontade anula", spellResistance: "Sim" },
+};
+
+const BLIGHT_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 255,
+  summary: "Afeta uma planta de qualquer tamanho: plantas-criatura sofrem 1d6 de dano por nível de conjurador (máximo 15d6), enquanto uma planta que não seja criatura seca e morre. Não afeta o solo nem plantas ao redor.",
+  mechanics: { components: "V, G, FD", castingTime: "1 ação padrão", range: "Toque", target: "Uma planta",
+    duration: "Instantânea", savingThrow: "Fortitude reduz à metade (veja texto)", spellResistance: "Sim" },
+};
+
+const MAGNIFICENT_MANSION_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 255, detailsPageEnd: 256,
+  summary: "Cria uma mansão extradimensional mobiliada, com até três cubos de 3 m por nível; sua entrada é um portal em miniatura. O espaço comporta os convidados e servidores descritos no texto.",
+  mechanics: { components: "V, G, F", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Efeito extradimensional de até três cubos de 3 m/nível", duration: "2 horas/nível (D)", savingThrow: "Nenhum", spellResistance: "Não" },
+};
+
+const CHAOS_MANTLE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 255, detailsPageEnd: 256,
+  summary: "Protege aliados com +4 de deflexão na CA e +4 de resistência nos testes de resistência, RM 25 contra magias da ordem e proteção contra possessão e influência mental. Um atacante leal que acerte um protegido pode ficar confuso por 1 rodada (Vontade anula).",
+  mechanics: { components: "V, G, F", castingTime: "1 ação padrão", range: "6 m", target: "Uma criatura/nível numa explosão de 6 m centrada no conjurador",
+    duration: "1 rodada/nível (D)", savingThrow: "Veja texto", spellResistance: "Sim (inofensiva)" },
+};
+
+const SPECTRAL_HAND_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 255, detailsPageEnd: 256,
+  summary: "Uma mão incorpórea permite descarregar magias de toque de até 4º nível à distância, com +2 nas jogadas de ataque de toque. Invocá-la custa 1d4 pontos de vida, recuperados ao fim da duração, salvo se a mão for destruída.",
+  mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Mão espectral",
+    duration: "1 minuto/nível (D)", savingThrow: "Nenhum", spellResistance: "Não" },
+};
+
+const INTERPOSING_HAND_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 256,
+  summary: "Cria uma mão de energia de 3 m que se interpõe contra um oponente, fornecendo cobertura ao conjurador; não persegue o alvo e barreiras apropriadas podem limitá-la.",
+  mechanics: { components: "V, G, F", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Mão de energia de 3 m",
+    duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Sim" },
+};
+
+const OPIFEROUS_HAND_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 256,
+  summary: "Localiza uma criatura descrita fisicamente e guia o conjurador até ela; a criatura pode optar por acompanhá-lo. Não revela classe, nível ou tendência do alvo.",
+  mechanics: { components: "V, G, FD", castingTime: "1 ação padrão", range: "7,5 km", target: "Uma criatura",
+    duration: "1 hora/nível", savingThrow: "Nenhum", spellResistance: "Não" },
+};
+
+const BIGBYS_HAND_SUMMARY = "Como Mão Interposta de Bigby, com as capacidades adicionais descritas na entrada; campos mecânicos não repetidos no bloco impresso não são inferidos.";
+const BIGBYS_HAND_UNPRINTED_MECHANICS: Dnd35SpellMechanics = {
+  components: "V, G, F/FD", castingTime: "Não indicado no bloco impresso", range: "Não indicado no bloco impresso",
+  target: "Não indicado no bloco impresso", duration: "Não indicado no bloco impresso",
+  savingThrow: "Não indicado no bloco impresso", spellResistance: "Não indicado no bloco impresso",
+};
+
+const BURNING_HANDS_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 256,
+  summary: "Um cone de chamas causa 1d4 pontos de dano por nível de conjurador (máximo 5d4) e pode incendiar materiais inflamáveis.",
+  mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "4,5 m", target: "Cone de chamas",
+    duration: "Instantânea", savingThrow: "Reflexos reduz à metade", spellResistance: "Sim" },
+};
+
+const MAGE_HAND_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 257,
+  summary: "Move à distância um objeto mundano livre de até 2,5 kg; é possível deslocá-lo por até 415 m enquanto a magia durar, desde que não exceda o alcance.",
+  mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "Um objeto mundano livre de até 2,5 kg", duration: "Concentração", savingThrow: "Nenhum", spellResistance: "Não" },
+};
+
+const ARCANE_MARK_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 257,
+  summary: "Inscreve uma runa ou marca pessoal permanente, visível ou invisível, de até 15 cm de altura e seis caracteres. Detectar magia revela marcas invisíveis; o conjurador pode apagá-la, e uma marca numa criatura viva desaparece gradualmente em um mês.",
+  mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "0 m", target: "Uma runa ou marca pessoal", duration: "Permanente", savingThrow: "Nenhum", spellResistance: "Não" },
+};
+
+const MARK_OF_JUSTICE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 257,
+  summary: "Marca uma criatura tocada com uma condição escolhida pelo conjurador. Se ela violar essa condição, sofre um efeito idêntico a Rogar Maldição; a marca não pode ser dissipada, mas pode ser removida pelos meios descritos no livro.",
+  mechanics: { components: "V, G, FD", castingTime: "10 minutos", range: "Toque", target: "Criatura tocada", duration: "Permanente (veja texto)", savingThrow: "Nenhum", spellResistance: "Sim" },
+};
+
+const CHAOS_HAMMER_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 257,
+  summary: "Uma explosão caótica fere criaturas leais e pode deixá-las lentas por 1d6 rodadas. Criaturas leais sofrem 1d8 por dois níveis (máx. 5d8), extraplanares leais 1d6 por nível (máx. 10d6); criaturas neutras sofrem metade e não ficam lentas. Vontade bem-sucedida reduz o dano à metade e evita lentidão.",
+  mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Explosão de 6 m de raio", duration: "Instantânea (lentidão por 1d6 rodadas)", savingThrow: "Vontade parcial (veja texto)", spellResistance: "Sim" },
+};
+
+const SLAY_LIVING_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 258,
+  summary: "Um ataque de toque pode matar uma criatura viva. Se ela resistir à morte, ainda sofre 3d6 pontos de dano +1 por nível de conjurador.",
+  mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura viva tocada", duration: "Instantânea", savingThrow: "Fortitude parcial", spellResistance: "Sim" },
+};
+
+const FEAR_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 258,
+  summary: "Um cone invisível de terror faz criaturas vivas entrarem em pânico; uma criatura encurralada fica amedrontada. O efeito dura 1 rodada/nível ou 1 rodada, conforme a situação descrita.",
+  mechanics: { components: "V, G, M", castingTime: "1 ação padrão", range: "9 m", target: "Explosão em forma de cone", duration: "1 rodada/nível ou 1 rodada (veja texto)", savingThrow: "Vontade parcial", spellResistance: "Sim" },
+};
+
+const RARY_MNEMONIC_ENHANCER_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 258,
+  summary: "Permite preparar magias adicionais, somando até três níveis de magia, ou conservar na memória uma magia de até 3º nível conjurada na rodada anterior. A magia preparada/conservada desaparece após 24 horas se não for usada.",
+  mechanics: { components: "V, G, M, F", castingTime: "10 minutos", range: "Pessoal", target: "Você", duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não" },
+};
+
+const ANIMAL_MESSENGER_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 258,
+  summary: "Atrai um animal Miúdo e lhe transmite uma mensagem ou indicação simples; ele viaja ao destino e aguarda até o fim da magia, quando retoma suas atividades normais. Um pouco de comida é o componente material.",
+  mechanics: { components: "V, G, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "Um animal Miúdo", duration: "1 dia/nível", savingThrow: "Nenhum (veja texto)", spellResistance: "Sim" },
+};
+
+const MESSAGE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 258,
+  summary: "Permite sussurrar mensagens e receber respostas de criaturas escolhidas dentro do alcance. Barreiras bloqueiam o efeito salvo se houver uma abertura; a magia transmite som, não significado, e não ensina idiomas.",
+  mechanics: { components: "V, G, F", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Uma criatura/nível", duration: "10 minutos/nível", savingThrow: "Nenhum", spellResistance: "Não" },
+};
+
+const PASSWALL_INTO_STONE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 258, detailsPageEnd: 259,
+  summary: "Você e seu equipamento entram na rocha e podem sair voluntariamente. Se sair, a magia terminar ou a pedra for parcialmente destruída, você é expelido e sofre 5d6 de dano; se a pedra for destruída por completo, você morre instantaneamente, salvo sucesso em Fortitude (CD 18).",
+  mechanics: { components: "V, G, FD", castingTime: "1 ação padrão", range: "Pessoal", target: "Você", duration: "10 minutos/nível", savingThrow: "Nenhum", spellResistance: "Não" },
+};
+
+const TRANSFORM_METAL_TO_WOOD_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 259,
+  summary: "Transforma em madeira objetos metálicos na área, inclusive armas e armaduras carregadas. Itens mágicos têm resistência à magia; artefatos não são afetados. Armas sofrem –2 nas jogadas de ataque e dano e se quebram com resultado natural 1 ou 2; armaduras perdem 2 pontos de bônus na CA e mais 1 quando o ataque contra o usuário resulta em 19 ou 20 natural.",
+  mechanics: { components: "V, G, FD", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)", target: "Explosão de 12 m de raio contendo objetos de metal", duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Sim (objeto; veja texto)" },
+};
+
 const COOL_METAL_DETAILS: VerifiedSpellDetails = {
   summaryOnly: false, detailsPage: 238, detailsPageEnd: 239,
   summary: "Resfria metal em etapas ao longo de sete rodadas: não causa dano na primeira, depois causa 1d4, 2d4 por três rodadas, 1d4 e nenhum dano na última. Calor intenso cancela parte do dano; metal vestido ou segurado também pode ferir a criatura.",
@@ -2441,6 +2570,36 @@ const IRONWOOD_DETAILS: VerifiedSpellDetails = {
 // na lista de níveis. `flags` continua refletindo o sobrescrito impresso; `mechanics`
 // registra os componentes efetivos descritos na entrada completa.
 const VERIFIED_SPELL_DETAILS: Record<string, VerifiedSpellDetails> = {
+  "bardo:0:Mãos Mágicas": MAGE_HAND_DETAILS,
+  "feiticeiro_mago:0:Mãos Mágicas": MAGE_HAND_DETAILS,
+  "feiticeiro_mago:0:Marca Arcana": ARCANE_MARK_DETAILS,
+  "clerigo:5:Marca da Justiça": MARK_OF_JUSTICE_DETAILS,
+  "paladino:4:Marca da Justiça": MARK_OF_JUSTICE_DETAILS,
+  "clerigo:5:Matar": SLAY_LIVING_DETAILS,
+  "bardo:3:Medo": FEAR_DETAILS,
+  "feiticeiro_mago:4:Medo": FEAR_DETAILS,
+  "feiticeiro_mago:4:Melhoria Mnemônica de Rary": RARY_MNEMONIC_ENHANCER_DETAILS,
+  "bardo:2:Mensageiro Animal": ANIMAL_MESSENGER_DETAILS,
+  "druida:2:Mensageiro Animal": ANIMAL_MESSENGER_DETAILS,
+  "patrulheiro:1:Mensageiro Animal": ANIMAL_MESSENGER_DETAILS,
+  "bardo:0:Mensagem": MESSAGE_DETAILS,
+  "feiticeiro_mago:0:Mensagem": MESSAGE_DETAILS,
+  "clerigo:3:Mesclar-se às Rochas": PASSWALL_INTO_STONE_DETAILS,
+  "druida:3:Mesclar-se às Rochas": PASSWALL_INTO_STONE_DETAILS,
+  "druida:7:Metal em Madeira": TRANSFORM_METAL_TO_WOOD_DETAILS,
+  "clerigo:1:Maldição Menor": MINOR_CURSE_DETAILS,
+  "druida:4:Malogro": BLIGHT_DETAILS,
+  "feiticeiro_mago:5:Malogro": BLIGHT_DETAILS,
+  "feiticeiro_mago:7:Mansão Magnífica de Mordenkainen": MAGNIFICENT_MANSION_DETAILS,
+  "clerigo:8:Manto do Caos": CHAOS_MANTLE_DETAILS,
+  "feiticeiro_mago:8:Manto do Caos": CHAOS_MANTLE_DETAILS,
+  "feiticeiro_mago:9:Mão Esmagadora de Bigby, A": { summaryOnly: false, detailsPage: 255, summary: BIGBYS_HAND_SUMMARY, mechanics: BIGBYS_HAND_UNPRINTED_MECHANICS },
+  "feiticeiro_mago:2:Mão Espectral": SPECTRAL_HAND_DETAILS,
+  "feiticeiro_mago:5:Mão Interposta de Bigby, A": INTERPOSING_HAND_DETAILS,
+  "clerigo:3:Mão Opífera": OPIFEROUS_HAND_DETAILS,
+  "feiticeiro_mago:7:Mão Poderosa de Bigby, A": { summaryOnly: false, detailsPage: 256, summary: BIGBYS_HAND_SUMMARY, mechanics: BIGBYS_HAND_UNPRINTED_MECHANICS },
+  "feiticeiro_mago:6:Mão Vigorosa de Bigby, A": { summaryOnly: false, detailsPage: 256, summary: BIGBYS_HAND_SUMMARY, mechanics: BIGBYS_HAND_UNPRINTED_MECHANICS },
+  "feiticeiro_mago:1:Mãos Flamejantes": BURNING_HANDS_DETAILS,
   "bardo:0:Ler Magia": READ_MAGIC_DETAILS,
   "clerigo:0:Ler Magias": READ_MAGIC_DETAILS,
   "druida:0:Ler Magias": READ_MAGIC_DETAILS,
