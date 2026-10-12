@@ -832,7 +832,7 @@ describe("proveniência do catálogo legado", () => {
     expect(byId.get("feat.class.commander.practiced_reflexes")).toMatchObject({ level: 18, prerequisites: ["Reflexos Treinados"], source: { page: 35 } });
     expect(byId.get("feat.class.commander.armored_regiment_training")).toMatchObject({ source: { page: 30 }, description: expect.stringContaining("1 unidade de Volume") });
     expect(byId.get("feat.class.commander.plant_banner")).toMatchObject({ source: { page: 30 }, description: expect.stringContaining("40 pés") });
-    expect(byId.get("feat.class.commander.guiding_shot")).toMatchObject({ source: { page: 30 }, description: expect.stringContaining("bônus de circunstância +2") });
+    expect(byId.get("feat.class.commander.guiding_shot")).toMatchObject({ source: { page: 30 }, description: expect.stringContaining("ou +2 se seu Golpe foi crítico") });
     const page30FeatIds = [
       "feat.class.commander.armored_regiment_training",
       "feat.class.commander.combat_assessment",

@@ -4,6 +4,7 @@ const { spawnSync } = require("node:child_process");
 const { PDFDocument } = require("pdf-lib");
 
 const positionalArgs = process.argv.slice(2).filter((argument) => !argument.startsWith("--"));
+const writeInventory = process.argv.includes("--write-inventory");
 const configuredBooksDir = positionalArgs[0] || process.env.LIVROS_PATH;
 const defaultBooksDirs = [
   "I:\\Meu Drive\\Livros RPG",
@@ -43,7 +44,10 @@ const excluded = /ficha|poster|map|folio|raw|test/i;
     });
   }
   const files = collectFiles(booksDir);
-  const pdfs = files.filter((entry) => entry.name.toLowerCase().endsWith(".pdf") && !excluded.test(entry.name));
+  const pdfs = files.filter((entry) => entry.name.toLowerCase().endsWith(".pdf")
+    && !/[\\/]Mapas[\\/]/i.test(entry.relativePath)
+    && !excluded.test(entry.name));
+  const excludedMapAssets = files.filter((entry) => entry.name.toLowerCase().endsWith(".pdf") && /[\\/]Mapas[\\/]/i.test(entry.relativePath));
   const reports = pdfs.map((entry) => {
     const base = entry.name.replace(/\.pdf$/i, "");
     const directory = path.dirname(entry.relativePath);
@@ -95,12 +99,66 @@ const excluded = /ficha|poster|map|folio|raw|test/i;
       directory: booksDir,
       bookPdfs: reports.length,
       readablePdfs: reports.filter((report) => report.pdfReadable).length,
+      excludedMapAssetPdfs: excludedMapAssets.length,
       tooLargeForParser: reports.filter((report) => report.pdfTooLargeForParser).map((report) => report.pdf),
       pairedText: reports.filter((report) => report.pairedTextUsable).length,
       missingText: missingText.map((report) => report.pdf),
       invalidPdf: invalidPdf.map((report) => ({ pdf: report.pdf, error: report.pdfError })),
       books: reports,
     };
+    if (writeInventory) {
+      const systemByFolder = {
+        "D&D 3.5": "dnd35",
+        "D&D 5E": "dnd5e",
+        "Tormenta 20": "t20",
+        "Old school Essentials": "ose",
+      };
+      const inventory = {
+        schemaVersion: 1,
+        provenance: "Inventário gerado por audit-books a partir dos PDFs legíveis; sistema/edição são preenchidos somente quando identificáveis pelo diretório ou título. Não representa curadoria do conteúdo interno.",
+        auditedDirectory: path.basename(booksDir),
+        sourceBookCount: reports.length,
+        readablePdfCount: result.readablePdfs,
+        pairedTextCount: result.pairedText,
+        books: reports.map((report) => {
+          const title = path.basename(report.pdf, path.extname(report.pdf));
+          const firstFolder = report.pdf.split(/[\\/]/)[0];
+          const editionText = `${firstFolder} ${title}`.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[–—_-]+/g, " ").replace(/\s+/g, " ");
+          const pathfinderEdition = /(?:pathfinder\s*2(?:e|a|nd)?|\bpf\s*2(?:e)?\b|segunda edicao)/i.test(editionText)
+            ? "pf2e"
+            : /(?:pathfinder\s*(?:rpg|1(?:e|a|st)?|first edition)|\bpf\s*1(?:e)?\b)/i.test(editionText)
+              ? "pf1e"
+              : null;
+          const systemId = firstFolder === "Pathfinder" ? pathfinderEdition : systemByFolder[firstFolder] ?? null;
+          const systemCandidates = firstFolder === "Pathfinder" && !pathfinderEdition ? ["pf1e", "pf2e"] : systemId ? [systemId] : [];
+          const explicitEdition = /remaster|2024|revised/i.test(editionText);
+          const ruleset = systemId === "dnd35" ? "v35"
+            : systemId === "pf1e" ? "legacy_pf1"
+              : systemId === "pf2e" && explicitEdition ? "remaster"
+                : systemId === "dnd5e" && explicitEdition ? "2024"
+                  : systemId === "t20" && /jogo do ano/i.test(editionText) ? "jogo_do_ano"
+                    : systemId === "ose" && /advanced|avancad/i.test(editionText) ? "advanced"
+                      : null;
+          return {
+            id: report.pdf.replace(/\\/g, "/").normalize("NFC"),
+            title,
+            sourcePath: report.pdf.replace(/\\/g, "/").normalize("NFC"),
+            pageCount: report.pages,
+            pdfReadable: report.pdfReadable,
+            systemId,
+            systemCandidates,
+            ruleset,
+            rulesetEvidence: ruleset ? (systemId === "dnd35" || systemId === "pf1e" ? "system_folder" : "explicit_title") : null,
+            curationStatus: "inventory_only",
+            contentIndexStatus: "pending_manual_review",
+            pairedTextUsable: report.pairedTextUsable,
+          };
+        }),
+      };
+      const inventoryPath = path.join(__dirname, "..", "src", "data", "knowledge-graph", "book-inventory.json");
+      fs.writeFileSync(inventoryPath, `${JSON.stringify(inventory, null, 2)}\n`, "utf8");
+      console.error(`Inventário de fontes gravado em ${path.relative(path.join(__dirname, ".."), inventoryPath)}.`);
+    }
     console.log(JSON.stringify(result, null, 2));
     if (process.argv.includes("--strict") && (missingText.length || invalidPdf.length)) process.exitCode = 1;
   });

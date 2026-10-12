@@ -1941,3 +1941,65 @@ describe("D&D 3.5 — descrições verificadas nas pp. 247–248", () => {
       .toContain("Se houver apenas dois alvos, ambos ficam visíveis");
   });
 });
+
+describe("D&D 3.5 — descrições verificadas na p. 252", () => {
+  it("completa Lendas e Histórias, Lentidão e Leque Cromático sem alterar suas listas", () => {
+    const cases: Array<[string, number, string, Record<string, unknown>]> = [
+      ["bardo", 4, "Lendas e Histórias", { detailsPage: 252, summaryOnly: false, mechanics: {
+        components: "V, G, M, F", castingTime: "Veja texto", range: "Pessoal", target: "Você",
+        duration: "Veja texto", savingThrow: "Não indicado no bloco impresso", spellResistance: "Não indicado no bloco impresso",
+      } }],
+      ["feiticeiro", 6, "Lendas e Histórias", { detailsPage: 252, summaryOnly: false }],
+      ["bardo", 3, "Lentidão", { detailsPage: 252, summaryOnly: false, mechanics: {
+        components: "V, G, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "Uma criatura/nível, todas a menos de 9 m entre si", duration: "1 rodada/nível",
+        savingThrow: "Vontade anula", spellResistance: "Sim",
+      } }],
+      ["feiticeiro", 3, "Lentidão", { detailsPage: 252, summaryOnly: false }],
+      ["feiticeiro", 1, "Leque Cromático", { detailsPage: 252, summaryOnly: false, mechanics: {
+        components: "V, G, M", castingTime: "1 ação padrão", range: "4,5 m", target: "Explosão em forma de cone",
+        duration: "Instantânea (veja texto)", savingThrow: "Vontade anula", spellResistance: "Sim",
+      } }],
+    ];
+    for (const [classId, level, name, expected] of cases) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name), `${classId} ${level}: ${name}`).toMatchObject(expected);
+    }
+    for (const [classId, level, name] of [
+      ["bardo", 4, "Lendas e Histórias"], ["feiticeiro", 6, "Lendas e Histórias"], ["mago", 6, "Lendas e Histórias"],
+      ["bardo", 3, "Lentidão"], ["feiticeiro", 3, "Lentidão"], ["mago", 3, "Lentidão"],
+      ["feiticeiro", 1, "Leque Cromático"], ["mago", 1, "Leque Cromático"],
+    ] as const) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name)?.detailsPage, `${classId} ${level}: ${name}`).toBe(252);
+    }
+    expect(dnd35SpellListFor("feiticeiro", 6).find((spell) => spell.name === "Lendas e Histórias"))
+      .toEqual(dnd35SpellListFor("mago", 6).find((spell) => spell.name === "Lendas e Histórias"));
+    expect(dnd35SpellListFor("feiticeiro", 3).find((spell) => spell.name === "Lentidão"))
+      .toEqual(dnd35SpellListFor("mago", 3).find((spell) => spell.name === "Lentidão"));
+    expect(dnd35SpellListFor("feiticeiro", 1).find((spell) => spell.name === "Leque Cromático"))
+      .toEqual(dnd35SpellListFor("mago", 1).find((spell) => spell.name === "Leque Cromático"));
+  });
+});
+
+describe("D&D 3.5 — descrições verificadas nas pp. 253–254", () => {
+  it("registra páginas, mecânicas e continuidades sem alterar os níveis das listas", () => {
+    const cases: Array<[string, number, string, number, number?]> = [
+      ["bardo", 0, "Ler Magia", 253], ["clerigo", 0, "Ler Magias", 253], ["druida", 0, "Ler Magias", 253],
+      ["paladino", 1, "Ler Magias", 253], ["patrulheiro", 1, "Ler Magias", 253], ["feiticeiro", 0, "Ler Magias", 253],
+      ["feiticeiro", 2, "Levitação", 253], ["feiticeiro", 9, "Libertação", 253], ["feiticeiro", 5, "Ligação Telepática de Rary", 253],
+      ["feiticeiro", 8, "Limpar a Mente", 253, 254], ["feiticeiro", 4, "Localizar Criatura", 253],
+      ["feiticeiro", 2, "Localizar Objetos", 253, 254], ["bardo", 3, "Loquacidade", 254],
+      ["feiticeiro", 2, "Lufada de Vento", 254], ["bardo", 0, "Luz", 254], ["clerigo", 3, "Luz Cegante", 254],
+      ["feiticeiro", 3, "Luz do Dia", 254], ["druida", 6, "Madeira-Ferro", 254],
+    ];
+    for (const [classId, level, name, page, end] of cases) {
+      expect(dnd35SpellListFor(classId, level).find((spell) => spell.name === name), `${classId} ${level}: ${name}`)
+        .toMatchObject({ detailsPage: page, ...(end ? { detailsPageEnd: end } : {}), summaryOnly: false });
+    }
+    expect(dnd35SpellListFor("bardo", 0).find((spell) => spell.name === "Ler Magia")?.detailsPage).toBe(253);
+    expect(dnd35SpellListFor("clerigo", 3).find((spell) => spell.name === "Localizar Objetos")?.detailsPage).toBe(253);
+    expect(dnd35SpellListFor("clerigo", 3).find((spell) => spell.name === "Localizar Objetos")?.name).toBe("Localizar Objetos");
+    expect(dnd35SpellListFor("feiticeiro", 2).find((spell) => spell.name === "Localizar Objetos")?.mechanics?.components).toBe("V, G, F/FD");
+    expect(dnd35SpellListFor("feiticeiro", 8).find((spell) => spell.name === "Limpar a Mente")?.mechanics?.duration).toBe("24 horas");
+    expect(dnd35SpellListFor("feiticeiro", 4).find((spell) => spell.name === "Localizar Criatura")?.mechanics?.castingTime).toBe("Não indicado no bloco impresso");
+  });
+});

@@ -72,6 +72,31 @@ describe("D&D 3.5 — domínios de clérigo e Tabela 3-7", () => {
     expect(DND35_SPELL_LISTS.some((list) => list.listId === "clerigo" && list.entries.some((s) => ["Detectar Portas Secretas", "Detectar Pensamentos"].includes(s.name)))).toBe(false);
   });
 
+  it("mantém Lendas e Histórias do domínio Conhecimento separada e detalhada na p. 252", () => {
+    const domainSpell = DND35_DOMAINS.find((domain) => domain.id === "conhecimento")?.spells.find((spell) => spell.name === "Lendas e Histórias");
+    const classSpell = DND35_SPELL_LISTS.find((list) => list.listId === "bardo" && list.spellLevel === 4)?.entries.find((spell) => spell.name === "Lendas e Histórias");
+    expect(domainSpell).toMatchObject({
+      level: 7, detailsPage: 252,
+      mechanics: {
+        components: "V, G, M, F", castingTime: "Veja texto", range: "Pessoal", target: "Você",
+        duration: "Veja texto", savingThrow: "Não indicado no bloco impresso", spellResistance: "Não indicado no bloco impresso",
+      },
+      summary: expect.stringContaining("lenda"),
+    });
+    expect(domainSpell).not.toBe(classSpell);
+  });
+
+  it("mantém as ocorrências da p. 253–254 detalhadas em fichas próprias de domínio", () => {
+    const protection = DND35_DOMAINS.find((domain) => domain.id === "protecao")?.spells.find((spell) => spell.name === "Limpar a Mente");
+    const sun = DND35_DOMAINS.find((domain) => domain.id === "sol")?.spells.find((spell) => spell.name === "Luz Cegante");
+    const travel = DND35_DOMAINS.find((domain) => domain.id === "viagem")?.spells.find((spell) => spell.name === "Localizar Objetos");
+    expect(protection).toMatchObject({ detailsPage: 253, detailsPageEnd: 254, mechanics: { duration: "24 horas" } });
+    expect(sun).toMatchObject({ detailsPage: 254, mechanics: { range: "Médio (30 metros + 3 metros/nível)", spellResistance: "Sim" } });
+    expect(travel).toMatchObject({ level: 2, detailsPage: 253, detailsPageEnd: 254, mechanics: { components: "V, G, F/FD" } });
+    expect(protection).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "feiticeiro_mago" && list.spellLevel === 8)?.entries.find((spell) => spell.name === "Limpar a Mente"));
+    expect(travel).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "clerigo" && list.spellLevel === 3)?.entries.find((spell) => spell.name === "Localizar Objetos"));
+  });
+
   it("registra as descrições da p. 231 somente nas projeções de domínio correspondentes", () => {
     const knowledge = DND35_DOMAINS.find((d) => d.id === "conhecimento");
     expect(knowledge?.spells.find((s) => s.name === "Discernir Localização")).toMatchObject({
@@ -282,6 +307,25 @@ describe("D&D 3.5 — domínios de clérigo e Tabela 3-7", () => {
       detailsPage: 236, mechanics: { components: "V, G, F", duration: "1 rodada/nível (D)", spellResistance: "Sim (inofensiva)" },
     });
     expect(order).not.toBe(DND35_SPELL_LISTS.find((list) => list.listId === "clerigo" && list.spellLevel === 8)?.entries.find((s) => s.name === "Escudo da Ordem"));
+  });
+
+  it("mantém Dominar Animal do domínio Animais detalhada e separada da lista do Druida", () => {
+    const domainSpell = DND35_DOMAINS.find((d) => d.id === "animais")?.spells.find((s) => s.name === "Dominar Animal");
+    const druidList = DND35_SPELL_LISTS.find((list) => list.listId === "druida" && list.spellLevel === 3);
+    const druidSpell = druidList?.entries.find((s) => s.name === "Dominar Animais");
+
+    expect(domainSpell).toMatchObject({
+      level: 3,
+      detailsPage: 233,
+      mechanics: {
+        components: "V, G", castingTime: "1 rodada", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+        target: "1 animal", duration: "1 rodada/nível", savingThrow: "Vontade anula", spellResistance: "Sim",
+      },
+      summary: expect.stringContaining("vínculo mental"),
+    });
+    expect(druidList?.spellLevel).toBe(3);
+    expect(druidSpell?.name).toBe("Dominar Animais");
+    expect(domainSpell).not.toBe(druidSpell);
   });
 
   it("domínios de tendência exigem o mesmo eixo na tendência do clérigo", () => {

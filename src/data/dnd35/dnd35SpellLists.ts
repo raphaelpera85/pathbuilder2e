@@ -2286,10 +2286,195 @@ const GASEOUS_FORM_DETAILS: VerifiedSpellDetails = {
   },
 };
 
+const LEGEND_LORE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 252,
+  summary: "Revela lendas sobre uma pessoa, local ou objeto importante. Com contato ou presença no local, a conjuração leva 1d4 × 10 minutos; com informações detalhadas, leva 1d10 dias e produz resultado menos completo; baseada apenas em rumores, leva 2d6 semanas e revela informações vagas. O conjurador não pode fazer outras atividades durante a conjuração. Pessoas, objetos e locais sem importância lendária não fornecem informação. Componente material: incenso de pelo menos 250 PO; foco: quatro tiras de marfim que custam 50 PO cada.",
+  mechanics: {
+    components: "V, G, M, F", castingTime: "Veja texto", range: "Pessoal", target: "Você",
+    duration: "Veja texto", savingThrow: "Não indicado no bloco impresso", spellResistance: "Não indicado no bloco impresso",
+  },
+};
+
+const SLOW_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 252,
+  summary: "Reduz à metade o deslocamento das criaturas afetadas, que podem realizar apenas uma ação padrão ou de movimento por rodada, não ambas, nem uma ação de rodada completa. Cada alvo sofre −1 nas jogadas de ataque, na CA e nos testes de Reflexos. Efeitos múltiplos de lentidão não se acumulam; a magia neutraliza e dissipa Velocidade. Componente material: uma gota de melaço.",
+  mechanics: {
+    components: "V, G, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma criatura/nível, todas a menos de 9 m entre si", duration: "1 rodada/nível",
+    savingThrow: "Vontade anula", spellResistance: "Sim",
+  },
+};
+
+const COLOR_SPRAY_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 252,
+  summary: "Um leque de cores deixa criaturas com até 2 DV inconscientes por 2d4 rodadas, depois cegas e atordoadas por 1d4 rodadas, e então atordoadas por 1 rodada; criaturas com 3 ou 4 DV ficam cegas e atordoadas por 1d4 rodadas e depois atordoadas por 1 rodada; criaturas com 5 ou mais DV ficam atordoadas por 1 rodada. Criaturas que não enxergam não são afetadas. Componente material: três pitadas de pó ou areia colorida vermelha, amarela e azul.",
+  mechanics: {
+    components: "V, G, M", castingTime: "1 ação padrão", range: "4,5 m", target: "Explosão em forma de cone",
+    duration: "Instantânea (veja texto)", savingThrow: "Vontade anula", spellResistance: "Sim",
+  },
+};
+
+const READ_MAGIC_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 253,
+  summary: "Decifra inscrições mágicas em objetos, livros, pergaminhos e armas que seriam incompreensíveis; normalmente não ativa a magia contida no escrito, embora isso possa ocorrer com pergaminhos amaldiçoados. Depois de conjurada, permite reler a mesma inscrição sem conjurá-la novamente e identificar símbolos mágicos por testes de Identificar Magia. Pode ser tornada permanente por permanência. Foco: cristal transparente ou prisma mineral.",
+  mechanics: {
+    components: "V, G, F", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+    duration: "10 minutos/nível", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const LEVITATE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 253,
+  summary: "Move você, uma criatura voluntária ou um objeto para cima ou para baixo conforme sua vontade. É possível direcionar o alvo para subir ou descer até 6 m por rodada com uma ação de movimento; não se move horizontalmente, mas pode escalar ou se apoiar em superfícies. Ataques contra uma criatura levitando sofrem penalidade cumulativa de −1, até −5, enquanto ela se estabiliza.",
+  mechanics: {
+    components: "V, G, F", castingTime: "1 ação padrão", range: "Pessoal ou curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Você ou uma criatura voluntária ou um objeto (peso total de 50 kg/nível)", duration: "1 minuto/nível (D)",
+    savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const FREEDOM_OF_MOVEMENT_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 253,
+  summary: "Liberta o alvo de magias e efeitos que restringem movimento, incluindo aprisionamento, constrição, lentidão, petrificação, prisão, sono, teia, atordoamento, imobilização, manobra Agarrar e paralisia. Para libertar alguém de aprisionamento ou labirinto, é necessário conhecer seu nome e história e conjurar a magia no local onde foi enterrado ou banido.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma criatura", duration: "Instantânea", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+  },
+};
+
+const RARY_TELEPATHIC_BOND_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 253,
+  summary: "Cria uma ligação telepática entre o conjurador e criaturas voluntárias, que precisam ter Inteligência 3 ou superior. Cada criatura pode comunicar-se por telepatia através da ligação, independentemente da linguagem; a ligação funciona a qualquer distância, mas não entre planos. É possível optar por não participar no momento da conjuração. Pode ser tornada permanente por permanência.",
+  mechanics: {
+    components: "V, G, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Você mais uma criatura voluntária adicional/3 níveis, todas a menos de 9 m entre si",
+    duration: "10 minutos/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const MIND_BLANK_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 253, detailsPageEnd: 254,
+  summary: "Protege o alvo contra dispositivos e magias que detectam, influenciam ou leem emoções e pensamentos, inclusive efeitos de ação mental e adivinhações destinadas a obter informações. Engana magias como desejo restrito, milagre e desejo quando usadas para afetar a mente ou obter informações sobre o alvo.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+    target: "Uma criatura", duration: "24 horas", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+  },
+};
+
+const LOCATE_CREATURE_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 253,
+  summary: "Indica a direção de uma criatura conhecida ou familiar dentro do alcance. Pode localizar uma criatura de um tipo específico ou uma criatura específica conhecida; para localizar um tipo, o conjurador precisa tê-lo visto de perto ao menos uma vez. Água corrente bloqueia a magia; despistar, dificultar detecção e metamorfose podem enganá-la. Componente material: pelo de um cão de caça.",
+  mechanics: {
+    components: "V, G, M", castingTime: "Não indicado no bloco impresso", range: "Não indicado no bloco impresso",
+    target: "Não indicado no bloco impresso", duration: "10 minutos/nível", savingThrow: "Não indicado no bloco impresso",
+    spellResistance: "Não indicado no bloco impresso",
+  },
+};
+
+const LOCATE_OBJECT_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 253, detailsPageEnd: 254,
+  summary: "Sente a direção de um objeto conhecido ou claramente visualizado. Também localiza objetos de um tipo geral, como escadarias, espadas ou joias; nesse caso, indica o mais próximo. Para procurar um objeto específico, é necessária uma imagem precisa. Chumbo bloqueia a magia, que não localiza criaturas; metamorfosear objetos pode enganá-la. Componente material: uma forquilha.",
+  mechanics: {
+    components: "V, G, F/FD", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+    target: "Uma circunferência centrada no conjurador com 120 m + 12 m/nível de raio", duration: "1 minuto/nível",
+    savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const GLIBNESS_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 254,
+  summary: "Torna a fala do conjurador fluente e convincente, concedendo +30 em testes de Blefar para convencer alguém de que suas palavras são verdadeiras. O bônus não se aplica a outros usos de Blefar. A magia pode enganar adivinhações que detectariam mentiras ou forçariam o personagem a dizer a verdade, sujeita a teste de conjurador contra CD 15 + nível do conjurador da adivinhação.",
+  mechanics: {
+    components: "G", castingTime: "1 ação padrão", range: "Pessoal", target: "Você",
+    duration: "10 minutos/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const GUST_OF_WIND_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 254,
+  summary: "Cria uma linha de vento forte que derruba e empurra criaturas, com distância conforme o tamanho; criaturas voadoras são lançadas para trás. Impõe −4 em ataques à distância e testes de Ouvir na área, apaga chamas desprotegidas e pode dispersar vapores e gases. Criaturas maiores podem resistir ao deslocamento; a magia pode tornar-se permanente por permanência.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "18 metros",
+    target: "Emanação em forma de linha de um forte vento", duration: "1 rodada",
+    savingThrow: "Fortitude anula", spellResistance: "Sim",
+  },
+};
+
+const LIGHT_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 254,
+  summary: "Faz um objeto brilhar como uma tocha, iluminando claramente um raio de 6 m e precariamente mais 6 m. A luz é imóvel, mas pode ser conjurada sobre um objeto móvel. Contramágica e dissipa escuridão de nível igual ou inferior; luz e escuridão mágicas que se sobrepõem são temporariamente anuladas.",
+  mechanics: {
+    components: "V, M/FD", castingTime: "1 ação padrão", range: "Toque", target: "Objeto tocado",
+    duration: "10 minutos/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const SEARING_LIGHT_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 254,
+  summary: "Projeta um raio de luz divina que exige um ataque de toque à distância. Causa 1d8 de dano para cada dois níveis de conjurador (máximo 5d8); mortos-vivos sofrem 1d6 por nível (máximo 10d6), mortos-vivos vulneráveis à luz solar sofrem 1d8 por nível (máximo 10d8), e construtos ou objetos inanimados sofrem 1d6 por dois níveis (máximo 5d6).",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 metros + 3 metros/nível)",
+    target: "Raio", duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Sim",
+  },
+};
+
+const DAYLIGHT_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 254,
+  summary: "Faz um objeto emitir luz tão brilhante quanto a luz do dia, iluminando 18 m de raio e mais 18 m precariamente. Não equivale à luz solar para criaturas vulneráveis. A luz pode ser coberta para neutralizar seus efeitos e dissipa escuridão mágica de nível igual ou inferior.",
+  mechanics: {
+    components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Objeto tocado",
+    duration: "10 minutos/nível (D)", savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
+const IRONWOOD_DETAILS: VerifiedSpellDetails = {
+  summaryOnly: false, detailsPage: 254,
+  summary: "Transforma madeira comum em madeira-ferro, substância tão forte, pesada e resistente ao fogo quanto aço, sem deixar de ser madeira. Magias que afetam metal ou ferro não a afetam, mas magias que afetam madeira continuam funcionando. Armas, escudos e armaduras criados podem receber propriedades de melhoria conforme o limite de peso da magia.",
+  mechanics: {
+    components: "V, G, M", castingTime: "1 minuto/0,5 kg criado", range: "0 metro",
+    target: "Um objeto de madeira-ferro pesando até 2,5 kg/nível", duration: "Um dia/nível (D)",
+    savingThrow: "Nenhum", spellResistance: "Não",
+  },
+};
+
 // A descrição completa às vezes apresenta M/FD sem o sobrescrito correspondente
 // na lista de níveis. `flags` continua refletindo o sobrescrito impresso; `mechanics`
 // registra os componentes efetivos descritos na entrada completa.
 const VERIFIED_SPELL_DETAILS: Record<string, VerifiedSpellDetails> = {
+  "bardo:0:Ler Magia": READ_MAGIC_DETAILS,
+  "clerigo:0:Ler Magias": READ_MAGIC_DETAILS,
+  "druida:0:Ler Magias": READ_MAGIC_DETAILS,
+  "paladino:1:Ler Magias": READ_MAGIC_DETAILS,
+  "patrulheiro:1:Ler Magias": READ_MAGIC_DETAILS,
+  "feiticeiro_mago:0:Ler Magias": READ_MAGIC_DETAILS,
+  "feiticeiro_mago:2:Levitação": LEVITATE_DETAILS,
+  "feiticeiro_mago:9:Libertação": FREEDOM_OF_MOVEMENT_DETAILS,
+  "feiticeiro_mago:5:Ligação Telepática de Rary": RARY_TELEPATHIC_BOND_DETAILS,
+  "feiticeiro_mago:8:Limpar a Mente": MIND_BLANK_DETAILS,
+  "bardo:4:Localizar Criatura": LOCATE_CREATURE_DETAILS,
+  "feiticeiro_mago:4:Localizar Criatura": LOCATE_CREATURE_DETAILS,
+  "feiticeiro_mago:2:Localizar Objetos": LOCATE_OBJECT_DETAILS,
+  "bardo:2:Localizar Objetos": LOCATE_OBJECT_DETAILS,
+  "clerigo:3:Localizar Objetos": LOCATE_OBJECT_DETAILS,
+  "bardo:3:Loquacidade": GLIBNESS_DETAILS,
+  "feiticeiro_mago:2:Lufada de Vento": GUST_OF_WIND_DETAILS,
+  "druida:2:Lufada de Vento": GUST_OF_WIND_DETAILS,
+  "bardo:0:Luz": LIGHT_DETAILS,
+  "clerigo:0:Luz": LIGHT_DETAILS,
+  "druida:0:Luz": LIGHT_DETAILS,
+  "feiticeiro_mago:0:Luz": LIGHT_DETAILS,
+  "clerigo:3:Luz Cegante": SEARING_LIGHT_DETAILS,
+  "bardo:3:Luz do Dia": DAYLIGHT_DETAILS,
+  "clerigo:3:Luz do Dia": DAYLIGHT_DETAILS,
+  "druida:3:Luz do Dia": DAYLIGHT_DETAILS,
+  "paladino:3:Luz do Dia": DAYLIGHT_DETAILS,
+  "feiticeiro_mago:3:Luz do Dia": DAYLIGHT_DETAILS,
+  "druida:6:Madeira-Ferro": IRONWOOD_DETAILS,
+  "bardo:4:Lendas e Histórias": LEGEND_LORE_DETAILS,
+  "feiticeiro_mago:6:Lendas e Histórias": LEGEND_LORE_DETAILS,
+  "bardo:3:Lentidão": SLOW_DETAILS,
+  "feiticeiro_mago:3:Lentidão": SLOW_DETAILS,
+  "feiticeiro_mago:1:Leque Cromático": COLOR_SPRAY_DETAILS,
   "feiticeiro_mago:4:Esfera Resiliente de Otiluke": RESILIENT_SPHERE_DETAILS,
   "feiticeiro_mago:8:Esfera Telecinética de Otiluke": TELEKINETIC_SPHERE_DETAILS,
   "druida:2:Esfriar Metal": COOL_METAL_DETAILS,

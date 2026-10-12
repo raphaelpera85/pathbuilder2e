@@ -235,6 +235,14 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
     ],
     footnote: "Pode invocar apenas animais",
     spellDetails: {
+      "Dominar Animal": {
+        detailsPage: 233,
+        summary: "Cria um vínculo mental que permite comandar o animal por ordens telepáticas silenciosas, sem precisar vê-lo. O conjurador recebe suas informações sensoriais diretas, e o animal usa a Inteligência do conjurador para tarefas que compreenda. Ordens suicidas são ignoradas; instruções podem ser alteradas com uma ação de movimento. Se o animal for forçado contra sua natureza, pode repetir o teste de Vontade com +2. Depois de estabelecido, o vínculo não tem limite de alcance dentro do mesmo plano; sem concentração diária mínima de 1 rodada, o alvo tenta novo teste para se libertar.",
+        mechanics: {
+          components: "V, G", castingTime: "1 rodada", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+          target: "1 animal", duration: "1 rodada/nível", savingThrow: "Vontade anula", spellResistance: "Sim",
+        },
+      },
       "Imobilizar Animal": HOLD_ANIMAL_DOMAIN_DETAILS,
       "Invocar Aliado da Natureza IV": summonNatureDomainDetails(4),
       "Invocar Aliado da Natureza VIII": summonNatureDomainDetails(8),
@@ -370,6 +378,14 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
           components: "V, G, FD", castingTime: "10 minutos", range: "Ilimitado",
           target: "Uma criatura ou objeto", duration: "Instantânea",
           savingThrow: "Nenhum", spellResistance: "Não",
+        },
+      },
+      "Lendas e Histórias": {
+        detailsPage: 252,
+        summary: "Revela lendas sobre uma pessoa, local ou objeto importante. Com contato ou presença no local, a conjuração leva 1d4 × 10 minutos; com informações detalhadas, leva 1d10 dias e produz resultado menos completo; baseada apenas em rumores, leva 2d6 semanas e revela informações vagas. O conjurador não pode fazer outras atividades durante a conjuração. Pessoas, objetos e locais sem importância lendária não fornecem informação. Componente material: incenso de pelo menos 250 PO; foco: quatro tiras de marfim que custam 50 PO cada.",
+        mechanics: {
+          components: "V, G, M, F", castingTime: "Veja texto", range: "Pessoal", target: "Você",
+          duration: "Veja texto", savingThrow: "Não indicado no bloco impresso", spellResistance: "Não indicado no bloco impresso",
         },
       },
     },
@@ -673,7 +689,17 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Limpar a Mente: O alvo é imune a magias mentais/emocionais e vidência",
       "9 Esfera Prismática: Como muralha prismática, mas cerca você por todos os lados",
     ],
-    spellDetails: { "Imunidade à Magia": SPELL_IMMUNITY_DOMAIN_DETAILS },
+    spellDetails: {
+      "Imunidade à Magia": SPELL_IMMUNITY_DOMAIN_DETAILS,
+      "Limpar a Mente": {
+        detailsPage: 253, detailsPageEnd: 254,
+        summary: "Protege o alvo contra dispositivos e magias que detectam, influenciam ou leem emoções e pensamentos, inclusive efeitos de ação mental e adivinhações destinadas a obter informações. Engana magias como desejo restrito, milagre e desejo quando usadas para afetar a mente ou obter informações sobre o alvo.",
+        mechanics: {
+          components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)",
+          target: "Uma criatura", duration: "24 horas", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)",
+        },
+      },
+    },
   }),
   domain({
     id: "sol", name: "Sol", sourcePage: "189",
@@ -691,6 +717,14 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "9 Esfera Prismática: Como muralha prismática, mas cerca você por todos os lados",
     ],
     spellDetails: {
+      "Luz Cegante": {
+        detailsPage: 254,
+        summary: "Projeta um raio de luz divina que exige um ataque de toque à distância. Causa 1d8 de dano para cada dois níveis de conjurador (máximo 5d8); mortos-vivos sofrem 1d6 por nível (máximo 10d6), mortos-vivos vulneráveis à luz solar sofrem 1d8 por nível (máximo 10d8), e construtos ou objetos inanimados sofrem 1d6 por dois níveis (máximo 5d6).",
+        mechanics: {
+          components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 metros + 3 metros/nível)",
+          target: "Raio", duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Sim",
+        },
+      },
       "Explosão Solar": {
         detailsPage: 240,
         summary: "Uma explosão de luz cega as criaturas na área e causa 6d6 de dano; mortos-vivos sofrem 1d6 por nível de conjurador (máximo 25d6). Um sucesso em Reflexos reduz o dano à metade, mas não evita a cegueira.",
@@ -761,6 +795,17 @@ export const DND35_DOMAINS: Dnd35Domain[] = [
       "8 Passagem Invisível: Cria uma passagem invisível através de madeira ou pedra",
       "9 Projeção Astral^M: Projeta você e seus companheiros para o Plano Astral",
     ],
+    spellDetails: {
+      "Localizar Objetos": {
+        detailsPage: 253, detailsPageEnd: 254,
+        summary: "Sente a direção de um objeto conhecido ou claramente visualizado. Também localiza objetos de um tipo geral, como escadarias, espadas ou joias; nesse caso, indica o mais próximo. Para procurar um objeto específico, é necessária uma imagem precisa. Chumbo bloqueia a magia, que não localiza criaturas; metamorfosear objetos pode enganá-la. Componente material: uma forquilha.",
+        mechanics: {
+          components: "V, G, F/FD", castingTime: "1 ação padrão", range: "Longo (120 m + 12 m/nível)",
+          target: "Uma circunferência centrada no conjurador com 120 m + 12 m/nível de raio", duration: "1 minuto/nível",
+          savingThrow: "Nenhum", spellResistance: "Não",
+        },
+      },
+    },
   }),
 ];
 

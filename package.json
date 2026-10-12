@@ -10,6 +10,8 @@
     "audit:catalog": "node scripts/audit-catalog.cjs",
     "audit:catalog:snapshots": "node scripts/audit-catalog-snapshots.mjs",
     "catalog:manifest": "node scripts/build-catalog-manifest.mjs",
+    "catalog:knowledge-graph": "node --experimental-strip-types --loader ./scripts/ts-extension-loader.mjs scripts/build-rpg-knowledge-graph.mjs",
+    "audit:knowledge-graph": "node --experimental-strip-types --loader ./scripts/ts-extension-loader.mjs scripts/build-rpg-knowledge-graph.mjs --check",
     "catalog:pf1e:core": "node --experimental-strip-types scripts/build-pf1e-core-snapshots.mjs && npm run catalog:manifest",
     "catalog:ose:classes": "node --experimental-strip-types --loader ./scripts/ts-extension-loader.mjs scripts/build-ose-class-snapshots.mjs && npm run catalog:manifest",
     "audit:catalog:provenance": "node scripts/audit-catalog.cjs --strict-provenance",

@@ -1,0 +1,1484 @@
+{
+  "schemaVersion": 1,
+  "provenance": "Inventário gerado por audit-books a partir dos PDFs legíveis; sistema/edição são preenchidos somente quando identificáveis pelo diretório ou título. Não representa curadoria do conteúdo interno.",
+  "auditedDirectory": "Livros RPG",
+  "sourceBookCount": 98,
+  "readablePdfCount": 98,
+  "pairedTextCount": 0,
+  "books": [
+    {
+      "id": "Pathfinder/Livros/LIVRO - Pathfinder RPG - Bestiary 2 (English) - Vários autores.pdf",
+      "title": "LIVRO - Pathfinder RPG - Bestiary 2 (English) - Vários autores",
+      "sourcePath": "Pathfinder/Livros/LIVRO - Pathfinder RPG - Bestiary 2 (English) - Vários autores.pdf",
+      "pageCount": 322,
+      "pdfReadable": true,
+      "systemId": "pf1e",
+      "systemCandidates": [
+        "pf1e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Livros/LIVRO - Pathfinder RPG - Bestiário (Paizo) - Vários autores.pdf",
+      "title": "LIVRO - Pathfinder RPG - Bestiário (Paizo) - Vários autores",
+      "sourcePath": "Pathfinder/Livros/LIVRO - Pathfinder RPG - Bestiário (Paizo) - Vários autores.pdf",
+      "pageCount": 329,
+      "pdfReadable": true,
+      "systemId": "pf1e",
+      "systemCandidates": [
+        "pf1e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Livros/LIVRO - Pathfinder - Guia de Ancestralidades - Vários autores.pdf",
+      "title": "LIVRO - Pathfinder - Guia de Ancestralidades - Vários autores",
+      "sourcePath": "Pathfinder/Livros/LIVRO - Pathfinder - Guia de Ancestralidades - Vários autores.pdf",
+      "pageCount": 146,
+      "pdfReadable": true,
+      "systemId": null,
+      "systemCandidates": [
+        "pf1e",
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Livros/[ REMASTER ] (2023 - 12) PF2e – Livro do Jogador - Vários autores.pdf",
+      "title": "[ REMASTER ] (2023 - 12) PF2e – Livro do Jogador - Vários autores",
+      "sourcePath": "Pathfinder/Livros/[ REMASTER ] (2023 - 12) PF2e – Livro do Jogador - Vários autores.pdf",
+      "pageCount": 470,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Livros/[ REMASTER ] (2024 - 07) PF2e – Livro do Jogador 2 - Vários autores.pdf",
+      "title": "[ REMASTER ] (2024 - 07) PF2e – Livro do Jogador 2 - Vários autores",
+      "sourcePath": "Pathfinder/Livros/[ REMASTER ] (2024 - 07) PF2e – Livro do Jogador 2 - Vários autores.pdf",
+      "pageCount": 324,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Livros/(2021 - 09) Pathfinder 2e - Segredos da Magia - Vários autores.pdf",
+      "title": "(2021 - 09) Pathfinder 2e - Segredos da Magia - Vários autores",
+      "sourcePath": "Pathfinder/Livros/(2021 - 09) Pathfinder 2e - Segredos da Magia - Vários autores.pdf",
+      "pageCount": 258,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Livros/(2021 - 10) Pathfinder 2e - Pólvora e Engrenagens - Vários autores.pdf",
+      "title": "(2021 - 10) Pathfinder 2e - Pólvora e Engrenagens - Vários autores",
+      "sourcePath": "Pathfinder/Livros/(2021 - 10) Pathfinder 2e - Pólvora e Engrenagens - Vários autores.pdf",
+      "pageCount": 239,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Livros/(2022 - 04) Pathfinder 2e - Livro dos Mortos - Vários autores.pdf",
+      "title": "(2022 - 04) Pathfinder 2e - Livro dos Mortos - Vários autores",
+      "sourcePath": "Pathfinder/Livros/(2022 - 04) Pathfinder 2e - Livro dos Mortos - Vários autores.pdf",
+      "pageCount": 224,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Livros/(2022 - 07) Pathfinder 2e - Dark Archive - Vários autores.pdf",
+      "title": "(2022 - 07) Pathfinder 2e - Dark Archive - Vários autores",
+      "sourcePath": "Pathfinder/Livros/(2022 - 07) Pathfinder 2e - Dark Archive - Vários autores.pdf",
+      "pageCount": 226,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Livros/(2023 - 08) Pathfinder 2e - Rage of Elements - Vários autores.pdf",
+      "title": "(2023 - 08) Pathfinder 2e - Rage of Elements - Vários autores",
+      "sourcePath": "Pathfinder/Livros/(2023 - 08) Pathfinder 2e - Rage of Elements - Vários autores.pdf",
+      "pageCount": 242,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Livros/Manual do Jogador PF2e - Vários autores.pdf",
+      "title": "Manual do Jogador PF2e - Vários autores",
+      "sourcePath": "Pathfinder/Livros/Manual do Jogador PF2e - Vários autores.pdf",
+      "pageCount": 58,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Livros/PF2 - Howl of the Wild (updated with errata) - Vários autores.pdf",
+      "title": "PF2 - Howl of the Wild (updated with errata) - Vários autores",
+      "sourcePath": "Pathfinder/Livros/PF2 - Howl of the Wild (updated with errata) - Vários autores.pdf",
+      "pageCount": 227,
+      "pdfReadable": true,
+      "systemId": null,
+      "systemCandidates": [
+        "pf1e",
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Livros/PF2e - Battlecry! (PZO12008)(2025) - Vários autores.pdf",
+      "title": "PF2e - Battlecry! (PZO12008)(2025) - Vários autores",
+      "sourcePath": "Pathfinder/Livros/PF2e - Battlecry! (PZO12008)(2025) - Vários autores.pdf",
+      "pageCount": 226,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Livros/pathfinder - rpg - livro - basico - Vários autores.pdf",
+      "title": "pathfinder - rpg - livro - basico - Vários autores",
+      "sourcePath": "Pathfinder/Livros/pathfinder - rpg - livro - basico - Vários autores.pdf",
+      "pageCount": 577,
+      "pdfReadable": true,
+      "systemId": null,
+      "systemCandidates": [
+        "pf1e",
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Aventuras/pathfinder - rpg - modulo - cidade - da - morte - dourada - Vários autores.pdf",
+      "title": "pathfinder - rpg - modulo - cidade - da - morte - dourada - Vários autores",
+      "sourcePath": "Pathfinder/Aventuras/pathfinder - rpg - modulo - cidade - da - morte - dourada - Vários autores.pdf",
+      "pageCount": 36,
+      "pdfReadable": true,
+      "systemId": null,
+      "systemCandidates": [
+        "pf1e",
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Aventuras/Pathfinder 2e Age of Ashes, Pt 5 Against the Scarlet Triad - Vários autores.pdf",
+      "title": "Pathfinder 2e Age of Ashes, Pt 5 Against the Scarlet Triad - Vários autores",
+      "sourcePath": "Pathfinder/Aventuras/Pathfinder 2e Age of Ashes, Pt 5 Against the Scarlet Triad - Vários autores.pdf",
+      "pageCount": 100,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Aventuras/Pathfinder 2e Age of Ashes, Pt 4 Fires of the Haunted City - Vários autores.pdf",
+      "title": "Pathfinder 2e Age of Ashes, Pt 4 Fires of the Haunted City - Vários autores",
+      "sourcePath": "Pathfinder/Aventuras/Pathfinder 2e Age of Ashes, Pt 4 Fires of the Haunted City - Vários autores.pdf",
+      "pageCount": 100,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Aventuras/PZO90171 Pathfinder 2E Strength of Thousands AP #3 of 6 Hurricane's - Vários autores.pdf",
+      "title": "PZO90171 Pathfinder 2E Strength of Thousands AP #3 of 6 Hurricane's - Vários autores",
+      "sourcePath": "Pathfinder/Aventuras/PZO90171 Pathfinder 2E Strength of Thousands AP #3 of 6 Hurricane's - Vários autores.pdf",
+      "pageCount": 9,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Aventuras/PZO90172 Pathfinder 2E Strength of Thousands AP #4 of 6 Secrets - Vários autores.pdf",
+      "title": "PZO90172 Pathfinder 2E Strength of Thousands AP #4 of 6 Secrets - Vários autores",
+      "sourcePath": "Pathfinder/Aventuras/PZO90172 Pathfinder 2E Strength of Thousands AP #4 of 6 Secrets - Vários autores.pdf",
+      "pageCount": 100,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Aventuras/Pathfinder 2e - Age of Ashes, Pt 2 - Cult of Cinders (2019) - Vários autores.pdf",
+      "title": "Pathfinder 2e - Age of Ashes, Pt 2 - Cult of Cinders (2019) - Vários autores",
+      "sourcePath": "Pathfinder/Aventuras/Pathfinder 2e - Age of Ashes, Pt 2 - Cult of Cinders (2019) - Vários autores.pdf",
+      "pageCount": 100,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Aventuras/Pathfinder 2e - Age of Ashes, Pt 1 - Hellknight Hill - Vários autores.pdf",
+      "title": "Pathfinder 2e - Age of Ashes, Pt 1 - Hellknight Hill - Vários autores",
+      "sourcePath": "Pathfinder/Aventuras/Pathfinder 2e - Age of Ashes, Pt 1 - Hellknight Hill - Vários autores.pdf",
+      "pageCount": 100,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Aventuras/Pathfinder 2e - Age of Ashes - Player's Guide - Vários autores.pdf",
+      "title": "Pathfinder 2e - Age of Ashes - Player's Guide - Vários autores",
+      "sourcePath": "Pathfinder/Aventuras/Pathfinder 2e - Age of Ashes - Player's Guide - Vários autores.pdf",
+      "pageCount": 11,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Aventuras/Pathfinder 2e - Malevolence - Vários autores.pdf",
+      "title": "Pathfinder 2e - Malevolence - Vários autores",
+      "sourcePath": "Pathfinder/Aventuras/Pathfinder 2e - Malevolence - Vários autores.pdf",
+      "pageCount": 76,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Aventuras/Pathfinder 2e - Age of Ashes, Pt 6 - Broken Promises - Vários autores.pdf",
+      "title": "Pathfinder 2e - Age of Ashes, Pt 6 - Broken Promises - Vários autores",
+      "sourcePath": "Pathfinder/Aventuras/Pathfinder 2e - Age of Ashes, Pt 6 - Broken Promises - Vários autores.pdf",
+      "pageCount": 100,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Pathfinder/Aventuras/Pathfinder 2e - Age of Ashes, Pt 3 - Tomorrow Must Burn - Vários autores.pdf",
+      "title": "Pathfinder 2e - Age of Ashes, Pt 3 - Tomorrow Must Burn - Vários autores",
+      "sourcePath": "Pathfinder/Aventuras/Pathfinder 2e - Age of Ashes, Pt 3 - Tomorrow Must Burn - Vários autores.pdf",
+      "pageCount": 100,
+      "pdfReadable": true,
+      "systemId": "pf2e",
+      "systemCandidates": [
+        "pf2e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Old school Essentials/old-school-essentials-advanced-fantasy-tomo-do-jogador - Vários autores.pdf",
+      "title": "old-school-essentials-advanced-fantasy-tomo-do-jogador - Vários autores",
+      "sourcePath": "Old school Essentials/old-school-essentials-advanced-fantasy-tomo-do-jogador - Vários autores.pdf",
+      "pageCount": 256,
+      "pdfReadable": true,
+      "systemId": "ose",
+      "systemCandidates": [
+        "ose"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Old school Essentials/old-school-essentials - Vários autores.pdf",
+      "title": "old-school-essentials - Vários autores",
+      "sourcePath": "Old school Essentials/old-school-essentials - Vários autores.pdf",
+      "pageCount": 60,
+      "pdfReadable": true,
+      "systemId": "ose",
+      "systemCandidates": [
+        "ose"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Tormenta 20/Tormenta 20 - Vários autores.pdf",
+      "title": "Tormenta 20 - Vários autores",
+      "sourcePath": "Tormenta 20/Tormenta 20 - Vários autores.pdf",
+      "pageCount": 407,
+      "pdfReadable": true,
+      "systemId": "t20",
+      "systemCandidates": [
+        "t20"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Tormenta 20/Tormenta20 - Deuses de Arton - Vários autores.pdf",
+      "title": "Tormenta20 - Deuses de Arton - Vários autores",
+      "sourcePath": "Tormenta 20/Tormenta20 - Deuses de Arton - Vários autores.pdf",
+      "pageCount": 320,
+      "pdfReadable": true,
+      "systemId": "t20",
+      "systemCandidates": [
+        "t20"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Tormenta 20/Tormenta20 - Atlas de Arton - Vários autores.pdf",
+      "title": "Tormenta20 - Atlas de Arton - Vários autores",
+      "sourcePath": "Tormenta 20/Tormenta20 - Atlas de Arton - Vários autores.pdf",
+      "pageCount": 478,
+      "pdfReadable": true,
+      "systemId": "t20",
+      "systemCandidates": [
+        "t20"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Tormenta 20/Tormenta20 - Ameacas de Arton - Vários autores.pdf",
+      "title": "Tormenta20 - Ameacas de Arton - Vários autores",
+      "sourcePath": "Tormenta 20/Tormenta20 - Ameacas de Arton - Vários autores.pdf",
+      "pageCount": 424,
+      "pdfReadable": true,
+      "systemId": "t20",
+      "systemCandidates": [
+        "t20"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Tormenta 20/Tormenta20 - Guia de NPCs - Vários autores.pdf",
+      "title": "Tormenta20 - Guia de NPCs - Vários autores",
+      "sourcePath": "Tormenta 20/Tormenta20 - Guia de NPCs - Vários autores.pdf",
+      "pageCount": 80,
+      "pdfReadable": true,
+      "systemId": "t20",
+      "systemCandidates": [
+        "t20"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Tormenta 20/Tormenta20 - Codice de Poderes - Vários autores.pdf",
+      "title": "Tormenta20 - Codice de Poderes - Vários autores",
+      "sourcePath": "Tormenta 20/Tormenta20 - Codice de Poderes - Vários autores.pdf",
+      "pageCount": 37,
+      "pdfReadable": true,
+      "systemId": "t20",
+      "systemCandidates": [
+        "t20"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "Tormenta 20/T20 - Só Aventuras - Vários autores.pdf",
+      "title": "T20 - Só Aventuras - Vários autores",
+      "sourcePath": "Tormenta 20/T20 - Só Aventuras - Vários autores.pdf",
+      "pageCount": 163,
+      "pdfReadable": true,
+      "systemId": "t20",
+      "systemCandidates": [
+        "t20"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/D&D5e + League of Legends Campaign Handbook v.1.2.1 - Vários autores.pdf",
+      "title": "D&D5e + League of Legends Campaign Handbook v.1.2.1 - Vários autores",
+      "sourcePath": "D&D 5E/D&D5e + League of Legends Campaign Handbook v.1.2.1 - Vários autores.pdf",
+      "pageCount": 76,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/GD5e - Vários autores.pdf",
+      "title": "GD5e - Vários autores",
+      "sourcePath": "D&D 5E/GD5e - Vários autores.pdf",
+      "pageCount": 66,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/D&D 5e - Storm King's Thunder - Vários autores.pdf",
+      "title": "D&D 5e - Storm King's Thunder - Vários autores",
+      "sourcePath": "D&D 5E/D&D 5e - Storm King's Thunder - Vários autores.pdf",
+      "pageCount": 257,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/D&D 5e - Princes of the Apocalypse - Vários autores.pdf",
+      "title": "D&D 5e - Princes of the Apocalypse - Vários autores",
+      "sourcePath": "D&D 5E/D&D 5e - Princes of the Apocalypse - Vários autores.pdf",
+      "pageCount": 258,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/D&D 5e - Guildmasters' Guide to Ravnica - Vários autores.pdf",
+      "title": "D&D 5e - Guildmasters' Guide to Ravnica - Vários autores",
+      "sourcePath": "D&D 5E/D&D 5e - Guildmasters' Guide to Ravnica - Vários autores.pdf",
+      "pageCount": 258,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/D&D 5e - Mordenkainen's Tome of Foes - Vários autores.pdf",
+      "title": "D&D 5e - Mordenkainen's Tome of Foes - Vários autores",
+      "sourcePath": "D&D 5E/D&D 5e - Mordenkainen's Tome of Foes - Vários autores.pdf",
+      "pageCount": 258,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/D&D 5e - strixhaven curriculum of chaos - Vários autores.pdf",
+      "title": "D&D 5e - strixhaven curriculum of chaos - Vários autores",
+      "sourcePath": "D&D 5E/D&D 5e - strixhaven curriculum of chaos - Vários autores.pdf",
+      "pageCount": 226,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/D&D 5e - Hoard of the Dragon Queen - Vários autores.pdf",
+      "title": "D&D 5e - Hoard of the Dragon Queen - Vários autores",
+      "sourcePath": "D&D 5E/D&D 5e - Hoard of the Dragon Queen - Vários autores.pdf",
+      "pageCount": 126,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Chains Of Asmodeus - Vários autores.pdf",
+      "title": "Chains Of Asmodeus - Vários autores",
+      "sourcePath": "D&D 5E/Chains Of Asmodeus - Vários autores.pdf",
+      "pageCount": 288,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Gnolls - a Legacy Untamed (Player race, feats, & more!) _ GM Binder - Vários autores.pdf",
+      "title": "Gnolls - a Legacy Untamed (Player race, feats, & more!) _ GM Binder - Vários autores",
+      "sourcePath": "D&D 5E/Gnolls - a Legacy Untamed (Player race, feats, & more!) _ GM Binder - Vários autores.pdf",
+      "pageCount": 8,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Cleric Divine Domains - laserllama.pdf",
+      "title": "Cleric Divine Domains - laserllama",
+      "sourcePath": "D&D 5E/Cleric Divine Domains - laserllama.pdf",
+      "pageCount": 14,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Compendium of Beasts - laserllama.pdf",
+      "title": "Compendium of Beasts - laserllama",
+      "sourcePath": "D&D 5E/Compendium of Beasts - laserllama.pdf",
+      "pageCount": 49,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/D&D 5e - Curse Of Strahd - Vários autores.pdf",
+      "title": "D&D 5e - Curse Of Strahd - Vários autores",
+      "sourcePath": "D&D 5E/D&D 5e - Curse Of Strahd - Vários autores.pdf",
+      "pageCount": 258,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Ranger Homebrew _ GM Binder - Vários autores.pdf",
+      "title": "Ranger Homebrew _ GM Binder - Vários autores",
+      "sourcePath": "D&D 5E/Ranger Homebrew _ GM Binder - Vários autores.pdf",
+      "pageCount": 12,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/The Extraplanar_ Warlock Subclass _ GM Binder - Vários autores.pdf",
+      "title": "The Extraplanar_ Warlock Subclass _ GM Binder - Vários autores",
+      "sourcePath": "D&D 5E/The Extraplanar_ Warlock Subclass _ GM Binder - Vários autores.pdf",
+      "pageCount": 7,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Homebrew Subclasses - The Homebrewery - Vários autores.pdf",
+      "title": "Homebrew Subclasses - The Homebrewery - Vários autores",
+      "sourcePath": "D&D 5E/Homebrew Subclasses - The Homebrewery - Vários autores.pdf",
+      "pageCount": 5,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Arden's Final Confrontations - Vários autores.pdf",
+      "title": "Arden's Final Confrontations - Vários autores",
+      "sourcePath": "D&D 5E/Arden's Final Confrontations - Vários autores.pdf",
+      "pageCount": 12,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Ceo's Tome of Folks - The Homebrewery - Vários autores.pdf",
+      "title": "Ceo's Tome of Folks - The Homebrewery - Vários autores",
+      "sourcePath": "D&D 5E/Ceo's Tome of Folks - The Homebrewery - Vários autores.pdf",
+      "pageCount": 14,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Psionic Handbook v0.5.1 - Vários autores.pdf",
+      "title": "Psionic Handbook v0.5.1 - Vários autores",
+      "sourcePath": "D&D 5E/Psionic Handbook v0.5.1 - Vários autores.pdf",
+      "pageCount": 53,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/The Lycan v1.1 - Vários autores.pdf",
+      "title": "The Lycan v1.1 - Vários autores",
+      "sourcePath": "D&D 5E/The Lycan v1.1 - Vários autores.pdf",
+      "pageCount": 20,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Grafter Class - The Homebrewery - Vários autores.pdf",
+      "title": "Grafter Class - The Homebrewery - Vários autores",
+      "sourcePath": "D&D 5E/Grafter Class - The Homebrewery - Vários autores.pdf",
+      "pageCount": 13,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Tamer Class - The Homebrewery - Vários autores.pdf",
+      "title": "Tamer Class - The Homebrewery - Vários autores",
+      "sourcePath": "D&D 5E/Tamer Class - The Homebrewery - Vários autores.pdf",
+      "pageCount": 19,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Layers of Sugar and Affection v1 - Vários autores.pdf",
+      "title": "Layers of Sugar and Affection v1 - Vários autores",
+      "sourcePath": "D&D 5E/Layers of Sugar and Affection v1 - Vários autores.pdf",
+      "pageCount": 14,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Death Knight v1.4 - The Homebrewery - Vários autores.pdf",
+      "title": "Death Knight v1.4 - The Homebrewery - Vários autores",
+      "sourcePath": "D&D 5E/Death Knight v1.4 - The Homebrewery - Vários autores.pdf",
+      "pageCount": 24,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Shadowdancer - Vários autores.pdf",
+      "title": "Shadowdancer - Vários autores",
+      "sourcePath": "D&D 5E/Shadowdancer - Vários autores.pdf",
+      "pageCount": 1,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/My Tactician 1.6 - Vários autores.pdf",
+      "title": "My Tactician 1.6 - Vários autores",
+      "sourcePath": "D&D 5E/My Tactician 1.6 - Vários autores.pdf",
+      "pageCount": 17,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Untitled document - Vários autores.pdf",
+      "title": "Untitled document - Vários autores",
+      "sourcePath": "D&D 5E/Untitled document - Vários autores.pdf",
+      "pageCount": 2,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Monastery_ Cursed Body (v1.1_English Version) - The Homebrewery - Vários autores.pdf",
+      "title": "Monastery_ Cursed Body (v1.1_English Version) - The Homebrewery - Vários autores",
+      "sourcePath": "D&D 5E/Monastery_ Cursed Body (v1.1_English Version) - The Homebrewery - Vários autores.pdf",
+      "pageCount": 12,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/The Tethered v1.0 - Vários autores.pdf",
+      "title": "The Tethered v1.0 - Vários autores",
+      "sourcePath": "D&D 5E/The Tethered v1.0 - Vários autores.pdf",
+      "pageCount": 11,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Otherworldly Patron_ Symbiote _ GM Binder - Vários autores.pdf",
+      "title": "Otherworldly Patron_ Symbiote _ GM Binder - Vários autores",
+      "sourcePath": "D&D 5E/Otherworldly Patron_ Symbiote _ GM Binder - Vários autores.pdf",
+      "pageCount": 8,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Better Final Bosses - Ariadne's Codex.pdf",
+      "title": "Better Final Bosses - Ariadne's Codex",
+      "sourcePath": "D&D 5E/Better Final Bosses - Ariadne's Codex.pdf",
+      "pageCount": 54,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Chosen Of The Storyteller - The Homebrewery - Vários autores.pdf",
+      "title": "Chosen Of The Storyteller - The Homebrewery - Vários autores",
+      "sourcePath": "D&D 5E/Chosen Of The Storyteller - The Homebrewery - Vários autores.pdf",
+      "pageCount": 15,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Bard College of Lullabies - Vários autores.pdf",
+      "title": "Bard College of Lullabies - Vários autores",
+      "sourcePath": "D&D 5E/Bard College of Lullabies - Vários autores.pdf",
+      "pageCount": 3,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Chronomancer_final - Vários autores.pdf",
+      "title": "Chronomancer_final - Vários autores",
+      "sourcePath": "D&D 5E/Chronomancer_final - Vários autores.pdf",
+      "pageCount": 10,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/The Gambler - The Homebrewery - Vários autores.pdf",
+      "title": "The Gambler - The Homebrewery - Vários autores",
+      "sourcePath": "D&D 5E/The Gambler - The Homebrewery - Vários autores.pdf",
+      "pageCount": 6,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/The Secrets of Ravenmyre - Vários autores.pdf",
+      "title": "The Secrets of Ravenmyre - Vários autores",
+      "sourcePath": "D&D 5E/The Secrets of Ravenmyre - Vários autores.pdf",
+      "pageCount": 48,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Otherworldly Patron_ Imaginary Friend _ GM Binder - Vários autores.pdf",
+      "title": "Otherworldly Patron_ Imaginary Friend _ GM Binder - Vários autores",
+      "sourcePath": "D&D 5E/Otherworldly Patron_ Imaginary Friend _ GM Binder - Vários autores.pdf",
+      "pageCount": 1,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Warshaper - Michael Holik.pdf",
+      "title": "Warshaper - Michael Holik",
+      "sourcePath": "D&D 5E/Warshaper - Michael Holik.pdf",
+      "pageCount": 1,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Fighter - The Homebrewery - Vários autores.pdf",
+      "title": "Fighter - The Homebrewery - Vários autores",
+      "sourcePath": "D&D 5E/Fighter - The Homebrewery - Vários autores.pdf",
+      "pageCount": 3,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Tactician - Mr-Silvers.pdf",
+      "title": "Tactician - Mr-Silvers",
+      "sourcePath": "D&D 5E/Tactician - Mr-Silvers.pdf",
+      "pageCount": 8,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Circle of the Seedling - Vários autores.pdf",
+      "title": "Circle of the Seedling - Vários autores",
+      "sourcePath": "D&D 5E/Circle of the Seedling - Vários autores.pdf",
+      "pageCount": 1,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/Ranger Archetypes _ GM Binder - Vários autores.pdf",
+      "title": "Ranger Archetypes _ GM Binder - Vários autores",
+      "sourcePath": "D&D 5E/Ranger Archetypes _ GM Binder - Vários autores.pdf",
+      "pageCount": 15,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 5E/dd-5e-costa-da-espada-guia-de-aventureiros-fundo-colorido - Vários autores.pdf",
+      "title": "dd-5e-costa-da-espada-guia-de-aventureiros-fundo-colorido - Vários autores",
+      "sourcePath": "D&D 5E/dd-5e-costa-da-espada-guia-de-aventureiros-fundo-colorido - Vários autores.pdf",
+      "pageCount": 161,
+      "pdfReadable": true,
+      "systemId": "dnd5e",
+      "systemCandidates": [
+        "dnd5e"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - Livro dos Monstros - Vários autores.pdf",
+      "title": "D&D 3.5 - Livro dos Monstros - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - Livro dos Monstros - Vários autores.pdf",
+      "pageCount": 322,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - Livro do Jogador - Vários autores.pdf",
+      "title": "D&D 3.5 - Livro do Jogador - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - Livro do Jogador - Vários autores.pdf",
+      "pageCount": 318,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - Livro do Mestre - Vários autores.pdf",
+      "title": "D&D 3.5 - Livro do Mestre - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - Livro do Mestre - Vários autores.pdf",
+      "pageCount": 321,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D - Livro dos Niveis Epicos - Vários autores.pdf",
+      "title": "D&D - Livro dos Niveis Epicos - Vários autores",
+      "sourcePath": "D&D 3.5/D&D - Livro dos Niveis Epicos - Vários autores.pdf",
+      "pageCount": 321,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D - Manual dos Planos - Vários autores.pdf",
+      "title": "D&D - Manual dos Planos - Vários autores",
+      "sourcePath": "D&D 3.5/D&D - Manual dos Planos - Vários autores.pdf",
+      "pageCount": 225,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - Livro Completo do Aventureiro - Vários autores.pdf",
+      "title": "D&D 3.5 - Livro Completo do Aventureiro - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - Livro Completo do Aventureiro - Vários autores.pdf",
+      "pageCount": 194,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - O Livro Completo do Arcano - Vários autores.pdf",
+      "title": "D&D 3.5 - O Livro Completo do Arcano - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - O Livro Completo do Arcano - Vários autores.pdf",
+      "pageCount": 193,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - O Livro Completo do Divino - Vários autores.pdf",
+      "title": "D&D 3.5 - O Livro Completo do Divino - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - O Livro Completo do Divino - Vários autores.pdf",
+      "pageCount": 193,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - O Livro Completo do Guerreiro - Vários autores.pdf",
+      "title": "D&D 3.5 - O Livro Completo do Guerreiro - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - O Livro Completo do Guerreiro - Vários autores.pdf",
+      "pageCount": 162,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/Champions Of Valor - Vários autores.pdf",
+      "title": "Champions Of Valor - Vários autores",
+      "sourcePath": "D&D 3.5/Champions Of Valor - Vários autores.pdf",
+      "pageCount": 169,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.0 - Forgotten Realms - Crenças e Panteões - Vários autores.pdf",
+      "title": "D&D 3.0 - Forgotten Realms - Crenças e Panteões - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.0 - Forgotten Realms - Crenças e Panteões - Vários autores.pdf",
+      "pageCount": 226,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/Champions of Ruin - Vários autores.pdf",
+      "title": "Champions of Ruin - Vários autores",
+      "sourcePath": "D&D 3.5/Champions of Ruin - Vários autores.pdf",
+      "pageCount": 159,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - Livro Punhos e Espadas - Vários autores.pdf",
+      "title": "D&D 3.5 - Livro Punhos e Espadas - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - Livro Punhos e Espadas - Vários autores.pdf",
+      "pageCount": 98,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - Livro  Defensores da Fé - Vários autores.pdf",
+      "title": "D&D 3.5 - Livro  Defensores da Fé - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - Livro  Defensores da Fé - Vários autores.pdf",
+      "pageCount": 98,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - Enemies And Allies - Vários autores.pdf",
+      "title": "D&D 3.5 - Enemies And Allies - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - Enemies And Allies - Vários autores.pdf",
+      "pageCount": 65,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - Book of Challenges - Vários autores.pdf",
+      "title": "D&D 3.5 - Book of Challenges - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - Book of Challenges - Vários autores.pdf",
+      "pageCount": 137,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - Exemplars of Evil - Vários autores.pdf",
+      "title": "D&D 3.5 - Exemplars of Evil - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - Exemplars of Evil - Vários autores.pdf",
+      "pageCount": 171,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - Stronghold Builder's Guidebook - Vários autores.pdf",
+      "title": "D&D 3.5 - Stronghold Builder's Guidebook - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - Stronghold Builder's Guidebook - Vários autores.pdf",
+      "pageCount": 136,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - Rules Compendium - Vários autores.pdf",
+      "title": "D&D 3.5 - Rules Compendium - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - Rules Compendium - Vários autores.pdf",
+      "pageCount": 162,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - Livro Cityscape - Vários autores.pdf",
+      "title": "D&D 3.5 - Livro Cityscape - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - Livro Cityscape - Vários autores.pdf",
+      "pageCount": 158,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    },
+    {
+      "id": "D&D 3.5/D&D 3.5 - Frostburn - Vários autores.pdf",
+      "title": "D&D 3.5 - Frostburn - Vários autores",
+      "sourcePath": "D&D 3.5/D&D 3.5 - Frostburn - Vários autores.pdf",
+      "pageCount": 243,
+      "pdfReadable": true,
+      "systemId": "dnd35",
+      "systemCandidates": [
+        "dnd35"
+      ],
+      "ruleset": null,
+      "curationStatus": "inventory_only",
+      "contentIndexStatus": "pending_manual_review",
+      "pairedTextUsable": false
+    }
+  ]
+}

@@ -14793,70 +14793,94 @@ for (const [archetype, ptArchetype, enArchetype, esArchetype, slug, pt, en, es, 
   else PF2E_DATA.feats.push(featRecord);
 }
 
-// Battlecry!, pp. 25–35: talentos de classe do Comandante.
+// Battlecry!, pp. 30–35: talentos de classe do Comandante.
 const BATTLECRY_COMMANDER_FEATS = [
-  ["armored_regiment_training", "Treinamento de Regimento Blindado", "Armored Regiment Training", "Entrenamiento de regimiento blindado", 1, 25],
-  ["combat_assessment", "Avaliação de Combate", "Combat Assessment", "Evaluación de combate", 1, 25],
-  ["commanders_companion", "Companheiro do Comandante", "Commander's Companion", "Compañero del comandante", 1, 25],
-  ["deceptive_tactics", "Táticas Enganosas", "Deceptive Tactics", "Tácticas engañosas", 1, 25],
-  ["officers_medical_training", "Treinamento Médico do Oficial", "Officer's Medical Training", "Entrenamiento médico del oficial", 1, 25],
-  ["plant_banner", "Plantar Estandarte", "Plant Banner", "Plantar estandarte", 1, 25],
-  ["adaptive_stratagem", "Estratagema Adaptável", "Adaptive Stratagem", "Estratagema adaptable", 2, 27],
-  ["defensive_swap", "Troca Defensiva", "Defensive Swap", "Intercambio defensivo", 2, 27],
-  ["guiding_shot", "Disparo Orientador", "Guiding Shot", "Disparo guiado", 2, 27],
-  ["rapid_assessment", "Avaliação Rápida", "Rapid Assessment", "Evaluación rápida", 2, 27],
-  ["set_up_strike", "Preparar Golpe", "Set-Up Strike", "Preparar golpe", 2, 27],
-  ["tactical_expansion", "Expansão Tática", "Tactical Expansion", "Expansión táctica", 2, 27],
-  ["banners_inspiration", "Inspiração do Estandarte", "Banner's Inspiration", "Inspiración del estandarte", 4, 29],
-  ["banner_twirl", "Giro do Estandarte", "Banner Twirl", "Giro del estandarte", 4, 29],
-  ["observational_analysis", "Análise Observacional", "Observational Analysis", "Análisis observacional", 4, 29],
-  ["shielded_recovery", "Recuperação Protegida", "Shielded Recovery", "Recuperación protegida", 4, 29],
-  ["unsteadying_strike", "Golpe Desequilibrante", "Unsteadying Strike", "Golpe desequilibrante", 4, 29],
+  ["armored_regiment_training", "Treinamento de Regimento Blindado", "Armored Regiment Training", "Entrenamiento de regimiento blindado", 1, 30],
+  ["combat_assessment", "Avaliação de Combate", "Combat Assessment", "Evaluación de combate", 1, 30],
+  ["commanders_companion", "Companheiro do Comandante", "Commander's Companion", "Compañero del comandante", 1, 30],
+  ["deceptive_tactics", "Táticas Enganosas", "Deceptive Tactics", "Tácticas engañosas", 1, 30],
+  ["officers_medical_training", "Treinamento Médico do Oficial", "Officer's Medical Training", "Entrenamiento médico del oficial", 1, 30],
+  ["plant_banner", "Plantar Estandarte", "Plant Banner", "Plantar estandarte", 1, 30],
+  ["adaptive_stratagem", "Estratagema Adaptável", "Adaptive Stratagem", "Estratagema adaptable", 2, 30],
+  ["defensive_swap", "Troca Defensiva", "Defensive Swap", "Intercambio defensivo", 2, 30],
+  ["guiding_shot", "Disparo Orientador", "Guiding Shot", "Disparo guiado", 2, 30],
+  ["rapid_assessment", "Avaliação Rápida", "Rapid Assessment", "Evaluación rápida", 2, 31],
+  ["set_up_strike", "Preparar Golpe", "Set-Up Strike", "Preparar golpe", 2, 31],
+  ["tactical_expansion", "Expansão Tática", "Tactical Expansion", "Expansión táctica", 2, 31],
+  ["banners_inspiration", "Inspiração do Estandarte", "Banner's Inspiration", "Inspiración del estandarte", 4, 31],
+  ["banner_twirl", "Giro do Estandarte", "Banner Twirl", "Giro del estandarte", 4, 31],
+  ["observational_analysis", "Análise Observacional", "Observational Analysis", "Análisis observacional", 4, 31],
+  ["shielded_recovery", "Recuperação Protegida", "Shielded Recovery", "Recuperación protegida", 4, 31],
+  ["unsteadying_strike", "Golpe Desequilibrante", "Unsteadying Strike", "Golpe desequilibrante", 4, 31],
   ["battle_tested_companion", "Companheiro Testado em Batalha", "Battle-Tested Companion", "Compañero curtido en batalla", 6, 31],
   ["claim_the_field", "Reivindicar o Campo", "Claim the Field", "Reclamar el campo", 6, 31],
   ["efficient_preparation", "Preparação Eficiente", "Efficient Preparation", "Preparación eficiente", 6, 31],
   ["reactive_strike", "Golpe Reativo", "Reactive Strike", "Golpe reactivo", 6, 31],
-  ["shield_warden", "Guardião do Escudo", "Shield Warden", "Guardián del escudo", 6, 31],
-  ["defiant_banner", "Estandarte Desafiador", "Defiant Banner", "Estandarte desafiante", 8, 33],
-  ["officers_education", "Educação do Oficial", "Officer's Education", "Educación del oficial", 8, 33],
-  ["rallying_banner", "Estandarte de Reagrupamento", "Rallying Banner", "Estandarte de reagrupamiento", 8, 33],
-  ["unrivaled_analysis", "Análise Inigualável", "Unrivaled Analysis", "Análisis inigualable", 8, 33],
-  ["drilled_reflexes", "Reflexos Treinados", "Drilled Reflexes", "Reflejos entrenados", 10, 34],
-  ["standard_bearers_sacrifice", "Sacrifício do Porta-Estandarte", "Standard-Bearer's Sacrifice", "Sacrificio del portaestandarte", 10, 34],
-  ["targeting_strike", "Golpe de Mira", "Targeting Strike", "Golpe de puntería", 10, 34],
-  ["fortunate_blow", "Golpe Afortunado", "Fortunate Blow", "Golpe afortunado", 12, 35],
-  ["perfected_evaluations", "Avaliações Aperfeiçoadas", "Perfected Evaluations", "Evaluaciones perfeccionadas", 12, 35],
-  ["reactive_interference", "Interferência Reativa", "Reactive Interference", "Interferencia reactiva", 12, 35],
-  ["contact_with_the_enemy", "Contato com o Inimigo", "Contact with the Enemy", "Contacto con el enemigo", 14, 35],
-  ["desperate_resuscitation", "Ressuscitação Desesperada", "Desperate Resuscitation", "Reanimación desesperada", 14, 35],
-  ["quickening_banner", "Estandarte Acelerador", "Quickening Banner", "Estandarte acelerador", 14, 35],
-  ["confusing_commands", "Comandos Confusos", "Confusing Commands", "Órdenes confusas", 16, 35],
-  ["mercenary_reversal", "Reversão Mercenária", "Mercenary Reversal", "Reversión mercenaria", 18, 35],
+  ["shield_warden", "Guardião do Escudo", "Shield Warden", "Guardián del escudo", 6, 32],
+  ["defiant_banner", "Estandarte Desafiador", "Defiant Banner", "Estandarte desafiante", 8, 32],
+  ["officers_education", "Educação do Oficial", "Officer's Education", "Educación del oficial", 8, 32],
+  ["rallying_banner", "Estandarte de Reagrupamento", "Rallying Banner", "Estandarte de reagrupamiento", 8, 32],
+  ["unrivaled_analysis", "Análise Inigualável", "Unrivaled Analysis", "Análisis inigualable", 8, 32],
+  ["drilled_reflexes", "Reflexos Treinados", "Drilled Reflexes", "Reflejos entrenados", 10, 33],
+  ["standard_bearers_sacrifice", "Sacrifício do Porta-Estandarte", "Standard-Bearer's Sacrifice", "Sacrificio del portaestandarte", 10, 33],
+  ["targeting_strike", "Golpe de Mira", "Targeting Strike", "Golpe de puntería", 10, 33],
+  ["fortunate_blow", "Golpe Afortunado", "Fortunate Blow", "Golpe afortunado", 12, 33],
+  ["perfected_evaluations", "Avaliações Aperfeiçoadas", "Perfected Evaluations", "Evaluaciones perfeccionadas", 12, 34],
+  ["reactive_interference", "Interferência Reativa", "Reactive Interference", "Interferencia reactiva", 12, 34],
+  ["contact_with_the_enemy", "Contato com o Inimigo", "Contact with the Enemy", "Contacto con el enemigo", 14, 34],
+  ["desperate_resuscitation", "Ressuscitação Desesperada", "Desperate Resuscitation", "Reanimación desesperada", 14, 34],
+  ["quickening_banner", "Estandarte Acelerador", "Quickening Banner", "Estandarte acelerador", 14, 34],
+  ["confusing_commands", "Comandos Confusos", "Confusing Commands", "Órdenes confusas", 16, 34],
+  ["battle_hardened_companion", "Companheiro Veterano de Batalha", "Battle-Hardened Companion", "Compañero endurecido en batalla", 10, 32],
+  ["peerless_mascot_companion", "Companheiro Mascote Imparável", "Peerless Mascot Companion", "Compañero mascota sin igual", 16, 35],
   ["demand_surrender", "Exigir Rendição", "Demand Surrender", "Exigir rendición", 18, 35],
+  ["mercenary_reversal", "Reversão Mercenária", "Mercenary Reversal", "Reversión mercenaria", 18, 35],
+  ["practiced_reflexes", "Reflexos Praticados", "Practiced Reflexes", "Reflejos practicados", 18, 35],
   ["glorious_banner", "Estandarte Glorioso", "Glorious Banner", "Estandarte glorioso", 20, 35],
   ["pennant_of_victory", "Pendente da Vitória", "Pennant of Victory", "Pendón de la victoria", 20, 35],
 ];
+const BATTLECRY_COMMANDER_DETAILS = {
+  armored_regiment_training: ["Armadura pesada conta como 1 unidade de Volume a menos; você pode descansar normalmente com qualquer armadura e ignora a penalidade de deslocamento da armadura ao calcular a velocidade de viagem em exploração.", "Heavy armor counts as 1 Bulk lighter; you can rest normally in any armor and ignore its Speed penalty when calculating travel speed during exploration.", "La armadura pesada cuenta como 1 unidad de Volumen menos; puedes descansar normalmente con cualquier armadura e ignorar su penalizador de Velocidad al calcular el viaje durante la exploración."],
+  combat_assessment: ["Uma ação: faça um Golpe corpo a corpo. Se acertar, pode Recordar Conhecimento imediatamente sobre o alvo; um acerto crítico concede +2 de bônus de circunstância. O alvo fica temporariamente imune por 1 dia.", "One action: make a melee Strike. On a hit, immediately Recall Knowledge about the target; a critical hit grants a +2 circumstance bonus. The target is temporarily immune for 1 day.", "Una acción: realiza un Golpe cuerpo a cuerpo. Si impactas, puedes Recordar Conocimiento inmediatamente sobre el objetivo; un crítico concede +2 de bonificación circunstancial. El objetivo queda temporalmente inmune durante 1 día."],
+  commanders_companion: ["Você recebe um companheiro animal jovem. Efeitos e habilidades que usam seu estandarte podem se originar do espaço dele, mesmo sem montá-lo; ele conta como aliado da unidade, não para o limite de aliados. Ao Comandar um Animal, ele recebe uma reação utilizável apenas em resposta às suas táticas; ela se perde no fim do turno se não for usada.", "You gain a young animal companion. Banner effects and abilities can originate from its space even when you are not riding it; it counts as a squadmate but not toward your squad limit. When you Command an Animal, it gains a reaction usable only in response to your tactics, lost at the end of the turn if unused.", "Obtienes un compañero animal joven. Los efectos y aptitudes del estandarte pueden originarse en su espacio aunque no lo montes; cuenta como miembro de la unidad, pero no para su límite. Al Comandar un Animal, obtiene una reacción que solo puede usar ante tus tácticas y pierde al final del turno si no la usa."],
+  deceptive_tactics: ["Pré-requisito: ter preparado pelo menos 3 táticas. Use seu modificador de Saber de Guerra no lugar de Enganação para Criar uma Distração ou fintar; ele também conta para pré-requisitos de talentos que aprimoram essas ações. Você recebe Distração Prolongada.", "Prerequisite: at least 3 prepared tactics. Use Warfare Lore instead of Deception for Create a Diversion or Feint, including prerequisites for feats that modify those actions. You gain Lengthy Diversion.", "Requisito: al menos 3 tácticas preparadas. Usa Saber de Guerra en lugar de Engaño para Crear una Distracción o fintar, también para requisitos de dotes que modifican esas acciones. Obtienes Distracción Prolongada."],
+  officers_medical_training: ["Pré-requisito: ter preparado pelo menos 3 táticas. Você fica treinado em Medicina e usa Inteligência no lugar de Sabedoria para Medicina; se já era treinado, fica treinado em outra perícia. Você recebe Medicina de Batalha.", "Prerequisite: at least 3 prepared tactics. You become trained in Medicine and use Intelligence instead of Wisdom for Medicine; if already trained, become trained in another skill. You gain Battle Medicine.", "Requisito: al menos 3 tácticas preparadas. Obtienes entrenamiento en Medicina y usas Inteligencia en lugar de Sabiduría; si ya tenías entrenamiento, lo obtienes en otra habilidad. Obtienes Medicina de Batalla."],
+  plant_banner: ["Uma ação (manipular): plante o estandarte em um canto. Aliados em uma explosão de 30 pés recebem 4 PV temporários (+4 a cada 4 níveis), renovados no início do turno enquanto permanecerem na área. A área de auras originadas no estandarte aumenta em 10 pés (por exemplo, 30 pés tornam-se 40 pés); ele tem Dureza igual ao seu nível + modificador de Inteligência. Você pode recuperá-lo adjacente; um inimigo adjacente pode removê-lo com Interagir.", "One action (manipulate): plant the banner in a corner. Allies in a 30-foot burst gain 4 temporary HP (+4 every 4 levels), renewed at the start of their turn while in the area. Aura areas originating from the banner increase by 10 feet (for example, 30 feet becomes 40 feet); it has Hardness equal to your level + Intelligence modifier. Retrieve it while adjacent; an adjacent enemy can Interact to remove it.", "Una acción (manipular): planta el estandarte en una esquina. Los aliados en una explosión de 30 pies reciben 4 PG temporales (+4 cada 4 niveles), renovados al inicio del turno mientras sigan en el área. Las áreas de aura originadas en el estandarte aumentan 10 pies (por ejemplo, de 30 a 40 pies); tiene Dureza igual a tu nivel + modificador de Inteligencia. Recógelo estando adyacente; un enemigo adyacente puede retirarlo con Interactuar."],
+  adaptive_stratagem: ["Ação livre (gatilho: rolar iniciativa): troque uma tática preparada de especialista, mobilidade ou ofensiva por outra tática da mesma categoria em seu fólio.", "Free action (trigger: roll initiative): replace one prepared expert, mobility, or offensive tactic with another tactic of the same category in your folio.", "Acción gratuita (desencadenante: tirar iniciativa): cambia una táctica preparada de especialista, movilidad u ofensiva por otra de la misma categoría de tu folio."],
+  defensive_swap: ["Reação (gatilho: você ou aliado voluntário adjacente ser alvo de um ataque): troque de posição com o aliado; a criatura que não era o alvo passa a ser o alvo do ataque.", "Reaction (trigger: you or an adjacent willing ally is targeted by an attack): swap positions; the creature that was not targeted becomes the target of the attack.", "Reacción (desencadenante: tú o un aliado voluntario adyacente es objetivo de un ataque): intercambiad posiciones; la criatura que no era objetivo pasa a serlo."],
+  guiding_shot: ["Uma ação (floreio; exige arma à distância): faça um Golpe à distância. Se acertar, a próxima outra criatura que atacar o mesmo alvo antes do início do seu próximo turno recebe +1 de bônus de circunstância na jogada, ou +2 se seu Golpe foi crítico.", "One action (flourish; requires a ranged weapon): make a ranged Strike. On a hit, the next other creature to attack that target before your next turn gains a +1 circumstance bonus to its roll, or +2 if your Strike was a critical hit.", "Una acción (florecimiento; requiere arma a distancia): realiza un Golpe a distancia. Si impactas, la siguiente criatura distinta que ataque al objetivo antes de tu próximo turno obtiene +1 de bonificación circunstancial, o +2 si tu Golpe fue crítico."],
+  battle_hardened_companion: ["Pré-requisito: Companheiro Testado em Batalha. Seu companheiro se torna ágil ou feroz e aumenta em 10 pés a área de aura do estandarte. Em encontro, sem Comandar um Animal, ele pode usar uma ação no seu turno para Andar ou Golpear e recebe uma reação que só pode responder às suas táticas.", "Prerequisite: Battle-Tested Companion. Your companion becomes nimble or savage and increases your banner aura by 10 feet. In an encounter, without Command an Animal, it can use one action on your turn to Stride or Strike and gains a reaction usable only in response to your tactics.", "Requisito: Compañero curtido en batalla. Tu compañero se vuelve ágil o feroz y aumenta 10 pies el área del aura del estandarte. En un encuentro, sin Comandar un Animal, puede usar una acción en tu turno para Andar o Golpear y obtiene una reacción que solo responde a tus tácticas."],
+  peerless_mascot_companion: ["Pré-requisito: Companheiro Veterano de Batalha. Seu companheiro recebe uma especialização adicional ou a especialização mascote imparável, aura de 30 pés e traço besta; se também carregar seu estandarte, as áreas combinam. Ele recebe Inteligência +2, Sabedoria +1, Saber de Guerra especialista, fala um idioma seu, +20 PV máximos (+25 no 18º nível, +30 no 20º) e deslocamentos de escalada e natação iguais ao maior deslocamento.", "Prerequisite: Battle-Hardened Companion. Your companion gains an additional specialization or the peerless mascot specialization, a 30-foot aura, and the beast trait; if it also carries your banner, the areas combine. It gains +2 Intelligence, +1 Wisdom, expert Warfare Lore, a language you know, +20 maximum HP (+25 at 18th level, +30 at 20th), and climb and swim Speeds equal to its fastest Speed.", "Requisito: Compañero endurecido en batalla. Tu compañero obtiene una especialización adicional o la especialización de mascota sin igual, un aura de 30 pies y el rasgo bestia; si también lleva tu estandarte, las áreas se combinan. Obtiene +2 Inteligencia, +1 Sabiduría, Saber de Guerra experto, un idioma que conozcas, +20 PG máximos (+25 a nivel 18, +30 a nivel 20) y Velocidades de trepar y nadar iguales a su Velocidad más alta."],
+  practiced_reflexes: ["Pré-requisito: Reflexos Treinados. Ao usar as reações concedidas por Reflexos Treinados, conceda uma reação adicional a até quatro aliados.", "Prerequisite: Drilled Reflexes. When you use the reactions granted by Drilled Reflexes, grant an additional reaction to up to four allies.", "Requisito: Reflejos entrenados. Al usar las reacciones concedidas por Reflejos entrenados, concede una reacción adicional a hasta cuatro aliados."],
+};
+const BATTLECRY_COMMANDER_PREREQUISITES = {
+  battle_hardened_companion: ["Companheiro Testado em Batalha"],
+  peerless_mascot_companion: ["Companheiro Veterano de Batalha"],
+  practiced_reflexes: ["Reflexos Treinados"],
+};
 for (const [slug, pt, en, es, level, page] of BATTLECRY_COMMANDER_FEATS) {
   const id = `feat.class.commander.${slug}`;
-  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
-  PF2E_DATA.feats.push({
+  const descriptions = BATTLECRY_COMMANDER_DETAILS[slug];
+  const featRecord = {
     id,
     name: `${pt} (${en})`,
     names: { "pt-BR": pt, en, es },
-    summaries: {
-      "pt-BR": `Talento de classe do Comandante, nível ${level}.`,
-      en: `Commander class feat, level ${level}.`,
-      es: `Dote de clase de Comandante, nivel ${level}.`,
+    summaries: descriptions ? { "pt-BR": descriptions[0], en: descriptions[1], es: descriptions[2] } : {
+      "pt-BR": `Talento de classe do Comandante, nível ${level}.`, en: `Commander class feat, level ${level}.`, es: `Dote de clase de Comandante, nivel ${level}.`,
     },
-    description: "Talento de classe do Comandante.",
+    description: descriptions?.[0] || "Talento de classe do Comandante.",
     category: "Classe",
     type: "Talento",
     level,
     classId: "class.commander",
+    prerequisites: BATTLECRY_COMMANDER_PREREQUISITES[slug] || [],
     traits: ["Comandante"],
     source: { book: BATTLECRY_SOURCE, page },
     sourceApproximate: false, ruleset: "remaster", needs_review: false,
-  });
+  };
+  const existingRecord = (PF2E_DATA.feats || []).find((record) => record.id === id);
+  if (existingRecord) Object.assign(existingRecord, featRecord);
+  else PF2E_DATA.feats.push(featRecord);
 }
 
 // Battlecry!, pp. 41–51: talentos de classe do Guardião.

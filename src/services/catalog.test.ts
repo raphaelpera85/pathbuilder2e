@@ -927,11 +927,14 @@ describe("serviço de catálogo local", () => {
       "dnd35.phb.spell.clerigo.9.implosao",
       "dnd35.phb.spell.druida.2.imobilizar-animal",
       "dnd35.phb.spell.feiticeiro_mago.1.imagem-silenciosa",
+      "dnd35.phb.spell.feiticeiro_mago.1.leque-cromatico",
       "dnd35.phb.spell.feiticeiro_mago.3.imobilizar-mortos-vivos",
       "dnd35.phb.spell.feiticeiro_mago.3.imobilizar-pessoa",
+      "dnd35.phb.spell.feiticeiro_mago.3.lentidao",
       "dnd35.phb.spell.feiticeiro_mago.5.imagem-persistente",
       "dnd35.phb.spell.feiticeiro_mago.5.imobilizar-monstro",
       "dnd35.phb.spell.feiticeiro_mago.6.imagem-programada",
+      "dnd35.phb.spell.feiticeiro_mago.6.lendas-e-historias",
       "dnd35.phb.spell.feiticeiro_mago.7.imobilizar-pessoa-em-massa",
       "dnd35.phb.spell.feiticeiro_mago.9.imobilizar-monstro-em-massa",
       "dnd35.phb.spell.patrulheiro.2.imobilizar-animal",
@@ -948,6 +951,7 @@ describe("serviço de catálogo local", () => {
       "dnd35.phb.spell.clerigo.4.idiomas",
       "dnd35.phb.spell.feiticeiro_mago.3.idiomas",
       "dnd35.phb.spell.bardo.3.imagem-maior",
+      "dnd35.phb.spell.bardo.3.lentidao",
       "dnd35.phb.spell.feiticeiro_mago.3.imagem-maior",
       "dnd35.phb.spell.bardo.2.imagem-menor",
       "dnd35.phb.spell.feiticeiro_mago.2.imagem-menor",
@@ -977,8 +981,38 @@ describe("serviço de catálogo local", () => {
       "dnd35.phb.spell.patrulheiro.1.invisibilidade-contra-animais",
       "dnd35.phb.spell.clerigo.1.invisibilidade-contra-mortos-vivos",
       "dnd35.phb.spell.bardo.4.invisibilidade-maior",
+      "dnd35.phb.spell.bardo.4.lendas-e-historias",
       "dnd35.phb.spell.feiticeiro_mago.4.invisibilidade-maior",
       "dnd35.phb.spell.feiticeiro_mago.7.invisibilidade-em-massa",
+      "dnd35.phb.spell.bardo.0.ler-magia",
+      "dnd35.phb.spell.bardo.0.luz",
+      "dnd35.phb.spell.bardo.2.localizar-objetos",
+      "dnd35.phb.spell.bardo.3.loquacidade",
+      "dnd35.phb.spell.bardo.3.luz-do-dia",
+      "dnd35.phb.spell.bardo.4.localizar-criatura",
+      "dnd35.phb.spell.clerigo.0.ler-magias",
+      "dnd35.phb.spell.clerigo.0.luz",
+      "dnd35.phb.spell.clerigo.3.localizar-objetos",
+      "dnd35.phb.spell.clerigo.3.luz-cegante",
+      "dnd35.phb.spell.clerigo.3.luz-do-dia",
+      "dnd35.phb.spell.druida.0.ler-magias",
+      "dnd35.phb.spell.druida.0.luz",
+      "dnd35.phb.spell.druida.2.lufada-de-vento",
+      "dnd35.phb.spell.druida.3.luz-do-dia",
+      "dnd35.phb.spell.druida.6.madeira-ferro",
+      "dnd35.phb.spell.feiticeiro_mago.0.ler-magias",
+      "dnd35.phb.spell.feiticeiro_mago.0.luz",
+      "dnd35.phb.spell.feiticeiro_mago.2.levitacao",
+      "dnd35.phb.spell.feiticeiro_mago.2.localizar-objetos",
+      "dnd35.phb.spell.feiticeiro_mago.2.lufada-de-vento",
+      "dnd35.phb.spell.feiticeiro_mago.3.luz-do-dia",
+      "dnd35.phb.spell.feiticeiro_mago.4.localizar-criatura",
+      "dnd35.phb.spell.feiticeiro_mago.5.ligacao-telepatica-de-rary",
+      "dnd35.phb.spell.feiticeiro_mago.8.limpar-a-mente",
+      "dnd35.phb.spell.feiticeiro_mago.9.libertacao",
+      "dnd35.phb.spell.paladino.1.ler-magias",
+      "dnd35.phb.spell.paladino.3.luz-do-dia",
+      "dnd35.phb.spell.patrulheiro.1.ler-magias",
     ].sort());
     expect(items.find((item) => item.id === "dnd35.phb.spell.feiticeiro_mago.1.disco-flutuante-de-tenser")?.data).toMatchObject({
       detailsPage: 231, detailsPageEnd: 232, summaryOnly: false,
@@ -2239,7 +2273,7 @@ describe("serviço de catálogo local", () => {
 
   it("calcula totais de tabelas pelo manifesto sem carregar registros", async () => {
     const counts = await fetchCatalogTableCounts();
-    expect(counts.catalog_feats).toBe(2732);
+    expect(counts.catalog_feats).toBe(2735);
     expect(counts.catalog_spells).toBe(1101);
     expect(counts.catalog_weapons).toBe(298);
     expect(counts.catalog_armors).toBe(79);
@@ -2250,9 +2284,9 @@ describe("serviço de catálogo local", () => {
   it("calcula as métricas do compêndio pelos snapshots locais, incluindo perícias", async () => {
     const metrics = await fetchCatalogLocalMetrics();
     expect(metrics.counts.catalog_skills).toBe(195);
-    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(7999);
+    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(8002);
     expect(metrics.counts.catalog_spells).toBe(2181);
-    expect(metrics.verifiedCount + metrics.reviewCount).toBe(7999);
+    expect(metrics.verifiedCount + metrics.reviewCount).toBe(8002);
   });
 
   it("compartilha o cálculo das métricas locais entre chamadas concorrentes", async () => {
