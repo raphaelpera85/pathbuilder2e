@@ -6,10 +6,14 @@ import { localizeSourceBookName, pathfinderSources } from "./sources";
 
 interface LegacyRecord {
   id?: string;
+  classId?: string;
+  level?: number;
   source?: { book?: string; page?: number };
   sourceApproximate?: boolean;
   ruleset?: string;
   needs_review?: boolean;
+  description?: string;
+  prerequisites?: string[];
   rarity?: string;
   rareSelection?: boolean;
   category?: string;
@@ -804,16 +808,44 @@ describe("proveniência do catálogo legado", () => {
     expect(feats).toHaveLength(13);
     expect(feats.filter((item) => item.level === 2)).toHaveLength(2);
     expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect(feats.find((item) => item.id === "feat.archetype.commander_multiclass.dedication")).toMatchObject({
+      names: { "pt-BR": "Dedicação de Comandante", en: "Commander Dedication", es: "Dedicación de comandante" },
+      prerequisites: ["Inteligência +2"],
+      traits: ["Arquétipo", "Dedicação", "Multiclasse"],
+      description: expect.stringContaining("aura de 9 metros"),
+      source: { page: 52 },
+    });
   });
 
   it("indexa os talentos de classe do Comandante por nível e classe", () => {
     const catalog = loadCatalog() as { feats: LegacyRecord[] };
     const feats = catalog.feats.filter((item) => item.classId === "class.commander" && item.source?.book === "Battlecry! (Remaster)");
-    expect(feats).toHaveLength(40);
+    expect(feats).toHaveLength(43);
     expect(feats.map((item) => item.level)).toContain(1);
     expect(feats.map((item) => item.level)).toContain(10);
     expect(feats.map((item) => item.level)).toContain(20);
     expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+
+    const byId = new Map(feats.map((item) => [item.id, item]));
+    expect(byId.get("feat.class.commander.battle_hardened_companion")).toMatchObject({ level: 10, prerequisites: ["Companheiro Testado em Batalha"], source: { page: 32 } });
+    expect(byId.get("feat.class.commander.peerless_mascot_companion")).toMatchObject({ level: 16, prerequisites: ["Companheiro Veterano de Batalha"], source: { page: 35 } });
+    expect(byId.get("feat.class.commander.practiced_reflexes")).toMatchObject({ level: 18, prerequisites: ["Reflexos Treinados"], source: { page: 35 } });
+    expect(byId.get("feat.class.commander.armored_regiment_training")).toMatchObject({ source: { page: 30 }, description: expect.stringContaining("1 unidade de Volume") });
+    expect(byId.get("feat.class.commander.plant_banner")).toMatchObject({ source: { page: 30 }, description: expect.stringContaining("40 pés") });
+    expect(byId.get("feat.class.commander.guiding_shot")).toMatchObject({ source: { page: 30 }, description: expect.stringContaining("bônus de circunstância +2") });
+    const page30FeatIds = [
+      "feat.class.commander.armored_regiment_training",
+      "feat.class.commander.combat_assessment",
+      "feat.class.commander.commanders_companion",
+      "feat.class.commander.deceptive_tactics",
+      "feat.class.commander.officers_medical_training",
+      "feat.class.commander.plant_banner",
+      "feat.class.commander.adaptive_stratagem",
+      "feat.class.commander.defensive_swap",
+      "feat.class.commander.guiding_shot",
+    ];
+    expect(page30FeatIds.every((id) => byId.get(id)?.description && !/^Talento de classe do Comandante, nível/.test(byId.get(id)?.description || ""))).toBe(true);
+    expect([[30, 9], [31, 12], [32, 6], [33, 4], [34, 6], [35, 6]].every(([page, count]) => feats.filter((item) => item.source?.page === page).length === count)).toBe(true);
   });
 
   it("indexa os talentos de classe do Guardião por nível e classe", () => {

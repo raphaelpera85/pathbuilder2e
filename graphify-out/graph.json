@@ -10197,7 +10197,7 @@
       "file_type": "code",
       "norm_label": "enrichallfeatswithfullmechanics()",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16744"
+      "source_location": "L16758"
     },
     {
       "id": "js_pf2e_data_enrichallfeatswithfullmechanics_slugifytext",
@@ -10209,7 +10209,7 @@
       "file_type": "code",
       "norm_label": "slugifytext()",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16755"
+      "source_location": "L16769"
     },
     {
       "id": "agents_skills_taste_application_scripts_tasteforge_provenance_assert_no_saved_provider_workflow",
@@ -35816,7 +35816,7 @@
       "file_type": "code",
       "norm_label": "battlecry_battle_spells",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15568"
+      "source_location": "L15582"
     },
     {
       "id": "js_pf2e_data_battlecry_commander_feats",
@@ -35827,7 +35827,7 @@
       "file_type": "code",
       "norm_label": "battlecry_commander_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L14783"
+      "source_location": "L14797"
     },
     {
       "id": "js_pf2e_data_battlecry_equipment",
@@ -35838,7 +35838,7 @@
       "file_type": "code",
       "norm_label": "battlecry_equipment",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L14940"
+      "source_location": "L14954"
     },
     {
       "id": "js_pf2e_data_battlecry_gear",
@@ -35849,7 +35849,7 @@
       "file_type": "code",
       "norm_label": "battlecry_gear",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15008"
+      "source_location": "L15022"
     },
     {
       "id": "js_pf2e_data_battlecry_guardian_feats",
@@ -35860,7 +35860,7 @@
       "file_type": "code",
       "norm_label": "battlecry_guardian_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L14849"
+      "source_location": "L14863"
     },
     {
       "id": "js_pf2e_data_battlecry_jotunborn_feats",
@@ -35882,7 +35882,7 @@
       "file_type": "code",
       "norm_label": "battlecry_magic_ammunition",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15109"
+      "source_location": "L15123"
     },
     {
       "id": "js_pf2e_data_battlecry_magic_armor",
@@ -35893,7 +35893,7 @@
       "file_type": "code",
       "norm_label": "battlecry_magic_armor",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15037"
+      "source_location": "L15051"
     },
     {
       "id": "js_pf2e_data_battlecry_magic_shields",
@@ -35904,7 +35904,7 @@
       "file_type": "code",
       "norm_label": "battlecry_magic_shields",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15071"
+      "source_location": "L15085"
     },
     {
       "id": "js_pf2e_data_battlecry_magic_weapons",
@@ -35915,7 +35915,7 @@
       "file_type": "code",
       "norm_label": "battlecry_magic_weapons",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15131"
+      "source_location": "L15145"
     },
     {
       "id": "js_pf2e_data_battlecry_multiclass_feats",
@@ -35937,7 +35937,7 @@
       "file_type": "code",
       "norm_label": "battlecry_shields_data",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15083"
+      "source_location": "L15097"
     },
     {
       "id": "js_pf2e_data_battlecry_siege_rituals",
@@ -35948,7 +35948,7 @@
       "file_type": "code",
       "norm_label": "battlecry_siege_rituals",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15613"
+      "source_location": "L15627"
     },
     {
       "id": "js_pf2e_data_battlecry_weapon_metadata",
@@ -35959,7 +35959,7 @@
       "file_type": "code",
       "norm_label": "battlecry_weapon_metadata",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L14984"
+      "source_location": "L14998"
     },
     {
       "id": "js_pf2e_data_battlecry_weapons_data",
@@ -35970,7 +35970,7 @@
       "file_type": "code",
       "norm_label": "battlecry_weapons_data",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15158"
+      "source_location": "L15172"
     },
     {
       "id": "js_pf2e_data_book_dead_backgrounds",
@@ -36003,7 +36003,7 @@
       "file_type": "code",
       "norm_label": "book_of_dead_magic_items",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15924"
+      "source_location": "L15938"
     },
     {
       "id": "js_pf2e_data_book_of_dead_player_archetypes",
@@ -36014,7 +36014,7 @@
       "file_type": "code",
       "norm_label": "book_of_dead_player_archetypes",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15952"
+      "source_location": "L15966"
     },
     {
       "id": "js_pf2e_data_class_choice_fields",
@@ -36091,7 +36091,7 @@
       "file_type": "code",
       "norm_label": "consecrated_ground_spell",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15975"
+      "source_location": "L15989"
     },
     {
       "id": "js_pf2e_data_contextual_prerequisite_gates",
@@ -36102,7 +36102,7 @@
       "file_type": "code",
       "norm_label": "contextual_prerequisite_gates",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16716"
+      "source_location": "L16730"
     },
     {
       "id": "js_pf2e_data_coralplatearmor",
@@ -36124,7 +36124,7 @@
       "file_type": "code",
       "norm_label": "dark_archive_aftermath_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15803"
+      "source_location": "L15817"
     },
     {
       "id": "js_pf2e_data_dark_archive_apocryphal_domains",
@@ -36135,7 +36135,7 @@
       "file_type": "code",
       "norm_label": "dark_archive_apocryphal_domains",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16119"
+      "source_location": "L16133"
     },
     {
       "id": "js_pf2e_data_dark_archive_archetype_feats",
@@ -36146,7 +36146,7 @@
       "file_type": "code",
       "norm_label": "dark_archive_archetype_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16218"
+      "source_location": "L16232"
     },
     {
       "id": "js_pf2e_data_dark_archive_archetypes",
@@ -36157,7 +36157,7 @@
       "file_type": "code",
       "norm_label": "dark_archive_archetypes",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15834"
+      "source_location": "L15848"
     },
     {
       "id": "js_pf2e_data_dark_archive_classes",
@@ -36179,7 +36179,7 @@
       "file_type": "code",
       "norm_label": "dark_archive_deviant_spells",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16085"
+      "source_location": "L16099"
     },
     {
       "id": "js_pf2e_data_dark_archive_items",
@@ -36190,7 +36190,7 @@
       "file_type": "code",
       "norm_label": "dark_archive_items",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16181"
+      "source_location": "L16195"
     },
     {
       "id": "js_pf2e_data_dark_archive_multiclass_feats",
@@ -36201,7 +36201,7 @@
       "file_type": "code",
       "norm_label": "dark_archive_multiclass_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15770"
+      "source_location": "L15784"
     },
     {
       "id": "js_pf2e_data_dark_archive_psychic_cantrips",
@@ -36212,7 +36212,7 @@
       "file_type": "code",
       "norm_label": "dark_archive_psychic_cantrips",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16047"
+      "source_location": "L16061"
     },
     {
       "id": "js_pf2e_data_dark_archive_psychic_feats",
@@ -36223,7 +36223,7 @@
       "file_type": "code",
       "norm_label": "dark_archive_psychic_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15691"
+      "source_location": "L15705"
     },
     {
       "id": "js_pf2e_data_dark_archive_temporal_spells",
@@ -36234,7 +36234,7 @@
       "file_type": "code",
       "norm_label": "dark_archive_temporal_spells",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16151"
+      "source_location": "L16165"
     },
     {
       "id": "js_pf2e_data_dark_archive_thaumaturge_feats",
@@ -36245,7 +36245,7 @@
       "file_type": "code",
       "norm_label": "dark_archive_thaumaturge_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15744"
+      "source_location": "L15758"
     },
     {
       "id": "js_pf2e_data_enriched_subclasses_catalog",
@@ -36300,7 +36300,7 @@
       "file_type": "code",
       "norm_label": "guns_gears_class_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16256"
+      "source_location": "L16270"
     },
     {
       "id": "js_pf2e_data_guns_gears_dedication_feats",
@@ -36322,7 +36322,7 @@
       "file_type": "code",
       "norm_label": "guns_gears_gunslinger_feat_mechanics",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16370"
+      "source_location": "L16384"
     },
     {
       "id": "js_pf2e_data_guns_gears_inventor_feat_mechanics",
@@ -36333,7 +36333,7 @@
       "file_type": "code",
       "norm_label": "guns_gears_inventor_feat_mechanics",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16333"
+      "source_location": "L16347"
     },
     {
       "id": "js_pf2e_data_guns_gears_rare_backgrounds",
@@ -36443,7 +36443,7 @@
       "file_type": "code",
       "norm_label": "howl_wild_archetype_dedications",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15991"
+      "source_location": "L16005"
     },
     {
       "id": "js_pf2e_data_howl_wild_archetypes",
@@ -36520,7 +36520,7 @@
       "file_type": "code",
       "norm_label": "howl_wild_warden_and_witch_spells",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16016"
+      "source_location": "L16030"
     },
     {
       "id": "js_pf2e_data_jotunborn_heritage_details",
@@ -37059,7 +37059,7 @@
       "file_type": "code",
       "norm_label": "player_core_bard_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16411"
+      "source_location": "L16425"
     },
     {
       "id": "js_pf2e_data_player_core_bard_multiclass_feats",
@@ -37092,7 +37092,7 @@
       "file_type": "code",
       "norm_label": "player_core_cleric_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16446"
+      "source_location": "L16460"
     },
     {
       "id": "js_pf2e_data_player_core_cleric_multiclass_feats",
@@ -37125,7 +37125,7 @@
       "file_type": "code",
       "norm_label": "player_core_druid_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16479"
+      "source_location": "L16493"
     },
     {
       "id": "js_pf2e_data_player_core_druid_multiclass_feats",
@@ -37169,7 +37169,7 @@
       "file_type": "code",
       "norm_label": "player_core_fighter_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16505"
+      "source_location": "L16519"
     },
     {
       "id": "js_pf2e_data_player_core_fighter_multiclass_feats",
@@ -37235,7 +37235,7 @@
       "file_type": "code",
       "norm_label": "player_core_ranger_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16620"
+      "source_location": "L16634"
     },
     {
       "id": "js_pf2e_data_player_core_ranger_multiclass_feats",
@@ -37268,7 +37268,7 @@
       "file_type": "code",
       "norm_label": "player_core_rogue_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16536"
+      "source_location": "L16550"
     },
     {
       "id": "js_pf2e_data_player_core_rogue_feats_additional",
@@ -37279,7 +37279,7 @@
       "file_type": "code",
       "norm_label": "player_core_rogue_feats_additional",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16561"
+      "source_location": "L16575"
     },
     {
       "id": "js_pf2e_data_player_core_rogue_multiclass_feats",
@@ -37301,7 +37301,7 @@
       "file_type": "code",
       "norm_label": "player_core_shared_feat_mechanics",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16388"
+      "source_location": "L16402"
     },
     {
       "id": "js_pf2e_data_player_core_skill_feats",
@@ -37378,7 +37378,7 @@
       "file_type": "code",
       "norm_label": "player_core_witch_feat_names",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16659"
+      "source_location": "L16673"
     },
     {
       "id": "js_pf2e_data_player_core_witch_feats",
@@ -37389,7 +37389,7 @@
       "file_type": "code",
       "norm_label": "player_core_witch_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16650"
+      "source_location": "L16664"
     },
     {
       "id": "js_pf2e_data_player_core_witch_hex_summaries",
@@ -37433,7 +37433,7 @@
       "file_type": "code",
       "norm_label": "player_core_wizard_feat_names",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16594"
+      "source_location": "L16608"
     },
     {
       "id": "js_pf2e_data_player_core_wizard_feats",
@@ -37444,7 +37444,7 @@
       "file_type": "code",
       "norm_label": "player_core_wizard_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16583"
+      "source_location": "L16597"
     },
     {
       "id": "js_pf2e_data_player_core_wizard_multiclass_feats",
@@ -37917,7 +37917,7 @@
       "file_type": "code",
       "norm_label": "secrets_of_magic_focus_spells",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15861"
+      "source_location": "L15875"
     },
     {
       "id": "js_pf2e_data_secrets_of_magic_magus_feats",
@@ -37928,7 +37928,7 @@
       "file_type": "code",
       "norm_label": "secrets_of_magic_magus_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15638"
+      "source_location": "L15652"
     },
     {
       "id": "js_pf2e_data_secrets_of_magic_magus_hybrid_studies",
@@ -37950,7 +37950,7 @@
       "file_type": "code",
       "norm_label": "secrets_of_magic_multiclass_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15891"
+      "source_location": "L15905"
     },
     {
       "id": "js_pf2e_data_secrets_summoner_feats",
@@ -37961,7 +37961,7 @@
       "file_type": "code",
       "norm_label": "secrets_summoner_feats",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16688"
+      "source_location": "L16702"
     },
     {
       "id": "js_pf2e_data_shadowdancer",
@@ -38148,7 +38148,7 @@
       "file_type": "code",
       "norm_label": "war_immortals_mythic_rituals",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15539"
+      "source_location": "L15553"
     },
     {
       "id": "js_pf2e_data_war_immortals_mythic_spells",
@@ -38159,7 +38159,7 @@
       "file_type": "code",
       "norm_label": "war_immortals_mythic_spells",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15511"
+      "source_location": "L15525"
     },
     {
       "id": "js_pf2e_data_war_immortals_storied_armor",
@@ -38170,7 +38170,7 @@
       "file_type": "code",
       "norm_label": "war_immortals_storied_armor",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15461"
+      "source_location": "L15475"
     },
     {
       "id": "js_pf2e_data_war_immortals_storied_weapons",
@@ -38181,7 +38181,7 @@
       "file_type": "code",
       "norm_label": "war_immortals_storied_weapons",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15479"
+      "source_location": "L15493"
     },
     {
       "id": "scripts_sync_dnd5e_class_spell_lists_catalog_snapshot",
@@ -71718,7 +71718,7 @@
       "node_kind": "heading",
       "norm_label": "crud de personagens",
       "source_file": "README.md",
-      "source_location": "L144"
+      "source_location": "L147"
     },
     {
       "id": "readme_dados_e_seguran\u00e7a",
@@ -71790,7 +71790,7 @@
       "node_kind": "heading",
       "norm_label": "publicacao gratuita recomendada",
       "source_file": "README.md",
-      "source_location": "L155"
+      "source_location": "L158"
     },
     {
       "id": "readme_p\u00e1ginas_do_portal",
@@ -71814,7 +71814,7 @@
       "node_kind": "heading",
       "norm_label": "verificacoes locais",
       "source_file": "README.md",
-      "source_location": "L171"
+      "source_location": "L174"
     },
     {
       "id": "agents_skills_data_scraper_agent_skill",
@@ -207498,7 +207498,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16755",
+      "source_location": "L16769",
       "weight": 1.0
     },
     {
@@ -348359,7 +348359,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L14783",
+      "source_location": "L14797",
       "weight": 1.0
     },
     {
@@ -348370,7 +348370,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L14849",
+      "source_location": "L14863",
       "weight": 1.0
     },
     {
@@ -348381,7 +348381,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L14940",
+      "source_location": "L14954",
       "weight": 1.0
     },
     {
@@ -348392,7 +348392,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L14984",
+      "source_location": "L14998",
       "weight": 1.0
     },
     {
@@ -348403,7 +348403,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15008",
+      "source_location": "L15022",
       "weight": 1.0
     },
     {
@@ -348414,7 +348414,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15037",
+      "source_location": "L15051",
       "weight": 1.0
     },
     {
@@ -348425,7 +348425,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15071",
+      "source_location": "L15085",
       "weight": 1.0
     },
     {
@@ -348436,7 +348436,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15083",
+      "source_location": "L15097",
       "weight": 1.0
     },
     {
@@ -348447,7 +348447,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15109",
+      "source_location": "L15123",
       "weight": 1.0
     },
     {
@@ -348458,7 +348458,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15131",
+      "source_location": "L15145",
       "weight": 1.0
     },
     {
@@ -348469,7 +348469,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15158",
+      "source_location": "L15172",
       "weight": 1.0
     },
     {
@@ -348480,7 +348480,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15461",
+      "source_location": "L15475",
       "weight": 1.0
     },
     {
@@ -348491,7 +348491,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15479",
+      "source_location": "L15493",
       "weight": 1.0
     },
     {
@@ -348502,7 +348502,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15511",
+      "source_location": "L15525",
       "weight": 1.0
     },
     {
@@ -348513,7 +348513,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15539",
+      "source_location": "L15553",
       "weight": 1.0
     },
     {
@@ -348535,7 +348535,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15568",
+      "source_location": "L15582",
       "weight": 1.0
     },
     {
@@ -348546,7 +348546,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15613",
+      "source_location": "L15627",
       "weight": 1.0
     },
     {
@@ -348557,7 +348557,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15638",
+      "source_location": "L15652",
       "weight": 1.0
     },
     {
@@ -348568,7 +348568,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15691",
+      "source_location": "L15705",
       "weight": 1.0
     },
     {
@@ -348579,7 +348579,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15744",
+      "source_location": "L15758",
       "weight": 1.0
     },
     {
@@ -348590,7 +348590,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15770",
+      "source_location": "L15784",
       "weight": 1.0
     },
     {
@@ -348601,7 +348601,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15803",
+      "source_location": "L15817",
       "weight": 1.0
     },
     {
@@ -348612,7 +348612,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15834",
+      "source_location": "L15848",
       "weight": 1.0
     },
     {
@@ -348623,7 +348623,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15861",
+      "source_location": "L15875",
       "weight": 1.0
     },
     {
@@ -348634,7 +348634,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15891",
+      "source_location": "L15905",
       "weight": 1.0
     },
     {
@@ -348645,7 +348645,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15924",
+      "source_location": "L15938",
       "weight": 1.0
     },
     {
@@ -348656,18 +348656,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15952",
-      "weight": 1.0
-    },
-    {
-      "source": "js_pf2e_data",
-      "target": "js_pf2e_data_consecrated_ground_spell",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "js/pf2e_data.js",
-      "source_location": "L15975",
+      "source_location": "L15966",
       "weight": 1.0
     },
     {
@@ -348683,13 +348672,24 @@
     },
     {
       "source": "js_pf2e_data",
+      "target": "js_pf2e_data_consecrated_ground_spell",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/pf2e_data.js",
+      "source_location": "L15989",
+      "weight": 1.0
+    },
+    {
+      "source": "js_pf2e_data",
       "target": "js_pf2e_data_howl_wild_archetype_dedications",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L15991",
+      "source_location": "L16005",
       "weight": 1.0
     },
     {
@@ -348700,7 +348700,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16016",
+      "source_location": "L16030",
       "weight": 1.0
     },
     {
@@ -348711,7 +348711,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16047",
+      "source_location": "L16061",
       "weight": 1.0
     },
     {
@@ -348722,7 +348722,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16085",
+      "source_location": "L16099",
       "weight": 1.0
     },
     {
@@ -348733,7 +348733,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16119",
+      "source_location": "L16133",
       "weight": 1.0
     },
     {
@@ -348744,7 +348744,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16151",
+      "source_location": "L16165",
       "weight": 1.0
     },
     {
@@ -348755,18 +348755,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16181",
-      "weight": 1.0
-    },
-    {
-      "source": "js_pf2e_data",
-      "target": "js_pf2e_data_dark_archive_archetype_feats",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "js/pf2e_data.js",
-      "source_location": "L16218",
+      "source_location": "L16195",
       "weight": 1.0
     },
     {
@@ -348782,13 +348771,24 @@
     },
     {
       "source": "js_pf2e_data",
+      "target": "js_pf2e_data_dark_archive_archetype_feats",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/pf2e_data.js",
+      "source_location": "L16232",
+      "weight": 1.0
+    },
+    {
+      "source": "js_pf2e_data",
       "target": "js_pf2e_data_guns_gears_class_feats",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16256",
+      "source_location": "L16270",
       "weight": 1.0
     },
     {
@@ -348799,7 +348799,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16333",
+      "source_location": "L16347",
       "weight": 1.0
     },
     {
@@ -348810,7 +348810,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16370",
+      "source_location": "L16384",
       "weight": 1.0
     },
     {
@@ -348821,7 +348821,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16388",
+      "source_location": "L16402",
       "weight": 1.0
     },
     {
@@ -348832,7 +348832,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16411",
+      "source_location": "L16425",
       "weight": 1.0
     },
     {
@@ -348843,7 +348843,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16446",
+      "source_location": "L16460",
       "weight": 1.0
     },
     {
@@ -348854,7 +348854,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16479",
+      "source_location": "L16493",
       "weight": 1.0
     },
     {
@@ -348865,7 +348865,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16505",
+      "source_location": "L16519",
       "weight": 1.0
     },
     {
@@ -348876,7 +348876,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16536",
+      "source_location": "L16550",
       "weight": 1.0
     },
     {
@@ -348887,7 +348887,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16561",
+      "source_location": "L16575",
       "weight": 1.0
     },
     {
@@ -348898,7 +348898,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16583",
+      "source_location": "L16597",
       "weight": 1.0
     },
     {
@@ -348909,7 +348909,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16594",
+      "source_location": "L16608",
       "weight": 1.0
     },
     {
@@ -348920,7 +348920,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16620",
+      "source_location": "L16634",
       "weight": 1.0
     },
     {
@@ -348931,7 +348931,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16650",
+      "source_location": "L16664",
       "weight": 1.0
     },
     {
@@ -348942,7 +348942,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16659",
+      "source_location": "L16673",
       "weight": 1.0
     },
     {
@@ -348953,7 +348953,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16688",
+      "source_location": "L16702",
       "weight": 1.0
     },
     {
@@ -348964,18 +348964,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
-      "source_location": "L16716",
-      "weight": 1.0
-    },
-    {
-      "source": "js_pf2e_data",
-      "target": "js_pf2e_data_enrichallfeatswithfullmechanics",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "js/pf2e_data.js",
-      "source_location": "L16744",
+      "source_location": "L16730",
       "weight": 1.0
     },
     {
@@ -348987,6 +348976,17 @@
       "confidence_score": 1.0,
       "source_file": "js/pf2e_data.js",
       "source_location": "L1675",
+      "weight": 1.0
+    },
+    {
+      "source": "js_pf2e_data",
+      "target": "js_pf2e_data_enrichallfeatswithfullmechanics",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/pf2e_data.js",
+      "source_location": "L16758",
       "weight": 1.0
     },
     {
@@ -353595,7 +353595,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L144",
+      "source_location": "L147",
       "weight": 1.0
     },
     {
@@ -353606,7 +353606,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L155",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
@@ -353617,7 +353617,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L171",
+      "source_location": "L174",
       "weight": 1.0
     },
     {
@@ -400250,5 +400250,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "26a9b92574d92e9348726ba7803fee681a890d5d"
+  "built_at_commit": "771b6707a5034ece6b2a1129b2b07ee419d7a144"
 }

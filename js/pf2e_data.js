@@ -14755,28 +14755,42 @@ const BATTLECRY_MULTICLASS_FEATS = [
 ];
 for (const [archetype, ptArchetype, enArchetype, esArchetype, slug, pt, en, es, level, page] of BATTLECRY_MULTICLASS_FEATS) {
   const id = `feat.archetype.${archetype}_multiclass.${slug}`;
-  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  const commanderDedication = archetype === "commander" && slug === "dedication";
+  const existingRecord = (PF2E_DATA.feats || []).find((record) => record.id === id);
+  if (existingRecord && !commanderDedication) continue;
   const dedicationLabel = `Dedicação de ${ptArchetype}`;
-  PF2E_DATA.feats.push({
+  const featRecord = {
     id,
-    name: `${pt} (${en})`,
-    names: { "pt-BR": pt, en, es },
+    name: commanderDedication ? "Dedicação de Comandante (Commander Dedication)" : `${pt} (${en})`,
+    names: commanderDedication
+      ? { "pt-BR": "Dedicação de Comandante", en: "Commander Dedication", es: "Dedicación de comandante" }
+      : { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": `Talento do arquétipo multiclasse de ${ptArchetype}, nível ${level}.`,
-      en: `${enArchetype} multiclass archetype feat, level ${level}.`,
-      es: `Dote del arquetipo multiclase de ${esArchetype}, nivel ${level}.`,
+      "pt-BR": commanderDedication
+        ? "Com Inteligência +2, você recebe táticas de Comandante, um fólio com duas táticas à escolha, uma aura de estandarte para usá-las e treinamentos ligados à classe."
+        : `Talento do arquétipo multiclasse de ${ptArchetype}, nível ${level}.`,
+      en: commanderDedication
+        ? "With Intelligence +2, gain the Commander's tactics feature, a folio with two chosen tactics, a banner aura for using them, and related proficiencies."
+        : `${enArchetype} multiclass archetype feat, level ${level}.`,
+      es: commanderDedication
+        ? "Con Inteligencia +2, obtienes las tácticas de Comandante, un folio con dos tácticas a elección, un aura de estandarte para usarlas y las competencias correspondientes."
+        : `Dote del arquetipo multiclase de ${esArchetype}, nivel ${level}.`,
     },
-    description: `Talento do arquétipo multiclasse de ${ptArchetype}.`,
-    category: "Arquetipo",
+    description: commanderDedication
+      ? "Você recebe a característica táticas de Comandante e um fólio próprio com duas táticas comuns de mobilidade ou ofensivas à sua escolha. Pode preparar uma delas nos mesmos momentos que um comandante. Seu estandarte cria uma aura de 9 metros para usar essas táticas, mas não concede o bônus do estandarte em salvamentos de Vontade ou CDs contra medo. Você se torna treinado na CD de classe de Comandante e em Saber de Guerra; se já for treinado nesse Saber, escolha outro Saber para se tornar treinado."
+      : `Talento do arquétipo multiclasse de ${ptArchetype}.`,
+    category: commanderDedication ? "Arquétipo" : "Arquetipo",
     type: "Talento",
     level,
     archetypeId: `archetype.${archetype}_multiclass`,
-    prerequisites: slug === "dedication" ? [`Classe ${ptArchetype}`] : [dedicationLabel],
-    prereq: slug === "dedication" ? [`Classe ${ptArchetype}`] : [dedicationLabel],
-    traits: ["Arquetipo", "Multiclasse"],
+    prerequisites: commanderDedication ? ["Inteligência +2"] : slug === "dedication" ? [`Classe ${ptArchetype}`] : [dedicationLabel],
+    prereq: commanderDedication ? ["Inteligência +2"] : slug === "dedication" ? [`Classe ${ptArchetype}`] : [dedicationLabel],
+    traits: commanderDedication ? ["Arquétipo", "Dedicação", "Multiclasse"] : ["Arquetipo", "Multiclasse"],
     source: { book: BATTLECRY_SOURCE, page },
     sourceApproximate: false, ruleset: "remaster", needs_review: false,
-  });
+  };
+  if (existingRecord) Object.assign(existingRecord, featRecord);
+  else PF2E_DATA.feats.push(featRecord);
 }
 
 // Battlecry!, pp. 25–35: talentos de classe do Comandante.

@@ -1,7 +1,7 @@
 # Graph Report - pathbuilder2e_local  (2026-10-11)
 
 ## Corpus Check
-- 1286 files · ~16,576,407 words
+- 1286 files · ~16,577,254 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 76 file(s) not represented in the graph (top: .gd 40, (none) 14, .css 10)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `26a9b925`
+- Built from commit: `771b6707`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -3877,7 +3877,7 @@ Nodes (5): Build with TypeSafe, Compose and verify, Design the judgments, Find t
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `vitest` connect `vitest` to `i18n.tsx`, `AccountPortal.tsx`, `catalog.ts`, `Dnd35CharacterCreatorModal.tsx`, `generate-dnd35-defensores-seed.ts`, `auth.ts`, `oseRules.ts`, `PortalPages.tsx`, `catalog.test.ts`, `corePdfExport.ts`, `generate-dnd35-seed.ts`, `campaigns.ts`, `build-pf1e-core-snapshots.mjs`, `ref_fs`, `responsive-layout-contract.test.ts`, `multiSystemCharacter.ts`, `characters.ts`, `dnd35Progression.ts`, `dnd35Catalog.ts`, `dnd35Domains.ts`, `responsive-view.test.ts`, `PickerModal.tsx`, `dnd35Classes.ts`, `generate-dnd35-frostburn-seed.ts`, `dnd35Spellcasting.ts`, `t20-prerequisites.test.ts`, `dnd35FeatPrereqs.ts`, `CharacterBuilderFrame.tsx`, `catalog-language-contract.test.ts`, `package.json`, `coreCharacterRules.ts`, `sync-dnd35-supplements-to-supabase.ts`, `dnd35FeatTable.ts`, `exportMetadata.test.ts`, `migrate-catalog-to-supabase.cjs`?**
-  _High betweenness centrality (0.094) - this node is a cross-community bridge._
+  _High betweenness centrality (0.093) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `PathbuilderApp` (e.g. with `God Nodes (most connected - your core abstractions)` and `Suggested Questions`) actually correct?**
   _`PathbuilderApp` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `resolved`, `contextDirPath`, `projects` to the rest of the system?**
@@ -3885,8 +3885,8 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `pf2e_data.js` be split into smaller, more focused modules?**
   _Cohesion score 0.008771929824561403 - nodes in this community are weakly interconnected._
 - **Why does `label()` connect `corePdfExport.ts` to `Reproducer (/mantis-reproduce)`, `Recording Principles`, `ref_path`, `ECC reusable TasteForge engine`, `responsive-layout-contract.test.ts`, `multiSystemCharacter.ts`?**
-  _High betweenness centrality (0.082) - this node is a cross-community bridge._
+  _High betweenness centrality (0.083) - this node is a cross-community bridge._
 - **Should `PathbuilderApp` be split into smaller, more focused modules?**
   _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._
 - **Why does `validate_bundle()` connect `run_workflow` to `ECC reusable TasteForge engine`, `validate_manifests`, `contract.py`, `json`, `validate_effect_recipe`, `assets.py`?**
-  _High betweenness centrality (0.078) - this node is a cross-community bridge._
+  _High betweenness centrality (0.079) - this node is a cross-community bridge._

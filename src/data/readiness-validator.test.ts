@@ -575,7 +575,7 @@ describe("P1: Validador de Prontidão da Ficha & Regras ABC (Readiness Engine)",
       ["feat.archetype.summoner_dedication.summoner_dedication", "class.summoner", "Carisma 14"],
       ["feat.archetype.magus_dedication.magus_dedication", "class.magus", "Inteligência 14 ou Carisma 14"],
       ["feat.archetype.psychic_dedication.psychic_dedication", "class.psychic", "Inteligência 14 ou Carisma 14"],
-      ["feat.archetype.commander_multiclass.dedication", "class.commander", "Classe Comandante"],
+      ["feat.archetype.commander_multiclass.dedication", "class.commander", "Inteligência +2"],
     ];
     for (const [id, classId, prerequisite] of cases) {
       const dedication = data.feats.find((record: any) => record.id === id);
@@ -583,6 +583,11 @@ describe("P1: Validador de Prontidão da Ficha & Regras ABC (Readiness Engine)",
       expect(engine.getPrerequisiteCompatibility({ level: 2, class: classId, abilities: { int: 14, cha: 14 } }, dedication)).toMatchObject({ state: "incompatible", reason: "class-prohibited" });
       expect(dedication.prerequisites).toContain(prerequisite);
     }
+
+    const commanderDedication = data.feats.find((record: any) => record.id === "feat.archetype.commander_multiclass.dedication");
+    expect(commanderDedication.names).toMatchObject({ "pt-BR": "Dedicação de Comandante", en: "Commander Dedication", es: "Dedicación de comandante" });
+    expect(engine.getPrerequisiteCompatibility({ level: 2, class: "Guerreiro (Fighter)", abilities: { int: 14 } }, commanderDedication).state).toBe("available");
+    expect(engine.getPrerequisiteCompatibility({ level: 2, class: "Guerreiro (Fighter)", abilities: { int: 12 } }, commanderDedication)).toMatchObject({ state: "incompatible", reason: "ability-too-low" });
   });
 
   it("oculta o próprio arquétipo multiclasse no picker de arquétipos", () => {
