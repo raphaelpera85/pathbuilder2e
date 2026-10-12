@@ -1,0 +1,51 @@
+/**
+ * Defensores da Fé (livro 3.0 em português), cap. 1, p. 21: Tabela 1-6, Equipamento Sagrado (preços e pesos),
+ * com as descrições curtas das pp. 21-22. Lido da imagem em resolução reduzida; regras 3.0: conferir com o PHB 3.5.
+ * Preço e peso como impressos (strings). "*" = consulte a descrição; † = pesa um quarto do valor para criaturas Pequenas
+ * (o † só foi lido com clareza nos aspersórios de ferro/prata, no livro de orações, no compacto e no porta-altar).
+ */
+export type DefensoresHolyGear = { name: string; variant?: string; cost: string; weight: string };
+
+export const DEFENSORES_HOLY_GEAR: DefensoresHolyGear[] = [
+  { name: "Abafador/Acendedor", cost: "6 PO", weight: "2 kg" },
+  { name: "Aspersório", variant: "ferro", cost: "5 PO", weight: "1,5 kg" },
+  { name: "Aspersório", variant: "ouro", cost: "45 PO", weight: "1,5 kg" },
+  { name: "Aspersório", variant: "prata", cost: "20 PO", weight: "1,5 kg" },
+  { name: "Braseiro externo", variant: "bronze", cost: "4 PO", weight: "2,5 kg" },
+  { name: "Braseiro externo", variant: "prata", cost: "15 PO", weight: "3 kg" },
+  { name: "Braseiro grande", variant: "bronze", cost: "30 PO", weight: "35 kg" },
+  { name: "Braseiro grande", variant: "ouro", cost: "110 PO", weight: "80 kg" },
+  { name: "Braseiro grande", variant: "prata", cost: "70 PO", weight: "40 kg" },
+  { name: "Braseiro médio", variant: "bronze", cost: "17 PO", weight: "12,5 kg" },
+  { name: "Braseiro médio", variant: "ouro", cost: "70 PO", weight: "30 kg" },
+  { name: "Braseiro médio", variant: "prata", cost: "30 PO", weight: "15 kg" },
+  { name: "Candelabro", variant: "16 velas, ouro", cost: "45 PO", weight: "3 kg" },
+  { name: "Candelabro", variant: "16 velas, prata", cost: "25 PO", weight: "1,5 kg" },
+  { name: "Candelabro", variant: "8 velas, ouro", cost: "35 PO", weight: "1 kg" },
+  { name: "Candelabro", variant: "8 velas, prata", cost: "20 PO", weight: "0,5 kg" },
+  { name: "Castiçal", variant: "de mão, ouro", cost: "3 PO", weight: "0,5 kg" },
+  { name: "Castiçal", variant: "de mão, prata", cost: "5 PP", weight: "125 g" },
+  { name: "Castiçal", variant: "ouro", cost: "20 PO", weight: "1 kg" },
+  { name: "Castiçal", variant: "prata", cost: "12 PO", weight: "0,5 kg" },
+  { name: "Incenso", variant: "comum", cost: "5 PO", weight: "0,5 kg" },
+  { name: "Incenso", variant: "exótico", cost: "15 PO", weight: "*" },
+  { name: "Incensório", variant: "latão", cost: "1 PO", weight: "0,5 kg" },
+  { name: "Incensório", variant: "ouro", cost: "5 PO", weight: "2 kg" },
+  { name: "Incensório", variant: "prata", cost: "3 PO", weight: "1 kg" },
+  { name: "Livro ou escritura de orações", cost: "10 PO", weight: "1,5 kg" },
+  { name: "Livro ou escritura de orações", variant: "compacto", cost: "15 PO", weight: "0,5 kg" },
+  { name: "Porta-Altar", variant: "abeto", cost: "20 PO", weight: "2,5 kg" },
+  { name: "Porta-Altar", variant: "granito", cost: "40 PO", weight: "20 kg" },
+  { name: "Símbolo sagrado", variant: "bronze", cost: "10 PO", weight: "0,5 kg" },
+  { name: "Símbolo sagrado", variant: "ouro", cost: "50 PO", weight: "1 kg" },
+  { name: "Toalha de Altar", variant: "brocada em ouro", cost: "40 PO", weight: "*" },
+  { name: "Toalha de Altar", variant: "linho", cost: "15 PO", weight: "*" },
+  { name: "Toalha de Altar", variant: "pequena", cost: "3 PO", weight: "*" },
+  { name: "Toalha de Altar", variant: "seda", cost: "35 PO", weight: "*" },
+  { name: "Toalha de Altar", variant: "tingida", cost: "+5 PO", weight: "*" },
+  { name: "Toalha de Altar", variant: "veludo", cost: "30 PO", weight: "*" },
+  { name: "Vela", variant: "12 horas", cost: "5 PP", weight: "125 g" },
+  { name: "Vela", variant: "contagem de tempo", cost: "1 PO", weight: "125 g" },
+  { name: "Vela", variant: "templo (por m)", cost: "1 PO", weight: "250 g" },
+  { name: "Vela", variant: "vigília", cost: "10 PO", weight: "250 g" },
+];
