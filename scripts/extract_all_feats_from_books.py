@@ -2,8 +2,41 @@ import os
 import re
 import json
 import pypdf
+from pathlib import Path
 
-LIVROS_DIR = "D:/Users/rapha/Documents/Projetos/RPG/Livros RPG"
+DEFAULT_BOOKS_DIRS = (
+    r"I:\Meu Drive\Livros RPG",
+    r"I:\Meu Drive\Livros\Livros RPG",
+    r"D:\Users\rapha\Documents\Projetos\RPG\livros",
+    r"D:\Users\rapha\Documents\Projetos\RPG\Livros RPG",
+)
+
+
+def resolve_books_dir(configured_dir=None):
+    """Resolve the local source-book directory from an argument or LIVROS_PATH."""
+    configured_dir = configured_dir or os.environ.get("LIVROS_PATH")
+    candidates = (configured_dir,) if configured_dir else DEFAULT_BOOKS_DIRS
+    for candidate in candidates:
+        directory = Path(candidate).expanduser()
+        if directory.is_dir():
+            return directory.resolve()
+    raise FileNotFoundError(
+        "Pasta de livros não encontrada. Informe LIVROS_PATH ou passe um dos "
+        f"diretórios locais esperados: {', '.join(candidates)}"
+    )
+
+
+def find_book_pdf(books_dir, name_pattern):
+    """Find a PDF by case-insensitive filename fragment, including subfolders."""
+    books_dir = Path(books_dir)
+    pattern = name_pattern.casefold()
+    matches = sorted(
+        (path for path in books_dir.rglob("*")
+         if path.is_file() and path.suffix.casefold() == ".pdf"
+         and pattern in path.name.casefold()),
+        key=lambda path: str(path).casefold(),
+    )
+    return matches[0] if matches else None
 
 def normalize_text(text):
     if not text:
@@ -48,8 +81,8 @@ def parse_action_icon(header_text):
         return "free"
     return None
 
-def extract_feats_from_pdf(pdf_filename, book_display_name, ruleset="remaster"):
-    pdf_path = os.path.join(LIVROS_DIR, pdf_filename)
+def extract_feats_from_pdf(pdf_filename, book_display_name, ruleset="remaster", books_dir=None):
+    pdf_path = os.path.join(books_dir or resolve_books_dir(), pdf_filename)
     if not os.path.exists(pdf_path):
         print(f"File not found: {pdf_path}")
         return []
@@ -143,7 +176,7 @@ def extract_feats_from_pdf(pdf_filename, book_display_name, ruleset="remaster"):
     return extracted_feats
 
 if __name__ == "__main__":
-    files = os.listdir(LIVROS_DIR)
+    books_dir = resolve_books_dir()
     all_extracted = {}
 
     book_configs = [
@@ -159,14 +192,15 @@ if __name__ == "__main__":
     ]
 
     for pattern, display_name, ruleset in book_configs:
-        for f in files:
-            if pattern in f and f.endswith('.pdf'):
-                feats = extract_feats_from_pdf(f, display_name, ruleset)
-                for feat in feats:
-                    # Prefer remaster if already present, otherwise add
-                    if feat["slug"] not in all_extracted or ruleset == "remaster":
-                        all_extracted[feat["slug"]] = feat
-                break
+        pdf_path = find_book_pdf(books_dir, pattern)
+        if pdf_path is None:
+            print(f"Book PDF not found for '{pattern}' under {books_dir}")
+            continue
+        feats = extract_feats_from_pdf(pdf_path, display_name, ruleset, books_dir)
+        for feat in feats:
+            # Prefer remaster if already present, otherwise add
+            if feat["slug"] not in all_extracted or ruleset == "remaster":
+                all_extracted[feat["slug"]] = feat
 
     print(f"\n==================================================")
     print(f"TOTAL UNIQUE FEATS EXTRACTED ACROSS RULEBOOKS: {len(all_extracted)}")

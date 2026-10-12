@@ -39,6 +39,13 @@ describe("D&D 3.5 — Frostburn, magias (Cap. 5)", () => {
     expect(p).toMatchObject({ discipline: "Psychokinesis", powerPoints: 7, levels: { "psion/wilder": 4 } });
     expect(POWERS.find((x) => x.name === "Energy Nullification Field")!.levels).toEqual({ kineticist: 5 });
   });
+  it("estrutura dano e tipo de energia dos poderes impressos na p. 108", () => {
+    const emanation = POWERS.find((power) => power.name === "Energy Emanation")!;
+    const flash = POWERS.find((power) => power.name === "Energy Flash")!;
+    expect(emanation).toMatchObject({ damage: "1d6 por rodada", damageType: "cold, electricity, fire, or sonic" });
+    expect(flash).toMatchObject({ damage: "7d6", damageType: "cold, electricity, fire, or sonic" });
+    expect(POWERS.filter((power) => /\d+d\d+/.test(power.description))).toHaveLength(2);
+  });
   it("texto limpo: sem barras laterais nem seções vizinhas", () => {
     for (const s of [...SPELLS, ...POWERS]) {
       expect(s.description.length, s.name).toBeGreaterThan(100);

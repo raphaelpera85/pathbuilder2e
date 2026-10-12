@@ -11,7 +11,17 @@ export interface Dnd5eFeatChoice {
   count: number;
 }
 
-export interface Dnd5eCompendiumEntry { id: string; name: string; sourcePage: number; category: "arma" | "armadura" | "equipamento" | "magia" | "talento"; summary: string; spellLevel?: number; classIds?: string[]; classListPage?: number; classListPages?: Record<string, number>; castingTime?: string; range?: string; components?: string; duration?: string; concentration?: boolean; ritual?: boolean; savingThrow?: string; proficiency?: "simple_weapon" | "martial_weapon" | "light_armor" | "medium_armor" | "heavy_armor" | "shield"; armorClass?: number; armorBonus?: number; armorPenalty?: number; dexterityCap?: number; requiresStrength?: number; shieldBonus?: number; attackAbility?: "str" | "dex"; damage?: string; weaponProperties?: string[]; ammunitionType?: "flecha" | "virote" | "bala" | "agulha"; weight?: number; cost?: string; armorMaterial?: "metal" | "non_metal"; armorWeightClass?: "light" | "heavy"; minimumLevel?: number; prerequisite?: Dnd5eFeatPrerequisite; magical?: boolean; magicCategory?: "uso_unico" | "menor" | "medio" | "maior" | "especifica"; magicEffects?: string[]; grantedSpellIds?: string[]; requiresAttunement?: boolean; rarity?: "comum" | "incomum" | "raro" | "muito_raro" | "lendario"; }
+export interface Dnd5eCompendiumEntry { id: string; name: string; sourcePage: number; category: "arma" | "armadura" | "equipamento" | "magia" | "talento"; summary: string; spellLevel?: number; school?: Dnd5eSpellSchool; classIds?: string[]; classListPage?: number; classListPages?: Record<string, number>; castingTime?: string; range?: string; components?: string; duration?: string; concentration?: boolean; ritual?: boolean; savingThrow?: string; proficiency?: "simple_weapon" | "martial_weapon" | "light_armor" | "medium_armor" | "heavy_armor" | "shield"; armorClass?: number; armorBonus?: number; armorPenalty?: number; dexterityCap?: number; requiresStrength?: number; shieldBonus?: number; attackAbility?: "str" | "dex"; damage?: string; weaponProperties?: string[]; ammunitionType?: "flecha" | "virote" | "bala" | "agulha"; weight?: number; cost?: string; armorMaterial?: "metal" | "non_metal"; armorWeightClass?: "light" | "heavy"; minimumLevel?: number; prerequisite?: Dnd5eFeatPrerequisite; magical?: boolean; magicCategory?: "uso_unico" | "menor" | "medio" | "maior" | "especifica"; magicEffects?: string[]; grantedSpellIds?: string[]; requiresAttunement?: boolean; rarity?: "comum" | "incomum" | "raro" | "muito_raro" | "lendario"; }
+
+export const DND5E_SPELL_SCHOOLS = ["abjuração", "adivinhação", "conjuração", "encantamento", "evocação", "ilusão", "necromancia", "transmutação"] as const;
+export type Dnd5eSpellSchool = typeof DND5E_SPELL_SCHOOLS[number];
+
+export function getDnd5eSpellSchool(summary: string): Dnd5eSpellSchool | undefined {
+  const schoolToken = summary.split(" · ").find((token) =>
+    DND5E_SPELL_SCHOOLS.some((school) => school === token.toLocaleLowerCase("pt-BR"))
+  );
+  return schoolToken?.toLocaleLowerCase("pt-BR") as Dnd5eSpellSchool | undefined;
+}
 
 export const DND5E_EQUIPMENT: Dnd5eCompendiumEntry[] = [
   { id: "dnd5e.arma.adaga", name: "Adaga", sourcePage: 149, category: "arma", summary: "1d4 perfurante · acuidade · leve", proficiency: "simple_weapon", attackAbility: "dex", damage: "1d4 perfurante", weight: 1 },
@@ -1152,6 +1162,7 @@ export const DND5E_SPELLS: Dnd5eCompendiumEntry[] = [
   return {
     ...entry,
     ...(DND5E_SPELL_DETAILS[entry.id] || {}),
+    ...(entry.category === "magia" && getDnd5eSpellSchool(entry.summary) ? { school: getDnd5eSpellSchool(entry.summary) } : {}),
     classIds: [...classIds],
     ...(classListPage === undefined ? {} : { classListPage }),
     ...(Object.keys(classListPages).length ? { classListPages } : {}),
@@ -1165,6 +1176,7 @@ DND5E_SPELLS.push({
   category: "magia",
   summary: "2º nível · necromancia · ataques com armas baseados em Força causam metade do dano; o alvo pode encerrar o efeito com resistência de Constituição",
   spellLevel: 2,
+  school: "necromancia",
   classIds: ["bruxo", "mago"],
   classListPages: { bruxo: 210, mago: 213 },
   castingTime: "1 ação",

@@ -27,8 +27,9 @@ import { DND35_WEAPONS, DND35_ARMORS } from "../data/dnd35/dnd35Equipment";
 import { DND35_GEAR } from "../data/dnd35/dnd35Gear";
 import { DND35_SKILLS } from "../data/dnd35/dnd35Skills";
 import { DND35_SPELL_LISTS } from "../data/dnd35/dnd35SpellLists";
+import { DND35_FROSTBURN_POWERS } from "../data/dnd35/dnd35FrostburnSpells";
 import { PF1E_BARD_CANTRIPS, PF1E_CLERIC_CANTRIPS, PF1E_DRUID_CANTRIPS, PF1E_SORCERER_WIZARD_CANTRIPS } from "../data/pf1e/pf1eSpells";
-import { DND5E_SPELLS } from "../data/dnd5e/dnd5eCompendium";
+import { DND5E_SPELLS, DND5E_SPELL_SCHOOLS } from "../data/dnd5e/dnd5eCompendium";
 import { OSE_BASIC_METHOD_RACE_BY_CLASS, isOseClassAvailableForMode } from "../data/ose/oseRules";
 import { OSE_CLASSES } from "../data/ose/oseClasses";
 
@@ -698,6 +699,20 @@ describe("serviço de catálogo local", () => {
     expect(feat?.data.prerequisites).toBe(
       "Des 13, Int 13, Especialização em Combate, Esquiva, Mobilidade, Ataque em Movimento, bônus base de ataque +4",
     );
+  });
+
+  it("serve danos estruturados dos poderes Frostburn pelo snapshot v35-frostburn", async () => {
+    const { items, source } = await fetchCatalogCategory("spell", { systemId: "dnd35", ruleset: "v35-frostburn" });
+    const byId = new Map(items.map((item) => [item.id, item]));
+
+    expect(source).toBe("local_snapshot");
+    expect(items).toHaveLength(106);
+    for (const power of DND35_FROSTBURN_POWERS.filter((entry) => entry.damage)) {
+      expect(byId.get(`dnd35.frostburn.power.${power.id}`)?.data).toMatchObject({
+        damage: power.damage,
+        damageType: power.damageType,
+      });
+    }
   });
 
   it("expõe as listas de magias D&D 3.5 já transcritas apenas no ruleset v35", async () => {
@@ -2037,6 +2052,22 @@ describe("serviço de catálogo local", () => {
     expect(byId.get("dnd5e.magia.nuvem_fetida")?.data).toMatchObject({ classIds: expect.arrayContaining(["bardo"]), classListPage: 209 });
     expect(byId.get("dnd5e.magia.lentidao")?.data.classIds).not.toContain("bardo");
     expect(byId.get("dnd5e.magia.piscar")?.data.classIds).not.toContain("bardo");
+  });
+
+  it("preserva a escola estruturada das 362 magias D&D 5e no catálogo Git", async () => {
+    const { items, source } = await fetchCatalogCategory("spell", { systemId: "dnd5e", ruleset: "standard" });
+    const byId = new Map(items.map((item) => [item.id, item]));
+
+    expect(source).toBe("local_snapshot");
+    expect(items).toHaveLength(362);
+    expect(DND5E_SPELLS).toHaveLength(362);
+    for (const spell of DND5E_SPELLS) {
+      const catalogItem = byId.get(spell.id);
+      expect(spell.school, `${spell.id}: escola na fonte runtime`).toBeTruthy();
+      expect(DND5E_SPELL_SCHOOLS).toContain(spell.school);
+      expect(catalogItem?.data.school, `${spell.id}: escola no snapshot Git`).toBe(spell.school);
+    }
+    expect(items.every((item) => DND5E_SPELL_SCHOOLS.includes(item.data.school as typeof DND5E_SPELL_SCHOOLS[number]))).toBe(true);
   });
 
   it("serve as entradas ausentes da lista de Clérigo pelo snapshot versionado", async () => {

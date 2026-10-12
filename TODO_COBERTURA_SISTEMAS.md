@@ -316,10 +316,12 @@ Para cada linha abaixo, executar o checklist em cada sistema/ruleset que a possu
 - [x] Catálogos separados, filtros por classe/nível e seleção persistida.
 - [x] Espaços, limites conhecidos/preparados e magias concedidas em parte dos sistemas.
 - [x] Magias de subclasse, domínio e Círculo da Terra modeladas no D&D 5e atual.
-- [ ] Completar metadados de nível/círculo, escola/tradição, tempo, alcance, componentes, duração, concentração/ritual e fonte.
+- [x] Estruturar a escola de magia nas 362 magias de D&D 5e 2014 no snapshot Git e no catálogo runtime.
+- [ ] Completar metadados de nível/círculo, tradição (sistemas que a usam), tempo, alcance, componentes, duração, concentração/ritual e fonte.
 - [ ] Completar dano/cura, tipo, salvamento, ataque mágico, escalonamento e efeitos condicionais.
 - [ ] Validar automaticamente lista de classe, nível máximo, limite de conhecidas/preparadas e espaços.
   - Progresso adicional: contrato de metadados percorre todas as 66 magias T20, 362 magias D&D 5e e 34 magias OSE, verificando nível/círculo, tradição ou classe, alcance, duração e dados de conjuração exigidos pelo sistema.
+  - Progresso adicional D&D 3.5 Frostburn: Energy Emanation e Energy Flash (p. 108) agora expõem dano e tipo de energia em campos estruturados; o detalhe também exibe o salvamento já catalogado.
 - [x] Exibir no PDF a distinção entre magia conhecida/selecionada e preparada; a origem concedida continua identificada nos efeitos e escolhas exportados.
 
 ### Talentos, poderes, dons, perícias especiais e vantagens

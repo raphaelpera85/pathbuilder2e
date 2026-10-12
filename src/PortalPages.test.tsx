@@ -142,7 +142,27 @@ describe("PortalPages", () => {
     const card = await screen.findByRole("button", { name: /Ataque Certeiro, Classe: Bardo/ }, { timeout: 20_000 });
     expect(card).toHaveTextContent("Livro do Jogador · p. 221");
     fireEvent.click(card);
-    expect(await screen.findByRole("dialog")).toHaveTextContent("Bardo");
+    const dialog = await screen.findByRole("dialog");
+    expect(dialog).toHaveTextContent("Bardo");
+    expect(within(dialog).getByText("Escola").parentElement).toHaveTextContent("adivinhação");
+  }, 45_000);
+
+  it("exibe dano e tipo de energia de um poder Frostburn no Compêndio", async () => {
+    window.location.hash = "#/compendium";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 20_000 });
+    const filters = document.querySelectorAll<HTMLSelectElement>(".catalog-filters-collapsible select");
+    fireEvent.change(filters[0], { target: { value: "dnd35" } });
+    fireEvent.change(filters[1], { target: { value: "spell" } });
+    fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Energy Flash" } });
+
+    const card = await screen.findByRole("button", { name: /^Energy Flash/ }, { timeout: 20_000 });
+    fireEvent.click(card);
+    const dialog = await screen.findByRole("dialog");
+    expect(within(dialog).getByText("Dano", { exact: true }).parentElement).toHaveTextContent("7d6");
+    expect(within(dialog).getByText("Tipo de dano", { exact: true }).parentElement).toHaveTextContent("cold, electricity, fire, or sonic");
+    expect(dialog).toHaveTextContent("Fortitude half");
+    expect(dialog).toHaveTextContent("Frostburn · p. 108");
   }, 45_000);
 
   it("exibe listas transcritas de magia D&D 3.5 com classe, nível, fonte e ruleset corretos", async () => {

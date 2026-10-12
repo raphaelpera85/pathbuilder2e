@@ -46,6 +46,8 @@ export interface Dnd35SupplementPower {
   savingThrow: string;
   powerResistance: string;
   powerPoints: number;
+  damage?: string;
+  damageType?: string;
   description: string;
 }
 
@@ -2352,6 +2354,8 @@ export const DND35_FROSTBURN_POWERS: Dnd35SupplementPower[] = [
     "savingThrow": "Fortitude half",
     "powerResistance": "Yes",
     "powerPoints": 3,
+    "damage": "1d6 por rodada",
+    "damageType": "cold, electricity, fire, or sonic",
     "description": "You expel concentrated energy from your body, dealing 1d6 points of energy damage to all creatures within the area every round. Creatures in the area must make a new Fortitude save each round. The energy is the type you choose: cold, electricity, fire, or sonic. Once chosen, you emanate the same energy type for the power’s duration. Cold: This energy type deals +1 point of damage per die. Electricity: This energy type provides a +2 bonus to the save DC and a +2 bonus on manifester level checks for the purpose of overcoming power resistance. Fire: This energy type deals +1 point of damage per die. Sonic: This energy type deals –1 point of damage per die and ignores an object’s hardness. This power’s subtype is the same as the type of energy you manifest. Augment: For every 3 additional power points you spend, this power’s damage increases by one die (d6). For each extra die of damage, this power’s save DC increases by 1."
   },
   {
@@ -2372,6 +2376,8 @@ export const DND35_FROSTBURN_POWERS: Dnd35SupplementPower[] = [
     "savingThrow": "Fortitude half",
     "powerResistance": "Yes",
     "powerPoints": 7,
+    "damage": "7d6",
+    "damageType": "cold, electricity, fire, or sonic",
     "description": "On a successful touch attack, you deal 7d6 points of damage to the creature touched, doing either cold, electricity, fire, or sonic damage. In addition to the energy damage, on a failed Fortitude save (the same save that determines full or half damage), a target is dazed for 1 round. Cold: This energy type deals +1 point of damage per die. Electricity: This energy type provides a +2 bonus to the save DC and a +2 bonus on manifester level checks for the purpose of overcoming power resistance. Fire: This energy type deals +1 point of damage per die. Sonic: This energy type deals –1 point of damage per die and ignores an object’s hardness. This power’s subtype is the same as the type of energy you manifest. Augment: For every additional power point you spend, this power’s damage increases by one die (d6). For each extra two dice of damage, this power’s save DC increases by 1."
   },
   {

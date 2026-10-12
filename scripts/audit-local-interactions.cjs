@@ -23,12 +23,17 @@ async function main() {
     checks.push(["runtime weapon exposes structured range", structuredWeapon?.range === 100 && structuredWeapon?.rangeFeet === 100]);
 
     const search = page.locator('input[type="search"]').first();
-    const firstCardName = await page.locator(".catalog-card").first().getAttribute("aria-label");
+    const firstSearchCard = page.locator(".catalog-card").first();
+    const firstCardName = await firstSearchCard.locator("h2").innerText();
+    const firstCardKey = await firstSearchCard.getAttribute("data-catalog-entry");
     await search.focus();
     checks.push(["search receives focus", await search.evaluate((el) => document.activeElement === el)]);
-    await search.fill(firstCardName || "Arquetipo");
-    await page.waitForTimeout(100);
-    checks.push(["search filters results", await page.locator(".catalog-card").count() > 0]);
+    await search.fill(firstCardName);
+    await page.waitForFunction((key) => Array.from(document.querySelectorAll(".catalog-card")).some((card) => card.getAttribute("data-catalog-entry") === key), firstCardKey);
+    checks.push(["search finds a visible catalog title", firstCardKey !== null && await page.locator(`[data-catalog-entry="${firstCardKey}"]`).count() > 0]);
+    await search.fill("__sem_resultado_no_catalogo__");
+    await page.waitForFunction(() => document.querySelectorAll(".catalog-card").length === 0);
+    checks.push(["search hides nonmatching catalog entries", await page.locator(".catalog-card").count() === 0]);
     await search.fill("");
     await page.waitForTimeout(100);
 

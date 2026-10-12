@@ -474,6 +474,8 @@ function CatalogPage() {
       { key: "range", label: locale === "en" ? "Range" : locale === "es" ? "Alcance" : "Alcance" },
       { key: "target", label: locale === "en" ? "Target" : locale === "es" ? "Objetivo" : "Alvo" },
       { key: "duration", label: locale === "en" ? "Duration" : locale === "es" ? "Duración" : "Duração" },
+      { key: "damage", label: locale === "en" ? "Damage" : locale === "es" ? "Daño" : "Dano" },
+      { key: "damageType", label: locale === "en" ? "Damage type" : locale === "es" ? "Tipo de daño" : "Tipo de dano" },
       { key: "savingThrow", label: locale === "en" ? "Saving throw" : locale === "es" ? "Salvación" : "Teste de resistência" },
       { key: "spellResistance", label: locale === "en" ? "Spell resistance" : locale === "es" ? "Resistencia a conjuros" : "Resistência à magia" },
     ] as const).flatMap(({ key, label }) => {
@@ -569,6 +571,8 @@ function CatalogPage() {
             {inspectedEntry.data.hp !== undefined ? <div className="stat-box"><strong>{t("baseHp")}</strong><span>{String(inspectedEntry.data.hp)}</span></div> : null}
             {inspectedEntry.data.speed !== undefined ? <div className="stat-box"><strong>{t("speed")}</strong><span>{String(inspectedEntry.data.speed)} {t("feet")}</span></div> : null}
             {inspectedEntry.data.damage ? <div className="stat-box"><strong>{t("damage")}</strong><span>{String(inspectedEntry.data.damage)}</span></div> : null}
+            {inspectedEntry.data.damageType && inspectedEntry.category !== "weapon" ? <div className="stat-box"><strong>{locale === "en" ? "Damage type" : locale === "es" ? "Tipo de daño" : "Tipo de dano"}</strong><span>{String(inspectedEntry.data.damageType)}</span></div> : null}
+            {inspectedEntry.category === "spell" && inspectedEntry.data.savingThrow && !inspectedSpellMechanics?.savingThrow ? <div className="stat-box"><strong>{locale === "en" ? "Saving throw" : locale === "es" ? "Salvación" : "Teste de resistência"}</strong><span>{String(inspectedEntry.data.savingThrow)}</span></div> : null}
             {inspectedEntry.data.price ? <div className="stat-box"><strong>{t("price")}</strong><span>{formatPriceToLocale(inspectedEntry.data.price, locale)}</span></div> : null}
             {inspectedEntry.data.bulk !== undefined ? <div className="stat-box"><strong>{t("bulk")}</strong><span>{String(inspectedEntry.data.bulk)}</span></div> : null}
             {Array.isArray(inspectedEntry.data.spellFlags) && inspectedEntry.data.spellFlags.length > 0 && !inspectedSpellMechanics?.components ? <div className="stat-box"><strong>{locale === "en" ? "Listed components" : locale === "es" ? "Componentes indicados" : "Componentes indicados"}</strong><span>{(inspectedEntry.data.spellFlags as string[]).map((flag) => flag === "M" ? (locale === "en" ? "Material" : locale === "es" ? "Material" : "Material") : flag === "F" ? (locale === "en" ? "Focus" : locale === "es" ? "Foco" : "Foco") : flag === "X" ? (locale === "en" ? "XP cost" : locale === "es" ? "Coste de PX" : "Custo de XP") : flag).join(", ")}</span></div> : null}

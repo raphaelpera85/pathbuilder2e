@@ -109,8 +109,10 @@ semântica de `tablist`/`tabpanel`.
 
 ## Proveniência dos livros
 
-Os PDFs em `D:\Users\rapha\Documents\Projetos\RPG\livros` são a fonte
-primária local. Eles nunca entram no bundle nem são publicados pelo portal.
+Os PDFs do acervo local, configurável pela variável `LIVROS_PATH`, são a fonte
+primária. Sem essa variável, os scripts de auditoria e extração tentam os
+diretórios locais conhecidos. Os PDFs nunca entram no bundle nem são publicados
+pelo portal.
 Contagem de páginas, idioma, edição e catalogação são estados separados:
 
 - `pageCountStatus`: conferido por `pdfinfo`;
@@ -124,10 +126,13 @@ normalizadas, opções de Player Core 2, Pólvora e Engrenagens, Livro dos Morto
 Dark Archive, Rage of Elements, Howl of the Wild, War of Immortals e Battlecry!:
 3712 com livro e página registrados; 43 ainda não têm fonte/página local, 3091
 estão marcados como `needs_review` e 1483 possuem efeito mecânico explicitamente
-provisório. Não há
-nomes ou resumos ausentes nos três idiomas configurados (pt-BR, inglês e
-espanhol), nem fallback de tradução detectado no compêndio; as opções sem fonte
-continuam visivelmente pendentes. No
+provisório. Nesse catálogo PF2e legado, não há nomes ou resumos ausentes nos
+três idiomas configurados, nem fallback de tradução detectado; esse resultado
+não representa os snapshots multissistema atuais. Na auditoria dos snapshots
+(11/10/2026), 6.919 registros não têm lacunas de nome/resumo PT-BR ou de fonte,
+mas 2.287 ainda não têm nome em inglês e 2.974 não têm nome em espanhol; 469
+registros PF1e são índices/tabelas marcados `summaryOnly`. O Compêndio sinaliza
+fallback no idioma ativo sem apresentá-lo como tradução concluída. No
 Player Core 2, as páginas foram conferidas no início real das seções porque o
 sumário brasileiro diverge do miolo em parte das classes, heranças e tabelas.
 Essa contagem é um diagnóstico do estado atual, não uma alegação de cobertura

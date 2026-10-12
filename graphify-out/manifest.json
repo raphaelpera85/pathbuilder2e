@@ -108,15 +108,15 @@
     "semantic_hash": ""
   },
   "src/PortalPages.test.tsx": {
-    "mtime": 1791717601.509634,
-    "seen": 1791718209.0414493,
-    "ast_hash": "b9b008330c7a0081db31dd6e3e80a020",
+    "mtime": 1791724614.231841,
+    "seen": 1791724752.5557644,
+    "ast_hash": "e65e632b3ebd7455eec252cf0286c095",
     "semantic_hash": ""
   },
   "src/PortalPages.tsx": {
-    "mtime": 1791717570.1183157,
-    "seen": 1791718209.0414493,
-    "ast_hash": "2c95e0a524eb3b0c58ed6c432e956d0a",
+    "mtime": 1791724639.3968122,
+    "seen": 1791724752.5557644,
+    "ast_hash": "c90549f0ac350bc21df17957f74c638d",
     "semantic_hash": ""
   },
   "src/accountState.ts": {
@@ -390,9 +390,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1791552910.077834,
-    "seen": 1791605371.7954986,
-    "ast_hash": "f8332fde9c3a8f3bddf02df6d75844aa",
+    "mtime": 1791725412.881287,
+    "seen": 1791725530.4099593,
+    "ast_hash": "533b9af27235e738db15be728c1eb3ee",
     "semantic_hash": ""
   },
   "TODO_COBERTURA_E_BUGS.md": {
@@ -690,9 +690,9 @@
     "semantic_hash": ""
   },
   "scripts/extract_all_feats_from_books.py": {
-    "mtime": 1788294642.381263,
-    "seen": 1789024800.5112672,
-    "ast_hash": "0dd1ab13dc93aac83ab7e4478bdc31d3",
+    "mtime": 1791725258.0680294,
+    "seen": 1791725529.9380162,
+    "ast_hash": "4727ba6da55059b3f31848ad2c3f0996",
     "semantic_hash": ""
   },
   "scripts/extracted_gng_class_feats.json": {
@@ -1236,9 +1236,9 @@
     "semantic_hash": ""
   },
   "src/services/catalog.test.ts": {
-    "mtime": 1791722353.7835608,
-    "seen": 1791722420.7404742,
-    "ast_hash": "2daf0f0eda6676bef842d98c3fd77ada",
+    "mtime": 1791724603.5353544,
+    "seen": 1791724752.66467,
+    "ast_hash": "5b4fc5880b5b9a71687e34234d0301c7",
     "semantic_hash": ""
   },
   "src/services/catalog.ts": {
@@ -1728,9 +1728,9 @@
     "semantic_hash": ""
   },
   "scripts/audit-local-interactions.cjs": {
-    "mtime": 1789357899.7498243,
-    "seen": 1789505678.3992863,
-    "ast_hash": "3c22ab5bea2d72162cd80f43f270dcf0",
+    "mtime": 1791723400.677733,
+    "seen": 1791723626.7964013,
+    "ast_hash": "3d68785169b9d6c54de088c5de155f18",
     "semantic_hash": ""
   },
   "scripts/audit-local-locale-usage.cjs": {
@@ -10794,9 +10794,9 @@
     "semantic_hash": ""
   },
   "src/data/dnd5e/dnd5eCompendium.ts": {
-    "mtime": 1791604419.9931922,
-    "seen": 1791605371.1716008,
-    "ast_hash": "337536889ba7d1cd3a9282e19f37d1f5",
+    "mtime": 1791723976.694884,
+    "seen": 1791724066.0708745,
+    "ast_hash": "d59f14ac685ad6fd41a88410afe3abc0",
     "semantic_hash": ""
   },
   "src/data/dnd5e/dnd5eOptions.ts": {
@@ -11634,9 +11634,9 @@
     "semantic_hash": ""
   },
   "TODO_COBERTURA_SISTEMAS.md": {
-    "mtime": 1791722437.8030753,
-    "seen": 1791722876.8324413,
-    "ast_hash": "f95f69ae9d340332758063d6e50f6103",
+    "mtime": 1791724655.803103,
+    "seen": 1791724752.9058867,
+    "ast_hash": "7e5888b2f45c6c8b8cb6f784ad5f9de2",
     "semantic_hash": ""
   },
   "SITUACAO_PROJETO.md": {
@@ -12300,15 +12300,15 @@
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35FrostburnSpells.test.ts": {
-    "mtime": 1791143050.599028,
-    "seen": 1791255663.6795979,
-    "ast_hash": "1d4b7bdee7e0891f8d222ac3eb1a59af",
+    "mtime": 1791724543.7635357,
+    "seen": 1791724752.6285806,
+    "ast_hash": "6f671dbd2d480d52667bbde7d17110ab",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35FrostburnSpells.ts": {
-    "mtime": 1791143077.2058294,
-    "seen": 1791255663.6795986,
-    "ast_hash": "27d52033517719c445dbaf9edbaf1283",
+    "mtime": 1791724555.624641,
+    "seen": 1791724752.6285806,
+    "ast_hash": "f2b0b5df1110e66ad0cc58e91f2819cf",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35Proficiencies.test.ts": {
@@ -12492,9 +12492,9 @@
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-frostburn/spell.json": {
-    "mtime": 1791661701.2906067,
-    "seen": 1791692726.3165262,
-    "ast_hash": "02f44355b553d46cd965529d5c5181c1",
+    "mtime": 1791724569.4667537,
+    "seen": 1791724752.5687287,
+    "ast_hash": "e867cedf43970a6646cce852cc83e033",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-frostburn/weapon.json": {
@@ -12600,9 +12600,9 @@
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd5e/standard/spell.json": {
-    "mtime": 1791661701.346277,
-    "seen": 1791692726.3165262,
-    "ast_hash": "09a273e7af3c5bd6c7a135892ade336d",
+    "mtime": 1791723965.1415937,
+    "seen": 1791724065.977856,
+    "ast_hash": "ed75ee1d2e8e42c2abcf59681ab81498",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd5e/standard/subclass.json": {
@@ -13089,6 +13089,12 @@
     "mtime": 1791720288.95172,
     "seen": 1791720360.1776512,
     "ast_hash": "44d54d39e6fd3467bc61c3932d4a19ff",
+    "semantic_hash": ""
+  },
+  "tests/test_extract_all_feats_from_books.py": {
+    "mtime": 1791725229.904815,
+    "seen": 1791725530.130864,
+    "ast_hash": "0cec1ff756672c3573c21b11951651fd",
     "semantic_hash": ""
   }
 }
