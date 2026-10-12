@@ -14,7 +14,7 @@ describe("Livro Completo do Guerreiro: Cavaleiro do Dragão Púrpura (pp. 34-35)
     });
   });
   it("inspirar coragem 1/dia no 2º e 2/dia no 4º", () => {
-    expect(c.levels.filter((l) => /Inspirar coragem/.test(l.special)).map((l) => [l.level, l.special.match(/\((\d)\/dia\)/)![1]])).toEqual([[2, "1"], [4, "2"]]);
+    expect(c.levels.filter((l) => /inspirar coragem/i.test(l.special)).map((l) => [l.level, l.special.match(/\((\d)\/dia\)/)![1]])).toEqual([[2, "1"], [4, "2"]]);
   });
   it("valores do texto", () => {
     const f = (n: string) => c.features.find((x) => x.name.startsWith(n))!.text;
