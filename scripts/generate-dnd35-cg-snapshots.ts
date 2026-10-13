@@ -10,6 +10,10 @@ import { CG_BASE_CLASSES } from "../src/data/dnd35/dnd35CgClasses";
 import { CG_SAMURAI } from "../src/data/dnd35/dnd35CgSamurai";
 import { CG_CLASS_VARIANTS } from "../src/data/dnd35/dnd35CgVariants";
 import { CG_PRESTIGE_CLASSES } from "../src/data/dnd35/dnd35CgPrestige";
+import { CG_FEATS } from "../src/data/dnd35/dnd35CgFeats";
+import { CG_TACTICAL_FEATS } from "../src/data/dnd35/dnd35CgFeatsTactical";
+import { CG_STYLE_FEATS } from "../src/data/dnd35/dnd35CgFeatsStyle";
+import { CG_NEW_SPELLS } from "../src/data/dnd35/dnd35CgNewSpells";
 
 const BOOK = "D&D 3.5 — O Livro Completo do Guerreiro";
 const RULESET = "v35-cg";
@@ -41,3 +45,30 @@ const dir = join(process.cwd(), "src", "data", "catalog", "snapshots", "dnd35", 
 mkdirSync(dir, { recursive: true });
 writeFileSync(join(dir, "class.json"), `${JSON.stringify(classes, null, 2)}\n`, "utf8");
 console.log(`class=${classes.length}`);
+
+const feats = [...CG_FEATS, ...CG_TACTICAL_FEATS, ...CG_STYLE_FEATS].map((f) => ({
+  id: `dnd35.cg.feat.${f.id}`,
+  class_id: null, ancestry_id: null, archetype_id: null,
+  feat_type: f.type, level: 1,
+  ...names(f.name, f.benefit),
+  prerequisites: f.prerequisites, action_cost: null,
+  traits: ["general"], ...common(f.page),
+  data: f,
+}));
+writeFileSync(join(dir, "feat.json"), `${JSON.stringify(feats, null, 2)}\n`, "utf8");
+console.log(`feat=${feats.length}`);
+
+const spells = CG_NEW_SPELLS.map((s) => ({
+  id: `dnd35.cg.spell.${s.id}`,
+  ...names(s.name, s.description),
+  rank: null, is_cantrip: false, is_focus: false,
+  traditions: [s.level],
+  cast_actions: s.castingTime, range: s.range,
+  targets: s.target ?? s.area ?? s.effect ?? null,
+  duration: s.duration, defense: s.savingThrow,
+  traits: [s.school],
+  ...common(s.page),
+  data: s,
+}));
+writeFileSync(join(dir, "spell.json"), `${JSON.stringify(spells, null, 2)}\n`, "utf8");
+console.log(`spell=${spells.length}`);

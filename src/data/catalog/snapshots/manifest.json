@@ -16,7 +16,9 @@
     "systemId": "dnd35",
     "ruleset": "v35-cg",
     "categories": {
-      "class": 24
+      "class": 41,
+      "feat": 83,
+      "spell": 8
     }
   },
   {

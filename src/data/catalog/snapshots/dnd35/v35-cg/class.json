@@ -4395,6 +4395,2829 @@
     }
   },
   {
+    "id": "dnd35.cg.prestige.cg-guerreiro-urso",
+    "name_pt": "Guerreiro Urso",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +7; Ataque Poderoso; Especial: habilidade de fúria ou frenesi",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 12,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 57,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-guerreiro-urso",
+      "name": "Guerreiro Urso",
+      "page": 57,
+      "hitDie": 12,
+      "skillPointsPerLevel": "4 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+7",
+        "skills": [],
+        "feats": [
+          "Ataque Poderoso"
+        ],
+        "other": [
+          "Especial: habilidade de fúria ou frenesi"
+        ]
+      },
+      "classSkills": [
+        "Adestrar Animais (Car)",
+        "Cavalgar (Sab)",
+        "Escalar (For)",
+        "Intimidação (Car)",
+        "Natação (For)",
+        "Ouvir (Sab)",
+        "Saltar (For)",
+        "Sobrevivência (Sab)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": "Forma de urso (negro)"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": "—"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": "Faro"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "—"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Forma de urso (marrom)"
+        },
+        {
+          "level": 6,
+          "bab": "+6",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "—"
+        },
+        {
+          "level": 7,
+          "bab": "+7",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Fúria +1/dia"
+        },
+        {
+          "level": 8,
+          "bab": "+8",
+          "fort": 6,
+          "ref": 2,
+          "will": 2,
+          "special": "—"
+        },
+        {
+          "level": 9,
+          "bab": "+9",
+          "fort": 6,
+          "ref": 3,
+          "will": 3,
+          "special": "—"
+        },
+        {
+          "level": 10,
+          "bab": "+10",
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": "Forma de urso (atroz)"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os guerreiros ursos não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Forma de Urso (Sob)",
+          "text": "Um guerreiro urso pode se transformar em um urso (similar à magia metamorfose) enquanto estiver em fúria ou frenesi. A quantidade de utilizações diárias é limitada pela quantidade de ativações de fúria ou frenesi do personagem, e ele reverte para sua forma original quando a duração da fúria terminar. O guerreiro urso conserva o bônus no teste de resistência de Vontade e a penalidade na CA enquanto estiver em fúria, mas os modificadores dos valores de habilidade são substituídos pelos valores de Força, Destreza e Constituição da variedade apropriada do urso em que o personagem se transformou. Similar à metamorfose, o guerreiro urso adquire as qualidades físicas do animal (incluindo tamanho, movimento, armadura e armas naturais, espaço e alcance), assim como qualquer habilidade extraordinária da nova forma, como Agarrar Aprimorado para o urso marrom e atroz. A transformação permanece ativa até o final da fúria ou frenesi. Diferente da magia metamorfose, o guerreiro urso não recupera pontos de vida quando assume a forma animal. No entanto, seus pontos de vida atuais são ajustados de acordo com o novo valor de Constituição. Conforme adquire níveis, o guerreiro será capaz de escolher novas formas para assumir. Ele conseguirá se transformar em todas as formas anteriores indicadas na tabela; por exemplo, um guerreiro urso de 10º nível poderia assumir a forma de um urso atroz ou de um urso negro, a critério do jogador. Qualquer guerreiro urso pode assumir a forma de um urso negro enquanto estiver em fúria, recebendo +8 de bônus de Força, +2 de Destreza e +4 de Constituição. Um guerreiro urso de 5º nível pode assumir a forma de um urso marrom, recebendo +16 de bônus de Força, +2 de Destreza e +8 de Constituição. No 10º nível, o guerreiro é capaz de assumir a forma de um urso atroz, recebendo +20 de bônus de Força, +2 de Destreza e +8 de Constituição."
+        },
+        {
+          "name": "Faro (Ext)",
+          "text": "No 3º nível, um guerreiro urso adquire a habilidade especial Faro (consulte o Glossário do Livro dos Monstros) na forma de urso e humanóide."
+        },
+        {
+          "name": "Fúria +1/Dia (Ext)",
+          "text": "No 7º nível, a quantidade de ativações diárias da fúria ou frenesi do guerreiro aumenta em +1. Por exemplo, um bárbaro 7/guerreiro urso 7 poderia entrar em fúria 3 vezes por dia. Se esse personagem adquirir um nível de bárbaro, poderia entrar em fúria quatro vezes por dia."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-iniciado-da-ordem-do-arco",
+    "name_pt": "Iniciado da Ordem do Arco",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +5; Ofícios (arquearia) 5 graduações; Conhecimento (religião) 2 graduações; Tiro Certeiro; Tiro Preciso; Tiro Rápido; Foco em Arma (arco longo ou curto, comum ou composto)",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 58,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-iniciado-da-ordem-do-arco",
+      "name": "Iniciado da Ordem do Arco",
+      "page": 58,
+      "hitDie": 8,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+5",
+        "skills": [
+          "Ofícios (arquearia) 5 graduações",
+          "Conhecimento (religião) 2 graduações"
+        ],
+        "feats": [
+          "Tiro Certeiro",
+          "Tiro Preciso",
+          "Tiro Rápido",
+          "Foco em Arma (arco longo ou curto, comum ou composto)"
+        ],
+        "other": []
+      },
+      "classSkills": [
+        "Cavalgar (Des)",
+        "Conhecimento (religião) (Int)",
+        "Escalar (For)",
+        "Natação (For)",
+        "Observar (Sab)",
+        "Ofícios (Int)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 2,
+          "will": 2,
+          "special": "Disparo preciso +1d8"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 0,
+          "ref": 3,
+          "will": 3,
+          "special": "Disparo adjacente"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 3,
+          "will": 3,
+          "special": "Disparo preciso +2d8"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 1,
+          "ref": 4,
+          "will": 4,
+          "special": "Foco em Arma Maior"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 1,
+          "ref": 4,
+          "will": 4,
+          "special": "Disparo preciso +3d8"
+        },
+        {
+          "level": 6,
+          "bab": "+6",
+          "fort": 2,
+          "ref": 5,
+          "will": 5,
+          "special": "Pontaria Aguçada"
+        },
+        {
+          "level": 7,
+          "bab": "+7",
+          "fort": 2,
+          "ref": 5,
+          "will": 5,
+          "special": "Disparo preciso +4d8"
+        },
+        {
+          "level": 8,
+          "bab": "+8",
+          "fort": 2,
+          "ref": 6,
+          "will": 6,
+          "special": "—"
+        },
+        {
+          "level": 9,
+          "bab": "+9",
+          "fort": 3,
+          "ref": 6,
+          "will": 6,
+          "special": "Disparo preciso +5d8"
+        },
+        {
+          "level": 10,
+          "bab": "+10",
+          "fort": 3,
+          "ref": 7,
+          "will": 7,
+          "special": "Precisão estendida"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os iniciados da Ordem do Arco não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Disparo Preciso (Ext)",
+          "text": "Usando uma ação padrão, um iniciado é capaz de executar um único disparo com precisão assombrosa, que causará 1d8 pontos de dano adicional quando atingir o alvo. Os ataques à distância só funcionam como disparos precisos quando o alvo estiver a menos de 9 metros. Essa habilidade somente afeta criaturas vivas e de anatomia compreensível — mortos-vivos, constructos, limos, plantas e criaturas incorpóreas não têm áreas vitais para serem atingidas. Toda criatura imune a — ou protegida por itens mágicos que os neutralizam ou — sucessos decisivos (como uma armadura da fortificação) também não é vulnerável ao dano adicional. Diferente do ataque furtivo dos ladinos, o alvo do disparo do iniciado não precisa ser atacado de surpresa ou perder seu bônus de Destreza na CA; contudo, o dano adicional dessa habilidade se acumula com o dano do ataque furtivo. Nos demais aspectos, o disparo preciso é semelhante ao ataque furtivo. O dano adicional será +1d8 no 1º nível e +1d8 adicional a cada dois níveis subseqüentes. O iniciado é obrigado a utilizar o arco selecionado pelo seu talento Foco em Arma para ativar esta habilidade."
+        },
+        {
+          "name": "Disparo Adjacente (Ext)",
+          "text": "A partir do 2º nível, o iniciado é capaz de disparar com seu arco sem provocar ataques de oportunidade, mesmo dentro de uma área ameaçada por inimigos."
+        },
+        {
+          "name": "Foco em Arma Maior (Ext)",
+          "text": "No 4º nível, o iniciado da Ordem do Arco adquire o talento Foco em Arma Maior com o mesmo arco selecionado pelo talento Foco em Arma, mesmo que não tenha alcançado o 8º nível de guerreiro."
+        },
+        {
+          "name": "Pontaria Aguçada (Ext)",
+          "text": "No 6º nível, o iniciado da Ordem do Arco adquire o talento Pontaria Aguçada (descrito no Capítulo 3), mesmo que não atenda aos pré-requisitos."
+        },
+        {
+          "name": "Precisão Estendida (Ext)",
+          "text": "No 10º nível, a compreensão e os sentidos do iniciado da Ordem do Arco estão muito harmonizados e ele consegue realizar disparos precisos (e ataques furtivos à distância, se aplicável) num raio de 18 m."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-justiciar",
+    "name_pt": "Justiciar",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +6; Obter Informação 5 graduações; Procurar 5 graduações; Sobrevivência 5 graduações; Rastrear; Foco em Perícia (Obter Informação); Tendência: Qualquer Leal",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 10,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 59,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-justiciar",
+      "name": "Justiciar",
+      "page": 59,
+      "hitDie": 10,
+      "skillPointsPerLevel": "4 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+6",
+        "skills": [
+          "Obter Informação 5 graduações",
+          "Procurar 5 graduações",
+          "Sobrevivência 5 graduações"
+        ],
+        "feats": [
+          "Rastrear",
+          "Foco em Perícia (Obter Informação)"
+        ],
+        "other": [
+          "Tendência: Qualquer Leal"
+        ]
+      },
+      "classSkills": [
+        "Abrir Fechaduras (Des)",
+        "Blefar (Car)",
+        "Cavalgar (Des)",
+        "Conhecimento (Int)",
+        "Cura (Sab)",
+        "Disfarces (Car)",
+        "Escalar (For)",
+        "Esconder-se (Des)",
+        "Furtividade (Des)",
+        "Intimidação (Car)",
+        "Natação (For)",
+        "Observar (Sab)",
+        "Obter Informação (Car)",
+        "Ouvir (Sab)",
+        "Procurar (Int)",
+        "Saltar (For)",
+        "Sentir Motivação (Sab)",
+        "Sobrevivência (Sab)",
+        "Usar Cordas (Des)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Sob custódia, exaurir +1d6"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Agarrar aprimorado, ataque incapacitante"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "Usar Arma Exótica (algemas), Manha urbana +2"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Exaurir +2d6"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Algemar"
+        },
+        {
+          "level": 6,
+          "bab": "+6",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "Manha urbana +4"
+        },
+        {
+          "level": 7,
+          "bab": "+7",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "Exaurir +3d6"
+        },
+        {
+          "level": 8,
+          "bab": "+8",
+          "fort": 2,
+          "ref": 2,
+          "will": 6,
+          "special": "Algemar aprimorado"
+        },
+        {
+          "level": 9,
+          "bab": "+9",
+          "fort": 3,
+          "ref": 3,
+          "will": 6,
+          "special": "Manha urbana +6"
+        },
+        {
+          "level": 10,
+          "bab": "+10",
+          "fort": 3,
+          "ref": 3,
+          "will": 7,
+          "special": "Intuição, exaurir +4d6"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os justiciar não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Sob Custódia (Ext)",
+          "text": "Sempre que um justiciar golpear com uma arma branca, ele poderá causar dano por contusão em vez de dano letal, com qualquer penalidade na jogada de ataque. Normalmente, usar uma arma branca para causar dano por contusão acarreta -4 de penalidade na jogada de ataque."
+        },
+        {
+          "name": "Exaurir (Ext)",
+          "text": "Um justiciar é capaz de exaurir suas vítimas. Sempre que o personagem utilizar a habilidade Sob Custódia e o alvo perder seu bônus de Destreza na CA (haja um bônus ou não) ou o justiciar flanquear o oponente, ele causará +1d6 pontos de dano por contusão adicionais. Esse dano aumenta para 2d6 no 4º nível, 3d6 no 7º nível e finalmente 4d6 no 10º nível da classe de prestígio. Caso o justiciar obtenha um sucesso decisivo, o dano adicional não será multiplicado. Essa habilidade afeta somente criaturas vivas e de anatomia compreensível — mortos-vivos, constructos, limos, plantas e criaturas incorpóreas não têm áreas vitais para serem atingidas. Toda criatura imune a dano por contusão também não é vulnerável a exaurir. O justiciar não é capaz de utilizar esta habilidade contra alvos com camuflagem."
+        },
+        {
+          "name": "Agarrar Aprimorado (Ext)",
+          "text": "A partir do 2º nível, o justiciar adquire os benefícios do talento Agarrar Aprimorado, mesmo que não atenda aos pré-requisitos."
+        },
+        {
+          "name": "Ataque Incapacitante (Ext)",
+          "text": "Um justiciar de 2º nível ou superior é capaz de realizar um ataque de exaurir com tamanha precisão que o golpe enfraquece e debilita a vítima. Um oponente atingido por um desses ataques também sofre 1 ponto de dano de Força."
+        },
+        {
+          "name": "Usar Arma Exótica (algemas)",
+          "text": "Os justiciar são extremamente acostumados com a captura de malfeitores e aprenderam a utilizar as algemas de diversas formas, além de restringir os fora-da-lei. A partir do 3º nível, o justiciar é capaz de brandir um par de algemas na mão inábil como fosse um bastão, sem sofrer qualquer penalidade por usar armas improvisadas. As algemas obra-prima são consideradas um mangual leve obra-prima nas mãos de um justiciar."
+        },
+        {
+          "name": "Manha Urbana (Ext)",
+          "text": "Um justiciar de 3º nível ou superior recebe bônus de circunstância nos testes de Obter Informação para localizar um criminoso. Esse bônus será +2 no 3º nível e aumentará em +2 pontos a cada três níveis subseqüentes (6º e 9º níveis)."
+        },
+        {
+          "name": "Algemar (Ext)",
+          "text": "Quando um justiciar de 5º nível imobilizar um adversário durante a manobra Agarrar, ele poderá algemar o criminoso (além das outras opções de manobra). O justiciar precisa empunhar uma corda, uma corrente ou algemas para usar esta habilidade. Um justiciar consegue algemar qualquer criatura que seja até uma categoria de tamanho maior que ele (por exemplo, um justiciar halfling poderia algemar um alvo Médio ou menor). Somente as criaturas humanóides são afetadas (ou seja, a maioria dos humanóides, extra-planares, humanóides monstruosos e gigantes). A tentativa de algemar o alvo é resolvida com um teste resistido. O justiciar pode utilizar seu modificador de Usar Cordas em vez do teste normal de Agarrar, enquanto o alvo deve escolher entre um teste de Agarrar ou de Arte da Fuga. Se o justiciar vencer o teste resistido, o alvo estará algemado; caso contrário, a tentativa fracassou e a manobra Agarrar prossegue. Quando um justiciar algemar um alvo, a criatura estará presa e indefesa. Ela poderá escapar se obtiver sucesso no teste de Arte da Fuga do justiciar (que recebe +10 de bônus; consulte Amarrar um Personagem, sob Usar Cordas, no Livro do Jogador) ou com um teste de Força — CD 23 para cordas e correntes, CD 26 para algemas e CD 28 para algemas obra-prima."
+        },
+        {
+          "name": "Algemar Aprimorado (Ext)",
+          "text": "A partir do 8º nível, o justiciar poderá algemar um criminoso sem imobilizá-lo. Sempre que estiver envolvido na manobra Agarrar, o justiciar poderá usar uma ação de ataque para algemar o alvo. Além disso, caso tenha o talento Saque Rápido, não precisa empunhar uma corda, uma corrente ou algemas antes de utilizar essa habilidade."
+        },
+        {
+          "name": "Intuição (Sob)",
+          "text": "Quando estiver perseguindo um criminoso específico, um justiciar de 10º nível poderá realizar um teste de Sobrevivência para determinar a direção provável do acusado; o alvo deve estar num raio de 1,5 km do justiciar e a CD do teste equivale a 15 + DV do réu. O justiciar é capaz de ativar esta habilidade para definir a localização aproximada de qualquer criatura que ele enfrentou em combate anteriormente, caso o alvo esteja na área afetada de 1,5 km. O Mestre deveria realizar esse teste em segredo, pois o personagem não saberia se a habilidade fracassou devido ao resultado da jogada ou porque o alvo está além da área afetada. O justiciar é capaz de realizar o teste uma vez por dia para cada alvo distinto."
+        },
+        {
+          "name": "Observação de Multiclasse",
+          "text": "Um paladino que se tornar um justiciar poderá continuar a adquirir níveis como paladino."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-kensai",
+    "name_pt": "Kensai",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +5; Concentração 5 graduações; Diplomacia 5 graduações; Cavalgar 5 graduações; Especialização em Combate; Foco em Arma (qualquer); Tendência: Qualquer Leal; Especial: deve completar o juramento de serviço para um senhor feudal ou um ideal",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 10,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 62,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-kensai",
+      "name": "Kensai",
+      "page": 62,
+      "hitDie": 10,
+      "skillPointsPerLevel": "4 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+5",
+        "skills": [
+          "Concentração 5 graduações",
+          "Diplomacia 5 graduações",
+          "Cavalgar 5 graduações"
+        ],
+        "feats": [
+          "Especialização em Combate",
+          "Foco em Arma (qualquer)"
+        ],
+        "other": [
+          "Tendência: Qualquer Leal",
+          "Especial: deve completar o juramento de serviço para um senhor feudal ou um ideal"
+        ]
+      },
+      "classSkills": [
+        "Cavalgar (Des)",
+        "Concentração (Con)",
+        "Conhecimento (local) (Int)",
+        "Conhecimento (nobreza e realeza) (Int)",
+        "Diplomacia (Car)",
+        "Equilíbrio (Des)",
+        "Escalar (For)",
+        "Intimidação (Car)",
+        "Ofícios (Int)",
+        "Saltar (For)",
+        "Sentir Motivação (Sab)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Arma juramentada"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Infusão de poder"
+        },
+        {
+          "level": 3,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "—"
+        },
+        {
+          "level": 4,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Projeção do chi"
+        },
+        {
+          "level": 5,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Suportar"
+        },
+        {
+          "level": 6,
+          "bab": "+4",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "—"
+        },
+        {
+          "level": 7,
+          "bab": "+5",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "Projeção do chi"
+        },
+        {
+          "level": 8,
+          "bab": "+6",
+          "fort": 2,
+          "ref": 2,
+          "will": 6,
+          "special": "Transferência"
+        },
+        {
+          "level": 9,
+          "bab": "+6",
+          "fort": 3,
+          "ref": 3,
+          "will": 6,
+          "special": "—"
+        },
+        {
+          "level": 10,
+          "bab": "+7",
+          "fort": 3,
+          "ref": 3,
+          "will": 7,
+          "special": "Senhor da guerra chi"
+        }
+      ],
+      "boundWeaponTable": [
+        {
+          "classLevel": 1,
+          "weaponBonus": "+1",
+          "xpCost": 40
+        },
+        {
+          "classLevel": 2,
+          "weaponBonus": "+2",
+          "xpCost": 160
+        },
+        {
+          "classLevel": 3,
+          "weaponBonus": "+3",
+          "xpCost": 360
+        },
+        {
+          "classLevel": 4,
+          "weaponBonus": "+4",
+          "xpCost": 640
+        },
+        {
+          "classLevel": 5,
+          "weaponBonus": "+5",
+          "xpCost": 1000
+        },
+        {
+          "classLevel": 6,
+          "weaponBonus": "+6*",
+          "xpCost": 1440
+        },
+        {
+          "classLevel": 7,
+          "weaponBonus": "+7*",
+          "xpCost": 1960
+        },
+        {
+          "classLevel": 8,
+          "weaponBonus": "+8*",
+          "xpCost": 2560
+        },
+        {
+          "classLevel": 9,
+          "weaponBonus": "+9*",
+          "xpCost": 3240
+        },
+        {
+          "classLevel": 10,
+          "weaponBonus": "+10*",
+          "xpCost": 40000
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os kensai não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Arma Juramentada (Sob)",
+          "text": "O kensai seleciona uma de suas armas (que deve ser a mesma escolhida pelo talento Foco em Arma) para se tornar sua arma juramentada. A maioria dos kensai escolhe uma espada ou um arco, mas até as armas naturais da criatura podem ser selecionadas. Caso a arma seja manufaturada, deve ser um exemplar obra-prima. Quando atender aos pré-requisitos para a classe de prestígio, o kensai adquire a habilidade de estabelecer um vínculo com sua arma juramentada. O personagem dedica parte da sua essência vital para a arma, tornando-a mais eficiente em suas mãos — e apenas em suas mãos. O processo de infundir a arma juramentada com este poder é simples. O personagem deve encontrar um local silencioso e seguro para meditar (ou rezar, para os kensai que servem a divindades) durante 24 horas. No final deste período, o kensai sacrifica uma quantidade de pontos de experiência, essencialmente transferindo parte de sua essência vital para a arma juramentada. Então, o equipamento se torna mágico (caso não seja) e adquire bônus de melhoria e/ou as habilidades especiais escolhidas. O nível atual do kensai limita a quantidade de melhorias disponíveis para imbuir na arma. O personagem não conseguirá criar a arma quando o custo em XP apropriado reduzir seu nível de classe atual. Utilize a tabela Armas Juramentadas para determinar o custo em XP e os limites conforme o nível de classe. Se o ritual for interrompido, ele pode ser reiniciado posteriormente, mas são necessárias 24 horas completas para que a arma juramentada receba a energia do kensai. O personagem perderá os pontos de experiência quando o ritual terminar. A arma juramentada de um kensai terá um nível de conjurador equivalente ao nível do personagem +10. Armas Duplas: é possível juramentar uma arma dupla, mas as duas extremidades da arma devem ser infundidas com a energia do kensai separadamente. Armas Naturais: o processo para juramentar as armas naturais do kensai (como os punhos do monge) é o mesmo, mas todas elas se tornam juramentadas e o custo em XP equivale a 100% do custo normal + 10% por arma natural. Por exemplo, um kensai humano que tenha Foco em Arma (ataque desarmado) poderia juramentar seus punhos pagando 120% do custo normal em XP. Um kensai com uma cauda deverá escolher entre punhos, a cauda e a mordida e arcar com 160% do custo normal (6 punhos) ou 110% (para a cauda OU a mordida, mas não ambos). Um kensai que juramentar suas armas naturais é obrigado a fazê-lo com todas as armas naturais do mesmo tipo. Portanto, um kensai humano precisa alterar os dois punhos. Juramentar uma variedade de arma natural exige 24 horas, não importa a quantidade de armas daquele tipo possuídas pelo personagem. Armas Juramentadas Perdidas: quando a arma juramentada de um kensai é perdida ou roubada, o personagem deve se esforçar para recuperá-la por quaisquer métodos que não violem sua tendência e seu juramento. Um kensai que abandonar voluntariamente sua arma juramentada violou seu juramento de serviço. Um kensai que abandonar sua arma e submeter-se a uma penitência poderá criar uma nova arma. Se um oponente destruir a arma juramentada do kensai, somente o personagem será capaz de consertá-la. Caso exista fragmentos suficientes da arma para recuperá-la (como os pedaços da lâmina de uma espada, por exemplo), ele poderá forjá-la novamente como se tivesse a perícia Ofícios (armeiro) e estivesse fabricando uma obra-prima. Quando reconstruir a arma e meditar durante 24 horas, poderá arcar com o custo em XP adequado e restaurar completamente o equipamento. Se não restar nada da arma, o kensai precisará recomeçar com uma arma que nunca foi aprimorada. Entretanto, o personagem não violou seu juramento — a destruição da arma durante o cumprimento do dever não é vergonhoso e os outros kensai provavelmente demonstrarão mais respeito pelo companheiro que sacrificou seu equipamento para prosseguir com seus votos."
+        },
+        {
+          "name": "Infusão de Poder (Ext)",
+          "text": "No 2º nível, o kensai adquire a habilidade de realizar um teste de Concentração (CD 15), como uma ação de movimento, para harmonizar sua energia e seu espírito. Caso obtenha sucesso, ele recebe +8 de bônus de Força durante uma quantidade de rodadas equivalente à metade de seu nível de classe. Sempre que ativar essa habilidade novamente em um mesmo período de 24 horas, a CD do teste de Concentração aumenta em 5 pontos."
+        },
+        {
+          "name": "Projeção do Chi (Ext)",
+          "text": "No 4º nível, o kensai adiciona metade de seu nível de classe (arredondado para baixo) como bônus nos testes de Blefar, Diplomacia, Obter Informação e Intimidação. A partir do 8º nível, ele adiciona seu nível de classe como bônus nesses testes. Um alvo que perceber o engodo do kensai devido a um teste bem-sucedido de Blefar recebe +10 de bônus em qualquer teste relacionado às perícias Blefar, Diplomacia, Obter Informação e Intimidação do kensai realizados contra ele no futuro. O personagem deve elevar a atitude do alvo de hostoso para amistoso (veja Influenciando as Atitudes dos PdMs no Livro do Jogador) para recuperar a confiança da criatura."
+        },
+        {
+          "name": "Suportar (Ext)",
+          "text": "Quando um kensai de 5º nível ou superior é obrigado a realizar um teste de resistência de Reflexos para reduzir o dano de um efeito de área (como uma bola de fogo), ele poderá realizar um teste de Concentração no lugar do teste de resistência para evitar o dano total. Se o kensai tiver as habilidades evasão ou evasão aprimorada, seus benefícios se aplicam a esse teste de Concentração."
+        },
+        {
+          "name": "Transferência (Ext)",
+          "text": "A partir do 8º nível, uma vez por dia, o kensai pode utilizar uma ação de rodada completa para realizar um teste de Concentração (CD 10 + DV ou nível de classe do alvo) e transferir uma parcela de suas habilidades para o aliado voluntário tocado. Se obtiver sucesso, o kensai concede alguns benefícios para o alvo; ele subtrai 1 ponto por nível de classe (ou menos) do seu bônus base de ataque e/ou qualquer um ou todos os seus bônus base de resistência e transfere o mesmo valor para o aliado. O kensai recupera os modificadores transferidos em 1 hora, quando eles deixam de afetar o alvo. Se o aliado morrer antes deste período, o kensai deve obter sucesso em um teste de resistência de Fortitude (CD 5 + DV ou nível de classe do alvo) ou também morrerá. Caso obtenha sucesso, imediatamente recupera o poder transferido."
+        },
+        {
+          "name": "Senhor da Guerra Chi",
+          "text": "Quando um kensai atinge o 10º nível, ele acumulou bastante notoriedade e será chamado de senhor da guerra chi. Os demais kensai da mesma tendência reverenciam o senhor da guerra e mesmo aqueles com tendências diferentes o tratam com algum grau de respeito. Caso o senhor da guerra tenha um superior PdM, este provavelmente lhe fornecerá mais autoridade e responsabilidades dentro de seu domínio (talvez entregando um castelo, monastério ou escola militar). Se o kensai serve a uma divindade, ela terá interesse pessoal em lhe fornecer mais responsabilidade ao senhor da guerra, possivelmente contactando-o por meio de um avatar ou intermediários e revelando os desígnios divinos ao personagem. Além dessa responsabilidade adicional, o kensai recebe alguns benefícios palpáveis. Ele adquire o direito de solicitar assistência em aventuras ou no cumprimento de seu juramento aos membros inferiores da classe de prestígio (níveis mais baixos). Enquanto os pedidos do senhor da guerra não violarem os juramentos ou a tendência dos kensai solicitados, eles têm a obrigação de auxiliá-lo de qualquer forma razoável — seja fornecendo abrigo e alimentos, acesso a recursos menores e outras coisas que o personagem precisar. Os senhores da guerra inspiram seus aliados. Quando estiverem num raio de 9 m do kensai, os aliados recebem +1 de bônus de moral nas jogadas de ataque, testes de Concentração e testes de resistência de Vontade. Os aliados Leais recebem +2 de bônus de moral nesses testes."
+        },
+        {
+          "name": "Observação de Multiclasse",
+          "text": "Um paladino, monge ou samurai que se tornar um kensai poderá continuar a adquirir níveis na sua classe original."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-lamina-arcana",
+    "name_pt": "Lâmina Arcana",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +4; Conhecimento (arcano) 6 graduações; Usar todas as armas simples e comuns e todos os tipos de armadura; Magias: capacidade de conjurar magias arcanas de 2º nível ou superior",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 65,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-lamina-arcana",
+      "name": "Lâmina Arcana",
+      "page": 65,
+      "hitDie": 8,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+4",
+        "skills": [
+          "Conhecimento (arcano) 6 graduações"
+        ],
+        "feats": [
+          "Usar todas as armas simples e comuns e todos os tipos de armadura"
+        ],
+        "other": [
+          "Magias: capacidade de conjurar magias arcanas de 2º nível ou superior"
+        ]
+      },
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (Int)",
+        "Escalar (For)",
+        "Identificar Magia (Int)",
+        "Profissão (Sab)",
+        "Saltar (For)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 2,
+          "ref": 0,
+          "will": 2,
+          "special": "Ignorar falha arcana 10%"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 0,
+          "will": 3,
+          "special": "Talento adicional"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 3,
+          "ref": 1,
+          "will": 3,
+          "special": "Ignorar falha arcana 15%"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 4,
+          "ref": 1,
+          "will": 4,
+          "special": "Canalizar magia 3/dia"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 4,
+          "ref": 1,
+          "will": 4,
+          "special": "Ignorar falha arcana 20%"
+        },
+        {
+          "level": 6,
+          "bab": "+6",
+          "fort": 5,
+          "ref": 2,
+          "will": 5,
+          "special": "Canalizar magia 4/dia"
+        },
+        {
+          "level": 7,
+          "bab": "+7",
+          "fort": 5,
+          "ref": 2,
+          "will": 5,
+          "special": "Ignorar falha arcana 25%"
+        },
+        {
+          "level": 8,
+          "bab": "+8",
+          "fort": 6,
+          "ref": 2,
+          "will": 6,
+          "special": "Canalizar magia 5/dia"
+        },
+        {
+          "level": 9,
+          "bab": "+9",
+          "fort": 6,
+          "ref": 3,
+          "will": 6,
+          "special": "Ignorar falha arcana 30%"
+        },
+        {
+          "level": 10,
+          "bab": "+10",
+          "fort": 7,
+          "ref": 3,
+          "will": 7,
+          "special": "Canalizar múltiplas magias"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "As lâminas arcanas não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Conjuração",
+          "text": "As lâminas arcanas nunca abandonam seu treinamento mágico. Portanto, quando o personagem atinge um nível ímpar na classe de prestígio (1º, 3º, 5º, 7º ou 9º), ele adquire mais magias diárias — como se estivesse avançando um nível na sua classe de conjurador arcano anterior. Entretanto, ele não recebe qualquer outro benefício daquela classe (chance aprimorada de expulsar/fascinar mortos-vivos, talentos de criação de itens ou metamágicos, pontos de vida adicionais à classe de prestígio, etc.), apenas um nível de conjurador efetivo. Caso o personagem tenha mais de uma classe capaz de conjurar magias arcanas antes de se tornar uma lâmina arcana, deverá escolher qual delas terá seu nível elevado para determinar a quantidade de magias por dia sempre que alcançar um nível ímpar na classe de prestígio."
+        },
+        {
+          "name": "Ignorar Falha Arcana (Ext)",
+          "text": "A partir do 1º nível, o esforço e o treinamento constantes da lâmina arcana para fundir técnicas de combate e habilidades arcanas começam a gerar resultados. Essa habilidade extraordinária lhe permite ignorar parte da chance de falha arcana decorrente da utilização de armaduras. No início, esse fator será reduzido em 10%; à medida que o personagem adquire níveis na classe de prestígio, ele sofre incrementos de 5%, conforme descrito na tabela de classe, até o limite de 30%. O conjurador subtrai o valor percentual indicado da chance total de falha arcana imposta por sua armadura e escudo (se houver). Por exemplo, um conjurador usando uma brunea e um escudo pequeno sofre 30% de chance de falha arcana; a partir do 1º nível dessa classe de prestígio, esse valor é reduzido para 20%."
+        },
+        {
+          "name": "Talento Adicional",
+          "text": "No 2º nível, a lâmina arcana aperfeiçoa sua arte e recebe um talento adicional. Ele pode ser selecionado na lista de talentos adicionais do guerreiro ou entre os talentos metamágicos disponíveis."
+        },
+        {
+          "name": "Canalizar Magia (SM)",
+          "text": "A partir do 4º nível, a lâmina arcana é capaz de canalizar qualquer uma de suas magias através de uma arma branca. Ativar esta habilidade exige uma ação de movimento e o personagem subtrai a magia canalizada de seu limite diário, como se tivesse conjurado. O efeito canalizado afeta o próximo alvo golpeado pela arma; a criatura ainda deve realizar os testes de resistência e aplicar sua RM, se houver. Mesmo que a magia normalmente afete uma área ou seja um raio, será aplicada somente contra o alvo. A magia é descarregada com o golpe e a arma poderá canalizar outro efeito. O personagem somente é capaz de canalizar magias através de uma arma simultaneamente. As magias canalizadas que não forem usadas num período de 8 horas serão perdidas."
+        },
+        {
+          "name": "Canalizar Múltiplas Magias (SM)",
+          "text": "No 10º nível, a lâmina arcana pode canalizar duas magias através de sua arma branca, usando uma ação de movimento para infundir cada uma no equipamento. As duas magias canalizadas afetam o próximo alvo golpeado pela arma, na ordem em que foram armazenadas. A criatura ainda deve realizar os testes de resistência e aplicar sua RM, se houver, idêntico a canalizar magia. Cada ativação de canalizar múltiplas magias elimina duas utilizações do limite diário de canalizar magia do personagem."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-lamina-invisivel",
+    "name_pt": "Lâmina Invisível",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA —; Blefar 8 graduações; Sentir Motivação 6 graduações; Tiro Longo; Tiro Certeiro; Foco em Arma (adaga, kukri ou adaga de soco); Especial: o candidato precisa derrotar um oponente digno em um único combate, usando uma ou mais adagas, kukris e adagas de soco (em qualquer combinação) como suas armas exclusivas",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 6,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 67,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-lamina-invisivel",
+      "name": "Lâmina Invisível",
+      "page": 67,
+      "hitDie": 6,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "—",
+        "skills": [
+          "Blefar 8 graduações",
+          "Sentir Motivação 6 graduações"
+        ],
+        "feats": [
+          "Tiro Longo",
+          "Tiro Certeiro",
+          "Foco em Arma (adaga, kukri ou adaga de soco)"
+        ],
+        "other": [
+          "Especial: o candidato precisa derrotar um oponente digno em um único combate, usando uma ou mais adagas, kukris e adagas de soco (em qualquer combinação) como suas armas exclusivas"
+        ]
+      },
+      "classSkills": [
+        "Acrobacia (Des)",
+        "Arte da Fuga (Des)",
+        "Atuação (Car)",
+        "Blefar (Car)",
+        "Equilíbrio (Des)",
+        "Escalar (For)",
+        "Esconder-se (Des)",
+        "Furtividade (Des)",
+        "Observar (Sab)",
+        "Ofícios (Int)",
+        "Ouvir (Sab)",
+        "Profissão (Sab)",
+        "Saltar (For)",
+        "Sentir Motivação (Sab)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 2,
+          "will": 0,
+          "special": "Ataque furtivo (adagas) +1d6, defesa irrestrita"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 0,
+          "ref": 3,
+          "will": 0,
+          "special": "Sangramento"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 3,
+          "will": 1,
+          "special": "Ataque furtivo (adagas) +2d6, finta sobrenatural (ação de movimento)"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 1,
+          "ref": 4,
+          "will": 1,
+          "special": "Maestria em Fintar"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 1,
+          "ref": 4,
+          "will": 1,
+          "special": "Ataque furtivo (adagas) +3d6, finta sobrenatural (ação livre)"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "As lâminas invisíveis não sabem usar nenhuma arma, armadura ou escudo adicional. Elas não sofrem penalidades para brandir outras armas além de adagas, kukris ou adagas de soco, mas todas as habilidades da classe estão relacionadas com essas três armas."
+        },
+        {
+          "name": "Ataque Furtivo com Adagas (Ext)",
+          "text": "A lâmina invisível adquire a habilidade ataque furtivo, caso ainda não tenha (para obter todos os detalhes sobre a habilidade ataque furtivo, consulte a classe ladino no Livro do Jogador). Contudo, o dano adicional afeta somente os ataques desferidos com adagas, kukris ou adagas de soco, embora o Mestre possa permitir outras armas similares. Quando realizar um ataque furtivo com essas armas, a lâmina invisível causa 1d6 pontos de dano adicional no 1º nível, 2d6 no 3º nível e finalmente 3d6 a partir do 5º nível. Se o personagem possuir esta habilidade de outras classes, o dano adicional se acumula."
+        },
+        {
+          "name": "Defesa Irrestrita (Ext)",
+          "text": "A lâmina invisível desenvolveu um instinto de sobrevivência aguçado durante o combate. Devido a este sexto sentido, elas adicionam 1 ponto do seu modificador de Inteligência (se houver) por nível na classe de prestígio na Classe de Armadura, além dos modificadores normais aplicados na CA. Caso a lâmina invisível seja surpreendida ou perca seu bônus de Destreza na CA, este modificador também será perdido. A defesa irrestrita estará ativa quando a lâmina estiver sem armadura e usando uma ou mais adagas, kukris ou adagas de soco como suas únicas armas."
+        },
+        {
+          "name": "Sangramento (Ext)",
+          "text": "A partir do 2º nível, a lâmina invisível que obtiver sucesso em um ataque furtivo poderá causar um ferimento duradouro. Ela descarta 1d6 pontos de dano adicional do ataque furtivo e inflige o restante do dano normalmente. A partir da rodada subseqüente, o ferimento causará 1 ponto de dano por rodada, até que a vítima obtenha sucesso em um teste de Cura (CD 15) ou receba qualquer tipo de cura mágica (curar ferimentos, cura completa, etc.). Diversos ferimentos causam dano cumulativo (dois sangramentos infligem 2 pontos de dano a cada rodada, etc.). As criaturas imunes a sucessos decisivos não são afetadas por esta habilidade."
+        },
+        {
+          "name": "Finta Sobrenatural (Ext)",
+          "text": "No 3º nível, a lâmina invisível adquire a habilidade de fintar em combate como uma ação de movimento, em vez de uma ação padrão (consulte Fintar sob a perícia Blefar no Livro do Jogador). A partir do 5º nível, a lâmina invisível pode usar a manobra como uma ação livre. Ela somente poderá realizar a manobra usando uma ou mais adagas, kukris ou adagas de soco como suas únicas armas, e somente uma vez a cada rodada."
+        },
+        {
+          "name": "Maestria em Fintar (Ext)",
+          "text": "No 4º nível, uma lâmina invisível empunhando uma adaga, kukri ou adaga de soco estará tão confiante em suas manobras que poderá 'escolher 10' nos testes de Blefar para fintar em combate, mesmo se estiver ameaçada ou distraída."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-mago-da-furia",
+    "name_pt": "Mago da Fúria",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +4; Magias em Combate; Tendência: Qualquer uma, exceto Leal; Magias: capacidade de conjurar magias arcanas de 2º nível ou superior; Especial: habilidade de classe fúria ou frenesi",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 69,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-mago-da-furia",
+      "name": "Mago da Fúria",
+      "page": 69,
+      "hitDie": 8,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+4",
+        "skills": [],
+        "feats": [
+          "Magias em Combate"
+        ],
+        "other": [
+          "Tendência: Qualquer uma, exceto Leal",
+          "Magias: capacidade de conjurar magias arcanas de 2º nível ou superior",
+          "Especial: habilidade de classe fúria ou frenesi"
+        ]
+      },
+      "classSkills": [
+        "Concentração (Con)",
+        "Identificar Magia (Sab)",
+        "Profissão (Sab)",
+        "Sobrevivência (Sab)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": "Fúria mágica 1/dia"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": "Ignorar falha arcana 10%"
+        },
+        {
+          "level": 3,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": "Fúria +1/dia"
+        },
+        {
+          "level": 4,
+          "bab": "+3",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "—"
+        },
+        {
+          "level": 5,
+          "bab": "+3",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Fúria mágica 2/dia"
+        },
+        {
+          "level": 6,
+          "bab": "+4",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "—"
+        },
+        {
+          "level": 7,
+          "bab": "+5",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Efeito do ódio"
+        },
+        {
+          "level": 8,
+          "bab": "+6",
+          "fort": 6,
+          "ref": 2,
+          "will": 2,
+          "special": "Fúria +1/dia"
+        },
+        {
+          "level": 9,
+          "bab": "+6",
+          "fort": 6,
+          "ref": 3,
+          "will": 3,
+          "special": "Fúria incansável"
+        },
+        {
+          "level": 10,
+          "bab": "+7",
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": "Brado do guerreiro, fúria mágica 3/dia"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os magos da fúria não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Conjuração",
+          "text": "Quando um mago da fúria atinge um nível na classe de prestígio, o personagem adquire mais magias diárias — como se estivesse avançando um nível na sua classe de conjurador arcano anterior. Entretanto, ele não recebe qualquer outro benefício daquela classe (chance aprimorada de expulsar/fascinar mortos-vivos, talentos de criação de itens ou metamágicos, pontos de vida adicionais à classe de prestígio, etc.), apenas um nível de conjurador efetivo. Caso o personagem tenha mais de uma classe capaz de conjurar magias arcanas antes de se tornar um mago da fúria, deverá escolher qual delas terá seu nível elevado para determinar a quantidade de magias por dia sempre que alcançar um nível na classe de prestígio."
+        },
+        {
+          "name": "Fúria Mágica (Ext)",
+          "text": "Um mago da fúria é capaz de conjurar magias enquanto estiver em fúria, conquanto o tempo de execução do efeito não ultrapasse 1 rodada completa. Quando lançar magias de abjuração, conjuração, evocação, necromancia e transmutação durante a fúria, o personagem utiliza seu nível de classe total como seu nível de conjurador efetivo. Essa habilidade somente afeta as magias conjuradas durante a fúria mágica. Enquanto estiver neste estado, o mago da fúria se torna descuidado e perde uma parte da sua capacidade defensiva, sofrendo -2 de penalidade na CA. Ele pode realizar testes de Concentração para não perder suas magias, mas não é capaz de utilizar outras perícias baseadas em Carisma, Destreza ou Inteligência, exceto por Equilíbrio, Arte da Fuga, Intimidação e Cavalgar. A fúria permanece ativa durante uma quantidade de rodadas equivalentes a 3 + o modificador de Constituição do mago. O personagem é capaz de interromper a fúria voluntariamente. Quando a fúria terminar, o mago estará fatigado (-2 de penalidade de Força e Destreza, incapaz de realizar Investidas ou correr) pelo restante do encontro. Os magos da fúria de 9º nível não ficam fatigados com essa limitação, mas não ficam fatigados ao término da fúria. No 1º nível, o personagem pode entrar em fúria uma vez por dia. A partir de então, ele adquire uma ativação diária adicional desta habilidade no 5º e no 10º nível, mas somente poderá entrar em fúria uma vez por combate. O personagem é capaz de ativar esta habilidade como uma ação livre. A ativação não consome tempo, mas o mago apenas será capaz de fazê-lo durante sua ação, nunca em resposta a uma ação alheia."
+        },
+        {
+          "name": "Ignorar Falha Arcana (Ext)",
+          "text": "No 2º nível, o mago da fúria pode ignorar parte da chance de falha arcana decorrente da utilização de armaduras. Quando estiver usando armaduras leves ou médias, sua chance de falha arcana é reduzida em 10%."
+        },
+        {
+          "name": "Fúria +1/Dia (Ext)",
+          "text": "No 3º e no 8º níveis, a quantidade de ativações diárias da fúria normal do bárbaro aumenta em +1."
+        },
+        {
+          "name": "Magia Furiosa (Ext)",
+          "text": "A partir do 5º nível, quando o mago da fúria lançar magias de abjuração, conjuração, evocação, necromancia e transmutação durante a fúria, a CD para os testes de resistência dessas magias aumenta em +2. No 10º nível, o modificador aumenta para +4."
+        },
+        {
+          "name": "Efeito do Ódio (SM)",
+          "text": "A partir do 7º nível, o mago da fúria é capaz de acelerar uma magia de 4º nível ou inferior (como se utilizasse o talento Acelerar Magia), sem alterar o nível da magia ou o tempo de execução. Essa habilidade pode ser utilizada uma vez a cada fúria regular ou mágica."
+        },
+        {
+          "name": "Fúria Incansável (Ext)",
+          "text": "A partir do 9º nível, o mago da fúria não estará mais fatigado depois da fúria regular ou mágica."
+        },
+        {
+          "name": "Brado do Guerreiro (SM)",
+          "text": "Um mago da fúria de 10º nível é capaz de emitir um brado arcano uma vez por dia, como uma ação livre durante seu turno, e adquirir os benefícios da magia transformação de Tenser, com uma exceção: ele não perde sua capacidade de conjuração enquanto esse efeito permanecer ativo. O nível de conjurador do mago da fúria para o brado do guerreiro equivale ao seu nível de classe."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-mestre-em-armas-exoticas",
+    "name_pt": "Mestre em Armas Exóticas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +6; Ofícios (armeiro) 3 graduações; Usar Armas Exóticas (qualquer uma); Foco em Arma (qualquer arma exótica); Especial: as raças que possuem familiaridade racial com armas exóticas, como o talento racial dos anões com o urgrosh e o machado de guerra, atendem ao pré-requisito Usar Arma Exótica desta classe de prestígio",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 10,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 71,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-mestre-em-armas-exoticas",
+      "name": "Mestre em Armas Exóticas",
+      "page": 71,
+      "hitDie": 10,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+6",
+        "skills": [
+          "Ofícios (armeiro) 3 graduações"
+        ],
+        "feats": [
+          "Usar Armas Exóticas (qualquer uma)",
+          "Foco em Arma (qualquer arma exótica)"
+        ],
+        "other": [
+          "Especial: as raças que possuem familiaridade racial com armas exóticas, como o talento racial dos anões com o urgrosh e o machado de guerra, atendem ao pré-requisito Usar Arma Exótica desta classe de prestígio"
+        ]
+      },
+      "classSkills": [
+        "Ofícios (Int)",
+        "Intimidação (Car)",
+        "Profissão (Sab)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": "Truque com arma exótica"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": "Truque com arma exótica"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": "Truque com arma exótica"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os mestres em armas exóticas não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Truque com Arma Exótica (Ext)",
+          "text": "A cada nível, o mestre em armas exóticas aprende um novo truque especial que pode ser executado com qualquer arma exótica relacionada com seus talentos de Foco em Arma. Ele deve selecionar o truque quando adquirir um nível na classe de prestígio; uma vez escolhido, esse truque não poderá ser alterado posteriormente. Ele não pode selecionar duas vezes o mesmo truque. Disparo Adjacente: o personagem não provoca ataques de oportunidade quando utilizar uma arma exótica de combate à distância contra um alvo que estiver ameaçando a área adjacente. Defesa com Arma Dupla: o personagem recebe +1 de bônus de escudo na CA quando empunhar uma arma dupla com as duas mãos. Alcance: quando empunhar uma arma de haste exótica, o personagem conseguirá desferir um ataque de oportunidade nas situações pertinentes, mesmo que o alvo tenha os benefícios da cobertura (exceto cobertura total). Separar: quando empunhar armas exóticas de uma ou duas mãos, o personagem causa 1d6 pontos de dano adicional quando usar o talento Separar. Rajada de Golpes: quando empunhar uma arma exótica dupla ou uma corrente com cravos com as duas mãos, o personagem pode usar a ação de ataque total para realizar uma rajada de golpes. Ele executa um ataque adicional com a arma, usando seu bônus de ataque mais elevado, mas cada rodada sofre -2 de penalidade. Essa penalidade se aplica durante uma rodada completa, logo afeta os ataques de oportunidade realizados pelo mestre em armas exóticas até seu próximo turno. O ataque adicional pode utilizar qualquer extremidade da arma. Desarme à Distância: o personagem é capaz de utilizar a manobra desarmar com armas exóticas à distância. Essa manobra não provoca ataques de oportunidade (exceto pelo ataque normal por disparar em uma área ameaçada). Para definir os resultados da manobra, considere a arma à distância como uma arma leve. Se o personagem fracassar na tentativa de desarmar o alvo, ele não poderá reagir e desarmar o mestre em armas exóticas. Exibição: usando uma ação padrão, o personagem é capaz de exibir sua maestria na arma exótica e confundir seu adversário. O mestre em armas exóticas pode realizar um teste de Intimidação contra um único alvo num raio de 9 m e que consiga vê-lo, adicionando seu bônus base de ataque ao resultado. Se o valor exceder o teste de nível especial da vítima (consulte Intimidação no Livro do Jogador), ela ficará abalada durante 1 rodada por nível do mestre em armas exóticas (-2 de penalidade nas jogadas de ataque, testes de habilidade e testes de resistência). Golpe Atordoante: se o personagem possuir o talento Ataque Atordoante, poderá utilizá-lo enquanto empunhar uma arma branca exótica. Arremessar Arma Exótica: o personagem pode arremessar uma arma exótica sem qualquer penalidade na jogada de ataque, mesmo que ela não seja adequada para isso (como o machado orc duplo ou uma corrente com cravos). Quando arremessar uma arma dupla, apenas uma extremidade atingirá a vítima (a critério do jogador). As armas exóticas usadas nesse truque têm incremento de distância de 3 m. Combater com Armas Exóticas Gêmeas: quando empunhar uma arma exótica leve e idêntica em cada mão, o personagem adquire o talento Combater com Duas Armas. Caso já possua o talento, as penalidades nas jogadas de ataque são reduzidas em -1 para a mão destra e a mão inábil enquanto o mestre lutar dessa forma. Imobilização: o personagem pode utilizar uma arma exótica de uma ou duas mãos para executar ataques de imobilização. Caso seja imobilizado durante a tentativa, ele poderá largar a arma para se libertar. Se a arma exótica já permite essa manobra, o personagem recebe +2 de bônus no teste resistido de imobilização. Golpe Poderoso: quando empunhar uma arma branca exótica de uma única mão com as duas mãos, o personagem conseguirá localizar seu ataque para causar um dano adicional equivalente a seu modificador de Força x2 (em vez de 1,5 x Força). Caso tenha o talento Ataque Poderoso, o golpe causará o dano adicional como se o mestre utilizasse uma arma de duas mãos."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-mestre-arremesso",
+    "name_pt": "Mestre do Arremesso",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +5; Prestidigitação 4 graduações; Tiro Certeiro; Tiro Preciso; Foco em Arma (qualquer arma de arremesso)",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 72,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-mestre-arremesso",
+      "name": "Mestre do Arremesso",
+      "page": 72,
+      "hitDie": 8,
+      "skillPointsPerLevel": "4 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+5",
+        "skills": [
+          "Prestidigitação 4 graduações"
+        ],
+        "feats": [
+          "Tiro Certeiro",
+          "Tiro Preciso",
+          "Foco em Arma (qualquer arma de arremesso)"
+        ],
+        "other": []
+      },
+      "classSkills": [
+        "Acrobacia (Des)",
+        "Atuação (Car)",
+        "Blefar (Car)",
+        "Concentração (Con)",
+        "Escalar (For)",
+        "Observar (Sab)",
+        "Ofícios (Int)",
+        "Prestidigitação (Des)",
+        "Profissão (Sab)",
+        "Saltar (For)",
+        "Usar Cordas (Des)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 2,
+          "will": 0,
+          "special": "Saque Rápido, truque de arremesso"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 0,
+          "ref": 3,
+          "will": 0,
+          "special": "Evasão"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 3,
+          "will": 1,
+          "special": "Truque de arremesso"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 1,
+          "ref": 4,
+          "will": 1,
+          "special": "Apanhar Objetos"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 1,
+          "ref": 4,
+          "will": 1,
+          "special": "Arremesso decisivo, truque de arremesso"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os mestres do arremesso não sabem usar nenhuma arma ou armadura adicional."
+        },
+        {
+          "name": "Saque Rápido",
+          "text": "No 1º nível, o mestre do arremesso adquire Saque Rápido como um talento adicional."
+        },
+        {
+          "name": "Truque de Arremesso (Ext)",
+          "text": "No 1º nível e a cada nível subseqüente, o mestre do arremesso aprende um novo truque de arremesso entre os descritos a seguir. O truque somente pode ser executado com as armas de arremesso relacionadas com seus talentos Foco em Arma. Ele deve selecionar o truque quando adquirir um nível na classe de prestígio; uma vez escolhido, esse truque não poderá ser alterado posteriormente. Ele não pode selecionar duas vezes o mesmo truque. Arremesso Letal: o personagem aumenta a multiplicador de decisivo de um único tipo de armas arremessadas em um ponto. Por exemplo, uma machadinha teria decisivo x4 em vez de x3. O benefício desta habilidade não se acumula com qualquer efeito que aumente ou aprimore os multiplicadores de decisivo. Arremesso Defensivo: se o mestre do arremesso obtiver sucesso em um teste de Concentração (CD 10 + quantidade de inimigos ameaçando a área) antes de realizar um arremesso numa área ameaçada, seus disparos não provocarão ataques de oportunidade durante 1 rodada. Se fracassar no teste, os arremessos provocarão ataques de oportunidade normalmente. Arremesso Duplo: um mestre do arremesso pode usar uma ação padrão para disparar duas armas contra o mesmo ou dois alvos diferentes num raio de 9 m. O personagem aplica normalmente seu modificador de Força em cada arremesso (em vez de metade do bônus de Força para a segunda arma) e as penalidades por combater com duas armas afetam essa habilidade (consulte o Livro do Jogador). Arremesso Palmar: quando utilizar armas de arremessos menores (dardos, shuriken e adagas, o Mestre pode permitir outras), o personagem será capaz de disparar duas armas a cada jogada de ataque. O dano de cada arma é determinado separadamente, mas o personagem não aplica seu bônus de Força em qualquer um dos arremessos. O dano de precisão, como o ataque furtivo, afeta somente uma das armas arremessadas. Arremesso Furtivo: imediatamente antes de realizar um ataque à distância, o arremessador pode utilizar uma ação de movimento para executar um teste de Prestidigitação, resistido pelo teste de Observar do oponente. Caso obtenha sucesso, o alvo perde seu bônus de Destreza na CA contra este ataque. Tiro de Imobilização: o mestre do arremesso pode utilizar um disparo para derrubar ou prender um alvo que esteja a mais de 1,5 m. O personagem realiza uma jogada de ataque regular contra o oponente usando a arma de arremesso. Se obtiver sucesso, além do dano normal, o arremessador deve executar um teste de Destreza com +4 de bônus, resistido pelo teste de Destreza ou Força do adversário (use a habilidade com o modificador mais elevado). Os demais modificadores da manobra se aplicam normalmente ao teste resistido (consulte Imobilização no Livro do Jogador). Se o arremessador vencer o teste, o alvo estará imobilizado (preso com a arma nas roupas contra a parede, com um escudo afixado à armadura por uma adaga, etc.) O benefício desse truque não se acumula com os efeitos do talento Imobilização Aprimorada. Arremesso Acrobático: quando estiver sem armadura ou usando uma armadura leve ou média, o arremessador será capaz de disparar uma única arma de arremesso em qualquer ponto durante uma acrobacia, usando uma ação padrão. Se o resultado do teste de Acrobacia for 25 ou superior, ele não provoca ataques de oportunidade devido ao ataque, não importa quantos adversários ameacem a área pertinente. Dois por Um: se o personagem utilizar uma arma de arremesso para atingir dois alvos adjacentes, ele poderá sofrer -4 de penalidade na jogada de ataque para atingir os dois inimigos simultaneamente (como um ricochete). O ataque poderá atingir os dois, nenhum ou um dos alvos, de acordo com o resultado da jogada e da Classe de Armadura das vítimas. O dano infligido a cada alvo é determinado separadamente; se o arremessador obtiver sucesso decisivo, realize duas jogadas distintas para confirmar cada golpe decisivo. Ponto Fraco: um mestre do arremesso de 5º nível ou superior é capaz de aprender este truque. Quando realizar um disparo contra um alvo do seu tamanho ou maior, o arremessador executa um ataque de toque à distância em vez da jogada de ataque regular. Se obtiver sucesso, o personagem não aplica seu bônus de Força ao dano."
+        },
+        {
+          "name": "Evasão (Ext)",
+          "text": "Um arremessador de 2º nível ou superior adquire a habilidade evasão. Sempre que se tornar alvo de um ataque que permita um teste de resistência de Reflexos para reduzir o dano à metade, ele não sofrerá qualquer dano se obtiver sucesso no teste de resistência. A evasão somente poderá ser utilizada quando o arremessador estiver sem armadura ou usando uma armadura leve. Um mestre do arremesso indefeso (inconsciente, paralisado ou imobilizado) não recebe os benefícios dessa habilidade. Se o personagem possuir a habilidade evasão de outra classe, ele adquire evasão aprimorada. A evasão aprimorada é similar à evasão, mas o arremessador não sofrerá qualquer dano se obtiver sucesso no teste de resistência e metade do dano mesmo se fracassar."
+        },
+        {
+          "name": "Apanhar Objetos (Ext)",
+          "text": "Um mestre do arremesso recebe o talento Apanhar Objetos no 4º nível, mesmo que não atenda aos pré-requisitos."
+        },
+        {
+          "name": "Arremesso Decisivo (Ext)",
+          "text": "A partir do 5º nível, o mestre do arremesso adquire o talento Sucesso Decisivo Aprimorado para qualquer arma de arremesso beneficiada pelo seu talento Foco em Arma."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-mestre-bebado",
+    "name_pt": "Mestre Bêbado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +4 (bônus base de ataque desarmado); Acrobacia 6 graduações; Fortitude Maior; Esquiva; Ataque Desarmado Aprimorado (ou o ataque desarmado do monge); Outros: habilidades de classe Evasão e Rajada de Golpes; o candidato precisa ser escolhido por mestres bêbados graduados e sobreviver a uma noite de boemia entre eles sem ser preso, intoxicado e suportar a vergonha da ressaca",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 75,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-mestre-bebado",
+      "name": "Mestre Bêbado",
+      "page": 75,
+      "hitDie": 8,
+      "skillPointsPerLevel": "4 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+4 (bônus base de ataque desarmado)",
+        "skills": [
+          "Acrobacia 6 graduações"
+        ],
+        "feats": [
+          "Fortitude Maior",
+          "Esquiva",
+          "Ataque Desarmado Aprimorado (ou o ataque desarmado do monge)"
+        ],
+        "other": [
+          "Outros: habilidades de classe Evasão e Rajada de Golpes; o candidato precisa ser escolhido por mestres bêbados graduados e sobreviver a uma noite de boemia entre eles sem ser preso, intoxicado e suportar a vergonha da ressaca"
+        ]
+      },
+      "classSkills": [
+        "Acrobacia (Des)",
+        "Arte da Fuga (Des)",
+        "Atuação (Car)",
+        "Blefar (Car)",
+        "Equilíbrio (Des)",
+        "Escalar (For)",
+        "Esconder-se (Des)",
+        "Furtividade (Des)",
+        "Natação (For)",
+        "Ofícios (Int)",
+        "Ouvir (Sab)",
+        "Profissão (Sab)",
+        "Saltar (For)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 2,
+          "ref": 2,
+          "will": 0,
+          "special": "Beber como um Cão, improvisar armas"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 3,
+          "ref": 3,
+          "will": 0,
+          "special": "Cambalear"
+        },
+        {
+          "level": 3,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 3,
+          "will": 1,
+          "special": "Jogo de cintura"
+        },
+        {
+          "level": 4,
+          "bab": "+3",
+          "fort": 4,
+          "ref": 4,
+          "will": 1,
+          "special": "Bônus na CA +1, improvisar armas aprimorado"
+        },
+        {
+          "level": 5,
+          "bab": "+3",
+          "fort": 4,
+          "ref": 4,
+          "will": 1,
+          "special": "Improvisar armas maior"
+        },
+        {
+          "level": 6,
+          "bab": "+4",
+          "fort": 5,
+          "ref": 5,
+          "will": 2,
+          "special": "Fintar Aprimorado"
+        },
+        {
+          "level": 7,
+          "bab": "+5",
+          "fort": 5,
+          "ref": 5,
+          "will": 2,
+          "special": "Agarrar Aprimorado"
+        },
+        {
+          "level": 8,
+          "bab": "+6",
+          "fort": 6,
+          "ref": 6,
+          "will": 2,
+          "special": "Para fins medicinais"
+        },
+        {
+          "level": 9,
+          "bab": "+6",
+          "fort": 6,
+          "ref": 6,
+          "will": 3,
+          "special": "Bônus na CA +2, investida espiralada, improvisar armas superior"
+        },
+        {
+          "level": 10,
+          "bab": "+7",
+          "fort": 7,
+          "ref": 7,
+          "will": 3,
+          "special": "Sopro de Fogo"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os mestres bêbados não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Beber como um Cão (Ext)",
+          "text": "O corpo do mestre bêbado assimila o álcool de maneira diferente das outras pessoas. Ele pode beber uma grande caneca de cerveja, um odre de vinho ou uma quantidade equivalente de bebida com um teor alcoólico elevado como uma ação de movimento. Cada garrafa ou odre de álcool consumido durante o combate reduz a Sabedoria e Inteligência em 2 pontos cada, mas aumenta a Força ou Constituição (a escolha do jogador) em 2 pontos. Um mestre bêbado é capaz de obter os benefícios de uma quantidade de 'doses' equivalente ao seu nível de classe. A duração da penalidade e do bônus equivale a (3 + nível na classe de prestígio) rodadas."
+        },
+        {
+          "name": "Improvisar Armas (Ext)",
+          "text": "Embora garrafas e canecas sejam as armas improvisadas prediletas do mestre bêbado, ele pode usar mobília, instrumentos de fazenda ou qualquer outra coisa disponível para atacar seus adversários. Qualquer objeto, desde uma escada até um tábua de carne, passando por cadeiras e pés de mesa, torna-se uma arma e causa o dano do ataque desarmado do personagem +1d4 pontos de dano adicional. A maioria dos objetos inflige dano de concussão, mas itens pontiagudos ou cheios de quinas (como uma garrafa quebrada) causarão dano perfurante ou cortante. Quando o mestre bêbado obtém um resultado 1 na jogada de ataque usando uma arma improvisada, o objeto se estilhaça e será inútil como arma."
+        },
+        {
+          "name": "Cambalear (Ext)",
+          "text": "Tropeçando, cambaleando e se esquivando, um mestre bêbado de 2º nível pode realizar um ataque de Investida que surpreenderá seu adversário. Essa habilidade apresenta dois aspectos positivos: primeiro, as Investidas não precisam de uma linha de movimento direto e o mestre bêbado continua percorrendo o dobro de seu deslocamento (no máximo). Segundo, caso obtenha sucesso num teste de Acrobacia (CD 15) no início do deslocamento, poderá atravessar espaços ameaçados durante o deslocamento sem provocar ataques de oportunidade."
+        },
+        {
+          "name": "Jogo de Cintura (Ext)",
+          "text": "A partir do 3º nível, o mestre bêbado cambaleia e se esquiva e ainda assim mantém sua postura de combate. Ele recebe +2 de bônus de esquiva na CA contra qualquer oponente selecionado durante seu turno."
+        },
+        {
+          "name": "Bônus na CA (Ext)",
+          "text": "No 4º nível, o mestre bêbado recebe +1 de bônus na Classe de Armadura. Esse modificador aumenta para +2 no 9º nível."
+        },
+        {
+          "name": "Improvisar Armas Aprimorado (Ext)",
+          "text": "Um mestre bêbado de 4º nível ou superior é capaz de utilizar armas improvisadas mais longas (como escadas) e obter os benefícios de seu alcance superior, como se fossem armas de haste, além de armas com diversas pernas (como cadeiras) fornecerem +2 de bônus nas tentativas de desarme realizadas pelo personagem. Finalmente, objetos largos e retos (como mesas) podem ser utilizados como escudos de corpo improvisados."
+        },
+        {
+          "name": "Improvisar Armas Maior (Ext)",
+          "text": "Um mestre bêbado de 5º nível ou superior causará 1d8 pontos de dano adicional com uma arma improvisada (em vez de 1d4)."
+        },
+        {
+          "name": "Fintar Aprimorado (Ext)",
+          "text": "Um mestre bêbado de 6º nível adquire o talento Fintar Aprimorado, mesmo que não atenda aos pré-requisitos."
+        },
+        {
+          "name": "Agarrar Aprimorado (Ext)",
+          "text": "Um mestre bêbado de 7º nível adquire o talento Agarrar Aprimorado, mesmo que não atenda aos pré-requisitos."
+        },
+        {
+          "name": "Para Fins Medicinais (SM)",
+          "text": "A partir do 8º nível, um mestre bêbado consegue transformar uma única dose de bebida alcoólica numa poção de curar ferimentos moderados até três vezes por dia, como se tivesse ingerido a solução mágica. Para ativar esta habilidade, o personagem deve estar sob os efeitos de uma bebida alcoólica (veja Beber como um Cão, acima). Quando converte a bebida em poção de cura, os valores de habilidade do personagem se alteram (+2 Inteligência e Sabedoria, -2 de Força ou Constituição), como se a duração do efeito alcoólico tivesse acabado. Essa habilidade exige uma ação padrão, que não provoca ataques de oportunidade."
+        },
+        {
+          "name": "Investida Espiralada (Ext)",
+          "text": "Um mestre bêbado de 9º nível pode saltar e contorcer seu corpo no ar para desferir uma poderosa cabeçada no adversário. Esse ataque equivale a uma Investida mas, além de causar o dano normal, inicia automaticamente uma manobra Encontrão (sem provocar ataques de oportunidade; é um abraço de bêbado). Caso a manobra Encontrão seja eficaz, o oponente ficará atordoado, a menos que obtenha sucesso em um teste de resistência de Vontade (CD 10 + nível de classe do mestre bêbado + modificador de Sabedoria). Contudo, caso o encontrão não seja bem-sucedido, o mestre bêbado cairá no chão diante dele."
+        },
+        {
+          "name": "Improvisar Armas Superior (Ext)",
+          "text": "Um mestre bêbado de 9º nível ou superior causará 1d12 pontos de dano adicional com uma arma improvisada (em vez de 1d8)."
+        },
+        {
+          "name": "Sopro de Fogo (SM)",
+          "text": "No 10º nível, o mestre bêbado consegue incendiar o álcool dentro do seu organismo e expelir um jato de fogo pela boca. O sopro de fogo causa 3d12 pontos de dano de fogo num cone de 6 metros (Reflexos para reduzir o dano à metade, CD 10 + nível de classe do mestre bêbado + modificador de Constituição). Cada vez que utilizar o sopro de fogo, o mestre bêbado consumirá uma dose de álcool ingerida anteriormente, eliminando as penalidades e os bônus concedidos ao seus valores de habilidade."
+        },
+        {
+          "name": "Observação de Multiclasse",
+          "text": "Um monge que se tornar um mestre bêbado poderá continuar a adquirir níveis como monge."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-mestre-mao-invisivel",
+    "name_pt": "Mestre da Mão Invisível",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA —; Concentração 8 graduações; Magias: capacidade de conjurar telecinésia como uma magia ou habilidade similar",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 4,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 77,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-mestre-mao-invisivel",
+      "name": "Mestre da Mão Invisível",
+      "page": 77,
+      "hitDie": 4,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "—",
+        "skills": [
+          "Concentração 8 graduações"
+        ],
+        "feats": [],
+        "other": [
+          "Magias: capacidade de conjurar telecinésia como uma magia ou habilidade similar"
+        ]
+      },
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (arcano) (Int)",
+        "Identificar Magia (Int)",
+        "Intimidação (Car)",
+        "Ofícios (Int)",
+        "Profissão (Sab)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Nível de conjurador aprimorado, telecinésia versátil"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Armas telecinéticas, concentração sustentada"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "Ataque total telecinético"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Empurrão violento aprimorado, vôo"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Lançar aos céus"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os mestres da mão invisível não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Nível de Conjurador Aprimorado (Ext)",
+          "text": "A partir do 1º nível, o mestre da mão invisível se concentra exclusivamente nos poderes da telecinésia. Ele adiciona seus níveis na classe de prestígio ao nível de conjurador para utilizar a magia ou habilidade telecinésia, seja aos seus níveis de classe (para um feiticeiro) ou nível efetivo de conjurador (para uma criatura). Por exemplo, um feiticeiro 10/mestre da mão invisível 3 lança telecinésia como um feiticeiro de 13º nível e um sload azul/mestre da mão invisível 2 utiliza a telecinésia como um conjurador de 10º nível."
+        },
+        {
+          "name": "Telecinésia Versátil (Ext)",
+          "text": "Um mestre da mão invisível aprende a combinar as três variações da magia ou habilidade telecinésia, alternando entre elas com facilidade. Por exemplo, ele poderia utilizar a versão força contínua durante 2 rodadas, alternar para a manobra de combate e para força contínua. Entretanto, a magia ou habilidade similar é dissipada logo depois da primeira ativação do empurrão violento ou quando o mestre é incapaz de sustentar sua concentração no efeito."
+        },
+        {
+          "name": "Armas Telecinéticas (Ext)",
+          "text": "Um mestre da mão invisível adquire a habilidade de brandir armas com a magia telecinésia. Sustentando a concentração na variação manobra de combate da telecinésia de 2º nível ou superior é capaz de realizar um único ataque com uma arma livre ou que estiver empunhando, deslocando a arma até 6 m antes do golpe. Determine o efeito do ataque normalmente, mas o movimento do objeto não provoca ataques de oportunidade. O bônus base de ataque do mestre da mão invisível equivale ao seu nível de conjurador mais seu modificador de Inteligência ou Carisma (magos e feiticeiros, ou criaturas com a habilidade telecinésia, respectivamente). Quaisquer talentos de combate do mestre da mão invisível (como Foco em Arma e Ataque Poderoso) não afetam as armas telecinéticas. É possível utilizar as armas retiradas dos adversários durante uma manobra bem-sucedida de desarme."
+        },
+        {
+          "name": "Concentração Sustentada (Ext)",
+          "text": "A partir do 2º nível, o mestre da mão invisível é capaz de se deslocar e combater enquanto sustenta a concentração em sua habilidade ou magia telecinésia. Para ativar ou sustentar a versão força contínua, o mestre precisa de uma ação de movimento (não mais uma ação padrão). O personagem consegue lançar outras magias enquanto sustenta a telecinésia, mas deve obter sucesso em um teste de Concentração como se houvesse uma distração de uma magia que não causaria dano (CD equivalente ao testes de resistência da telecinésia). No entanto, ativar as variações manobra de combate e empurrão violento ainda exigem uma ação padrão."
+        },
+        {
+          "name": "Ataque Total Telecinético (Ext)",
+          "text": "A partir do 3º nível, o mestre da mão invisível é capaz de usar a telecinésia em combate como um guerreiro brandindo uma espada comum. Quando sustentar a concentração na manobra de combate da telecinésia ou usar a habilidade armas telecinéticas, o mestre da mão invisível conseguirá executar um ataque total, possivelmente golpeando ou realizando manobras (agarrar, imobilização, encontrão, desarmar) várias vezes por rodada. Similar aos ataques regulares, o mestre adquire um ataque adicional a cada 5 pontos do seu bônus base de ataque efetivo (lembre-se de que ele utiliza o nível de conjurador + modificador da habilidade relevante nesse sentido, conforme descrito em telecinésia)."
+        },
+        {
+          "name": "Empurrão Violento Aprimorado (Ext)",
+          "text": "A partir do 4º nível, o mestre da mão invisível aprimora a variação empurrão violento da magia telecinésia. Ele utiliza seu nível de conjurador em vez do bônus base na jogada de ataque e seu modificador de Inteligência (para magos) ou Carisma (para feiticeiros e criaturas com a habilidade similar ou sobrenatural) nas jogadas de dano da arma arremessada. Finalmente, ativar um empurrão violento não dissipa o efeito da telecinésia, embora o mestre da mão invisível não possa utilizá-lo novamente durante 1d4 rodadas."
+        },
+        {
+          "name": "Vôo (Ext)",
+          "text": "A partir do 4º nível, o mestre da mão invisível é capaz de utilizar a força contínua da telecinésia para erguer seu corpo e de qualquer criatura disposta ao ar. Como uma ação de movimento, o mestre adquire deslocamento de vôo 6 m, com capacidade de manobra perfeita, carregando as criaturas dispostas consigo. Ele não precisa deslocar todas as criaturas afetadas na mesma direção, mas qualquer alvo cairá na direção ao solo quando se afastar mais de 12 m do conjurador. O personagem é capaz de erguer uma criatura Média ou menor (cada uma transportando sua carga pesada) a cada três níveis de conjurador. Uma criatura Grande equivale a duas criaturas Médias, uma criatura Enorme equivale a duas Grandes e assim por diante. Diferente da habilidade de vôo concedida pela magia homônima, esse efeito termina abruptamente caso seja dissipado ou o mestre da mão invisível perca a concentração. Sem a telecinésia para carregá-las, as criaturas caem em direção ao solo imediatamente, sofrendo 1d6 pontos de dano a cada 3 m (máximo 20d6)."
+        },
+        {
+          "name": "Lançar aos Céus (Ext)",
+          "text": "A partir do 5º nível, em vez de arremessar uma criatura na direção de um alvo ou objeto, o mestre da mão invisível é capaz de utilizar a variação empurrão violento da magia telecinésia para lançar o alvo para os céus. A vítima deve obter sucesso em um teste de resistência de Vontade e/ou aplicar a RM para anular o efeito. O mestre arremessa a criatura afetada a 3 m x nível de conjurador, em linha reta, para cima. No início da próxima ação do mestre da mão invisível, a vítima cairá no solo, sofrendo 1d6 pontos de dano a cada 3 m de queda. Apesar da habilidade empurrão violento aprimorado, essa variação da magia telecinésia dissipa o efeito imediata e completamente, exigindo uma nova conjuração."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-metamorfo-guerra",
+    "name_pt": "Metamorfo de Guerra",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +4; Raça: qualquer uma; Especial: o personagem deve ser capaz de alterar sua forma usando um dos seguintes métodos — habilidade sobrenatural Mudar Forma (araneia, arconte guardião, barghest, doppelganger, slaad); subtipo metamorfo (licantropo, phasm); habilidade similar à magia metamorfose (deva astral, planetário, solar, couatl, marilith, dragão de bronze/ouro/prata, efreeti, guardian leonal, bruxa da noite, ogro mago, pixie); acesso à magia metamorfose; habilidade de classe forma selvagem ou similar (guerreiro urso, druida)",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 79,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-metamorfo-guerra",
+      "name": "Metamorfo de Guerra",
+      "page": 79,
+      "hitDie": 8,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+4",
+        "skills": [],
+        "feats": [],
+        "other": [
+          "Raça: qualquer uma",
+          "Especial: o personagem deve ser capaz de alterar sua forma usando um dos seguintes métodos — habilidade sobrenatural Mudar Forma (araneia, arconte guardião, barghest, doppelganger, slaad); subtipo metamorfo (licantropo, phasm); habilidade similar à magia metamorfose (deva astral, planetário, solar, couatl, marilith, dragão de bronze/ouro/prata, efreeti, guardian leonal, bruxa da noite, ogro mago, pixie); acesso à magia metamorfose; habilidade de classe forma selvagem ou similar (guerreiro urso, druida)"
+        ]
+      },
+      "classSkills": [
+        "Arte da Fuga (Des)",
+        "Concentração (Con)",
+        "Disfarces (Car)",
+        "Equilíbrio (Des)",
+        "Escalar (For)",
+        "Natação (For)",
+        "Ofícios (Int)",
+        "Saltar (For)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": "Imunidade mórfica, armas mórficas"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": "Corpo mórfico"
+        },
+        {
+          "level": 3,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": "Alcance mórfico"
+        },
+        {
+          "level": 4,
+          "bab": "+3",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Cura mórfica"
+        },
+        {
+          "level": 5,
+          "bab": "+3",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Forma instantânea, multiforme"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os metamorfos de guerra não sabem usar nenhuma arma ou armadura adicional. Essas habilidades de classe somente são eficientes quando o metamorfo de guerra não está na sua forma natural (para os doppelganger e phasm, isso significa a maior parte do tempo)."
+        },
+        {
+          "name": "Imunidade Mórfica (Ext)",
+          "text": "Um metamorfo de guerra é capaz de re-posicionar seus órgãos vitais, mantendo-os afastados do perigo. Dessa forma, são imunes a atordoamento e sucessos decisivos."
+        },
+        {
+          "name": "Armas Mórficas (Sob)",
+          "text": "Como uma ação de movimento, o metamorfo de guerra é capaz de desenvolver armas naturais, como garras ou presas, permitindo ataques desarmados que causam o dano pertinente ao tamanho da nova forma (consulte a Tabela 5-1 do Livro dos Monstros). Essas armas mórficas não precisam ser armas naturais que a criatura já tenha. Por exemplo, um metamorfo transformado em um ettin (gigante — Grande) poderia desenvolver uma garra que causaria 1d6 pontos de dano ou chifres que infligiriam 1d8 pontos de dano perfurante. Se a forma atual do metamorfo possui armas naturais do mesmo tipo, a versão mórfica causará o dano de uma categoria superior. Por exemplo, um metamorfo de guerra que assumiu a forma selvagem de um lobo atroz (animal — Grande) poderia aumentar o focinho e a mandíbula, desferindo um ataque de mordida que causa 2d6 pontos de dano (como um animal Enorme), descartando o 1d8 original. Um metamorfo de guerra consegue alterar suas armas mórficas conforme deseja, mesmo que retire suas habilidades da magia metamorfose ou da habilidade de classe forma selvagem, que não permitem mudanças posteriores à transformação inicial."
+        },
+        {
+          "name": "Corpo Mórfico (Sob)",
+          "text": "A partir do 2º nível, o metamorfo de guerra utiliza seu controle corporal para adquirir resistência e força. Ele recebe +4 de Força e +4 de Constituição."
+        },
+        {
+          "name": "Alcance Mórfico (Sob)",
+          "text": "A partir do 3º nível, o metamorfo de guerra é capaz de estender subitamente seus membros, pescoço ou apêndices, adquirindo 1,5 m de alcance adicional para seus ataques naturais. Diferente da maioria das criaturas, os metamorfos de guerra não demonstram esse alcance superior até o momento de usá-lo."
+        },
+        {
+          "name": "Cura Mórfica (Sob)",
+          "text": "A partir do 4º nível, o metamorfo de guerra é capaz de alterar sua forma para minimizar os ferimentos, criando novos tecidos onde havia cortes e ferrações. Ele adquire a habilidade cura acelerada 2; caso use uma ação de rodada completa e obtenha sucesso em um teste de Concentração (CD equivalente ao dano total sofrido), ele recupera 10 pontos de vida."
+        },
+        {
+          "name": "Forma Instantânea/Multiforme (Sob)",
+          "text": "No 5º nível, o metamorfo de guerra adquire uma entre duas habilidades de classe. Caso tenha a capacidade de alterar sua forma sem limite diário, como a habilidade Mudar Forma, o subtipo metamorfo ou uma habilidade similar à magia metamorfose sem limite diário, ele adquire Forma Instantânea, que lhe permite mudar de forma como ação de movimento. Se ele conjura a magia metamorfose, tem uma habilidade similar a esta magia com qualquer limite de utilizações, ou a habilidade de classe forma selvagem, ele adquire Multiforme, que lhe permite mudar forma diversas vezes enquanto a magia ou habilidade de permanecer ativa. Por exemplo, um mago/metamorfo de guerra poderia se metamorfosear em um troll durante 2 minutos, então mudar para um dragão vermelho e se transformar em um gigante da colina até o término da magia. Cada alteração exige uma ação padrão e somente a primeira transformação recupera os pontos de vida do metamorfo. Se o personagem retornar para sua forma original, a magia, habilidade similar ou forma selvagem é dissipada."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-monge-tatuado",
+    "name_pt": "Monge Tatuado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +3; Conhecimento (religião) 8 graduações; Tolerância; Agarrar Aprimorado; Ataque Desarmado Aprimorado; Tendência: Qualquer Leal",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 82,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-monge-tatuado",
+      "name": "Monge Tatuado",
+      "page": 82,
+      "hitDie": 8,
+      "skillPointsPerLevel": "4 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+3",
+        "skills": [
+          "Conhecimento (religião) 8 graduações"
+        ],
+        "feats": [
+          "Tolerância",
+          "Agarrar Aprimorado",
+          "Ataque Desarmado Aprimorado"
+        ],
+        "other": [
+          "Tendência: Qualquer Leal"
+        ]
+      },
+      "classSkills": [
+        "Acrobacia (Des)",
+        "Arte da Fuga (Des)",
+        "Atuação (Car)",
+        "Concentração (Con)",
+        "Conhecimento (Int)",
+        "Diplomacia (Car)",
+        "Equilíbrio (Des)",
+        "Escalar (For)",
+        "Esconder-se (Des)",
+        "Furtividade (Des)",
+        "Natação (For)",
+        "Ofícios (Int)",
+        "Ouvir (Sab)",
+        "Profissão (Sab)",
+        "Saltar (For)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 2,
+          "ref": 2,
+          "will": 2,
+          "special": "Habilidades de monge, tatuagem"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 3,
+          "ref": 3,
+          "will": 3,
+          "special": "—"
+        },
+        {
+          "level": 3,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 3,
+          "will": 3,
+          "special": "Tatuagem"
+        },
+        {
+          "level": 4,
+          "bab": "+3",
+          "fort": 4,
+          "ref": 4,
+          "will": 4,
+          "special": "—"
+        },
+        {
+          "level": 5,
+          "bab": "+3",
+          "fort": 4,
+          "ref": 4,
+          "will": 4,
+          "special": "Tatuagem"
+        },
+        {
+          "level": 6,
+          "bab": "+4",
+          "fort": 5,
+          "ref": 5,
+          "will": 5,
+          "special": "—"
+        },
+        {
+          "level": 7,
+          "bab": "+5",
+          "fort": 5,
+          "ref": 5,
+          "will": 5,
+          "special": "Tatuagem"
+        },
+        {
+          "level": 8,
+          "bab": "+6",
+          "fort": 6,
+          "ref": 6,
+          "will": 6,
+          "special": "—"
+        },
+        {
+          "level": 9,
+          "bab": "+6",
+          "fort": 6,
+          "ref": 6,
+          "will": 6,
+          "special": "Tatuagem"
+        },
+        {
+          "level": 10,
+          "bab": "+7",
+          "fort": 7,
+          "ref": 7,
+          "will": 7,
+          "special": "—"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas",
+          "text": "Uma tatuagem e inscreve outra a cada dois níveis. Eles podem escolher suas tatuagens da lista a seguir. Observe que algumas das tatuagens (centopéia, lua crescente e fênix) exigem um nível de classe mínimo."
+        },
+        {
+          "name": "Tatuagens Mágicas",
+          "text": "Todas as tatuagens são mágicas e as habilidades que elas liberam são sobrenaturais (exceto pela lua crescente). Um monge tatuado em um campo de antimagia perderá todos os benefícios de suas tatuagens. A menos que o efeito de uma tatuagem seja contínuo, a ativação exige uma ação de movimento que não provoca ataques de oportunidade."
+        },
+        {
+          "name": "Tatuagem: Aranha",
+          "text": "O monge precisa do talento Ataque Atordoante para ativar esta habilidade. Em vez de atordoar a vítima, o monge tatuado inocula um veneno de contato. A CD do veneno equivale a 10 + nível de classe do monge tatuado + modificador de Constituição. O dano inicial e o secundário do veneno equivale a 2 pontos de dano temporário de Constituição. A ativação dessa habilidade reduz o limite diário de ataques atordoantes disponíveis para o monge."
+        },
+        {
+          "name": "Tatuagem: Bambu",
+          "text": "Uma vez por dia por tatuagem que possui, o monge pode adicionar a quantidade de tatuagens no seu corpo como um bônus de melhoria na Constituição. Esta habilidade permanece ativa durante 1 rodada por nível de classe."
+        },
+        {
+          "name": "Tatuagem: Borboleta",
+          "text": "Uma vez por dia por tatuagem que possui, o monge pode adicionar a quantidade de tatuagens no seu corpo como um bônus de melhoria na Sabedoria. Esta habilidade permanece ativa durante 1 rodada por nível de classe."
+        },
+        {
+          "name": "Tatuagem: Camaleão",
+          "text": "Uma vez por dia por tatuagem que possui, o monge pode usar alterar-se. Esta habilidade permanece ativa durante 1 hora por nível de classe."
+        },
+        {
+          "name": "Tatuagem: Caranguejo",
+          "text": "O monge tatuado adquire Redução de Dano 2/mágica. Esta Redução de Dano aumenta em 2 pontos para cada tatuagem adicional que o monge possuir."
+        },
+        {
+          "name": "Tatuagem: Centopéia",
+          "text": "Uma vez por semana, o monge tatuado pode andar nas sombras. Esta habilidade lhe permite atravessar grandes distâncias, mas precisa terminar sua jornada no Plano Material. Somente monges tatuados de 5º nível ou superior podem adquirir essa tatuagem."
+        },
+        {
+          "name": "Tatuagem: Crisântemo",
+          "text": "A cada hora que o monge com esta tatuagem permanecer sob a luz do sol, ele recupera uma quantidade de pontos de vida equivalente ao seu nível. A magia luz do dia não ativa esta habilidade; o personagem deve se expor à luz solar legítima."
+        },
+        {
+          "name": "Tatuagem: Dragão",
+          "text": "Uma vez por dia por tatuagem que possui, o monge tatuado pode emitir um sopro de fogo, com efeitos idênticos ao elixir do sopro de fogo (descrito no Livro do Mestre)."
+        },
+        {
+          "name": "Tatuagem: Escorpião",
+          "text": "Uma vez por dia por tatuagem que possui, o monge tatuado pode obrigar o inimigo que estiver atacando-o a utilizar seu modificador de habilidade mais baixo em substituição ao bônus de Força ou Destreza quando realizar uma jogada de ataque. É possível ativar esta habilidade durante a rodada do alvo, mas o monge precisa declarar sua utilização antes que o resultado da jogada seja determinado. O monge precisa estar ciente do ataque e não pode ser surpreendido."
+        },
+        {
+          "name": "Tatuagem: Falcão",
+          "text": "O monge tatuado é imune ao medo (mágico ou mundano). Os aliados num raio de 3 m recebem um bônus de moral nos seus testes de resistência contra efeitos de medo equivalente ao bônus de Carisma do monge tatuado (se houver) mais sua quantidade de tatuagens."
+        },
+        {
+          "name": "Tatuagem: Fênix",
+          "text": "O monge tatuado adquire Resistência à Magia 15 + nível na classe. Somente monges tatuados de 5º nível ou superior podem adquirir essa tatuagem."
+        },
+        {
+          "name": "Tatuagem: Flor",
+          "text": "Uma vez por dia por tatuagem que possui, o monge pode adicionar seu modificador de Carisma como um bônus de melhoria em outro valor de habilidade (inclusive Carisma). Esta habilidade permanece ativa durante 1 rodada por nível de classe."
+        },
+        {
+          "name": "Tatuagem: Garça",
+          "text": "O monge tatuado adquire uma imunidade gradual à deterioração corporal. Quando inscreve esta tatuagem, ele recebe imunidade a doenças mundanas. Quando ele adquire sua próxima tatuagem (não importa qual seja), também recebe imunidade a venenos. Quando inscrever sua próxima tatuagem, ele não sofrerá mais as penalidades por envelhecimento e não poderá ser envelhecido magicamente (qualquer penalidade existente permanece ativa). Os bônus ainda se aplicam e o monge morrerá de velhice quando chegar à sua hora."
+        },
+        {
+          "name": "Tatuagem: Leão",
+          "text": "Uma vez por dia por tatuagem que possui, o monge pode destruir um inimigo usando um ataque regular. Ao fazê-lo, ele adiciona +4 de bônus na jogada de ataque, causando 1 ponto de dano adicional por nível de experiência. O monge precisa declarar que está usando essa habilidade antes de realizar a jogada de ataque. Se fracassar, a utilização é reduzida do limite diário de ativações."
+        },
+        {
+          "name": "Tatuagem: Libélula",
+          "text": "Uma vez por dia, o monge tatuado adquire um bônus de esquiva na CA equivalente à quantidade de tatuagens que possui. Esta habilidade permanece ativa durante 1 rodada por nível de classe."
+        },
+        {
+          "name": "Tatuagem: Lua Cheia",
+          "text": "Uma vez por noite por tatuagem que possui, o monge tatuado recebe +2 de bônus de sorte em uma única jogada de ataque, teste de perícia ou teste de habilidade, invocando os poderes da lua cheia. Esta habilidade não pode ser usada durante o dia."
+        },
+        {
+          "name": "Tatuagem: Lua Crescente",
+          "text": "Uma vez por dia, o monge tatuado pode usar passeio etéreo como uma habilidade similar à magia. Somente monges tatuados de 9º nível ou superior podem adquirir essa tatuagem."
+        },
+        {
+          "name": "Tatuagem: Macaco",
+          "text": "O monge tatuado recebe +1 de bônus de competência por tatuagem que possui nos testes de Abrir Fechaduras, Acrobacia, Arte da Fuga, Equilíbrio, Escalar, Esconder-se, Furtividade, Prestidigitação e Saltar."
+        },
+        {
+          "name": "Tatuagem: Máscara Branca",
+          "text": "O monge tatuado é imune a detectar pensamentos, detectar mentiras e qualquer tentativa mágica para discernir sua tendência. Ele recebe +10 de bônus em todos os testes de Blefar."
+        },
+        {
+          "name": "Tatuagem: Montanha",
+          "text": "O monge tatuado pode demonstrar uma imobilidade da montanha durante 1 rodada por nível de classe; ele adquire uma durabilidade fenomenal, embora não possa se mover do lugar onde se posicionou. Ele recebe +4 de bônus de Constituição e Sabedoria. O aumento na Constituição eleva os pontos de vida do monge tatuado em 2 pontos por nível, mas estes pontos de vida adicionais desaparecem quando a duração da habilidade terminar ou quando o monge decidir neutralizá-la (uma ação livre). Estes pontos de vida adicionais não são perdidos em primeiro lugar, como acontece com os pontos de vida temporários. Enquanto usar esta habilidade, o monge sofre -20 de penalidade nos testes das perícias baseadas em Destreza. Ele é imune às manobras Encontrão e Imobilização. O monge tatuado pode ativar esta habilidade uma vez por dia para cada tatuagem que possui."
+        },
+        {
+          "name": "Tatuagem: Morcego",
+          "text": "Uma vez por dia por tatuagem que possui, o monge pode adicionar a quantidade de tatuagens no seu corpo como um bônus de melhoria na Destreza. Esta habilidade permanece ativa durante 1 rodada por nível de classe."
+        },
+        {
+          "name": "Tatuagem: Oceano",
+          "text": "O monge com a tatuagem do oceano nunca precisa de alimentos, sono ou água."
+        },
+        {
+          "name": "Tatuagem: Pinheiro",
+          "text": "O monge tatuado adquire os benefícios do talento Duro de Matar."
+        },
+        {
+          "name": "Tatuagem: Raiz Medicinal",
+          "text": "O monge tatuado pode curar os ferimentos de outro personagem através do toque. A cada dia, ele pode recuperar uma quantidade total de pontos de vida equivalente ao seu bônus de Sabedoria multiplicado pelo seu nível de classe. O monge não pode curar seus próprios ferimentos, mas pode dividir esse valor entre diversos personagens, e não precisa utilizá-lo em uma única ocasião."
+        },
+        {
+          "name": "Tatuagem: Rouxinol",
+          "text": "O monge tatuado pode curar quaisquer ferimentos. A cada dia, ele é capaz de recuperar uma quantidade de pontos de vida equivalente ao dobro de seu nível de classe e dividir esse valor entre diversos personagens, mas não precisa utilizá-lo em uma única ocasião."
+        },
+        {
+          "name": "Tatuagem: Sol",
+          "text": "Uma vez por dia por tatuagem que possui, o monge tatuado recebe +2 de bônus de sorte em uma única jogada de ataque, teste de perícia ou teste de habilidade, invocando os poderes do sol. Esta habilidade só pode ser usada durante o dia."
+        },
+        {
+          "name": "Tatuagem: Tartaruga",
+          "text": "Uma vez por dia por tatuagem que possui, o monge tatuado pode usar seu nível de classe como a quantidade de graduações em uma perícia que ele não tenha, mas somente para realizar um único teste de perícia. Por exemplo, um monge tatuado de 4º nível com duas tatuagens poderia realizar dois testes de Operar Mecanismo como se tivesse 4 graduações nesta perícia. Ele adiciona seu modificador de Carisma ao teste normalmente."
+        },
+        {
+          "name": "Tatuagem: Tigre",
+          "text": "Uma vez por dia por tatuagem que possui, o monge tatuado pode lutar desarmado com +1 de bônus nas jogadas de ataque, causando 1d6 pontos de dano adicional em cada golpe bem-sucedido. Esta explosão de ferocidade de artes marciais permanece ativa durante 1 rodada por nível de classe."
+        },
+        {
+          "name": "Tatuagem: Unicórnio",
+          "text": "O monge tatuado adquire o poder da sorte, que é usada somente uma vez por dia. Esta habilidade permite que o monge tatuado possa realizar novamente uma jogada fracassada. O personagem deve manter o novo resultado, mesmo que seja pior do que o teste original. O monge precisa declarar a utilização desta habilidade antes que o resultado da ação seja determinado."
+        },
+        {
+          "name": "Tatuagem: Vespa",
+          "text": "Uma vez por dia por tatuagem que possui, o monge tatuado pode conjurar velocidade sobre si mesmo. O efeito permanece ativo durante 1 rodada por nível de classe."
+        },
+        {
+          "name": "Observação de Multiclasse",
+          "text": "Um monge que se tornar um monge tatuado poderá continuar a adquirir níveis como monge."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-olho-gruumsh",
+    "name_pt": "Olho de Gruumsh",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +6; Usar Arma Exótica (machado orc duplo); Foco em Arma (machado orc duplo); Raça: Orc ou meio-orc; Tendência: Caótico e Mau, Caótico e Neutro ou Neutro e Mau; Especial: o personagem deve ser um seguidor de Gruumsh e arrancar o próprio olho direito em um ritual especial. Nenhuma das habilidades do olho de Gruumsh funcionará caso ele recupere a visão de ambos os olhos",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 12,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 84,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-olho-gruumsh",
+      "name": "Olho de Gruumsh",
+      "page": 84,
+      "hitDie": 12,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+6",
+        "skills": [],
+        "feats": [
+          "Usar Arma Exótica (machado orc duplo)",
+          "Foco em Arma (machado orc duplo)"
+        ],
+        "other": [
+          "Raça: Orc ou meio-orc",
+          "Tendência: Caótico e Mau, Caótico e Neutro ou Neutro e Mau",
+          "Especial: o personagem deve ser um seguidor de Gruumsh e arrancar o próprio olho direito em um ritual especial. Nenhuma das habilidades do olho de Gruumsh funcionará caso ele recupere a visão de ambos os olhos"
+        ]
+      },
+      "classSkills": [
+        "Cavalgar (Des)",
+        "Escalar (For)",
+        "Intimidação (Car)",
+        "Natação (For)",
+        "Saltar (For)",
+        "Sobrevivência (Sab)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": "Lutar às cegas, comandar a horda, fúria"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": "Brandir às cegas"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": "Mutilação ritual +1"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Saliva cegante 2/dia"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 4,
+          "ref": 1,
+          "will": 2,
+          "special": "Percepção às cegas 1,5 m"
+        },
+        {
+          "level": 6,
+          "bab": "+6",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Mutilação ritual +2"
+        },
+        {
+          "level": 7,
+          "bab": "+7",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Saliva cegante 4/dia"
+        },
+        {
+          "level": 8,
+          "bab": "+8",
+          "fort": 6,
+          "ref": 2,
+          "will": 2,
+          "special": "Percepção às cegas 3 m"
+        },
+        {
+          "level": 9,
+          "bab": "+9",
+          "fort": 6,
+          "ref": 3,
+          "will": 3,
+          "special": "Mutilação ritual +3"
+        },
+        {
+          "level": 10,
+          "bab": "+10",
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": "Visão de Gruumsh"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os olhos de Gruumsh não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Lutar às Cegas (Ext)",
+          "text": "No 1º nível, o olho de Gruumsh adquire Lutar às Cegas como um talento adicional. Além disso, ele não sofre qualquer penalidade por arrancar um de seus olhos."
+        },
+        {
+          "name": "Comandar a Horda (Ext)",
+          "text": "O olho de Gruumsh pode conceder +2 de bônus de moral nos testes de resistência de Vontade a quaisquer orcs ou meio-orcs que não sejam Bons, tenham menos DV que o nível do personagem e que se encontrem num raio de 9 m. Qualquer beneficiário que desobedecer as ordens do olho de Gruumsh intencionalmente perderá esse modificador imediatamente."
+        },
+        {
+          "name": "Fúria (Ext)",
+          "text": "Um olho de Gruumsh adquire a habilidade fúria, idêntica à característica de classe do bárbaro, com todos os benefícios e penalidades (consulte Bárbaro no Livro do Jogador). Os níveis de classe do olho de Gruumsh se acumulam com os níveis de bárbaro para determinar a quantidade de ativações diárias da fúria. Some os níveis nas duas classes e consulte a Tabela 3-3: O Bárbaro no Livro do Jogador para definir as utilizações por dia. Por exemplo, um bárbaro 6/olho de Gruumsh 2 poderia entrar em fúria 3 vezes por dia, idêntico a um bárbaro de 8º nível, enquanto um guerreiro 6/olho de Gruumsh 4 (sem níveis de bárbaro) poderia entrar em fúria 2 vezes por dia, idêntico a um bárbaro de 2º nível."
+        },
+        {
+          "name": "Brandir às Cegas (Ext)",
+          "text": "No 2º nível, o olho de Gruumsh se torna mais poderoso, mas suas defesas são reduzidas. Ele recebe +4 de bônus adicional em seu valor de Força quando estiver enfurecido, mas sofre -4 de penalidade na CA (em vez de -2)."
+        },
+        {
+          "name": "Mutilação Ritual (Ext)",
+          "text": "Através de freqüentes desfigurações de sua própria pele, o olho de Gruumsh obtém +1 de bônus de armadura natural no 3º nível (ou +1 de bônus caso não tenha armadura natural). Este bônus aumenta em +1 a cada três níveis na classe de prestígio adquiridos posteriormente."
+        },
+        {
+          "name": "Saliva Cegante (Ext)",
+          "text": "A partir do 4º nível, o olho de Gruumsh é capaz de expelir uma saliva cegante contra qualquer oponente num raio de 6 m. Obtendo sucesso em um ataque de toque à distância (com -4 de penalidade), ele dispara seu suco gástrico nos olhos do alvo. Um inimigo que fracassar em um teste de resistência de Reflexos (CD 10 + nível do olho de Gruumsh + bônus de Constituição) ficará cego até poder enxaguar a saliva. Este ataque não tem efeito sobre criaturas sem olhos ou que não dependem da visão. A saliva cegante pode ser usada duas vezes por dia no 4º nível e quatro vezes por dia no 7º nível."
+        },
+        {
+          "name": "Percepção às Cegas (Ext)",
+          "text": "No 5º nível, o olho de Gruumsh adquire percepção às cegas em um raio de 1,5 m. Esta habilidade é idêntica à versão descrita no Livro dos Monstros. Seu alcance aumenta para 3 m no 8º nível."
+        },
+        {
+          "name": "Visão de Gruumsh (Ext)",
+          "text": "No 10º nível, o olho de Gruumsh visualiza o momento de sua própria morte através de seu olho perdido. Esta presciência lhe concede +2 de bônus de moral em todos os testes de resistência e na Classe de Armadura a partir deste nível. Ele também não ficará inconsciente quando seus PV forem reduzidos a 0 ou menos; entretanto, ele ainda tombará ao atingir -10 PV. O fato da visão ser precisa ou não é irrelevante — o personagem acredita que é verdadeira."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-ronin",
+    "name_pt": "Ronin",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +6; Usar Arma Exótica (espada bastarda); Tendência: Qualquer uma, exceto Leal; Especial: o personagem deve ser um fugitivo ou um proscrito dos serviços de um senhor feudal, normalmente por ter desobedecido a ordens, demonstrado grosseria ou covardia num momento importante, ou fracassado em uma missão crucial",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 10,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 86,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-ronin",
+      "name": "Ronin",
+      "page": 86,
+      "hitDie": 10,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+6",
+        "skills": [],
+        "feats": [
+          "Usar Arma Exótica (espada bastarda)"
+        ],
+        "other": [
+          "Tendência: Qualquer uma, exceto Leal",
+          "Especial: o personagem deve ser um fugitivo ou um proscrito dos serviços de um senhor feudal, normalmente por ter desobedecido a ordens, demonstrado grosseria ou covardia num momento importante, ou fracassado em uma missão crucial"
+        ]
+      },
+      "classSkills": [
+        "Blefar (Car)",
+        "Cavalgar (Des)",
+        "Conhecimento (história) (Int)",
+        "Conhecimento (nobreza e realeza) (Int)",
+        "Disfarces (Car)",
+        "Intimidação (Car)",
+        "Ofícios (Int)",
+        "Sentir Motivação (Car)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": "Infâmia, ataque furtivo +1d6"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": "Investida banzai"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": "—"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Ataque furtivo +2d6"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Talento adicional"
+        },
+        {
+          "level": 6,
+          "bab": "+6",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "—"
+        },
+        {
+          "level": 7,
+          "bab": "+7",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Ataque furtivo +3d6"
+        },
+        {
+          "level": 8,
+          "bab": "+8",
+          "fort": 6,
+          "ref": 2,
+          "will": 2,
+          "special": "—"
+        },
+        {
+          "level": 9,
+          "bab": "+9",
+          "fort": 6,
+          "ref": 3,
+          "will": 3,
+          "special": "Talento adicional"
+        },
+        {
+          "level": 10,
+          "bab": "+10",
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": "Ataque furtivo +4d6"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os ronin não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Infâmia (Ext)",
+          "text": "A reputação desonrada do ronin — merecida ou não — o precede em qualquer lugar. Sempre que uma autoridade souber qualquer detalhe do passado do personagem (normalmente com um teste de Conhecimento [nobreza e realeza] ou Obter Informação [CD 10]), sua atitude inicial será uma categoria inferior ao normal e o ronin sofrerá -4 de penalidade em todos os testes de perícias baseadas em Carisma que envolvam esta autoridade. A penalidade da infâmia somente se aplica quando a autoridade reconhecer a identidade do ronin, logo alguns ex-samurais adotam pseudônimos ou identidades secretas."
+        },
+        {
+          "name": "Ataque Furtivo (Ext)",
+          "text": "Se um ronin puder atingir um oponente incapaz de se defender adequadamente de seu ataque, ele será capaz de golpear um ponto vital e causar mais dano. Basicamente, esse ataque causa um dano adicional sempre que a vítima não puder se beneficiar de seu bônus de Destreza na CA (existente ou não) ou estiver sendo flanqueada pelo ronin. O dano adicional será 1d6 pontos, mais 1d6 adicional a cada três níveis (+2d6 no 4º nível, +3d6 no 7º, +4d6 no 10º). Se ele obtiver sucesso decisivo com um ataque furtivo, o dano adicional não é multiplicado. Para obter todos os detalhes sobre a habilidade ataque furtivo, consulte a classe ladino no Livro do Jogador."
+        },
+        {
+          "name": "Investida Banzai (Ext)",
+          "text": "O ronin desobedeceu ao código do bushido e perdeu uma parcela de sua honra pessoal, mas seu coração ainda se lembra do caminho da bravura. Quando um ronin de 2º nível ou superior investir em combate, ele poderá reduzir sua Classe de Armadura e adicionar o mesmo valor como um bônus nas jogadas de dano. A penalidade normal na CA devido à Investida se aplica normalmente e será considerada no dano adicional, mas o ronin não pode reduzir a CA em valor inferior a -2 ou superior ao seu bônus base de ataque. Por exemplo, um ronin de 2º nível que realizar uma Investida banzai pode reduzir sua CA em 8 pontos em troca de +8 de bônus na jogada de dano."
+        },
+        {
+          "name": "Talento Adicional",
+          "text": "A experiência de combate do ronin lhe ensinou muitos truques e técnicas. No 5º e no 9º níveis, ele adquire um talento adicional da seguinte lista: Arquearia Montada, Ataque em Movimento, Atropelar, Combate Montado, Investida Implacável, Tiro Certeiro, Tiro em Movimento, Tiro Longo, Tiro Múltiplo, Tiro Preciso, Tiro Preciso Aprimorado e Tiro Rápido. O ronin precisa atender aos pré-requisitos para estes talentos."
+        },
+        {
+          "name": "Ex-Samurais",
+          "text": "Os ronin que tinham níveis de samurai mas abandonaram a classe por qualquer motivo recuperam parcialmente suas habilidades de classe perdidas, conforme o nível que possuíam. Consulte a tabela Habilidades de Ex-Samurais a seguir: nos níveis de samurai 1 a 5, o ronin recupera as características de classe golpe kiai que possuía como samurai e será capaz de utilizá-las normalmente. Nos níveis de samurai 6 a 10, além do acima, o ronin recupera as características de classe atemorizar que possuía como samurai (atemorizar, atemorizar em massa, atemorizar aprimorado) e será capaz de utilizá-las normalmente. A partir do nível de samurai 11 ou superior, o personagem recupera os benefícios acima; além disso, um ex-samurai desta magnitude imediatamente adquire um nível de ronin para cada nível de samurai que descartar. Por exemplo, um personagem que era um samurai de 13º nível poderia se tornar imediatamente um ronin de 10º nível, com todas as habilidades da classe de prestígio, se decidisse sacrificar dez níveis de samurai. O nível de personagem não é afetado. Entretanto, com a perda dos níveis de samurai, o personagem não terá acesso a algumas características de classe fornecidas por ela. Portanto, um ex-samurai de 14º nível poderia tornar um samurai 10/ronin 4, mas perderia as habilidades duas espadas em união aprimorada, golpe kiai 3/dia e até atemorizar aprimorado."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-senhor-rochas",
+    "name_pt": "Senhor das Rochas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +5; Ofícios (alvenaria) 6 graduações; Falar Idioma (Terran); Tolerância; Raça: Anão; Especial: o personagem deve se submeter a um ritual extenuante, que envolve a imersão em argila sagrada, longos períodos de jejum no subterrâneo e a ingestão de 1000 PO em gemas esmagadas. O tipo da gema escolhida será o totem precioso do anão e ele deve carregar uma jóia deste tipo durante a vida inteira para ativar as habilidades similares à magia que recebe como um senhor das rochas",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 88,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-senhor-rochas",
+      "name": "Senhor das Rochas",
+      "page": 88,
+      "hitDie": 8,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+5",
+        "skills": [
+          "Ofícios (alvenaria) 6 graduações",
+          "Falar Idioma (Terran)"
+        ],
+        "feats": [
+          "Tolerância"
+        ],
+        "other": [
+          "Raça: Anão",
+          "Especial: o personagem deve se submeter a um ritual extenuante, que envolve a imersão em argila sagrada, longos períodos de jejum no subterrâneo e a ingestão de 1000 PO em gemas esmagadas. O tipo da gema escolhida será o totem precioso do anão e ele deve carregar uma jóia deste tipo durante a vida inteira para ativar as habilidades similares à magia que recebe como um senhor das rochas"
+        ]
+      },
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (Int)",
+        "Escalar (For)",
+        "Observar (Sab)",
+        "Ofícios (Int)",
+        "Profissão (Sab)",
+        "Sobrevivência (Sab)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": "Sangue terreno"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": "Poder rochoso"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": "Moldar rochas"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Poder rochoso"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Mesclar-se às rochas"
+        },
+        {
+          "level": 6,
+          "bab": "+6",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Poder rochoso"
+        },
+        {
+          "level": 7,
+          "bab": "+7",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Conto das rochas"
+        },
+        {
+          "level": 8,
+          "bab": "+8",
+          "fort": 6,
+          "ref": 2,
+          "will": 2,
+          "special": "Poder rochoso"
+        },
+        {
+          "level": 9,
+          "bab": "+9",
+          "fort": 6,
+          "ref": 3,
+          "will": 3,
+          "special": "Terremoto"
+        },
+        {
+          "level": 10,
+          "bab": "+10",
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": "Poder rochoso"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os senhores das rochas não sabem usar nenhuma arma, armadura ou escudo adicional."
+        },
+        {
+          "name": "Sangue Terreno (SM)",
+          "text": "Uma vez por dia, um senhor das rochas pode usar uma ação padrão para curar seus ferimentos com um ungüento de lama. Essa habilidade recupera uma quantidade de PV equivalente a 1d8 + nível de classe do senhor das rochas."
+        },
+        {
+          "name": "Poder Rochoso",
+          "text": "A cada nível nesta classe de prestígio, o personagem deve selecionar uma das habilidades a seguir. Não é possível escolher o mesmo poder rochoso duas vezes. Exceto quando especificado o contrário, o nível de conjurador do senhor das rochas equivale ao seu nível de classe (a CD para os testes de resistência é baseada em Constituição). Ativar essas habilidades exige uma ação padrão. Abraço da Terra (SM): uma vez por dia, o senhor das rochas é capaz de conjurar imobilizar monstro contra qualquer criatura em contato com o solo. Caso o alvo seja ao ar ou aquático, será imune a este efeito. Mágica da Terra (Sob): uma vez por dia, uma magia conjurada pelo senhor das rochas (pressupondo que ele possa lançar magias) será maximizada, como se fosse afetada pelo talento Maximizar Magia, embora o nível da magia não seja alterado. O nível da magia não pode exceder o nível de classe do personagem. Ativar esta habilidade é uma ação livre. Vigor da Terra (SM): uma vez por dia, o senhor das rochas adquire um bônus de melhoria na Constituição, similar aos efeitos da magia vigor do urso, durante 1 hora. Força da Terra (SM): uma vez por dia, o senhor das rochas adquire um bônus de melhoria na Força, similar aos efeitos da magia força do touro, durante 1 hora. Poder da Terra (Sob): uma vez por dia, todos os ataques corporais realizados pelo senhor das rochas durante uma única rodada recebem +2 de bônus na jogada de ataque e causam 2d6 pontos de dano adicional. Ativar esta habilidade é uma ação livre. Sombras da Terra (Sob): uma vez por dia por nível de classe, o senhor das rochas é capaz de criar uma ilusão (fantasma) de um elemental da terra Médio, que surgirá flanqueando um inimigo adjacente ao senhor das rochas, durante 1 rodada. Essa habilidade permite que o anão flanqueie seu alvo (+2 na jogada de ataque, capaz de desferir ataques furtivos, se aplicável) durante aquela rodada. Ativar esta habilidade é uma ação livre. Gravidade (SM): uma vez por dia, o senhor das rochas é capaz de conjurar lentidão contra um alvo. Pele Rochosa (SM): uma vez por dia, o senhor das rochas é capaz de conjurar pele rochosa sobre si (o nível de conjurador do senhor das rochas equivale ao seu nível de classe). O personagem deve fornecer os componentes materiais, como se a magia fosse lançada normalmente. Invocar Elemental da Terra (SM): uma vez por dia, o senhor das rochas é capaz de convocar um elemental da terra, similar aos efeitos da magia invocar criaturas. O tamanho do elemental depende do nível do senhor das rochas: 1-3 Pequeno; 4-6 Médio; 7-9 Grande; 10 Enorme. Moldar Rochas (SM): uma vez por dia, um senhor das rochas de 3º nível ou superior é capaz de conjurar moldar rochas (o nível de conjurador do senhor das rochas equivale ao seu nível de classe). Mesclar-se às Rochas (SM): uma vez por dia por nível de classe, um senhor das rochas de 5º nível ou superior é capaz de conjurar mesclar-se às rochas (o nível de conjurador do senhor das rochas equivale ao seu nível de classe). Conto das Rochas (SM): uma vez por dia, um senhor das rochas de 7º nível ou superior é capaz de conjurar conto das rochas (o nível de conjurador do senhor das rochas equivale ao seu nível de classe). Terremoto (SM): uma vez por dia, um senhor das rochas de 9º nível ou superior é capaz de conjurar terremoto (o nível de conjurador do senhor das rochas equivale ao seu nível de classe)."
+        }
+      ]
+    }
+  },
+  {
+    "id": "dnd35.cg.prestige.cg-trovador-espada",
+    "name_pt": "Trovador da Espada",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "BBA +5; Equilíbrio 2 graduações; Concentração 4 graduações; Acrobacia 2 graduações; Atuação (dança) 2 graduações; Atuação (canto) 2 graduações; Especialização em Combate; Magias em Combate; Esquiva; Foco em Arma (espada longa ou sabre); Raça: Elfo ou meio-elfo; Magias: capacidade de conjurar magias arcanas de 1º nível ou superior",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 8,
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-cg",
+    "source_book": "D&D 3.5 — O Livro Completo do Guerreiro",
+    "source_page": 90,
+    "created_at": "2026-10-12T12:00:00.000+00:00",
+    "updated_at": "2026-10-12T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "cg-trovador-espada",
+      "name": "Trovador da Espada",
+      "page": 90,
+      "hitDie": 8,
+      "skillPointsPerLevel": "2 + modificador de Inteligência",
+      "requirements": {
+        "bab": "+5",
+        "skills": [
+          "Equilíbrio 2 graduações",
+          "Concentração 4 graduações",
+          "Acrobacia 2 graduações",
+          "Atuação (dança) 2 graduações",
+          "Atuação (canto) 2 graduações"
+        ],
+        "feats": [
+          "Especialização em Combate",
+          "Magias em Combate",
+          "Esquiva",
+          "Foco em Arma (espada longa ou sabre)"
+        ],
+        "other": [
+          "Raça: Elfo ou meio-elfo",
+          "Magias: capacidade de conjurar magias arcanas de 1º nível ou superior"
+        ]
+      },
+      "classSkills": [
+        "Atuação (Car)",
+        "Concentração (Con)",
+        "Conhecimento (arcano) (Int)",
+        "Equilíbrio (Des)",
+        "Identificar Magia (Int)",
+        "Acrobacia (Des)",
+        "Saltar (For)"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 2,
+          "will": 2,
+          "special": "Canção da espada; +1 nível de classe arcana existente"
+        },
+        {
+          "level": 2,
+          "bab": "+2",
+          "fort": 0,
+          "ref": 3,
+          "will": 3,
+          "special": "Canção arcana menor"
+        },
+        {
+          "level": 3,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 3,
+          "will": 3,
+          "special": "+1 nível de classe arcana existente"
+        },
+        {
+          "level": 4,
+          "bab": "+4",
+          "fort": 1,
+          "ref": 4,
+          "will": 4,
+          "special": "Canção da velocidade (2º)"
+        },
+        {
+          "level": 5,
+          "bab": "+5",
+          "fort": 1,
+          "ref": 4,
+          "will": 4,
+          "special": "+1 nível de classe arcana existente"
+        },
+        {
+          "level": 6,
+          "bab": "+6",
+          "fort": 2,
+          "ref": 5,
+          "will": 5,
+          "special": "Canção arcana maior"
+        },
+        {
+          "level": 7,
+          "bab": "+7",
+          "fort": 2,
+          "ref": 5,
+          "will": 5,
+          "special": "+1 nível de classe arcana existente"
+        },
+        {
+          "level": 8,
+          "bab": "+8",
+          "fort": 2,
+          "ref": 6,
+          "will": 6,
+          "special": "Canção da velocidade (4º)"
+        },
+        {
+          "level": 9,
+          "bab": "+9",
+          "fort": 3,
+          "ref": 6,
+          "will": 6,
+          "special": "+1 nível de classe arcana existente"
+        },
+        {
+          "level": 10,
+          "bab": "+10",
+          "fort": 3,
+          "ref": 7,
+          "will": 7,
+          "special": "Canção da fúria"
+        }
+      ],
+      "features": [
+        {
+          "name": "Usar Armas e Armaduras",
+          "text": "Os trovadores da espada não sabem usar nenhuma arma adicional. Eles sabem usar armaduras leves, mas não sabem usar escudos."
+        },
+        {
+          "name": "Conjuração",
+          "text": "Quando um trovador da espada atinge um nível ímpar nessa classe, o personagem adquire mais magias diárias — como se estivesse avançando um nível na sua classe de conjurador arcano anterior. Entretanto, ele não recebe qualquer outro benefício daquela classe (talentos de criação de itens ou metamágicos, familiares, habilidades de bardo, etc.), apenas um nível de conjurador efetivo. Essencialmente, o personagem soma seus níveis de trovador da espada aos níveis de conjurador arcano que possuía para determinar suas magias diárias e seu nível de conjurador efetivo. Caso o personagem tenha mais de uma classe capaz de conjurar magias arcanas antes de se tornar um trovador da espada, deverá escolher qual delas terá seu nível elevado para determinar a quantidade de magias diárias sempre que alcançar um nível ímpar na classe de prestígio."
+        },
+        {
+          "name": "Canção da Espada (Ext)",
+          "text": "Quando empunhar uma espada longa ou um sabre numa das mãos (e nada na outra), o trovador da espada recebe um bônus de esquiva na CA equivalente ao seu nível de classe, limitado pelo seu modificador de Inteligência. Caso o trovador use qualquer armadura média ou pesada, ele perderá todos os benefícios da canção da espada."
+        },
+        {
+          "name": "Canção Arcana Menor (Ext)",
+          "text": "Quando empunhar uma espada longa ou um sabre numa das mãos (e nada na outra), um trovador da espada de 2º nível ou superior pode 'escolher 10' nos testes de Concentração para conjurar magias na defensiva."
+        },
+        {
+          "name": "Canção da Velocidade (Ext)",
+          "text": "Quando empunhar uma espada longa ou um sabre numa das mãos (e nada na outra), um trovador da espada de 4º nível ou superior é capaz de lançar uma única magia Acelerada de 2º nível ou inferior, como se fosse afetada pelo talento Acelerar Magia, embora o nível da magia ou o tempo de execução não sejam alterados. No 8º nível, ele poderá acelerar uma única magia de 4º nível ou inferior."
+        },
+        {
+          "name": "Canção Arcana Maior (Ext)",
+          "text": "Um trovador da espada de 6º nível ou superior ignora a chance de falha arcana de armaduras leves."
+        },
+        {
+          "name": "Canção da Fúria (Ext)",
+          "text": "Quando empunhar uma espada longa ou um sabre numa das mãos (e nada na outra) e realizar uma ação de ataque total, um trovador da espada de 10º nível poderá executar um ataque adicional com a arma, usando seu bônus de ataque mais elevado, mas cada ataque da rodada sofre -2 de penalidade. Esta penalidade se aplica durante uma rodada completa, logo afeta os ataques de oportunidade realizados pelo trovador da espada até seu próximo turno."
+        }
+      ]
+    }
+  },
+  {
     "id": "dnd35.cg.class.cg-paladino-opcional",
     "name_pt": "Paladino Opcional",
     "name_en": null,

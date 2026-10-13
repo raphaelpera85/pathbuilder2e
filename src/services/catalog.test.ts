@@ -2302,7 +2302,7 @@ describe("serviço de catálogo local", () => {
 
   it("calcula totais de tabelas pelo manifesto sem carregar registros", async () => {
     const counts = await fetchCatalogTableCounts();
-    expect(counts.catalog_feats).toBe(2780);
+    expect(counts.catalog_feats).toBe(2863);
     expect(counts.catalog_spells).toBe(1144);
     expect(counts.catalog_weapons).toBe(298);
     expect(counts.catalog_armors).toBe(79);
@@ -2313,9 +2313,9 @@ describe("serviço de catálogo local", () => {
   it("calcula as métricas do compêndio pelos snapshots locais, incluindo perícias", async () => {
     const metrics = await fetchCatalogLocalMetrics();
     expect(metrics.counts.catalog_skills).toBe(195);
-    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(8135);
+    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(8235);
     expect(metrics.counts.catalog_spells).toBe(2224);
-    expect(metrics.verifiedCount + metrics.reviewCount).toBe(8135);
+    expect(metrics.verifiedCount + metrics.reviewCount).toBe(8235);
   });
 
   it("compartilha o cálculo das métricas locais entre chamadas concorrentes", async () => {
