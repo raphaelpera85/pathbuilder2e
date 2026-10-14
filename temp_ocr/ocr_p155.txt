@@ -1,0 +1,96 @@
+04
+154
+Tempo de Execução: 1 ação padrão
+Alcance _ 12
+Área: Emanação com 12 m de raio
+Duração: I hora/nível (n)
+Teste de Resistência: Nenhum
+Resistência a Magia: Sim
+O personagem irradia uma aura
+que afasta suavemente as plantas
+para os lados, permitindo trânsito
+fácil e escondendo sua trilha depois
+da passagem.
+A vegetação será afastada para a
+passagem de qualquer individuo na
+área da magia (incluindo o conjura-
+dor), Esse efeito essencialmente gera
+uma trllha em qualquer ripo de veg&
+tação rasteira, reduzindo as penalida-
+des de deslocamento causadas pela
+vegetação densa no terreno (consulte
+a Tabela 9-5: -lêrreno e Movimento de
+Viagem no Eiva' do Jogador) Quando
+o efeito da magia passar, as plantas
+retornam ao seu aspecto normal A
+CD para rastrear qualquer indivíduo
+que tenha percorrido a área dessa
+magia aumenta em S pontos (o equi-
+valente a esconder os rastros).
+Essa magia não surte efeito sobre
+criaturas do ripo planta (au seja,
+elas não são empurradas ou aprisio-
+nadas por seu efeito)
+RECUO ACELERADO
+RAPIDO
+Transmutação
+Nível: Bardo 1, feiticelro/mago
+Componentes; V
+Tempo de Execução: ação rápida
+Alcance: pessoal
+Alvo: O conjurador
+Duração; t rodada
+Essa magia funciona como recuo aze
+levado (consulte o LivtT do Jogador),
+com as exceções indicadas acima.
+REFRÃO HARMÔNICO
+Encantamento (Compulsão)
+[Ação Mental]
+Nível: Bardo 3
+Componentes: G, F
+Tempo de Execução; I ação padrão
+Alcance: Curto (7,5 metros + 1,5
+metro/ 2 níveis)
+Alvo: Uma criatura viva
+Duração: Concentração, até I roda-
+da/nivel (D)
+Teste de Resistência: Vontade
+anula (inofensiva)
+Resistência a Magia: Sim
+O refrão harmônico permite que o per-
+sonagem aprimore a habilidade de
+conjuração do alvo, Enquanto a ma-
+gia permanecer ativa, o alvo recebe
+42 de bônus de moral no nivel de
+conjurador e +2 de bônus de
+nas CDs dos testes de resistência
+para todas as magias que lançar,
+Foco: Um diapasão.
+RITMO INSIDIOSO
+Encantamento (Compulsão)
+[Ação Mental]
+Nível: Bardo 2
+Componentes: V, G
+Tempo de Execução: 1 ação padrão
+Alcance: Médio (30 metros + 3 me-
+tros/nive l)
+Área: Uma criatura
+Duração: I minuto/nível
+Tcstc dc Resistência: Vontade
+anula
+Resistência a Magia: Sim
+O personagem toca uma melodia
+boba e repetitiva que fica travada na
+mente do alvo, a menos que este
+obtenha sucesso num teste de resis-
+tência de Vontade A repetição in-
+cessante da melodia dificulta para o
+alvo conjurar magias ou executar
+qu quer Outra ação que exija um
+foco mental. O sofre —4 de
+penalidade nos testes de pericias
+baseadas em Inteligência e de Con-
+centração. Sempre que ele tentar
+conjurar, concentrar-se ou
+nar uma magia, deverá Obter sucesso
+em um teste de Concentração (CD

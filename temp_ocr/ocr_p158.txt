@@ -1,0 +1,136 @@
+segurando no momento da conju-
+ração (esta espada curta). Caso
+largue ou perca o item, a capacidade
+de usa-lo não se transfere a um item
+diferente do mesmo tipo que o per-
+sonagem apanhar, Contudo, se ele
+recuperar O item original antes do
+término da magia, ainda poderá usar
+aquela alma ou escudo enquanto a
+magia permanecer ativa,
+Foco: O item que o personagem
+deseja usar.
+TRANSFORMAÇÃO
+NOTURNA
+Transmutação
+Nível: Feiticeiro/ mago 5
+Componentes: V, G, M
+Tempo de Execução: I ação padrão
+Alcance: pessoal
+Alvo: O conjurador
+Duração: I rodada nivel (n)
+O personagem se torna um comba-
+tente sorrateiro e perigoso. Sua ati-
+tude mental se altera, de forma que
+ele passa a preferir a furtividade, a
+trapaça e os ataques surpresa em
+trimento das investidas magicas.
+Ele recebe +4 de bônus de melho-
+na em Destreza, +3 de bônus de sorte
+na Classe de Armadura, de bônus
+de sorte nos testes de resistência de
+Reflexos, +5 de bônus de competen-
+cia nos testes de Observar, Ouvir, Es
+conder-se e Furtividade, e torna-se
+capaz de usar todas as armas simples
+além da besta de mão, o sa re, o
+bastão, o arco carto e a espada curta.
+Ele também adquire o talento Acui-
+dade com Arma e a habilidade evasão
+(consulte o Livro do Jogador). Ele
+inflige 3d6 pontos de dano adicional
+sempre que atacnrum oponente flan-
+queado ou que não possa se
+ficiar do seu Ininus de Destreza na
+Classe de Armadura, Esse dano adi-
+cional funciona como a habilidade
+araque furtivo do ladino.
+O personagem pelde sua habili-
+dade de conjuração enquanto a ma-
+gia permanecer ativa, incluindo sua
+habilidade de usar itens de gatilho
+ou complemento de magia, como se
+essas magias não fizessem mais
+parte de sua lista de classe.
+Componente Malfvial• Uma poção
+dc do galn, que deve Ser in
+gerida (e cujos efeius são neutrali-
+zados pelos da magia).
+TREINAR ANIMAL
+Encantamento (Feitiço)
+[Ação Mental]
+Nível; Druida 2, ranger 2
+Componentes; V, C, FD
+Tempo de Execução; 10 minutos
+Alcance: TO g ue
+Alvo: Animal tocado
+Duração: I hora/ nivel
+Teste de Resistência: Vontade
+anula (inofi?nsiva)
+Resistência a Magia; Sim anofensiva)
+O personagem aumenta temporaria-
+mente o numero de traques conhLF
+cidos por um animal. Enquanto essa
+magia estiver ativa, o animal afetado
+a uire uma qu antidade de truques
+adicionais equivalentes a metade LIO
+seu nível de conjurador (máximo 5).
+Para obter mais informações sobre
+truques e ammais adestrados, con-
+Sulte a descrição do Talento Adestrar
+Animais na página ICO deste livro e
+no Lil'ln do Jogador.
+Essa magia não modifica a atitude
+de um animal em relação ao perso-
+nagem, nem garante que ele irá
+cooperar quando for instruido a exe-
+curar os truques que aprendeu,
+TRENODIA INFERNAL
+Evocaçio [Mal, Sônica]
+Nível: Bardo 3
+Componentes: V, G
+Tempo de Execução; I rodada
+Alcance: Médio (30 metros 4 3 me-
+Área; Emanação esférica com raio
+igual ao alcance, centralizada no
+conjurador
+Duração: rodada/nivel (D)
+Teste de Resistencia. Vontade
+anula
+Resistência a Magia: Sim
+O personagem é capaz de entoar um
+ritmo pulsante e poderoso que tem•
+porariamente amplia em 42 os níveis
+efetivos de todos os conjuradores e
+tendência maligna na área de
+alcance. Esse aumento não
+concede acesso a magias
+a icionais, mas melhora
+todos os efeitos de ma-
+gia dependentes do
+nível de conjurador,
+Além disso, a trenodia
+infernal imita os efeitos
+da magia profanar no que
+se refere a expulsar ou
+fascinar mortos-vivos. Den-
+tro da área da magia, todo conju
+radar divino maligno recebe +4 de
+bônus pmfano nos testes de Cans-
+ma para fascinar mortos-vivos, e
+cada conjurador divino bondoso
+sofre —4 de penalidade profana nos
+testes de Carisma para expulsar mor-
+UIVO DA DESTRUIÇÃO
+Necromancia [Medo, Ação Mental,
+Sônica]
+Nível; Bardo 5
+Componentes: V
+Tempo de Execução: I ação padrão
+Alcance: 9 m
+Alvo: Explosão em forma de cone
+Duração; Instantânea e I rodada/
+nivelou I rodada; veja texto
+Teste de Resistência: Vontade par-
+cial; veja texto
+Resistência a Magia: Sim

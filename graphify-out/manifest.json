@@ -816,9 +816,9 @@
     "semantic_hash": ""
   },
   "src/services/admin.test.ts": {
-    "mtime": 1791966863.3212132,
-    "seen": 1791966966.1491606,
-    "ast_hash": "83e206da1ffd50b44673ea2b8d0e71cd",
+    "mtime": 1791968633.8931158,
+    "seen": 1791969227.402861,
+    "ast_hash": "0c14a17191b77d496d1a6d03c9478d20",
     "semantic_hash": ""
   },
   "src/services/admin.ts": {
@@ -1236,9 +1236,9 @@
     "semantic_hash": ""
   },
   "src/services/catalog.test.ts": {
-    "mtime": 1791966863.3192072,
-    "seen": 1791966966.1491764,
-    "ast_hash": "4b000f564f1539500d590c53689989c1",
+    "mtime": 1791968633.890612,
+    "seen": 1791969227.4028692,
+    "ast_hash": "cf7f5d940dbc16002d0e4ad3dda721f3",
     "semantic_hash": ""
   },
   "src/services/catalog.ts": {
@@ -12612,9 +12612,9 @@
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/manifest.json": {
-    "mtime": 1791966858.521832,
-    "seen": 1791966966.1476994,
-    "ast_hash": "9e705a96165dacca31e30e334cbecd31",
+    "mtime": 1791968622.163291,
+    "seen": 1791969227.4024878,
+    "ast_hash": "4c730e19001e64cf8bb7edaee9aa05ef",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/ose/advanced/action.json": {
@@ -13620,9 +13620,9 @@
     "semantic_hash": ""
   },
   "scripts/generate-dnd35-adv-snapshots.ts": {
-    "mtime": 1791918191.916668,
-    "seen": 1791966966.1473584,
-    "ast_hash": "42528ad838bfb6876c3c25edd6e5e549",
+    "mtime": 1791968615.8410373,
+    "seen": 1791969227.4023561,
+    "ast_hash": "f9fc86e915dfe610aa2931f44c8d0408",
     "semantic_hash": ""
   },
   "scripts/generate-dnd35-cg-snapshots.ts": {
@@ -13638,9 +13638,9 @@
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-adv/class.json": {
-    "mtime": 1791966857.9633284,
-    "seen": 1791966966.1476054,
-    "ast_hash": "89b8fbf9ca5d0bf0ba4f09e065d46b85",
+    "mtime": 1791968621.5810778,
+    "seen": 1791969227.402438,
+    "ast_hash": "c3e1ddbfd70e0c569bc15b00b7c729f3",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/dnd35/v35-cg/class.json": {
@@ -13740,15 +13740,15 @@
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35AdvPrestige.test.ts": {
-    "mtime": 1791966837.9796026,
-    "seen": 1791966966.14811,
-    "ast_hash": "fbdf15f2ed84ca171159178c1e1ccf9c",
+    "mtime": 1791967250.8428004,
+    "seen": 1791969227.40258,
+    "ast_hash": "8394f43333beb79085eeaa0a44fa86dc",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35AdvPrestige.ts": {
-    "mtime": 1791966851.8575342,
-    "seen": 1791966966.1481116,
-    "ast_hash": "cb991fabd9caaf2bf9d38ab5bb665a94",
+    "mtime": 1791967265.9534707,
+    "seen": 1791969227.4025807,
+    "ast_hash": "31915b35836a61ddca7de7687bbc3483",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35CgBatedor.test.ts": {
@@ -15153,6 +15153,42 @@
     "mtime": 1791772381.9262178,
     "seen": 1791966966.1521904,
     "ast_hash": "ee27f0cdefe775f1345f5c9f8b741bad",
+    "semantic_hash": ""
+  },
+  "src/data/catalog/snapshots/dnd35/v35-adv/feat.json": {
+    "mtime": 1791968621.5820818,
+    "seen": 1791969227.4024396,
+    "ast_hash": "d1ee02cfe165d4a897e72bfa0a85dee1",
+    "semantic_hash": ""
+  },
+  "src/data/catalog/snapshots/dnd35/v35-adv/weapon.json": {
+    "mtime": 1791968621.5820818,
+    "seen": 1791969227.4024408,
+    "ast_hash": "18efada42f4813c53e317670621abf12",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35AdvEquipment.test.ts": {
+    "mtime": 1791968858.6871934,
+    "seen": 1791969227.4025707,
+    "ast_hash": "5411ce1cace77320e7c0f9dd8b3c6ca9",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35AdvEquipment.ts": {
+    "mtime": 1791968842.5773778,
+    "seen": 1791969227.4025717,
+    "ast_hash": "72f40cbba861c27fe76326024bb1e3f2",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35AdvFeats.test.ts": {
+    "mtime": 1791968243.49902,
+    "seen": 1791969227.402573,
+    "ast_hash": "971de0e4eb6499e0a766bd96969eea79",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35AdvFeats.ts": {
+    "mtime": 1791968259.7339842,
+    "seen": 1791969227.402574,
+    "ast_hash": "81016fe9b39e2e45a709d81eaeba4e62",
     "semantic_hash": ""
   }
 }

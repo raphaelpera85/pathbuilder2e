@@ -1,0 +1,153 @@
+Alvo; O conjurador
+Duração; 10 minutos/nível (D)
+O personagem altera sua coloração
+e sintoniza seus passos a um tipo de
+terreno (aquático, deserto, planicies,
+floresta, colinas, montanhas, páli-
+tano ou subterrâneo). Enquanto
+estiver nesse ripo de terreno, ele
+recebe +20 de bônus de competên-
+cia nos testes de Esconder-se e Fulv
+tividade. Ele conserva esses bónus
+mesmo se a andonar o terlTnO de-
+signado e voltar enquanto o efeito
+permanecer ativo.
+ABSORVER ARMA
+Tmnsmutação
+Nível: Assassino 3
+Componentes: V, G
+Tempo de Execução: ação padrão
+Alcance: Toque
+Alvo; Uma arma torada que não
+esteja em posse de outlz criatura
+Duração: I hora/nível (D
+Teste de Resistência: Vontade anu-
+12 (objeto), veja texto
+Resistência a Magra: Sim (objeto)
+O personagem é capaz de absorver
+de forma inofensiva a arma que to•
+car (mesmo se estiver envenenada)
+em seu braço, desde que ela não
+esteja em posse de outra criatura. A
+arma deve ser leve em relação ao per-
+sonagem no momento da conjura
+cio, impossivel sentir a arma absor-
+vida sob a pele, e ela não restringe a
+capacidade. de movlmento braçal de
+nenhuma formm Uma arma absor-
+vida não pode ser detectada, mesmo
+COIn uma busca cuidadosa, embora
+detectar magia revele a presença de
+uma aura mágica. A única evidência
+de sua presença é uma leve mancha
+na pele, com formato vagamente si
+milar ao da arma.
+AO tocar o local (urna ação equiva-
+lente a sacar uma arma), ou quando
+a duração da magia terminar, a arma
+surge nas mãos do personagem e a
+magia é dissipada Se atacar com
+a arma na mesma rodada em que a
+recuperar do seu esconderijo, ele
+poderá rentar Obter sucesso num
+teste de Blefar para fintar em com-
+bate como uma ação livre, receben-
+do -+4 de bônus. Uma arma magica
+inteligente deve realizar um teste de
+resistencia Contra essa magia, mas as
+demais armas não.
+ACORDE DISSONANTE
+Evocação Sônica)
+Nível; Bardo 3
+Componentes: V G
+Tempo de Execução: I ação padrão
+Alcance: 3 m
+Área; Explosão de 3 m de raio cen-
+no conjurador
+Duração; Instantânea
+Teste de Resistência: Fortitude re-
+duz à metade
+Resistência a Magia: Sim
+O conjurador emite uma nora ter-
+rivel e penetrante. As criaturas (exce-
+to o conjurador) na área afetada so-
+frem Id8 pontos dc dano sónico
+para cada dois níveis de conjurador
+(máximo de Sd8).
+ALLEGRO
+Tmnsmtttação
+Nível: Bardo 3
+Componentes; V, G, M
+Tempo de Execução: I ação padrão
+Alcance: 3
+Área- Explosão com 3 m de raio, cen-
+no conjurador
+Duração; I minuto/nível (D)
+Teste de Resistência: Fortitude
+anula (inofensiva)
+Resistência a Magia: Sim (inofensiva)
+Essa magia torna o personagem e
+seus companheiros extraordinaria
+mente ligeiros, Cada criatura na
+área da magia recebe um bônus de
+melhoria de 9 m em seu desloca-
+mento terrestre, limitado ao dobro
+de seu deslocamento básico- As
+criaturas afetadas conservam esses
+efeitos enquanto a magia perma-
+necer ativa, mesmo se abandona-
+rem a área inicial.
+Componente Material: A pena da
+cauda de uma ave de rapina,
+ÂNIMO INSPIRADOR
+Encantamento (Compulsão)
+[Ação Mental]
+Nível: Bardo I
+Componentes: V, G
+Tempo de Execução; I ação rápida
+Alcance; Pessoa
+Alvo: O conjurador
+Duração: I rodada ou especial; veja
+texto
+Quando toca seu instrumento, canta
+Sua cançao, recita seu poema épico
+ou profere suas palavras de encoraoa-
+mento, o personagem deixa seus alia-
+dos mais confiantes que o normal.
+Enquanto essa magia estiver ativa, o
+bônus de moral concedido pela habi-
+lidade inspirar coragem da música de
+balzio aumenta em [ ponto.
+A magia continua ativa até termi-
+nar o efeito de inspirar coragem. Se
+o personagem não utilizar inspirar
+coragem antes do início de sett pó
+xima turno, o efeito da magia acaba.
+ARMA ANTI-INIM\GOS
+Evocação
+Nível; Ranger 4
+Componentes; V, C
+Tempo de Execução; I ação padrão
+Alcance; rogue
+Área: Arma tocada
+Duração: I rodada/ nivel (D)
+Teste de Resistência: Vontade
+anula (inofensiva, objeto)
+Resistência a Magia: Sim (inofen-
+Siva, objeto)
+Essa magia imbui uma de suas ar-
+mas com um grande poder letal
+contra um único tipo de inimigo
+predileto. Contra as criaturas apro-
+priadas, ela funcionará como uma
+arma mágica e infligirá 2d6 pon
+tos de dano adicional Além disso,
+enquanto o personagem empunhar
+a arma, ele receberá +4 de bónus de
+resistência nos testes de resistência
+Contra os efeitos gerados pelas cria-
+furas desse ripo
+A magia é cancelada automatica-
+mente I rodada depois que a arma
+deixar as do personagem por
+'143
