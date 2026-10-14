@@ -1,0 +1,108 @@
+export const DND5E_GGTR_SOURCE_BOOK = "D&D 5e · Guia dos Mestres de Guilda de Ravnica";
+
+export interface Dnd5eSubclassFeature {
+  level: number;
+  name: string;
+  description: string;
+}
+
+export interface Dnd5eGgtrSubclass {
+  id: string;
+  classId: string;
+  name: string;
+  englishName: string;
+  featureLevel: number;
+  sourcePage: number;
+  description: string;
+  features: Dnd5eSubclassFeature[];
+}
+
+export const DND5E_GGTR_SUBCLASSES: Dnd5eGgtrSubclass[] = [
+  {
+    id: "dnd5e.ggtr.subclass.clerigo_dominio_da_ordem",
+    classId: "clerigo",
+    name: "Domínio da Ordem",
+    englishName: "Order Domain",
+    featureLevel: 1,
+    sourcePage: 25,
+    description: "O Domínio da Ordem representa a disciplina, devoção e estrita obediência às leis que governam a sociedade e o cosmo. Clérigos da Ordem usam a magia para manter a paz e forçar a obediência civil.",
+    features: [
+      {
+        level: 1,
+        name: "Magias do Domínio da Ordem",
+        description: "Você ganha magias de domínio nos níveis de clérigo indicados: 1º (comando, heroísmo), 3º (imobilizar pessoa, zona da verdade), 5º (palavra de cura em massa, lentidão), 7º (compulsão, localizar criatura), 9º (comunhão, dominar pessoa)."
+      },
+      {
+        level: 1,
+        name: "Proficiências Bônus",
+        description: "Ao escolher este domínio no 1º nível, você ganha proficiência com armaduras pesadas e na perícia Intimidação ou Persuasão (à sua escolha)."
+      },
+      {
+        level: 1,
+        name: "Voz da Autoridade",
+        description: "A partir do 1º nível, se você conjurar uma magia com espaço de magia de 1º nível ou superior alvejando um aliado, esse aliado pode usar a reação imediatamente após a magia para fazer um ataque com arma contra uma criatura à sua escolha que você possa ver."
+      },
+      {
+        level: 2,
+        name: "Canalizar Divindade: Demanda da Ordem",
+        description: "A partir do 2º nível, você pode usar seu Canalizar Divindade para exercer uma presença intimidadora. Com uma ação, apresenta seu símbolo sagrado: cada criatura à sua escolha a até 9 metros que possa vê-lo ou ouvi-lo deve ter sucesso em uma salvaguarda de Sabedoria ou fica enfeitiçada por você até o final do seu próximo turno ou até sofrer qualquer dano. Criaturas que falharem também podem ser forçadas a largar o que estiverem segurando."
+      },
+      {
+        level: 6,
+        name: "Encarnação da Lei",
+        description: "No 6º nível, se você conjurar uma magia da escola de encantamento usando um espaço de magia de 1º nível ou superior cujo tempo de execução seja de 1 ação, pode mudar o tempo para 1 ação bônus. Pode usar esta habilidade um número de vezes igual ao seu modificador de Sabedoria (mínimo de 1), recuperando os usos em um descanso longo."
+      },
+      {
+        level: 8,
+        name: "Golpe Divino",
+        description: "No 8º nível, uma vez em cada um dos seus turnos ao acertar uma criatura com um ataque de arma, você pode fazer com que o ataque cause 1d8 de dano psíquico adicional. No 14º nível, o dano psíquico extra aumenta para 2d8."
+      },
+      {
+        level: 17,
+        name: "Ira da Ordem",
+        description: "A partir do 17º nível, ao causar o dano do seu Golpe Divino a uma criatura em seu turno, você pode amaldiçoá-la até o início do seu próximo turno. Na próxima vez que um aliado seu acertar a criatura amaldiçoada com um ataque, o alvo sofre 2d8 de dano psíquico adicional e a maldição encerra."
+      }
+    ]
+  },
+  {
+    id: "dnd5e.ggtr.subclass.druida_circulo_dos_esporos",
+    classId: "druida",
+    name: "Círculo dos Esporos",
+    englishName: "Circle of Spores",
+    featureLevel: 2,
+    sourcePage: 26,
+    description: "Druidas do Círculo dos Esporos encontram beleza na decomposição, compreendendo que fungos e bolores transformam matéria sem vida em vida abundante, considerando vida e morte partes indissociáveis do ciclo natural.",
+    features: [
+      {
+        level: 2,
+        name: "Magias do Círculo",
+        description: "No 2º nível, você aprende o truque toque arrepiante (chill touch). Você também ganha acesso às magias da tabela: 3º (cegueira/surdez, repouso tranquilo), 5º (animar mortos, forma gasosa), 7º (praga/deterioração, confusão), 9º (névoa mortal, contágio). Elas estão sempre preparadas e contam como magias de druida."
+      },
+      {
+        level: 2,
+        name: "Halo de Esporos",
+        description: "A partir do 2º nível, você está cercado por esporos necróticos invisíveis. Quando uma criatura que você possa ver se mover para um espaço a até 3 metros de você ou começar o turno ali, você pode usar sua reação para causar 1d4 de dano necrótico a ela, a menos que ela tenha sucesso em uma salvaguarda de Constituição contra a CD de suas magias. O dano aumenta para 1d6 no 6º nível, 1d8 no 10º nível e 1d10 no 14º nível."
+      },
+      {
+        level: 2,
+        name: "Entidade Simbiótica",
+        description: "No 2º nível, com uma ação você pode gastar um uso da sua Forma Selvagem para despertar seus esporos, ganhando 4 pontos de vida temporários por nível nesta classe. Enquanto durar: seu Halo de Esporos rola o dado de dano uma segunda vez somando ao total; e seus ataques corpo a corpo com arma causam 1d6 de dano de veneno extra. O efeito dura 10 minutos ou até perder todos os PV temporários."
+      },
+      {
+        level: 6,
+        name: "Infestação Fúngica",
+        description: "No 6º nível, se uma besta ou humanoide Pequeno ou Médio morrer a até 3 metros de você, você pode usar sua reação para animá-lo, fazendo-o se erguer imediatamente com 1 ponto de vida usando as estatísticas de um zumbi por 1 hora. Pode usar esta habilidade um número de vezes igual ao seu modificador de Sabedoria (mínimo de 1), recuperando em descanso longo."
+      },
+      {
+        level: 10,
+        name: "Disseminar Esporos",
+        description: "No 10º nível, como uma ação bônus enquanto sua Entidade Simbiótica estiver ativa, você pode lançar esporos a até 9 metros de distância, girando em um cubo de 3 metros por 1 minuto. Criaturas que entram ou iniciam o turno no cubo sofrem o dano do seu Halo de Esporos (salvaguarda de Constituição nega). Enquanto a nuvem persistir, você não pode usar sua reação normal de Halo de Esporos."
+      },
+      {
+        level: 14,
+        name: "Corpo Fúngico",
+        description: "No 14º nível, os esporos fúngicos alteram permanentemente seu corpo: você não pode ser cegado, ensurdecido, amedrontado ou envenenado, e qualquer acerto crítico contra você conta como um acerto normal a menos que você esteja incapacitado."
+      }
+    ]
+  }
+];

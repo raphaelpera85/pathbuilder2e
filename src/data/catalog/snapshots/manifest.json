@@ -122,6 +122,17 @@
   },
   {
     "systemId": "dnd5e",
+    "ruleset": "dnd5e-ggtr",
+    "categories": {
+      "ancestry": 6,
+      "background": 10,
+      "item": 15,
+      "spell": 2,
+      "subclass": 2
+    }
+  },
+  {
+    "systemId": "dnd5e",
     "ruleset": "dnd5e-scag",
     "categories": {
       "ancestry": 4,

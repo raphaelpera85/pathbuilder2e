@@ -1,0 +1,102 @@
+[
+  {
+    "id": "dnd5e.ggtr.magia.codificar_pensamentos",
+    "name_pt": "Codificar Pensamentos",
+    "name_en": "Encode Thoughts",
+    "name_es": null,
+    "description_pt": "Colocando um dedo na própria cabeça, você puxa uma memória, ideia ou mensagem da sua mente e a transforma em uma fita tangível de energia brilhante chamada fio de pensamento, que persiste pela duração ou até você conjurar esta magia novamente. O fio aparece num espaço desocupado a até 1,5m de você como um objeto Miúdo, sem peso e semissólido, que pode ser segurado e carregado como uma fita. Caso conjure esta magia enquanto se concentra em uma magia ou habilidade que permita ler ou manipular pensamentos de terceiros (como detectar pensamentos ou modificar memória), você pode transformar os pensamentos da outra criatura no fio. Qualquer criatura segurando o fio que use detectar pensamentos pode ler o conteúdo sem necessidade de testes.",
+    "description_en": null,
+    "description_es": null,
+    "rank": 0,
+    "is_cantrip": true,
+    "is_focus": false,
+    "traditions": [],
+    "cast_actions": "1 ação",
+    "range": "Pessoal",
+    "targets": null,
+    "duration": "Até 8 horas",
+    "defense": null,
+    "traits": [
+      "encantamento"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-ggtr",
+    "source_book": "D&D 5e · Guia dos Mestres de Guilda de Ravnica",
+    "source_page": 47,
+    "created_at": "2026-10-14T18:34:42.089Z",
+    "updated_at": "2026-10-14T18:34:42.089Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.ggtr.magia.codificar_pensamentos",
+      "name": "Codificar Pensamentos",
+      "range": "Pessoal",
+      "summary": "Truque · encantamento · extrai pensamentos e memórias em uma fita semissólida e tangível",
+      "category": "magia",
+      "classIds": [
+        "bruxo",
+        "feiticeiro",
+        "mago"
+      ],
+      "spellLevel": 0,
+      "school": "encantamento",
+      "castingTime": "1 ação",
+      "components": "S",
+      "duration": "Até 8 horas",
+      "savingThrow": null,
+      "sourcePage": 47,
+      "summaries": {
+        "pt-BR": "Truque · encantamento · extrai pensamentos e memórias em uma fita semissólida e tangível"
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.ggtr.magia.raio_do_caos",
+    "name_pt": "Raio do Caos",
+    "name_en": "Chaos Bolt",
+    "name_es": null,
+    "description_pt": "Você arremessa uma massa oscilante e ondulante de energia caótica contra uma criatura no alcance. Faça um ataque à distância com magia. Se acertar, o alvo sofre 2d8 + 1d6 de dano. Escolha um dos d8s: o número rolado determina o tipo de dano (1 Ácido, 2 Frio, 3 Fogo, 4 Força, 5 Elétrico, 6 Veneno, 7 Psíquico, 8 Trovão). Se você rolar o mesmo número em ambos os d8s, a energia caótica salta do alvo para uma criatura diferente à sua escolha a até 9 metros dele. Faça uma nova jogada de ataque contra o novo alvo e faça uma nova rolagem de dano, que também pode saltar se rolar números iguais nos d8s. Uma criatura só pode ser alvejada uma vez por conjuração desta magia. Em níveis superiores: o dano aumenta em 1d6 para cada nível de espaço acima do 1º.",
+    "description_en": null,
+    "description_es": null,
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [],
+    "cast_actions": "1 ação",
+    "range": "36 metros",
+    "targets": null,
+    "duration": "Instantânea",
+    "defense": null,
+    "traits": [
+      "evocacao"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-ggtr",
+    "source_book": "D&D 5e · Guia dos Mestres de Guilda de Ravnica",
+    "source_page": 67,
+    "created_at": "2026-10-14T18:34:42.089Z",
+    "updated_at": "2026-10-14T18:34:42.089Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.ggtr.magia.raio_do_caos",
+      "name": "Raio do Caos",
+      "range": "36 metros",
+      "summary": "1º nível · evocação · raio imprevisível com tipo de dano variável que pode ricochetear",
+      "category": "magia",
+      "classIds": [
+        "feiticeiro"
+      ],
+      "spellLevel": 1,
+      "school": "evocacao",
+      "castingTime": "1 ação",
+      "components": "V, S",
+      "duration": "Instantânea",
+      "savingThrow": null,
+      "sourcePage": 67,
+      "summaries": {
+        "pt-BR": "1º nível · evocação · raio imprevisível com tipo de dano variável que pode ricochetear"
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]
