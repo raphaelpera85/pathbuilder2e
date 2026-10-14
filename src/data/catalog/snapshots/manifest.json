@@ -44,6 +44,15 @@
   },
   {
     "systemId": "dnd35",
+    "ruleset": "v35-city",
+    "categories": {
+      "class": 3,
+      "feat": 14,
+      "spell": 11
+    }
+  },
+  {
+    "systemId": "dnd35",
     "ruleset": "v35-cor",
     "categories": {
       "ancestry": 3,

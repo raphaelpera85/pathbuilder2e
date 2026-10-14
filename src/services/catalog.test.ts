@@ -667,7 +667,7 @@ describe("serviço de catálogo local", () => {
     expect(DEFAULT_RPG_SYSTEMS.map((system) => system.id)).toEqual(expect.arrayContaining(["pf2e", "t20", "dnd5e", "ose", "dnd35"]));
     expect(CATALOG_RULESETS).toEqual([
       "advanced", "basico", "classic", "legacy", "legacy_pf1", "padrao", "remaster", "standard",
-      "v35", "v35-adv", "v35-arc", "v35-cg", "v35-cor", "v35-cov", "v35-defensores", "v35-div", "v35-ee", "v35-frostburn", "v35-pe",
+      "v35", "v35-adv", "v35-arc", "v35-cg", "v35-city", "v35-cor", "v35-cov", "v35-defensores", "v35-div", "v35-ee", "v35-frostburn", "v35-pe",
     ]);
   });
 
@@ -735,6 +735,20 @@ describe("serviço de catálogo local", () => {
     expect(featsResult.items).toHaveLength(17);
 
     const spellsResult = await fetchCatalogCategory("spell", { systemId: "dnd35", ruleset: "v35-ee" });
+    expect(spellsResult.source).toBe("local_snapshot");
+    expect(spellsResult.items).toHaveLength(11);
+  });
+
+  it("serve classes, talentos e magias de Cityscape pelo snapshot v35-city", async () => {
+    const classesResult = await fetchCatalogCategory("class", { systemId: "dnd35", ruleset: "v35-city" });
+    expect(classesResult.source).toBe("local_snapshot");
+    expect(classesResult.items).toHaveLength(3);
+
+    const featsResult = await fetchCatalogCategory("feat", { systemId: "dnd35", ruleset: "v35-city" });
+    expect(featsResult.source).toBe("local_snapshot");
+    expect(featsResult.items).toHaveLength(14);
+
+    const spellsResult = await fetchCatalogCategory("spell", { systemId: "dnd35", ruleset: "v35-city" });
     expect(spellsResult.source).toBe("local_snapshot");
     expect(spellsResult.items).toHaveLength(11);
   });
@@ -1387,7 +1401,7 @@ describe("serviço de catálogo local", () => {
 
     expect(source).toBe("local_mixed");
     expect(coreSpells).toHaveLength(dnd35CoreCount);
-    expect(supplementSpells).toHaveLength(541);
+    expect(supplementSpells).toHaveLength(552);
     expect(pf1eSpells).toHaveLength(PF1E_BARD_CANTRIPS.length + PF1E_CLERIC_CANTRIPS.length + PF1E_DRUID_CANTRIPS.length + PF1E_SORCERER_WIZARD_CANTRIPS.length);
   });
 
@@ -2326,8 +2340,8 @@ describe("serviço de catálogo local", () => {
 
   it("calcula totais de tabelas pelo manifesto sem carregar registros", async () => {
     const counts = await fetchCatalogTableCounts();
-    expect(counts.catalog_feats).toBe(3049);
-    expect(counts.catalog_spells).toBe(1452);
+    expect(counts.catalog_feats).toBe(3063);
+    expect(counts.catalog_spells).toBe(1463);
     expect(counts.catalog_weapons).toBe(348);
     expect(counts.catalog_armors).toBe(79);
     expect(counts.catalog_shields).toBe(32);
@@ -2337,9 +2351,9 @@ describe("serviço de catálogo local", () => {
   it("calcula as métricas do compêndio pelos snapshots locais, incluindo perícias", async () => {
     const metrics = await fetchCatalogLocalMetrics();
     expect(metrics.counts.catalog_skills).toBe(195);
-    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(8912);
-    expect(metrics.counts.catalog_spells).toBe(2532);
-    expect(metrics.verifiedCount + metrics.reviewCount).toBe(8912);
+    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(8940);
+    expect(metrics.counts.catalog_spells).toBe(2543);
+    expect(metrics.verifiedCount + metrics.reviewCount).toBe(8940);
   }, 15_000);
 
   it("compartilha o cálculo das métricas locais entre chamadas concorrentes", async () => {

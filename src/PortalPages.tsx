@@ -133,6 +133,7 @@ function catalogRulesetLabel(ruleset: string): string {
     "v35-frostburn": "D&D 3.5 · Frostburn",
     "v35-pe": "D&D 3.5 · Punhos e Espadas",
     "v35-ee": "D&D 3.5 · Exemplars of Evil",
+    "v35-city": "D&D 3.5 · Cityscape",
   };
   return labels[ruleset] || ruleset;
 }

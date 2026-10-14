@@ -1,0 +1,534 @@
+// ============================================================================
+// D&D 3.5 — Cityscape: Classes de Prestígio (Cap. 3, pp. 80-104)
+// Suplemento oficial da Wizards of the Coast (158 págs.).
+// 3 classes de prestígio completas com 10 níveis de progressão integral:
+// - Ebonmar Infiltrator (p. 80)
+// - Crimson Scourge (p. 93)
+// - Urban Savant (p. 100)
+// Ruleset "v35-city".
+// ============================================================================
+
+export interface Dnd35CityPrestigeLevel {
+  level: number;
+  bab: string;
+  fort: number;
+  ref: number;
+  will: number;
+  special: string;
+}
+
+export interface Dnd35CityPrestigeRequirements {
+  bab?: string;
+  skills?: string[];
+  feats?: string[];
+  spells?: string[];
+  special?: string[];
+}
+
+export interface Dnd35CityPrestigeClass {
+  id: string;
+  name: string;
+  page: number;
+  hitDie: number;
+  skillPoints: string;
+  classSkills: string[];
+  requirements: Dnd35CityPrestigeRequirements;
+  levels: Dnd35CityPrestigeLevel[];
+  features: { name: string; text: string }[];
+  description: string;
+}
+
+export const DND35_CITY_PRESTIGE_CLASSES: Dnd35CityPrestigeClass[] = [
+  {
+    "id": "city-prc-ebonmar-infiltrator",
+    "name": "Ebonmar Infiltrator",
+    "page": 80,
+    "hitDie": 6,
+    "skillPoints": "6 + Int modifier",
+    "classSkills": [
+      "Balance",
+      "Bluff",
+      "Climb",
+      "Decipher Script",
+      "Diplomacy",
+      "Disable Device",
+      "Disguise",
+      "Escape Artist",
+      "Forgery",
+      "Gather Information",
+      "Hide",
+      "Jump",
+      "Knowledge (nobility and royalty)",
+      "Listen",
+      "Move Silently",
+      "Open Lock",
+      "Search",
+      "Sense Motive",
+      "Sleight of Hand",
+      "Spot",
+      "Tumble",
+      "Use Rope"
+    ],
+    "requirements": {
+      "skills": [
+        "Decipher Script 4 ranks",
+        "Hide 8 ranks",
+        "Move Silently 8 ranks",
+        "Search 4 ranks",
+        "Sense Motive 4 ranks"
+      ],
+      "feats": [
+        "Any two of the following: Alertness, Deceitful, Investigator, Negotiator, Stealthy"
+      ],
+      "special": [
+        "Must be a member of House Ebonmar"
+      ]
+    },
+    "levels": [
+      {
+        "level": 1,
+        "bab": "+0",
+        "fort": 0,
+        "ref": 2,
+        "will": 0,
+        "special": "Piercing insight +1, speed reader, spells"
+      },
+      {
+        "level": 2,
+        "bab": "+1",
+        "fort": 0,
+        "ref": 3,
+        "will": 0,
+        "special": "Sneak attack +1d6"
+      },
+      {
+        "level": 3,
+        "bab": "+2",
+        "fort": 1,
+        "ref": 3,
+        "will": 1,
+        "special": "Combat anticipation +1"
+      },
+      {
+        "level": 4,
+        "bab": "+3",
+        "fort": 1,
+        "ref": 4,
+        "will": 1,
+        "special": "Uncanny dodge, piercing insight +2"
+      },
+      {
+        "level": 5,
+        "bab": "+3",
+        "fort": 1,
+        "ref": 4,
+        "will": 1,
+        "special": "Sneak attack +2d6"
+      },
+      {
+        "level": 6,
+        "bab": "+4",
+        "fort": 2,
+        "ref": 5,
+        "will": 2,
+        "special": "Combat anticipation +2"
+      },
+      {
+        "level": 7,
+        "bab": "+5",
+        "fort": 2,
+        "ref": 5,
+        "will": 2,
+        "special": "Piercing insight +3"
+      },
+      {
+        "level": 8,
+        "bab": "+6",
+        "fort": 2,
+        "ref": 6,
+        "will": 2,
+        "special": "Hide in plain sight, sneak attack +3d6"
+      },
+      {
+        "level": 9,
+        "bab": "+6",
+        "fort": 3,
+        "ref": 6,
+        "will": 3,
+        "special": "Hyper-awareness"
+      },
+      {
+        "level": 10,
+        "bab": "+7",
+        "fort": 3,
+        "ref": 7,
+        "will": 3,
+        "special": "Piercing insight +4, shadow in the night"
+      }
+    ],
+    "features": [
+      {
+        "name": "Weapon and Armor Proficiency",
+        "text": "Ebonmar infiltrators gain no proficiency with any weapons or armor. If proficient with light armor, an infiltrator can cast infiltrator spells while wearing light armor without incurring the normal chance of arcane spell failure."
+      },
+      {
+        "name": "Spells",
+        "text": "Starting at 1st level, an infiltrator gains the ability to cast a small number of arcane spells prepared from the Ebonmar infiltrator spell list. To cast a spell, an infiltrator must have an Intelligence score of at least 10 + spell level. Bonus spells and save DCs are based on Intelligence. Infiltrators prepare and cast spells just as a wizard does."
+      },
+      {
+        "name": "Piercing Insight (Ex)",
+        "text": "Through strenuous training, an infiltrator learns to more effectively observe the surrounding world. At 1st level, he gains a +1 bonus on Search, Sense Motive, and Spot checks. This bonus increases by +1 for every three levels advanced past 1st (+2 at 4th level, +3 at 7th level, and +4 at 10th level)."
+      },
+      {
+        "name": "Speed Reader (Ex)",
+        "text": "An infiltrator can read a single page of text as a full-round action, even text read with comprehend languages or decipher script."
+      },
+      {
+        "name": "Sneak Attack (Ex)",
+        "text": "Beginning at 2nd level, an infiltrator deals an extra 1d6 points of damage when flanking an opponent or when the target is denied its Dexterity bonus to AC. This damage increases to +2d6 at 5th level and +3d6 at 8th level. This stacks with sneak attack from other classes."
+      },
+      {
+        "name": "Combat Anticipation (Ex)",
+        "text": "Beginning at 3rd level, an infiltrator gains a +1 dodge bonus to AC and a +1 bonus on Reflex saves and initiative checks against humanoids, monstrous humanoids, and giants. These bonuses increase to +2 at 6th level. This ability functions only when wearing light or no armor."
+      },
+      {
+        "name": "Uncanny Dodge (Ex)",
+        "text": "At 4th level, an infiltrator retains his Dexterity bonus to AC even if caught flat-footed or struck by an invisible attacker. If he already has uncanny dodge, he gains improved uncanny dodge instead."
+      },
+      {
+        "name": "Hide in Plain Sight (Ex)",
+        "text": "Beginning at 8th level, an infiltrator can use the Hide skill in natural terrain or urban environments even while being observed."
+      },
+      {
+        "name": "Hyper-Awareness (Su)",
+        "text": "At 9th level, an infiltrator gains darkvision out to 30 feet and blindsense out to 5 feet."
+      },
+      {
+        "name": "Shadow in the Night (Sp)",
+        "text": "At 10th level, once per day, an infiltrator can become ethereal as the ethereal jaunt spell for up to 1 round plus a number of rounds equal to his Intelligence modifier."
+      }
+    ],
+    "description": "The Ebonmar infiltrator is a covert agent, spy, and information broker serving House Ebonmar, using acute awareness, stealth, and targeted arcane divinations to retrieve high-stakes secrets."
+  },
+  {
+    "id": "city-prc-crimson-scourge",
+    "name": "Crimson Scourge",
+    "page": 93,
+    "hitDie": 10,
+    "skillPoints": "6 + Int modifier",
+    "classSkills": [
+      "Balance",
+      "Bluff",
+      "Climb",
+      "Craft (trapmaking)",
+      "Diplomacy",
+      "Disable Device",
+      "Disguise",
+      "Escape Artist",
+      "Gather Information",
+      "Handle Animal",
+      "Hide",
+      "Intimidate",
+      "Jump",
+      "Knowledge (local)",
+      "Listen",
+      "Move Silently",
+      "Ride",
+      "Search",
+      "Sense Motive",
+      "Spot",
+      "Survival",
+      "Swim",
+      "Use Rope"
+    ],
+    "requirements": {
+      "bab": "+4",
+      "skills": [
+        "Gather Information 4 ranks",
+        "Handle Animal 2 ranks",
+        "Heal 1 rank",
+        "Intimidate 3 ranks"
+      ],
+      "feats": [
+        "Urban Tracking"
+      ],
+      "special": [
+        "Alignment: Any nongood",
+        "Base Fort Save: +3"
+      ]
+    },
+    "levels": [
+      {
+        "level": 1,
+        "bab": "+1",
+        "fort": 2,
+        "ref": 2,
+        "will": 0,
+        "special": "Kid gloves, special dispensation"
+      },
+      {
+        "level": 2,
+        "bab": "+2",
+        "fort": 3,
+        "ref": 3,
+        "will": 0,
+        "special": "Swift tracker"
+      },
+      {
+        "level": 3,
+        "bab": "+3",
+        "fort": 3,
+        "ref": 3,
+        "will": 1,
+        "special": "Painful strike +1d6"
+      },
+      {
+        "level": 4,
+        "bab": "+4",
+        "fort": 4,
+        "ref": 4,
+        "will": 1,
+        "special": "Immovable heart"
+      },
+      {
+        "level": 5,
+        "bab": "+5",
+        "fort": 4,
+        "ref": 4,
+        "will": 1,
+        "special": "Improved Disarm"
+      },
+      {
+        "level": 6,
+        "bab": "+6",
+        "fort": 5,
+        "ref": 5,
+        "will": 2,
+        "special": "Painful strike +2d6"
+      },
+      {
+        "level": 7,
+        "bab": "+7",
+        "fort": 5,
+        "ref": 5,
+        "will": 2,
+        "special": "Threaten"
+      },
+      {
+        "level": 8,
+        "bab": "+8",
+        "fort": 6,
+        "ref": 6,
+        "will": 2,
+        "special": "Deadened hide"
+      },
+      {
+        "level": 9,
+        "bab": "+9",
+        "fort": 6,
+        "ref": 6,
+        "will": 3,
+        "special": "Painful strike +3d6"
+      },
+      {
+        "level": 10,
+        "bab": "+10",
+        "fort": 7,
+        "ref": 7,
+        "will": 3,
+        "special": "Smell of blood"
+      }
+    ],
+    "features": [
+      {
+        "name": "Weapon and Armor Proficiency",
+        "text": "Crimson scourges are proficient with all simple and martial weapons, light and medium armor, and shields (except tower shields). In addition, a crimson scourge selects bolas, net, or whip as a free weapon proficiency."
+      },
+      {
+        "name": "Kid Gloves (Ex)",
+        "text": "A crimson scourge can deal nonlethal damage with weapons that normally deal lethal damage, or lethal damage with weapons that normally deal nonlethal damage, without taking the usual -4 penalty on attack rolls."
+      },
+      {
+        "name": "Special Dispensation",
+        "text": "While operating in any area where bounty hunting is acceptable, a slavers guild has presence, or the character enjoys patronage of an influential figure, the crimson scourge gains the benefit of the Special Dispensation feat, even without meeting prerequisites."
+      },
+      {
+        "name": "Swift Tracker (Ex)",
+        "text": "Starting at 2nd level, a crimson scourge can make a Gather Information check when using Urban Tracking every half-hour without taking the usual -5 penalty."
+      },
+      {
+        "name": "Painful Strike (Ex)",
+        "text": "At 3rd level, a crimson scourge deals an extra 1d6 points of nonlethal damage on melee attacks against unarmed opponents. This extra damage increases to +2d6 at 6th level and +3d6 at 9th level."
+      },
+      {
+        "name": "Immovable Heart (Ex)",
+        "text": "Beginning at 4th level, a crimson scourge gains a +2 competence bonus on saves to resist enchantment spells and fear effects."
+      },
+      {
+        "name": "Improved Disarm",
+        "text": "At 5th level, a crimson scourge gains Improved Disarm as a bonus feat, even if he does not meet the prerequisites."
+      },
+      {
+        "name": "Threaten (Ex)",
+        "text": "At 7th level, demoralizing an opponent via Intimidate is a move action (rather than standard), causes shaken status for rounds equal to unmodified Str modifier (minimum 1), and grants a +2 bonus on the check."
+      },
+      {
+        "name": "Deadened Hide (Ex)",
+        "text": "Upon reaching 8th level, a crimson scourge becomes immune to nonlethal damage and to spells or effects that inflict or manipulate pain."
+      },
+      {
+        "name": "Smell of Blood (Ex)",
+        "text": "At 10th level, a crimson scourge gains the scent special ability and a +3 insight bonus on initiative checks."
+      }
+    ],
+    "description": "The crimson scourge is a ruthless bounty hunter and enforcer specialized in tracking down human quarry, subduing targets alive with brutal nonlethal precision, and extracting compliance through intimidation."
+  },
+  {
+    "id": "city-prc-urban-savant",
+    "name": "Urban Savant",
+    "page": 100,
+    "hitDie": 6,
+    "skillPoints": "6 + Int modifier",
+    "classSkills": [
+      "Balance",
+      "Bluff",
+      "Climb",
+      "Concentration",
+      "Decipher Script",
+      "Diplomacy",
+      "Gather Information",
+      "Hide",
+      "Knowledge (all skills, taken individually)",
+      "Listen",
+      "Move Silently",
+      "Profession",
+      "Search",
+      "Sense Motive",
+      "Speak Language",
+      "Spellcraft",
+      "Spot",
+      "Use Magic Device"
+    ],
+    "requirements": {
+      "skills": [
+        "8 ranks in any one, and 2 ranks in each of the other two, of Knowledge (dungeoneering), Knowledge (local), and Knowledge (nature)"
+      ],
+      "feats": [
+        "Favored (League of Eyes or a similar organization)"
+      ],
+      "special": [
+        "Bardic knowledge class ability (or Knowledge [history] 2 ranks at DM's discretion)",
+        "Must be a member in good standing of the League of Eyes or a similar organization"
+      ]
+    },
+    "levels": [
+      {
+        "level": 1,
+        "bab": "+0",
+        "fort": 0,
+        "ref": 0,
+        "will": 2,
+        "special": "Urban savvy (strengths)"
+      },
+      {
+        "level": 2,
+        "bab": "+1",
+        "fort": 0,
+        "ref": 0,
+        "will": 3,
+        "special": "Urban empathy, +1 level of existing arcane spellcasting class"
+      },
+      {
+        "level": 3,
+        "bab": "+1",
+        "fort": 1,
+        "ref": 1,
+        "will": 3,
+        "special": "Continuing education +1, +1 level of existing arcane spellcasting class"
+      },
+      {
+        "level": 4,
+        "bab": "+2",
+        "fort": 1,
+        "ref": 1,
+        "will": 4,
+        "special": "Urban savvy (weaknesses), +1 level of existing arcane spellcasting class"
+      },
+      {
+        "level": 5,
+        "bab": "+2",
+        "fort": 1,
+        "ref": 1,
+        "will": 4,
+        "special": "Eyes of the city (low-light vision), +1 level of existing arcane spellcasting class"
+      },
+      {
+        "level": 6,
+        "bab": "+3",
+        "fort": 2,
+        "ref": 2,
+        "will": 5,
+        "special": "Continuing education +2, +1 level of existing arcane spellcasting class"
+      },
+      {
+        "level": 7,
+        "bab": "+3",
+        "fort": 2,
+        "ref": 2,
+        "will": 5,
+        "special": "Urban savvy (methods), +1 level of existing arcane spellcasting class"
+      },
+      {
+        "level": 8,
+        "bab": "+4",
+        "fort": 2,
+        "ref": 2,
+        "will": 6,
+        "special": "Eyes of the city (pierce deception), +1 level of existing arcane spellcasting class"
+      },
+      {
+        "level": 9,
+        "bab": "+4",
+        "fort": 3,
+        "ref": 3,
+        "will": 6,
+        "special": "Continuing education +3, +1 level of existing arcane spellcasting class"
+      },
+      {
+        "level": 10,
+        "bab": "+5",
+        "fort": 3,
+        "ref": 3,
+        "will": 7,
+        "special": "Urban savvy (true nature), +1 level of existing arcane spellcasting class"
+      }
+    ],
+    "features": [
+      {
+        "name": "Weapon and Armor Proficiency",
+        "text": "Urban savants gain no proficiency with any weapons or armor. An urban savant can cast arcane spells while wearing light armor without incurring normal arcane spell failure, provided she is proficient with light armor."
+      },
+      {
+        "name": "Spellcasting",
+        "text": "From 2nd level onward, at each level, an urban savant gains new spells per day (and spells known) as if she had also gained a level in an arcane spellcasting class to which she belonged before adding the prestige class level."
+      },
+      {
+        "name": "Urban Savvy (Ex)",
+        "text": "An urban savant draws upon extensive knowledge of urban monsters (aberrations, animals, humanoids, monstrous humanoids, oozes, and vermin) via DC 15 Knowledge checks as a move action to confer tactical advantages within 60 feet.\\nStrengths (1st level): Learn BAB, AC, and combat feats (plus special attacks for nonhumanoids).\\nWeaknesses (4th level): Learn HD, DR (and how to bypass), saving throws, and special weaknesses.\\nMethods (7th level): Grant self and allies +1d6 weapon damage for 1 minute (+2d6 if check beats DC by 10, +3d6 if by 20).\\nTrue Nature (10th level): Grant self and allies within 60 ft a protective barrier (+2 deflection to AC, +2 resistance on saves against target abilities; +3 if beat DC by 10, +4 if by 20)."
+      },
+      {
+        "name": "Urban Empathy (Ex)",
+        "text": "At 2nd level, an urban savant can substitute Knowledge (local) or Knowledge (nature) in place of Diplomacy checks to influence starting attitudes in cities, or use wild empathy on animals adding urban savant level."
+      },
+      {
+        "name": "Continuing Education (Ex)",
+        "text": "At 3rd level, an urban savant gains a +1 insight bonus on Knowledge (dungeoneering), Knowledge (local), and Knowledge (nature) checks, and on bardic knowledge checks. This bonus increases to +2 at 6th level and +3 at 9th level."
+      },
+      {
+        "name": "Eyes of the City (Ex)",
+        "text": "At 5th level, an urban savant gains low-light vision (or existing low-light vision improves to triple normal human vision in shadows). At 8th level, she gains Pierce Deception, allowing a DC 20 Knowledge (arcana) check to detect disguise or shapechanging on creatures and objects."
+      }
+    ],
+    "description": "The urban savant is an academic scout and tactical scholar affiliated with the League of Eyes, deciphering enemy vulnerabilities in urban environments and turning street knowledge into formidable party bonuses."
+  }
+];
