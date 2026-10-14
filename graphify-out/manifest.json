@@ -15310,5 +15310,137 @@
     "seen": 1791979531.274185,
     "ast_hash": "a831cf3669f1e6ab85d8a80ebe655f99",
     "semantic_hash": ""
+  },
+  "scratch/check_div_feats_table.py": {
+    "mtime": 1791981819.6903746,
+    "seen": 1791982652.4480832,
+    "ast_hash": "3ef37e3f546426466f28c4ded380d676",
+    "semantic_hash": ""
+  },
+  "scratch/check_div_prestige_toc.py": {
+    "mtime": 1791982285.540244,
+    "seen": 1791982652.4480872,
+    "ast_hash": "9cb17cc1c355ad4c442d52d08cb12ae9",
+    "semantic_hash": ""
+  },
+  "scratch/check_missing_feats.py": {
+    "mtime": 1791982046.793308,
+    "seen": 1791982652.4480891,
+    "ast_hash": "77c008f17bb82fb6cca9365b65b95d5a",
+    "semantic_hash": ""
+  },
+  "scratch/check_p83.py": {
+    "mtime": 1791981927.899222,
+    "seen": 1791982652.4480917,
+    "ast_hash": "8d784040f6adb9281a014a33ac5a3d3e",
+    "semantic_hash": ""
+  },
+  "scratch/check_privilegiado.py": {
+    "mtime": 1791981508.090779,
+    "seen": 1791982652.448094,
+    "ast_hash": "7b9d786be445c4fd241d69099cee1b8a",
+    "semantic_hash": ""
+  },
+  "scratch/check_shugenja.py": {
+    "mtime": 1791981551.5824282,
+    "seen": 1791982652.448096,
+    "ast_hash": "ef229904522a9582e295ee4c0ff6932e",
+    "semantic_hash": ""
+  },
+  "scratch/check_xama.py": {
+    "mtime": 1791981569.7882683,
+    "seen": 1791982652.4480987,
+    "ast_hash": "15daca939dcfcf87e3d72e6b3a48c8bb",
+    "semantic_hash": ""
+  },
+  "scratch/div_feats_export.json": {
+    "mtime": 1791982169.910873,
+    "seen": 1791982652.4481,
+    "ast_hash": "5d3bf67e4f1fae550a622f176d7ad094",
+    "semantic_hash": ""
+  },
+  "scratch/extract_p83.py": {
+    "mtime": 1791981972.424125,
+    "seen": 1791982652.4481015,
+    "ast_hash": "95cf894a6105ca0952b25ad8a8568a68",
+    "semantic_hash": ""
+  },
+  "scratch/generate_div_feats.py": {
+    "mtime": 1791982147.2734706,
+    "seen": 1791982652.448107,
+    "ast_hash": "fea834aec9ef1f7c16374be8119ee82c",
+    "semantic_hash": ""
+  },
+  "scratch/inspect_divine.py": {
+    "mtime": 1791981261.3114538,
+    "seen": 1791982652.448109,
+    "ast_hash": "e2581be747a26184a9b67ca8283bf0d8",
+    "semantic_hash": ""
+  },
+  "scratch/list_all_feats.py": {
+    "mtime": 1791981870.7170012,
+    "seen": 1791982652.448111,
+    "ast_hash": "d740e18a7247b0a96041b8bc4816088e",
+    "semantic_hash": ""
+  },
+  "scratch/parse_div_feats_p78.py": {
+    "mtime": 1791981846.6153946,
+    "seen": 1791982652.4481158,
+    "ast_hash": "55178d46bc360c342a14d39cb2234604",
+    "semantic_hash": ""
+  },
+  "scratch/scan_all_feat_entries.py": {
+    "mtime": 1791981905.9947608,
+    "seen": 1791982652.4481175,
+    "ast_hash": "40c9099fd9f93e0ced53629b1561bb47",
+    "semantic_hash": ""
+  },
+  "scratch/verify_feats_presence.py": {
+    "mtime": 1791982023.2739642,
+    "seen": 1791982652.4481196,
+    "ast_hash": "1da7b217de01f40efcfe19dd68def8a5",
+    "semantic_hash": ""
+  },
+  "scripts/render-ocr-divine.ps1": {
+    "mtime": 1791981287.8863661,
+    "seen": 1791982652.448384,
+    "ast_hash": "95cb64653901d2552f2a0f4d27fc8fad",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivClasses.test.ts": {
+    "mtime": 1791981703.1125228,
+    "seen": 1791982652.4491184,
+    "ast_hash": "45bc0b5b882df8967e5a8cb1e61f17e6",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivClasses.ts": {
+    "mtime": 1791981676.7074282,
+    "seen": 1791982652.449121,
+    "ast_hash": "7a6d7593c0ebdbeddd9dca42e1ee1863",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivFeats.test.ts": {
+    "mtime": 1791982231.418393,
+    "seen": 1791982652.4491234,
+    "ast_hash": "a284287f2f54d31d3137633574a29112",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivFeats.ts": {
+    "mtime": 1791982213.6688251,
+    "seen": 1791982652.4491253,
+    "ast_hash": "9e1a9f0bf053908f8fd5befd0c017ded",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivPrestige.ts": {
+    "mtime": 1791982503.1697748,
+    "seen": 1791982652.449127,
+    "ast_hash": "e45eec72966a7556485c96f636de333c",
+    "semantic_hash": ""
+  },
+  "scratch/p83.jpg": {
+    "mtime": 1791981985.4034493,
+    "seen": 1791982652.4573627,
+    "ast_hash": "b285b15297642344e505ba00831a5cf1",
+    "semantic_hash": ""
   }
 }
