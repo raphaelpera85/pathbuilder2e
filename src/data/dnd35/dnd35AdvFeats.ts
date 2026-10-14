@@ -1,0 +1,296 @@
+// ============================================================================
+// D&D 3.5 — Livro Completo do Aventureiro (ed. BR), Capítulo 3: Talentos
+// (pp. 103-114). Transcrição por leitura visual direta de páginas
+// renderizadas em alta resolução (200dpi) — fonte é scan sem camada de
+// texto. CAPÍTULO 3 (seção Talentos) COMPLETO: todos os talentos gerais
+// (A-V), de música de bardo e selvagens do capítulo. A seção de Perícias
+// Expandidas (pp.95-103, novos usos de perícias já existentes) não está
+// catalogada aqui (não introduz talentos novos).
+// ============================================================================
+
+export type Dnd35AdvFeatCategory = "geral" | "musica_de_bardo" | "selvagem";
+
+export interface Dnd35AdvFeat {
+  id: string;
+  name: string;
+  category: Dnd35AdvFeatCategory;
+  page: number;
+  prerequisites: string[];
+  benefit: string;
+  normal?: string;
+  special?: string;
+}
+
+export const DND35_ADV_FEATS: Dnd35AdvFeat[] = [
+  {
+    id: "adv-feat-armadilheiro-tatico",
+    name: "Armadilheiro Tático",
+    category: "geral",
+    page: 103,
+    prerequisites: [],
+    benefit: "O personagem acrescenta seu bônus de Destreza (em vez do bônus de Inteligência) em todos os testes de Procurar e Operar Mecanismo. Além disso, ele não recebe penalidades nesses testes devido à escuridão ou cegueira.",
+  },
+  {
+    id: "adv-feat-arremesso-brutal",
+    name: "Arremesso Brutal",
+    category: "geral",
+    page: 103,
+    prerequisites: [],
+    benefit: "O personagem pode adicionar seu modificador de Força (em vez do modificador de Destreza) nas jogadas de ataque com armas de arremesso.",
+    normal: "Ao atacar com uma arma de arremesso, o personagem acrescenta seu modificador de Destreza à jogada de ataque.",
+    special: "Um guerreiro pode escolher Arremesso Brutal como um de seus talentos adicionais.",
+  },
+  {
+    id: "adv-feat-arremesso-poderoso",
+    name: "Arremesso Poderoso",
+    category: "geral",
+    page: 103,
+    prerequisites: ["Força 13", "Arremesso Brutal", "Ataque Poderoso"],
+    benefit: "Em seu turno, antes de realizar qualquer jogada de ataque, o personagem pode optar por subtrair um valor de todas as jogadas de ataque com armas de arremesso e acrescentar esse número a todas as jogadas de dano com armas de arremesso. Esse valor não pode exceder seu bônus base de ataque. A penalidade nas jogadas de ataque e o bônus nas jogadas de dano continuam ativos até seu próximo turno.",
+    special: "Um guerreiro pode escolher Arremesso Poderoso como um de seus talentos adicionais.",
+  },
+  {
+    id: "adv-feat-artista-devotado",
+    name: "Artista Devotado",
+    category: "geral",
+    page: 103,
+    prerequisites: ["Música de bardo", "Destruir o mal"],
+    benefit: "O personagem abriu mão de almejar talentos musicais frívolos, e em vez disso ingressou num treinamento religioso em favor da honra e da justiça.",
+  },
+  {
+    id: "adv-feat-ataque-duplo",
+    name: "Ataque Duplo",
+    category: "geral",
+    page: 106,
+    prerequisites: ["Combater com Duas Armas"],
+    benefit: "Como se tivesse uma única arma especializada e habilidoso no seu treinamento com duas armas, o personagem é capaz de empunhar e lutar com uma arma dupla com extrema destreza e desenvoltura extraordinária. Caso o personagem desfira um ataque contra um inimigo predileto com uma arma dupla, pode acrescentar seu bônus de ataque predileto à CD do seu teste de ataque adicional.",
+  },
+  {
+    id: "adv-feat-avaliar-item-magico",
+    name: "Avaliar Item Mágico",
+    category: "geral",
+    page: 106,
+    prerequisites: ["5 graduações em Avaliação", "5 graduações em Conhecimento (arcano)", "5 graduações em Identificar Magia"],
+    benefit: "A habilidade de determinar o valor de um item e seu conhecimento acumulado de propriedades mágicas permitem que o personagem estime a utilização mágica de um item e suas propriedades identificáveis.",
+  },
+  {
+    id: "adv-feat-cacador-asceta",
+    name: "Caçador Asceta",
+    category: "geral",
+    page: 106,
+    prerequisites: ["Ataque Desarmado Aprimorado", "inimigo predileto"],
+    benefit: "O personagem consegue utilizar a perícia Avaliação (como se fosse um dote intrínseco) para empregar ataques desarmados com inimigo predileto contra inimigos de seu tipo predileto, acrescentando seu bônus de ataque predileto à jogada de dano desarmado quando obtém sucesso.",
+  },
+  {
+    id: "adv-feat-cancao-duradoura",
+    name: "Canção Duradoura",
+    category: "geral",
+    page: 106,
+    prerequisites: ["Música de bardo"],
+    benefit: "Sempre que o bardo empregar música de bardo para inspirar coragem, o personagem consegue prorrogar o efeito da magia por mais 1 minuto a cada uso adicional da habilidade, até o máximo de 10 rodadas por uso.",
+  },
+  {
+    id: "adv-feat-cavaleiro-asceta",
+    name: "Cavaleiro Asceta",
+    category: "geral",
+    page: 106,
+    prerequisites: ["Ataque Desarmado Aprimorado", "Cavalgar"],
+    benefit: "Seus níveis de paladino e de monge cumulativos para determinar seus ataques desarmados.",
+  },
+  {
+    id: "adv-feat-intuicao-em-combate",
+    name: "Intuição em Combate",
+    category: "geral",
+    page: 109,
+    prerequisites: ["4 graduações em Sentir Motivação", "Bônus Base de Ataque +5"],
+    benefit: "Como uma ação livre, é possível empregar Sentir Motivação para avaliar o desafio constituído por um único oponente em relação ao seu próprio nível/número de Dados de Vida (consulte a opção avaliar oponente da perícia Sentir Motivação na seção anterior). O personagem recebe +4 de bônus nesses testes e restringe os resultados a uma única categoria. Além disso, sempre que desferir um ataque corpo a corpo contra uma criatura que tenha sido atacada na rodada anterior, o personagem recebe +1 de bônus de intuição nas jogadas de ataque corpo a corpo contra ela.",
+  },
+  {
+    id: "adv-feat-ladino-asceta",
+    name: "Ladino Asceta",
+    category: "geral",
+    page: 109,
+    prerequisites: ["Ataque Desarmado Aprimorado", "ataque furtivo"],
+    benefit: "Ao utilizar um ataque desarmado juntamente com um ataque furtivo para desferir um ataque atordoante, o personagem acrescenta +2 à CD do seu ataque atordoante. Se o personagem possuir níveis de ladino e de monge, eles serão cumulativos para determinar o dano de seu ataque desarmado. Por exemplo, um humano ladino 5/monge 1 inflige 1d8 pontos de dano com seu ataque desarmado. Além disso, o personagem pode adquirir níveis de ambas as classes sem incorrer nas penalidades devido a multiclasse. Ele deve continuar sendo Leal para conservar suas habilidades de monge e adquirir níveis nessa classe, e ainda incorre nas penalidades normais de XP se possuir classes múltiplas com mais de um nível de diferença.",
+  },
+  {
+    id: "adv-feat-natacao-aprimorada",
+    name: "Natação Aprimorada",
+    category: "geral",
+    page: 111,
+    prerequisites: ["6 graduações em Natação"],
+    benefit: "O personagem é capaz de nadar com metade de seu deslocamento como uma ação de movimento ou o deslocamento total como uma ação de rodada completa.",
+    normal: "O personagem nada com um quarto de seu deslocamento como uma ação de movimento ou metade do deslocamento como uma ação de rodada completa.",
+  },
+  {
+    id: "adv-feat-oportunismo-habil",
+    name: "Oportunismo Hábil",
+    category: "geral",
+    page: 111,
+    prerequisites: ["Destreza 15", "Reflexos de Combate"],
+    benefit: "O personagem recebe +4 de bônus nas jogadas de ataque ao desferir ataques de oportunidade.",
+  },
+  {
+    id: "adv-feat-ouvidos-verdes",
+    name: "Ouvidos Verdes",
+    category: "geral",
+    page: 111,
+    prerequisites: ["10 graduações em Atuação (qualquer)", "música de bardo"],
+    benefit: "O personagem é capaz de alterar qualquer uma de suas habilidades musicais de ação mental (ou habilidades similares baseadas em Atuação provenientes de outras classes) de forma que elas só influenciem as plantas. Contudo, as plantas recebem +5 no teste de resistência de Vontade contra qualquer um desses efeitos.",
+    normal: "As plantas normalmente são imunes a todas as magias e habilidades de ação mental.",
+  },
+  {
+    id: "adv-feat-ouvir-o-invisivel",
+    name: "Ouvir o Invisível",
+    category: "geral",
+    page: 111,
+    prerequisites: ["5 graduações em Ouvir", "Lutar às Cegas"],
+    benefit: "O personagem é capaz de realizar um teste de Ouvir (CD 25) como uma ação de movimento que não provoca ataques de oportunidade. Caso obtenha sucesso, consegue determinar a localização de todos os inimigos num raio de 9 m, desde que possua linha de efeito até eles. Esse benefício não elimina a chance de falha ao lutar com inimigos camuflados, mas assegura que o personagem consiga desferir seus ataques contra os quadrados corretos. O personagem não conseguirá empregar esse talento se estiver ensurdecido ou em uma área afetada por silêncio. Se um oponente invisível ou escondido estiver tentando se deslocar furtivamente, o teste de Ouvir será resistido pelo teste de Furtividade do adversário, mas o oponente terá +15 de bônus. Esse talento não funciona contra inimigos perfeitamente silenciosos, como criaturas incorpóreas.",
+  },
+  {
+    id: "adv-feat-personalidade-forte",
+    name: "Personalidade Forte",
+    category: "geral",
+    page: 111,
+    prerequisites: ["Carisma 13"],
+    benefit: "O personagem acrescenta seu modificador de Carisma (em vez do modificador de Sabedoria) aos testes de resistência de Vontade contra efeitos e habilidades de ação mental.",
+  },
+  {
+    id: "adv-feat-rastreador-devotado",
+    name: "Rastreador Devotado",
+    category: "geral",
+    page: 111,
+    prerequisites: ["Rastrear", "destruir o mal", "empatia com a natureza"],
+    benefit: "Se o personagem possuir níveis de paladino e de ranger, eles serão cumulativos para determinar o dano adicional infligido por sua habilidade destruir o mal e o bônus para a característica de classe empatia com a natureza. Esse talento não concede utilizações diárias adicionais de destruir o mal. Caso possua as características de classe montaria especial e companheiro animal, o personagem poderá designar sua montaria como seu companheiro animal, permitindo que ela receba os benefícios das duas habilidades. Por exemplo, a montaria especial de um paladino 5/ranger 6 teria 4 Dados de Vida adicionais, ajuste de +6 na armadura natural, +2 de For, +1 de Des, dois truques adicionais e Inteligência 6, além das habilidades especiais vínculo empático, evasão aprimorada, partilhar testes de resistência e vínculo. Além disso, o personagem pode adquirir níveis de paladino e de ranger sem incorrer nas penalidades devido a multiclasse. Ele deve continuar sendo Leal e Bom para conservar suas habilidades de paladino e adquirir níveis nessa classe, e ainda incorre nas penalidades normais de XP se possuir classes múltiplas com mais de um nível de diferença.",
+  },
+  {
+    id: "adv-feat-reconhecimento-rapido",
+    name: "Reconhecimento Rápido",
+    category: "geral",
+    page: 111,
+    prerequisites: ["5 graduações em Ouvir", "5 graduações em Observar"],
+    benefit: "O personagem é capaz de realizar um teste de Observar e um de Ouvir por rodada como uma ação livre. Ele também recebe +2 de bônus nos testes de Iniciativa.",
+    normal: "Utilizar Observar ou Ouvir de forma reflexa é uma ação livre, mas tentar empregar essas perícias ativamente exige uma ação de movimento.",
+  },
+  {
+    id: "adv-feat-reflexos-visionarios",
+    name: "Reflexos Visionários",
+    category: "geral",
+    page: 111,
+    prerequisites: [],
+    benefit: "O personagem acrescenta seu modificador de Inteligência (em vez do modificador de Destreza) nos testes de resistência de Reflexos.",
+  },
+  {
+    id: "adv-feat-saltar-e-golpear",
+    name: "Saltar e Golpear",
+    category: "geral",
+    page: 112,
+    prerequisites: ["8 graduações em Saltar", "Ataque Poderoso"],
+    benefit: "O personagem é capaz de combinar um salto com uma investida contra um oponente. Deve percorrer no mínimo 3 m de distância horizontal com o salto, terminando num quadrado que ameace seu adversário; ele inflige +100% do bônus de dano normal devido ao talento Ataque Poderoso. Se empregar essa tática com uma arma de duas mãos, o dano adicional será triplicado. Esse ataque deve seguir todas as regras normais para utilizar a perícia Saltar e para realizar uma investida, exceto que o personagem ignora os terrenos difíceis sobre os quadrados nos quais consegue saltar.",
+  },
+  {
+    id: "adv-feat-salto-simio",
+    name: "Salto Símio",
+    category: "geral",
+    page: 112,
+    prerequisites: ["4 graduações em Escalar", "4 graduações em Saltar"],
+    benefit: "O personagem se desloca pelas árvores com seu deslocamento normal, ignorando os efeitos do terreno sobre a movimentação. É preciso estar a pelo menos 6 m do solo para utilizar essa habilidade, que só funciona em florestas médias ou densas (consulte o Livro do Mestre).",
+  },
+  {
+    id: "adv-feat-senso-do-perigo",
+    name: "Senso do Perigo",
+    category: "geral",
+    page: 112,
+    prerequisites: ["Iniciativa Aprimorada"],
+    benefit: "Uma vez por dia, o personagem é capaz de refazer uma jogada de iniciativa que acabou de realizar. Ele utiliza o valor mais elevado das duas jogadas. É preciso declarar o uso dessa habilidade antes que a rodada se inicie.",
+  },
+  {
+    id: "adv-feat-vinculo-natural",
+    name: "Vínculo Natural",
+    category: "geral",
+    page: 112,
+    prerequisites: ["companheiro animal"],
+    benefit: "Acrescente +3 ao nível efetivo do personagem ao determinar os Dados de Vida adicionais, truques, habilidades especiais e outros bônus recebidos pelo companheiro animal (consulte o druida no Livro do Jogador). Esse bônus nunca poderá aumentar o nível efetivo do druida acima do nível do personagem. Se o personagem tiver vários companheiros animais, o bônus desse talento se aplica somente a um deles.",
+  },
+  {
+    id: "adv-feat-voo-aprimorado",
+    name: "Vôo Aprimorado",
+    category: "geral",
+    page: 112,
+    prerequisites: ["Capacidade de vôo (natural, mágico ou através de metamorfose)"],
+    benefit: "A capacidade de manobra do personagem aumenta em uma categoria — de desajeitado para ruim, de ruim para médio, de médio para bom e de bom para perfeito.",
+  },
+  {
+    id: "adv-feat-cantico-da-pele-ferrea",
+    name: "Cântico da Pele Férrea",
+    category: "musica_de_bardo",
+    page: 112,
+    prerequisites: ["Música de bardo", "12 graduações em Concentração", "12 graduações em Atuação"],
+    benefit: "Como uma ação rápida que não provoca ataques de oportunidade, o personagem pode abrir mão de um uso diário de sua habilidade música de bardo para conceder Redução de Dano 5/— a si mesmo ou a um de seus aliados num raio de 9 m que seja capaz de ouvi-lo. O efeito permanece ativo até o início do próximo turno do personagem. Esse talento não funciona em uma área sob o efeito de silêncio.",
+  },
+  {
+    id: "adv-feat-cantico-de-fortitude",
+    name: "Cântico de Fortitude",
+    category: "musica_de_bardo",
+    page: 112,
+    prerequisites: ["Música de bardo", "8 graduações em Concentração", "8 graduações em Atuação"],
+    benefit: "O personagem consegue canalizar o poder de sua música de bardo para sustentar seus aliados, permitindo que eles permaneçam conscientes mesmo após sofrer ferimentos capazes de nocauteá-los. O personagem pode abrir mão de um uso diário da habilidade música de bardo como uma ação imediata para conceder a todos os aliados (inclusive a si mesmo) os benefícios do talento Duro de Matar (consulte o Livro do Jogador) até o final do seu próximo turno. É possível empregar esse talento diversas vezes consecutivas para manter o personagem e seus aliados conscientes. Mesmo enquanto o talento estiver ativo, o personagem ou seus aliados morrerão caso seus pontos de vida cheguem a -10 ou menos. Esse talento não funciona em uma área sob o efeito de silêncio.",
+  },
+  {
+    id: "adv-feat-magia-lirica",
+    name: "Magia Lírica",
+    category: "musica_de_bardo",
+    page: 113,
+    prerequisites: ["Música de bardo", "9 graduações em Atuação", "capacidade de conjurar magias arcanas de 2º nível espontaneamente"],
+    benefit: "O personagem é capaz de canalizar o poder de sua música de bardo em suas magias, permitindo-lhe gastar usos de música de bardo durante a conjuração. O personagem pode abrir mão de usos diários da música de bardo para conjurar quaisquer magias arcanas que conheça e seja capaz de conjurar espontaneamente. Ele ainda precisa de uma ação padrão para conjurar a magia (de acordo com as regras normais de tempo de execução), mas a utilização do talento Magia Lírica conta como parte dessa ação. Conjurar uma magia exige um uso da habilidade música de bardo, mais um uso adicional por nível da magia. Por exemplo, conjurar uma magia de 3º nível requer quatro usos diários dessa habilidade.",
+    special: "Qualquer magia que o personagem conjure empregando o talento Magia Lírica adquire seu instrumento como seu foco arcano adicional, caso ele utilize um. Não é possível usar Magia Lírica para conjurar uma magia aprimorada pelo talento Magia Silenciosa.",
+  },
+  {
+    id: "adv-feat-agarrar-selvagem",
+    name: "Agarrar Selvagem",
+    category: "selvagem",
+    page: 113,
+    prerequisites: ["forma selvagem", "ataque furtivo"],
+    benefit: "Enquanto estiver em uma forma selvagem, a qualquer momento em que obtiver sucesso num teste de agarrar para causar dano numa criatura que já tenha segurado, o personagem também pode acrescentar seu bônus de ataque furtivo. As criaturas imunes a ataques furtivos não sofrem o dano adicional.",
+  },
+  {
+    id: "adv-feat-escalar-como-um-gorila",
+    name: "Escalar como um Gorila",
+    category: "selvagem",
+    page: 114,
+    prerequisites: ["forma selvagem"],
+    benefit: "O personagem é capaz de abrir mão de um uso diário de forma selvagem para adquirir uma velocidade de escalada igual ao seu deslocamento base durante 10 minutos por Dado de Vida. Esse talento também concede +8 de bônus racial nos testes de Escalar e permite que ele escolha 10 nesses testes, mesmo se estiver com pressa ou ameaçado.",
+  },
+  {
+    id: "adv-feat-faro",
+    name: "Faro",
+    category: "selvagem",
+    page: 114,
+    prerequisites: ["forma selvagem"],
+    benefit: "O personagem é capaz de abrir mão de um uso diário de forma selvagem para adquirir a habilidade faro (consulte a descrição no Livro dos Monstros) durante 1 hora por Dado de Vida. Enquanto esse benefício estiver ativo, ele consegue detectar os inimigos num raio de 9 m através de seu olfato. Além disso, se possuir o talento Rastrear, o personagem é capaz de farejar outras criaturas. Ele conserva esse benefício não importa sua forma atual.",
+  },
+  {
+    id: "adv-feat-sentido-cego",
+    name: "Sentido Cego",
+    category: "selvagem",
+    page: 114,
+    prerequisites: ["Habilidade de classe forma selvagem", "4 graduações em Ouvir"],
+    benefit: "O personagem é capaz de abrir mão de um uso diário de forma selvagem para adquirir sentido cego durante 1 rodada por Dado de Vida, permitindo que ele determine a localização de uma criatura num raio de 9 m caso possua uma linha de efeito até ela (consulte a descrição da habilidade no Livro dos Monstros). Ele conserva esse benefício não importa sua forma atual.",
+  },
+  {
+    id: "adv-feat-visao-da-aguia",
+    name: "Visão da Águia",
+    category: "selvagem",
+    page: 114,
+    prerequisites: ["forma selvagem", "4 graduações em Observar"],
+    benefit: "O personagem é capaz de abrir mão de um uso diário de forma selvagem para adquirir +8 de bônus em seus testes de Observar por Dado de Vida. Enquanto esse benefício estiver ativo, ele sofre apenas metade da penalidade normal por incremento de distância: -1 nos ataques à distância por incremento (em vez de -2) e -1 de penalidade nos testes de Observar para cada 6 m de distância (em vez de -1 a cada 3 m). Ele conserva esse benefício não importa sua forma atual.",
+  },
+  {
+    id: "adv-feat-visao-do-puma",
+    name: "Visão do Puma",
+    category: "selvagem",
+    page: 114,
+    prerequisites: ["forma selvagem", "2 graduações em Observar"],
+    benefit: "O personagem é capaz de abrir mão de um uso diário de forma selvagem para adquirir visão na penumbra durante 1 hora por Dado de Vida. Além disso, recebe +4 de bônus em todos os testes de Observar. Ele conserva esse benefício não importa a sua forma atual.",
+  },
+];

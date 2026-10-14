@@ -12,6 +12,8 @@ import { CG_ADV_BATEDOR } from "../src/data/dnd35/dnd35AdvBatedor";
 import { CG_ADV_LADRAO_ARCANO } from "../src/data/dnd35/dnd35AdvLadraoArcano";
 import { CG_ADV_NINJA } from "../src/data/dnd35/dnd35AdvNinja";
 import { CG_ADV_PRESTIGE } from "../src/data/dnd35/dnd35AdvPrestige";
+import { DND35_ADV_FEATS } from "../src/data/dnd35/dnd35AdvFeats";
+import { DND35_ADV_WEAPONS } from "../src/data/dnd35/dnd35AdvEquipment";
 
 const BOOK = "D&D 3.5 — Livro Completo do Aventureiro";
 const RULESET = "v35-adv";
@@ -39,3 +41,25 @@ const dir = join(process.cwd(), "src", "data", "catalog", "snapshots", "dnd35", 
 mkdirSync(dir, { recursive: true });
 writeFileSync(join(dir, "class.json"), `${JSON.stringify(classes, null, 2)}\n`, "utf8");
 console.log(`class=${classes.length}`);
+
+const feats = DND35_ADV_FEATS.map((f) => ({
+  id: `dnd35.adv.feat.${f.id}`,
+  ...names(f.name, f.benefit),
+  feat_type: f.category === "geral" ? "general" : f.category, level: 1,
+  prerequisites: f.prerequisites, ...common(f.page), data: f,
+}));
+writeFileSync(join(dir, "feat.json"), `${JSON.stringify(feats, null, 2)}\n`, "utf8");
+console.log(`feat=${feats.length}`);
+
+const weaponGroupMap: Record<string, string> = { "Leve — Corpo a Corpo": "leve", "Uma Mão — Corpo a Corpo": "uma_mao", "Duas Mãos — Corpo a Corpo": "duas_maos" };
+const gpFromCost = (s: string) => { const m = /^(\d+)\s*PO$/.exec(s); return m ? Number(m[1]) : null; };
+const weapons = DND35_ADV_WEAPONS.map((w) => ({
+  id: `dnd35.adv.weapon.${w.id}`, item_id: null,
+  ...names(w.name, w.description),
+  weapon_category: "exotica", weapon_group: weaponGroupMap[w.group] ?? "leve",
+  damage_dice: w.damageMedium, damage_type: w.type, range_feet: null, reload: null,
+  hands: w.group === "Duas Mãos — Corpo a Corpo" ? "2" : "1", bulk: null,
+  price_gp: gpFromCost(w.cost), ...common(w.page), data: w,
+}));
+writeFileSync(join(dir, "weapon.json"), `${JSON.stringify(weapons, null, 2)}\n`, "utf8");
+console.log(`weapon=${weapons.length}`);

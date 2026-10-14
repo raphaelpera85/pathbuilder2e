@@ -667,3 +667,30 @@ describe("Livro Completo do Aventureiro: Classes de Prestígio — Vigilante (pp
     expect(c.features.find((f) => f.name === "Brio (Ext)")!.text).toMatch(/anulará por completo os efeitos dessa magia/);
   });
 });
+
+describe("Livro Completo do Aventureiro: Classes de Prestígio — Virtuoso (pp. 90-94)", () => {
+  it("10 níveis, d6, tabela achada na p.94 após o exemplo de personagem (Tevaldo Mordani)", () => {
+    const c = CG_ADV_PRESTIGE.find((x) => x.id === "cgadv-virtuoso")!;
+    expect(c.levels).toHaveLength(10);
+    expect(c.hitDie).toBe("d6");
+    expect(c.levels[0].will).toBe(2);
+    expect(c.levels[9].bab).toBe("+5");
+    expect(c.features.find((f) => f.name === "Nota de Transcrição")!.text).toMatch(/Tabela 2-28.*p\.94/);
+  });
+  it("atuação virtuosa exige graduações mínimas em Atuação além do nível de classe, e nunca restringe conjuração (ao contrário da música de bardo)", () => {
+    const c = CG_ADV_PRESTIGE.find((x) => x.id === "cgadv-virtuoso")!;
+    const av = c.features.find((f) => f.name === "Atuação Virtuosa (SM)")!;
+    expect(av.text).toMatch(/Se o virtuoso não possuir as graduações necessárias.*não adquire a habilidade correspondente/);
+    expect(av.text).toMatch(/a atuação virtuosa não restringe a conjuração ou a ativação de itens mágicos/);
+  });
+  it("música da fúria nunca pode ser usada no próprio virtuoso", () => {
+    const c = CG_ADV_PRESTIGE.find((x) => x.id === "cgadv-virtuoso")!;
+    expect(c.features.find((f) => f.name === "Música da Fúria (Sob)")!.text).toMatch(/O virtuoso não consegue usar música da fúria em si mesmo/);
+  });
+  it("conjuração avança nível de conjurador anterior a cada nível a partir do 2º, sem outros benefícios daquela classe", () => {
+    const c = CG_ADV_PRESTIGE.find((x) => x.id === "cgadv-virtuoso")!;
+    expect(c.levels[0].casterProgression).toBe("—");
+    expect(c.levels[1].casterProgression).toBe("+1 nível de classe de conjuração arcana anterior");
+    expect(c.features.find((f) => f.name === "Conjuração")!.text).toMatch(/ele não recebe qualquer outro benefício daquela classe/);
+  });
+});

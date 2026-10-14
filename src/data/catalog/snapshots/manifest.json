@@ -16,7 +16,9 @@
     "systemId": "dnd35",
     "ruleset": "v35-adv",
     "categories": {
-      "class": 28
+      "class": 29,
+      "feat": 33,
+      "weapon": 5
     }
   },
   {
