@@ -124,6 +124,7 @@ function catalogRulesetLabel(ruleset: string): string {
     legacy_pf1: "Pathfinder 1e · Livro Básico",
     v35: "D&D 3.5",
     "v35-adv": "D&D 3.5 · Livro Completo do Aventureiro",
+    "v35-arc": "D&D 3.5 · O Livro Completo do Arcano",
     "v35-cov": "D&D 3.5 · Champions of Valor",
     "v35-cg": "D&D 3.5 · Livro Completo do Guerreiro",
     "v35-cor": "D&D 3.5 · Champions of Ruin",

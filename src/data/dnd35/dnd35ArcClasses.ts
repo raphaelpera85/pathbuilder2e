@@ -1,0 +1,401 @@
+/**
+ * D&D 3.5 — O Livro Completo do Arcano (Complete Arcane, ed. Devir Brasil, 2007)
+ * Capítulo 1: Classes Básicas (pp. 5–20):
+ * - Bruxo (Warlock), pp. 5–9
+ * - Mago da Guerra (Warmage), pp. 10–14
+ * - Wu Jen (Wu Jen), pp. 14–20
+ *
+ * Ruleset: "v35-arc"
+ */
+
+export interface Dnd35ArcClassLevel {
+  level: number;
+  bab: string;
+  fort: number;
+  ref: number;
+  will: number;
+  special: string;
+  invocationsKnown?: number;
+  spellsPerDay?: (number | null)[];
+}
+
+export interface Dnd35ArcFeature {
+  name: string;
+  text: string;
+}
+
+export interface Dnd35ArcStarterSkill {
+  skill: string;
+  ranks: number;
+  ability: string;
+  armorPenalty?: string;
+}
+
+export interface Dnd35ArcStarterPackage {
+  label: string;
+  armor: string;
+  weapons: string[];
+  skillSelection: string;
+  skills: Dnd35ArcStarterSkill[];
+  feat: string;
+  bonusFeat?: string;
+  equipment: string;
+  gold: string;
+}
+
+export interface Dnd35ArcBaseClass {
+  id: string;
+  name: string;
+  nameEn: string;
+  page: number;
+  hitDie: string;
+  alignment: string;
+  skillPointsFirstLevel: string;
+  skillPointsPerLevel: string;
+  classSkills: string[];
+  startingGold: string;
+  levels: Dnd35ArcClassLevel[];
+  features: Dnd35ArcFeature[];
+  description: string;
+  starterPackage?: Dnd35ArcStarterPackage;
+  spellsPerDay?: (number | null)[][];
+}
+
+export const DND35_ARC_BRUXO: Dnd35ArcBaseClass = {
+  id: "arc-bruxo",
+  name: "Bruxo",
+  nameEn: "Warlock",
+  page: 5,
+  hitDie: "d6",
+  alignment: "Qualquer caótica ou qualquer maligna",
+  skillPointsFirstLevel: "(2 + modificador de Inteligência) x 4",
+  skillPointsPerLevel: "2 + modificador de Inteligência",
+  classSkills: [
+    "Blefar (Car)",
+    "Concentração (Con)",
+    "Conhecimento (arcano) (Int)",
+    "Conhecimento (os planos) (Int)",
+    "Conhecimento (religião) (Int)",
+    "Disfarces (Car)",
+    "Identificar Magia (Int)",
+    "Intimidar (Car)",
+    "Ofícios (Int)",
+    "Profissão (Sab)",
+    "Saltar (For)",
+    "Sentir Motivação (Sab)",
+    "Usar Instrumento Mágico (Car)",
+  ],
+  startingGold: "4d4 x 10 PO",
+  description:
+    "Nascido de uma linhagem sobrenatural, um bruxo busca dominar a magia perigosa que permeia sua própria alma. Ao contrário de feiticeiros ou magos, que interagem com o arcano através de magias, um bruxo invoca efeitos poderosos por uma simples questão de força de vontade. Domesticando seu dom inato para a magia graças a uma grande determinação, o bruxo consegue realizar proezas sobrenaturais de furtividade, enfeitiçar as mentes fracas ou ferir seus inimigos com rajadas de poder arcano.",
+  levels: [
+    { level: 1, bab: "+0", fort: 0, ref: 0, will: 2, special: "Rajada mística 1d6, invocação (mínima)", invocationsKnown: 1 },
+    { level: 2, bab: "+1", fort: 0, ref: 0, will: 3, special: "Detectar magia", invocationsKnown: 2 },
+    { level: 3, bab: "+2", fort: 1, ref: 1, will: 3, special: "Redução de Dano 1/ferro frio, rajada mística 2d6", invocationsKnown: 2 },
+    { level: 4, bab: "+3", fort: 1, ref: 1, will: 4, special: "Burlar item", invocationsKnown: 3 },
+    { level: 5, bab: "+3", fort: 1, ref: 1, will: 4, special: "Rajada mística 3d6", invocationsKnown: 3 },
+    { level: 6, bab: "+4", fort: 2, ref: 2, will: 5, special: "Nova invocação (mínima ou menor)", invocationsKnown: 4 },
+    { level: 7, bab: "+5", fort: 2, ref: 2, will: 5, special: "Redução de Dano 2/ferro frio, rajada mística 4d6", invocationsKnown: 4 },
+    { level: 8, bab: "+6/+1", fort: 2, ref: 2, will: 6, special: "Resistência demoníaca 1", invocationsKnown: 5 },
+    { level: 9, bab: "+6/+1", fort: 3, ref: 3, will: 6, special: "Rajada mística 5d6", invocationsKnown: 5 },
+    { level: 10, bab: "+7/+2", fort: 3, ref: 3, will: 7, special: "Resistência a energia 5", invocationsKnown: 6 },
+    { level: 11, bab: "+8/+3", fort: 3, ref: 3, will: 7, special: "Redução de Dano 3/ferro frio, rajada mística 6d6, nova invocação (mínima, menor ou maior)", invocationsKnown: 7 },
+    { level: 12, bab: "+9/+4", fort: 4, ref: 4, will: 8, special: "Infundir item", invocationsKnown: 7 },
+    { level: 13, bab: "+9/+4", fort: 4, ref: 4, will: 8, special: "Resistência demoníaca 2", invocationsKnown: 8 },
+    { level: 14, bab: "+10/+5", fort: 4, ref: 4, will: 9, special: "Rajada mística 7d6", invocationsKnown: 8 },
+    { level: 15, bab: "+11/+6/+1", fort: 5, ref: 5, will: 9, special: "Redução de Dano 4/ferro frio", invocationsKnown: 9 },
+    { level: 16, bab: "+12/+7/+2", fort: 5, ref: 5, will: 10, special: "Nova invocação (mínima, menor, maior ou sombria)", invocationsKnown: 10 },
+    { level: 17, bab: "+12/+7/+2", fort: 5, ref: 5, will: 10, special: "Rajada mística 8d6", invocationsKnown: 10 },
+    { level: 18, bab: "+13/+8/+3", fort: 6, ref: 6, will: 11, special: "Resistência demoníaca 5", invocationsKnown: 11 },
+    { level: 19, bab: "+14/+9/+4", fort: 6, ref: 6, will: 11, special: "Redução de Dano 5/ferro frio", invocationsKnown: 11 },
+    { level: 20, bab: "+15/+10/+5", fort: 6, ref: 6, will: 12, special: "Rajada mística 9d6, resistência a energia 10", invocationsKnown: 12 },
+  ],
+  features: [
+    {
+      name: "Usar Armas e Armaduras",
+      text: "Os bruxos sabem usar todas as armas simples. Eles sabem usar armaduras leves, mas não escudos. Como os componentes gestuais necessários para as invocações do bruxo são relativamente simples, ele consegue realizar qualquer uma delas vestindo uma armadura leve sem incorrer na chance de falha de magia arcana normal. Entretanto, como os demais conjuradores arcanos, um bruxo vestindo uma armadura média ou pesada ou usando escudo tem uma chance de falha de magia arcana (todas as invocações, incluindo a rajada mística, possuem componentes gestuais). Um bruxo multiclasse ainda sofrerá normalmente a chance de falha de magia arcana sofrida pelos níveis em outras classes.",
+    },
+    {
+      name: "Invocações",
+      text: "Um bruxo não prepara nem conjura magias como outros arcanistas. Em vez disso, ele possui um repertório de ataques, defesas e habilidades conhecidas como invocações, que exigem que ele concentre a energia selvagem que permeia sua alma. Um bruxo pode usar as invocações que conhece livremente, como habilidades similares a magia (ação padrão que provoca ataques de oportunidade, sujeitas a dissipar e a resistência à magia, com nível de conjurador igual ao nível na classe de bruxo). A CD do teste de resistência equivale a 10 + nível da magia equivalente + modificador de Carisma do bruxo. Os quatro graus de invocações são mínimas, menores, maiores e sombrias. O bruxo começa conhecendo uma invocação mínima e adquire novas invocações conforme a progressão da Tabela 1-1.",
+    },
+    {
+      name: "Rajada Mística (SM)",
+      text: "A primeira habilidade que um bruxo aprende é a rajada mística. Ele ataca seus inimigos com poder usando energias mágicas letais para infligir dano e, ocasionalmente, outros efeitos debilitantes. Uma rajada mística é um raio com 18 m de alcance que exige um ataque de toque à distância que afeta um só alvo, sem direito a teste de resistência. A rajada mística inflige 1d6 pontos de dano no 1º nível e aumenta a cada 2 níveis (até 9d6 no 20º nível). A rajada mística é equivalente a uma magia de 1º nível (ou ao nível da invocação de essência ou forma aplicada). Está sujeita a Resistência à Magia e inflige metade do dano em objetos.",
+    },
+    {
+      name: "Detectar Magia (SM)",
+      text: "A partir do 2º nível, o bruxo é capaz de utilizar detectar magia sem limite diário. Seu nível de conjurador equivale ao seu nível de classe.",
+    },
+    {
+      name: "Redução de Dano (Sob)",
+      text: "Fortificado pelo poder sobrenatural que flui por seu corpo, o bruxo torna-se resistente a ataques físicos, começando no 3º nível, quando adquire Redução de Dano 1/ferro frio. No 7º nível e a cada quatro níveis subsequentes (11º, 15º e 19º), esse valor aumenta em 1, alcançando RD 5/ferro frio no 19º nível.",
+    },
+    {
+      name: "Burlar Item (Ext)",
+      text: "No 4º nível e acima, o bruxo obtém a capacidade de utilizar com mais facilidade os itens mágicos criados para outros personagens. Ao realizar um teste de Usar Instrumento Mágico, o bruxo pode escolher 10 mesmo se estiver distraído ou ameaçado.",
+    },
+    {
+      name: "Resistência Demoníaca (Sob)",
+      text: "A partir do 8º nível, o bruxo descobre o segredo da resistência demoníaca. Uma vez por dia, como uma ação livre, ele pode ingressar num estado que dura dois minutos durante o qual adquire cura acelerada 1. No 13º nível, adquire cura acelerada 2. No 18º nível, obtém cura acelerada 5.",
+    },
+    {
+      name: "Resistência à Energia (Sob)",
+      text: "No 10º nível e superiores, o bruxo adquire resistência 5 contra dois dos seguintes tipos de energia: ácido, frio, eletricidade, fogo e sônica. Após escolher o tipo de energia, é impossível mudá-lo. No 20º nível, o personagem obtém resistência 10 contra os dois tipos de energia escolhidos.",
+    },
+    {
+      name: "Infundir Item (Sob)",
+      text: "Um bruxo de 12º nível ou superior é capaz de empregar seu poder sobrenatural para criar itens mágicos, mesmo que não conheça as magias necessárias (embora deva possuir o talento de criação de itens apropriado). Ele pode executar um teste de Usar Instrumento Mágico (CD 15 + nível da magia para magias arcanas ou 25 + nível da magia para magias divinas) no lugar de uma magia que não conheça ou não possa conjurar.",
+    },
+  ],
+  starterPackage: {
+    label: "Humano Bruxo",
+    armor: "Corselete de couro batido (+3 CA, -1 penalidade, 9 m, 10 kg)",
+    weapons: [
+      "Maça pesada (1d8, 4 kg, Médio, Concussão)",
+      "Besta leve (1d8, dec. 19-20, 24 m, 2 kg, Perfurante)",
+    ],
+    skillSelection: "3 + modificador de Inteligência",
+    skills: [
+      { skill: "Blefar", ranks: 4, ability: "Car" },
+      { skill: "Concentração", ranks: 4, ability: "Con" },
+      { skill: "Identificar Magia", ranks: 4, ability: "Int" },
+      { skill: "Usar Instrumento Mágico", ranks: 4, ability: "Car" },
+      { skill: "Disfarces", ranks: 2, ability: "Car" },
+      { skill: "Sentir Motivação", ranks: 2, ability: "Sab" },
+      { skill: "Observar (oc)", ranks: 2, ability: "Sab" },
+    ],
+    feat: "Vitalidade",
+    bonusFeat: "Tiro Certeiro",
+    equipment: "Mochila com cantil, um dia de rações de viagem, saco de dormir, pederneira e isqueiro, lanterna coberta, 3 frascos de óleo, caixa com 10 virotes.",
+    gold: "4d4 PO",
+  },
+};
+
+export const DND35_ARC_MAGO_GUERRA: Dnd35ArcBaseClass = {
+  id: "arc-mago-da-guerra",
+  name: "Mago da Guerra",
+  nameEn: "Warmage",
+  page: 10,
+  hitDie: "d6",
+  alignment: "Qualquer",
+  skillPointsFirstLevel: "(2 + modificador de Inteligência) x 4",
+  skillPointsPerLevel: "2 + modificador de Inteligência",
+  classSkills: [
+    "Concentração (Con)",
+    "Conhecimento (arcano) (Int)",
+    "Conhecimento (história) (Int)",
+    "Identificar Magia (Int)",
+    "Intimidação (Car)",
+    "Ofícios (Int)",
+    "Profissão (Sab)",
+  ],
+  startingGold: "3d4 x 10 PO",
+  description:
+    "Alguns conjuradores só se importam com uma coisa: a guerra. Eles sonham com aço e explosões potentes de magia devastadora, tropas marchando e destruição incontrolável, o que pode ser encontrado em qualquer campo de batalha. Formados em colégios militares arcanos especiais, os indivíduos conhecidos como magos da guerra são treinados única e exclusivamente na conjuração das magias mais úteis para provocar destruição, confundir o inimigo ou dar cobertura para a ação de um aliado.",
+  spellsPerDay: [
+    [5, 3, null, null, null, null, null, null, null, null],
+    [6, 4, null, null, null, null, null, null, null, null],
+    [6, 5, null, null, null, null, null, null, null, null],
+    [6, 6, 3, null, null, null, null, null, null, null],
+    [6, 6, 4, null, null, null, null, null, null, null],
+    [6, 6, 5, 3, null, null, null, null, null, null],
+    [6, 6, 6, 4, null, null, null, null, null, null],
+    [6, 6, 6, 5, 3, null, null, null, null, null],
+    [6, 6, 6, 6, 4, null, null, null, null, null],
+    [6, 6, 6, 6, 5, 3, null, null, null, null, null],
+    [6, 6, 6, 6, 6, 4, null, null, null, null, null],
+    [6, 6, 6, 6, 6, 5, 3, null, null, null, null],
+    [6, 6, 6, 6, 6, 6, 4, null, null, null, null],
+    [6, 6, 6, 6, 6, 6, 5, 3, null, null, null],
+    [6, 6, 6, 6, 6, 6, 6, 4, null, null, null],
+    [6, 6, 6, 6, 6, 6, 6, 5, 3, null, null],
+    [6, 6, 6, 6, 6, 6, 6, 6, 4, null, null],
+    [6, 6, 6, 6, 6, 6, 6, 6, 5, 3, null],
+    [6, 6, 6, 6, 6, 6, 6, 6, 6, 4, null],
+    [6, 6, 6, 6, 6, 6, 6, 6, 6, 5, null],
+  ],
+  levels: [
+    { level: 1, bab: "+0", fort: 0, ref: 0, will: 2, special: "Mago de armadura (leve), vantagem do mago da guerra", spellsPerDay: [5, 3] },
+    { level: 2, bab: "+1", fort: 0, ref: 0, will: 3, special: "—", spellsPerDay: [6, 4] },
+    { level: 3, bab: "+1", fort: 1, ref: 1, will: 3, special: "Aprendizado avançado", spellsPerDay: [6, 5] },
+    { level: 4, bab: "+2", fort: 1, ref: 1, will: 4, special: "—", spellsPerDay: [6, 6, 3] },
+    { level: 5, bab: "+2", fort: 1, ref: 1, will: 4, special: "—", spellsPerDay: [6, 6, 4] },
+    { level: 6, bab: "+3", fort: 2, ref: 2, will: 5, special: "Aprendizado avançado", spellsPerDay: [6, 6, 5, 3] },
+    { level: 7, bab: "+3", fort: 2, ref: 2, will: 5, special: "Potencializar súbito", spellsPerDay: [6, 6, 6, 4] },
+    { level: 8, bab: "+4", fort: 2, ref: 2, will: 6, special: "Mago de armadura (média)", spellsPerDay: [6, 6, 6, 5, 3] },
+    { level: 9, bab: "+4", fort: 3, ref: 3, will: 6, special: "—", spellsPerDay: [6, 6, 6, 6, 4] },
+    { level: 10, bab: "+5", fort: 3, ref: 3, will: 7, special: "Aumentar súbito", spellsPerDay: [6, 6, 6, 6, 5, 3] },
+    { level: 11, bab: "+5", fort: 3, ref: 3, will: 7, special: "Aprendizado avançado", spellsPerDay: [6, 6, 6, 6, 6, 4] },
+    { level: 12, bab: "+6/+1", fort: 4, ref: 4, will: 8, special: "—", spellsPerDay: [6, 6, 6, 6, 6, 5, 3] },
+    { level: 13, bab: "+6/+1", fort: 4, ref: 4, will: 8, special: "—", spellsPerDay: [6, 6, 6, 6, 6, 6, 4] },
+    { level: 14, bab: "+7/+2", fort: 4, ref: 4, will: 9, special: "—", spellsPerDay: [6, 6, 6, 6, 6, 6, 5, 3] },
+    { level: 15, bab: "+7/+2", fort: 5, ref: 5, will: 9, special: "Ampliar súbito", spellsPerDay: [6, 6, 6, 6, 6, 6, 6, 4] },
+    { level: 16, bab: "+8/+3", fort: 5, ref: 5, will: 10, special: "Aprendizado avançado", spellsPerDay: [6, 6, 6, 6, 6, 6, 6, 5, 3] },
+    { level: 17, bab: "+8/+3", fort: 5, ref: 5, will: 10, special: "—", spellsPerDay: [6, 6, 6, 6, 6, 6, 6, 6, 4] },
+    { level: 18, bab: "+9/+4", fort: 6, ref: 6, will: 11, special: "—", spellsPerDay: [6, 6, 6, 6, 6, 6, 6, 6, 5, 3] },
+    { level: 19, bab: "+9/+4", fort: 6, ref: 6, will: 11, special: "—", spellsPerDay: [6, 6, 6, 6, 6, 6, 6, 6, 6, 4] },
+    { level: 20, bab: "+10/+5", fort: 6, ref: 6, will: 12, special: "Maximizar súbito", spellsPerDay: [6, 6, 6, 6, 6, 6, 6, 6, 6, 5] },
+  ],
+  features: [
+    {
+      name: "Usar Armas e Armaduras",
+      text: "Os magos da guerra sabem usar todas as armas simples e as armaduras e escudos leves. No 8º nível, o mago da guerra aprende a usar armaduras médias (veja Mago de Armadura, adiante).",
+    },
+    {
+      name: "Magias",
+      text: "Um mago da guerra conjura magias arcanas da lista de magias do mago da guerra. Ele é capaz de conjurar suas magias sem prepará-las com antecedência, diferente de um mago ou clérigo. Ao adquirir acesso a um novo nível de magia, conhece automaticamente todas as magias desse nível em sua lista. Para conjurar uma magia, o mago da guerra deve ter Carisma igual ou superior a 10 + nível da magia. A CD para os testes de resistência contra essas magias equivale a 10 + nível da magia + modificador de Carisma do mago da guerra.",
+    },
+    {
+      name: "Mago de Armadura (Ext)",
+      text: "O foco restrito e o treinamento militar especializado do mago da guerra permitem que ele evite a falha de magia arcana normal desde que use apenas armaduras e escudos leves. Esse treinamento não engloba armaduras médias ou pesadas nem escudos pesados inicialmente, e não se aplica a magias obtidas de outra classe. No 8º nível, o mago da guerra aprende a utilizar armaduras médias sem sofrer chance de falha de magia arcana.",
+    },
+    {
+      name: "Vantagem do Mago da Guerra (Ext)",
+      text: "Um mago da guerra se especializa em infligir dano com suas magias. Sempre que conjurar uma magia que cause perda de pontos de vida, ele acrescenta seu modificador de Inteligência (se houver) ao dano provocado. O bônus dessa habilidade aplica-se uma vez por conjuração (se a magia produzir múltiplos projéteis, como mísseis mágicos, apenas um projétil recebe o dano adicional; em magias de área, afeta todas as criaturas na área). Cajados ativados pelo mago da guerra também se beneficiam desta habilidade.",
+    },
+    {
+      name: "Aprendizado Avançado (Ext)",
+      text: "No 3º, 6º, 11º e 16º níveis, o mago da guerra pode acrescentar uma nova magia à sua lista de magias conhecidas, representando o resultado de estudos e experimentos pessoais. A magia escolhida deve pertencer à lista do mago e à escola Evocação, e de nível igual ou inferior à magia de mais alto nível que o mago da guerra é capaz de conjurar.",
+    },
+    {
+      name: "Potencializar Súbito (Ext)",
+      text: "No 7º nível, o mago da guerra adquire Potencializar Súbito como talento adicional. Se já possuir esse talento, poderá escolher outro talento metamágico.",
+    },
+    {
+      name: "Aumentar Súbito (Ext)",
+      text: "No 10º nível, o mago da guerra adquire Aumentar Súbito como talento adicional. Se já possuir esse talento, poderá escolher outro talento metamágico.",
+    },
+    {
+      name: "Ampliar Súbito (Ext)",
+      text: "No 15º nível, o mago da guerra adquire Ampliar Súbito como talento adicional. Se já possuir esse talento, poderá escolher outro talento metamágico.",
+    },
+    {
+      name: "Maximizar Súbito (Ext)",
+      text: "No 20º nível, o mago da guerra adquire Maximizar Súbito como talento adicional. Se já possuir esse talento, poderá escolher outro talento metamágico.",
+    },
+  ],
+  starterPackage: {
+    label: "Humano Mago da Guerra",
+    armor: "Corselete de couro batido (+3 CA, -1 penalidade, 9 m, 10 kg)",
+    weapons: [
+      "Lança (1d8, dec. x3, 6 m, 3 kg, duas mãos, Perfurante)",
+      "Besta leve (1d8, dec. 19-20, 24 m, 2 kg, Perfurante)",
+    ],
+    skillSelection: "4 + modificador de Inteligência",
+    skills: [
+      { skill: "Identificar Magia", ranks: 4, ability: "Int" },
+      { skill: "Concentração", ranks: 4, ability: "Con" },
+      { skill: "Conhecimento (arcano)", ranks: 4, ability: "Int" },
+      { skill: "Intimidar", ranks: 4, ability: "Car" },
+      { skill: "Sobrevivência (oc)", ranks: 2, ability: "Sab" },
+      { skill: "Diplomacia (oc)", ranks: 2, ability: "Car" },
+      { skill: "Esconder-se (oc)", ranks: 2, ability: "Des", armorPenalty: "-1" },
+    ],
+    feat: "Magias em Combate",
+    bonusFeat: "Vitalidade",
+    equipment: "Mochila com cantil, um dia de rações de viagem, saco de dormir, saco, pederneira e isqueiro, caixa com 10 virotes, bolsa de componentes de magia, três tochas.",
+    gold: "1d4 PO",
+  },
+};
+
+export const DND35_ARC_WU_JEN: Dnd35ArcBaseClass = {
+  id: "arc-wu-jen",
+  name: "Wu Jen",
+  nameEn: "Wu Jen",
+  page: 14,
+  hitDie: "d4",
+  alignment: "Qualquer não leal",
+  skillPointsFirstLevel: "(2 + modificador de Inteligência) x 4",
+  skillPointsPerLevel: "2 + modificador de Inteligência",
+  classSkills: [
+    "Concentração (Con)",
+    "Conhecimento (todos, escolhidos individualmente) (Int)",
+    "Identificar Magia (Int)",
+    "Ofícios (Int)",
+    "Profissão (Sab)",
+  ],
+  startingGold: "3d4 x 10 PO",
+  description:
+    "Os Wu Jen são conjuradores dotados de poderes misteriosos. Eles comandam os elementos, as forças espirituais e os poderes da natureza. Raramente são encontrados coabitando com o restante da sociedade humana. Em vez disso, vivem no campo como eremitas, purificando seus corpos e mentes para entrar em contato com os diversos poderes naturais e sobrenaturais do mundo. É dessas entidades que eles aprendem suas magias — ferramentas místicas para controlar as forças invisíveis do mundo.",
+  spellsPerDay: [
+    [3, 1, null, null, null, null, null, null, null, null],
+    [4, 2, null, null, null, null, null, null, null, null],
+    [4, 2, 1, null, null, null, null, null, null, null],
+    [4, 3, 2, null, null, null, null, null, null, null],
+    [4, 3, 2, 1, null, null, null, null, null, null],
+    [4, 3, 3, 2, null, null, null, null, null, null],
+    [4, 4, 3, 2, 1, null, null, null, null, null],
+    [4, 4, 3, 3, 2, null, null, null, null, null],
+    [4, 4, 4, 3, 2, 1, null, null, null, null],
+    [4, 4, 4, 3, 3, 2, null, null, null, null],
+    [4, 4, 4, 4, 3, 2, 1, null, null, null],
+    [4, 4, 4, 4, 3, 3, 2, null, null, null],
+    [4, 4, 4, 4, 4, 3, 2, 1, null, null],
+    [4, 4, 4, 4, 4, 3, 3, 2, null, null],
+    [4, 4, 4, 4, 4, 4, 3, 2, 1, null],
+    [4, 4, 4, 4, 4, 4, 3, 3, 2, null],
+    [4, 4, 4, 4, 4, 4, 4, 3, 2, 1],
+    [4, 4, 4, 4, 4, 4, 4, 3, 3, 2],
+    [4, 4, 4, 4, 4, 4, 4, 4, 3, 3],
+    [4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+  ],
+  levels: [
+    { level: 1, bab: "+0", fort: 0, ref: 0, will: 2, special: "Espírito vigilante, talento adicional, tabu", spellsPerDay: [3, 1] },
+    { level: 2, bab: "+1", fort: 0, ref: 0, will: 3, special: "—", spellsPerDay: [4, 2] },
+    { level: 3, bab: "+1", fort: 1, ref: 1, will: 3, special: "Magia secreta, tabu", spellsPerDay: [4, 2, 1] },
+    { level: 4, bab: "+2", fort: 1, ref: 1, will: 4, special: "—", spellsPerDay: [4, 3, 2] },
+    { level: 5, bab: "+2", fort: 1, ref: 1, will: 4, special: "—", spellsPerDay: [4, 3, 2, 1] },
+    { level: 6, bab: "+3", fort: 2, ref: 2, will: 5, special: "Maestria elemental, magia secreta, tabu", spellsPerDay: [4, 3, 3, 2] },
+    { level: 7, bab: "+3", fort: 2, ref: 2, will: 5, special: "—", spellsPerDay: [4, 4, 3, 2, 1] },
+    { level: 8, bab: "+4", fort: 2, ref: 2, will: 6, special: "—", spellsPerDay: [4, 4, 3, 3, 2] },
+    { level: 9, bab: "+4", fort: 3, ref: 3, will: 6, special: "Magia secreta, tabu", spellsPerDay: [4, 4, 4, 3, 2, 1] },
+    { level: 10, bab: "+5", fort: 3, ref: 3, will: 7, special: "—", spellsPerDay: [4, 4, 4, 3, 3, 2] },
+    { level: 11, bab: "+5", fort: 3, ref: 3, will: 7, special: "—", spellsPerDay: [4, 4, 4, 4, 3, 2, 1] },
+    { level: 12, bab: "+6/+1", fort: 4, ref: 4, will: 8, special: "Magia secreta, tabu", spellsPerDay: [4, 4, 4, 4, 3, 3, 2] },
+    { level: 13, bab: "+6/+1", fort: 4, ref: 4, will: 8, special: "—", spellsPerDay: [4, 4, 4, 4, 4, 3, 2, 1] },
+    { level: 14, bab: "+7/+2", fort: 4, ref: 4, will: 9, special: "—", spellsPerDay: [4, 4, 4, 4, 4, 3, 3, 2] },
+    { level: 15, bab: "+7/+2", fort: 5, ref: 5, will: 9, special: "Magia secreta, tabu", spellsPerDay: [4, 4, 4, 4, 4, 4, 3, 2, 1] },
+    { level: 16, bab: "+8/+3", fort: 5, ref: 5, will: 10, special: "—", spellsPerDay: [4, 4, 4, 4, 4, 4, 3, 3, 2] },
+    { level: 17, bab: "+8/+3", fort: 5, ref: 5, will: 10, special: "—", spellsPerDay: [4, 4, 4, 4, 4, 4, 4, 3, 2, 1] },
+    { level: 18, bab: "+9/+4", fort: 6, ref: 6, will: 11, special: "Magia secreta, tabu", spellsPerDay: [4, 4, 4, 4, 4, 4, 4, 3, 3, 2] },
+    { level: 19, bab: "+9/+4", fort: 6, ref: 6, will: 11, special: "—", spellsPerDay: [4, 4, 4, 4, 4, 4, 4, 4, 3, 3] },
+    { level: 20, bab: "+10/+5", fort: 6, ref: 6, will: 12, special: "—", spellsPerDay: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4] },
+  ],
+  features: [
+    {
+      name: "Usar Armas e Armaduras",
+      text: "Os wu jen sabem usar todas as armas simples. Eles não sabem usar nenhum tipo de armadura ou escudo. Qualquer espécie de armadura interfere com os gestos arcanos do personagem, provocando chance de falha de magia arcana.",
+    },
+    {
+      name: "Magias e Grimórios",
+      text: "Um wu jen conjura magias arcanas da lista de magias do wu jen. Ele deve escolher e preparar suas magias diariamente estudando seu grimório, exatamente como um mago. Para aprender, preparar ou conjurar uma magia, o wu jen deve ter Inteligência igual ou superior a 10 + nível da magia. A CD para os testes de resistência contra essas magias é 10 + nível da magia + modificador de Inteligência do wu jen. Começa com um grimório contendo todas as magias de nível 0 e 3 magias de 1º nível (mais 1 por ponto de bônus de Int). A cada novo nível adquire duas novas magias em seu grimório.",
+    },
+    {
+      name: "Espírito Vigilante (Sob)",
+      text: "Uma vez por dia, o wu jen pode realizar novamente uma jogada de iniciativa antes que seja anunciada sua posição na ordem de ação. Ele pode escolher o melhor entre os dois resultados.",
+    },
+    {
+      name: "Talento Adicional",
+      text: "Um wu jen começa no 1º nível com um talento metamágico adicional à sua escolha.",
+    },
+    {
+      name: "Magia Secreta (Sob)",
+      text: "No 3º nível e a cada três níveis subsequentes (6º, 9º, 12º, 15º e 18º), o wu jen pode escolher uma de suas magias conhecidas e modificá-la permanentemente como se estivesse sob o efeito de um dos seguintes talentos metamágicos: Aumentar Magia, Estender Magia, Magia Sem Gestos ou Magia Silenciosa. O nível da magia não se altera, e não é necessário possuir os talentos para aplicá-los à magia.",
+    },
+    {
+      name: "Maestria Elemental (Ext)",
+      text: "No 6º nível, o wu jen torna-se mestre de um dos cinco elementos à sua escolha: terra, fogo, metal, água ou madeira. Dali em diante, sempre que conjurar uma magia daquele elemento, seu nível de conjurador efetivo aumenta em +2. Além disso, recebe +2 de bônus de competência nos testes de resistência contra magias daquele elemento.",
+    },
+    {
+      name: "Tabus",
+      text: "Para manter seu poder sobrenatural, os wu jen devem obedecer a certos tabus místicos. Se violar um de seus tabus, não poderá conjurar mais magias durante aquele dia. O personagem deve escolher um tabu no 1º nível e mais um a cada vez que aprender uma magia secreta. Exemplos de tabus: não comer carne; não possuir mais do que consegue carregar; realizar uma oferenda diária aos espíritos; não tomar banho; não cortar o cabelo; não tocar em cadáveres; não beber álcool; não vestir determinada cor; não acender fogo; não se sentar voltado para certa direção.",
+    },
+  ],
+};
+
+export const DND35_ARC_BASE_CLASSES: Dnd35ArcBaseClass[] = [
+  DND35_ARC_BRUXO,
+  DND35_ARC_MAGO_GUERRA,
+  DND35_ARC_WU_JEN,
+];
