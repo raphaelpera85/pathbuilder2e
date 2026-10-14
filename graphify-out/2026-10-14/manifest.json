@@ -114,9 +114,9 @@
     "semantic_hash": ""
   },
   "src/PortalPages.tsx": {
-    "mtime": 1791974829.7460127,
-    "seen": 1791975368.8734725,
-    "ast_hash": "cd46b0d753eac2eb450c5274770dd67e",
+    "mtime": 1791984311.717746,
+    "seen": 1791984482.6492114,
+    "ast_hash": "cd32e0f02be55b2b8bc34ae5a620e516",
     "semantic_hash": ""
   },
   "src/accountState.ts": {
@@ -816,9 +816,9 @@
     "semantic_hash": ""
   },
   "src/services/admin.test.ts": {
-    "mtime": 1791978887.0727239,
-    "seen": 1791979044.131396,
-    "ast_hash": "496deadedc81bababd78465dd959e88f",
+    "mtime": 1791984359.603688,
+    "seen": 1791984482.6513143,
+    "ast_hash": "7b48e8cee353547050178bd60840d9ea",
     "semantic_hash": ""
   },
   "src/services/admin.ts": {
@@ -1236,9 +1236,9 @@
     "semantic_hash": ""
   },
   "src/services/catalog.test.ts": {
-    "mtime": 1791978894.548664,
-    "seen": 1791979044.1361282,
-    "ast_hash": "46c547c0b0ee2da1412ebbf0c639803f",
+    "mtime": 1791984426.7126145,
+    "seen": 1791984482.6513298,
+    "ast_hash": "f542f797529db40bc4961b8abe396ea5",
     "semantic_hash": ""
   },
   "src/services/catalog.ts": {
@@ -12612,9 +12612,9 @@
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/manifest.json": {
-    "mtime": 1791978797.2291198,
-    "seen": 1791979043.7339358,
-    "ast_hash": "7f1cdedc9fde46af30d5ddb7c8fb4d6c",
+    "mtime": 1791984321.558897,
+    "seen": 1791984482.649358,
+    "ast_hash": "f2e1cbf38d463c55dffab620afe642fa",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/ose/advanced/action.json": {
@@ -15309,6 +15309,210 @@
     "mtime": 1788493287.9142597,
     "seen": 1791979531.274185,
     "ast_hash": "a831cf3669f1e6ab85d8a80ebe655f99",
+    "semantic_hash": ""
+  },
+  "scratch/check_div_feats_table.py": {
+    "mtime": 1791981819.6903746,
+    "seen": 1791982652.4480832,
+    "ast_hash": "3ef37e3f546426466f28c4ded380d676",
+    "semantic_hash": ""
+  },
+  "scratch/check_div_prestige_toc.py": {
+    "mtime": 1791982285.540244,
+    "seen": 1791982652.4480872,
+    "ast_hash": "9cb17cc1c355ad4c442d52d08cb12ae9",
+    "semantic_hash": ""
+  },
+  "scratch/check_missing_feats.py": {
+    "mtime": 1791982046.793308,
+    "seen": 1791982652.4480891,
+    "ast_hash": "77c008f17bb82fb6cca9365b65b95d5a",
+    "semantic_hash": ""
+  },
+  "scratch/check_p83.py": {
+    "mtime": 1791981927.899222,
+    "seen": 1791982652.4480917,
+    "ast_hash": "8d784040f6adb9281a014a33ac5a3d3e",
+    "semantic_hash": ""
+  },
+  "scratch/check_privilegiado.py": {
+    "mtime": 1791981508.090779,
+    "seen": 1791982652.448094,
+    "ast_hash": "7b9d786be445c4fd241d69099cee1b8a",
+    "semantic_hash": ""
+  },
+  "scratch/check_shugenja.py": {
+    "mtime": 1791981551.5824282,
+    "seen": 1791982652.448096,
+    "ast_hash": "ef229904522a9582e295ee4c0ff6932e",
+    "semantic_hash": ""
+  },
+  "scratch/check_xama.py": {
+    "mtime": 1791981569.7882683,
+    "seen": 1791982652.4480987,
+    "ast_hash": "15daca939dcfcf87e3d72e6b3a48c8bb",
+    "semantic_hash": ""
+  },
+  "scratch/div_feats_export.json": {
+    "mtime": 1791982169.910873,
+    "seen": 1791982652.4481,
+    "ast_hash": "5d3bf67e4f1fae550a622f176d7ad094",
+    "semantic_hash": ""
+  },
+  "scratch/extract_p83.py": {
+    "mtime": 1791981972.424125,
+    "seen": 1791982652.4481015,
+    "ast_hash": "95cf894a6105ca0952b25ad8a8568a68",
+    "semantic_hash": ""
+  },
+  "scratch/generate_div_feats.py": {
+    "mtime": 1791982147.2734706,
+    "seen": 1791982652.448107,
+    "ast_hash": "fea834aec9ef1f7c16374be8119ee82c",
+    "semantic_hash": ""
+  },
+  "scratch/inspect_divine.py": {
+    "mtime": 1791981261.3114538,
+    "seen": 1791982652.448109,
+    "ast_hash": "e2581be747a26184a9b67ca8283bf0d8",
+    "semantic_hash": ""
+  },
+  "scratch/list_all_feats.py": {
+    "mtime": 1791981870.7170012,
+    "seen": 1791982652.448111,
+    "ast_hash": "d740e18a7247b0a96041b8bc4816088e",
+    "semantic_hash": ""
+  },
+  "scratch/parse_div_feats_p78.py": {
+    "mtime": 1791981846.6153946,
+    "seen": 1791982652.4481158,
+    "ast_hash": "55178d46bc360c342a14d39cb2234604",
+    "semantic_hash": ""
+  },
+  "scratch/scan_all_feat_entries.py": {
+    "mtime": 1791981905.9947608,
+    "seen": 1791982652.4481175,
+    "ast_hash": "40c9099fd9f93e0ced53629b1561bb47",
+    "semantic_hash": ""
+  },
+  "scratch/verify_feats_presence.py": {
+    "mtime": 1791982023.2739642,
+    "seen": 1791982652.4481196,
+    "ast_hash": "1da7b217de01f40efcfe19dd68def8a5",
+    "semantic_hash": ""
+  },
+  "scripts/render-ocr-divine.ps1": {
+    "mtime": 1791981287.8863661,
+    "seen": 1791982652.448384,
+    "ast_hash": "95cb64653901d2552f2a0f4d27fc8fad",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivClasses.test.ts": {
+    "mtime": 1791981703.1125228,
+    "seen": 1791982652.4491184,
+    "ast_hash": "45bc0b5b882df8967e5a8cb1e61f17e6",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivClasses.ts": {
+    "mtime": 1791981676.7074282,
+    "seen": 1791982652.449121,
+    "ast_hash": "7a6d7593c0ebdbeddd9dca42e1ee1863",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivFeats.test.ts": {
+    "mtime": 1791982231.418393,
+    "seen": 1791982652.4491234,
+    "ast_hash": "a284287f2f54d31d3137633574a29112",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivFeats.ts": {
+    "mtime": 1791982213.6688251,
+    "seen": 1791982652.4491253,
+    "ast_hash": "9e1a9f0bf053908f8fd5befd0c017ded",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivPrestige.ts": {
+    "mtime": 1791983042.0115578,
+    "seen": 1791984482.650955,
+    "ast_hash": "a7cdf43e9fd82c9a134824a301fc373b",
+    "semantic_hash": ""
+  },
+  "scratch/p83.jpg": {
+    "mtime": 1791981985.4034493,
+    "seen": 1791982652.4573627,
+    "ast_hash": "b285b15297642344e505ba00831a5cf1",
+    "semantic_hash": ""
+  },
+  "scripts/build-dnd35-div-prestige.py": {
+    "mtime": 1791983025.6119146,
+    "seen": 1791984482.6488328,
+    "ast_hash": "63ff0837d257ff2e5c5e97cea606b9b8",
+    "semantic_hash": ""
+  },
+  "scripts/build-dnd35-div-spells.py": {
+    "mtime": 1791983737.135298,
+    "seen": 1791984482.6488402,
+    "ast_hash": "b0e568b9cc8542fb46384ed5505f63cd",
+    "semantic_hash": ""
+  },
+  "scripts/generate-dnd35-div-snapshots.ts": {
+    "mtime": 1791983984.227339,
+    "seen": 1791984482.6490765,
+    "ast_hash": "b57535b9f408ac3631d98e707d752bec",
+    "semantic_hash": ""
+  },
+  "scripts/parse-all-divine-spells.py": {
+    "mtime": 1791983878.1419938,
+    "seen": 1791984482.6491148,
+    "ast_hash": "b02a1c083075fb8cff3d24260320066a",
+    "semantic_hash": ""
+  },
+  "src/data/catalog/snapshots/dnd35/v35-div/class.json": {
+    "mtime": 1791984000.185375,
+    "seen": 1791984482.6492999,
+    "ast_hash": "7e5fc61a84fb770f095b1a506ebc7dfa",
+    "semantic_hash": ""
+  },
+  "src/data/catalog/snapshots/dnd35/v35-div/feat.json": {
+    "mtime": 1791984000.1879852,
+    "seen": 1791984482.6493015,
+    "ast_hash": "af0fbf0abdc9729524aeec8a77f509fb",
+    "semantic_hash": ""
+  },
+  "src/data/catalog/snapshots/dnd35/v35-div/spell.json": {
+    "mtime": 1791984000.198469,
+    "seen": 1791984482.649303,
+    "ast_hash": "4bb4f505b19217329069b327511af2b2",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivDomains.test.ts": {
+    "mtime": 1791983576.3054943,
+    "seen": 1791984482.6509418,
+    "ast_hash": "6f653278514133517f1529d6639d1cad",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivDomains.ts": {
+    "mtime": 1791983560.739421,
+    "seen": 1791984482.650945,
+    "ast_hash": "bb8979f0ea41e8315e636d99edd649fd",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivPrestige.test.ts": {
+    "mtime": 1791983059.3736386,
+    "seen": 1791984482.650952,
+    "ast_hash": "82f3e9d5fa572877248697eb69febc84",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivSpells.test.ts": {
+    "mtime": 1791983762.7553644,
+    "seen": 1791984482.650957,
+    "ast_hash": "5cfa7e6b802d43110c47570d74388ba6",
+    "semantic_hash": ""
+  },
+  "src/data/dnd35/dnd35DivSpells.ts": {
+    "mtime": 1791983902.8876424,
+    "seen": 1791984482.6509588,
+    "ast_hash": "bb4ed86ee0cc668700cd5b8fef4d8281",
     "semantic_hash": ""
   }
 }

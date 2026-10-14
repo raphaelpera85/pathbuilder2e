@@ -14,9 +14,9 @@ export type Dnd35DivSpell = {
   components: string;
   castingTime: string;
   range: string;
-  target?: string;
-  area?: string;
-  effect?: string;
+  target?: string | null;
+  area?: string | null;
+  effect?: string | null;
   duration: string;
   savingThrow: string;
   spellResistance: string;

@@ -2303,7 +2303,7 @@ describe("serviço de catálogo local", () => {
   it("calcula totais de tabelas pelo manifesto sem carregar registros", async () => {
     const counts = await fetchCatalogTableCounts();
     expect(counts.catalog_feats).toBe(3001);
-    expect(counts.catalog_spells).toBe(1362);
+    expect(counts.catalog_spells).toBe(1441);
     expect(counts.catalog_weapons).toBe(321);
     expect(counts.catalog_armors).toBe(79);
     expect(counts.catalog_shields).toBe(32);
