@@ -667,7 +667,7 @@ describe("serviço de catálogo local", () => {
     expect(DEFAULT_RPG_SYSTEMS.map((system) => system.id)).toEqual(expect.arrayContaining(["pf2e", "t20", "dnd5e", "ose", "dnd35"]));
     expect(CATALOG_RULESETS).toEqual([
       "advanced", "basico", "classic", "legacy", "legacy_pf1", "padrao", "remaster", "standard",
-      "v35", "v35-adv", "v35-arc", "v35-cg", "v35-cor", "v35-cov", "v35-defensores", "v35-div", "v35-frostburn",
+      "v35", "v35-adv", "v35-arc", "v35-cg", "v35-cor", "v35-cov", "v35-defensores", "v35-div", "v35-frostburn", "v35-pe",
     ]);
   });
 
@@ -713,6 +713,20 @@ describe("serviço de catálogo local", () => {
         damageType: power.damageType,
       });
     }
+  });
+
+  it("serve classes, talentos e armas de Punhos e Espadas pelo snapshot v35-pe", async () => {
+    const classesResult = await fetchCatalogCategory("class", { systemId: "dnd35", ruleset: "v35-pe" });
+    expect(classesResult.source).toBe("local_snapshot");
+    expect(classesResult.items).toHaveLength(19);
+
+    const featsResult = await fetchCatalogCategory("feat", { systemId: "dnd35", ruleset: "v35-pe" });
+    expect(featsResult.source).toBe("local_snapshot");
+    expect(featsResult.items).toHaveLength(31);
+
+    const weaponsResult = await fetchCatalogCategory("weapon", { systemId: "dnd35", ruleset: "v35-pe" });
+    expect(weaponsResult.source).toBe("local_snapshot");
+    expect(weaponsResult.items).toHaveLength(27);
   });
 
   it("expõe as listas de magias D&D 3.5 já transcritas apenas no ruleset v35", async () => {
@@ -2302,9 +2316,9 @@ describe("serviço de catálogo local", () => {
 
   it("calcula totais de tabelas pelo manifesto sem carregar registros", async () => {
     const counts = await fetchCatalogTableCounts();
-    expect(counts.catalog_feats).toBe(3001);
+    expect(counts.catalog_feats).toBe(3032);
     expect(counts.catalog_spells).toBe(1441);
-    expect(counts.catalog_weapons).toBe(321);
+    expect(counts.catalog_weapons).toBe(348);
     expect(counts.catalog_armors).toBe(79);
     expect(counts.catalog_shields).toBe(32);
     expect(counts.catalog_items).toBe(1464);
@@ -2313,9 +2327,9 @@ describe("serviço de catálogo local", () => {
   it("calcula as métricas do compêndio pelos snapshots locais, incluindo perícias", async () => {
     const metrics = await fetchCatalogLocalMetrics();
     expect(metrics.counts.catalog_skills).toBe(195);
-    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(8807);
+    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(8884);
     expect(metrics.counts.catalog_spells).toBe(2521);
-    expect(metrics.verifiedCount + metrics.reviewCount).toBe(8807);
+    expect(metrics.verifiedCount + metrics.reviewCount).toBe(8884);
   }, 15_000);
 
   it("compartilha o cálculo das métricas locais entre chamadas concorrentes", async () => {

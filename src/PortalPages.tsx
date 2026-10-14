@@ -131,6 +131,7 @@ function catalogRulesetLabel(ruleset: string): string {
     "v35-cor": "D&D 3.5 · Champions of Ruin",
     "v35-defensores": "D&D 3.5 · Defensores da Fé",
     "v35-frostburn": "D&D 3.5 · Frostburn",
+    "v35-pe": "D&D 3.5 · Punhos e Espadas",
   };
   return labels[ruleset] || ruleset;
 }
