@@ -1,0 +1,146 @@
+[
+  {
+    "id": "t20.deuses.class.frade",
+    "name_pt": "Frade",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Pontos de vida iniciais: 12; PV por nível: 3; PM por nível: 6. Perícias fixas: religiao, vontade; escolha 4 entre: adestramento, atuacao, conhecimento, cura, diplomacia, fortitude, guerra, iniciativa, intimidacao, intuicao, investigacao, misticismo, oficio, percepcao, nobreza. Proficiências: Nenhuma.",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": 3,
+    "key_attributes": [
+      "sab",
+      "car"
+    ],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "E",
+    "class_dc_stat": "sab",
+    "traits": [
+      "Religião",
+      "Vontade",
+      "Divino"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-deuses",
+    "source_book": "Tormenta20 — Deuses de Arton",
+    "source_page": 38,
+    "created_at": "2026-10-14T17:25:22.649Z",
+    "updated_at": "2026-10-14T17:25:22.649Z",
+    "system_id": "t20",
+    "data": {
+      "id": "frade",
+      "name": "Frade",
+      "sourcePage": 38,
+      "startingHp": 12,
+      "hpPerLevel": 3,
+      "manaPerLevel": 6,
+      "fixedSkills": [
+        "religiao",
+        "vontade"
+      ],
+      "choiceSkillCount": 4,
+      "choiceSkills": [
+        "adestramento",
+        "atuacao",
+        "conhecimento",
+        "cura",
+        "diplomacia",
+        "fortitude",
+        "guerra",
+        "iniciativa",
+        "intimidacao",
+        "intuicao",
+        "investigacao",
+        "misticismo",
+        "oficio",
+        "percepcao",
+        "nobreza"
+      ],
+      "proficiencies": "Nenhuma",
+      "startingEquipment": [
+        "Símbolo sagrado",
+        "Manto de frade",
+        "Versiculário",
+        "Mochila de aventureiro"
+      ],
+      "progression": {
+        "1": [
+          "Devoto Fiel",
+          "Erudição",
+          "Magias (1º círculo)"
+        ],
+        "2": [
+          "Poder de Frade",
+          "Versiculário"
+        ],
+        "3": [
+          "Poder de Frade"
+        ],
+        "4": [
+          "Poder de Frade"
+        ],
+        "5": [
+          "Dádiva da Fé",
+          "Magias (2º círculo)",
+          "Poder de Frade"
+        ],
+        "6": [
+          "Poder de Frade"
+        ],
+        "7": [
+          "Poder de Frade"
+        ],
+        "8": [
+          "Poder de Frade"
+        ],
+        "9": [
+          "Magias (3º círculo)",
+          "Poder de Frade"
+        ],
+        "10": [
+          "Poder de Frade"
+        ],
+        "11": [
+          "Poder de Frade"
+        ],
+        "12": [
+          "Poder de Frade"
+        ],
+        "13": [
+          "Magias (4º círculo)",
+          "Poder de Frade"
+        ],
+        "14": [
+          "Poder de Frade"
+        ],
+        "15": [
+          "Poder de Frade"
+        ],
+        "16": [
+          "Poder de Frade"
+        ],
+        "17": [
+          "Magias (5º círculo)",
+          "Poder de Frade"
+        ],
+        "18": [
+          "Poder de Frade"
+        ],
+        "19": [
+          "Poder de Frade"
+        ],
+        "20": [
+          "Solo Santificado",
+          "Poder de Frade"
+        ]
+      },
+      "category": "classe",
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 12; PV por nível: 3; PM por nível: 6. Perícias fixas: religiao, vontade; escolha 4 entre: adestramento, atuacao, conhecimento, cura, diplomacia, fortitude, guerra, iniciativa, intimidacao, intuicao, investigacao, misticismo, oficio, percepcao, nobreza. Proficiências: Nenhuma."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]

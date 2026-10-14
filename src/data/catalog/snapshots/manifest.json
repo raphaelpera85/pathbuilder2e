@@ -253,5 +253,15 @@
     "categories": {
       "background": 66
     }
+  },
+  {
+    "systemId": "t20",
+    "ruleset": "t20-deuses",
+    "categories": {
+      "class": 1,
+      "feat": 104,
+      "item": 105,
+      "spell": 26
+    }
   }
 ]

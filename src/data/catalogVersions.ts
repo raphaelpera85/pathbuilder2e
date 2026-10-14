@@ -10,6 +10,7 @@ export const CURRENT_CATALOG_VERSIONS: Record<string, Record<string, string>> = 
     padrao: "t20-padrao-2026.09",
     "t20-ameacas": "t20-ameacas-2026.10",
     "t20-atlas": "t20-atlas-2026.10",
+    "t20-deuses": "t20-deuses-2026.10",
     jogo_do_ano: "t20-jogo-do-ano-2026.09",
     needs_review: "t20-review-2026.09",
   },
