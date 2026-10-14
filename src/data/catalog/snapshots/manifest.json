@@ -305,6 +305,13 @@
   },
   {
     "systemId": "t20",
+    "ruleset": "t20-codice",
+    "categories": {
+      "feat": 418
+    }
+  },
+  {
+    "systemId": "t20",
     "ruleset": "t20-deuses",
     "categories": {
       "class": 1,

@@ -124,6 +124,7 @@ function catalogRulesetLabel(ruleset: string): string {
     "t20-ameacas": "Tormenta20 · Ameaças de Arton",
     "t20-atlas": "Tormenta20 · Atlas de Arton",
     "t20-deuses": "Tormenta20 · Deuses de Arton",
+    "t20-codice": "Tormenta20 · Código de Poderes",
     advanced: "OSE Advanced Fantasy",
     classic: "OSE Classic Fantasy",
     basico: "OSE Criação Básica/Especialista",
