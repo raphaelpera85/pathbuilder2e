@@ -857,6 +857,18 @@ body.portal-page-active {
   touch-action: pan-y pinch-zoom;
 }
 
+/* O elemento <html> é o scrollingElement real do documento (document.scrollingElement),
+   não <body>. Sem esta regra, páginas mais altas que a viewport (como o construtor de
+   personagem em modo "página") ficam com overflow:hidden herdado de .portal-page-active
+   e não rolam de jeito nenhum em telas desktop — só o trecho dentro de
+   @media (max-width: 1080px) liberava isso, deixando o desktop preso. */
+html.portal-page-active {
+  height: auto !important;
+  min-height: 100%;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
 body.portal-page-active #react-portal-root {
   height: auto !important;
   min-height: 0 !important;

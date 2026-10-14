@@ -14,6 +14,7 @@ import { CG_FEATS } from "../src/data/dnd35/dnd35CgFeats";
 import { CG_TACTICAL_FEATS } from "../src/data/dnd35/dnd35CgFeatsTactical";
 import { CG_STYLE_FEATS } from "../src/data/dnd35/dnd35CgFeatsStyle";
 import { CG_NEW_SPELLS } from "../src/data/dnd35/dnd35CgNewSpells";
+import { CG_WEAPONS } from "../src/data/dnd35/dnd35CgWeapons";
 
 const BOOK = "D&D 3.5 — O Livro Completo do Guerreiro";
 const RULESET = "v35-cg";
@@ -72,3 +73,23 @@ const spells = CG_NEW_SPELLS.map((s) => ({
 }));
 writeFileSync(join(dir, "spell.json"), `${JSON.stringify(spells, null, 2)}\n`, "utf8");
 console.log(`spell=${spells.length}`);
+
+const weapons = CG_WEAPONS.map((w) => ({
+  id: `dnd35.cg.weapon.${w.id}`,
+  item_id: null,
+  ...names(w.name, w.description),
+  weapon_category: "exotica",
+  weapon_group: w.group,
+  damage_dice: w.damageMedium,
+  damage_type: w.type,
+  range_feet: w.rangeIncrementM,
+  reload: null,
+  hands: w.group === "duas-maos" ? "2" : "1",
+  bulk: null,
+  price_gp: w.costGp,
+  traits: w.notes ? [w.notes] : [],
+  ...common(w.page),
+  data: w,
+}));
+writeFileSync(join(dir, "weapon.json"), `${JSON.stringify(weapons, null, 2)}\n`, "utf8");
+console.log(`weapon=${weapons.length}`);

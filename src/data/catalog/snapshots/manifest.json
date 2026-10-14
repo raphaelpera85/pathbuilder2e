@@ -14,11 +14,19 @@
   },
   {
     "systemId": "dnd35",
+    "ruleset": "v35-adv",
+    "categories": {
+      "class": 28
+    }
+  },
+  {
+    "systemId": "dnd35",
     "ruleset": "v35-cg",
     "categories": {
       "class": 41,
       "feat": 83,
-      "spell": 8
+      "spell": 8,
+      "weapon": 18
     }
   },
   {

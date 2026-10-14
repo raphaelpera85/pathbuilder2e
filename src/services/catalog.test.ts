@@ -667,7 +667,7 @@ describe("serviço de catálogo local", () => {
     expect(DEFAULT_RPG_SYSTEMS.map((system) => system.id)).toEqual(expect.arrayContaining(["pf2e", "t20", "dnd5e", "ose", "dnd35"]));
     expect(CATALOG_RULESETS).toEqual([
       "advanced", "basico", "classic", "legacy", "legacy_pf1", "padrao", "remaster", "standard",
-      "v35", "v35-cg", "v35-cor", "v35-cov", "v35-defensores", "v35-frostburn",
+      "v35", "v35-adv", "v35-cg", "v35-cor", "v35-cov", "v35-defensores", "v35-frostburn",
     ]);
   });
 
@@ -1363,7 +1363,7 @@ describe("serviço de catálogo local", () => {
 
     expect(source).toBe("local_mixed");
     expect(coreSpells).toHaveLength(dnd35CoreCount);
-    expect(supplementSpells).toHaveLength(233);
+    expect(supplementSpells).toHaveLength(241);
     expect(pf1eSpells).toHaveLength(PF1E_BARD_CANTRIPS.length + PF1E_CLERIC_CANTRIPS.length + PF1E_DRUID_CANTRIPS.length + PF1E_SORCERER_WIZARD_CANTRIPS.length);
   });
 
@@ -2303,8 +2303,8 @@ describe("serviço de catálogo local", () => {
   it("calcula totais de tabelas pelo manifesto sem carregar registros", async () => {
     const counts = await fetchCatalogTableCounts();
     expect(counts.catalog_feats).toBe(2863);
-    expect(counts.catalog_spells).toBe(1144);
-    expect(counts.catalog_weapons).toBe(298);
+    expect(counts.catalog_spells).toBe(1152);
+    expect(counts.catalog_weapons).toBe(316);
     expect(counts.catalog_armors).toBe(79);
     expect(counts.catalog_shields).toBe(32);
     expect(counts.catalog_items).toBe(1428);
@@ -2313,9 +2313,9 @@ describe("serviço de catálogo local", () => {
   it("calcula as métricas do compêndio pelos snapshots locais, incluindo perícias", async () => {
     const metrics = await fetchCatalogLocalMetrics();
     expect(metrics.counts.catalog_skills).toBe(195);
-    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(8235);
-    expect(metrics.counts.catalog_spells).toBe(2224);
-    expect(metrics.verifiedCount + metrics.reviewCount).toBe(8235);
+    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(8289);
+    expect(metrics.counts.catalog_spells).toBe(2232);
+    expect(metrics.verifiedCount + metrics.reviewCount).toBe(8289);
   });
 
   it("compartilha o cálculo das métricas locais entre chamadas concorrentes", async () => {
