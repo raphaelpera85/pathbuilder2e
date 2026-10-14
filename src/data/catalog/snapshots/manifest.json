@@ -133,6 +133,14 @@
   },
   {
     "systemId": "dnd5e",
+    "ruleset": "dnd5e-mtof",
+    "categories": {
+      "ancestry": 15,
+      "feat": 1
+    }
+  },
+  {
+    "systemId": "dnd5e",
     "ruleset": "dnd5e-scag",
     "categories": {
       "ancestry": 4,

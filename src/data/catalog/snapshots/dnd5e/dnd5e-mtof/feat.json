@@ -1,0 +1,49 @@
+[
+  {
+    "id": "dnd5e.mtof.feat.magia_dos_svirfneblin",
+    "class_id": null,
+    "ancestry_id": "dnd5e.mtof.ancestry.svirfneblin",
+    "archetype_id": null,
+    "feat_type": "ancestry",
+    "level": 4,
+    "name_pt": "Magia dos Svirfneblin",
+    "name_en": "Svirfneblin Magic",
+    "name_es": null,
+    "description_pt": "Você herdou a habilidade inata de conjuração dos seus ancestrais do Subterrâneo. Esta habilidade permite que você conjure Indetectabilidade em si mesmo à vontade, sem precisar de componentes materiais. Você também pode conjurar cada uma das seguintes magias uma vez usando esta habilidade: Cegueira/Surdez, Desfoque e Disfarçar-se. Você recupera a capacidade de conjurar essas três magias quando terminar um descanso longo. Inteligência é sua habilidade de conjuração para todas essas magias.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": [
+      "Gnomo (Gnomo das Profundezas / Svirfneblin)"
+    ],
+    "action_cost": null,
+    "traits": [
+      "Gnomo",
+      "Svirfneblin",
+      "Magia"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 114,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.mtof.feat.magia_dos_svirfneblin",
+      "name": "Magia dos Svirfneblin",
+      "prerequisite": "Gnomo (Gnomo das Profundezas / Svirfneblin)",
+      "spells": [
+        "Indetectabilidade",
+        "Cegueira/Surdez",
+        "Desfoque",
+        "Disfarçar-se"
+      ],
+      "summary": "Você herdou a habilidade inata de conjuração dos seus ancestrais do Subterrâneo. Esta habilidade permite que você conjure Indetectabilidade em si mesmo à vontade, sem precisar de componentes materiais. Você também pode conjurar cada uma das seguintes magias uma vez usando esta habilidade: Cegueira/Surdez, Desfoque e Disfarçar-se. Você recupera a capacidade de conjurar essas três magias quando terminar um descanso longo. Inteligência é sua habilidade de conjuração para todas essas magias.",
+      "category": "talento",
+      "summaries": {
+        "pt-BR": "Você herdou a habilidade inata de conjuração dos seus ancestrais do Subterrâneo. Esta habilidade permite que você conjure Indetectabilidade em si mesmo à vontade, sem precisar de componentes materiais. Você também pode conjurar cada uma das seguintes magias uma vez usando esta habilidade: Cegueira/Surdez, Desfoque e Disfarçar-se. Você recupera a capacidade de conjurar essas três magias quando terminar um descanso longo. Inteligência é sua habilidade de conjuração para todas essas magias."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]

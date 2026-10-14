@@ -1,0 +1,780 @@
+[
+  {
+    "id": "dnd5e.mtof.ancestry.githyanki",
+    "name_pt": "Githyanki",
+    "name_en": "Githyanki",
+    "name_es": null,
+    "description_pt": "+2 Força, +1 Inteligência; tamanho Médio, deslocamento 9m; traços: Domínio Decadente, Prodígio Marcial, Psionismo Githyanki.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "str",
+      "int"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Gith",
+      "mais 1 idioma à sua escolha"
+    ],
+    "traits": [
+      "Domínio Decadente",
+      "Prodígio Marcial",
+      "Psionismo Githyanki"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 97,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "str": 2,
+        "int": 1
+      },
+      "abilityBonuses": "+2 Força, +1 Inteligência",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Domínio Decadente: Na cidade atemporal de Tu'narath no Plano Astral, os githyanki têm séculos para dominar conhecimentos singulares. Você aprende um idioma adicional à sua escolha e ganha proficiência em uma perícia ou ferramenta à sua escolha.",
+        "Prodígio Marcial: Você tem proficiência com armaduras leves e médias, e com espadas curtas, espadas longas e espadas grandes.",
+        "Psionismo Githyanki: Você conhece o truque Mãos Mágicas, e a mão criada é invisível ao conjurar por esta característica. A partir do 3º nível, pode conjurar Salto uma vez por descanso longo. A partir do 5º nível, pode conjurar Passo Nebuloso uma vez por descanso longo. Inteligência é sua habilidade de conjuração para essas magias, e você as conjura sem componentes materiais."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Força, +1 Inteligência; tamanho Médio, deslocamento 9m; traços: Domínio Decadente, Prodígio Marcial, Psionismo Githyanki."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.mtof.ancestry.githzerai",
+    "name_pt": "Githzerai",
+    "name_en": "Githzerai",
+    "name_es": null,
+    "description_pt": "+2 Sabedoria, +1 Inteligência; tamanho Médio, deslocamento 9m; traços: Disciplina Mental, Psionismo Githzerai.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "wis",
+      "int"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Gith"
+    ],
+    "traits": [
+      "Disciplina Mental",
+      "Psionismo Githzerai"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 97,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "wis": 2,
+        "int": 1
+      },
+      "abilityBonuses": "+2 Sabedoria, +1 Inteligência",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Disciplina Mental: Sob a tutela rigorosa dos mestres monásticos de Limbo, os githzerai aprendem a blindar a própria psique contra influências externas. Você tem vantagem em testes de resistência contra as condições enfeitiçado e amedrontado.",
+        "Psionismo Githzerai: Você conhece o truque Mãos Mágicas, e a mão criada é invisível ao conjurar por esta característica. A partir do 3º nível, pode conjurar Escudo Arcano uma vez por descanso longo. A partir do 5º nível, pode conjurar Detectar Pensamentos uma vez por descanso longo. Sabedoria é sua habilidade de conjuração para essas magias, e você as conjura sem componentes materiais."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Sabedoria, +1 Inteligência; tamanho Médio, deslocamento 9m; traços: Disciplina Mental, Psionismo Githzerai."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.mtof.ancestry.eladrin",
+    "name_pt": "Eladrin",
+    "name_en": "Eladrin",
+    "name_es": null,
+    "description_pt": "+2 Destreza (Base Elfo), +1 Carisma; tamanho Médio, deslocamento 9m; traços: Sentidos Aguçados & Transe, Ancestral Feérico, Passo Feérico Sazonal, Efeito Sazonal de Passo Feérico (3º Nível), • Outono, • Inverno, • Primavera, • Verão.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "dex",
+      "cha"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Élfico"
+    ],
+    "traits": [
+      "Sentidos Aguçados & Transe",
+      "Ancestral Feérico",
+      "Passo Feérico Sazonal",
+      "Efeito Sazonal de Passo Feérico (3º Nível)",
+      "• Outono",
+      "• Inverno",
+      "• Primavera",
+      "• Verão"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 61,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "dex": 2,
+        "cha": 1
+      },
+      "abilityBonuses": "+2 Destreza (Base Elfo), +1 Carisma",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Sentidos Aguçados & Transe: Proficiência em Percepção e descanso em transe meditativo de 4 horas.",
+        "Ancestral Feérico: Vantagem em testes de resistência contra ser enfeitiçado e imunidade a sono mágico.",
+        "Passo Feérico Sazonal: Como ação bônus, você pode se teletransportar magicamente até 9 metros para um espaço desocupado visível 1 vez por descanso curto ou longo. Ao final de cada descanso longo, você pode sintonizar sua essência a uma das quatro estações: Outono, Inverno, Primavera ou Verão.",
+        "Efeito Sazonal de Passo Feérico (3º Nível): A partir do 3º nível, seu Passo Feérico ganha um efeito adicional baseado na sua estação atual (CD = 8 + proficiência + modificador de Carisma):",
+        "• Outono: Imediatamente após teleportar, até 2 criaturas à escolha a até 3m de você devem ter sucesso em salvaguarda de Sabedoria ou ficam enfeitiçadas por 1 minuto (ou até você ou aliados causarem dano).",
+        "• Inverno: Ao teleportar, 1 criatura à escolha a até 1,5m de você antes do salto deve ter sucesso em salvaguarda de Sabedoria ou fica amedrontada até o final do seu próximo turno.",
+        "• Primavera: Ao usar Passo Feérico, você pode tocar uma criatura voluntária a até 1,5m; essa criatura teleporta no seu lugar para um espaço desocupado a até 9m que você veja.",
+        "• Verão: Imediatamente após teleportar, cada criatura à sua escolha a até 1,5m de você sofre dano de fogo igual ao seu modificador de Carisma (mínimo 1)."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Destreza (Base Elfo), +1 Carisma; tamanho Médio, deslocamento 9m; traços: Sentidos Aguçados & Transe, Ancestral Feérico, Passo Feérico Sazonal, Efeito Sazonal de Passo Feérico (3º Nível), • Outono, • Inverno, • Primavera, • Verão."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.mtof.ancestry.elfo_do_mar",
+    "name_pt": "Elfo do Mar",
+    "name_en": "Sea Elf",
+    "name_es": null,
+    "description_pt": "+2 Destreza (Base Elfo), +1 Constituição; tamanho Médio, deslocamento 9m; traços: Sentidos Aguçados, Ancestral Feérico & Transe, Treinamento do Elfo do Mar, Filho do Mar, Amigo do Mar.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "dex",
+      "con"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Élfico",
+      "Aquan"
+    ],
+    "traits": [
+      "Sentidos Aguçados, Ancestral Feérico & Transe",
+      "Treinamento do Elfo do Mar",
+      "Filho do Mar",
+      "Amigo do Mar"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 62,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "dex": 2,
+        "con": 1
+      },
+      "abilityBonuses": "+2 Destreza (Base Elfo), +1 Constituição",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Sentidos Aguçados, Ancestral Feérico & Transe: Herança padrão dos elfos (visão no escuro 18m, Percepção, resistência a encantamentos e transe).",
+        "Treinamento do Elfo do Mar: Você tem proficiência com lança, tridente, besta leve e rede.",
+        "Filho do Mar: Você possui deslocamento de natação de 9 metros e pode respirar ar e água livremente.",
+        "Amigo do Mar: Usando gestos e sons subaquáticos, você pode comunicar ideias e conceitos simples para qualquer besta que possua deslocamento de natação inato."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Destreza (Base Elfo), +1 Constituição; tamanho Médio, deslocamento 9m; traços: Sentidos Aguçados, Ancestral Feérico & Transe, Treinamento do Elfo do Mar, Filho do Mar, Amigo do Mar."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.mtof.ancestry.shadar_kai",
+    "name_pt": "Shadar-kai",
+    "name_en": "Shadar-kai",
+    "name_es": null,
+    "description_pt": "+2 Destreza (Base Elfo), +1 Constituição; tamanho Médio, deslocamento 9m; traços: Sentidos Aguçados, Ancestral Feérico & Transe, Resistência Necrótica, Bênção da Rainha dos Corvos.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "dex",
+      "con"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Élfico"
+    ],
+    "traits": [
+      "Sentidos Aguçados, Ancestral Feérico & Transe",
+      "Resistência Necrótica",
+      "Bênção da Rainha dos Corvos"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 63,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "dex": 2,
+        "con": 1
+      },
+      "abilityBonuses": "+2 Destreza (Base Elfo), +1 Constituição",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Sentidos Aguçados, Ancestral Feérico & Transe: Herança élfica com visão no escuro de 18 metros, proficiência em Percepção e transe meditativo.",
+        "Resistência Necrótica: Você tem resistência a dano necrótico, resguardando sua alma da entropia de Pendor das Sombras.",
+        "Bênção da Rainha dos Corvos: Como ação bônus, você pode se teletransportar magicamente até 9 metros para um espaço desocupado que veja. Pode usar esta característica uma vez por descanso longo. A partir do 3º nível, você também ganha resistência a todos os tipos de dano ao usar esta característica, durando até o início do seu próximo turno, período em que você assume forma espectral e translúcida."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Destreza (Base Elfo), +1 Constituição; tamanho Médio, deslocamento 9m; traços: Sentidos Aguçados, Ancestral Feérico & Transe, Resistência Necrótica, Bênção da Rainha dos Corvos."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.mtof.ancestry.svirfneblin",
+    "name_pt": "Gnomo das Profundezas (Svirfneblin)",
+    "name_en": "Deep Gnome (Svirfneblin)",
+    "name_es": null,
+    "description_pt": "+2 Inteligência (Base Gnomo), +1 Destreza; tamanho Pequeno, deslocamento 7.5m; traços: Esperteza Gnômica, Visão no Escuro Superior, Camuflagem na Pedra.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Small",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "int",
+      "dex"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Gnômico",
+      "Subcomum"
+    ],
+    "traits": [
+      "Esperteza Gnômica",
+      "Visão no Escuro Superior",
+      "Camuflagem na Pedra"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 113,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "int": 2,
+        "dex": 1
+      },
+      "abilityBonuses": "+2 Inteligência (Base Gnomo), +1 Destreza",
+      "size": "Pequeno",
+      "speedMeters": 7.5,
+      "traits": [
+        "Esperteza Gnômica: Vantagem em todos os testes de resistência de Inteligência, Sabedoria e Carisma contra magia.",
+        "Visão no Escuro Superior: Você enxerga no escuro e penumbra a até 36 metros de distância.",
+        "Camuflagem na Pedra: Você tem vantagem em testes de Destreza (Furtividade) para se esconder em terreno rochoso e ambientes subterrâneos."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Inteligência (Base Gnomo), +1 Destreza; tamanho Pequeno, deslocamento 7.5m; traços: Esperteza Gnômica, Visão no Escuro Superior, Camuflagem na Pedra."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.mtof.ancestry.tiefling_asmodeus",
+    "name_pt": "Tiefling de Asmodeus",
+    "name_en": "Tiefling (Asmodeus)",
+    "name_es": null,
+    "description_pt": "+2 Carisma, +1 Inteligência; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Nessus.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "cha",
+      "int"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Infernal"
+    ],
+    "traits": [
+      "Visão no Escuro",
+      "Resistência Infernal",
+      "Legado de Nessus"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 21,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "cha": 2,
+        "int": 1
+      },
+      "abilityBonuses": "+2 Carisma, +1 Inteligência",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Visão no Escuro: 18 metros de alcance na penumbra e escuridão.",
+        "Resistência Infernal: Resistência a dano de fogo.",
+        "Legado de Nessus: Você conhece o truque Taumaturgia. A partir do 3º nível, pode conjurar Repreensão Infernal (como magia de 2º nível) uma vez por descanso longo. A partir do 5º nível, pode conjurar Escuridão uma vez por descanso longo. Carisma é sua habilidade de conjuração."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Carisma, +1 Inteligência; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Nessus."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.mtof.ancestry.tiefling_baalzebul",
+    "name_pt": "Tiefling de Baalzebul",
+    "name_en": "Tiefling (Baalzebul)",
+    "name_es": null,
+    "description_pt": "+2 Carisma, +1 Inteligência; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Maladomini.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "cha",
+      "int"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Infernal"
+    ],
+    "traits": [
+      "Visão no Escuro",
+      "Resistência Infernal",
+      "Legado de Maladomini"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 21,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "cha": 2,
+        "int": 1
+      },
+      "abilityBonuses": "+2 Carisma, +1 Inteligência",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Visão no Escuro: 18 metros de alcance na penumbra e escuridão.",
+        "Resistência Infernal: Resistência a dano de fogo.",
+        "Legado de Maladomini: Você conhece o truque Taumaturgia. A partir do 3º nível, pode conjurar Raio do Adoecimento (como magia de 2º nível) uma vez por descanso longo. A partir do 5º nível, pode conjurar Coroa da Loucura uma vez por descanso longo. Carisma é sua habilidade de conjuração."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Carisma, +1 Inteligência; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Maladomini."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.mtof.ancestry.tiefling_dispater",
+    "name_pt": "Tiefling de Dispater",
+    "name_en": "Tiefling (Dispater)",
+    "name_es": null,
+    "description_pt": "+2 Carisma, +1 Destreza; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Dis.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "cha",
+      "dex"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Infernal"
+    ],
+    "traits": [
+      "Visão no Escuro",
+      "Resistência Infernal",
+      "Legado de Dis"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 21,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "cha": 2,
+        "dex": 1
+      },
+      "abilityBonuses": "+2 Carisma, +1 Destreza",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Visão no Escuro: 18 metros de alcance na penumbra e escuridão.",
+        "Resistência Infernal: Resistência a dano de fogo.",
+        "Legado de Dis: Você conhece o truque Taumaturgia. A partir do 3º nível, pode conjurar Disfarçar-se uma vez por descanso longo. A partir do 5º nível, pode conjurar Detectar Pensamentos uma vez por descanso longo. Carisma é sua habilidade de conjuração."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Carisma, +1 Destreza; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Dis."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.mtof.ancestry.tiefling_fierna",
+    "name_pt": "Tiefling de Fierna",
+    "name_en": "Tiefling (Fierna)",
+    "name_es": null,
+    "description_pt": "+2 Carisma, +1 Sabedoria; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Flegetos.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "cha",
+      "wis"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Infernal"
+    ],
+    "traits": [
+      "Visão no Escuro",
+      "Resistência Infernal",
+      "Legado de Flegetos"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 21,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "cha": 2,
+        "wis": 1
+      },
+      "abilityBonuses": "+2 Carisma, +1 Sabedoria",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Visão no Escuro: 18 metros de alcance na penumbra e escuridão.",
+        "Resistência Infernal: Resistência a dano de fogo.",
+        "Legado de Flegetos: Você conhece o truque Amizade. A partir do 3º nível, pode conjurar Enfeitiçar Pessoa (como magia de 2º nível) uma vez por descanso longo. A partir do 5º nível, pode conjurar Sugestão uma vez por descanso longo. Carisma é sua habilidade de conjuração."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Carisma, +1 Sabedoria; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Flegetos."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.mtof.ancestry.tiefling_glasya",
+    "name_pt": "Tiefling de Glasya",
+    "name_en": "Tiefling (Glasya)",
+    "name_es": null,
+    "description_pt": "+2 Carisma, +1 Destreza; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Malbolge.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "cha",
+      "dex"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Infernal"
+    ],
+    "traits": [
+      "Visão no Escuro",
+      "Resistência Infernal",
+      "Legado de Malbolge"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 22,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "cha": 2,
+        "dex": 1
+      },
+      "abilityBonuses": "+2 Carisma, +1 Destreza",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Visão no Escuro: 18 metros de alcance na penumbra e escuridão.",
+        "Resistência Infernal: Resistência a dano de fogo.",
+        "Legado de Malbolge: Você conhece o truque Ilusão Menor. A partir do 3º nível, pode conjurar Disfarçar-se uma vez por descanso longo. A partir do 5º nível, pode conjurar Invisibilidade uma vez por descanso longo. Carisma é sua habilidade de conjuração."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Carisma, +1 Destreza; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Malbolge."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.mtof.ancestry.tiefling_levistus",
+    "name_pt": "Tiefling de Levistus",
+    "name_en": "Tiefling (Levistus)",
+    "name_es": null,
+    "description_pt": "+2 Carisma, +1 Constituição; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Estígia.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "cha",
+      "con"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Infernal"
+    ],
+    "traits": [
+      "Visão no Escuro",
+      "Resistência Infernal",
+      "Legado de Estígia"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 22,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "cha": 2,
+        "con": 1
+      },
+      "abilityBonuses": "+2 Carisma, +1 Constituição",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Visão no Escuro: 18 metros de alcance na penumbra e escuridão.",
+        "Resistência Infernal: Resistência a dano de fogo.",
+        "Legado de Estígia: Você conhece o truque Raio de Gelo. A partir do 3º nível, pode conjurar Armadura de Agathys (como magia de 2º nível) uma vez por descanso longo. A partir do 5º nível, pode conjurar Escuridão uma vez por descanso longo. Carisma é sua habilidade de conjuração."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Carisma, +1 Constituição; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Estígia."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.mtof.ancestry.tiefling_mammon",
+    "name_pt": "Tiefling de Mammon",
+    "name_en": "Tiefling (Mammon)",
+    "name_es": null,
+    "description_pt": "+2 Carisma, +1 Inteligência; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Minauros.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "cha",
+      "int"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Infernal"
+    ],
+    "traits": [
+      "Visão no Escuro",
+      "Resistência Infernal",
+      "Legado de Minauros"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 23,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "cha": 2,
+        "int": 1
+      },
+      "abilityBonuses": "+2 Carisma, +1 Inteligência",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Visão no Escuro: 18 metros de alcance na penumbra e escuridão.",
+        "Resistência Infernal: Resistência a dano de fogo.",
+        "Legado de Minauros: Você conhece o truque Mãos Mágicas. A partir do 3º nível, pode conjurar Disco Flutuante de Tenser uma vez por descanso curto ou longo. A partir do 5º nível, pode conjurar Tranca Arcana (sem componente material) uma vez por descanso longo. Carisma é sua habilidade de conjuração."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Carisma, +1 Inteligência; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Minauros."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.mtof.ancestry.tiefling_mephistopheles",
+    "name_pt": "Tiefling de Mefistófeles",
+    "name_en": "Tiefling (Mephistopheles)",
+    "name_es": null,
+    "description_pt": "+2 Carisma, +1 Inteligência; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Cania.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "cha",
+      "int"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Infernal"
+    ],
+    "traits": [
+      "Visão no Escuro",
+      "Resistência Infernal",
+      "Legado de Cania"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 23,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "cha": 2,
+        "int": 1
+      },
+      "abilityBonuses": "+2 Carisma, +1 Inteligência",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Visão no Escuro: 18 metros de alcance na penumbra e escuridão.",
+        "Resistência Infernal: Resistência a dano de fogo.",
+        "Legado de Cania: Você conhece o truque Mãos Mágicas. A partir do 3º nível, pode conjurar Mãos Flamejantes (como magia de 2º nível) uma vez por descanso longo. A partir do 5º nível, pode conjurar Lâmina Flamejante uma vez por descanso longo. Carisma é sua habilidade de conjuração."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Carisma, +1 Inteligência; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Cania."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.mtof.ancestry.tiefling_zariel",
+    "name_pt": "Tiefling de Zariel",
+    "name_en": "Tiefling (Zariel)",
+    "name_es": null,
+    "description_pt": "+2 Carisma, +1 Força; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Avernus.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "cha",
+      "str"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Infernal"
+    ],
+    "traits": [
+      "Visão no Escuro",
+      "Resistência Infernal",
+      "Legado de Avernus"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-mtof",
+    "source_book": "D&D 5e · Tomo de Inimigos de Mordenkainen",
+    "source_page": 24,
+    "created_at": "2026-10-14T19:05:06.642Z",
+    "updated_at": "2026-10-14T19:05:06.642Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "cha": 2,
+        "str": 1
+      },
+      "abilityBonuses": "+2 Carisma, +1 Força",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Visão no Escuro: 18 metros de alcance na penumbra e escuridão.",
+        "Resistência Infernal: Resistência a dano de fogo.",
+        "Legado de Avernus: Você conhece o truque Taumaturgia. A partir do 3º nível, pode conjurar Destruição Ardente (Searing Smite, como magia de 2º nível) uma vez por descanso longo. A partir do 5º nível, pode conjurar Destruição Marcante (Branding Smite) uma vez por descanso longo. Carisma é sua habilidade de conjuração."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Carisma, +1 Força; tamanho Médio, deslocamento 9m; traços: Visão no Escuro, Resistência Infernal, Legado de Avernus."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]
