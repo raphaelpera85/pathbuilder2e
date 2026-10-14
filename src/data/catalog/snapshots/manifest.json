@@ -246,5 +246,12 @@
       "item": 49,
       "spell": 8
     }
+  },
+  {
+    "systemId": "t20",
+    "ruleset": "t20-atlas",
+    "categories": {
+      "background": 66
+    }
   }
 ]

@@ -667,7 +667,7 @@ describe("serviço de catálogo local", () => {
     expect(DEFAULT_RPG_SYSTEMS.map((system) => system.id)).toEqual(expect.arrayContaining(["pf2e", "t20", "dnd5e", "ose", "dnd35"]));
     expect(CATALOG_RULESETS).toEqual([
       "advanced", "basico", "classic", "legacy", "legacy_pf1", "padrao", "remaster", "standard",
-      "t20-ameacas",
+      "t20-ameacas", "t20-atlas",
       "v35", "v35-adv", "v35-arc", "v35-cg", "v35-city", "v35-cor", "v35-cov", "v35-defensores", "v35-div", "v35-ee", "v35-frostburn", "v35-pe",
     ]);
   });
@@ -2352,9 +2352,9 @@ describe("serviço de catálogo local", () => {
   it("calcula as métricas do compêndio pelos snapshots locais, incluindo perícias", async () => {
     const metrics = await fetchCatalogLocalMetrics();
     expect(metrics.counts.catalog_skills).toBe(195);
-    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(9026);
+    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(9092);
     expect(metrics.counts.catalog_spells).toBe(2551);
-    expect(metrics.verifiedCount + metrics.reviewCount).toBe(9026);
+    expect(metrics.verifiedCount + metrics.reviewCount).toBe(9092);
   }, 15_000);
 
   it("compartilha o cálculo das métricas locais entre chamadas concorrentes", async () => {

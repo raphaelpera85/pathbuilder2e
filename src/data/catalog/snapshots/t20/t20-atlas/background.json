@@ -1,0 +1,2470 @@
+[
+  {
+    "id": "t20.atlas.background.origem_regional_agricultor_sambur",
+    "name_pt": "Agricultor Sambur",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Repúblicas Livres de Sambúrdia; Benefício: Você é treinado em Adestramento e Sobrevivência e, uma vez por cena, pode gastar 1 PM para receber +1d6 em um teste de perícia.; Itens: Ferramenta agrícola (mesmas estatísticas de uma lança), T$ 100 (um presente de despedida da sua família)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "adestramento",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "republicas_livres_de_samburdia"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 468,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Repúblicas Livres de Sambúrdia",
+      "benefit": "Você é treinado em Adestramento e Sobrevivência e, uma vez por cena, pode gastar 1 PM para receber +1d6 em um teste de perícia.",
+      "items": "Ferramenta agrícola (mesmas estatísticas de uma lança), T$ 100 (um presente de despedida da sua família).",
+      "trainedSkills": [
+        "adestramento",
+        "sobrevivencia"
+      ],
+      "flavorText": "Você trabalhou nos campos férteis das Repúblicas Livres, onde aprendeu muito sobre os animais, a natureza e o trabalho duro.",
+      "summaries": {
+        "pt-BR": "Região: Repúblicas Livres de Sambúrdia; Benefício: Você é treinado em Adestramento e Sobrevivência e, uma vez por cena, pode gastar 1 PM para receber +1d6 em um teste de perícia.; Itens: Ferramenta agrícola (mesmas estatísticas de uma lança), T$ 100 (um presente de despedida da sua família).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_amazona_de_hippion",
+    "name_pt": "Amazona de Hippion",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Deheon, Namalkah; Benefício: Você é treinada em Cavalgar e, se não estiver usando armadura pesada, soma seu Carisma nos PM, limitado pelo seu nível (apenas após um dia).; Itens: Arma simples ou marcial, cavalo de guerra..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "cavalgar"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "deheon_namalkah"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 468,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Deheon, Namalkah",
+      "benefit": "Você é treinada em Cavalgar e, se não estiver usando armadura pesada, soma seu Carisma nos PM, limitado pelo seu nível (apenas após um dia).",
+      "items": "Arma simples ou marcial, cavalo de guerra.",
+      "trainedSkills": [
+        "cavalgar"
+      ],
+      "flavorText": "Você é uma das orgulhosas amazonas de Hippion, um dos povos nativos de Arton Norte.",
+      "summaries": {
+        "pt-BR": "Região: Deheon, Namalkah; Benefício: Você é treinada em Cavalgar e, se não estiver usando armadura pesada, soma seu Carisma nos PM, limitado pelo seu nível (apenas após um dia).; Itens: Arma simples ou marcial, cavalo de guerra.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_amoque_purpura",
+    "name_pt": "Amoque Púrpura",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Ermos Púrpuras; Benefício: Você é treinado em Intimidação e, quando está sob efeito de Fúria, Fúria Divina ou Poder Oculto, recebe +2 em rolagens de dano.; Itens: Arma simples, estandarte da sua tribo..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intimidacao"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "ermos_purpuras"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 468,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Ermos Púrpuras",
+      "benefit": "Você é treinado em Intimidação e, quando está sob efeito de Fúria, Fúria Divina ou Poder Oculto, recebe +2 em rolagens de dano.",
+      "items": "Arma simples, estandarte da sua tribo.",
+      "trainedSkills": [
+        "intimidacao"
+      ],
+      "flavorText": "Raiva compele os golpes de guerreiros por todo o mundo, mas nos Ermos Púrpuras a prática é refinada ao limite. Você cresceu entre esses lutadores imprevisíveis.",
+      "summaries": {
+        "pt-BR": "Região: Ermos Púrpuras; Benefício: Você é treinado em Intimidação e, quando está sob efeito de Fúria, Fúria Divina ou Poder Oculto, recebe +2 em rolagens de dano.; Itens: Arma simples, estandarte da sua tribo.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_anao_de_armas",
+    "name_pt": "Anão de Armas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Doherimm; Benefício: Você é treinado em Ofício (armeiro) e recebe +2 em rolagens de dano com armas tradicionais anãs (machados, martelos, marretas e picaretas).; Itens: Arma marcial tradicional anã, instrumentos de Ofício (armeiro)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "oficio"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "doherimm"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 468,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Doherimm",
+      "benefit": "Você é treinado em Ofício (armeiro) e recebe +2 em rolagens de dano com armas tradicionais anãs (machados, martelos, marretas e picaretas).",
+      "items": "Arma marcial tradicional anã, instrumentos de Ofício (armeiro).",
+      "trainedSkills": [
+        "oficio"
+      ],
+      "flavorText": "Você foi treinado pela Guilda dos Armeiros, tendo aprendido a fabricar — e usar — armas anãs.",
+      "summaries": {
+        "pt-BR": "Região: Doherimm; Benefício: Você é treinado em Ofício (armeiro) e recebe +2 em rolagens de dano com armas tradicionais anãs (machados, martelos, marretas e picaretas).; Itens: Arma marcial tradicional anã, instrumentos de Ofício (armeiro).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_andarilho_ubaneri",
+    "name_pt": "Andarilho Ubaneri",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Ubani; Benefício: Você recebe um alikunhá, um parceiro iniciante que não conta em seu limite de parceiros (veja o quadro na página 471), e proficiência com escudos. Caso já tenha essa proficiência, o bônus na Defesa que seu escudo fornece aumenta em +1.; Itens: Escudo pesado, lança..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "ubani"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 468,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Ubani",
+      "benefit": "Você recebe um alikunhá, um parceiro iniciante que não conta em seu limite de parceiros (veja o quadro na página 471), e proficiência com escudos. Caso já tenha essa proficiência, o bônus na Defesa que seu escudo fornece aumenta em +1.",
+      "items": "Escudo pesado, lança.",
+      "trainedSkills": [],
+      "flavorText": "Sonhando um dia ser membro da Patrulha da Fronteira, você pratica técnicas de lança e escudo e já conquistou a amizade de um alikunhá.",
+      "summaries": {
+        "pt-BR": "Região: Ubani; Benefício: Você recebe um alikunhá, um parceiro iniciante que não conta em seu limite de parceiros (veja o quadro na página 471), e proficiência com escudos. Caso já tenha essa proficiência, o bônus na Defesa que seu escudo fornece aumenta em +1.; Itens: Escudo pesado, lança.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_aprendiz_de_dragoeiro",
+    "name_pt": "Aprendiz de Dragoeiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Sckharshantallas; Benefício: Você recebe +2 na Defesa contra criaturas maiores que você e +2 em Reflexos. Além disso, se passar em um teste de Reflexos, seus ataques contra a fonte do efeito causam +1d8 pontos de dano até o final da cena.; Itens: Arma simples ou marcial à sua escolha, troféu de caça, treckod..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "sckharshantallas"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 468,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Sckharshantallas",
+      "benefit": "Você recebe +2 na Defesa contra criaturas maiores que você e +2 em Reflexos. Além disso, se passar em um teste de Reflexos, seus ataques contra a fonte do efeito causam +1d8 pontos de dano até o final da cena.",
+      "items": "Arma simples ou marcial à sua escolha, troféu de caça, treckod.",
+      "trainedSkills": [],
+      "flavorText": "Você aprendeu técnicas para enfrentar dragões tolos a ponto de entrar em Sckharshantallas — o que certamente será útil contra outras feras.",
+      "summaries": {
+        "pt-BR": "Região: Sckharshantallas; Benefício: Você recebe +2 na Defesa contra criaturas maiores que você e +2 em Reflexos. Além disso, se passar em um teste de Reflexos, seus ataques contra a fonte do efeito causam +1d8 pontos de dano até o final da cena.; Itens: Arma simples ou marcial à sua escolha, troféu de caça, treckod.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_aprendiz_de_drogadora",
+    "name_pt": "Aprendiz de Drogadora",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Galrasia; Benefício: Você é treinada em Cura e Ofício (alquimista). Como usa partes de seu corpo para fabricar preparados alquímicos e poções, você gasta apenas 1/4 do preço dos itens em matérias-primas.; Itens: Bálsamo restaurador x2, poção de curar ferimentos x2, maleta de medicamentos..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "cura",
+      "oficio"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "galrasia"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 468,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Galrasia",
+      "benefit": "Você é treinada em Cura e Ofício (alquimista). Como usa partes de seu corpo para fabricar preparados alquímicos e poções, você gasta apenas 1/4 do preço dos itens em matérias-primas.",
+      "items": "Bálsamo restaurador x2, poção de curar ferimentos x2, maleta de medicamentos.",
+      "trainedSkills": [
+        "cura",
+        "oficio"
+      ],
+      "flavorText": "Você era discípula de uma voracis drogadora e estudou as artes de cura em Galrasia.",
+      "summaries": {
+        "pt-BR": "Região: Galrasia; Benefício: Você é treinada em Cura e Ofício (alquimista). Como usa partes de seu corpo para fabricar preparados alquímicos e poções, você gasta apenas 1/4 do preço dos itens em matérias-primas.; Itens: Bálsamo restaurador x2, poção de curar ferimentos x2, maleta de medicamentos.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_aristocrata_dai_zenshi",
+    "name_pt": "Aristocrata Daï-zenshi",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Tamu-ra; Benefício: Você é treinado em Nobreza. Além disso, ao completar um descanso, caso não tenha feito nenhum teste de Enganação, Furtividade ou Ladinagem desde seu último descanso, você recebe +1 PM temporário para cada dois níveis.; Itens: Traje da corte, katana superior com uma melhoria (exceto material especial)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nobreza"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "tamu_ra"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 469,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Tamu-ra",
+      "benefit": "Você é treinado em Nobreza. Além disso, ao completar um descanso, caso não tenha feito nenhum teste de Enganação, Furtividade ou Ladinagem desde seu último descanso, você recebe +1 PM temporário para cada dois níveis.",
+      "items": "Traje da corte, katana superior com uma melhoria (exceto material especial).",
+      "trainedSkills": [
+        "nobreza"
+      ],
+      "flavorText": "Você faz parte da nobreza tamuraniana, como descendente direto de um dos três Grandes Clãs ou como vassalo em alguma família samurai. Assim, é visto como um exemplo a ser seguido.",
+      "summaries": {
+        "pt-BR": "Região: Tamu-ra; Benefício: Você é treinado em Nobreza. Além disso, ao completar um descanso, caso não tenha feito nenhum teste de Enganação, Furtividade ou Ladinagem desde seu último descanso, você recebe +1 PM temporário para cada dois níveis.; Itens: Traje da corte, katana superior com uma melhoria (exceto material especial).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_armeiro_armado",
+    "name_pt": "Armeiro Armado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Zakharov; Benefício: Você é treinado em Ofício (armeiro) e pode fabricar armas com uma melhoria. Se aprender a fabricar armas superiores por outra habilidade, gasta apenas 1/4 do preço das melhorias que aplica em armas.; Itens: Arma marcial, instrumentos de Ofício (armeiro)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "oficio"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "zakharov"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 469,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Zakharov",
+      "benefit": "Você é treinado em Ofício (armeiro) e pode fabricar armas com uma melhoria. Se aprender a fabricar armas superiores por outra habilidade, gasta apenas 1/4 do preço das melhorias que aplica em armas.",
+      "items": "Arma marcial, instrumentos de Ofício (armeiro).",
+      "trainedSkills": [
+        "oficio"
+      ],
+      "flavorText": "Você aprendeu o ofício mais tradicional e respeitado de Zakharov. Suas armas não são apenas instrumentos de combate, mas obras de arte.",
+      "summaries": {
+        "pt-BR": "Região: Zakharov; Benefício: Você é treinado em Ofício (armeiro) e pode fabricar armas com uma melhoria. Se aprender a fabricar armas superiores por outra habilidade, gasta apenas 1/4 do preço das melhorias que aplica em armas.; Itens: Arma marcial, instrumentos de Ofício (armeiro).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_aspirante_a_heroi",
+    "name_pt": "Aspirante a Herói",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Deheon; Benefício: V ocê recebe +1 em um atributo à sua escolha.; Itens: Essência de mana, mochila de aventureiro..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "deheon"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 469,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Deheon",
+      "benefit": "V ocê recebe +1 em um atributo à sua escolha.",
+      "items": "Essência de mana, mochila de aventureiro.",
+      "trainedSkills": [],
+      "flavorText": "Você nasceu para ser herói, com potencial para se tornar protagonista das canções épicas dos bardos.",
+      "summaries": {
+        "pt-BR": "Região: Deheon; Benefício: V ocê recebe +1 em um atributo à sua escolha.; Itens: Essência de mana, mochila de aventureiro.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_assistente_forense",
+    "name_pt": "Assistente Forense",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Salistick; Benefício: Você é treinado em Investigação e pode usar esta perícia para necropsia, identificar itens alquímicos e rastrear (veja as perícias Cura, Ofício e Sobrevivência, em Tormenta20). Além disso, pode identificar criaturas em uma cena de crime ou equivalente mesmo que elas não estejam mais presentes. Isso funciona como um teste de identificar criatura, com uma penalidade de –1 para cada dia decorrido. Se passar, além do normal, você identifica a raça da criatura.; Itens: Lupa (conta como uma ferramenta que fornece +1 em Investigação)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "cura",
+      "investigacao",
+      "oficio",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "salistick"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 469,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Salistick",
+      "benefit": "Você é treinado em Investigação e pode usar esta perícia para necropsia, identificar itens alquímicos e rastrear (veja as perícias Cura, Ofício e Sobrevivência, em Tormenta20). Além disso, pode identificar criaturas em uma cena de crime ou equivalente mesmo que elas não estejam mais presentes. Isso funciona como um teste de identificar criatura, com uma penalidade de –1 para cada dia decorrido. Se passar, além do normal, você identifica a raça da criatura.",
+      "items": "Lupa (conta como uma ferramenta que fornece +1 em Investigação).",
+      "trainedSkills": [
+        "cura",
+        "investigacao",
+        "oficio",
+        "sobrevivencia"
+      ],
+      "flavorText": "Você cresceu em Salistick, onde teve contato com o que a ciência tem de mais avançado para a detecção e solução de crimes. Suas capacidades de dedução e análise se tornaram profundamente aguçadas.",
+      "summaries": {
+        "pt-BR": "Região: Salistick; Benefício: Você é treinado em Investigação e pode usar esta perícia para necropsia, identificar itens alquímicos e rastrear (veja as perícias Cura, Ofício e Sobrevivência, em Tormenta20). Além disso, pode identificar criaturas em uma cena de crime ou equivalente mesmo que elas não estejam mais presentes. Isso funciona como um teste de identificar criatura, com uma penalidade de –1 para cada dia decorrido. Se passar, além do normal, você identifica a raça da criatura.; Itens: Lupa (conta como uma ferramenta que fornece +1 em Investigação).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_bandoleiro_da_fortaleza",
+    "name_pt": "Bandoleiro da Fortaleza",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Khalifor; Benefício: Você é treinado em Furtividade e Intimidação, e recebe resistência a medo +5.; Itens: Adaga, gazua, manto camuflado (urbano)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "furtividade",
+      "intimidacao"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "khalifor"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 469,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Khalifor",
+      "benefit": "Você é treinado em Furtividade e Intimidação, e recebe resistência a medo +5.",
+      "items": "Adaga, gazua, manto camuflado (urbano).",
+      "trainedSkills": [
+        "furtividade",
+        "intimidacao"
+      ],
+      "flavorText": "Você cresceu se esgueirando pelos becos de Khalifor, vendo o pior que humanos e duyshidakk têm a oferecer.",
+      "summaries": {
+        "pt-BR": "Região: Khalifor; Benefício: Você é treinado em Furtividade e Intimidação, e recebe resistência a medo +5.; Itens: Adaga, gazua, manto camuflado (urbano).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_barao_arruinado",
+    "name_pt": "Barão Arruinado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Feudos de Trebuck; Benefício: Você é treinado em Nobreza. Sempre que falha em um teste de perícia e a falha acarreta uma consequência negativa (gastar uma ação, perder PV , sofrer um efeito etc.), você recebe +2 em testes da mesma perícia até o final da cena.; Itens: Anel com símbolo da família (T$ 200), títulos de terras expirados (+2 em Diplomacia com nobres e burocratas), traje da corte..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nobreza"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "feudos_de_trebuck"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 469,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Feudos de Trebuck",
+      "benefit": "Você é treinado em Nobreza. Sempre que falha em um teste de perícia e a falha acarreta uma consequência negativa (gastar uma ação, perder PV , sofrer um efeito etc.), você recebe +2 em testes da mesma perícia até o final da cena.",
+      "items": "Anel com símbolo da família (T$ 200), títulos de terras expirados (+2 em Diplomacia com nobres e burocratas), traje da corte.",
+      "trainedSkills": [
+        "nobreza"
+      ],
+      "flavorText": "Você estava destinado a se tornar o senhor de um feudo, mas seu título se perdeu. Pelo menos isso o ensinou a lidar com os reveses da vida.",
+      "summaries": {
+        "pt-BR": "Região: Feudos de Trebuck; Benefício: Você é treinado em Nobreza. Sempre que falha em um teste de perícia e a falha acarreta uma consequência negativa (gastar uma ação, perder PV , sofrer um efeito etc.), você recebe +2 em testes da mesma perícia até o final da cena.; Itens: Anel com símbolo da família (T$ 200), títulos de terras expirados (+2 em Diplomacia com nobres e burocratas), traje da corte.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_catador_da_cidade_velha",
+    "name_pt": "Catador da Cidade Velha",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Nova Malpetrim; Benefício: Você é treinado em Fortitude e Percepção e pode gastar 1 PM para receber des- locamento de natação igual ao seu deslocamento básico (se já tiver deslocamento de natação, em vez Alikunhá Os elementais que acompanham os ubaneri são conhecidos como alikunhá. Cada um desses espíritos é ligado a um elemento e conta como um parceiro iniciante de um tipo a sua escolha entre os associados ao seu elemento. Ar: assassino, perseguidor ou vigilante; água: ajudante, guardião ou médico; fogo: atirador, combatente ou fortão; terra: combatente, guardião ou montaria; luz: guardião, médico ou vigilante; trevas: assassino, magivocador ou perseguidor. disso ele aumenta em +3m) por uma cena. Esse deslocamento não permite respirar debaixo d’água automaticamente, mas dobra o limite de tempo em que você pode segurar sua respiração.; Itens: Luneta, luvas de pelica, tranqueiras resgatadas do mar (2 espaços, valor de venda T$ 100)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "fortitude",
+      "percepcao"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "nova_malpetrim"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 469,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Nova Malpetrim",
+      "benefit": "Você é treinado em Fortitude e Percepção e pode gastar 1 PM para receber des- locamento de natação igual ao seu deslocamento básico (se já tiver deslocamento de natação, em vez Alikunhá Os elementais que acompanham os ubaneri são conhecidos como alikunhá. Cada um desses espíritos é ligado a um elemento e conta como um parceiro iniciante de um tipo a sua escolha entre os associados ao seu elemento. Ar: assassino, perseguidor ou vigilante; água: ajudante, guardião ou médico; fogo: atirador, combatente ou fortão; terra: combatente, guardião ou montaria; luz: guardião, médico ou vigilante; trevas: assassino, magivocador ou perseguidor. disso ele aumenta em +3m) por uma cena. Esse deslocamento não permite respirar debaixo d’água automaticamente, mas dobra o limite de tempo em que você pode segurar sua respiração.",
+      "items": "Luneta, luvas de pelica, tranqueiras resgatadas do mar (2 espaços, valor de venda T$ 100).",
+      "trainedSkills": [
+        "fortitude",
+        "percepcao"
+      ],
+      "flavorText": "As ruínas inundadas da Velha Malpetrim guardam riquezas, segredos e incontáveis perigos. Você cresceu vasculhando essas profundezas em busca do almoço do dia seguinte.",
+      "summaries": {
+        "pt-BR": "Região: Nova Malpetrim; Benefício: Você é treinado em Fortitude e Percepção e pode gastar 1 PM para receber des- locamento de natação igual ao seu deslocamento básico (se já tiver deslocamento de natação, em vez Alikunhá Os elementais que acompanham os ubaneri são conhecidos como alikunhá. Cada um desses espíritos é ligado a um elemento e conta como um parceiro iniciante de um tipo a sua escolha entre os associados ao seu elemento. Ar: assassino, perseguidor ou vigilante; água: ajudante, guardião ou médico; fogo: atirador, combatente ou fortão; terra: combatente, guardião ou montaria; luz: guardião, médico ou vigilante; trevas: assassino, magivocador ou perseguidor. disso ele aumenta em +3m) por uma cena. Esse deslocamento não permite respirar debaixo d’água automaticamente, mas dobra o limite de tempo em que você pode segurar sua respiração.; Itens: Luneta, luvas de pelica, tranqueiras resgatadas do mar (2 espaços, valor de venda T$ 100).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_cativo_das_fadas",
+    "name_pt": "Cativo das Fadas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Pondsmânia; Benefício: Você recebe resistência a espíritos e magia +2 e +1 PV por nível de personagem.; Itens: Corda, ração de viagem x10, essência de mana..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "pondsmania"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 470,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Pondsmânia",
+      "benefit": "Você recebe resistência a espíritos e magia +2 e +1 PV por nível de personagem.",
+      "items": "Corda, ração de viagem x10, essência de mana.",
+      "trainedSkills": [],
+      "flavorText": "Quando era um bebê, você foi levado para a Pondsmânia. Talvez tenha sido trocado por seus pais em um acordo com uma fada, talvez tenha sido roubado pelas Cyruthnallach. De qualquer forma, sua infância foi permeada de brincadeiras bizarras e jogos feéricos.",
+      "summaries": {
+        "pt-BR": "Região: Pondsmânia; Benefício: Você recebe resistência a espíritos e magia +2 e +1 PV por nível de personagem.; Itens: Corda, ração de viagem x10, essência de mana.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_competidor_do_circuito",
+    "name_pt": "Competidor do Circuito",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Feudos de Trebuck; Benefício: Você recebe o poder Torcida. Enquan- to está sob efeito desse poder, sempre que reduz um inimigo a 0 PV com um ataque corpo a corpo, você recupera 1 PM.; Itens: Arma marcial, T$ 100 (suas economias para comprar equipamentos de torneio)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "feudos_de_trebuck"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 470,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Feudos de Trebuck",
+      "benefit": "Você recebe o poder Torcida. Enquan- to está sob efeito desse poder, sempre que reduz um inimigo a 0 PV com um ataque corpo a corpo, você recupera 1 PM.",
+      "items": "Arma marcial, T$ 100 (suas economias para comprar equipamentos de torneio).",
+      "trainedSkills": [],
+      "flavorText": "Você percorreu o grande Circuito de Torneios de Trebuck. Pode ter sido parte da equipe de um cavaleiro ou um aspirante a competidor, ansiando por um dia disputar os eventos principais. Sua hora ainda não chegou, mas enquanto isso você usa o que aprendeu em suas aventuras.",
+      "summaries": {
+        "pt-BR": "Região: Feudos de Trebuck; Benefício: Você recebe o poder Torcida. Enquan- to está sob efeito desse poder, sempre que reduz um inimigo a 0 PV com um ataque corpo a corpo, você recupera 1 PM.; Itens: Arma marcial, T$ 100 (suas economias para comprar equipamentos de torneio).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_cosmopolita",
+    "name_pt": "Cosmopolita",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Valkaria; Benefício: Escolha um poder geral ou de uma classe na qual você tenha pelo menos dois níveis, e cujos requisitos você cumpra (exceto poderes conce- didos ou da Tormenta). Você recebe esse poder. Uma vez por aventura, após concluir um descanso (oito horas de sono), pode trocar esse poder por outro.; Itens: Equipamento de viagem, traje de viajante, um item artístico de origem cultural indefinida (½ espaço, T$ 100)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "valkaria"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 470,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Valkaria",
+      "benefit": "Escolha um poder geral ou de uma classe na qual você tenha pelo menos dois níveis, e cujos requisitos você cumpra (exceto poderes conce- didos ou da Tormenta). Você recebe esse poder. Uma vez por aventura, após concluir um descanso (oito horas de sono), pode trocar esse poder por outro.",
+      "items": "Equipamento de viagem, traje de viajante, um item artístico de origem cultural indefinida (½ espaço, T$ 100).",
+      "trainedSkills": [],
+      "flavorText": "Tendo crescido na maior cidade de Arton, você já viu de tudo e está preparado para a maior parte.",
+      "summaries": {
+        "pt-BR": "Região: Valkaria; Benefício: Escolha um poder geral ou de uma classe na qual você tenha pelo menos dois níveis, e cujos requisitos você cumpra (exceto poderes conce- didos ou da Tormenta). Você recebe esse poder. Uma vez por aventura, após concluir um descanso (oito horas de sono), pode trocar esse poder por outro.; Itens: Equipamento de viagem, traje de viajante, um item artístico de origem cultural indefinida (½ espaço, T$ 100).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_cria_da_favela",
+    "name_pt": "Cria da Favela",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Valkaria; Benefício: Você recebe +1 em Constituição e, por piores que sejam as condições de descanso, sua recuperação é sempre pelo menos normal.; Itens: Andrajos de aldeão, corda, vara de madeira..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "valkaria"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 470,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Valkaria",
+      "benefit": "Você recebe +1 em Constituição e, por piores que sejam as condições de descanso, sua recuperação é sempre pelo menos normal.",
+      "items": "Andrajos de aldeão, corda, vara de madeira.",
+      "trainedSkills": [],
+      "flavorText": "A Favela dos Goblins é um lugar empobrecido e injustiçado, esquecido pelos governantes de Valkaria. Essa comunidade o tornou resistente e incansável.",
+      "summaries": {
+        "pt-BR": "Região: Valkaria; Benefício: Você recebe +1 em Constituição e, por piores que sejam as condições de descanso, sua recuperação é sempre pelo menos normal.; Itens: Andrajos de aldeão, corda, vara de madeira.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_criado_pelas_voracis",
+    "name_pt": "Criado pelas Voracis",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Galrasia; Benefício: Você recebe +2 na Defesa e Sobre- vivência e +3m em seu deslocamento.; Itens: Arma simples, armadura leve, lança..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "galrasia"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 470,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Galrasia",
+      "benefit": "Você recebe +2 na Defesa e Sobre- vivência e +3m em seu deslocamento.",
+      "items": "Arma simples, armadura leve, lança.",
+      "trainedSkills": [],
+      "flavorText": "Ainda jovem, você foi encontrado por um grupo de voracis em Galrasia. Elas o adotaram e o criaram de acordo com suas tradições e valores.",
+      "summaries": {
+        "pt-BR": "Região: Galrasia; Benefício: Você recebe +2 na Defesa e Sobre- vivência e +3m em seu deslocamento.; Itens: Arma simples, armadura leve, lança.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_de_outro_mundo",
+    "name_pt": "De Outro Mundo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Éter Divino; Benefício: Você possui uma habilidade ou tecnologia especial de seu mundo de origem. Para representar esse efeito, escolha uma magia de 1º círculo e um atributo-chave para ela. Se for uma habilidade, você pode lançar essa magia. Se for uma tecnologia, você recebe um item Minúsculo (RD 10, PV iguais à metade dos seus) que ocupa 1 espaço e deve ser empunhado para lançar a magia, mas seu limite de PM para ela aumenta em +2. Por fim, escolha se o efeito será mágico ou mundano (nesse caso, não contará como uma magia, exceto para fins de acúmulo). O mestre tem a palavra final sobre qualquer efeito e combinação.; Itens: Trajes exóticos, um item qualquer de até T$ 100 do seu mundo natal..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "eter_divino"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 470,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Éter Divino",
+      "benefit": "Você possui uma habilidade ou tecnologia especial de seu mundo de origem. Para representar esse efeito, escolha uma magia de 1º círculo e um atributo-chave para ela. Se for uma habilidade, você pode lançar essa magia. Se for uma tecnologia, você recebe um item Minúsculo (RD 10, PV iguais à metade dos seus) que ocupa 1 espaço e deve ser empunhado para lançar a magia, mas seu limite de PM para ela aumenta em +2. Por fim, escolha se o efeito será mágico ou mundano (nesse caso, não contará como uma magia, exceto para fins de acúmulo). O mestre tem a palavra final sobre qualquer efeito e combinação.",
+      "items": "Trajes exóticos, um item qualquer de até T$ 100 do seu mundo natal.",
+      "trainedSkills": [],
+      "flavorText": "Você veio de outro mundo através do Éter Divino. Como alternativa, pode ter chegado a Arton por uma tempestade de areia do Deserto da Perdição, via uma viagem planar de Vectora ou por qualquer outra forma mágica ou maluca.",
+      "summaries": {
+        "pt-BR": "Região: Éter Divino; Benefício: Você possui uma habilidade ou tecnologia especial de seu mundo de origem. Para representar esse efeito, escolha uma magia de 1º círculo e um atributo-chave para ela. Se for uma habilidade, você pode lançar essa magia. Se for uma tecnologia, você recebe um item Minúsculo (RD 10, PV iguais à metade dos seus) que ocupa 1 espaço e deve ser empunhado para lançar a magia, mas seu limite de PM para ela aumenta em +2. Por fim, escolha se o efeito será mágico ou mundano (nesse caso, não contará como uma magia, exceto para fins de acúmulo). O mestre tem a palavra final sobre qualquer efeito e combinação.; Itens: Trajes exóticos, um item qualquer de até T$ 100 do seu mundo natal.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_descendente_colleniano",
+    "name_pt": "Descendente Colleniano",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Ahlen; Benefício: Você recebe +2 em Percepção e pode lançar a magia Visão Mística. Caso aprenda essa magia novamente, seu custo diminui em –1 PM. e; Itens: Arma simples, estojo de disfarces, ração de viagem x5..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "ahlen"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 471,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Ahlen",
+      "benefit": "Você recebe +2 em Percepção e pode lançar a magia Visão Mística. Caso aprenda essa magia novamente, seu custo diminui em –1 PM. e",
+      "items": "Arma simples, estojo de disfarces, ração de viagem x5.",
+      "trainedSkills": [],
+      "flavorText": "Trapaceiro Ahleniense Aslothia Querido Filho Bielefeld Escudeiro da Luz, Escudeiro Solitário Catacumbas de Leverick Prisioneiro das Catacumbas Conflagração do Aço Sucateiro de Batalhas Deheon Amazona de Hippion, Aspirante a Herói Doherimm Anão de Armas Ermos Púrpuras Amoque Púrpura, Estandarte Vivo Éter Divino De Outro Mundo Feudos de Trebuck Barão Arruinado, Competidor do Circuito Floresta de Tollon Lenhador de Tollon Galrasia Aprendiz de Drogadora, Criado pelas Voracis Halak-Tûr Nômade Sar-Allan, Sábio Matemático Império de Tauron Insurgente Tapistano, Legionário Khalifor Bandoleiro da Fortaleza Khubar Ginete de Tumarkhân, Pescador Parrudo, Tamalu Lamnor Filhote da Revoada, Liricista de Lenórienn, Profeta do Akzath Montanhas Sanguinárias Iniciado dos Caça-Monstros, Selvagem Sanguinário Região Origens Montanhas Uivantes Guardião Glacial Moreania Tocado pela Dama Altiva, Tocado pelo Indomável Namalkah Amazona de Hippion, Irmão sem Esporas Nova Malpetrim Catador da Cidade Velha, Futura Lenda Pondsmânia Cativo das Fadas, Duplo Feérico Repúblicas Livres de Sambúrdia Agricultor Sambur, Membro do Principado Ruínas de Tyrondir Duyshidakk Infiltrado, Explorador de Ruínas Salistick Assistente Forense, Estudante do Colégio Real Sckharshantallas Aprendiz de Dragoeiro, Rebelde Agitador Smokestone Procurado: Vivo ou Morto Supremacia Purista Desertor da Supremacia Svalas Tradicionalista Svalano Tamu-ra Aristocrata Dai’zenshi, Um com os Kami Três Mares Grumete Pirata Triunphus Recruta da Fênix Ubani Andarilho Ubaneri, Emissário Ubaneri Valkaria Cosmopolita, Cria da Favela, Nitamuraniano Vectora Receptador das Nuvens Wynlla Plebeu Arcano, Recruta Arcano Zakharov Armeiro Armado, Nobre Zakharoviano Tabela: Descendente colleniano Ahlen Você descende do povo de Collen, um antigo reino insular absorvido por Ahlen. Sua linhagem tem olhos de cores incomuns, com alguns poucos chegando a apresentar poderes mágicos ligados à visão. Você é um desses poucos.",
+      "summaries": {
+        "pt-BR": "Região: Ahlen; Benefício: Você recebe +2 em Percepção e pode lançar a magia Visão Mística. Caso aprenda essa magia novamente, seu custo diminui em –1 PM. e; Itens: Arma simples, estojo de disfarces, ração de viagem x5.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_desertor_da_supremacia",
+    "name_pt": "Desertor da Supremacia",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Supremacia Purista; Benefício: Você é treinado em Guerra e recebe proficiência com espadas bastardas e escudos. Se estiver empunhando uma espada bastarda e um escudo pesado, recebe +2 em testes de ataque.; Itens: Brunea com símbolo purista raspado, escudo pesado, espada bastarda, ração de viagem x10..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "guerra"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "supremacia_purista"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 471,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Supremacia Purista",
+      "benefit": "Você é treinado em Guerra e recebe proficiência com espadas bastardas e escudos. Se estiver empunhando uma espada bastarda e um escudo pesado, recebe +2 em testes de ataque.",
+      "items": "Brunea com símbolo purista raspado, escudo pesado, espada bastarda, ração de viagem x10.",
+      "trainedSkills": [
+        "guerra"
+      ],
+      "flavorText": "Você passou pelo treinamento padrão dos batalhões puristas e talvez tenha visto de perto as atrocidades desses vilões. Seja como for, decidiu que não podia ficar neutro frente à Supremacia.",
+      "summaries": {
+        "pt-BR": "Região: Supremacia Purista; Benefício: Você é treinado em Guerra e recebe proficiência com espadas bastardas e escudos. Se estiver empunhando uma espada bastarda e um escudo pesado, recebe +2 em testes de ataque.; Itens: Brunea com símbolo purista raspado, escudo pesado, espada bastarda, ração de viagem x10.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_duplo_feerico",
+    "name_pt": "Duplo Feérico",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Pondsmânia; Benefício: Escolha uma habilidade de classe de 1º nível de uma classe que não seja a sua. Você recebe essa habilidade e pode usá-la como se tivesse 1 nível naquela classe (se escolher a habilidade Magias, você aprende uma única magia e recebe +1 ponto de mana, mas não soma o atributo-chave da habilidade em seu total de PM).; Itens: Essência de mana, marca no corpo ou característica física não possuída pela sua versão original..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "pondsmania"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 472,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Pondsmânia",
+      "benefit": "Escolha uma habilidade de classe de 1º nível de uma classe que não seja a sua. Você recebe essa habilidade e pode usá-la como se tivesse 1 nível naquela classe (se escolher a habilidade Magias, você aprende uma única magia e recebe +1 ponto de mana, mas não soma o atributo-chave da habilidade em seu total de PM).",
+      "items": "Essência de mana, marca no corpo ou característica física não possuída pela sua versão original.",
+      "trainedSkills": [],
+      "flavorText": "Em algum lugar de Arton, há alguém igual a você. Com a mesma aparência, as mesmas capacidades, os mesmos ideais. Talvez isso rendesse uma boa amizade, mas esse alguém veio primeiro. Você é apenas a cópia feita por uma fada.",
+      "summaries": {
+        "pt-BR": "Região: Pondsmânia; Benefício: Escolha uma habilidade de classe de 1º nível de uma classe que não seja a sua. Você recebe essa habilidade e pode usá-la como se tivesse 1 nível naquela classe (se escolher a habilidade Magias, você aprende uma única magia e recebe +1 ponto de mana, mas não soma o atributo-chave da habilidade em seu total de PM).; Itens: Essência de mana, marca no corpo ou característica física não possuída pela sua versão original.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_duyshidakk_infiltrado",
+    "name_pt": "Duyshidakk Infiltrado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Ruínas de Tyrondir; Benefício: Você recebe +2 em Furtividade e Vontade e pode usar Sabedoria como atributo-chave de Enganação (em vez de Carisma).; Itens: Arma marcial, peças sobressalentes (T$ 100 para vender ou construir engenhocas)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "ruinas_de_tyrondir"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 472,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Ruínas de Tyrondir",
+      "benefit": "Você recebe +2 em Furtividade e Vontade e pode usar Sabedoria como atributo-chave de Enganação (em vez de Carisma).",
+      "items": "Arma marcial, peças sobressalentes (T$ 100 para vender ou construir engenhocas).",
+      "trainedSkills": [],
+      "flavorText": "Você viveu entre o povo do Reinado por muito tempo, absorvendo seu modo de vida… mas secreta- mente devotado a construir O Mundo Como Deve Ser.",
+      "summaries": {
+        "pt-BR": "Região: Ruínas de Tyrondir; Benefício: Você recebe +2 em Furtividade e Vontade e pode usar Sabedoria como atributo-chave de Enganação (em vez de Carisma).; Itens: Arma marcial, peças sobressalentes (T$ 100 para vender ou construir engenhocas).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_emissario_ubaneri",
+    "name_pt": "Emissário Ubaneri",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Ubani; Benefício: Você recebe um alikunhá, um parceiro iniciante que não conta em seu limite de parceiros (veja o quadro na página 471) e pode usar Sabedoria como atributo-chave de Misticismo (em vez de Inteligência).; Itens: Essência de mana, mochila de aventureiro..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "ubani"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 472,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Ubani",
+      "benefit": "Você recebe um alikunhá, um parceiro iniciante que não conta em seu limite de parceiros (veja o quadro na página 471) e pode usar Sabedoria como atributo-chave de Misticismo (em vez de Inteligência).",
+      "items": "Essência de mana, mochila de aventureiro.",
+      "trainedSkills": [],
+      "flavorText": "Você foi preparado para percorrer as terras distan- tes e conhecer mais sobre o mundo além da Savana. Você nunca fica solitário, pois está acompanhado de um alikunhá, um pequeno pedaço de Ubani.",
+      "summaries": {
+        "pt-BR": "Região: Ubani; Benefício: Você recebe um alikunhá, um parceiro iniciante que não conta em seu limite de parceiros (veja o quadro na página 471) e pode usar Sabedoria como atributo-chave de Misticismo (em vez de Inteligência).; Itens: Essência de mana, mochila de aventureiro.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_escudeiro_da_luz",
+    "name_pt": "Escudeiro da Luz",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Bielefeld; Benefício: Você é treinado em Nobreza. Além disso, recebe +2 na Defesa e +3 PM.; Itens: Cota de malha ou escudo pesado, enfeite de elmo com o símbolo da Ordem da Luz..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nobreza"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "bielefeld"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 472,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Bielefeld",
+      "benefit": "Você é treinado em Nobreza. Além disso, recebe +2 na Defesa e +3 PM.",
+      "items": "Cota de malha ou escudo pesado, enfeite de elmo com o símbolo da Ordem da Luz.",
+      "trainedSkills": [
+        "nobreza"
+      ],
+      "flavorText": "Você não serviu a um cavaleiro errante qualquer, mas a um nobre e honrado cavaleiro da Luz. Ao lado dele, aprendeu todas as tarefas diárias desse ofício, além dos valores da nobreza e da justiça.",
+      "summaries": {
+        "pt-BR": "Região: Bielefeld; Benefício: Você é treinado em Nobreza. Além disso, recebe +2 na Defesa e +3 PM.; Itens: Cota de malha ou escudo pesado, enfeite de elmo com o símbolo da Ordem da Luz.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_escudeiro_solitario",
+    "name_pt": "Escudeiro Solitário",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Bielefeld; Benefício: Você é treinado em Enganação e Ladinagem e recebe +10 em testes de Enganação para se disfarçar como cavaleiro da Luz. Além disso, se tiver Código de Honra (ou outro semelhante), atacar pelas costas não faz com que você o viole.; Itens: Cota de malha, escudo pesado, enfeite de elmo..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "enganacao",
+      "ladinagem"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "bielefeld"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 472,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Bielefeld",
+      "benefit": "Você é treinado em Enganação e Ladinagem e recebe +10 em testes de Enganação para se disfarçar como cavaleiro da Luz. Além disso, se tiver Código de Honra (ou outro semelhante), atacar pelas costas não faz com que você o viole.",
+      "items": "Cota de malha, escudo pesado, enfeite de elmo.",
+      "trainedSkills": [
+        "enganacao",
+        "ladinagem"
+      ],
+      "flavorText": "Ninguém sabe, mas você foi escudeiro de um cava- leiro de Bielefeld… ou cupincha de um trambiqueiro. Seu mestre era membro dos Cavaleiros Solitários, disposto a todo tipo de subterfúgio, intriga e traição para ajudar os verdadeiros heróis.",
+      "summaries": {
+        "pt-BR": "Região: Bielefeld; Benefício: Você é treinado em Enganação e Ladinagem e recebe +10 em testes de Enganação para se disfarçar como cavaleiro da Luz. Além disso, se tiver Código de Honra (ou outro semelhante), atacar pelas costas não faz com que você o viole.; Itens: Cota de malha, escudo pesado, enfeite de elmo.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_estandarte_vivo",
+    "name_pt": "Estandarte Vivo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Ermos Púrpuras; Benefício: Você recebe +2 em Sobrevivência e um poder de combate ou da Tormenta à sua escolha.; Itens: Arma simples ou marcial, gibão de peles, fragmento do estandarte do seu povo (se vestido, fornece +1 em testes de Vontade)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "ermos_purpuras"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 472,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Ermos Púrpuras",
+      "benefit": "Você recebe +2 em Sobrevivência e um poder de combate ou da Tormenta à sua escolha.",
+      "items": "Arma simples ou marcial, gibão de peles, fragmento do estandarte do seu povo (se vestido, fornece +1 em testes de Vontade).",
+      "trainedSkills": [],
+      "flavorText": "Muitas tribos dos Ermos Púrpuras acabaram extintas — por guerra, por doença ou pela corrupção da Tormenta. Sua tribo se foi, mas você permanece, uma prova viva de que um dia seu povo existiu.",
+      "summaries": {
+        "pt-BR": "Região: Ermos Púrpuras; Benefício: Você recebe +2 em Sobrevivência e um poder de combate ou da Tormenta à sua escolha.; Itens: Arma simples ou marcial, gibão de peles, fragmento do estandarte do seu povo (se vestido, fornece +1 em testes de Vontade).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_estudante_da_academia",
+    "name_pt": "Estudante da Academia",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Academia Arcana; Benefício: Você aprende e pode lançar uma magia arcana de 1 o círculo a sua escolha (atributo- -chave Inteligência). Além disso, pode fazer testes de Encontrando-se Consigo Mesmo Quando um duplo encontra sua versão original, tem extrema dificuldade em lidar com o fato de ser uma cópia. Quando isso ocorre, deve passar em um teste de Vontade (CD seu próprio Car). Se falhar, o duplo entra em um frenesi homicida até o fim da cena, tendo como único propósito matar sua versão original. Caso uma das duas criaturas morra nesse encontro, a versão sobrevivente herda todas as lembranças do morto, incluindo uma de suas perícias treinadas, mas perde permanentemente 1 ponto de Carisma — já que, para o bem ou para o mal, perdeu uma parte de si para sempre. Misticismo mesmo sem ser treinado nessa perícia. Se for treinado, recebe +2 em testes dela.; Itens: Coleção de livros (uma qualquer), essência de mana x2..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "academia_arcana"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 472,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Academia Arcana",
+      "benefit": "Você aprende e pode lançar uma magia arcana de 1 o círculo a sua escolha (atributo- -chave Inteligência). Além disso, pode fazer testes de Encontrando-se Consigo Mesmo Quando um duplo encontra sua versão original, tem extrema dificuldade em lidar com o fato de ser uma cópia. Quando isso ocorre, deve passar em um teste de Vontade (CD seu próprio Car). Se falhar, o duplo entra em um frenesi homicida até o fim da cena, tendo como único propósito matar sua versão original. Caso uma das duas criaturas morra nesse encontro, a versão sobrevivente herda todas as lembranças do morto, incluindo uma de suas perícias treinadas, mas perde permanentemente 1 ponto de Carisma — já que, para o bem ou para o mal, perdeu uma parte de si para sempre. Misticismo mesmo sem ser treinado nessa perícia. Se for treinado, recebe +2 em testes dela.",
+      "items": "Coleção de livros (uma qualquer), essência de mana x2.",
+      "trainedSkills": [],
+      "flavorText": "Você frequentou a Academia Arcana. Pode ou não ter se tornado um arcanista, mas com certeza aprendeu algo sobre lançar magias.",
+      "summaries": {
+        "pt-BR": "Região: Academia Arcana; Benefício: Você aprende e pode lançar uma magia arcana de 1 o círculo a sua escolha (atributo- -chave Inteligência). Além disso, pode fazer testes de Encontrando-se Consigo Mesmo Quando um duplo encontra sua versão original, tem extrema dificuldade em lidar com o fato de ser uma cópia. Quando isso ocorre, deve passar em um teste de Vontade (CD seu próprio Car). Se falhar, o duplo entra em um frenesi homicida até o fim da cena, tendo como único propósito matar sua versão original. Caso uma das duas criaturas morra nesse encontro, a versão sobrevivente herda todas as lembranças do morto, incluindo uma de suas perícias treinadas, mas perde permanentemente 1 ponto de Carisma — já que, para o bem ou para o mal, perdeu uma parte de si para sempre. Misticismo mesmo sem ser treinado nessa perícia. Se for treinado, recebe +2 em testes dela.; Itens: Coleção de livros (uma qualquer), essência de mana x2.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_estudante_do_colegio_real",
+    "name_pt": "Estudante do Colégio Real",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Salistick; Benefício: Você é treinado em Cura. Além disso, seus efeitos de cura recuperam +2 PV por dado. Você perde esse benefício caso se torne um devoto de qualquer tipo.; Itens: Bálsamo restaurador x3, maleta de medicamentos..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "cura"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "salistick"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 473,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Salistick",
+      "benefit": "Você é treinado em Cura. Além disso, seus efeitos de cura recuperam +2 PV por dado. Você perde esse benefício caso se torne um devoto de qualquer tipo.",
+      "items": "Bálsamo restaurador x3, maleta de medicamentos.",
+      "trainedSkills": [
+        "cura"
+      ],
+      "flavorText": "Você teve a oportunidade de estudar no ilus- tríssimo Colégio Real de Médicos de Salistick. Seu ceticismo e rigor científico o afastam dos deuses e o aproximam da compreensão da vida.",
+      "summaries": {
+        "pt-BR": "Região: Salistick; Benefício: Você é treinado em Cura. Além disso, seus efeitos de cura recuperam +2 PV por dado. Você perde esse benefício caso se torne um devoto de qualquer tipo.; Itens: Bálsamo restaurador x3, maleta de medicamentos.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_explorador_de_ruinas",
+    "name_pt": "Explorador de Ruínas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Ruínas de Tyrondir; Benefício: Você recebe +2 em Ladinagem, Percepção e Reflexos e +3m em seu deslocamento.; Itens: Mochila de aventureiro, tocha, vara de madeira (3m)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "ruinas_de_tyrondir"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 473,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Ruínas de Tyrondir",
+      "benefit": "Você recebe +2 em Ladinagem, Percepção e Reflexos e +3m em seu deslocamento.",
+      "items": "Mochila de aventureiro, tocha, vara de madeira (3m).",
+      "trainedSkills": [],
+      "flavorText": "A destruição de T yrondir atraiu exploradores em busca de riquezas que possam ter sobrevivido à queda da Flecha de Fogo. Após um tempo nessa atividade, você aprendeu alguns truques úteis.",
+      "summaries": {
+        "pt-BR": "Região: Ruínas de Tyrondir; Benefício: Você recebe +2 em Ladinagem, Percepção e Reflexos e +3m em seu deslocamento.; Itens: Mochila de aventureiro, tocha, vara de madeira (3m).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_filhote_da_revoada",
+    "name_pt": "Filhote da Revoada",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Lamnor; Benefício: Você é treinado em Acrobacia e Pilo- tagem. Quando faz um teste de uma dessas perícias, pode gastar 1 PM para rolar um dado adicional e usar o melhor resultado.; Itens: Instrumentos de Ofício (artesão), T$ 100 (que você está juntando para fabricar seu primeiro veículo aéreo)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "acrobacia"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "lamnor"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 473,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Lamnor",
+      "benefit": "Você é treinado em Acrobacia e Pilo- tagem. Quando faz um teste de uma dessas perícias, pode gastar 1 PM para rolar um dado adicional e usar o melhor resultado.",
+      "items": "Instrumentos de Ofício (artesão), T$ 100 (que você está juntando para fabricar seu primeiro veículo aéreo).",
+      "trainedSkills": [
+        "acrobacia"
+      ],
+      "flavorText": "Você passou grande parte de sua juventude entre a Revoada Carnívora e seus perigosos e fantásticos engenhos voadores. Você ainda não tem seu próprio veículo, mas aprendeu duras lições entre voos e quedas.",
+      "summaries": {
+        "pt-BR": "Região: Lamnor; Benefício: Você é treinado em Acrobacia e Pilo- tagem. Quando faz um teste de uma dessas perícias, pode gastar 1 PM para rolar um dado adicional e usar o melhor resultado.; Itens: Instrumentos de Ofício (artesão), T$ 100 (que você está juntando para fabricar seu primeiro veículo aéreo).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_futura_lenda",
+    "name_pt": "Futura Lenda",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Nova Malpetrim; Benefício: Escolha um dos poderes de sua classe, normalmente disponíveis a partir do 2º nível. Você recebe esse poder.; Itens: Arma simples ou marcial com nome pomposo (e nenhuma melhoria), essência de mana x2..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "nova_malpetrim"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 473,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Nova Malpetrim",
+      "benefit": "Escolha um dos poderes de sua classe, normalmente disponíveis a partir do 2º nível. Você recebe esse poder.",
+      "items": "Arma simples ou marcial com nome pomposo (e nenhuma melhoria), essência de mana x2.",
+      "trainedSkills": [],
+      "flavorText": "Você nasceu ouvindo histórias sobre heróis, talvez tenha sido batizado com o nome de um deles e por fim decidiu fazer a única coisa que tinha sentido: superá-los!",
+      "summaries": {
+        "pt-BR": "Região: Nova Malpetrim; Benefício: Escolha um dos poderes de sua classe, normalmente disponíveis a partir do 2º nível. Você recebe esse poder.; Itens: Arma simples ou marcial com nome pomposo (e nenhuma melhoria), essência de mana x2.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_ginete_de_tumarkh_n",
+    "name_pt": "Ginete de Tumarkhân",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Khubar; Benefício: Você é treinado em Cavalgar e possui um parceiro tumarkhân iniciante, com quem recebe +2 em testes de Adestramento e Cavalgar. Se receber outra montaria especial (como pelos poderes Montaria ou Montaria Sagrada), você pode usar seu tumarkhân como essa montaria, acumulando o bônus em perícias com os benefícios da montaria especial.; Itens: Bálsamo restaurador, sela..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "adestramento",
+      "cavalgar"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "khubar"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 473,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Khubar",
+      "benefit": "Você é treinado em Cavalgar e possui um parceiro tumarkhân iniciante, com quem recebe +2 em testes de Adestramento e Cavalgar. Se receber outra montaria especial (como pelos poderes Montaria ou Montaria Sagrada), você pode usar seu tumarkhân como essa montaria, acumulando o bônus em perícias com os benefícios da montaria especial.",
+      "items": "Bálsamo restaurador, sela.",
+      "trainedSkills": [
+        "adestramento",
+        "cavalgar"
+      ],
+      "flavorText": "O povo de Khubar usa o lagarto tumarkhân como montaria. Você estabeleceu um elo com um desses animais, que o acompanha em suas jornadas.",
+      "summaries": {
+        "pt-BR": "Região: Khubar; Benefício: Você é treinado em Cavalgar e possui um parceiro tumarkhân iniciante, com quem recebe +2 em testes de Adestramento e Cavalgar. Se receber outra montaria especial (como pelos poderes Montaria ou Montaria Sagrada), você pode usar seu tumarkhân como essa montaria, acumulando o bônus em perícias com os benefícios da montaria especial.; Itens: Bálsamo restaurador, sela.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_grumete_pirata",
+    "name_pt": "Grumete Pirata",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Três Mares; Benefício: Você é treinado em Acrobacia, Atletismo e Reflexos e, se estiver se equilibrando, escalando ou nadando, só cai ou afunda se falhar no teste de perícia por 10 ou mais (em vez de 5 ou mais).; Itens: Adaga, corda, tatuagem de sua antiga tripulação (+1 em Intimidação)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "acrobacia",
+      "atletismo",
+      "reflexos"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "tres_mares"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 473,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Três Mares",
+      "benefit": "Você é treinado em Acrobacia, Atletismo e Reflexos e, se estiver se equilibrando, escalando ou nadando, só cai ou afunda se falhar no teste de perícia por 10 ou mais (em vez de 5 ou mais).",
+      "items": "Adaga, corda, tatuagem de sua antiga tripulação (+1 em Intimidação).",
+      "trainedSkills": [
+        "acrobacia",
+        "atletismo",
+        "reflexos"
+      ],
+      "flavorText": "Por paixão, sede de liberdade ou pura necessidade, você serviu em uma embarcação pirata.",
+      "summaries": {
+        "pt-BR": "Região: Três Mares; Benefício: Você é treinado em Acrobacia, Atletismo e Reflexos e, se estiver se equilibrando, escalando ou nadando, só cai ou afunda se falhar no teste de perícia por 10 ou mais (em vez de 5 ou mais).; Itens: Adaga, corda, tatuagem de sua antiga tripulação (+1 em Intimidação).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_guardiao_glacial",
+    "name_pt": "Guardião Glacial",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Montanhas Uivantes; Benefício: Você recebe redução de frio 5 e proficiência em arco longo e machado de batalha. Caso já possua proficiência com essas armas, você recebe +2 em rolagens de dano com elas.; Itens: Casaco longo, cavalo glacial..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "montanhas_uivantes"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 473,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Montanhas Uivantes",
+      "benefit": "Você recebe redução de frio 5 e proficiência em arco longo e machado de batalha. Caso já possua proficiência com essas armas, você recebe +2 em rolagens de dano com elas.",
+      "items": "Casaco longo, cavalo glacial.",
+      "trainedSkills": [],
+      "flavorText": "As Uivantes são inclementes, mas também pre- cisam de seus protetores. Você treinou com eles e aprendeu como afugentar intrometidos.",
+      "summaries": {
+        "pt-BR": "Região: Montanhas Uivantes; Benefício: Você recebe redução de frio 5 e proficiência em arco longo e machado de batalha. Caso já possua proficiência com essas armas, você recebe +2 em rolagens de dano com elas.; Itens: Casaco longo, cavalo glacial.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_iniciado_dos_caca_monstros",
+    "name_pt": "Iniciado dos Caça-Monstros",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Montanhas Sanguinárias; Benefício: Você pode fazer testes para identificar criaturas com uma ação de movimento e, quando acerta um ataque em uma criatura não humanoide, pode gastar 1 PM para causar +1d8 pontos de dano.; Itens: Arma simples ou marcial, gibão de peles..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "montanhas_sanguinarias"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 473,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Montanhas Sanguinárias",
+      "benefit": "Você pode fazer testes para identificar criaturas com uma ação de movimento e, quando acerta um ataque em uma criatura não humanoide, pode gastar 1 PM para causar +1d8 pontos de dano.",
+      "items": "Arma simples ou marcial, gibão de peles.",
+      "trainedSkills": [],
+      "flavorText": "Você foi iniciado na Guilda dos Caça-Monstros. Mesmo que ainda não seja capaz de vencer todas as criaturas, consegue ao menos identificá-las!",
+      "summaries": {
+        "pt-BR": "Região: Montanhas Sanguinárias; Benefício: Você pode fazer testes para identificar criaturas com uma ação de movimento e, quando acerta um ataque em uma criatura não humanoide, pode gastar 1 PM para causar +1d8 pontos de dano.; Itens: Arma simples ou marcial, gibão de peles.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_insurgente_tapistano",
+    "name_pt": "Insurgente Tapistano",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Império de Tauron; Benefício: Você recebe +1 em Fortitude, Refle- xos e Vontade. Além disso, recebe +3 pontos de vida no 1º nível e +1 PV por nível seguinte.; Itens: Amuleto com um símbolo da resistência reconhecível por outros rebeldes, arma simples..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "imperio_de_tauron"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 474,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Império de Tauron",
+      "benefit": "Você recebe +1 em Fortitude, Refle- xos e Vontade. Além disso, recebe +3 pontos de vida no 1º nível e +1 PV por nível seguinte.",
+      "items": "Amuleto com um símbolo da resistência reconhecível por outros rebeldes, arma simples.",
+      "trainedSkills": [],
+      "flavorText": "O Império de Tauron está ruindo. O Deus da Força está morto. Para você, isso ainda não é suficiente. O povo só estará satisfeito quando todos os antigos generais e escravagistas forem punidos.",
+      "summaries": {
+        "pt-BR": "Região: Império de Tauron; Benefício: Você recebe +1 em Fortitude, Refle- xos e Vontade. Além disso, recebe +3 pontos de vida no 1º nível e +1 PV por nível seguinte.; Itens: Amuleto com um símbolo da resistência reconhecível por outros rebeldes, arma simples.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_irmao_sem_esporas",
+    "name_pt": "Irmão sem Esporas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Namalkah; Benefício: Você possui um irmão cavalo, um cavalo de guerra parceiro iniciante que fornece +1 em testes de ataque e Reflexos. Se receber outra montaria especial (como aquela concedida pelos poderes Mon- taria ou Montaria Sagrada), você pode usar seu irmão cavalo como essa montaria, acumulando o bônus em perícias com os benefícios da montaria especial.; Itens: Bálsamo restaurador, sela..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "namalkah"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 474,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Namalkah",
+      "benefit": "Você possui um irmão cavalo, um cavalo de guerra parceiro iniciante que fornece +1 em testes de ataque e Reflexos. Se receber outra montaria especial (como aquela concedida pelos poderes Mon- taria ou Montaria Sagrada), você pode usar seu irmão cavalo como essa montaria, acumulando o bônus em perícias com os benefícios da montaria especial.",
+      "items": "Bálsamo restaurador, sela.",
+      "trainedSkills": [],
+      "flavorText": "Você possui um cavalo que o acompanha desde a infância; vocês cresceram juntos, tornando-se ver- dadeiros irmãos.",
+      "summaries": {
+        "pt-BR": "Região: Namalkah; Benefício: Você possui um irmão cavalo, um cavalo de guerra parceiro iniciante que fornece +1 em testes de ataque e Reflexos. Se receber outra montaria especial (como aquela concedida pelos poderes Mon- taria ou Montaria Sagrada), você pode usar seu irmão cavalo como essa montaria, acumulando o bônus em perícias com os benefícios da montaria especial.; Itens: Bálsamo restaurador, sela.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_legionario",
+    "name_pt": "Legionário",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Império de Tauron; Benefício: Você é treinado em Guerra e recebe proficiência com gládios (veja Ameaças de Arton ) e escudos. Se estiver empunhando um gládio e um escudo pesado, recebe +1 na margem de ameaça e +1 na Defesa.; Itens: Brunea com símbolo de sua legião, escudo pesado, gládio, ração de viagem x10 ..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "guerra"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "imperio_de_tauron"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 474,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Império de Tauron",
+      "benefit": "Você é treinado em Guerra e recebe proficiência com gládios (veja Ameaças de Arton ) e escudos. Se estiver empunhando um gládio e um escudo pesado, recebe +1 na margem de ameaça e +1 na Defesa.",
+      "items": "Brunea com símbolo de sua legião, escudo pesado, gládio, ração de viagem x10 .",
+      "trainedSkills": [
+        "guerra"
+      ],
+      "flavorText": "Você serviu nas legiões do Império de Tauron, onde aprendeu a usar o equipamento de um legionário. Agora que seu serviço terminou, você espera usar as técnicas aprendidas para dar um novo rumo a Tapista.",
+      "summaries": {
+        "pt-BR": "Região: Império de Tauron; Benefício: Você é treinado em Guerra e recebe proficiência com gládios (veja Ameaças de Arton ) e escudos. Se estiver empunhando um gládio e um escudo pesado, recebe +1 na margem de ameaça e +1 na Defesa.; Itens: Brunea com símbolo de sua legião, escudo pesado, gládio, ração de viagem x10 .."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_lenhador_de_tollon",
+    "name_pt": "Lenhador de Tollon",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Floresta de Tollon; Benefício: Você é treinado em Ofício (artesão) e recebe +5 em testes de perícias (exceto testes de ataque) relacionados a madeira. Além disso, você recebe proficiência com machadinhas e machados de batalha; caso já possua proficiência com essas armas, recebe +2 em rolagens de dano com elas.; Itens: Item superior de madeira Tollon..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "oficio"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "floresta_de_tollon"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 474,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Floresta de Tollon",
+      "benefit": "Você é treinado em Ofício (artesão) e recebe +5 em testes de perícias (exceto testes de ataque) relacionados a madeira. Além disso, você recebe proficiência com machadinhas e machados de batalha; caso já possua proficiência com essas armas, recebe +2 em rolagens de dano com elas.",
+      "items": "Item superior de madeira Tollon.",
+      "trainedSkills": [
+        "oficio"
+      ],
+      "flavorText": "Você foi criado entre as imponentes árvores da Floresta de Tollon, que lhe serviram tanto como casa quanto como fonte de sustento.",
+      "summaries": {
+        "pt-BR": "Região: Floresta de Tollon; Benefício: Você é treinado em Ofício (artesão) e recebe +5 em testes de perícias (exceto testes de ataque) relacionados a madeira. Além disso, você recebe proficiência com machadinhas e machados de batalha; caso já possua proficiência com essas armas, recebe +2 em rolagens de dano com elas.; Itens: Item superior de madeira Tollon.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_liricista_de_lenorienn",
+    "name_pt": "Liricista de Lenórienn",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Lamnor; Benefício: Você é treinado em Atuação e recebe +2 nessa perícia. Além disso, pode usar Carisma como atributo-chave de Misticismo (no lugar de Inteligência).; Itens: Alaúde élfico, réplica de uma peça artística élfica (1 espaço, T$ 50)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atuacao"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "lamnor"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 474,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Lamnor",
+      "benefit": "Você é treinado em Atuação e recebe +2 nessa perícia. Além disso, pode usar Carisma como atributo-chave de Misticismo (no lugar de Inteligência).",
+      "items": "Alaúde élfico, réplica de uma peça artística élfica (1 espaço, T$ 50).",
+      "trainedSkills": [
+        "atuacao"
+      ],
+      "flavorText": "Mesmo não tendo vivido o auge do Reino dos Elfos, você ouviu histórias suficientes para admirá-lo. Inspirado pelas tradições élficas, você aprendeu a transformar sua magia em arte.",
+      "summaries": {
+        "pt-BR": "Região: Lamnor; Benefício: Você é treinado em Atuação e recebe +2 nessa perícia. Além disso, pode usar Carisma como atributo-chave de Misticismo (no lugar de Inteligência).; Itens: Alaúde élfico, réplica de uma peça artística élfica (1 espaço, T$ 50).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_membro_do_principado",
+    "name_pt": "Membro do Principado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Repúblicas Livres de Sambúrdia; Benefício: Você é treinado em Diplomacia e Intuição. Quando chega em uma cidade pela primeira vez em cada aventura, pode fazer um teste de Diplo- macia (CD 20). Se passar, recebe 10% de desconto em todos os itens que comprar neste lugar (cumulativo com barganha).; Itens: Carroça, mercadorias sortidas (8 espaços, T$ 400)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacia"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "republicas_livres_de_samburdia"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 474,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Repúblicas Livres de Sambúrdia",
+      "benefit": "Você é treinado em Diplomacia e Intuição. Quando chega em uma cidade pela primeira vez em cada aventura, pode fazer um teste de Diplo- macia (CD 20). Se passar, recebe 10% de desconto em todos os itens que comprar neste lugar (cumulativo com barganha).",
+      "items": "Carroça, mercadorias sortidas (8 espaços, T$ 400).",
+      "trainedSkills": [
+        "diplomacia"
+      ],
+      "flavorText": "Você faz parte do Principado Mercante, uma das organizações mais poderosas das Repúblicas Livres. Ainda está longe do topo, mas até mesmo os Príncipes Mercantes começaram em algum lugar.",
+      "summaries": {
+        "pt-BR": "Região: Repúblicas Livres de Sambúrdia; Benefício: Você é treinado em Diplomacia e Intuição. Quando chega em uma cidade pela primeira vez em cada aventura, pode fazer um teste de Diplo- macia (CD 20). Se passar, recebe 10% de desconto em todos os itens que comprar neste lugar (cumulativo com barganha).; Itens: Carroça, mercadorias sortidas (8 espaços, T$ 400).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_nitamuraniano",
+    "name_pt": "Nitamuraniano",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Valkaria; Benefício: Você recebe proficiência em katana e arco longo. Caso receba proficiência nessas armas novamente, recebe +2 em rolagens de dano com elas. Além disso, quando falha em um teste de perícia ori- ginalmente baseada em Sabedoria, você pode gastar 2 PM para refazer esse teste (apenas uma vez por teste).; Itens: Arco longo ou katana, camisa bufante ou traje de seda..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "valkaria"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 474,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Valkaria",
+      "benefit": "Você recebe proficiência em katana e arco longo. Caso receba proficiência nessas armas novamente, recebe +2 em rolagens de dano com elas. Além disso, quando falha em um teste de perícia ori- ginalmente baseada em Sabedoria, você pode gastar 2 PM para refazer esse teste (apenas uma vez por teste).",
+      "items": "Arco longo ou katana, camisa bufante ou traje de seda.",
+      "trainedSkills": [],
+      "flavorText": "Você foi criado na maior comunidade tamuraniana fora do próprio Império de Jade. Seus valores culturais misturam as complexas e distintas tradições deheoni e tamuranianas.",
+      "summaries": {
+        "pt-BR": "Região: Valkaria; Benefício: Você recebe proficiência em katana e arco longo. Caso receba proficiência nessas armas novamente, recebe +2 em rolagens de dano com elas. Além disso, quando falha em um teste de perícia ori- ginalmente baseada em Sabedoria, você pode gastar 2 PM para refazer esse teste (apenas uma vez por teste).; Itens: Arco longo ou katana, camisa bufante ou traje de seda.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_nobre_zakharoviano",
+    "name_pt": "Nobre Zakharoviano",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Zakharov; Benefício: Você é treinado em Ofício (armeiro) e recebe uma arma superior com uma melhoria (exceto material especial). Se estiver de posse dessa arma, recebe +2 PM por patamar (apenas após um dia).; Itens: Traje da corte..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "oficio"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "zakharov"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 474,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Zakharov",
+      "benefit": "Você é treinado em Ofício (armeiro) e recebe uma arma superior com uma melhoria (exceto material especial). Se estiver de posse dessa arma, recebe +2 PM por patamar (apenas após um dia).",
+      "items": "Traje da corte.",
+      "trainedSkills": [
+        "oficio"
+      ],
+      "flavorText": "Você descende de uma das tradicionais famílias de nobres armeiros zakharovianos. Além do sobrenome, ostenta com orgulho uma de suas obras-primas.",
+      "summaries": {
+        "pt-BR": "Região: Zakharov; Benefício: Você é treinado em Ofício (armeiro) e recebe uma arma superior com uma melhoria (exceto material especial). Se estiver de posse dessa arma, recebe +2 PM por patamar (apenas após um dia).; Itens: Traje da corte.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_nomade_sar_allan",
+    "name_pt": "Nômade Sar-Allan",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Halak-Tôr; Benefício: Você recebe +2 em Fortitude e Sobrevivência e nas rolagens de dano com alfanges, arcos curtos e cimitarras.; Itens: Arma simples ou marcial, corcel do de- serto ou dromedário (veja Ameaças de Arton ), manto camuflado (deserto)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "halak_tor"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 474,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Halak-Tôr",
+      "benefit": "Você recebe +2 em Fortitude e Sobrevivência e nas rolagens de dano com alfanges, arcos curtos e cimitarras.",
+      "items": "Arma simples ou marcial, corcel do de- serto ou dromedário (veja Ameaças de Arton ), manto camuflado (deserto).",
+      "trainedSkills": [],
+      "flavorText": "Você cresceu entre os sar-allan, aprendendo a resistir aos rigores — e aos predadores — do deserto.",
+      "summaries": {
+        "pt-BR": "Região: Halak-Tôr; Benefício: Você recebe +2 em Fortitude e Sobrevivência e nas rolagens de dano com alfanges, arcos curtos e cimitarras.; Itens: Arma simples ou marcial, corcel do de- serto ou dromedário (veja Ameaças de Arton ), manto camuflado (deserto).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_pescador_parrudo",
+    "name_pt": "Pescador Parrudo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Khubar; Benefício: Você recebe +2 em Atletismo, For- titude e Sobrevivência e +3 PV . Além disso, quando faz um teste de Atletismo para nadar você avança seu deslocamento (em vez de apenas a metade).; Itens: Vara de pesca (pode usar Sobrevivência para sustento), peixes raros salgados para revenda (1 espaço, T$ 50)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "khubar"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 475,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Khubar",
+      "benefit": "Você recebe +2 em Atletismo, For- titude e Sobrevivência e +3 PV . Além disso, quando faz um teste de Atletismo para nadar você avança seu deslocamento (em vez de apenas a metade).",
+      "items": "Vara de pesca (pode usar Sobrevivência para sustento), peixes raros salgados para revenda (1 espaço, T$ 50).",
+      "trainedSkills": [],
+      "flavorText": "Desde criança, você pesca nas águas profundas de Khubar. Tal atividade deixou seu corpo forte e resistente.",
+      "summaries": {
+        "pt-BR": "Região: Khubar; Benefício: Você recebe +2 em Atletismo, For- titude e Sobrevivência e +3 PV . Além disso, quando faz um teste de Atletismo para nadar você avança seu deslocamento (em vez de apenas a metade).; Itens: Vara de pesca (pode usar Sobrevivência para sustento), peixes raros salgados para revenda (1 espaço, T$ 50).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_plebeu_arcano",
+    "name_pt": "Plebeu Arcano",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Wynlla; Benefício: Você recebe +2 PM. Além disso, uma vez por rodada, quando falha em um teste de resistência contra um efeito mágico, você pode gastar 1 PM para rolar novamente esse teste.; Itens: Bandoleira de poções, gorro de ervas, poção arcana de 1 o círculo..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "wynlla"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 475,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Wynlla",
+      "benefit": "Você recebe +2 PM. Além disso, uma vez por rodada, quando falha em um teste de resistência contra um efeito mágico, você pode gastar 1 PM para rolar novamente esse teste.",
+      "items": "Bandoleira de poções, gorro de ervas, poção arcana de 1 o círculo.",
+      "trainedSkills": [],
+      "flavorText": "Crescer em Wynlla é estar próximo da magia. Esse contato o deixou mais acostumado aos aspectos místicos de Arton.",
+      "summaries": {
+        "pt-BR": "Região: Wynlla; Benefício: Você recebe +2 PM. Além disso, uma vez por rodada, quando falha em um teste de resistência contra um efeito mágico, você pode gastar 1 PM para rolar novamente esse teste.; Itens: Bandoleira de poções, gorro de ervas, poção arcana de 1 o círculo.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_prisioneiro_das_catacumbas",
+    "name_pt": "Prisioneiro das Catacumbas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Catacumbas de Leverick; Benefício: Você é treinado em Percepção e Reflexos e recebe resistência a armadilhas e efeitos de movimento +5.; Itens: Arma marcial encontrada no corpo de alguém que não sobreviveu às Catacumbas..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "percepcao",
+      "reflexos"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "catacumbas_de_leverick"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 475,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Catacumbas de Leverick",
+      "benefit": "Você é treinado em Percepção e Reflexos e recebe resistência a armadilhas e efeitos de movimento +5.",
+      "items": "Arma marcial encontrada no corpo de alguém que não sobreviveu às Catacumbas.",
+      "trainedSkills": [
+        "percepcao",
+        "reflexos"
+      ],
+      "flavorText": "Você vivia uma vida comum e sem grandes emo- ções, até ter o azar de abrir a porta errada. Talvez também tenha sido por mero acaso que você escapou das Catacumbas de Leverick.",
+      "summaries": {
+        "pt-BR": "Região: Catacumbas de Leverick; Benefício: Você é treinado em Percepção e Reflexos e recebe resistência a armadilhas e efeitos de movimento +5.; Itens: Arma marcial encontrada no corpo de alguém que não sobreviveu às Catacumbas.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_procurado_vivo_ou_morto",
+    "name_pt": "Procurado: Vivo ou Morto",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Smokestone; Benefício: Você recebe proficiência com armas de fogo. Além disso, recebe +5 em testes de Intimidação e –5 em testes de Diplomacia contra qualquer um que, a critério do mestre, o reconheça e saiba de sua fama.; Itens: Pistola, balas cruéis (20)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "smokestone"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 475,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Smokestone",
+      "benefit": "Você recebe proficiência com armas de fogo. Além disso, recebe +5 em testes de Intimidação e –5 em testes de Diplomacia contra qualquer um que, a critério do mestre, o reconheça e saiba de sua fama.",
+      "items": "Pistola, balas cruéis (20).",
+      "trainedSkills": [],
+      "flavorText": "Você é um pistoleiro infame nas cercanias de Smokestone, odiado e caçado por outros durões. Provavelmente foi tudo um engano e você ainda não faz jus a esse renome, mas sua cabeça está a prêmio!",
+      "summaries": {
+        "pt-BR": "Região: Smokestone; Benefício: Você recebe proficiência com armas de fogo. Além disso, recebe +5 em testes de Intimidação e –5 em testes de Diplomacia contra qualquer um que, a critério do mestre, o reconheça e saiba de sua fama.; Itens: Pistola, balas cruéis (20).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_profeta_do_akzath",
+    "name_pt": "Profeta do Akzath",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Lamnor; Benefício: Você é treinado em Religião e pode lançar magias mesmo sob o efeito de Fúria Divina.; Itens: Arma simples ou marcial, bordão, perga- minho com diagrama do Akzath..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "religiao"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "lamnor"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 475,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Lamnor",
+      "benefit": "Você é treinado em Religião e pode lançar magias mesmo sob o efeito de Fúria Divina.",
+      "items": "Arma simples ou marcial, bordão, perga- minho com diagrama do Akzath.",
+      "trainedSkills": [
+        "religiao"
+      ],
+      "flavorText": "Você conhece a verdade sobre o tempo e o destino, na forma do Akzath. Quem sabe será você a encontrar o novo Ayrrak?",
+      "summaries": {
+        "pt-BR": "Região: Lamnor; Benefício: Você é treinado em Religião e pode lançar magias mesmo sob o efeito de Fúria Divina.; Itens: Arma simples ou marcial, bordão, perga- minho com diagrama do Akzath.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_querido_filho",
+    "name_pt": "Querido Filho",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Aslothia; Benefício: Você redução de frio e trevas 5 e visão no escuro. Se já possuir visão no escuro, em vez disso recebe +2 em Percepção.; Itens: Essência de sombra, manto camuflado (urbano)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "aslothia"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 475,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Aslothia",
+      "benefit": "Você redução de frio e trevas 5 e visão no escuro. Se já possuir visão no escuro, em vez disso recebe +2 em Percepção.",
+      "items": "Essência de sombra, manto camuflado (urbano).",
+      "trainedSkills": [],
+      "flavorText": "Você passou parte de sua juventude em Aslothia. Lá, por escolha ou imposição do destino, abraçou a dádiva das trevas.",
+      "summaries": {
+        "pt-BR": "Região: Aslothia; Benefício: Você redução de frio e trevas 5 e visão no escuro. Se já possuir visão no escuro, em vez disso recebe +2 em Percepção.; Itens: Essência de sombra, manto camuflado (urbano).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_rebelde_agitador",
+    "name_pt": "Rebelde Agitador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Sckharshantallas; Benefício: Você é treinado em Iniciativa e, uma vez por aventura, pode gastar um dia para convencer pessoas comuns a ajudá-lo. Faça um teste de Diplomacia (CD 10). Se passar, você convence uma pessoa, mais uma para cada 10 pontos acima da CD (duas pessoas com resultado 20, três com resultado 30 e assim por diante). Cada pessoa pode ser usada como um parceiro iniciante de um tipo à sua escolha por uma cena. As pessoas não contam em seu limite de parceiros e ficam com você até serem usadas ou até o fim da aventura.; Itens: Arma simples ou marcial, panfleto revolu- cionário, T$ 6d12 (impostos que você deixou de pagar)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "iniciativa"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "sckharshantallas"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 475,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Sckharshantallas",
+      "benefit": "Você é treinado em Iniciativa e, uma vez por aventura, pode gastar um dia para convencer pessoas comuns a ajudá-lo. Faça um teste de Diplomacia (CD 10). Se passar, você convence uma pessoa, mais uma para cada 10 pontos acima da CD (duas pessoas com resultado 20, três com resultado 30 e assim por diante). Cada pessoa pode ser usada como um parceiro iniciante de um tipo à sua escolha por uma cena. As pessoas não contam em seu limite de parceiros e ficam com você até serem usadas ou até o fim da aventura.",
+      "items": "Arma simples ou marcial, panfleto revolu- cionário, T$ 6d12 (impostos que você deixou de pagar).",
+      "trainedSkills": [
+        "iniciativa"
+      ],
+      "flavorText": "Sua terra natal, Sckharshantallas, está sob o jugo permanente de um monstro tirano. Você fez parte de grupos rebeldes, mas agora partiu para se aventurar. Espera se tornar forte para, um dia, depor o Dragão-Rei.",
+      "summaries": {
+        "pt-BR": "Região: Sckharshantallas; Benefício: Você é treinado em Iniciativa e, uma vez por aventura, pode gastar um dia para convencer pessoas comuns a ajudá-lo. Faça um teste de Diplomacia (CD 10). Se passar, você convence uma pessoa, mais uma para cada 10 pontos acima da CD (duas pessoas com resultado 20, três com resultado 30 e assim por diante). Cada pessoa pode ser usada como um parceiro iniciante de um tipo à sua escolha por uma cena. As pessoas não contam em seu limite de parceiros e ficam com você até serem usadas ou até o fim da aventura.; Itens: Arma simples ou marcial, panfleto revolu- cionário, T$ 6d12 (impostos que você deixou de pagar).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_receptador_das_nuvens",
+    "name_pt": "Receptador das Nuvens",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Vectora; Benefício: Você possui contatos em Vectora que lhe dão acesso a mercadorias. Se estiver em uma cidade ou outro lugar em que, a critério do mestre, possa acessar seus contatos, você pode gastar 1 dia para obter um aparato mágico: um item de 1 espaço que você (e apenas você) pode empunhar para lançar uma magia de 1º círculo (atributo-chave Inteligência), escolhida ao obter o aparato. Você pode ter até 2 aparatos ao mesmo tempo. Os aparatos não têm valor comercial.; Itens: Mercadorias raras e variadas (2 espaços, T$ 300)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "vectora"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 476,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Vectora",
+      "benefit": "Você possui contatos em Vectora que lhe dão acesso a mercadorias. Se estiver em uma cidade ou outro lugar em que, a critério do mestre, possa acessar seus contatos, você pode gastar 1 dia para obter um aparato mágico: um item de 1 espaço que você (e apenas você) pode empunhar para lançar uma magia de 1º círculo (atributo-chave Inteligência), escolhida ao obter o aparato. Você pode ter até 2 aparatos ao mesmo tempo. Os aparatos não têm valor comercial.",
+      "items": "Mercadorias raras e variadas (2 espaços, T$ 300).",
+      "trainedSkills": [],
+      "flavorText": "Você cresceu em Vectora, o fabuloso Mercado nas Nuvens. Andando entre os bazares e becos da cidade, conheceu diversos mercadores.",
+      "summaries": {
+        "pt-BR": "Região: Vectora; Benefício: Você possui contatos em Vectora que lhe dão acesso a mercadorias. Se estiver em uma cidade ou outro lugar em que, a critério do mestre, possa acessar seus contatos, você pode gastar 1 dia para obter um aparato mágico: um item de 1 espaço que você (e apenas você) pode empunhar para lançar uma magia de 1º círculo (atributo-chave Inteligência), escolhida ao obter o aparato. Você pode ter até 2 aparatos ao mesmo tempo. Os aparatos não têm valor comercial.; Itens: Mercadorias raras e variadas (2 espaços, T$ 300).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_recruta_arcano",
+    "name_pt": "Recruta Arcano",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Wynlla; Benefício: A CD para resistir a suas magias arcanas aumenta em +1 e elas causam +1 ponto de dano.; Itens: Essência de mana x2, varinha arcana..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "wynlla"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 476,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Wynlla",
+      "benefit": "A CD para resistir a suas magias arcanas aumenta em +1 e elas causam +1 ponto de dano.",
+      "items": "Essência de mana x2, varinha arcana.",
+      "trainedSkills": [],
+      "flavorText": "Você serviu entre os Magos de Batalha de Wynlla. Agora, livre de suas obrigações cívicas, está pronto para seguir sua vida de aventuras.",
+      "summaries": {
+        "pt-BR": "Região: Wynlla; Benefício: A CD para resistir a suas magias arcanas aumenta em +1 e elas causam +1 ponto de dano.; Itens: Essência de mana x2, varinha arcana.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_recruta_da_f_nix",
+    "name_pt": "Recruta da Fênix",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Triunphus; Benefício: Você recebe +1 PV por nível e redução de fogo 5, e é treinado em Cavalgar.; Itens: Arma marcial, brunea, grifo iniciante..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "cavalgar"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "triunphus"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 476,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Triunphus",
+      "benefit": "Você recebe +1 PV por nível e redução de fogo 5, e é treinado em Cavalgar.",
+      "items": "Arma marcial, brunea, grifo iniciante.",
+      "trainedSkills": [
+        "cavalgar"
+      ],
+      "flavorText": "Você começou o treinamento para combater a Horda Moóck montado em um majestoso grifo. Por vontade própria ou imposição, você saiu da cidade antes de completar o treinamento… ou morrer!",
+      "summaries": {
+        "pt-BR": "Região: Triunphus; Benefício: Você recebe +1 PV por nível e redução de fogo 5, e é treinado em Cavalgar.; Itens: Arma marcial, brunea, grifo iniciante.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_sabio_matematico",
+    "name_pt": "Sábio Matemático",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Halak-Tôr; Benefício: Você é treinado em Conhecimento. Além disso, aprende e pode lançar Concentração de Com- bate e Orientação. Estes efeitos não contam como magias (exceto para fins de acúmulo) e não são mágicos — eles provêm de sua habilidade de calcular resultados a partir de uma mistura de geometria, análise de probabilidades e outros campos da matemática.; Itens: Coleção de livros, luneta..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "conhecimento"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "halak_tor"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 476,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Halak-Tôr",
+      "benefit": "Você é treinado em Conhecimento. Além disso, aprende e pode lançar Concentração de Com- bate e Orientação. Estes efeitos não contam como magias (exceto para fins de acúmulo) e não são mágicos — eles provêm de sua habilidade de calcular resultados a partir de uma mistura de geometria, análise de probabilidades e outros campos da matemática.",
+      "items": "Coleção de livros, luneta.",
+      "trainedSkills": [
+        "conhecimento"
+      ],
+      "flavorText": "Você estudou as complexas equações que os sar-allan usam para calcular a formação de portais no deserto. Talvez ainda não consiga prever esses eventos tão bem quanto seus mestres, mas sabe usar o poder da matemática para resolver diversos problemas.",
+      "summaries": {
+        "pt-BR": "Região: Halak-Tôr; Benefício: Você é treinado em Conhecimento. Além disso, aprende e pode lançar Concentração de Com- bate e Orientação. Estes efeitos não contam como magias (exceto para fins de acúmulo) e não são mágicos — eles provêm de sua habilidade de calcular resultados a partir de uma mistura de geometria, análise de probabilidades e outros campos da matemática.; Itens: Coleção de livros, luneta.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_selvagem_sanguinario",
+    "name_pt": "Selvagem Sanguinário",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Montanhas Sanguinárias; Benefício: Você é treinado em Sobrevivência e, se não estiver usando armadura pesada, recebe +1 em rolagens de dano com armas e redução de dano 1.; Itens: Arma marcial, gibão de peles..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "montanhas_sanguinarias"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 476,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Montanhas Sanguinárias",
+      "benefit": "Você é treinado em Sobrevivência e, se não estiver usando armadura pesada, recebe +1 em rolagens de dano com armas e redução de dano 1.",
+      "items": "Arma marcial, gibão de peles.",
+      "trainedSkills": [
+        "sobrevivencia"
+      ],
+      "flavorText": "Você nasceu ou foi criado nas Montanhas Sangui- nárias, um dos lugares mais brutais de Arton, onde aprendeu a sobreviver com base na determinação e força bruta.",
+      "summaries": {
+        "pt-BR": "Região: Montanhas Sanguinárias; Benefício: Você é treinado em Sobrevivência e, se não estiver usando armadura pesada, recebe +1 em rolagens de dano com armas e redução de dano 1.; Itens: Arma marcial, gibão de peles.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_sucateiro_de_batalhas",
+    "name_pt": "Sucateiro de Batalhas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Conflagração do Aço; Benefício: Você é treinado em Guerra e Inves- tigação. Além disso, quando rola na Tabela 8-1: Tesouro por Nível de Desafio (Tormenta20, p. 328), para cada tipo de tesouro (dinheiro ou item) você pode rolar novamente o resultado.; Itens: Arma simples ou marcial, bálsamo restau- rador, escudo leve ou pesado, essência de mana, ração de viagem x5, T$ 4d6..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "guerra"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "conflagracao_do_aco"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 476,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Conflagração do Aço",
+      "benefit": "Você é treinado em Guerra e Inves- tigação. Além disso, quando rola na Tabela 8-1: Tesouro por Nível de Desafio (Tormenta20, p. 328), para cada tipo de tesouro (dinheiro ou item) você pode rolar novamente o resultado.",
+      "items": "Arma simples ou marcial, bálsamo restau- rador, escudo leve ou pesado, essência de mana, ração de viagem x5, T$ 4d6.",
+      "trainedSkills": [
+        "guerra"
+      ],
+      "flavorText": "Muitos dizem que a Guerra Artoniana acabou. Não onde você foi criado. Em uma terra onde escaramuças são frequentes, você se especializou em pilhar armas e outros itens abandonados nos campos de batalha.",
+      "summaries": {
+        "pt-BR": "Região: Conflagração do Aço; Benefício: Você é treinado em Guerra e Inves- tigação. Além disso, quando rola na Tabela 8-1: Tesouro por Nível de Desafio (Tormenta20, p. 328), para cada tipo de tesouro (dinheiro ou item) você pode rolar novamente o resultado.; Itens: Arma simples ou marcial, bálsamo restau- rador, escudo leve ou pesado, essência de mana, ração de viagem x5, T$ 4d6.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_tamalu",
+    "name_pt": "Tamalu",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Khubar; Benefício: Você é treinado em Diplomacia e Nobreza e recebe uma tatuagem mística à sua escolha.; Itens: Traje da corte..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacia",
+      "nobreza"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "khubar"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 476,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Khubar",
+      "benefit": "Você é treinado em Diplomacia e Nobreza e recebe uma tatuagem mística à sua escolha.",
+      "items": "Traje da corte.",
+      "trainedSkills": [
+        "diplomacia",
+        "nobreza"
+      ],
+      "flavorText": "Você nasceu entre os tamalus, a casta política de Khubar que ostenta tatuagens mágicas mostrando sua história. Embora sua saga esteja apenas começando, você já conquistou sua primeira tatuagem.",
+      "summaries": {
+        "pt-BR": "Região: Khubar; Benefício: Você é treinado em Diplomacia e Nobreza e recebe uma tatuagem mística à sua escolha.; Itens: Traje da corte.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_tocado_pela_dama_altiva",
+    "name_pt": "Tocado pela Dama Altiva",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Moreania; Benefício: Você é treinado em Adestramento e pode gastar 1 minuto e 1 PM para convocar um animal Minúsculo a sua escolha, como um falcão ou gato, em seu auxílio. A criatura convocada fornece +2 nos seus testes de uma perícia específica, adequada às suas capacidades, e permanece auxiliando-o até o fim da cena, quando então retorna para os ermos. Você pode ter um número de criaturas convocadas simultâneas igual à sua Sabedoria (mínimo de 1). O mestre tem a palavra final sobre quais criaturas estão disponíveis e em quais perícias elas podem prestar auxílio.; Itens: Bordão, ração de viagem x5..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "adestramento"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "moreania"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 476,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Moreania",
+      "benefit": "Você é treinado em Adestramento e pode gastar 1 minuto e 1 PM para convocar um animal Minúsculo a sua escolha, como um falcão ou gato, em seu auxílio. A criatura convocada fornece +2 nos seus testes de uma perícia específica, adequada às suas capacidades, e permanece auxiliando-o até o fim da cena, quando então retorna para os ermos. Você pode ter um número de criaturas convocadas simultâneas igual à sua Sabedoria (mínimo de 1). O mestre tem a palavra final sobre quais criaturas estão disponíveis e em quais perícias elas podem prestar auxílio.",
+      "items": "Bordão, ração de viagem x5.",
+      "trainedSkills": [
+        "adestramento"
+      ],
+      "flavorText": "Nascido em Moreania, você foi agraciado pela própria Mãe Natureza. Você consegue entender as vozes da natureza e pode invocar o auxílio dos filhos de Allihanna.",
+      "summaries": {
+        "pt-BR": "Região: Moreania; Benefício: Você é treinado em Adestramento e pode gastar 1 minuto e 1 PM para convocar um animal Minúsculo a sua escolha, como um falcão ou gato, em seu auxílio. A criatura convocada fornece +2 nos seus testes de uma perícia específica, adequada às suas capacidades, e permanece auxiliando-o até o fim da cena, quando então retorna para os ermos. Você pode ter um número de criaturas convocadas simultâneas igual à sua Sabedoria (mínimo de 1). O mestre tem a palavra final sobre quais criaturas estão disponíveis e em quais perícias elas podem prestar auxílio.; Itens: Bordão, ração de viagem x5.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_tocado_pelo_indomavel",
+    "name_pt": "Tocado pelo Indomável",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Moreania; Benefício: Você é treinado em Atletismo e recebe +2 em rolagens de dano com armas naturais e ataques desarmados.; Itens: Trapos surrados, carcaça de couro de algum animal caçado por você (conta como um gibão de peles)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atletismo"
+    ],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "moreania"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 477,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Moreania",
+      "benefit": "Você é treinado em Atletismo e recebe +2 em rolagens de dano com armas naturais e ataques desarmados.",
+      "items": "Trapos surrados, carcaça de couro de algum animal caçado por você (conta como um gibão de peles).",
+      "trainedSkills": [
+        "atletismo"
+      ],
+      "flavorText": "A face oposta da Dama Altiva, o Indomável é uma divindade de ferocidade e selvageria. Agraciado com o poder dos monstros, você tem dificuldade em se adequar às normas e restrições da sociedade.",
+      "summaries": {
+        "pt-BR": "Região: Moreania; Benefício: Você é treinado em Atletismo e recebe +2 em rolagens de dano com armas naturais e ataques desarmados.; Itens: Trapos surrados, carcaça de couro de algum animal caçado por você (conta como um gibão de peles).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_tradicionalista_svalano",
+    "name_pt": "Tradicionalista Svalano",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Svalas; Benefício: Você pode usar Sabedoria como atributo-chave de Conhecimento e Nobreza e pode fazer testes dessas perícias mesmo sem treinamento. Além disso, recebe +1 em Fortitude e Vontade.; Itens: Arma simples ou marcial, corda, mochila de aventureiro, vara de madeira (3 m)..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "svalas"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 477,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Svalas",
+      "benefit": "Você pode usar Sabedoria como atributo-chave de Conhecimento e Nobreza e pode fazer testes dessas perícias mesmo sem treinamento. Além disso, recebe +1 em Fortitude e Vontade.",
+      "items": "Arma simples ou marcial, corda, mochila de aventureiro, vara de madeira (3 m).",
+      "trainedSkills": [],
+      "flavorText": "Svalas é díspar, honrado e livre. Após todos os registros escritos do reino terem sido destruídos, a tradição svalana foi passada pela oralidade. Você é o fruto dessas histórias.",
+      "summaries": {
+        "pt-BR": "Região: Svalas; Benefício: Você pode usar Sabedoria como atributo-chave de Conhecimento e Nobreza e pode fazer testes dessas perícias mesmo sem treinamento. Além disso, recebe +1 em Fortitude e Vontade.; Itens: Arma simples ou marcial, corda, mochila de aventureiro, vara de madeira (3 m).."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_trapaceiro_ahleniense",
+    "name_pt": "Trapaceiro Ahleniense",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Ahlen; Benefício: Você recebe +2 em Enganação e Furtividade e pode usar Carisma como atributo-chave de Ladinagem (em vez de Destreza).; Itens: Essência de sombra, gazua, estojo de disfarces..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "ahlen"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 477,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Ahlen",
+      "benefit": "Você recebe +2 em Enganação e Furtividade e pode usar Carisma como atributo-chave de Ladinagem (em vez de Destreza).",
+      "items": "Essência de sombra, gazua, estojo de disfarces.",
+      "trainedSkills": [],
+      "flavorText": "Há um ditado em Ahlen: todo dia saem de casa um malandro e um otário. Você definitivamente aprendeu como não ser o otário.",
+      "summaries": {
+        "pt-BR": "Região: Ahlen; Benefício: Você recebe +2 em Enganação e Furtividade e pode usar Carisma como atributo-chave de Ladinagem (em vez de Destreza).; Itens: Essência de sombra, gazua, estojo de disfarces.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_turista_da_academia",
+    "name_pt": "Turista da Academia",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Academia Arcana; Benefício: Você recebe resistência a magia +2 e pode ativar pergaminhos de todas as magias arcanas de 1º círculo como se as conhecesse.; Itens: Três pergaminhos de magias arcanas de 1º círculo à sua escolha..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "academia_arcana"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 477,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Academia Arcana",
+      "benefit": "Você recebe resistência a magia +2 e pode ativar pergaminhos de todas as magias arcanas de 1º círculo como se as conhecesse.",
+      "items": "Três pergaminhos de magias arcanas de 1º círculo à sua escolha.",
+      "trainedSkills": [],
+      "flavorText": "Você assistiu a algumas aulas na Academia Arcana. Não se tornou um arcanista, mas aprendeu a lidar com magias e enjambrar alguns truques!",
+      "summaries": {
+        "pt-BR": "Região: Academia Arcana; Benefício: Você recebe resistência a magia +2 e pode ativar pergaminhos de todas as magias arcanas de 1º círculo como se as conhecesse.; Itens: Três pergaminhos de magias arcanas de 1º círculo à sua escolha.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.atlas.background.origem_regional_um_com_os_kami",
+    "name_pt": "Um com os Kami",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Região: Tamu-ra; Benefício: Você pode usar Sabedoria como atributo-chave de Misticismo (em vez de Inteligência). Além disso, é acompanhado por um kami incorpóreo e invisível. Ele é um parceiro especial, que permite que você veja criaturas incorpóreas invisíveis e afete criaturas com seus ataques e habilidades como se fossem mágicos, e não conta em seu limite de parceiros. Além disso, uma vez por rodada você pode gastar 1 PM para executar o equivalente a uma ação de movimento que só pode ser usada para manipular um objeto solto em alcance curto. O kami não pode se afastar além de alcance curto de você. Se for destruído por qualquer efeito, o kami desaparece, retornando no início da próxima cena.; Itens: Bálsamo restaurador, essência de mana..",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [],
+    "granted_feat": null,
+    "traits": [
+      "origem_regional",
+      "tamu_ra"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-atlas",
+    "source_book": "Tormenta20 — Atlas de Arton",
+    "source_page": 477,
+    "created_at": "2026-10-14T16:48:22.336Z",
+    "updated_at": "2026-10-14T16:48:22.336Z",
+    "system_id": "t20",
+    "data": {
+      "kind": "origem_regional",
+      "region": "Tamu-ra",
+      "benefit": "Você pode usar Sabedoria como atributo-chave de Misticismo (em vez de Inteligência). Além disso, é acompanhado por um kami incorpóreo e invisível. Ele é um parceiro especial, que permite que você veja criaturas incorpóreas invisíveis e afete criaturas com seus ataques e habilidades como se fossem mágicos, e não conta em seu limite de parceiros. Além disso, uma vez por rodada você pode gastar 1 PM para executar o equivalente a uma ação de movimento que só pode ser usada para manipular um objeto solto em alcance curto. O kami não pode se afastar além de alcance curto de você. Se for destruído por qualquer efeito, o kami desaparece, retornando no início da próxima cena.",
+      "items": "Bálsamo restaurador, essência de mana.",
+      "trainedSkills": [],
+      "flavorText": "Desde muito novo, você vê e ouve seres que não podem ser percebidos pela maioria das pessoas. São os kami, os espíritos divinos de Tamu-ra. Às vezes estão enfurecidos; outras vezes, querem pedir sua ajuda. Na maior parte das ocasiões, apenas acham graça de ser percebidos por você e por isso o tratam como amigo.",
+      "summaries": {
+        "pt-BR": "Região: Tamu-ra; Benefício: Você pode usar Sabedoria como atributo-chave de Misticismo (em vez de Inteligência). Além disso, é acompanhado por um kami incorpóreo e invisível. Ele é um parceiro especial, que permite que você veja criaturas incorpóreas invisíveis e afete criaturas com seus ataques e habilidades como se fossem mágicos, e não conta em seu limite de parceiros. Além disso, uma vez por rodada você pode gastar 1 PM para executar o equivalente a uma ação de movimento que só pode ser usada para manipular um objeto solto em alcance curto. O kami não pode se afastar além de alcance curto de você. Se for destruído por qualquer efeito, o kami desaparece, retornando no início da próxima cena.; Itens: Bálsamo restaurador, essência de mana.."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]
