@@ -1,0 +1,53 @@
+[
+  {
+    "id": "t20.npcs.spell.preparacao_de_batalha",
+    "name_pt": "Preparação de Batalha",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Esta magia é utilizada por clérigos e bardos que não precisam (ou não podem) estar sempre com suas armas ou armaduras. A magia é lançada sobre até dois itens que você possua. A partir daí, em qualquer momento, você pode usar uma ação completa para convocar os itens, que aparecem sobre seu corpo e em suas mãos (conforme apropriado ao item). O efeito é espalhafatoso, sendo praticamente impossível utilizá-lo sem chamar atenção. A magia funciona independentemente da distância dos itens, desde que estejam no mesmo Plano, mas termina se você perder a posse deles.",
+    "description_en": null,
+    "description_es": null,
+    "rank": 2,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "universal"
+    ],
+    "cast_actions": "padrao",
+    "range": "toque",
+    "targets": "até dois itens que você possua, entre armas, armaduras e escudos",
+    "duration": "permanente até ser descarregada",
+    "defense": null,
+    "traits": [
+      "convocacao",
+      "universal"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 17,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.spell.preparacao_de_batalha",
+      "name": "Preparação de Batalha",
+      "circle": 2,
+      "school": "convocacao",
+      "tradition": "universal",
+      "castingTime": "padrao",
+      "range": "toque",
+      "target": "até dois itens que você possua, entre armas, armaduras e escudos",
+      "duration": "permanente até ser descarregada",
+      "cost": 3,
+      "additionalCost": "penalidade de 1 PM",
+      "description": "Esta magia é utilizada por clérigos e bardos que não precisam (ou não podem) estar sempre com suas armas ou armaduras. A magia é lançada sobre até dois itens que você possua. A partir daí, em qualquer momento, você pode usar uma ação completa para convocar os itens, que aparecem sobre seu corpo e em suas mãos (conforme apropriado ao item). O efeito é espalhafatoso, sendo praticamente impossível utilizá-lo sem chamar atenção. A magia funciona independentemente da distância dos itens, desde que estejam no mesmo Plano, mas termina se você perder a posse deles.",
+      "enhancements": "+1 PM: aumenta o número de alvos em dois e o custo adicional em +1 PM.",
+      "sourcePage": 17,
+      "summaries": {
+        "pt-BR": "Esta magia é utilizada por clérigos e bardos que não precisam (ou não podem) estar sempre com suas armas ou armaduras. A magia é lançada sobre até dois itens que você possua. A partir daí, em qualquer momento, você pode usar uma ação completa para convocar os itens, que aparecem sobre seu corpo e em suas mãos (conforme apropriado ao item). O efeito é espalhafatoso, sendo praticamente impossível utilizá-lo sem chamar atenção. A magia funciona independentemente da distância dos itens, desde que estejam no mesmo Plano, mas termina se você perder a posse deles."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]

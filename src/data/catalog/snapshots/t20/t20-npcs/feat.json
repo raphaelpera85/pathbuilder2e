@@ -1,0 +1,1042 @@
+[
+  {
+    "id": "t20.npcs.feat.armaduras_reforcadas",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Armaduras Reforçadas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "O mercenário ou membro da companhia mercenária recebe +2 na Defesa.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "mercenario"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 79,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.armaduras_reforcadas",
+      "name": "Armaduras Reforçadas",
+      "category": "mercenario",
+      "prerequisites": null,
+      "description": "O mercenário ou membro da companhia mercenária recebe +2 na Defesa.",
+      "sourcePage": 79,
+      "summaries": {
+        "pt-BR": "O mercenário ou membro da companhia mercenária recebe +2 na Defesa."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.armas_envenenadas",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Armas Envenenadas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Quando acerta seu primeiro ataque com arma na cena, o mercenário faz com que a vítima perca 1d12 pontos de vida por veneno.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "mercenario"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 79,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.armas_envenenadas",
+      "name": "Armas Envenenadas",
+      "category": "mercenario",
+      "prerequisites": null,
+      "description": "Quando acerta seu primeiro ataque com arma na cena, o mercenário faz com que a vítima perca 1d12 pontos de vida por veneno.",
+      "sourcePage": 79,
+      "summaries": {
+        "pt-BR": "Quando acerta seu primeiro ataque com arma na cena, o mercenário faz com que a vítima perca 1d12 pontos de vida por veneno."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.disciplina_surpreendente",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Disciplina Surpreendente",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "O mercenário recebe +2 em todos os seus testes de resistência.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "mercenario"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 79,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.disciplina_surpreendente",
+      "name": "Disciplina Surpreendente",
+      "category": "mercenario",
+      "prerequisites": null,
+      "description": "O mercenário recebe +2 em todos os seus testes de resistência.",
+      "sourcePage": 79,
+      "summaries": {
+        "pt-BR": "O mercenário recebe +2 em todos os seus testes de resistência."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.laminas_farpadas",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Lâminas Farpadas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "O multiplicador de crítico dos ataques corpo a corpo do mercenário aumenta em +1.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "mercenario"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 79,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.laminas_farpadas",
+      "name": "Lâminas Farpadas",
+      "category": "mercenario",
+      "prerequisites": null,
+      "description": "O multiplicador de crítico dos ataques corpo a corpo do mercenário aumenta em +1.",
+      "sourcePage": 79,
+      "summaries": {
+        "pt-BR": "O multiplicador de crítico dos ataques corpo a corpo do mercenário aumenta em +1."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.po_ardente",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Pó Ardente",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Uma vez por cena, com uma ação de movimento, o mercenário deixa uma criatura adjacente ofuscada. A vítima pode remover essa condição gastando uma ação padrão para limpar os olhos.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "mercenario"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 79,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.po_ardente",
+      "name": "Pó Ardente",
+      "category": "mercenario",
+      "prerequisites": null,
+      "description": "Uma vez por cena, com uma ação de movimento, o mercenário deixa uma criatura adjacente ofuscada. A vítima pode remover essa condição gastando uma ação padrão para limpar os olhos.",
+      "sourcePage": 79,
+      "summaries": {
+        "pt-BR": "Uma vez por cena, com uma ação de movimento, o mercenário deixa uma criatura adjacente ofuscada. A vítima pode remover essa condição gastando uma ação padrão para limpar os olhos."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.taticas_de_emboscada",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Táticas de Emboscada",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Os ataques do mercenário causam +2d6 pontos de dano contra criaturas surpreendidas.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "mercenario"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 79,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.taticas_de_emboscada",
+      "name": "Táticas de Emboscada",
+      "category": "mercenario",
+      "prerequisites": null,
+      "description": "Os ataques do mercenário causam +2d6 pontos de dano contra criaturas surpreendidas.",
+      "sourcePage": 79,
+      "summaries": {
+        "pt-BR": "Os ataques do mercenário causam +2d6 pontos de dano contra criaturas surpreendidas."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.liberdade_irrestrita",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Liberdade Irrestrita",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Você recebe +2 em testes de manobra para evitar ser agarrado e de resistência contra efeitos mentais, de medo, de metamorfose e de movimento. Além disso, se falhar num desses testes, pode rolá-lo novamente. Se ainda assim falhar, no início de cada um de seus turnos pode rolar esse teste novamente, como uma ação livre e com um bônus cumulativo de +2, até se libertar.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Devoto de Gwendolynn",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "concedido"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 17,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.liberdade_irrestrita",
+      "name": "Liberdade Irrestrita",
+      "category": "concedido",
+      "prerequisites": "Devoto de Gwendolynn",
+      "description": "Você recebe +2 em testes de manobra para evitar ser agarrado e de resistência contra efeitos mentais, de medo, de metamorfose e de movimento. Além disso, se falhar num desses testes, pode rolá-lo novamente. Se ainda assim falhar, no início de cada um de seus turnos pode rolar esse teste novamente, como uma ação livre e com um bônus cumulativo de +2, até se libertar.",
+      "sourcePage": 17,
+      "summaries": {
+        "pt-BR": "Você recebe +2 em testes de manobra para evitar ser agarrado e de resistência contra efeitos mentais, de medo, de metamorfose e de movimento. Além disso, se falhar num desses testes, pode rolá-lo novamente. Se ainda assim falhar, no início de cada um de seus turnos pode rolar esse teste novamente, como uma ação livre e com um bônus cumulativo de +2, até se libertar."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.protecao_divina_sumo_sacerdote",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Proteção Divina (Sumo-Sacerdote)",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "O sumo-sacerdote é automaticamente bem-sucedido em testes de resistência contra magias divinas lançadas por devotos de sua própria divindade.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sumo-Sacerdote de Divindade Maior",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "sacerdocio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 32,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.protecao_divina_sumo_sacerdote",
+      "name": "Proteção Divina (Sumo-Sacerdote)",
+      "category": "sacerdocio",
+      "prerequisites": "Sumo-Sacerdote de Divindade Maior",
+      "description": "O sumo-sacerdote é automaticamente bem-sucedido em testes de resistência contra magias divinas lançadas por devotos de sua própria divindade.",
+      "sourcePage": 32,
+      "summaries": {
+        "pt-BR": "O sumo-sacerdote é automaticamente bem-sucedido em testes de resistência contra magias divinas lançadas por devotos de sua própria divindade."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.punicao_divina_sumo_sacerdote",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Punição Divina (Sumo-Sacerdote)",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Com uma ação padrão, o sumo-sacerdote cancela as magias divinas e os poderes concedidos de um devoto de sua divindade em sua linha de visão (Vontade evita e o devoto não pode mais ser punido por 24 horas). A punição pode ser revertida com uma ação padrão do sumo-sacerdote ou com uma missão sagrada realizada como parte de um rito de expiação.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sumo-Sacerdote de Divindade Maior",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "sacerdocio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 32,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.punicao_divina_sumo_sacerdote",
+      "name": "Punição Divina (Sumo-Sacerdote)",
+      "category": "sacerdocio",
+      "prerequisites": "Sumo-Sacerdote de Divindade Maior",
+      "description": "Com uma ação padrão, o sumo-sacerdote cancela as magias divinas e os poderes concedidos de um devoto de sua divindade em sua linha de visão (Vontade evita e o devoto não pode mais ser punido por 24 horas). A punição pode ser revertida com uma ação padrão do sumo-sacerdote ou com uma missão sagrada realizada como parte de um rito de expiação.",
+      "sourcePage": 32,
+      "summaries": {
+        "pt-BR": "Com uma ação padrão, o sumo-sacerdote cancela as magias divinas e os poderes concedidos de um devoto de sua divindade em sua linha de visão (Vontade evita e o devoto não pode mais ser punido por 24 horas). A punição pode ser revertida com uma ação padrão do sumo-sacerdote ou com uma missão sagrada realizada como parte de um rito de expiação."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.parceiro_molosso_deheoni",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Parceiro: Molosso Deheoni",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "O molosso deheoni é um parceiro vigilante especial treinado para farejar traição e combater serpentes e cultistas de Sszzaas. Iniciante: você recebe +1 na Defesa e +2 em testes de Intuição e Percepção (muda para +5 contra seres ofídicos e sszzaazitas). Veterano: uma vez por rodada, você recebe +2d6 em uma rolagem de dano corpo a corpo. Mestre: muda o bônus na Defesa para +2 e, uma vez por rodada, quando faz uma investida, você pode fazer a manobra derrubar como uma ação livre.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "parceiro"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 45,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.parceiro_molosso_deheoni",
+      "name": "Parceiro: Molosso Deheoni",
+      "category": "parceiro",
+      "prerequisites": null,
+      "description": "O molosso deheoni é um parceiro vigilante especial treinado para farejar traição e combater serpentes e cultistas de Sszzaas. Iniciante: você recebe +1 na Defesa e +2 em testes de Intuição e Percepção (muda para +5 contra seres ofídicos e sszzaazitas). Veterano: uma vez por rodada, você recebe +2d6 em uma rolagem de dano corpo a corpo. Mestre: muda o bônus na Defesa para +2 e, uma vez por rodada, quando faz uma investida, você pode fazer a manobra derrubar como uma ação livre.",
+      "sourcePage": 45,
+      "summaries": {
+        "pt-BR": "O molosso deheoni é um parceiro vigilante especial treinado para farejar traição e combater serpentes e cultistas de Sszzaas. Iniciante: você recebe +1 na Defesa e +2 em testes de Intuição e Percepção (muda para +5 contra seres ofídicos e sszzaazitas). Veterano: uma vez por rodada, você recebe +2d6 em uma rolagem de dano corpo a corpo. Mestre: muda o bônus na Defesa para +2 e, uma vez por rodada, quando faz uma investida, você pode fazer a manobra derrubar como uma ação livre."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.parceiro_brucutu_iniciante",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Parceiro Contratado: Brucutu Iniciante",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Um brucutu iniciante pode ser contratado por T$ 30 por cena para auxiliá-lo como guarda-costas e combatente auxiliar. Ele acompanha você, contando no limite de parceiros, até que você solicite sua ajuda, momento em que concede seus benefícios de parceiro fortão até o fim da cena.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "parceiro"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 73,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.parceiro_brucutu_iniciante",
+      "name": "Parceiro Contratado: Brucutu Iniciante",
+      "category": "parceiro",
+      "prerequisites": null,
+      "description": "Um brucutu iniciante pode ser contratado por T$ 30 por cena para auxiliá-lo como guarda-costas e combatente auxiliar. Ele acompanha você, contando no limite de parceiros, até que você solicite sua ajuda, momento em que concede seus benefícios de parceiro fortão até o fim da cena.",
+      "sourcePage": 73,
+      "summaries": {
+        "pt-BR": "Um brucutu iniciante pode ser contratado por T$ 30 por cena para auxiliá-lo como guarda-costas e combatente auxiliar. Ele acompanha você, contando no limite de parceiros, até que você solicite sua ajuda, momento em que concede seus benefícios de parceiro fortão até o fim da cena."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.parceiro_brucutu_veterano",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Parceiro Contratado: Brucutu Veterano",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Um brucutu veterano pode ser contratado por T$ 150 por cena para combates de alto risco. Ele acompanha você, contando no limite de parceiros, até que você solicite sua intervenção em batalha, fornecendo robusto auxílio de combate e absorção de golpes até o término da cena.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "parceiro"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 73,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.parceiro_brucutu_veterano",
+      "name": "Parceiro Contratado: Brucutu Veterano",
+      "category": "parceiro",
+      "prerequisites": null,
+      "description": "Um brucutu veterano pode ser contratado por T$ 150 por cena para combates de alto risco. Ele acompanha você, contando no limite de parceiros, até que você solicite sua intervenção em batalha, fornecendo robusto auxílio de combate e absorção de golpes até o término da cena.",
+      "sourcePage": 73,
+      "summaries": {
+        "pt-BR": "Um brucutu veterano pode ser contratado por T$ 150 por cena para combates de alto risco. Ele acompanha você, contando no limite de parceiros, até que você solicite sua intervenção em batalha, fornecendo robusto auxílio de combate e absorção de golpes até o término da cena."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.melhoria_kumshrak_eviscerador",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Melhoria de Kum'shrak: Eviscerador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Uma criatura atingida por um ataque com este kum'shrak fica sangrando (Fortitude CD baseada em Força evita).",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Kum'shrak com 10 ou mais mortes",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "kumshrak"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 36,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.melhoria_kumshrak_eviscerador",
+      "name": "Melhoria de Kum'shrak: Eviscerador",
+      "category": "kumshrak",
+      "prerequisites": "Kum'shrak com 10 ou mais mortes",
+      "description": "Uma criatura atingida por um ataque com este kum'shrak fica sangrando (Fortitude CD baseada em Força evita).",
+      "sourcePage": 36,
+      "summaries": {
+        "pt-BR": "Uma criatura atingida por um ataque com este kum'shrak fica sangrando (Fortitude CD baseada em Força evita)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.melhoria_kumshrak_necrotico",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Melhoria de Kum'shrak: Necrótico",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Uma criatura atingida por um ataque com este kum'shrak fica fraca (Fortitude CD baseada em Força evita).",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Kum'shrak com 10 ou mais mortes",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "kumshrak"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 36,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.melhoria_kumshrak_necrotico",
+      "name": "Melhoria de Kum'shrak: Necrótico",
+      "category": "kumshrak",
+      "prerequisites": "Kum'shrak com 10 ou mais mortes",
+      "description": "Uma criatura atingida por um ataque com este kum'shrak fica fraca (Fortitude CD baseada em Força evita).",
+      "sourcePage": 36,
+      "summaries": {
+        "pt-BR": "Uma criatura atingida por um ataque com este kum'shrak fica fraca (Fortitude CD baseada em Força evita)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.melhoria_kumshrak_peconhento",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Melhoria de Kum'shrak: Peçonhento",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Uma criatura atingida por um ataque com este kum'shrak perde 1d6 pontos de vida imediatos por veneno acumulativo.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Kum'shrak com 10 ou mais mortes",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "kumshrak"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 36,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.melhoria_kumshrak_peconhento",
+      "name": "Melhoria de Kum'shrak: Peçonhento",
+      "category": "kumshrak",
+      "prerequisites": "Kum'shrak com 10 ou mais mortes",
+      "description": "Uma criatura atingida por um ataque com este kum'shrak perde 1d6 pontos de vida imediatos por veneno acumulativo.",
+      "sourcePage": 36,
+      "summaries": {
+        "pt-BR": "Uma criatura atingida por um ataque com este kum'shrak perde 1d6 pontos de vida imediatos por veneno acumulativo."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.ajuste_npc_anao",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Ajuste de NPC: Anão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Modificador para NPCs anões: Constituição +1, Destreza -1, Fortitude +1, Reflexos -1, +2 PV por ND, recebe Visão no Escuro, muda deslocamento para 6m e arma corpo a corpo para machado anão (+1 em testes de ataque com o machado).",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "ajuste_npc"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 67,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.ajuste_npc_anao",
+      "name": "Ajuste de NPC: Anão",
+      "category": "ajuste_npc",
+      "prerequisites": null,
+      "description": "Modificador para NPCs anões: Constituição +1, Destreza -1, Fortitude +1, Reflexos -1, +2 PV por ND, recebe Visão no Escuro, muda deslocamento para 6m e arma corpo a corpo para machado anão (+1 em testes de ataque com o machado).",
+      "sourcePage": 67,
+      "summaries": {
+        "pt-BR": "Modificador para NPCs anões: Constituição +1, Destreza -1, Fortitude +1, Reflexos -1, +2 PV por ND, recebe Visão no Escuro, muda deslocamento para 6m e arma corpo a corpo para machado anão (+1 em testes de ataque com o machado)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.ajuste_npc_dahllan",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Ajuste de NPC: Dahllan",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Modificador para NPCs dahllan: Sabedoria +1, Inteligência -1, Percepção +1, Vontade +1, recebe Empatia Selvagem e uma vez por cena pode lançar a magia Controlar Plantas.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "ajuste_npc"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 67,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.ajuste_npc_dahllan",
+      "name": "Ajuste de NPC: Dahllan",
+      "category": "ajuste_npc",
+      "prerequisites": null,
+      "description": "Modificador para NPCs dahllan: Sabedoria +1, Inteligência -1, Percepção +1, Vontade +1, recebe Empatia Selvagem e uma vez por cena pode lançar a magia Controlar Plantas.",
+      "sourcePage": 67,
+      "summaries": {
+        "pt-BR": "Modificador para NPCs dahllan: Sabedoria +1, Inteligência -1, Percepção +1, Vontade +1, recebe Empatia Selvagem e uma vez por cena pode lançar a magia Controlar Plantas."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.ajuste_npc_elfo",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Ajuste de NPC: Elfo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Modificador para NPCs elfos: Inteligência +1, Constituição -1, Percepção +2, Fortitude -1, -1 PV por nível/ND, deslocamento +3m.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "ajuste_npc"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 67,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.ajuste_npc_elfo",
+      "name": "Ajuste de NPC: Elfo",
+      "category": "ajuste_npc",
+      "prerequisites": null,
+      "description": "Modificador para NPCs elfos: Inteligência +1, Constituição -1, Percepção +2, Fortitude -1, -1 PV por nível/ND, deslocamento +3m.",
+      "sourcePage": 67,
+      "summaries": {
+        "pt-BR": "Modificador para NPCs elfos: Inteligência +1, Constituição -1, Percepção +2, Fortitude -1, -1 PV por nível/ND, deslocamento +3m."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.ajuste_npc_goblin",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Ajuste de NPC: Goblin",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Modificador para NPCs goblins: Destreza +1, Carisma -1, tamanho Pequeno, Iniciativa +1, Defesa +1, Fortitude +2, Reflexos +1, recebe Visão no Escuro e deslocamento de escalada igual ao deslocamento terrestre.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "ajuste_npc"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 67,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.ajuste_npc_goblin",
+      "name": "Ajuste de NPC: Goblin",
+      "category": "ajuste_npc",
+      "prerequisites": null,
+      "description": "Modificador para NPCs goblins: Destreza +1, Carisma -1, tamanho Pequeno, Iniciativa +1, Defesa +1, Fortitude +2, Reflexos +1, recebe Visão no Escuro e deslocamento de escalada igual ao deslocamento terrestre.",
+      "sourcePage": 67,
+      "summaries": {
+        "pt-BR": "Modificador para NPCs goblins: Destreza +1, Carisma -1, tamanho Pequeno, Iniciativa +1, Defesa +1, Fortitude +2, Reflexos +1, recebe Visão no Escuro e deslocamento de escalada igual ao deslocamento terrestre."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.ajuste_npc_hynne",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Ajuste de NPC: Hynne",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Modificador para NPCs hynne: Destreza +1, Força -1, tamanho Pequeno, Iniciativa +1, Defesa +1, Reflexos +1, deslocamento -3m, -1 em testes de ataque e dano corpo a corpo, recebe um ataque à distância com funda.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "ajuste_npc"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 67,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.ajuste_npc_hynne",
+      "name": "Ajuste de NPC: Hynne",
+      "category": "ajuste_npc",
+      "prerequisites": null,
+      "description": "Modificador para NPCs hynne: Destreza +1, Força -1, tamanho Pequeno, Iniciativa +1, Defesa +1, Reflexos +1, deslocamento -3m, -1 em testes de ataque e dano corpo a corpo, recebe um ataque à distância com funda.",
+      "sourcePage": 67,
+      "summaries": {
+        "pt-BR": "Modificador para NPCs hynne: Destreza +1, Força -1, tamanho Pequeno, Iniciativa +1, Defesa +1, Reflexos +1, deslocamento -3m, -1 em testes de ataque e dano corpo a corpo, recebe um ataque à distância com funda."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.ajuste_npc_lefou",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Ajuste de NPC: Lefou",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Modificador para NPCs lefou: Carisma -1, recebe +2 em uma perícia ou um poder da Tormenta à escolha do mestre.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "ajuste_npc"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 67,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.ajuste_npc_lefou",
+      "name": "Ajuste de NPC: Lefou",
+      "category": "ajuste_npc",
+      "prerequisites": null,
+      "description": "Modificador para NPCs lefou: Carisma -1, recebe +2 em uma perícia ou um poder da Tormenta à escolha do mestre.",
+      "sourcePage": 67,
+      "summaries": {
+        "pt-BR": "Modificador para NPCs lefou: Carisma -1, recebe +2 em uma perícia ou um poder da Tormenta à escolha do mestre."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.ajuste_npc_minotauro",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Ajuste de NPC: Minotauro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Modificador para NPCs minotauros: Força +1, Sabedoria -1, Defesa +1, Vontade -1, recebe um ataque de chifres (teste de ataque igual ao ataque corpo a corpo, dano 1d6+Força), +1 em testes de ataque e dano corpo a corpo, recebe Faro e Medo de Altura.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "ajuste_npc"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 67,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.ajuste_npc_minotauro",
+      "name": "Ajuste de NPC: Minotauro",
+      "category": "ajuste_npc",
+      "prerequisites": null,
+      "description": "Modificador para NPCs minotauros: Força +1, Sabedoria -1, Defesa +1, Vontade -1, recebe um ataque de chifres (teste de ataque igual ao ataque corpo a corpo, dano 1d6+Força), +1 em testes de ataque e dano corpo a corpo, recebe Faro e Medo de Altura.",
+      "sourcePage": 67,
+      "summaries": {
+        "pt-BR": "Modificador para NPCs minotauros: Força +1, Sabedoria -1, Defesa +1, Vontade -1, recebe um ataque de chifres (teste de ataque igual ao ataque corpo a corpo, dano 1d6+Força), +1 em testes de ataque e dano corpo a corpo, recebe Faro e Medo de Altura."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.ajuste_npc_qareen",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Ajuste de NPC: Qareen",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Modificador para NPCs qareen: Carisma +1, Sabedoria -1, Percepção -1, Vontade -1, recebe Tatuagem Mística (uma vez por cena pode lançar uma magia específica de 1º círculo).",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "ajuste_npc"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 67,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.ajuste_npc_qareen",
+      "name": "Ajuste de NPC: Qareen",
+      "category": "ajuste_npc",
+      "prerequisites": null,
+      "description": "Modificador para NPCs qareen: Carisma +1, Sabedoria -1, Percepção -1, Vontade -1, recebe Tatuagem Mística (uma vez por cena pode lançar uma magia específica de 1º círculo).",
+      "sourcePage": 67,
+      "summaries": {
+        "pt-BR": "Modificador para NPCs qareen: Carisma +1, Sabedoria -1, Percepção -1, Vontade -1, recebe Tatuagem Mística (uma vez por cena pode lançar uma magia específica de 1º círculo)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.ajuste_npc_sereia",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Ajuste de NPC: Sereia",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Modificador para NPCs sereias/tritões: deslocamento de natação 12m e pode lançar uma das magias a seguir uma vez por cena: Amedrontar, Comando, Despedaçar, Enfeitiçar, Hipnotismo ou Sono.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "ajuste_npc"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 67,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.ajuste_npc_sereia",
+      "name": "Ajuste de NPC: Sereia",
+      "category": "ajuste_npc",
+      "prerequisites": null,
+      "description": "Modificador para NPCs sereias/tritões: deslocamento de natação 12m e pode lançar uma das magias a seguir uma vez por cena: Amedrontar, Comando, Despedaçar, Enfeitiçar, Hipnotismo ou Sono.",
+      "sourcePage": 67,
+      "summaries": {
+        "pt-BR": "Modificador para NPCs sereias/tritões: deslocamento de natação 12m e pode lançar uma das magias a seguir uma vez por cena: Amedrontar, Comando, Despedaçar, Enfeitiçar, Hipnotismo ou Sono."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.ajuste_npc_suraggel",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Ajuste de NPC: Suraggel",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Modificador para NPCs suraggel: Sabedoria +1 e pode lançar Luz (aggelus); Destreza +1 e pode lançar Escuridão (sulfure). Ambos são do tipo espírito e recebem Visão no Escuro.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "ajuste_npc"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 68,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.ajuste_npc_suraggel",
+      "name": "Ajuste de NPC: Suraggel",
+      "category": "ajuste_npc",
+      "prerequisites": null,
+      "description": "Modificador para NPCs suraggel: Sabedoria +1 e pode lançar Luz (aggelus); Destreza +1 e pode lançar Escuridão (sulfure). Ambos são do tipo espírito e recebem Visão no Escuro.",
+      "sourcePage": 68,
+      "summaries": {
+        "pt-BR": "Modificador para NPCs suraggel: Sabedoria +1 e pode lançar Luz (aggelus); Destreza +1 e pode lançar Escuridão (sulfure). Ambos são do tipo espírito e recebem Visão no Escuro."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.npcs.feat.ajuste_npc_trog",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Ajuste de NPC: Trog",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Modificador para NPCs trogs: Constituição +1, Inteligência -1, Defesa +1, Fortitude +1, +2 PV por ND, recebe um ataque de mordida (dano 1d6+Força), Sangue Frio e Mau Cheiro.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "npc",
+      "ajuste_npc"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-npcs",
+    "source_book": "Tormenta20 - Guia de NPCs",
+    "source_page": 68,
+    "created_at": "2026-10-14T23:31:08.677Z",
+    "updated_at": "2026-10-14T23:31:08.677Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.npcs.feat.ajuste_npc_trog",
+      "name": "Ajuste de NPC: Trog",
+      "category": "ajuste_npc",
+      "prerequisites": null,
+      "description": "Modificador para NPCs trogs: Constituição +1, Inteligência -1, Defesa +1, Fortitude +1, +2 PV por ND, recebe um ataque de mordida (dano 1d6+Força), Sangue Frio e Mau Cheiro.",
+      "sourcePage": 68,
+      "summaries": {
+        "pt-BR": "Modificador para NPCs trogs: Constituição +1, Inteligência -1, Defesa +1, Fortitude +1, +2 PV por ND, recebe um ataque de mordida (dano 1d6+Força), Sangue Frio e Mau Cheiro."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]
