@@ -26,7 +26,8 @@
     "systemId": "dnd35",
     "ruleset": "v35-arc",
     "categories": {
-      "class": 3
+      "class": 3,
+      "feat": 63
     }
   },
   {

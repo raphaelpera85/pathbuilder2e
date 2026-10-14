@@ -7,6 +7,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { DND35_ARC_BASE_CLASSES } from "../src/data/dnd35/dnd35ArcClasses";
+import { DND35_ARC_FEATS } from "../src/data/dnd35/dnd35ArcFeats";
 
 const BOOK = "D&D 3.5 — O Livro Completo do Arcano";
 const RULESET = "v35-arc";
@@ -51,3 +52,16 @@ const dir = join(process.cwd(), "src", "data", "catalog", "snapshots", "dnd35", 
 mkdirSync(dir, { recursive: true });
 writeFileSync(join(dir, "class.json"), `${JSON.stringify(classes, null, 2)}\n`, "utf8");
 console.log(`class=${classes.length}`);
+
+const feats = DND35_ARC_FEATS.map((f) => ({
+  id: `dnd35.arc.feat.${f.id}`,
+  ...names(f.name, f.benefit),
+  feat_type: f.category === "geral" ? "general" : f.category,
+  level: 1,
+  prerequisites: f.prerequisites,
+  ...common(f.page),
+  data: f,
+}));
+writeFileSync(join(dir, "feat.json"), `${JSON.stringify(feats, null, 2)}\n`, "utf8");
+console.log(`feat=${feats.length}`);
+

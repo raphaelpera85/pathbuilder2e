@@ -1,0 +1,730 @@
+/**
+ * D&D 3.5 — O Livro Completo do Arcano (ed. Devir Brasil, 2007)
+ * Capítulo 3: Talentos (pp. 71–86).
+ * Total: 63 talentos oficiais (28 Gerais, 9 Dracônicos, 26 Metamágicos).
+ * Ruleset: "v35-arc"
+ */
+
+export type Dnd35ArcFeatCategory = "geral" | "draconico" | "metamagico";
+
+export interface Dnd35ArcFeat {
+  id: string;
+  name: string;
+  nameEn: string;
+  category: Dnd35ArcFeatCategory;
+  page: number;
+  prerequisites: string[];
+  benefit: string;
+  normal?: string;
+  special?: string;
+}
+
+export const DND35_ARC_FEATS: Dnd35ArcFeat[] = [
+  {
+    "id": "arc-feat-alma-do-norte",
+    "name": "Alma do Norte",
+    "nameEn": "Born of the Three Thunders / Northern Soul",
+    "category": "geral",
+    "page": 73,
+    "prerequisites": [],
+    "benefit": "Um talento inato para a magia lhe concede as seguintes habilidades similares a magia como um conjurador de 1º nível: 1/dia — raio de gelo, toque gélido. A CD para o teste de resistência contra essas habilidades é 10 + nível da magia + modificador de Carisma."
+  },
+  {
+    "id": "arc-feat-assombracao-noturna",
+    "name": "Assombração Noturna",
+    "nameEn": "Night Haunt",
+    "category": "geral",
+    "page": 77,
+    "prerequisites": [],
+    "benefit": "Um talento inato para a magia lhe concede as seguintes habilidades similares a magia como um conjurador de 1º nível: 1/dia — globos de luz, som fantasma, escuridão. A CD para o teste de resistência é 10 + nível da magia + modificador de Carisma."
+  },
+  {
+    "id": "arc-feat-ataque-com-varinha",
+    "name": "Ataque com Varinha",
+    "nameEn": "Wandstrike",
+    "category": "geral",
+    "page": 77,
+    "prerequisites": [
+      "Usar Instrumento Mágico 4 graduações"
+    ],
+    "benefit": "O personagem pode realizar um ataque de toque corpo a corpo com uma varinha segurada. Se atingir, a varinha descarrega sua magia no alvo e inflige 1d6 pontos de dano adicionais. Esse ataque não provoca ataque de oportunidade e consome 1 carga normalmente."
+  },
+  {
+    "id": "arc-feat-comunicador",
+    "name": "Comunicador",
+    "nameEn": "Communicator",
+    "category": "geral",
+    "page": 78,
+    "prerequisites": [],
+    "benefit": "Um talento inato para a magia lhe concede as seguintes habilidades similares a magia como um conjurador de 1º nível: 1/dia — mensagem floral, mensagem, compreender idiomas. A CD para o teste de resistência é 10 + nível da magia + modificador de Carisma."
+  },
+  {
+    "id": "arc-feat-conjurador-belico",
+    "name": "Conjurador Bélico",
+    "nameEn": "Battle Caster",
+    "category": "geral",
+    "page": 78,
+    "prerequisites": [
+      "Capacidade de ignorar a chance de falha de magia arcana de armaduras"
+    ],
+    "benefit": "O personagem aprende a usar uma categoria de armadura mais pesada do que normalmente permitida por sua característica de conjuração sem sofrer a chance de falha de magia arcana (por exemplo, armadura média em vez de leve, ou pesada em vez de média)."
+  },
+  {
+    "id": "arc-feat-conjurador-experiente",
+    "name": "Conjurador Experiente",
+    "nameEn": "Practiced Caster",
+    "category": "geral",
+    "page": 78,
+    "prerequisites": [
+      "Identificar Magia 4 graduações"
+    ],
+    "benefit": "O nível de conjurador para uma classe de conjuração selecionada aumenta em +4, até um máximo equivalente aos seus Dados de Vida totais. Esse benefício aprimora todas as variáveis dependentes do nível de conjurador (alcance, duração, dano e testes de nível de conjurador), mas não concede magias adicionais por dia nem acesso a novos círculos de magia.",
+    "special": "É possível escolher este talento várias vezes; seus efeitos não se acumulam. A cada escolha, aplica-se a uma nova classe de conjurador."
+  },
+  {
+    "id": "arc-feat-defesa-arcana",
+    "name": "Defesa Arcana",
+    "nameEn": "Arcane Defense",
+    "category": "geral",
+    "page": 79,
+    "prerequisites": [
+      "Foco em Magia na escola selecionada"
+    ],
+    "benefit": "O personagem recebe +3 de bônus de competência nos testes de resistência contra magias e efeitos da escola de magia selecionada para a qual possui o talento Foco em Magia.",
+    "special": "É possível escolher este talento várias vezes; a cada escolha, aplica-se a uma escola de magia diferente."
+  },
+  {
+    "id": "arc-feat-elevar-habilidade-similar-a-magia",
+    "name": "Elevar Habilidade Similar a Magia",
+    "nameEn": "Heighten Spell-Like Ability",
+    "category": "geral",
+    "page": 80,
+    "prerequisites": [
+      "Habilidade similar a magia com nível de conjurador 6º ou superior"
+    ],
+    "benefit": "Até três vezes por dia, o personagem pode utilizar uma de suas habilidades similares a magia como se estivesse sob o efeito do talento Elevar Magia, elevando o círculo da magia até o equivalente ao mais alto círculo de magia que um conjurador do seu nível de conjurador poderia lançar.",
+    "special": "É possível escolher este talento várias vezes para aplicá-lo a outras habilidades similares a magia."
+  },
+  {
+    "id": "arc-feat-especializacao-em-magias-a-distancia",
+    "name": "Especialização em Magias à Distância",
+    "nameEn": "Ranged Spell Specialization",
+    "category": "geral",
+    "page": 80,
+    "prerequisites": [
+      "Foco em Arma (magias à distância)",
+      "Nível de conjurador 4º"
+    ],
+    "benefit": "O personagem recebe +2 de bônus nas jogadas de dano com magias à distância que inflijam dano a pontos de vida e acertem alvos a até 9 metros de distância. Se a magia produzir múltiplos projéteis ou raios, o dano adicional se aplica a apenas um projétil."
+  },
+  {
+    "id": "arc-feat-especializacao-em-magias-de-toque",
+    "name": "Especialização em Magias de Toque",
+    "nameEn": "Touch Spell Specialization",
+    "category": "geral",
+    "page": 80,
+    "prerequisites": [
+      "Foco em Arma (magias de toque)",
+      "Nível de conjurador 4º"
+    ],
+    "benefit": "O personagem recebe +2 de bônus nas jogadas de dano com magias de toque que inflijam dano a pontos de vida."
+  },
+  {
+    "id": "arc-feat-espirito-guardiao-adicional",
+    "name": "Espírito Guardião Adicional",
+    "nameEn": "Extra Watchful Spirit",
+    "category": "geral",
+    "page": 80,
+    "prerequisites": [
+      "Habilidade de classe espírito vigilante"
+    ],
+    "benefit": "O personagem pode utilizar sua habilidade de classe espírito vigilante uma vez adicional por dia (duas vezes por dia no total), permitindo rolar novamente uma jogada de iniciativa antes que sua posição na ordem de ação seja anunciada."
+  },
+  {
+    "id": "arc-feat-invocacao-adicional",
+    "name": "Invocação Adicional",
+    "nameEn": "Extra Invocation",
+    "category": "geral",
+    "page": 81,
+    "prerequisites": [
+      "Capacidade de utilizar invocações menores"
+    ],
+    "benefit": "O bruxo aprende uma invocação adicional. A invocação escolhida deve pertencer a um grau inferior ao grau mais alto que o bruxo é capaz de utilizar (por exemplo, se pode usar invocações menores, deve escolher uma invocação mínima; se pode usar invocações maiores, pode escolher uma mínima ou menor).",
+    "special": "É possível escolher este talento várias vezes; a cada escolha aprende-se uma nova invocação."
+  },
+  {
+    "id": "arc-feat-lugar-adicional",
+    "name": "Lugar Adicional",
+    "nameEn": "Extra Spell Slot",
+    "category": "geral",
+    "page": 81,
+    "prerequisites": [
+      "4º nível de conjurador"
+    ],
+    "benefit": "O personagem recebe um espaço de magia adicional por dia de qualquer círculo até um círculo abaixo do nível máximo de magia que é capaz de conjurar (por exemplo, um mago de 4º nível capaz de lançar magias de 2º nível pode obter um espaço adicional de 1º nível).",
+    "special": "É possível escolher este talento várias vezes; a cada vez recebe-se um novo espaço de magia adicional."
+  },
+  {
+    "id": "arc-feat-maestria-arcana",
+    "name": "Maestria Arcana",
+    "nameEn": "Arcane Mastery",
+    "category": "geral",
+    "page": 81,
+    "prerequisites": [
+      "Capacidade de conjurar magias, invocações ou habilidades similares a magia",
+      "Nível de conjurador"
+    ],
+    "benefit": "O personagem pode escolher 10 em qualquer teste de nível de conjurador (como testes para superar Resistência à Magia ou testes de dissipar), mesmo sob pressão, distração ou ameaça."
+  },
+  {
+    "id": "arc-feat-magia-adicional",
+    "name": "Magia Adicional",
+    "nameEn": "Extra Spell",
+    "category": "geral",
+    "page": 81,
+    "prerequisites": [
+      "3º nível de conjurador"
+    ],
+    "benefit": "O personagem aprende uma magia adicional de qualquer círculo até um círculo abaixo do nível máximo de magia que é capaz de conjurar. Para conjuradores espontâneos (como feiticeiros e bardos), essa magia é adicionada à sua lista de magias conhecidas permanente.",
+    "special": "É possível escolher este talento várias vezes; a cada vez aprende-se uma nova magia."
+  },
+  {
+    "id": "arc-feat-magia-inata",
+    "name": "Magia Inata",
+    "nameEn": "Innate Spell",
+    "category": "geral",
+    "page": 82,
+    "prerequisites": [
+      "Acelerar Magia",
+      "Magia Silenciosa",
+      "Magia Sem Gestos"
+    ],
+    "benefit": "O personagem escolhe uma magia que conheça. Ele agora é capaz de conjurar essa magia uma vez por rodada como uma habilidade similar a magia, sem componentes verbais, gestuais ou materiais (a menos que exijam XP ou componentes de alto valor). Para adquirir este talento, o personagem deve sacrificar permanentemente um espaço de magia de oito círculos acima do nível da magia escolhida."
+  },
+  {
+    "id": "arc-feat-magia-secreta-adicional",
+    "name": "Magia Secreta Adicional",
+    "nameEn": "Extra Secret",
+    "category": "geral",
+    "page": 82,
+    "prerequisites": [
+      "Habilidade de classe magia secreta",
+      "Capacidade de conjurar magias de 2º nível"
+    ],
+    "benefit": "O wu jen pode escolher uma magia conhecida adicional e aplicar permanentemente uma modificação da habilidade magia secreta (Aumentar Magia, Estender Magia, Magia Sem Gestos ou Magia Silenciosa).",
+    "special": "É possível escolher este talento várias vezes."
+  },
+  {
+    "id": "arc-feat-manipulador-arrojado-de-varinhas",
+    "name": "Manipulador Arrojado de Varinhas",
+    "nameEn": "Reckless Wand Wielder",
+    "category": "geral",
+    "page": 82,
+    "prerequisites": [
+      "Usar Instrumento Mágico 1 graduação",
+      "Criar Varinha"
+    ],
+    "benefit": "Ao ativar uma varinha, o personagem pode gastar uma carga adicional para aumentar o nível de conjurador da magia em +2 para aquela ativação."
+  },
+  {
+    "id": "arc-feat-maos-misticas",
+    "name": "Mãos Místicas",
+    "nameEn": "Mystic Hands",
+    "category": "geral",
+    "page": 82,
+    "prerequisites": [],
+    "benefit": "Um talento inato para a magia lhe concede as seguintes habilidades similares a magia como um conjurador de 1º nível: 1/dia — mãos mágicas, abrir/fechar, prestidigitação. A CD para o teste de resistência é 10 + nível da magia + modificador de Carisma."
+  },
+  {
+    "id": "arc-feat-matador-de-magos",
+    "name": "Matador de Magos",
+    "nameEn": "Mage Slayer",
+    "category": "geral",
+    "page": 82,
+    "prerequisites": [
+      "Bônus base de ataque +2",
+      "Identificar Magia 2 graduações"
+    ],
+    "benefit": "O personagem recebe +1 de bônus de competência nos testes de resistência de Vontade. Os conjuradores arcanos e divinos ameaçados pelo personagem em combate corpo a corpo não são capazes de conjurar magias na defensiva (fracassam automaticamente se tentarem e provocam ataques de oportunidade). Como efeito colateral de seu foco antimagia, o nível de conjurador efetivo do próprio personagem diminui em 4 para quaisquer magias ou habilidades que ele mesmo possua.",
+    "special": "Um guerreiro pode escolher Matador de Magos como um de seus talentos adicionais."
+  },
+  {
+    "id": "arc-feat-maximizar-habilidade-similar-a-magia",
+    "name": "Maximizar Habilidade Similar a Magia",
+    "nameEn": "Maximize Spell-Like Ability",
+    "category": "geral",
+    "page": 82,
+    "prerequisites": [
+      "Habilidade similar a magia com nível de conjurador 6º ou superior"
+    ],
+    "benefit": "Até três vezes por dia, o personagem pode utilizar uma de suas habilidades similares a magia com todos os seus efeitos numéricos variáveis maximizados, como se estivesse sob o efeito do talento Maximizar Magia.",
+    "special": "É possível escolher este talento várias vezes para aplicá-lo a outras habilidades similares a magia."
+  },
+  {
+    "id": "arc-feat-nascido-na-necropole",
+    "name": "Nascido na Necrópole",
+    "nameEn": "Necropolis Born",
+    "category": "geral",
+    "page": 83,
+    "prerequisites": [],
+    "benefit": "Um talento inato para a magia lhe concede as seguintes habilidades similares a magia como um conjurador de 1º nível: 1/dia — causar medo, toque da fadiga, raio do enfraquecimento. A CD para o teste de resistência é 10 + nível da magia + modificador de Carisma."
+  },
+  {
+    "id": "arc-feat-obter-familiar",
+    "name": "Obter Familiar",
+    "nameEn": "Obtain Familiar",
+    "category": "geral",
+    "page": 83,
+    "prerequisites": [
+      "Conhecimento (arcano) 4 graduações",
+      "3º nível de conjurador arcano"
+    ],
+    "benefit": "O personagem pode obter um familiar exatamente da mesma forma que um mago ou feiticeiro (consulte a descrição da classe Mago no Livro do Jogador). Os níveis de todas as classes de conjurador arcano se acumulam para determinar as habilidades especiais do familiar."
+  },
+  {
+    "id": "arc-feat-penetrar-camuflagem-magica",
+    "name": "Penetrar Camuflagem Mágica",
+    "nameEn": "Pierce Magical Concealment",
+    "category": "geral",
+    "page": 83,
+    "prerequisites": [
+      "Matador de Magos",
+      "Lutar às Cegas",
+      "Constituição 13"
+    ],
+    "benefit": "Os ataques do personagem ignoram a chance de falha decorrente de efeitos de camuflagem concedidos por magia (como escuridão, névoa obscurecente, invisibilidade, deslocamento e piscar). Ele ainda deve mirar no quadrado correto em caso de invisibilidade total.",
+    "special": "O nível de conjurador do personagem diminui em 4 para quaisquer magias ou habilidades que ele mesmo possua."
+  },
+  {
+    "id": "arc-feat-penetrar-protecao-magica",
+    "name": "Penetrar Proteção Mágica",
+    "nameEn": "Pierce Magical Protection",
+    "category": "geral",
+    "page": 83,
+    "prerequisites": [
+      "Matador de Magos",
+      "Constituição 13"
+    ],
+    "benefit": "Os ataques corpo a corpo do personagem ignoram quaisquer bônus na Classe de Armadura concedidos por magias e efeitos mágicos ativos sobre o alvo (como armadura arcana, escudo arcano, pele de árvore ou escudo da fé). Se o personagem acertar um ataque corpo a corpo, dissipa automaticamente todos os efeitos de proteção na CA ativos no alvo como uma ação livre.",
+    "special": "O nível de conjurador do personagem diminui em 4 para quaisquer magias ou habilidades que ele mesmo possua."
+  },
+  {
+    "id": "arc-feat-portador-da-varinha-dupla",
+    "name": "Portador da Varinha Dupla",
+    "nameEn": "Dual Wand Wielder",
+    "category": "geral",
+    "page": 84,
+    "prerequisites": [
+      "Criar Varinha",
+      "Combater com Duas Armas"
+    ],
+    "benefit": "Empunhando duas varinhas (uma em cada mão), o personagem pode ativar ambas na mesma rodada como uma ação de rodada completa. A segunda varinha consome 2 cargas por ativação em vez de 1."
+  },
+  {
+    "id": "arc-feat-vantagem-adicional",
+    "name": "Vantagem Adicional",
+    "nameEn": "Extra Edge",
+    "category": "geral",
+    "page": 85,
+    "prerequisites": [
+      "1º nível de mago da guerra"
+    ],
+    "benefit": "O dano bônus concedido pela habilidade de classe vantagem do mago da guerra aumenta em +1, mais +1 a cada 4 níveis de mago da guerra (+2 no 4º nível, +3 no 8º, +4 no 12º, +5 no 16º e +6 no 20º)."
+  },
+  {
+    "id": "arc-feat-visionario",
+    "name": "Visionário",
+    "nameEn": "Insightful",
+    "category": "geral",
+    "page": 86,
+    "prerequisites": [],
+    "benefit": "Um talento inato para a magia lhe concede as seguintes habilidades similares a magia como um conjurador de 1º nível: 1/dia — detectar magia, detectar portas secretas, ler magias. A CD para o teste de resistência é 10 + nível da magia + modificador de Carisma."
+  },
+  {
+    "id": "arc-feat-ancestral-draconico",
+    "name": "Ancestral Dracônico",
+    "nameEn": "Draconic Heritage",
+    "category": "draconico",
+    "page": 75,
+    "prerequisites": [
+      "1º nível de feiticeiro"
+    ],
+    "benefit": "O personagem adquire a perícia indicada por seu tipo de dragão ancestral como perícia de classe permanente e recebe um bônus de competência nos testes de resistência contra sono e paralisia igual à quantidade de talentos dracônicos que possuir. Tipos de ancestral: Azul (Eletricidade / Ouvir), Branco (Frio / Equilíbrio), Bronze (Eletricidade / Sobrevivência), Cobre (Ácido / Esconder-se), Latão (Fogo / Obter Informação), Negro (Ácido / Esconder-se), Ouro (Fogo / Cura), Prata (Frio / Disfarces), Verde (Ácido / Furtividade), Vermelho (Fogo / Intimidar)."
+  },
+  {
+    "id": "arc-feat-garras-draconicas",
+    "name": "Garras Dracônicas",
+    "nameEn": "Draconic Claws",
+    "category": "draconico",
+    "page": 81,
+    "prerequisites": [
+      "Ancestral Dracônico"
+    ],
+    "benefit": "O personagem desenvolve garras afiadas em suas mãos como armas naturais que causam 1d6 de dano (se Médio) ou 1d4 (se Pequeno). Além disso, quando conjurar uma magia com tempo de execução de 1 ação padrão, pode realizar um ataque de garra com bônus base como uma ação rápida no mesmo turno."
+  },
+  {
+    "id": "arc-feat-legado-draconico",
+    "name": "Legado Dracônico",
+    "nameEn": "Draconic Legacy",
+    "category": "draconico",
+    "page": 81,
+    "prerequisites": [
+      "Ancestral Dracônico",
+      "Quatro talentos dracônicos quaisquer"
+    ],
+    "benefit": "O personagem adiciona magias à sua lista de magias conhecidas com base em seu ancestral dracônico. Exemplo: dragão vermelho adiciona bola de fogo, muralha de fogo e tempestade de fogo; dragão de prata adiciona névoa obscurecente, tempestade de gelo e cone glacial."
+  },
+  {
+    "id": "arc-feat-pele-draconica",
+    "name": "Pele Dracônica",
+    "nameEn": "Draconic Skin",
+    "category": "draconico",
+    "page": 83,
+    "prerequisites": [
+      "Ancestral Dracônico"
+    ],
+    "benefit": "A pele do personagem adquire escamas brilhantes e sua armadura natural aumenta permanentemente em +1."
+  },
+  {
+    "id": "arc-feat-poder-draconico",
+    "name": "Poder Dracônico",
+    "nameEn": "Draconic Power",
+    "category": "draconico",
+    "page": 84,
+    "prerequisites": [
+      "Ancestral Dracônico"
+    ],
+    "benefit": "O personagem recebe +1 no nível de conjurador e +1 na CD dos testes de resistência para todas as magias que compartilhem o descritor de energia do seu ancestral dracônico (fogo, frio, ácido ou eletricidade)."
+  },
+  {
+    "id": "arc-feat-presenca-draconica",
+    "name": "Presença Dracônica",
+    "nameEn": "Draconic Presence",
+    "category": "draconico",
+    "page": 84,
+    "prerequisites": [
+      "Ancestral Dracônico"
+    ],
+    "benefit": "Sempre que conjurar uma magia, todos os oponentes em um raio de 9 metros com menos Dados de Vida que o personagem devem obter sucesso num teste de resistência de Vontade (CD 10 + nível da magia + mod Car) ou ficarão abalados por um número de rodadas igual ao nível da magia."
+  },
+  {
+    "id": "arc-feat-resistencia-draconica",
+    "name": "Resistência Dracônica",
+    "nameEn": "Draconic Resistance",
+    "category": "draconico",
+    "page": 84,
+    "prerequisites": [
+      "Ancestral Dracônico"
+    ],
+    "benefit": "O personagem adquire resistência à energia correspondente ao tipo de seu ancestral dracônico igual a 3 vezes o número de talentos dracônicos que possuir."
+  },
+  {
+    "id": "arc-feat-sopro-draconico",
+    "name": "Sopro Dracônico",
+    "nameEn": "Draconic Breath",
+    "category": "draconico",
+    "page": 85,
+    "prerequisites": [
+      "Ancestral Dracônico"
+    ],
+    "benefit": "Como uma ação padrão, o personagem pode gastar um espaço de magia para expelir uma rajada de sopro que causa 2d6 pontos de dano por círculo do espaço de magia sacrificado. O sopro assume a forma de um cone de 9 m ou uma linha de 18 m, com direito a teste de Reflexos (CD 10 + nível da magia + mod Car) para metade do dano."
+  },
+  {
+    "id": "arc-feat-voo-draconico",
+    "name": "Voo Dracônico",
+    "nameEn": "Draconic Flight",
+    "category": "draconico",
+    "page": 86,
+    "prerequisites": [
+      "Ancestral Dracônico"
+    ],
+    "benefit": "Sempre que conjurar uma magia com tempo de execução de 1 ação padrão ou superior, asas dracônicas espectrais brotam de suas costas, concedendo deslocamento de voo igual ao seu deslocamento terrestre (boa manobrabilidade) pelo restante da rodada."
+  },
+  {
+    "id": "arc-feat-criar-magia-contingente",
+    "name": "Criar Magia Contingente",
+    "nameEn": "Craft Contingent Spell",
+    "category": "metamagico",
+    "page": 79,
+    "prerequisites": [
+      "11º nível de conjurador"
+    ],
+    "benefit": "O personagem pode gravar uma magia contingente em qualquer criatura viva. Uma magia contingente permanece dormente até que as condições estipuladas no momento de sua criação ocorram, disparando a magia instantaneamente sobre o alvo. O custo de criação equivale a 100 PO x nível da magia x nível de conjurador."
+  },
+  {
+    "id": "arc-feat-acelerar-subito",
+    "name": "Acelerar Súbito",
+    "nameEn": "Quicken Spell, Sudden",
+    "category": "metamagico",
+    "page": 73,
+    "prerequisites": [
+      "Acelerar Magia",
+      "Potencializar Súbito",
+      "Estender Súbito",
+      "Maximizar Súbito",
+      "Silenciar Súbito",
+      "Magia Sem Gestos Súbita"
+    ],
+    "benefit": "Uma vez por dia, o personagem pode conjurar qualquer magia como uma ação rápida sem aumentar o nível da magia ou prepará-la com antecedência."
+  },
+  {
+    "id": "arc-feat-ampliar-magia-subito",
+    "name": "Ampliar Magia Súbito",
+    "nameEn": "Widen Spell, Sudden",
+    "category": "metamagico",
+    "page": 75,
+    "prerequisites": [],
+    "benefit": "Uma vez por dia, o personagem pode duplicar a área de efeito de uma magia que conjurar sem aumentar o nível da magia ou prepará-la com antecedência."
+  },
+  {
+    "id": "arc-feat-conhecimento-negro-de-moil",
+    "name": "Conhecimento Negro de Moil",
+    "nameEn": "Black Lore of Moil",
+    "category": "metamagico",
+    "page": 78,
+    "prerequisites": [
+      "Foco em Magia (necromancia)",
+      "7º nível de conjurador"
+    ],
+    "benefit": "O personagem pode canalizar energia negativa pura em suas magias de necromancia utilizando pequenos ossos runados especialmente preparados. A magia inflige 1d6 pontos de dano adicionais por energia negativa, mais 1d6 a cada dois círculos de magia."
+  },
+  {
+    "id": "arc-feat-corrente-de-magia",
+    "name": "Corrente de Magia",
+    "nameEn": "Chain Spell",
+    "category": "metamagico",
+    "page": 78,
+    "prerequisites": [
+      "Qualquer talento metamágico"
+    ],
+    "benefit": "O personagem pode fazer com que uma magia direcionada a um alvo único produza arcos secundários atingindo um número de alvos secundários igual ao seu nível de conjurador (máximo 20). Os alvos secundários sofrem metade do efeito ou do dano. Uma magia em corrente consome um espaço de magia três círculos superior."
+  },
+  {
+    "id": "arc-feat-dividir-raio",
+    "name": "Dividir Raio",
+    "nameEn": "Split Ray",
+    "category": "metamagico",
+    "page": 79,
+    "prerequisites": [
+      "Qualquer talento metamágico"
+    ],
+    "benefit": "O personagem pode fazer com que qualquer magia que produza um raio dispare um segundo raio no mesmo turno contra um alvo diferente a até 9 metros do alvo primário. Uma magia com raio dividido consome um espaço de magia dois círculos superior."
+  },
+  {
+    "id": "arc-feat-esculpir-magia",
+    "name": "Esculpir Magia",
+    "nameEn": "Sculpt Spell",
+    "category": "metamagico",
+    "page": 80,
+    "prerequisites": [
+      "Qualquer talento metamágico"
+    ],
+    "benefit": "O personagem pode alterar o formato da área de efeito de uma magia para um dos seguintes: cilindro (raio de 3 m, altura de 9 m), cone de 12 m, quatro cubos de 3 m, ou linha de 36 m. Uma magia esculpida consome um espaço de magia um círculo superior."
+  },
+  {
+    "id": "arc-feat-estender-subito",
+    "name": "Estender Súbito",
+    "nameEn": "Extend Spell, Sudden",
+    "category": "metamagico",
+    "page": 80,
+    "prerequisites": [],
+    "benefit": "Uma vez por dia, o personagem pode dobrar a duração de qualquer magia que conjurar sem aumentar o nível da magia ou prepará-la com antecedência."
+  },
+  {
+    "id": "arc-feat-fortificar-magia",
+    "name": "Fortificar Magia",
+    "nameEn": "Fortify Spell",
+    "category": "metamagico",
+    "page": 80,
+    "prerequisites": [
+      "Qualquer talento metamágico"
+    ],
+    "benefit": "O personagem pode conjurar uma magia com seu nível de conjurador efetivo aumentado em até +2 (para superar Resistência à Magia e testes de dissipar) gastando um espaço de magia um ou dois círculos superior."
+  },
+  {
+    "id": "arc-feat-magia-cooperativa",
+    "name": "Magia Cooperativa",
+    "nameEn": "Cooperative Spell",
+    "category": "metamagico",
+    "page": 78,
+    "prerequisites": [
+      "Qualquer talento metamágico"
+    ],
+    "benefit": "Quando o personagem e outro conjurador que também possua este talento conjurarem a mesma magia simultaneamente na mesma rodada, recebem +2 de bônus na CD do teste de resistência e +1 no teste de nível de conjurador para superar Resistência à Magia."
+  },
+  {
+    "id": "arc-feat-magia-do-santuario",
+    "name": "Magia do Santuário",
+    "nameEn": "Sanctum Spell",
+    "category": "metamagico",
+    "page": 82,
+    "prerequisites": [
+      "Qualquer talento metamágico"
+    ],
+    "benefit": "O personagem designa um santuário pessoal de até 6 m de raio. Todas as suas magias conjuradas dentro do santuário têm seu círculo efetivo elevado em +1 (aumentando CD e variáveis); magias conjuradas fora do santuário têm seu círculo reduzido em -1. Uma magia do santuário consome um espaço do círculo normal da magia."
+  },
+  {
+    "id": "arc-feat-magia-explosiva",
+    "name": "Magia Explosiva",
+    "nameEn": "Explosive Spell",
+    "category": "metamagico",
+    "page": 80,
+    "prerequisites": [
+      "Qualquer talento metamágico"
+    ],
+    "benefit": "Magias de dano em área com reflexos que afetem uma área empurram todas as criaturas que fracassarem no teste de Reflexos para o limite da área de efeito, derrubando-as e causando 1d6 de dano adicional por cada 3 metros percorridos. Uma magia explosiva consome um espaço dois círculos superior."
+  },
+  {
+    "id": "arc-feat-magia-geminada",
+    "name": "Magia Geminada",
+    "nameEn": "Twin Spell",
+    "category": "metamagico",
+    "page": 81,
+    "prerequisites": [
+      "Qualquer talento metamágico"
+    ],
+    "benefit": "O personagem conjura a mesma magia duas vezes simultaneamente contra os mesmos alvos ou na mesma área. As criaturas afetadas realizam testes de resistência e sofrem os efeitos de ambas as magias individualmente. Uma magia geminada consome um espaço de magia quatro círculos superior."
+  },
+  {
+    "id": "arc-feat-magia-persistente",
+    "name": "Magia Persistente",
+    "nameEn": "Persistent Spell",
+    "category": "metamagico",
+    "page": 83,
+    "prerequisites": [
+      "Estender Magia"
+    ],
+    "benefit": "Magias com alcance fixo ou alcance pessoal que possuam duração mensurável têm sua duração aumentada para 24 horas contínuas. Magias instantâneas ou com efeitos descarregados não podem ser afetadas. Uma magia persistente consome um espaço de magia seis círculos superior."
+  },
+  {
+    "id": "arc-feat-magia-sem-gestos-subita",
+    "name": "Magia Sem Gestos Súbita",
+    "nameEn": "Still Spell, Sudden",
+    "category": "metamagico",
+    "page": 82,
+    "prerequisites": [],
+    "benefit": "Uma vez por dia, o personagem pode conjurar qualquer magia sem componentes gestuais sem aumentar o nível da magia ou prepará-la com antecedência."
+  },
+  {
+    "id": "arc-feat-magia-transdimensional",
+    "name": "Magia Transdimensional",
+    "nameEn": "Transdimensional Spell",
+    "category": "metamagico",
+    "page": 82,
+    "prerequisites": [
+      "Qualquer talento metamágico"
+    ],
+    "benefit": "A magia afeta normalmente criaturas que estejam no Plano Etéreo, no Plano das Sombras, ou em espaços extradimensionais coexistentes (como truque da corda). Uma magia transdimensional consome um espaço de magia um círculo superior."
+  },
+  {
+    "id": "arc-feat-maximizar-subito",
+    "name": "Maximizar Súbito",
+    "nameEn": "Maximize Spell, Sudden",
+    "category": "metamagico",
+    "page": 82,
+    "prerequisites": [],
+    "benefit": "Uma vez por dia, o personagem pode maximizar todos os efeitos numéricos variáveis de qualquer magia que conjurar sem aumentar o nível da magia ou prepará-la com antecedência."
+  },
+  {
+    "id": "arc-feat-mesclar-energias",
+    "name": "Mesclar Energias",
+    "nameEn": "Energy Admixture",
+    "category": "metamagico",
+    "page": 83,
+    "prerequisites": [
+      "Substituir Energia"
+    ],
+    "benefit": "O personagem escolhe um tipo de energia para o qual possui Substituir Energia (ácido, frio, eletricidade ou fogo). Ao conjurar uma magia de energia, ele adiciona uma quantidade igual de dano do tipo de energia escolhido, dobrando o dano total da magia. Uma magia com energia mesclada consome um espaço de magia quatro círculos superior.",
+    "special": "É possível escolher este talento várias vezes; a cada escolha aplica-se a um tipo de energia diferente."
+  },
+  {
+    "id": "arc-feat-nascido-dos-tres-trovoes",
+    "name": "Nascido dos Três Trovões",
+    "nameEn": "Born of the Three Thunders",
+    "category": "metamagico",
+    "page": 83,
+    "prerequisites": [
+      "Conhecimento (natureza) 4 graduações",
+      "Substituir Energia (eletricidade)"
+    ],
+    "benefit": "O personagem pode fazer com que uma magia de eletricidade ou sônica cause metade do dano por eletricidade e metade por energia sônica. Além disso, as criaturas que sofrerem dano devem ser bem-sucedidas em um teste de Fortitude ou ficarão atordoadas por 1 rodada, e num teste de Reflexos ou serão derrubadas no chão. O esforço deixa o conjurador fatigado por 1 rodada. Uma magia nascida dos três trovões consome um espaço de magia do círculo normal."
+  },
+  {
+    "id": "arc-feat-potencializar-subito",
+    "name": "Potencializar Súbito",
+    "nameEn": "Empower Spell, Sudden",
+    "category": "metamagico",
+    "page": 84,
+    "prerequisites": [],
+    "benefit": "Uma vez por dia, o personagem pode aumentar todos os efeitos numéricos variáveis de qualquer magia que conjurar em 50% sem aumentar o nível da magia ou prepará-la com antecedência."
+  },
+  {
+    "id": "arc-feat-repetir-magia",
+    "name": "Repetir Magia",
+    "nameEn": "Repeat Spell",
+    "category": "metamagico",
+    "page": 84,
+    "prerequisites": [
+      "Qualquer talento metamágico"
+    ],
+    "benefit": "Uma magia repetida é conjurada automaticamente uma segunda vez no início do próximo turno do personagem contra o mesmo alvo ou área, sem custo adicional de ação ou espaço de magia. Uma magia repetida consome um espaço de magia três círculos superior."
+  },
+  {
+    "id": "arc-feat-retardar-magia",
+    "name": "Retardar Magia",
+    "nameEn": "Delay Spell",
+    "category": "metamagico",
+    "page": 84,
+    "prerequisites": [
+      "Qualquer talento metamágico"
+    ],
+    "benefit": "O personagem pode atrasar a detonação ou ativação de uma magia de 1 a 5 rodadas. O atraso é estipulado no momento da conjuração. Uma magia retardada consome um espaço de magia três círculos superior."
+  },
+  {
+    "id": "arc-feat-senhor-do-sudario",
+    "name": "Senhor do Sudário",
+    "nameEn": "Lord of the Uttercold",
+    "category": "metamagico",
+    "page": 85,
+    "prerequisites": [
+      "Conhecimento (os planos) 9 graduações",
+      "Substituir Energia (frio)",
+      "Capacidade de conjurar uma magia com o descritor Frio"
+    ],
+    "benefit": "O personagem pode infundir magias de frio com energia negativa do Sudário Ártico. Metade do dano infligido pela magia provém de frio e a outra metade de energia negativa. Criaturas mortas-vivas são curadas pela metade de energia negativa em vez de sofrer dano. Uma magia do senhor do sudário consome um espaço de magia do círculo normal."
+  },
+  {
+    "id": "arc-feat-silenciar-subito",
+    "name": "Silenciar Súbito",
+    "nameEn": "Silent Spell, Sudden",
+    "category": "metamagico",
+    "page": 85,
+    "prerequisites": [],
+    "benefit": "Uma vez por dia, o personagem pode conjurar qualquer magia sem componentes verbais sem aumentar o nível da magia ou prepará-la com antecedência."
+  },
+  {
+    "id": "arc-feat-substituir-energia",
+    "name": "Substituir Energia",
+    "nameEn": "Energy Substitution",
+    "category": "metamagico",
+    "page": 85,
+    "prerequisites": [
+      "Conhecimento (arcano) 5 graduações",
+      "Qualquer outro talento metamágico"
+    ],
+    "benefit": "O personagem escolhe um tipo de energia: ácido, frio, fogo ou eletricidade. Ele pode alterar o descritor de energia de qualquer magia com descritor de ácido, frio, fogo ou eletricidade para o tipo escolhido. Uma magia com energia substituída consome um espaço de magia do mesmo círculo normal.",
+    "special": "É possível escolher este talento várias vezes; a cada escolha aplica-se a um tipo de energia diferente."
+  },
+  {
+    "id": "arc-feat-substituir-por-contusao",
+    "name": "Substituir por Contusão",
+    "nameEn": "Nonlethal Substitution",
+    "category": "metamagico",
+    "page": 85,
+    "prerequisites": [
+      "Conhecimento (arcano) 5 graduações",
+      "Qualquer talento metamágico"
+    ],
+    "benefit": "O personagem pode modificar qualquer magia que cause dano por energia para que inflija dano por contusão (não letal) em vez de dano letal. Uma magia com substituição por contusão consome um espaço de magia um círculo superior."
+  }
+];
