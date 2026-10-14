@@ -122,6 +122,16 @@
   },
   {
     "systemId": "dnd5e",
+    "ruleset": "dnd5e-scag",
+    "categories": {
+      "ancestry": 4,
+      "background": 12,
+      "spell": 4,
+      "subclass": 11
+    }
+  },
+  {
+    "systemId": "dnd5e",
     "ruleset": "standard",
     "categories": {
       "action": 8,

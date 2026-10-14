@@ -1,0 +1,212 @@
+[
+  {
+    "id": "dnd5e.scag.ancestry.duergar",
+    "name_pt": "Anão Cinzento (Duergar)",
+    "name_en": "Gray Dwarf (Duergar)",
+    "name_es": null,
+    "description_pt": "+2 Constituição, +1 Força; tamanho Médio, deslocamento 7.5m; traços: Visão no Escuro Superior, Resiliência Duergar, Magia Duergar, Sensibilidade à Luz Solar.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "con",
+      "str"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Anão",
+      "Subcomum"
+    ],
+    "traits": [
+      "Visão no Escuro Superior",
+      "Resiliência Duergar",
+      "Magia Duergar",
+      "Sensibilidade à Luz Solar"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 104,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "con": 2,
+        "str": 1
+      },
+      "abilityBonuses": "+2 Constituição, +1 Força",
+      "size": "Médio",
+      "speedMeters": 7.5,
+      "traits": [
+        "Visão no Escuro Superior: 36 metros de visão no escuro.",
+        "Resiliência Duergar: Vantagem em testes de resistência contra ilusões, paralisia e veneno.",
+        "Magia Duergar: Pode conjurar Aumentar/Reduzir (nível 3) e Invisibilidade (nível 5) em si mesmo sem gastar espaço de magia.",
+        "Sensibilidade à Luz Solar: Desvantagem em testes de ataque e testes de Percepção baseados em visão na luz solar direta."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Constituição, +1 Força; tamanho Médio, deslocamento 7.5m; traços: Visão no Escuro Superior, Resiliência Duergar, Magia Duergar, Sensibilidade à Luz Solar."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.ancestry.svirfneblin",
+    "name_pt": "Gnomo das Profundezas (Svirfneblin)",
+    "name_en": "Deep Gnome (Svirfneblin)",
+    "name_es": null,
+    "description_pt": "+2 Inteligência, +1 Destreza; tamanho Pequeno, deslocamento 7.5m; traços: Visão no Escuro Superior, Camuflagem na Pedra, Esperteza Gnômica.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Small",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "int",
+      "dex"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Gnômico",
+      "Subcomum"
+    ],
+    "traits": [
+      "Visão no Escuro Superior",
+      "Camuflagem na Pedra",
+      "Esperteza Gnômica"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 115,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "int": 2,
+        "dex": 1
+      },
+      "abilityBonuses": "+2 Inteligência, +1 Destreza",
+      "size": "Pequeno",
+      "speedMeters": 7.5,
+      "traits": [
+        "Visão no Escuro Superior: 36 metros de visão no escuro.",
+        "Camuflagem na Pedra: Vantagem em testes de Destreza (Furtividade) para se esconder em terreno rochoso.",
+        "Esperteza Gnômica: Vantagem em testes de resistência de Inteligência, Sabedoria e Carisma contra magia."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Inteligência, +1 Destreza; tamanho Pequeno, deslocamento 7.5m; traços: Visão no Escuro Superior, Camuflagem na Pedra, Esperteza Gnômica."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.ancestry.halfling_fantasma",
+    "name_pt": "Halfling Fantasma",
+    "name_en": "Ghostwise Halfling",
+    "name_es": null,
+    "description_pt": "+2 Destreza, +1 Sabedoria; tamanho Pequeno, deslocamento 7.5m; traços: Fala Silenciosa, Sortudo, Corajoso, Agilidade Halfling.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Small",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "dex",
+      "wis"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Halfling"
+    ],
+    "traits": [
+      "Fala Silenciosa",
+      "Sortudo",
+      "Corajoso",
+      "Agilidade Halfling"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 110,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "dex": 2,
+        "wis": 1
+      },
+      "abilityBonuses": "+2 Destreza, +1 Sabedoria",
+      "size": "Pequeno",
+      "speedMeters": 7.5,
+      "traits": [
+        "Fala Silenciosa: Pode se comunicar telepaticamente com qualquer criatura a até 9 metros que conheça pelo menos um idioma.",
+        "Sortudo: Pode rolar novamente 1 em ataque, teste de atributo ou salvaguarda.",
+        "Corajoso: Vantagem em testes de resistência contra ficar amedrontado.",
+        "Agilidade Halfling: Pode se mover através do espaço de criaturas de tamanho maior que o seu."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Destreza, +1 Sabedoria; tamanho Pequeno, deslocamento 7.5m; traços: Fala Silenciosa, Sortudo, Corajoso, Agilidade Halfling."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.ancestry.tiefling_alado",
+    "name_pt": "Tiefling Alado",
+    "name_en": "Winged Tiefling",
+    "name_es": null,
+    "description_pt": "+2 Carisma, +1 Inteligência; tamanho Médio, deslocamento 9m; traços: Asas, Visão no Escuro, Resistência Infernal.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "cha",
+      "int"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Infernal"
+    ],
+    "traits": [
+      "Asas",
+      "Visão no Escuro",
+      "Resistência Infernal"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 118,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "attributeAdjustments": {
+        "cha": 2,
+        "int": 1
+      },
+      "abilityBonuses": "+2 Carisma, +1 Inteligência",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Asas: Possui asas de morcego que concedem deslocamento de voo de 9m quando não estiver usando armadura pesada.",
+        "Visão no Escuro: 18 metros de visão no escuro.",
+        "Resistência Infernal: Resistência a dano de fogo."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Carisma, +1 Inteligência; tamanho Médio, deslocamento 9m; traços: Asas, Visão no Escuro, Resistência Infernal."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]

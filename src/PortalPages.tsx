@@ -115,6 +115,7 @@ const CATALOG_PAGE_SIZE = 100;
 function catalogRulesetLabel(ruleset: string): string {
   const labels: Record<string, string> = {
     standard: "D&D 5e 2014",
+    "dnd5e-scag": "D&D 5e · Guia de Aventureiros da Costa da Espada",
     padrao: "Tormenta20 padrão",
     "t20-ameacas": "Tormenta20 · Ameaças de Arton",
     "t20-atlas": "Tormenta20 · Atlas de Arton",

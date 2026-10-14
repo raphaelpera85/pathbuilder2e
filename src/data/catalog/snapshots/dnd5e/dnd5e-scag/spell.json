@@ -1,0 +1,206 @@
+[
+  {
+    "id": "dnd5e.scag.magia.lamina_efervescente",
+    "name_pt": "Lâmina Efervescente",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Como parte da ação usada para conjurar esta magia, você deve fazer um ataque corpo a corpo com uma arma contra uma criatura dentro do alcance da magia, do contrário a magia falha. Se acertar, o alvo sofre os efeitos normais do ataque e fica envolto em uma energia efervescente até o começo do próximo turno do conjurador. Se o alvo se mover voluntariamente antes disso, ele imediatamente recebe 1d8 de dano trovejante e a magia encerra. No 5º nível o ataque causa +1d8 de dano trovejante e o dano de movimento sobe para 2d8 (+1d8 no 11º e 17º níveis).",
+    "description_en": null,
+    "description_es": null,
+    "rank": 0,
+    "is_cantrip": true,
+    "is_focus": false,
+    "traditions": [],
+    "cast_actions": "1 ação",
+    "range": "1,5m",
+    "targets": null,
+    "duration": "1 rodada",
+    "defense": null,
+    "traits": [
+      "evocacao"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 142,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.scag.magia.lamina_efervescente",
+      "name": "Lâmina Efervescente",
+      "range": "1,5m",
+      "summary": "Truque · evocação · ataque com arma causa dano trovejante extra se o alvo se mover",
+      "category": "magia",
+      "classIds": [
+        "bruxo",
+        "feiticeiro",
+        "mago"
+      ],
+      "spellLevel": 0,
+      "school": "evocacao",
+      "castingTime": "1 ação",
+      "components": "V, M (uma arma)",
+      "duration": "1 rodada",
+      "savingThrow": null,
+      "sourcePage": 142,
+      "summaries": {
+        "pt-BR": "Truque · evocação · ataque com arma causa dano trovejante extra se o alvo se mover"
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.magia.lamina_verde_flamejante",
+    "name_pt": "Lâmina Verde Flamejante",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Como parte da ação usada para conjurar esta magia, você deve fazer um ataque corpo a corpo com uma arma contra uma criatura dentro do alcance da magia, do contrário a magia falha. Se acertar, o alvo sofre os efeitos normais do ataque e uma chama verde salta do alvo até uma criatura que você possa ver a até 1,5m dele, causando dano de fogo igual ao seu modificador de habilidade de conjuração. No 5º nível o ataque causa +1d8 de fogo e a segunda criatura sofre 1d8 + modificador (+1d8 no 11º e 17º níveis).",
+    "description_en": null,
+    "description_es": null,
+    "rank": 0,
+    "is_cantrip": true,
+    "is_focus": false,
+    "traditions": [],
+    "cast_actions": "1 ação",
+    "range": "1,5m",
+    "targets": null,
+    "duration": "Instantânea",
+    "defense": null,
+    "traits": [
+      "evocacao"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 143,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.scag.magia.lamina_verde_flamejante",
+      "name": "Lâmina Verde Flamejante",
+      "range": "1,5m",
+      "summary": "Truque · evocação · ataque com arma salta chama verde para criatura adjacente",
+      "category": "magia",
+      "classIds": [
+        "bruxo",
+        "feiticeiro",
+        "mago"
+      ],
+      "spellLevel": 0,
+      "school": "evocacao",
+      "castingTime": "1 ação",
+      "components": "V, M (uma arma)",
+      "duration": "Instantânea",
+      "savingThrow": null,
+      "sourcePage": 143,
+      "summaries": {
+        "pt-BR": "Truque · evocação · ataque com arma salta chama verde para criatura adjacente"
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.magia.atracao_eletrica",
+    "name_pt": "Atração Elétrica",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Você cria um chicote de energia elétrica em uma criatura à sua escolha que você possa ver dentro do alcance. O alvo deve obter sucesso em um TR de Força ou é puxado 3 metros em linha reta em sua direção e sofre 1d8 de dano elétrico se terminar a até 1,5m de você. O dano aumenta para 2d8 no nível 5, 3d8 no nível 11 e 4d8 no nível 17.",
+    "description_en": null,
+    "description_es": null,
+    "rank": 0,
+    "is_cantrip": true,
+    "is_focus": false,
+    "traditions": [],
+    "cast_actions": "1 ação",
+    "range": "4,5m",
+    "targets": null,
+    "duration": "Instantânea",
+    "defense": "Força",
+    "traits": [
+      "evocacao"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 143,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.scag.magia.atracao_eletrica",
+      "name": "Atração Elétrica",
+      "range": "4,5m",
+      "summary": "Truque · evocação · chicote elétrico puxa alvo 3m e causa dano elétrico",
+      "category": "magia",
+      "classIds": [
+        "bruxo",
+        "feiticeiro",
+        "mago"
+      ],
+      "spellLevel": 0,
+      "school": "evocacao",
+      "castingTime": "1 ação",
+      "components": "V",
+      "duration": "Instantânea",
+      "savingThrow": "Força",
+      "sourcePage": 143,
+      "summaries": {
+        "pt-BR": "Truque · evocação · chicote elétrico puxa alvo 3m e causa dano elétrico"
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.magia.explosao_de_espadas",
+    "name_pt": "Explosão de Espadas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Você cria um círculo momentâneo de lâminas espectrais que lhe rodeiam. Cada criatura dentro do alcance, exceto você, precisa obter sucesso em um TR de Destreza ou sofrerá 1d6 de dano de força. O dano aumenta para 2d6 no nível 5, 3d6 no nível 11 e 4d6 no nível 17.",
+    "description_en": null,
+    "description_es": null,
+    "rank": 0,
+    "is_cantrip": true,
+    "is_focus": false,
+    "traditions": [],
+    "cast_actions": "1 ação",
+    "range": "1,5m",
+    "targets": null,
+    "duration": "Instantânea",
+    "defense": "Destreza",
+    "traits": [
+      "conjuracao"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 143,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.scag.magia.explosao_de_espadas",
+      "name": "Explosão de Espadas",
+      "range": "1,5m",
+      "summary": "Truque · conjuração · círculo momentâneo de lâminas espectrais causa dano de força",
+      "category": "magia",
+      "classIds": [
+        "bruxo",
+        "feiticeiro",
+        "mago"
+      ],
+      "spellLevel": 0,
+      "school": "conjuracao",
+      "castingTime": "1 ação",
+      "components": "V",
+      "duration": "Instantânea",
+      "savingThrow": "Destreza",
+      "sourcePage": 143,
+      "summaries": {
+        "pt-BR": "Truque · conjuração · círculo momentâneo de lâminas espectrais causa dano de força"
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]

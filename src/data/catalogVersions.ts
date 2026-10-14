@@ -16,6 +16,7 @@ export const CURRENT_CATALOG_VERSIONS: Record<string, Record<string, string>> = 
   },
   dnd5e: {
     standard: "dnd5e-standard-2026.09",
+    "dnd5e-scag": "dnd5e-scag-2026.10",
     "2024": "dnd5e-2024-2026.09",
     needs_review: "dnd5e-review-2026.09",
   },

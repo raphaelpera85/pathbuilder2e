@@ -1,0 +1,564 @@
+[
+  {
+    "id": "dnd5e.scag.background.vigia_da_cidade",
+    "name_pt": "Vigia da Cidade",
+    "name_en": "City Watch",
+    "name_es": null,
+    "description_pt": "Perícias: atletismo, intuicao. Idiomas à escolha: 2. Característica: Olhos da Vigia. Equipamento inicial: Uniforme da guarda da cidade, Trombeta para soar alarme, Par de algemas, Conjunto de roupas comuns, Algibeira com 10 po.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atletismo",
+      "intuicao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 145,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "kind": "background",
+      "skillProficiencies": [
+        "atletismo",
+        "intuicao"
+      ],
+      "toolProficiencies": [],
+      "toolChoiceGroups": [],
+      "languageChoices": 2,
+      "feature": "Olhos da Vigia",
+      "featureDescription": "Sua experiência em policiar comunidades lhe concede facilidade para localizar postos da guarda e delegacias locais. Outros membros das forças da ordem o reconhecem como alguém da mesma profissão e cooperam em assuntos de interesse mútuo.",
+      "startingEquipment": [
+        "Uniforme da guarda da cidade",
+        "Trombeta para soar alarme",
+        "Par de algemas",
+        "Conjunto de roupas comuns",
+        "Algibeira com 10 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: atletismo, intuicao. Idiomas à escolha: 2. Característica: Olhos da Vigia. Equipamento inicial: Uniforme da guarda da cidade, Trombeta para soar alarme, Par de algemas, Conjunto de roupas comuns, Algibeira com 10 po."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.background.artesao_do_cla",
+    "name_pt": "Artesão do Clã",
+    "name_en": "Clan Crafter",
+    "name_es": null,
+    "description_pt": "Perícias: historia, intuicao. Idiomas à escolha: 1. Característica: Hospitalidade dos Clãs. Equipamento inicial: Conjunto de ferramentas de artesão, Cinzel de ferro, Símbolo ou sinete do clã, Conjunto de roupas de viajante, Algibeira com 5 po e uma gema de 10 po.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "historia",
+      "intuicao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 145,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "kind": "background",
+      "skillProficiencies": [
+        "historia",
+        "intuicao"
+      ],
+      "toolProficiencies": [
+        "ferramentas_de_artesao"
+      ],
+      "toolChoiceGroups": [],
+      "languageChoices": 1,
+      "feature": "Hospitalidade dos Clãs",
+      "featureDescription": "O respeito pelo ofício de sua corporação ou clã lhe concede abrigo gratuito em fortalezas anãs e oficinas de artífices. Mestres artesãos compartilham recursos de bancada e forja com você mediante cordialidade e respeito mútuo.",
+      "startingEquipment": [
+        "Conjunto de ferramentas de artesão",
+        "Cinzel de ferro",
+        "Símbolo ou sinete do clã",
+        "Conjunto de roupas de viajante",
+        "Algibeira com 5 po e uma gema de 10 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: historia, intuicao. Idiomas à escolha: 1. Característica: Hospitalidade dos Clãs. Equipamento inicial: Conjunto de ferramentas de artesão, Cinzel de ferro, Símbolo ou sinete do clã, Conjunto de roupas de viajante, Algibeira com 5 po e uma gema de 10 po."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.background.academico_recluso",
+    "name_pt": "Acadêmico Recluso",
+    "name_en": "Cloistered Scholar",
+    "name_es": null,
+    "description_pt": "Perícias: historia, arcanismo. Idiomas à escolha: 2. Característica: Biblioteca Reclusa. Equipamento inicial: Conjunto de roupas comuns, Frasco de tinta, Pena de escrever, Folhas de pergaminho, Pequeno livro de notas de estudo, Algibeira com 10 po.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "historia",
+      "arcanismo"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 146,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "kind": "background",
+      "skillProficiencies": [
+        "historia",
+        "arcanismo"
+      ],
+      "toolProficiencies": [],
+      "toolChoiceGroups": [],
+      "languageChoices": 2,
+      "feature": "Biblioteca Reclusa",
+      "featureDescription": "Seu histórico em abadias e monastérios de estudo como Forte da Vela lhe concede livre acesso a arquivos, bibliotecas e salas de pergaminhos protegidas onde acadêmicos convencionais encontram portas fechadas.",
+      "startingEquipment": [
+        "Conjunto de roupas comuns",
+        "Frasco de tinta",
+        "Pena de escrever",
+        "Folhas de pergaminho",
+        "Pequeno livro de notas de estudo",
+        "Algibeira com 10 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: historia, arcanismo. Idiomas à escolha: 2. Característica: Biblioteca Reclusa. Equipamento inicial: Conjunto de roupas comuns, Frasco de tinta, Pena de escrever, Folhas de pergaminho, Pequeno livro de notas de estudo, Algibeira com 10 po."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.background.cortesao",
+    "name_pt": "Cortesão",
+    "name_en": "Courtier",
+    "name_es": null,
+    "description_pt": "Perícias: intuicao, persuasao. Idiomas à escolha: 2. Característica: Acesso à Corte. Equipamento inicial: Conjunto de roupas finas, Carta de apresentação de um nobre aliado, Algibeira com 5 po.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intuicao",
+      "persuasao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 147,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "kind": "background",
+      "skillProficiencies": [
+        "intuicao",
+        "persuasao"
+      ],
+      "toolProficiencies": [],
+      "toolChoiceGroups": [],
+      "languageChoices": 2,
+      "feature": "Acesso à Corte",
+      "featureDescription": "Seu domínio das sutilezas do protocolo nobre e das redes de fofocas palacianas permite que você transite livremente por antecâmaras reais, conseguindo audiências com nobres influentes e magistrados de Faerûn.",
+      "startingEquipment": [
+        "Conjunto de roupas finas",
+        "Carta de apresentação de um nobre aliado",
+        "Algibeira com 5 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: intuicao, persuasao. Idiomas à escolha: 2. Característica: Acesso à Corte. Equipamento inicial: Conjunto de roupas finas, Carta de apresentação de um nobre aliado, Algibeira com 5 po."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.background.agente_da_faccao",
+    "name_pt": "Agente da Facção",
+    "name_en": "Faction Agent",
+    "name_es": null,
+    "description_pt": "Perícias: intuicao, investigacao. Idiomas à escolha: 2. Característica: Abrigo da Facção. Equipamento inicial: Distintivo ou símbolo secreto da facção, Cópia de texto em código cifrado, Conjunto de roupas comuns, Algibeira com 15 po.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intuicao",
+      "investigacao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 147,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "kind": "background",
+      "skillProficiencies": [
+        "intuicao",
+        "investigacao"
+      ],
+      "toolProficiencies": [],
+      "toolChoiceGroups": [],
+      "languageChoices": 2,
+      "feature": "Abrigo da Facção",
+      "featureDescription": "Como membro jurado de uma grande organização (como os Harpistas, a Ordem da Manopla, o Enclave Esmeralda, a Aliança dos Lordes ou os Zhentarim), você possui aliados dispostos a lhe fornecer esconderijo seguro, suprimentos e mensagens secretas.",
+      "startingEquipment": [
+        "Distintivo ou símbolo secreto da facção",
+        "Cópia de texto em código cifrado",
+        "Conjunto de roupas comuns",
+        "Algibeira com 15 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: intuicao, investigacao. Idiomas à escolha: 2. Característica: Abrigo da Facção. Equipamento inicial: Distintivo ou símbolo secreto da facção, Cópia de texto em código cifrado, Conjunto de roupas comuns, Algibeira com 15 po."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.background.viajante_distante",
+    "name_pt": "Viajante Distante",
+    "name_en": "Far Traveler",
+    "name_es": null,
+    "description_pt": "Perícias: intuicao, percepcao. Idiomas à escolha: 1. Característica: Todos os Olhos em Você. Equipamento inicial: Conjunto de roupas de viajante exóticas, Instrumento musical de sua terra natal, Pequeno mapa estilizado de sua região, Pequena joia no valor de 10 po, Algibeira com 5 po.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intuicao",
+      "percepcao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 148,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "kind": "background",
+      "skillProficiencies": [
+        "intuicao",
+        "percepcao"
+      ],
+      "toolProficiencies": [
+        "instrumento_musical"
+      ],
+      "toolChoiceGroups": [],
+      "languageChoices": 1,
+      "feature": "Todos os Olhos em Você",
+      "featureDescription": "Seu sotaque exótico, maneirismos e aparência incomum despertam fascínio e curiosidade onde quer que você viaje ao longo da Costa da Espada, abrindo portas de curiosos e patronos interessados em suas histórias.",
+      "startingEquipment": [
+        "Conjunto de roupas de viajante exóticas",
+        "Instrumento musical de sua terra natal",
+        "Pequeno mapa estilizado de sua região",
+        "Pequena joia no valor de 10 po",
+        "Algibeira com 5 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: intuicao, percepcao. Idiomas à escolha: 1. Característica: Todos os Olhos em Você. Equipamento inicial: Conjunto de roupas de viajante exóticas, Instrumento musical de sua terra natal, Pequeno mapa estilizado de sua região, Pequena joia no valor de 10 po, Algibeira com 5 po."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.background.herdeiro",
+    "name_pt": "Herdeiro",
+    "name_en": "Inheritor",
+    "name_es": null,
+    "description_pt": "Perícias: sobrevivencia, historia. Idiomas à escolha: 1. Característica: Herança Notável. Equipamento inicial: A herança confiada a você, Conjunto de roupas de viajante, Conjunto de ferramentas de jogo, Algibeira com 15 po.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "sobrevivencia",
+      "historia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 150,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "kind": "background",
+      "skillProficiencies": [
+        "sobrevivencia",
+        "historia"
+      ],
+      "toolProficiencies": [
+        "ferramentas_de_jogo"
+      ],
+      "toolChoiceGroups": [],
+      "languageChoices": 1,
+      "feature": "Herança Notável",
+      "featureDescription": "Você é guardião de um legado familiar ou arcano singular — um documento selado, um anel misterioso ou um artefato ancestral — cuja natureza atrai o interesse de sábios, perseguidores ou patronos ao longo de sua jornada.",
+      "startingEquipment": [
+        "A herança confiada a você",
+        "Conjunto de roupas de viajante",
+        "Conjunto de ferramentas de jogo",
+        "Algibeira com 15 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: sobrevivencia, historia. Idiomas à escolha: 1. Característica: Herança Notável. Equipamento inicial: A herança confiada a você, Conjunto de roupas de viajante, Conjunto de ferramentas de jogo, Algibeira com 15 po."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.background.cavaleiro_da_ordem",
+    "name_pt": "Cavaleiro da Ordem",
+    "name_en": "Knight of the Order",
+    "name_es": null,
+    "description_pt": "Perícias: persuasao, religiao. Idiomas à escolha: 1. Característica: Hospitalidade dos Cavaleiros. Equipamento inicial: Conjunto de roupas de viajante, Símbolo ou insígnia da ordem de cavalaria, Estandarte pessoal ou flâmula, Algibeira com 10 po.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "persuasao",
+      "religiao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 151,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "kind": "background",
+      "skillProficiencies": [
+        "persuasao",
+        "religiao"
+      ],
+      "toolProficiencies": [
+        "ferramentas_de_jogo"
+      ],
+      "toolChoiceGroups": [],
+      "languageChoices": 1,
+      "feature": "Hospitalidade dos Cavaleiros",
+      "featureDescription": "Seus votos com uma ordem cavalheiresca reconhecida (como a Ordem do Coração Prateado ou Cavaleiros de Tyr) garantem a você e seus companheiros comida e abrigo em estalagens amigáveis, mosteiros e capelas fortificadas.",
+      "startingEquipment": [
+        "Conjunto de roupas de viajante",
+        "Símbolo ou insígnia da ordem de cavalaria",
+        "Estandarte pessoal ou flâmula",
+        "Algibeira com 10 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: persuasao, religiao. Idiomas à escolha: 1. Característica: Hospitalidade dos Cavaleiros. Equipamento inicial: Conjunto de roupas de viajante, Símbolo ou insígnia da ordem de cavalaria, Estandarte pessoal ou flâmula, Algibeira com 10 po."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.background.mercenario_veterano",
+    "name_pt": "Mercenário Veterano",
+    "name_en": "Mercenary Veteran",
+    "name_es": null,
+    "description_pt": "Perícias: atletismo, persuasao. Idiomas à escolha: 0. Característica: Vida Mercenária. Equipamento inicial: Uniforme de sua antiga companhia mercenária, Insígnia de patente militar, Conjunto de dados de osso ou baralho de cartas, Conjunto de roupas comuns, Algibeira com 10 po.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atletismo",
+      "persuasao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 152,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "kind": "background",
+      "skillProficiencies": [
+        "atletismo",
+        "persuasao"
+      ],
+      "toolProficiencies": [
+        "ferramentas_de_jogo",
+        "veiculos_terrestres"
+      ],
+      "toolChoiceGroups": [],
+      "languageChoices": 0,
+      "feature": "Vida Mercenária",
+      "featureDescription": "Você conhece o modo de operação de tropas mercenárias como os Punhos Flamejantes ou os Escudos Negros. Você sabe como encontrar contratos de armas em tavernas de guarnição e é aceito em acampamentos e fortes militares.",
+      "startingEquipment": [
+        "Uniforme de sua antiga companhia mercenária",
+        "Insígnia de patente militar",
+        "Conjunto de dados de osso ou baralho de cartas",
+        "Conjunto de roupas comuns",
+        "Algibeira com 10 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: atletismo, persuasao. Idiomas à escolha: 0. Característica: Vida Mercenária. Equipamento inicial: Uniforme de sua antiga companhia mercenária, Insígnia de patente militar, Conjunto de dados de osso ou baralho de cartas, Conjunto de roupas comuns, Algibeira com 10 po."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.background.cacador_de_recompensas_urbano",
+    "name_pt": "Caçador de Recompensas Urbano",
+    "name_en": "Urban Bounty Hunter",
+    "name_es": null,
+    "description_pt": "Perícias: furtividade, intuicao. Idiomas à escolha: 0. Característica: Ouvido no Chão. Equipamento inicial: Conjunto de roupas urbanas escuras e práticas, Ferramentas de ladrão, Algibeira com 20 po.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "furtividade",
+      "intuicao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 153,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "kind": "background",
+      "skillProficiencies": [
+        "furtividade",
+        "intuicao"
+      ],
+      "toolProficiencies": [
+        "ferramentas_de_ladrao",
+        "ferramentas_de_jogo"
+      ],
+      "toolChoiceGroups": [],
+      "languageChoices": 0,
+      "feature": "Ouvido no Chão",
+      "featureDescription": "Você possui informantes e contatos nas vielas, tavernas e docas de grandes cidades. Você sabe a quem pagar para obter notícias rápidas sobre fugitivos e o paradeiro de figuras procuradas pela lei.",
+      "startingEquipment": [
+        "Conjunto de roupas urbanas escuras e práticas",
+        "Ferramentas de ladrão",
+        "Algibeira com 20 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: furtividade, intuicao. Idiomas à escolha: 0. Característica: Ouvido no Chão. Equipamento inicial: Conjunto de roupas urbanas escuras e práticas, Ferramentas de ladrão, Algibeira com 20 po."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.background.membro_da_tribo_uthgardt",
+    "name_pt": "Membro da Tribo Uthgardt",
+    "name_en": "Uthgardt Tribe Member",
+    "name_es": null,
+    "description_pt": "Perícias: atletismo, sobrevivencia. Idiomas à escolha: 1. Característica: Herança da Tribo. Equipamento inicial: Conjunto de ferramentas de caça, Roupas de peles de inverno, Pequeno totem de seu animal ancestral, Algibeira com 10 po.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atletismo",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 153,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "kind": "background",
+      "skillProficiencies": [
+        "atletismo",
+        "sobrevivencia"
+      ],
+      "toolProficiencies": [
+        "instrumento_musical"
+      ],
+      "toolChoiceGroups": [],
+      "languageChoices": 1,
+      "feature": "Herança da Tribo",
+      "featureDescription": "Você preserva as lendas, os montes fúnebres sagrados e os costumes ancestrais dos bárbaros Uthgardt. Você é acolhido por membros de tribos amistosas e encontra caça e rotas seguras nos ermos do Norte.",
+      "startingEquipment": [
+        "Conjunto de ferramentas de caça",
+        "Roupas de peles de inverno",
+        "Pequeno totem de seu animal ancestral",
+        "Algibeira com 10 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: atletismo, sobrevivencia. Idiomas à escolha: 1. Característica: Herança da Tribo. Equipamento inicial: Conjunto de ferramentas de caça, Roupas de peles de inverno, Pequeno totem de seu animal ancestral, Algibeira com 10 po."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.scag.background.nobre_de_aguas_profundas",
+    "name_pt": "Nobre de Águas Profundas",
+    "name_en": "Waterdhavian Noble",
+    "name_es": null,
+    "description_pt": "Perícias: historia, persuasao. Idiomas à escolha: 1. Característica: Graça de Águas Profundas. Equipamento inicial: Conjunto de roupas finas, Anel de sinete com o brasão familiar, Pergaminho com a árvore genealógica da casa nobre, Algibeira com 20 po.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "historia",
+      "persuasao"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "dnd5e-scag",
+    "source_book": "D&D 5e · Guia de Aventureiros da Costa da Espada",
+    "source_page": 154,
+    "created_at": "2026-10-14T17:51:04.813Z",
+    "updated_at": "2026-10-14T17:51:04.813Z",
+    "system_id": "dnd5e",
+    "data": {
+      "kind": "background",
+      "skillProficiencies": [
+        "historia",
+        "persuasao"
+      ],
+      "toolProficiencies": [
+        "ferramentas_de_jogo"
+      ],
+      "toolChoiceGroups": [],
+      "languageChoices": 1,
+      "feature": "Graça de Águas Profundas",
+      "featureDescription": "Como descendente de uma das famílias patrícias da Cidade dos Esplendores, seu nome carrega peso e respeito no tribunal dos Lordes Mascarados, permitindo crédito ilimitado em estalagens e acesso à alta sociedade de Faerûn.",
+      "startingEquipment": [
+        "Conjunto de roupas finas",
+        "Anel de sinete com o brasão familiar",
+        "Pergaminho com a árvore genealógica da casa nobre",
+        "Algibeira com 20 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: historia, persuasao. Idiomas à escolha: 1. Característica: Graça de Águas Profundas. Equipamento inicial: Conjunto de roupas finas, Anel de sinete com o brasão familiar, Pergaminho com a árvore genealógica da casa nobre, Algibeira com 20 po."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]
