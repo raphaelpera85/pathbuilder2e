@@ -3,7 +3,7 @@
 // Tabela 4-1, pp. 115-117). 5 armas exóticas completas.
 // ============================================================================
 import { describe, expect, it } from "vitest";
-import { DND35_ADV_WEAPONS } from "./dnd35AdvEquipment";
+import { DND35_ADV_ITEMS, DND35_ADV_WEAPONS } from "./dnd35AdvEquipment";
 
 describe("D&D 3.5 — Livro Completo do Aventureiro: Novas Armas (Tabela 4-1)", () => {
   it("totaliza as 5 armas exóticas da Tabela 4-1, cada uma com id único", () => {
@@ -53,5 +53,50 @@ describe("D&D 3.5 — Livro Completo do Aventureiro: Novas Armas (Tabela 4-1)", 
     const w = DND35_ADV_WEAPONS.find((x) => x.id === "adv-weapon-sabre-rapido")!;
     expect(w.description).toMatch(/\+2 de bônus nas jogadas de ataque resistidas para desarmar um inimigo/);
     expect(w.description).toMatch(/Não é possível empunhar essa arma com as duas mãos para aplicar 1,5 vezes o bônus de Força ao dano/);
+  });
+});
+
+describe("D&D 3.5 — Livro Completo do Aventureiro: Itens Alquímicos, Cápsulas e Ferramentas (Tabelas 4-2 a 4-5)", () => {
+  it("totaliza 36 itens de equipamento novos com IDs únicos", () => {
+    expect(DND35_ADV_ITEMS).toHaveLength(36);
+    const ids = DND35_ADV_ITEMS.map((item) => item.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("cobre todas as 13 substâncias alquímicas da Tabela 4-2 com CD de Ofícios", () => {
+    const alq = DND35_ADV_ITEMS.filter((i) => i.category === "alquimico");
+    expect(alq).toHaveLength(13);
+    for (const item of alq) {
+      expect(item.craftDc).toBeGreaterThanOrEqual(20);
+      expect(item.cost).toMatch(/\d+ PO/);
+    }
+  });
+
+  it("Apertofirme concede +1 em Escalar e Gel-Sabão concede +2 em Arte da Fuga", () => {
+    const aperto = DND35_ADV_ITEMS.find((i) => i.id === "adv-item-apertofirme")!;
+    const gel = DND35_ADV_ITEMS.find((i) => i.id === "adv-item-gel-sabao")!;
+    expect(aperto.description).toMatch(/\+1 de bônus alquímico nos testes de Escalar/);
+    expect(gel.description).toMatch(/\+2 de bônus alquímico nos testes de Arte da Fuga/);
+  });
+
+  it("Cápsula do Vigor permite ignorar restrições da condição zonzo", () => {
+    const vigor = DND35_ADV_ITEMS.find((i) => i.id === "adv-item-capsula-do-vigor")!;
+    expect(vigor.description).toMatch(/ignorar dores e restrições da condição zonzo/);
+    expect(vigor.category).toBe("capsula");
+  });
+
+  it("Cápsulas para armas (Anti-fantasma, Chamas, Faíscas, Gelo, Prata) infligem bônus elementais e especiais", () => {
+    const fantasma = DND35_ADV_ITEMS.find((i) => i.id === "adv-item-capsula-anti-fantasma")!;
+    const chamas = DND35_ADV_ITEMS.find((i) => i.id === "adv-item-capsula-de-chamas-instantaneas")!;
+    expect(fantasma.description).toMatch(/ignorar a chance de falha normal de 50% contra criaturas incorpóreas/);
+    expect(chamas.description).toMatch(/\+1d6 pontos de dano por fogo/);
+  });
+
+  it("Ferramentas de ladrão de longo alcance permitem operar a 1,5m de distância", () => {
+    const norm = DND35_ADV_ITEMS.find((i) => i.id === "adv-item-ferramentas-de-ladrao-longo-alcance")!;
+    const op = DND35_ADV_ITEMS.find((i) => i.id === "adv-item-ferramentas-de-ladrao-longo-alcance-obra-prima")!;
+    expect(norm.description).toMatch(/a até 1,5 m de distância/);
+    expect(norm.description).toMatch(/-2 de penalidade/);
+    expect(op.description).toMatch(/sem qualquer penalidade/);
   });
 });

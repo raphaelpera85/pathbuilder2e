@@ -13,7 +13,7 @@ import { CG_ADV_LADRAO_ARCANO } from "../src/data/dnd35/dnd35AdvLadraoArcano";
 import { CG_ADV_NINJA } from "../src/data/dnd35/dnd35AdvNinja";
 import { CG_ADV_PRESTIGE } from "../src/data/dnd35/dnd35AdvPrestige";
 import { DND35_ADV_FEATS } from "../src/data/dnd35/dnd35AdvFeats";
-import { DND35_ADV_WEAPONS } from "../src/data/dnd35/dnd35AdvEquipment";
+import { DND35_ADV_ITEMS, DND35_ADV_WEAPONS } from "../src/data/dnd35/dnd35AdvEquipment";
 import { DND35_ADV_SPELLS } from "../src/data/dnd35/dnd35AdvSpells";
 
 const BOOK = "D&D 3.5 — Livro Completo do Aventureiro";
@@ -87,4 +87,20 @@ const spells = DND35_ADV_SPELLS.map((s) => ({
 }));
 writeFileSync(join(dir, "spell.json"), `${JSON.stringify(spells, null, 2)}\n`, "utf8");
 console.log(`spell=${spells.length}`);
+
+const items = DND35_ADV_ITEMS.map((item) => ({
+  id: `dnd35.adv.item.${item.id}`,
+  ...names(item.name, item.description),
+  item_category: item.category,
+  level: 0,
+  price_gp: gpFromCost(item.cost),
+  bulk: null,
+  hands: null,
+  traits: [item.category],
+  ...common(118),
+  data: item,
+}));
+writeFileSync(join(dir, "item.json"), `${JSON.stringify(items, null, 2)}\n`, "utf8");
+console.log(`item=${items.length}`);
+
 

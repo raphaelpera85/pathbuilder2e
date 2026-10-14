@@ -18,6 +18,7 @@
     "categories": {
       "class": 29,
       "feat": 33,
+      "item": 36,
       "spell": 70,
       "weapon": 5
     }
