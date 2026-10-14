@@ -26,8 +26,9 @@
     "systemId": "dnd35",
     "ruleset": "v35-arc",
     "categories": {
-      "class": 3,
-      "feat": 63
+      "class": 22,
+      "feat": 63,
+      "spell": 140
     }
   },
   {

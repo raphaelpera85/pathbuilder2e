@@ -1679,5 +1679,2894 @@
         }
       ]
     }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-acolito-da-pele",
+    "name_pt": "Acólito da Pele",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "A sede de poder conduz alguns conjuradores a tomar decisões extremas: substituir a própria pele pela de um ser abissal vivo através do tenebroso Ritual de Vínculo, adquirindo gradualmente poderes e traços de demônios ou diabos. Requisitos: Qualquer uma, exceto Bom; 8 graduações em Conhecimento (os planos); 5º nível de conjurador; Contato pacífico com um extra-planar maligno; Passar pelo Ritual de Vínculo doloroso",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d8",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 19,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-acolito-da-pele",
+      "name": "Acólito da Pele",
+      "page": 19,
+      "hitDie": "d8",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (arcano) (Int)",
+        "Conhecimento (os planos) (Int)",
+        "Identificar Magia (Int)",
+        "Intimidação (Car)",
+        "Ofícios (Int)",
+        "Profissão (Sab)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer uma, exceto Bom",
+        "skills": [
+          "8 graduações em Conhecimento (os planos)"
+        ],
+        "feats": [],
+        "special": [
+          "5º nível de conjurador",
+          "Contato pacífico com um extra-planar maligno",
+          "Passar pelo Ritual de Vínculo doloroso"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 2,
+          "ref": 0,
+          "will": 2,
+          "special": "Usar armadura (pele demoníaca +1), veneno 1/dia",
+          "casterProgression": "—"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 3,
+          "ref": 0,
+          "will": 3,
+          "special": "Resistência a chamas 10",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 1,
+          "will": 3,
+          "special": "Olhar demoníaco 1/dia",
+          "casterProgression": "—"
+        },
+        {
+          "level": 4,
+          "bab": "+3",
+          "fort": 4,
+          "ref": 1,
+          "will": 4,
+          "special": "Destreza demoníaca (+2 Des)",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 5,
+          "bab": "+3",
+          "fort": 4,
+          "ref": 1,
+          "will": 4,
+          "special": "Adaptação da pele (+2 CA natural, +2 Con, visão no escuro 36 m)",
+          "casterProgression": "—"
+        },
+        {
+          "level": 6,
+          "bab": "+4",
+          "fort": 5,
+          "ref": 2,
+          "will": 5,
+          "special": "Resistência ao frio 10",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 7,
+          "bab": "+5",
+          "fort": 5,
+          "ref": 2,
+          "will": 5,
+          "special": "Olhar das profundezas 1/dia",
+          "casterProgression": "—"
+        },
+        {
+          "level": 8,
+          "bab": "+6",
+          "fort": 6,
+          "ref": 2,
+          "will": 6,
+          "special": "Inteligência demoníaca (+2 Int)",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 9,
+          "bab": "+6",
+          "fort": 6,
+          "ref": 3,
+          "will": 6,
+          "special": "Invocar abissal 1/dia",
+          "casterProgression": "—"
+        },
+        {
+          "level": 10,
+          "bab": "+7",
+          "fort": 7,
+          "ref": 3,
+          "will": 7,
+          "special": "Simbiose demoníaca (tipo extra-planar, RD 10/bem)",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        }
+      ],
+      "features": [
+        {
+          "name": "Pele Demoníaca (Ext)",
+          "text": "O acólito da pele recebe +1 de bônus de armadura natural e visão no escuro com alcance de 18 m."
+        },
+        {
+          "name": "Resistência a Chamas (Ext)",
+          "text": "A partir do 2º nível, o personagem adquire resistência a fogo 10."
+        },
+        {
+          "name": "Olhar Demoníaco (Sob)",
+          "text": "No 3º nível, pode abalar oponentes em até 30 m por 10 minutos (Vontade anula ou atordoa)."
+        },
+        {
+          "name": "Destreza Demoníaca (Ext)",
+          "text": "No 4º nível, recebe +2 de bônus inerente no valor de Destreza."
+        },
+        {
+          "name": "Adaptação da Pele (Sob)",
+          "text": "No 5º nível, o bônus de armadura natural aumenta para +2, adquire +2 de Constituição e visão no escuro de 36 m."
+        },
+        {
+          "name": "Resistência ao Frio (Ext)",
+          "text": "No 6º nível, o acólito recebe resistência a frio 10."
+        },
+        {
+          "name": "Olhar das Profundezas (Sob)",
+          "text": "No 7º nível, emite dois raios de fogo dos olhos causando 8d6 de dano de fogo cada (toque à distância)."
+        },
+        {
+          "name": "Inteligência Demoníaca (Ext)",
+          "text": "No 8º nível, adquire +2 de bônus inerente no valor de Inteligência."
+        },
+        {
+          "name": "Invocar Abissal (SM)",
+          "text": "No 9º nível, uma vez ao dia invoca um babau ou diabo das correntes por 1 hora."
+        },
+        {
+          "name": "Simbiose Demoníaca (Ext)",
+          "text": "No 10º nível, o tipo de criatura muda para extra-planar e recebe redução de dano 10/bem."
+        }
+      ],
+      "description": "A sede de poder conduz alguns conjuradores a tomar decisões extremas: substituir a própria pele pela de um ser abissal vivo através do tenebroso Ritual de Vínculo, adquirindo gradualmente poderes e traços de demônios ou diabos."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-acorde-sublime",
+    "name_pt": "Acorde Sublime",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Mestres da canção da criação, os acordes sublimes elevam a música de bardo aos mistérios da magia arcana de alto nível, conjurando feitiços arcanos devastadores de 4º a 9º nível. Requisitos: Qualquer; 13 graduações em Conhecimento (arcano); 13 graduações em Ouvir; 10 graduações em Atuação (qualquer); 6 graduações em Profissão (astrôlogo); 6 graduações em Identificar Magia; Capacidade de conjurar magias arcanas de 3º nível; Habilidade de classe música de bardo",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d6",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 21,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-acorde-sublime",
+      "name": "Acorde Sublime",
+      "page": 21,
+      "hitDie": "d6",
+      "skillPoints": "4 + modificador de Int",
+      "classSkills": [
+        "Atuação (Car)",
+        "Concentração (Con)",
+        "Conhecimento (todos) (Int)",
+        "Decifrar Escrita (Int)",
+        "Diplomacia (Car)",
+        "Identificar Magia (Int)",
+        "Ouvir (Sab)",
+        "Profissão (Sab)",
+        "Sentir Motivação (Sab)",
+        "Usar Instrumento Mágico (Car)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer",
+        "skills": [
+          "13 graduações em Conhecimento (arcano)",
+          "13 graduações em Ouvir",
+          "10 graduações em Atuação (qualquer)",
+          "6 graduações em Profissão (astrôlogo)",
+          "6 graduações em Identificar Magia"
+        ],
+        "feats": [],
+        "special": [
+          "Capacidade de conjurar magias arcanas de 3º nível",
+          "Habilidade de classe música de bardo"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Música do acorde sublime, magia de bardo",
+          "casterProgression": "Lista própria (4º a 9º nível)"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Canção do coração penetrante",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+1",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "—",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "—",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 5,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "—",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 6,
+          "bab": "+3",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "Canção da dissonância cósmica",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 7,
+          "bab": "+3",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "—",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 8,
+          "bab": "+4",
+          "fort": 2,
+          "ref": 2,
+          "will": 6,
+          "special": "—",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 9,
+          "bab": "+4",
+          "fort": 3,
+          "ref": 3,
+          "will": 6,
+          "special": "—",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 10,
+          "bab": "+5",
+          "fort": 3,
+          "ref": 3,
+          "will": 7,
+          "special": "Canção do poder cósmico",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        }
+      ],
+      "features": [
+        {
+          "name": "Magias do Acorde Sublime",
+          "text": "Conjura magias arcanas de 4º a 9º nível escolhidas das listas de bardo e feiticeiro/mago com base no Carisma."
+        },
+        {
+          "name": "Música do Acorde Sublime",
+          "text": "Suas utilizações diárias de música de bardo e acorde sublime são combinadas e podem ativar canções de ambas as classes."
+        },
+        {
+          "name": "Canção do Coração Penetrante (Sob)",
+          "text": "No 2º nível, concentra energia sonora para infligir dano sônico igual a 4d6 + teste de Atuação em linha de 9 m."
+        },
+        {
+          "name": "Canção da Dissonância Cósmica (Sob)",
+          "text": "No 6º nível, cria uma dispersão de 9 m de dissonância que força testes de Concentração para conjurar magias."
+        },
+        {
+          "name": "Canção do Poder Cósmico (Sob)",
+          "text": "No 10º nível, aumenta o nível de conjurador efetivo para conjurações arcanas em até +4 durante o efeito."
+        }
+      ],
+      "description": "Mestres da canção da criação, os acordes sublimes elevam a música de bardo aos mistérios da magia arcana de alto nível, conjurando feitiços arcanos devastadores de 4º a 9º nível."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-arcanamaca-de-suel",
+    "name_pt": "Arcanamaca de Suel",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Guerreiros arcanos de elite treinados no antigo império de Suel, especialistas em abater magos inimigos com armas afiadas e abjurações implacáveis. Requisitos: Qualquer; 4 graduações em Concentração; 4 graduações em Saltar; 5 graduações em Identificar Magia; 4 graduações em Acrobacia; Magias em Combate; Vontade de Ferro; Bônus Base de Ataque +6; Idioma: Suelita antigo; Saber usar pelo menos quatro armas comuns ou exóticas",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d8",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 24,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-arcanamaca-de-suel",
+      "name": "Arcanamaca de Suel",
+      "page": 24,
+      "hitDie": "d8",
+      "skillPoints": "4 + modificador de Int",
+      "classSkills": [
+        "Acrobacia (Des)",
+        "Concentração (Con)",
+        "Conhecimento (arcano) (Int)",
+        "Conhecimento (história) (Int)",
+        "Conhecimento (os planos) (Int)",
+        "Escalar (For)",
+        "Esconder-se (Des)",
+        "Furtividade (Des)",
+        "Identificar Magia (Int)",
+        "Natação (For)",
+        "Ofícios (Int)",
+        "Profissão (Sab)",
+        "Saltar (For)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer",
+        "skills": [
+          "4 graduações em Concentração",
+          "4 graduações em Saltar",
+          "5 graduações em Identificar Magia",
+          "4 graduações em Acrobacia"
+        ],
+        "feats": [
+          "Magias em Combate",
+          "Vontade de Ferro"
+        ],
+        "special": [
+          "Bônus Base de Ataque +6",
+          "Idioma: Suelita antigo",
+          "Saber usar pelo menos quatro armas comuns ou exóticas"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 2,
+          "will": 2,
+          "special": "Ignorar falha arcana 5%, conjuração defensiva",
+          "casterProgression": "Lista própria (1º a 5º nível)"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 3,
+          "will": 3,
+          "special": "Golpe tenaz 1/dia",
+          "casterProgression": "Lista própria"
+        },
+        {
+          "level": 3,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 3,
+          "will": 3,
+          "special": "Dissipar magia 1/dia",
+          "casterProgression": "Lista própria"
+        },
+        {
+          "level": 4,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 4,
+          "will": 4,
+          "special": "Ignorar falha arcana 10%",
+          "casterProgression": "Lista própria"
+        },
+        {
+          "level": 5,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 4,
+          "will": 4,
+          "special": "Golpe tenaz 2/dia",
+          "casterProgression": "Lista própria"
+        },
+        {
+          "level": 6,
+          "bab": "+4",
+          "fort": 2,
+          "ref": 5,
+          "will": 5,
+          "special": "Dissipar magia 2/dia",
+          "casterProgression": "Lista própria"
+        },
+        {
+          "level": 7,
+          "bab": "+5",
+          "fort": 2,
+          "ref": 5,
+          "will": 5,
+          "special": "Ignorar falha arcana 15%",
+          "casterProgression": "Lista própria"
+        },
+        {
+          "level": 8,
+          "bab": "+6",
+          "fort": 2,
+          "ref": 6,
+          "will": 6,
+          "special": "Golpe tenaz 3/dia",
+          "casterProgression": "Lista própria"
+        },
+        {
+          "level": 9,
+          "bab": "+6",
+          "fort": 3,
+          "ref": 6,
+          "will": 6,
+          "special": "Dissipar magia 3/dia",
+          "casterProgression": "Lista própria"
+        },
+        {
+          "level": 10,
+          "bab": "+7",
+          "fort": 3,
+          "ref": 7,
+          "will": 7,
+          "special": "Ignorar falha arcana 20%",
+          "casterProgression": "Lista própria"
+        }
+      ],
+      "features": [
+        {
+          "name": "Magias de Arcanamaca",
+          "text": "Conjura magias de combate focadas em abjuração e transmutação com base no Carisma."
+        },
+        {
+          "name": "Ignorar Falha Arcana (Ext)",
+          "text": "Reduz a chance de falha arcana por usar armaduras em 5% no 1º nível, subindo para 20% no 10º nível."
+        },
+        {
+          "name": "Golpe Tenaz (Sob)",
+          "text": "Adiciona bônus nas jogadas de ataque e dano e canaliza dissipar magia junto ao golpe da arma."
+        },
+        {
+          "name": "Dissipar Magia (SM)",
+          "text": "Pode conjurar dissipar magia como habilidade similar a magia até 3 vezes ao dia."
+        }
+      ],
+      "description": "Guerreiros arcanos de elite treinados no antigo império de Suel, especialistas em abater magos inimigos com armas afiadas e abjurações implacáveis."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-discipulo-da-estrela-verde",
+    "name_pt": "Discípulo da Estrela Verde",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Conjuradores obcecados pelos fragmentos de meteoros de metal estelar verde que bebem tônicos radioativos e alquímicos para transformar gradualmente a carne mortal em um construto esmeralda indestrutível. Requisitos: Qualquer; 8 graduações em Conhecimento (arcano); Magias em Combate; Bônus Base de Ataque +4; Capacidade de conjurar magias arcanas de 1º nível; Consumir meteorito de metal estelar verde (starmetal) no valor de 5.000 PO",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d8",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 27,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-discipulo-da-estrela-verde",
+      "name": "Discípulo da Estrela Verde",
+      "page": 27,
+      "hitDie": "d8",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (arcano) (Int)",
+        "Conhecimento (arquitetura e engenharia) (Int)",
+        "Conhecimento (história) (Int)",
+        "Decifrar Escrita (Int)",
+        "Identificar Magia (Int)",
+        "Ofícios (Int)",
+        "Profissão (Sab)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer",
+        "skills": [
+          "8 graduações em Conhecimento (arcano)"
+        ],
+        "feats": [
+          "Magias em Combate"
+        ],
+        "special": [
+          "Bônus Base de Ataque +4",
+          "Capacidade de conjurar magias arcanas de 1º nível",
+          "Consumir meteorito de metal estelar verde (starmetal) no valor de 5.000 PO"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 2,
+          "ref": 0,
+          "will": 2,
+          "special": "Corpo de metal estelar (+1 CA natural, RD 1/adamante)",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 3,
+          "ref": 0,
+          "will": 3,
+          "special": "Força de metal estelar (+2 For)",
+          "casterProgression": "—"
+        },
+        {
+          "level": 3,
+          "bab": "+2",
+          "fort": 3,
+          "ref": 1,
+          "will": 3,
+          "special": "Corpo de metal estelar (+2 CA natural, RD 2/adamante), fortificação 25%",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+3",
+          "fort": 4,
+          "ref": 1,
+          "will": 4,
+          "special": "Outro mundo",
+          "casterProgression": "—"
+        },
+        {
+          "level": 5,
+          "bab": "+3",
+          "fort": 4,
+          "ref": 1,
+          "will": 4,
+          "special": "Corpo de metal estelar (+3 CA natural, RD 3/adamante), Força de metal estelar (+4 For)",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 6,
+          "bab": "+4",
+          "fort": 5,
+          "ref": 2,
+          "will": 5,
+          "special": "Fortificação 50%",
+          "casterProgression": "—"
+        },
+        {
+          "level": 7,
+          "bab": "+5",
+          "fort": 5,
+          "ref": 2,
+          "will": 5,
+          "special": "Corpo de metal estelar (+4 CA natural, RD 4/adamante)",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 8,
+          "bab": "+6",
+          "fort": 6,
+          "ref": 2,
+          "will": 6,
+          "special": "Força de metal estelar (+6 For)",
+          "casterProgression": "—"
+        },
+        {
+          "level": 9,
+          "bab": "+6",
+          "fort": 6,
+          "ref": 3,
+          "will": 6,
+          "special": "Corpo de metal estelar (+5 CA natural, RD 5/adamante), fortificação 75%",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 10,
+          "bab": "+7",
+          "fort": 7,
+          "ref": 3,
+          "will": 7,
+          "special": "Transcendência esmeralda (tipo construto, RD 10/adamante)",
+          "casterProgression": "—"
+        }
+      ],
+      "features": [
+        {
+          "name": "Corpo de Metal Estelar (Ext)",
+          "text": "O discípulo ingere pó de starmetal, tornando sua carne metálica esverdeada (+1 a +5 CA natural, RD 1 a 5/adamante)."
+        },
+        {
+          "name": "Força de Metal Estelar (Ext)",
+          "text": "Ganha bônus de Força cumulativo (+2 no 2º nível, +4 no 5º nível, +6 no 8º nível)."
+        },
+        {
+          "name": "Fortificação Natural (Ext)",
+          "text": "Ganha resistência contra acertos críticos e ataques furtivos (25% no 3º, 50% no 6º, 75% no 9º)."
+        },
+        {
+          "name": "Transcendência Esmeralda (Ext)",
+          "text": "No 10º nível, transforma-se plenamente num construto vivo de metal estelar verde (imunidades de construto, RD 10/adamante)."
+        }
+      ],
+      "description": "Conjuradores obcecados pelos fragmentos de meteoros de metal estelar verde que bebem tônicos radioativos e alquímicos para transformar gradualmente a carne mortal em um construto esmeralda indestrutível."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-dominador",
+    "name_pt": "Dominador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Manipuladores telepáticos supremos que desprezam as leis da liberdade de pensamento, usando poderes mentais coercitivos para controlar mentes alheias e dobrar reinos inteiros à sua vontade. Requisitos: Qualquer não-Leal; 4 graduações em Blefar; 4 graduações em Diplomacia; 4 graduações em Intimidação; 4 graduações em Sentir Motivação; Vontade de Ferro; Capacidade de conjurar magias arcanas de 5º nível de conjurador com pelo menos uma magia de encantamento",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d4",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 30,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-dominador",
+      "name": "Dominador",
+      "page": 30,
+      "hitDie": "d4",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Blefar (Car)",
+        "Concentração (Con)",
+        "Conhecimento (todos) (Int)",
+        "Diplomacia (Car)",
+        "Identificar Magia (Int)",
+        "Intimidação (Car)",
+        "Obter Informação (Car)",
+        "Profissão (Sab)",
+        "Sentir Motivação (Sab)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer não-Leal",
+        "skills": [
+          "4 graduações em Blefar",
+          "4 graduações em Diplomacia",
+          "4 graduações em Intimidação",
+          "4 graduações em Sentir Motivação"
+        ],
+        "feats": [
+          "Vontade de Ferro"
+        ],
+        "special": [
+          "Capacidade de conjurar magias arcanas de 5º nível de conjurador com pelo menos uma magia de encantamento"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 2,
+          "ref": 0,
+          "will": 2,
+          "special": "Telepatia 30 m",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 3,
+          "ref": 0,
+          "will": 3,
+          "special": "Empurrar pensamento",
+          "casterProgression": "—"
+        },
+        {
+          "level": 3,
+          "bab": "+1",
+          "fort": 3,
+          "ref": 1,
+          "will": 3,
+          "special": "Fingir visão",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+2",
+          "fort": 4,
+          "ref": 1,
+          "will": 4,
+          "special": "Sugestão 1/dia",
+          "casterProgression": "—"
+        },
+        {
+          "level": 5,
+          "bab": "+2",
+          "fort": 4,
+          "ref": 1,
+          "will": 4,
+          "special": "Olhar fascinante",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 6,
+          "bab": "+3",
+          "fort": 5,
+          "ref": 2,
+          "will": 5,
+          "special": "Impor fidelidade",
+          "casterProgression": "—"
+        },
+        {
+          "level": 7,
+          "bab": "+3",
+          "fort": 5,
+          "ref": 2,
+          "will": 5,
+          "special": "Dominar pessoa 1/dia",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 8,
+          "bab": "+4",
+          "fort": 6,
+          "ref": 2,
+          "will": 6,
+          "special": "Sugestão em massa 1/dia",
+          "casterProgression": "—"
+        },
+        {
+          "level": 9,
+          "bab": "+4",
+          "fort": 6,
+          "ref": 3,
+          "will": 6,
+          "special": "Dominar monstro 1/dia",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 10,
+          "bab": "+5",
+          "fort": 7,
+          "ref": 3,
+          "will": 7,
+          "special": "Mestre mental (escravizar permanentemente)",
+          "casterProgression": "—"
+        }
+      ],
+      "features": [
+        {
+          "name": "Telepatia (Sob)",
+          "text": "Comunica-se telepaticamente com qualquer criatura num raio de 30 m que possua um idioma."
+        },
+        {
+          "name": "Empurrar Pensamento (Sob)",
+          "text": "No 2º nível, pode ler pensamentos superficiais e influenciar alvos telepaticamente."
+        },
+        {
+          "name": "Fingir Visão (Sob)",
+          "text": "No 3º nível, pode enxergar e ouvir através dos sentidos de qualquer criatura vinculada por telepatia."
+        },
+        {
+          "name": "Mestre Mental (Sob)",
+          "text": "No 10º nível, pode escravizar uma criatura de forma permanente através de um vínculo telepático inquebrável."
+        }
+      ],
+      "description": "Manipuladores telepáticos supremos que desprezam as leis da liberdade de pensamento, usando poderes mentais coercitivos para controlar mentes alheias e dobrar reinos inteiros à sua vontade."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-espiral-do-destino",
+    "name_pt": "Espiral do Destino",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Mestres do acaso e do destino quântico que enxergam as teias da probabilidade cósmica, puxando os fios do tempo para ditar o sucesso de aliados e a ruína de adversários. Requisitos: Qualquer; 10 graduações em Conhecimento (arcano); Capacidade de conjurar magias arcanas de 4º nível incluindo pelo menos uma magia de adivinhação",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d4",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 33,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-espiral-do-destino",
+      "name": "Espiral do Destino",
+      "page": 33,
+      "hitDie": "d4",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (arcano) (Int)",
+        "Identificar Magia (Int)",
+        "Ofícios (Int)",
+        "Profissão (Sab)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer",
+        "skills": [
+          "10 graduações em Conhecimento (arcano)"
+        ],
+        "feats": [],
+        "special": [
+          "Capacidade de conjurar magias arcanas de 4º nível incluindo pelo menos uma magia de adivinhação"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Girar o destino",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Recusar o destino",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+1",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "Resistir ao destino",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Selo do destino",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 5,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Destino inevitável",
+          "casterProgression": "—"
+        }
+      ],
+      "features": [
+        {
+          "name": "Girar o Destino (Sob)",
+          "text": "Armazena pontos de destino a cada dia iguais ao nível na classe, podendo usá-los para alterar a CD de suas magias."
+        },
+        {
+          "name": "Recusar o Destino (Sob)",
+          "text": "No 2º nível, força um oponente a rolar novamente um teste de resistência recém-sucedido contra suas magias."
+        },
+        {
+          "name": "Resistir ao Destino (Sob)",
+          "text": "No 3º nível, pode rolar novamente qualquer teste de resistência próprio uma vez por dia."
+        },
+        {
+          "name": "Selo do Destino (Sob)",
+          "text": "No 4º nível, altera a sorte em jogadas de ataque e decisivos de inimigos."
+        },
+        {
+          "name": "Destino Inevitável (Sob)",
+          "text": "No 5º nível, adiciona +10 na CD do teste de resistência de uma magia ou causa fracasso automático."
+        }
+      ],
+      "description": "Mestres do acaso e do destino quântico que enxergam as teias da probabilidade cósmica, puxando os fios do tempo para ditar o sucesso de aliados e a ruína de adversários."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-exobiologo",
+    "name_pt": "Exobiólogo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Conjuradores insanos que buscam contato com entidades de além das estrelas e do Reino Distante, convocando horrores pseudonaturais cobertos de tentáculos alienígenas. Requisitos: Qualquer não-Leal; 8 graduações em Conhecimento (arcano); Potencializar Invocação; Capacidade de conjurar pelo menos uma magia de invocação de 3º nível ou maior",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d4",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 36,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-exobiologo",
+      "name": "Exobiólogo",
+      "page": 36,
+      "hitDie": "d4",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (arcano) (Int)",
+        "Conhecimento (os planos) (Int)",
+        "Identificar Magia (Int)",
+        "Ouvir (Sab)",
+        "Profissão (Sab)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer não-Leal",
+        "skills": [
+          "8 graduações em Conhecimento (arcano)"
+        ],
+        "feats": [
+          "Potencializar Invocação"
+        ],
+        "special": [
+          "Capacidade de conjurar pelo menos uma magia de invocação de 3º nível ou maior"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Invocar criatura pseudonatural, bênção alienígena +1",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Segredo alienígena",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+1",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "Bênção alienígena +2",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Segredo alienígena",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 5,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Bênção alienígena +3, familiar pseudonatural",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 6,
+          "bab": "+3",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "Segredo alienígena",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 7,
+          "bab": "+3",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "Bênção alienígena +4",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 8,
+          "bab": "+4",
+          "fort": 2,
+          "ref": 2,
+          "will": 6,
+          "special": "Segredo alienígena",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 9,
+          "bab": "+4",
+          "fort": 3,
+          "ref": 3,
+          "will": 6,
+          "special": "Bênção alienígena +5",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 10,
+          "bab": "+5",
+          "fort": 3,
+          "ref": 3,
+          "will": 7,
+          "special": "Transcendência alienígena (tipo extra-planar)",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        }
+      ],
+      "features": [
+        {
+          "name": "Invocar Criatura Pseudonatural (Ext)",
+          "text": "Todas as criaturas invocadas por magias de invocação adquirem o modelo pseudonatural (tentáculos, pele informe, resistência)."
+        },
+        {
+          "name": "Bênção Alienígena (Ext)",
+          "text": "Ganha bônus de competência nos testes de resistência contra magias de ilusão e compulsão mental (+1 a +5)."
+        },
+        {
+          "name": "Segredos Alienígenas (Ext)",
+          "text": "Aprende conhecimentos cósmicos proibidos que aumentam atributos permanentes ao custo de insanidade e sabedoria."
+        },
+        {
+          "name": "Transcendência Alienígena (Ext)",
+          "text": "No 10º nível, seu tipo muda para extra-planar com imunidades extraterrenas permanentes."
+        }
+      ],
+      "description": "Conjuradores insanos que buscam contato com entidades de além das estrelas e do Reino Distante, convocando horrores pseudonaturais cobertos de tentáculos alienígenas."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-geometra",
+    "name_pt": "Geômetra",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Mestres dos símbolos sagrados, geometria plana e diagramas rúnicos, capazes de desenhar toda a complexidade de um feitiço de 9º nível em uma única página geométrica perfeita. Requisitos: Qualquer; 9 graduações em Decifrar Escrita; 9 graduações em Identificar Magia; 4 graduações em Ofícios (caligrafia); Escrever Pergaminho; Capacidade de preparar e conjurar magias arcanas de 3º nível",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d4",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 38,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-geometra",
+      "name": "Geômetra",
+      "page": 38,
+      "hitDie": "d4",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (todos) (Int)",
+        "Decifrar Escrita (Int)",
+        "Identificar Magia (Int)",
+        "Ofícios (caligrafia) (Int)",
+        "Procurar (Int)",
+        "Profissão (Sab)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer",
+        "skills": [
+          "9 graduações em Decifrar Escrita",
+          "9 graduações em Identificar Magia",
+          "4 graduações em Ofícios (caligrafia)"
+        ],
+        "feats": [
+          "Escrever Pergaminho"
+        ],
+        "special": [
+          "Capacidade de preparar e conjurar magias arcanas de 3º nível"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Grimório geométrico, escrita geométrica",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Glifo de poder",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+1",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "Desenhar glifo menor",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Glifo de proteção",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 5,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Desenhar glifo maior",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        }
+      ],
+      "features": [
+        {
+          "name": "Grimório Geométrico (Ext)",
+          "text": "Comprime qualquer magia arcana para ocupar exatamente uma única página de diagrama no seu grimório."
+        },
+        {
+          "name": "Escrita Geométrica (Ext)",
+          "text": "Pode registrar pergaminhos e símbolos com metade do custo de pergaminho comum."
+        },
+        {
+          "name": "Glifo de Poder (Sob)",
+          "text": "Pode inscrever glifos e runas armadilha sem custo de componente material adicional."
+        }
+      ],
+      "description": "Mestres dos símbolos sagrados, geometria plana e diagramas rúnicos, capazes de desenhar toda a complexidade de um feitiço de 9º nível em uma única página geométrica perfeita."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-guia-dos-viajantes",
+    "name_pt": "Guia dos Viajantes",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Navegadores planares e espaciais do Sindicato dos Viajantes que dominam as dobras do espaço para transportar comitivas inteiras sem margem de erro por continentes e planos. Requisitos: Qualquer; 10 graduações em Conhecimento (geografia); 10 graduações em Identificar Magia; Capacidade de conjurar teletransporte",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d4",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 41,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-guia-dos-viajantes",
+      "name": "Guia dos Viajantes",
+      "page": 41,
+      "hitDie": "d4",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (arcano) (Int)",
+        "Conhecimento (geografia) (Int)",
+        "Conhecimento (os planos) (Int)",
+        "Identificar Magia (Int)",
+        "Ofícios (Int)",
+        "Profissão (Sab)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer",
+        "skills": [
+          "10 graduações em Conhecimento (geografia)",
+          "10 graduações em Identificar Magia"
+        ],
+        "feats": [],
+        "special": [
+          "Capacidade de conjurar teletransporte"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Acelerar teletransporte 1/dia, teletransporte aprimorado",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Acelerar teletransporte 2/dia, carga extra",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+1",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "Acelerar teletransporte 3/dia, alcance estendido",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        }
+      ],
+      "features": [
+        {
+          "name": "Teletransporte Aprimorado (Ext)",
+          "text": "Trata qualquer destino como 'muito familiar' e elimina qualquer risco de erro na conjuração de teletransporte."
+        },
+        {
+          "name": "Acelerar Teletransporte (Ext)",
+          "text": "Pode conjurar magias de teletransporte como ação rápida até 3 vezes ao dia."
+        },
+        {
+          "name": "Carga Extra (Ext)",
+          "text": "Pode transportar o dobro de passageiros e carga máxima através de magias de teletransporte."
+        }
+      ],
+      "description": "Navegadores planares e espaciais do Sindicato dos Viajantes que dominam as dobras do espaço para transportar comitivas inteiras sem margem de erro por continentes e planos."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-iniciado-dos-sete-veus",
+    "name_pt": "Iniciado dos Sete Véus",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Abjuradores de elite que dominam os sete mistérios das cores primárias e do espectro da luz, tecendo véus prismáticos impenetráveis como defesa suprema. Requisitos: Qualquer; 12 graduações em Identificar Magia; 12 graduações em Conhecimento (arcano); Foco em Magia (Abjuração); Foco Maior em Magia (Abjuração); Capacidade de conjurar pelo menos 5 magias de abjuração, incluindo pelo menos duas de 4º nível ou maior",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d4",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 43,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-iniciado-dos-sete-veus",
+      "name": "Iniciado dos Sete Véus",
+      "page": 43,
+      "hitDie": "d4",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (arcano) (Int)",
+        "Decifrar Escrita (Int)",
+        "Identificar Magia (Int)",
+        "Ofícios (Int)",
+        "Profissão (Sab)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer",
+        "skills": [
+          "12 graduações em Identificar Magia",
+          "12 graduações em Conhecimento (arcano)"
+        ],
+        "feats": [
+          "Foco em Magia (Abjuração)",
+          "Foco Maior em Magia (Abjuração)"
+        ],
+        "special": [
+          "Capacidade de conjurar pelo menos 5 magias de abjuração, incluindo pelo menos duas de 4º nível ou maior"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Véu vermelho, defesa protetora",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Véu laranja",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+1",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "Véu amarelo",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Véu verde",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 5,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Véu azul",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 6,
+          "bab": "+3",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "Véu anil",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 7,
+          "bab": "+3",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "Véu violeta, véu caleidoscópico",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        }
+      ],
+      "features": [
+        {
+          "name": "Véus Prismáticos (Sob)",
+          "text": "Pode erguer véus individuais correspondentes às camadas de uma muralha prismática para absorver dano e anular ataques."
+        },
+        {
+          "name": "Defesa Protetora (Ext)",
+          "text": "Pode moldar os véus como barreiras pessoais, paredes ou esferas protetoras."
+        },
+        {
+          "name": "Véu Caleidoscópico (Sob)",
+          "text": "No 7º nível, projeta uma aura deslumbrante de todas as 7 cores que cega e desintegra atacantes."
+        }
+      ],
+      "description": "Abjuradores de elite que dominam os sete mistérios das cores primárias e do espectro da luz, tecendo véus prismáticos impenetráveis como defesa suprema."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-mago-da-ordem-arcana",
+    "name_pt": "Mago da Ordem Arcana",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Membros da prestigiosa guilda acadêmica que compartilham uma piscina extradimensional coletiva de feitiços (a Spellpool), obtendo flexibilidade mágica sem igual. Requisitos: Qualquer não-Caótico e não-Maligno; 8 graduações em Conhecimento (arcano); Magia Cooperativa; Um outro talento metamágico qualquer; Capaz de preparar e conjurar magias arcanas de 2º nível; Pagar taxa de admissão de 750 PO",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d4",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 46,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-mago-da-ordem-arcana",
+      "name": "Mago da Ordem Arcana",
+      "page": 46,
+      "hitDie": "d4",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (todos) (Int)",
+        "Decifrar Escrita (Int)",
+        "Identificar Magia (Int)",
+        "Ofícios (Int)",
+        "Profissão (Sab)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer não-Caótico e não-Maligno",
+        "skills": [
+          "8 graduações em Conhecimento (arcano)"
+        ],
+        "feats": [
+          "Magia Cooperativa",
+          "Um outro talento metamágico qualquer"
+        ],
+        "special": [
+          "Capaz de preparar e conjurar magias arcanas de 2º nível",
+          "Pagar taxa de admissão de 750 PO"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Reserva de magias I, foco da ordem",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Talento adicional",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+1",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "—",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Reserva de magias II",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 5,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Talento adicional",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 6,
+          "bab": "+3",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "—",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 7,
+          "bab": "+3",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "Reserva de magias III",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 8,
+          "bab": "+4",
+          "fort": 2,
+          "ref": 2,
+          "will": 6,
+          "special": "Talento adicional",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 9,
+          "bab": "+4",
+          "fort": 3,
+          "ref": 3,
+          "will": 6,
+          "special": "Regeneração da reserva",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 10,
+          "bab": "+5",
+          "fort": 3,
+          "ref": 3,
+          "will": 7,
+          "special": "Talento adicional",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        }
+      ],
+      "features": [
+        {
+          "name": "Reserva de Magias (Sob)",
+          "text": "Acessa a Reserva Arcana coletiva da guilda para 'chamar' magias não preparadas durante o dia gastando créditos mágicos."
+        },
+        {
+          "name": "Foco da Ordem (Ext)",
+          "text": "Recebe o amuleto da Ordem Arcana que atua como condutor e chave de acesso à reserva."
+        },
+        {
+          "name": "Talento Adicional",
+          "text": "Ganha talentos metamágicos ou de criação de itens nos níveis 2, 5, 8 e 10."
+        }
+      ],
+      "description": "Membros da prestigiosa guilda acadêmica que compartilham uma piscina extradimensional coletiva de feitiços (a Spellpool), obtendo flexibilidade mágica sem igual."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-mago-selvagem",
+    "name_pt": "Mago Selvagem",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Pesquisadores destemidos que abraçam a turbulência primordial e a entropia da magia crua, trocando o rigor previsível dos magos tradicionais pelo poder selvagem do caos. Requisitos: Qualquer Caótico; 4 graduações em Identificar Magia; 4 graduações em Usar Instrumento Mágico; Magia do Santuário; Capacidade de conjurar magias arcanas de 2º nível",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d4",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 51,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-mago-selvagem",
+      "name": "Mago Selvagem",
+      "page": 51,
+      "hitDie": "d4",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Arte da Fuga (Des)",
+        "Blefar (Car)",
+        "Concentração (Con)",
+        "Conhecimento (todos) (Int)",
+        "Identificar Magia (Int)",
+        "Ofícios (Int)",
+        "Profissão (Sab)",
+        "Usar Instrumento Mágico (Car)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer Caótico",
+        "skills": [
+          "4 graduações em Identificar Magia",
+          "4 graduações em Usar Instrumento Mágico"
+        ],
+        "feats": [
+          "Magia do Santuário"
+        ],
+        "special": [
+          "Capacidade de conjurar magias arcanas de 2º nível"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Magia selvagem (+1d6-3 NC)",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Explosão aleatória",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+1",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "Sobrecarga de itens mágicos",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "—",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 5,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "—",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 6,
+          "bab": "+3",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "Explosão controlada",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 7,
+          "bab": "+3",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "—",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 8,
+          "bab": "+4",
+          "fort": 2,
+          "ref": 2,
+          "will": 6,
+          "special": "—",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 9,
+          "bab": "+4",
+          "fort": 3,
+          "ref": 3,
+          "will": 6,
+          "special": "Aura do caos",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 10,
+          "bab": "+5",
+          "fort": 3,
+          "ref": 3,
+          "will": 7,
+          "special": "Golpe de sorte selvagem",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        }
+      ],
+      "features": [
+        {
+          "name": "Magia Selvagem (Ext)",
+          "text": "Seu nível de conjurador efetivo flutua em -3 + 1d6 a cada magia conjurada, permitindo picos imprevisíveis de poder."
+        },
+        {
+          "name": "Explosão Aleatória (Sob)",
+          "text": "No 2º nível, pode disparar uma onda caótica de energia mágica consultando a tabela de efeitos selvagens."
+        },
+        {
+          "name": "Sobrecarga de Itens Mágicos (Sob)",
+          "text": "No 3º nível, pode extrair cargas adicionais de varinhas e cajados arriscando sobrecargas caóticas."
+        }
+      ],
+      "description": "Pesquisadores destemidos que abraçam a turbulência primordial e a entropia da magia crua, trocando o rigor previsível dos magos tradicionais pelo poder selvagem do caos."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-mestre-das-efigies",
+    "name_pt": "Mestre das Efígies",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Artesãos supremos que criam robôs e estátuas autônomas articuladas com o modelo Efígie, capazes de forjar réplicas mecânicas perfeitas de feras, dragões e gigantes. Requisitos: Qualquer; 10 graduações em Ofícios (curtição, metalurgia ou carpintaria); 5 graduações em Conhecimento (arcano); 5 graduações em Identificar Magia; 2 graduações em Usar Instrumento Mágico; Criar Item Maravilhoso; Capacidade de conjurar simulacro",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d4",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 53,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-mestre-das-efigies",
+      "name": "Mestre das Efígies",
+      "page": 53,
+      "hitDie": "d4",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (arcano) (Int)",
+        "Identificar Magia (Int)",
+        "Ofícios (curtição, metalurgia ou carpintaria) (Int)",
+        "Profissão (Sab)",
+        "Usar Instrumento Mágico (Car)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer",
+        "skills": [
+          "10 graduações em Ofícios (curtição, metalurgia ou carpintaria)",
+          "5 graduações em Conhecimento (arcano)",
+          "5 graduações em Identificar Magia",
+          "2 graduações em Usar Instrumento Mágico"
+        ],
+        "feats": [
+          "Criar Item Maravilhoso"
+        ],
+        "special": [
+          "Capacidade de conjurar simulacro"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Construir efígie",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Efígie aprimorada",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+1",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "Reparar efígie",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Efígie aprimorada",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 5,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Vínculo de efígie",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        }
+      ],
+      "features": [
+        {
+          "name": "Construir Efígie (Ext)",
+          "text": "Aprende a criar construtos mecânicos perfeitos que duplicam qualquer criatura viva usando madeira, metal e engrenagens."
+        },
+        {
+          "name": "Efígie Aprimorada (Ext)",
+          "text": "Suas efígies recebem bônus substanciais de armadura natural, Dados de Vida e pontos de vida adicionais."
+        },
+        {
+          "name": "Reparar Efígie (Sob)",
+          "text": "Pode curar pontos de vida de suas efígies rapidamente com um toque mágico."
+        }
+      ],
+      "description": "Artesãos supremos que criam robôs e estátuas autônomas articuladas com o modelo Efígie, capazes de forjar réplicas mecânicas perfeitas de feras, dragões e gigantes."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-mestre-transmogrificador",
+    "name_pt": "Mestre Transmogrificador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Transmutadores obcecados pela magia da metamorfose que transcendem a anatomia mortal, fundindo características de múltiplos monstros na mesma forma corporal híbrida. Requisitos: Qualquer; 7 graduações em Blefar; 7 graduações em Disfarces; Prontidão; Capacidade de conjurar alterar-se e metamorfose",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d4",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 55,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-mestre-transmogrificador",
+      "name": "Mestre Transmogrificador",
+      "page": 55,
+      "hitDie": "d4",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Blefar (Car)",
+        "Concentração (Con)",
+        "Conhecimento (arcano) (Int)",
+        "Disfarces (Car)",
+        "Identificar Magia (Int)",
+        "Ofícios (Int)",
+        "Profissão (Sab)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer",
+        "skills": [
+          "7 graduações em Blefar",
+          "7 graduações em Disfarces"
+        ],
+        "feats": [
+          "Prontidão"
+        ],
+        "special": [
+          "Capacidade de conjurar alterar-se e metamorfose"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 2,
+          "ref": 0,
+          "will": 2,
+          "special": "Formas preferidas, metamorfose flexível 1/dia",
+          "casterProgression": "—"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 3,
+          "ref": 0,
+          "will": 3,
+          "special": "Forma de reação 1/dia",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+1",
+          "fort": 3,
+          "ref": 1,
+          "will": 3,
+          "special": "Metamorfose flexível 2/dia",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+2",
+          "fort": 4,
+          "ref": 1,
+          "will": 4,
+          "special": "Fusão de formas",
+          "casterProgression": "—"
+        },
+        {
+          "level": 5,
+          "bab": "+2",
+          "fort": 4,
+          "ref": 1,
+          "will": 4,
+          "special": "Metamorfose flexível 3/dia",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 6,
+          "bab": "+3",
+          "fort": 5,
+          "ref": 2,
+          "will": 5,
+          "special": "Metamorfose veloz",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 7,
+          "bab": "+3",
+          "fort": 5,
+          "ref": 2,
+          "will": 5,
+          "special": "Metamorfose flexível 4/dia",
+          "casterProgression": "—"
+        },
+        {
+          "level": 8,
+          "bab": "+4",
+          "fort": 6,
+          "ref": 2,
+          "will": 6,
+          "special": "Metamorfose extrema",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 9,
+          "bab": "+4",
+          "fort": 6,
+          "ref": 3,
+          "will": 6,
+          "special": "Metamorfose flexível 5/dia",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 10,
+          "bab": "+5",
+          "fort": 7,
+          "ref": 3,
+          "will": 7,
+          "special": "Transmogrificação infinita",
+          "casterProgression": "—"
+        }
+      ],
+      "features": [
+        {
+          "name": "Formas Preferidas (Ext)",
+          "text": "Escolhe criaturas que domina com perfeição, adquirindo bônus adicionais de combate ao assumir suas formas."
+        },
+        {
+          "name": "Fusão de Formas (Ext)",
+          "text": "No 4º nível, combina as melhores características de duas formas preferidas simultaneamente (ex.: garras de urso e asas de águia)."
+        },
+        {
+          "name": "Transmogrificação Infinita (Sob)",
+          "text": "No 10º nível, pode mudar de forma à vontade como ação livre, mantendo qualquer metamorfose indefinidamente."
+        }
+      ],
+      "description": "Transmutadores obcecados pela magia da metamorfose que transcendem a anatomia mortal, fundindo características de múltiplos monstros na mesma forma corporal híbrida."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-peregrino-da-cancao",
+    "name_pt": "Peregrino da Canção",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Bardos que abrem mão da conjuração tradicional para redescobrir as canções ancestrais das esferas celestiais e do cosmos primordial. Requisitos: Qualquer; 13 graduações em Atuação (qualquer); 9 graduações em Conhecimento (arcano); Habilidade de classe música de bardo; Capacidade de usar música de bardo pelo menos 10 vezes ao dia",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d8",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 59,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-peregrino-da-cancao",
+      "name": "Peregrino da Canção",
+      "page": 59,
+      "hitDie": "d8",
+      "skillPoints": "4 + modificador de Int",
+      "classSkills": [
+        "Atuação (Car)",
+        "Concentração (Con)",
+        "Conhecimento (todos) (Int)",
+        "Diplomacia (Car)",
+        "Escalar (For)",
+        "Natação (For)",
+        "Obter Informação (Car)",
+        "Ouvir (Sab)",
+        "Profissão (Sab)",
+        "Saltar (For)",
+        "Sentir Motivação (Sab)",
+        "Usar Instrumento Mágico (Car)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer",
+        "skills": [
+          "13 graduações em Atuação (qualquer)",
+          "9 graduações em Conhecimento (arcano)"
+        ],
+        "feats": [],
+        "special": [
+          "Habilidade de classe música de bardo",
+          "Capacidade de usar música de bardo pelo menos 10 vezes ao dia"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 2,
+          "will": 2,
+          "special": "Música do peregrino, canção de chamas ardentes",
+          "casterProgression": "—"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 3,
+          "will": 3,
+          "special": "Canção de gelo gélido",
+          "casterProgression": "—"
+        },
+        {
+          "level": 3,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 3,
+          "will": 3,
+          "special": "Canção de ventos ululantes",
+          "casterProgression": "—"
+        },
+        {
+          "level": 4,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 4,
+          "will": 4,
+          "special": "Canção de terra movediça",
+          "casterProgression": "—"
+        },
+        {
+          "level": 5,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 4,
+          "will": 4,
+          "special": "Canção de relâmpagos ruidosos",
+          "casterProgression": "—"
+        },
+        {
+          "level": 6,
+          "bab": "+4",
+          "fort": 2,
+          "ref": 5,
+          "will": 5,
+          "special": "Canção da vida eterna",
+          "casterProgression": "—"
+        },
+        {
+          "level": 7,
+          "bab": "+5",
+          "fort": 2,
+          "ref": 5,
+          "will": 5,
+          "special": "Canção de noite tenebrosa",
+          "casterProgression": "—"
+        },
+        {
+          "level": 8,
+          "bab": "+6",
+          "fort": 2,
+          "ref": 6,
+          "will": 6,
+          "special": "Canção do sol brilhante",
+          "casterProgression": "—"
+        },
+        {
+          "level": 9,
+          "bab": "+6",
+          "fort": 3,
+          "ref": 6,
+          "will": 6,
+          "special": "Canção de morte sombria",
+          "casterProgression": "—"
+        },
+        {
+          "level": 10,
+          "bab": "+7",
+          "fort": 3,
+          "ref": 7,
+          "will": 7,
+          "special": "Sinfonia das esferas",
+          "casterProgression": "—"
+        }
+      ],
+      "features": [
+        {
+          "name": "Música do Peregrino (Sob)",
+          "text": "Canções místicas elementais que gastam utilizações de música de bardo para gerar efeitos mágicos diretos."
+        },
+        {
+          "name": "Sinfonia das Esferas (Sob)",
+          "text": "No 10º nível, pode manter duas canções do peregrino ativas simultaneamente com tremendo poder harmônico."
+        }
+      ],
+      "description": "Bardos que abrem mão da conjuração tradicional para redescobrir as canções ancestrais das esferas celestiais e do cosmos primordial."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-punho-iluminado",
+    "name_pt": "Punho Iluminado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Guerreiros monásticos que combinam a disciplina ascética de artes marciais orientais com a canalização devastadora de feitiços arcanos nos próprios punhos. Requisitos: Qualquer Leal; 8 graduações em Concentração; 5 graduações em Conhecimento (arcano); 5 graduações em Identificar Magia; Magias em Combate; Ataque Desarmado Aprimorado; Punho Atordoante; 3º nível de conjurador arcano",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d8",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 62,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-punho-iluminado",
+      "name": "Punho Iluminado",
+      "page": 62,
+      "hitDie": "d8",
+      "skillPoints": "4 + modificador de Int",
+      "classSkills": [
+        "Acrobacia (Des)",
+        "Arte da Fuga (Des)",
+        "Concentração (Con)",
+        "Conhecimento (arcano) (Int)",
+        "Equilíbrio (Des)",
+        "Escalar (For)",
+        "Identificar Magia (Int)",
+        "Natação (For)",
+        "Ofícios (Int)",
+        "Ouvir (Sab)",
+        "Profissão (Sab)",
+        "Saltar (For)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer Leal",
+        "skills": [
+          "8 graduações em Concentração",
+          "5 graduações em Conhecimento (arcano)",
+          "5 graduações em Identificar Magia"
+        ],
+        "feats": [
+          "Magias em Combate",
+          "Ataque Desarmado Aprimorado",
+          "Punho Atordoante"
+        ],
+        "special": [
+          "3º nível de conjurador arcano"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 2,
+          "will": 2,
+          "special": "Dano desarmado, golpe atordoante arcano",
+          "casterProgression": "—"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 3,
+          "will": 3,
+          "special": "Magia em combate desarmado",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 3,
+          "will": 3,
+          "special": "Deslocamento rápido (+3 m)",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 4,
+          "will": 4,
+          "special": "Canalizar magia",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 5,
+          "bab": "+3",
+          "fort": 1,
+          "ref": 4,
+          "will": 4,
+          "special": "Armadura arcana",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 6,
+          "bab": "+4",
+          "fort": 2,
+          "ref": 5,
+          "will": 5,
+          "special": "Deslocamento rápido (+6 m)",
+          "casterProgression": "—"
+        },
+        {
+          "level": 7,
+          "bab": "+5",
+          "fort": 2,
+          "ref": 5,
+          "will": 5,
+          "special": "Canalizar raio",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 8,
+          "bab": "+6",
+          "fort": 2,
+          "ref": 6,
+          "will": 6,
+          "special": "Dano desarmado aprimorado",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 9,
+          "bab": "+6",
+          "fort": 3,
+          "ref": 6,
+          "will": 6,
+          "special": "Deslocamento rápido (+9 m)",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 10,
+          "bab": "+7",
+          "fort": 3,
+          "ref": 7,
+          "will": 7,
+          "special": "Punho de energia transcendental",
+          "casterProgression": "—"
+        }
+      ],
+      "features": [
+        {
+          "name": "Magia em Combate Desarmado (Sob)",
+          "text": "Pode canalizar qualquer magia de toque através de um ataque desarmado normal com dano desarmado pleno."
+        },
+        {
+          "name": "Canalizar Raio (Sob)",
+          "text": "No 7º nível, descarrega qualquer magia de raio como um ataque de toque corporal através dos punhos."
+        },
+        {
+          "name": "Punho de Energia Transcendental (Sob)",
+          "text": "No 10º nível, infunde os punhos com energia pura e velocidade inacreditável."
+        }
+      ],
+      "description": "Guerreiros monásticos que combinam a disciplina ascética de artes marciais orientais com a canalização devastadora de feitiços arcanos nos próprios punhos."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-sabio-elemental",
+    "name_pt": "Sábio Elemental",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Ardorosos devotos de um único elemento primordial que transformam todas as suas magias e sua própria fisiologia em fogo, gelo, eletricidade ou ácido puro. Requisitos: Qualquer; 8 graduações em Conhecimento (arcano); 4 graduações em Conhecimento (os planos); Substituição de Energia (elemento escolhido); Capacidade de conjurar pelo menos 3 magias com o descritor de energia apropriado, incluindo pelo menos uma de 3º nível",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d4",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 64,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-sabio-elemental",
+      "name": "Sábio Elemental",
+      "page": 64,
+      "hitDie": "d4",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (arcano) (Int)",
+        "Conhecimento (os planos) (Int)",
+        "Identificar Magia (Int)",
+        "Ofícios (Int)",
+        "Profissão (Sab)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer",
+        "skills": [
+          "8 graduações em Conhecimento (arcano)",
+          "4 graduações em Conhecimento (os planos)"
+        ],
+        "feats": [
+          "Substituição de Energia (elemento escolhido)"
+        ],
+        "special": [
+          "Capacidade de conjurar pelo menos 3 magias com o descritor de energia apropriado, incluindo pelo menos uma de 3º nível"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Especialização elemental, transição elemental",
+          "casterProgression": "—"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Resistência a energia 5",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+1",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "Imunidade a sono elemental",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Resistência a energia 10",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 5,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Penetração elemental",
+          "casterProgression": "—"
+        },
+        {
+          "level": 6,
+          "bab": "+3",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "Resistência a energia 20",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 7,
+          "bab": "+3",
+          "fort": 2,
+          "ref": 2,
+          "will": 5,
+          "special": "Imunidade a paralisia e veneno",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 8,
+          "bab": "+4",
+          "fort": 2,
+          "ref": 2,
+          "will": 6,
+          "special": "Penetração elemental maior",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 9,
+          "bab": "+4",
+          "fort": 3,
+          "ref": 3,
+          "will": 6,
+          "special": "Aparência elemental",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 10,
+          "bab": "+5",
+          "fort": 3,
+          "ref": 3,
+          "will": 7,
+          "special": "Apoteose elemental (tipo elemental)",
+          "casterProgression": "—"
+        }
+      ],
+      "features": [
+        {
+          "name": "Transição Elemental (Ext)",
+          "text": "Converte automaticamente o tipo de energia de todas as suas magias de dano para o seu elemento escolhido (ar, fogo, terra ou água)."
+        },
+        {
+          "name": "Resistência a Energia (Ext)",
+          "text": "Ganha resistência progressiva ao seu elemento (5 no 2º, 10 no 4º, 20 no 6º nível)."
+        },
+        {
+          "name": "Apoteose Elemental (Ext)",
+          "text": "No 10º nível, o sábio se torna um elemental genuíno com imunidades de elemental e imunidade total ao seu elemento."
+        }
+      ],
+      "description": "Ardorosos devotos de um único elemento primordial que transformam todas as suas magias e sua própria fisiologia em fogo, gelo, eletricidade ou ácido puro."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-sabio-de-prata",
+    "name_pt": "Sábio de Prata",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Especialistas na manipulação da força mágica translúcida prateada, aperfeiçoando mísseis mágicos, campos cinéticos e muralhas indestrutíveis. Requisitos: Qualquer; 6 graduações em Conhecimento (arcano); 12 graduações em Identificar Magia; Capacidade de conjurar pelo menos 5 magias com o descritor [Energia] (Força), incluindo pelo menos uma de 5º nível ou maior",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d4",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 65,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-sabio-de-prata",
+      "name": "Sábio de Prata",
+      "page": 65,
+      "hitDie": "d4",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Concentração (Con)",
+        "Conhecimento (arcano) (Int)",
+        "Identificar Magia (Int)",
+        "Ofícios (Int)",
+        "Profissão (Sab)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer",
+        "skills": [
+          "6 graduações em Conhecimento (arcano)",
+          "12 graduações em Identificar Magia"
+        ],
+        "feats": [],
+        "special": [
+          "Capacidade de conjurar pelo menos 5 magias com o descritor [Energia] (Força), incluindo pelo menos uma de 5º nível ou maior"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 0,
+          "ref": 0,
+          "will": 2,
+          "special": "Armadura de força (+2 CA)",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 0,
+          "ref": 0,
+          "will": 3,
+          "special": "Especialização em força (+2 dano/dado em magias de força)",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+1",
+          "fort": 1,
+          "ref": 1,
+          "will": 3,
+          "special": "Força resistente (dureza dobrada)",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Dissipação persistente",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 5,
+          "bab": "+2",
+          "fort": 1,
+          "ref": 1,
+          "will": 4,
+          "special": "Poder de força (+2 CD testes de resistência)",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        }
+      ],
+      "features": [
+        {
+          "name": "Armadura de Força (Ext)",
+          "text": "Aumenta o bônus de armadura concedido por qualquer magia de força (como armadura arcana ou escudo arcano) em +2."
+        },
+        {
+          "name": "Especialização em Força (Ext)",
+          "text": "No 2º nível, magias com descritor de força causam +2 pontos de dano por dado infligido."
+        },
+        {
+          "name": "Força Resistente (Ext)",
+          "text": "Suas barreiras e efeitos de força se tornam imensamente mais difíceis de dissipar ou destruir com desintegrar."
+        }
+      ],
+      "description": "Especialistas na manipulação da força mágica translúcida prateada, aperfeiçoando mísseis mágicos, campos cinéticos e muralhas indestrutíveis."
+    }
+  },
+  {
+    "id": "dnd35.arc.prestige.arc-prestige-taumaturgo",
+    "name_pt": "Taumaturgo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Arcanistas que morreram e retornaram do além (Blood Magus), descobrindo os segredos macabros e místicos do sangue pulsante como catalisador supremo da magia arcana. Requisitos: Qualquer uma, exceto Leal e Bom; 4 graduações em Concentração; Fortitude Maior; Vitalidade; 5º nível de conjurador arcano; O personagem precisa ter sido morto e depois retornado à vida",
+    "description_en": null,
+    "description_es": null,
+    "hp_per_level": "d4",
+    "key_attributes": [],
+    "perception_rank": "T",
+    "fortitude_rank": "T",
+    "reflex_rank": "T",
+    "will_rank": "T",
+    "class_dc_stat": null,
+    "traits": [
+      "prestige"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-arc",
+    "source_book": "D&D 3.5 — O Livro Completo do Arcano",
+    "source_page": 67,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "arc-prestige-taumaturgo",
+      "name": "Taumaturgo",
+      "page": 67,
+      "hitDie": "d4",
+      "skillPoints": "2 + modificador de Int",
+      "classSkills": [
+        "Blefar (Car)",
+        "Concentração (Con)",
+        "Cura (Sab)",
+        "Identificar Magia (Int)",
+        "Ofícios (Int)"
+      ],
+      "requirements": {
+        "alignment": "Qualquer uma, exceto Leal e Bom",
+        "skills": [
+          "4 graduações em Concentração"
+        ],
+        "feats": [
+          "Fortitude Maior",
+          "Vitalidade"
+        ],
+        "special": [
+          "5º nível de conjurador arcano",
+          "O personagem precisa ter sido morto e depois retornado à vida"
+        ]
+      },
+      "levels": [
+        {
+          "level": 1,
+          "bab": "+0",
+          "fort": 2,
+          "ref": 0,
+          "will": 0,
+          "special": "Componente sanguíneo, poção de sangue",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 2,
+          "bab": "+1",
+          "fort": 3,
+          "ref": 0,
+          "will": 0,
+          "special": "Inscrição sanguínea, golpe de sangue",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 3,
+          "bab": "+1",
+          "fort": 3,
+          "ref": 1,
+          "will": 1,
+          "special": "Estancar hemorragia",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 4,
+          "bab": "+2",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Gota de sangue",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 5,
+          "bab": "+2",
+          "fort": 4,
+          "ref": 1,
+          "will": 1,
+          "special": "Fluxo sanguíneo",
+          "casterProgression": "—"
+        },
+        {
+          "level": 6,
+          "bab": "+3",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Andarilho do sangue",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 7,
+          "bab": "+3",
+          "fort": 5,
+          "ref": 2,
+          "will": 2,
+          "special": "Despertar o sangue",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 8,
+          "bab": "+4",
+          "fort": 6,
+          "ref": 2,
+          "will": 2,
+          "special": "Sentinela de sangue",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 9,
+          "bab": "+4",
+          "fort": 6,
+          "ref": 3,
+          "will": 3,
+          "special": "Sangue espesso",
+          "casterProgression": "+1 nível de classe de conjuração anterior"
+        },
+        {
+          "level": 10,
+          "bab": "+5",
+          "fort": 7,
+          "ref": 3,
+          "will": 3,
+          "special": "Ressurreição pelo sangue",
+          "casterProgression": "—"
+        }
+      ],
+      "features": [
+        {
+          "name": "Componente Sanguíneo (Sob)",
+          "text": "Pode substituir componentes materiais por uma gota de seu próprio sangue (1 ponto de dano), aumentando em +1 o nível de conjurador."
+        },
+        {
+          "name": "Poção de Sangue (Ext)",
+          "text": "Pode preparar poções em seu próprio sangue ou em crostas que funcionam como pergaminhos e elixires."
+        },
+        {
+          "name": "Andarilho do Sangue (Sob)",
+          "text": "No 6º nível, pode se teletransportar entrando nas veias de uma criatura e saindo de outra criatura conectada."
+        },
+        {
+          "name": "Ressurreição pelo Sangue (Sob)",
+          "text": "No 10º nível, se morrer, pode renascer automaticamente a partir de uma gota de sangue guardada previamente."
+        }
+      ],
+      "description": "Arcanistas que morreram e retornaram do além (Blood Magus), descobrindo os segredos macabros e místicos do sangue pulsante como catalisador supremo da magia arcana."
+    }
   }
 ]

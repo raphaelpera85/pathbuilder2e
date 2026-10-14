@@ -66,7 +66,7 @@ for ($p = $StartPage; $p -le $EndPage; $p++) {
     $softwareBitmap = Await-Op ($decoder.GetSoftwareBitmapAsync()) ([Windows.Graphics.Imaging.SoftwareBitmap])
     
     $ocrResult = Await-Op ($ocrEngine.RecognizeAsync($softwareBitmap)) ([Windows.Media.Ocr.OcrResult])
-    $text = $ocrResult.Text
+    $text = ($ocrResult.Lines | ForEach-Object { $_.Text }) -join "`r`n"
     
     $outFile = Join-Path $destDir "ocr_p$p.txt"
     Set-Content -Path $outFile -Value $text -Encoding UTF8

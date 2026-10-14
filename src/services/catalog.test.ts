@@ -1363,7 +1363,7 @@ describe("serviço de catálogo local", () => {
 
     expect(source).toBe("local_mixed");
     expect(coreSpells).toHaveLength(dnd35CoreCount);
-    expect(supplementSpells).toHaveLength(311);
+    expect(supplementSpells).toHaveLength(451);
     expect(pf1eSpells).toHaveLength(PF1E_BARD_CANTRIPS.length + PF1E_CLERIC_CANTRIPS.length + PF1E_DRUID_CANTRIPS.length + PF1E_SORCERER_WIZARD_CANTRIPS.length);
   });
 
@@ -2303,7 +2303,7 @@ describe("serviço de catálogo local", () => {
   it("calcula totais de tabelas pelo manifesto sem carregar registros", async () => {
     const counts = await fetchCatalogTableCounts();
     expect(counts.catalog_feats).toBe(2959);
-    expect(counts.catalog_spells).toBe(1222);
+    expect(counts.catalog_spells).toBe(1362);
     expect(counts.catalog_weapons).toBe(321);
     expect(counts.catalog_armors).toBe(79);
     expect(counts.catalog_shields).toBe(32);
@@ -2313,9 +2313,9 @@ describe("serviço de catálogo local", () => {
   it("calcula as métricas do compêndio pelos snapshots locais, incluindo perícias", async () => {
     const metrics = await fetchCatalogLocalMetrics();
     expect(metrics.counts.catalog_skills).toBe(195);
-    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(8464);
-    expect(metrics.counts.catalog_spells).toBe(2302);
-    expect(metrics.verifiedCount + metrics.reviewCount).toBe(8464);
+    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(8623);
+    expect(metrics.counts.catalog_spells).toBe(2442);
+    expect(metrics.verifiedCount + metrics.reviewCount).toBe(8623);
   }, 15_000);
 
   it("compartilha o cálculo das métricas locais entre chamadas concorrentes", async () => {
