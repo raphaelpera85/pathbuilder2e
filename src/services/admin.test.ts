@@ -38,9 +38,9 @@ describe("Admin & Access Analytics Service", () => {
   it("usa os snapshots versionados no Git para as métricas do compêndio", async () => {
     const metrics = await getAdminDashboardMetrics();
     expect(metrics.catalogCounts?.catalog_skills).toBe(195);
-    expect(metrics.catalogCounts?.catalog_spells).toBe(2521);
-    expect(Object.values(metrics.catalogCounts || {}).reduce((sum, count) => sum + count, 0)).toBe(8884);
-    expect((metrics.catalogVerifiedCount || 0) + (metrics.catalogReviewCount || 0)).toBe(8884);
+    expect(metrics.catalogCounts?.catalog_spells).toBe(2532);
+    expect(Object.values(metrics.catalogCounts || {}).reduce((sum, count) => sum + count, 0)).toBe(8912);
+    expect((metrics.catalogVerifiedCount || 0) + (metrics.catalogReviewCount || 0)).toBe(8912);
   });
 
   it("consolida contas e personagens salvos localmente ou no Supabase", async () => {

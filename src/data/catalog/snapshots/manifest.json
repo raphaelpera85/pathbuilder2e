@@ -84,6 +84,14 @@
   },
   {
     "systemId": "dnd35",
+    "ruleset": "v35-ee",
+    "categories": {
+      "feat": 17,
+      "spell": 11
+    }
+  },
+  {
+    "systemId": "dnd35",
     "ruleset": "v35-frostburn",
     "categories": {
       "ancestry": 2,

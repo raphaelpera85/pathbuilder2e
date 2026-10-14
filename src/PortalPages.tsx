@@ -132,6 +132,7 @@ function catalogRulesetLabel(ruleset: string): string {
     "v35-defensores": "D&D 3.5 · Defensores da Fé",
     "v35-frostburn": "D&D 3.5 · Frostburn",
     "v35-pe": "D&D 3.5 · Punhos e Espadas",
+    "v35-ee": "D&D 3.5 · Exemplars of Evil",
   };
   return labels[ruleset] || ruleset;
 }
