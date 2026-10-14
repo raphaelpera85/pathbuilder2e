@@ -19,6 +19,7 @@ export const CURRENT_CATALOG_VERSIONS: Record<string, Record<string, string>> = 
     "dnd5e-scag": "dnd5e-scag-2026.10",
     "dnd5e-ggtr": "dnd5e-ggtr-2026.10",
     "dnd5e-mtof": "dnd5e-mtof-2026.10",
+    "dnd5e-strixhaven": "dnd5e-strixhaven-2026.10",
     "2024": "dnd5e-2024-2026.09",
     needs_review: "dnd5e-review-2026.09",
   },

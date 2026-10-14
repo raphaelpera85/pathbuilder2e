@@ -1,0 +1,298 @@
+[
+  {
+    "id": "dnd5e.strixhaven.item.garrafa_de_cafe_sem_fim",
+    "name_pt": "Garrafa de Café Sem Fim",
+    "name_en": "Bottle of Boundless Coffee",
+    "name_es": null,
+    "description_pt": "Esta garrafa metálica contém um café delicioso e quentinho que nunca esfria. Cada vez que você bebe, role um d20; se rolar 1, ela se recusa a dispensar café pela próxima hora. Se o café for despejado no chão ou fora da boca, desaparece no ar instantaneamente.",
+    "description_en": null,
+    "description_es": null,
+    "item_type": "item",
+    "price_gp": 100,
+    "weight_lb": 1,
+    "traits": [
+      "Strixhaven",
+      "Comum"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 38,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.item.garrafa_de_cafe_sem_fim",
+      "name": "Garrafa de Café Sem Fim",
+      "type": "item",
+      "rarity": "Comum",
+      "attunement": false,
+      "cost": "100 po",
+      "description": "Esta garrafa metálica contém um café delicioso e quentinho que nunca esfria. Cada vez que você bebe, role um d20; se rolar 1, ela se recusa a dispensar café pela próxima hora. Se o café for despejado no chão ou fora da boca, desaparece no ar instantaneamente.",
+      "sourcePage": 38,
+      "summaries": {
+        "pt-BR": "Esta garrafa metálica contém um café delicioso e quentinho que nunca esfria. Cada vez que você bebe, role um d20; se rolar 1, ela se recusa a dispensar café pela próxima hora. Se o café for despejado no chão ou fora da boca, desaparece no ar instantaneamente."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.item.flamula_de_strixhaven",
+    "name_pt": "Flâmula de Strixhaven",
+    "name_en": "Strixhaven Pennant",
+    "name_es": null,
+    "description_pt": "Bandeeirola mágica trazendo o brasão da universidade ou de uma de suas faculdades. Enquanto você a empunhar com uma mão, ela tremula com orgulho mesmo sem vento, emitindo faíscas inofensivas de luz luminosa.",
+    "description_en": null,
+    "description_es": null,
+    "item_type": "item",
+    "price_gp": 100,
+    "weight_lb": 1,
+    "traits": [
+      "Strixhaven",
+      "Comum"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 38,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.item.flamula_de_strixhaven",
+      "name": "Flâmula de Strixhaven",
+      "type": "item",
+      "rarity": "Comum",
+      "attunement": false,
+      "cost": "100 po",
+      "description": "Bandeeirola mágica trazendo o brasão da universidade ou de uma de suas faculdades. Enquanto você a empunhar com uma mão, ela tremula com orgulho mesmo sem vento, emitindo faíscas inofensivas de luz luminosa.",
+      "sourcePage": 38,
+      "summaries": {
+        "pt-BR": "Bandeeirola mágica trazendo o brasão da universidade ou de uma de suas faculdades. Enquanto você a empunhar com uma mão, ela tremula com orgulho mesmo sem vento, emitindo faíscas inofensivas de luz luminosa."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.item.mascote_de_pelucia",
+    "name_pt": "Mascote de Pelúcia de Strixhaven",
+    "name_en": "Cuddly Strixhaven Mascot",
+    "name_es": null,
+    "description_pt": "Representando um dos mascotes das faculdades, este brinquedo macio se fixa ao braço ou ombro como ação. Quando você fizer uma salvaguarda para evitar ou encerrar a condição amedrontado em si mesmo, tem vantagem na rolagem se a pelúcia estiver consigo.",
+    "description_en": null,
+    "description_es": null,
+    "item_type": "item",
+    "price_gp": 100,
+    "weight_lb": 1,
+    "traits": [
+      "Strixhaven",
+      "Comum"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 38,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.item.mascote_de_pelucia",
+      "name": "Mascote de Pelúcia de Strixhaven",
+      "type": "item",
+      "rarity": "Comum",
+      "attunement": false,
+      "cost": "100 po",
+      "description": "Representando um dos mascotes das faculdades, este brinquedo macio se fixa ao braço ou ombro como ação. Quando você fizer uma salvaguarda para evitar ou encerrar a condição amedrontado em si mesmo, tem vantagem na rolagem se a pelúcia estiver consigo.",
+      "sourcePage": 38,
+      "summaries": {
+        "pt-BR": "Representando um dos mascotes das faculdades, este brinquedo macio se fixa ao braço ou ombro como ação. Quando você fizer uma salvaguarda para evitar ou encerrar a condição amedrontado em si mesmo, tem vantagem na rolagem se a pelúcia estiver consigo."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.item.cartilha_de_lorehold",
+    "name_pt": "Cartilha de Lorehold",
+    "name_en": "Lorehold Primer",
+    "name_es": null,
+    "description_pt": "Tomo encadernado em couro com runas de Lorehold. Possui 3 cargas e recupera 1d3 ao amanhecer. Você pode gastar cargas para adicionar 1d4 em testes de História ou Religião. Além disso, pode conjurar Compreender Idiomas gastando 1 carga.",
+    "description_en": null,
+    "description_es": null,
+    "item_type": "item",
+    "price_gp": 300,
+    "weight_lb": 1,
+    "traits": [
+      "Strixhaven",
+      "Incomum"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 38,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.item.cartilha_de_lorehold",
+      "name": "Cartilha de Lorehold",
+      "type": "item",
+      "rarity": "Incomum",
+      "attunement": true,
+      "cost": "300 po",
+      "description": "Tomo encadernado em couro com runas de Lorehold. Possui 3 cargas e recupera 1d3 ao amanhecer. Você pode gastar cargas para adicionar 1d4 em testes de História ou Religião. Além disso, pode conjurar Compreender Idiomas gastando 1 carga.",
+      "sourcePage": 38,
+      "summaries": {
+        "pt-BR": "Tomo encadernado em couro com runas de Lorehold. Possui 3 cargas e recupera 1d3 ao amanhecer. Você pode gastar cargas para adicionar 1d4 em testes de História ou Religião. Além disso, pode conjurar Compreender Idiomas gastando 1 carga."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.item.cartilha_de_prismari",
+    "name_pt": "Cartilha de Prismari",
+    "name_en": "Prismari Primer",
+    "name_es": null,
+    "description_pt": "Tomo de pergaminho iridescente com anotações artísticas. Possui 3 cargas (recupera 1d3 ao amanhecer). Permite adicionar 1d4 em testes de Acrobacia ou Atuação, ou conjurar Raio de Fogo ou Toque Chocante como ação usando as cargas.",
+    "description_en": null,
+    "description_es": null,
+    "item_type": "item",
+    "price_gp": 300,
+    "weight_lb": 1,
+    "traits": [
+      "Strixhaven",
+      "Incomum"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 38,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.item.cartilha_de_prismari",
+      "name": "Cartilha de Prismari",
+      "type": "item",
+      "rarity": "Incomum",
+      "attunement": true,
+      "cost": "300 po",
+      "description": "Tomo de pergaminho iridescente com anotações artísticas. Possui 3 cargas (recupera 1d3 ao amanhecer). Permite adicionar 1d4 em testes de Acrobacia ou Atuação, ou conjurar Raio de Fogo ou Toque Chocante como ação usando as cargas.",
+      "sourcePage": 38,
+      "summaries": {
+        "pt-BR": "Tomo de pergaminho iridescente com anotações artísticas. Possui 3 cargas (recupera 1d3 ao amanhecer). Permite adicionar 1d4 em testes de Acrobacia ou Atuação, ou conjurar Raio de Fogo ou Toque Chocante como ação usando as cargas."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.item.cartilha_de_quandrix",
+    "name_pt": "Cartilha de Quandrix",
+    "name_en": "Quandrix Primer",
+    "name_es": null,
+    "description_pt": "Grimório com fórmulas fractais e diagramas geométricos. Possui 3 cargas. Permite adicionar 1d4 em testes de Arcanismo ou Natureza, ou conjurar Orientação gastando 1 carga.",
+    "description_en": null,
+    "description_es": null,
+    "item_type": "item",
+    "price_gp": 300,
+    "weight_lb": 1,
+    "traits": [
+      "Strixhaven",
+      "Incomum"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 38,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.item.cartilha_de_quandrix",
+      "name": "Cartilha de Quandrix",
+      "type": "item",
+      "rarity": "Incomum",
+      "attunement": true,
+      "cost": "300 po",
+      "description": "Grimório com fórmulas fractais e diagramas geométricos. Possui 3 cargas. Permite adicionar 1d4 em testes de Arcanismo ou Natureza, ou conjurar Orientação gastando 1 carga.",
+      "sourcePage": 38,
+      "summaries": {
+        "pt-BR": "Grimório com fórmulas fractais e diagramas geométricos. Possui 3 cargas. Permite adicionar 1d4 em testes de Arcanismo ou Natureza, ou conjurar Orientação gastando 1 carga."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.item.cartilha_de_silverquill",
+    "name_pt": "Cartilha de Silverquill",
+    "name_en": "Silverquill Primer",
+    "name_es": null,
+    "description_pt": "Volume encadernado em prata elegante com tratados de oratória. Possui 3 cargas. Permite adicionar 1d4 em testes de Intimidação ou Persuasão, ou conjurar Zombaria Viciosa gastando 1 carga.",
+    "description_en": null,
+    "description_es": null,
+    "item_type": "item",
+    "price_gp": 300,
+    "weight_lb": 1,
+    "traits": [
+      "Strixhaven",
+      "Incomum"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 39,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.item.cartilha_de_silverquill",
+      "name": "Cartilha de Silverquill",
+      "type": "item",
+      "rarity": "Incomum",
+      "attunement": true,
+      "cost": "300 po",
+      "description": "Volume encadernado em prata elegante com tratados de oratória. Possui 3 cargas. Permite adicionar 1d4 em testes de Intimidação ou Persuasão, ou conjurar Zombaria Viciosa gastando 1 carga.",
+      "sourcePage": 39,
+      "summaries": {
+        "pt-BR": "Volume encadernado em prata elegante com tratados de oratória. Possui 3 cargas. Permite adicionar 1d4 em testes de Intimidação ou Persuasão, ou conjurar Zombaria Viciosa gastando 1 carga."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.item.cartilha_de_witherbloom",
+    "name_pt": "Cartilha de Witherbloom",
+    "name_en": "Witherbloom Primer",
+    "name_es": null,
+    "description_pt": "Tomo com folhas preservadas de pântano e couro escuro. Possui 3 cargas. Permite adicionar 1d4 em testes de Natureza ou Sobrevivência, ou conjurar Poupar os Moribundos gastando 1 carga.",
+    "description_en": null,
+    "description_es": null,
+    "item_type": "item",
+    "price_gp": 300,
+    "weight_lb": 1,
+    "traits": [
+      "Strixhaven",
+      "Incomum"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 39,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.item.cartilha_de_witherbloom",
+      "name": "Cartilha de Witherbloom",
+      "type": "item",
+      "rarity": "Incomum",
+      "attunement": true,
+      "cost": "300 po",
+      "description": "Tomo com folhas preservadas de pântano e couro escuro. Possui 3 cargas. Permite adicionar 1d4 em testes de Natureza ou Sobrevivência, ou conjurar Poupar os Moribundos gastando 1 carga.",
+      "sourcePage": 39,
+      "summaries": {
+        "pt-BR": "Tomo com folhas preservadas de pântano e couro escuro. Possui 3 cargas. Permite adicionar 1d4 em testes de Natureza ou Sobrevivência, ou conjurar Poupar os Moribundos gastando 1 carga."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]

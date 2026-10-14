@@ -1,0 +1,89 @@
+[
+  {
+    "id": "dnd5e.strixhaven.feat.iniciado_de_strixhaven",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Iniciado de Strixhaven",
+    "name_en": "Strixhaven Initiate",
+    "name_es": null,
+    "description_pt": "Você estudou teoria mágica na Universidade de Strixhaven e aprendeu truques e magias fundamentais da sua faculdade escolhida.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "Strixhaven"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 36,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.feat.iniciado_de_strixhaven",
+      "name": "Iniciado de Strixhaven",
+      "prerequisite": null,
+      "benefits": [
+        "Escolha uma das cinco faculdades de Strixhaven: Lorehold, Prismari, Quandrix, Silverquill ou Witherbloom.",
+        "Você aprende dois truques e uma magia de 1º nível correspondentes à faculdade escolhida.",
+        "Você pode conjurar a magia de 1º nível escolhida sem gastar um espaço de magia uma vez por descanso longo, além de poder conjurá-la usando quaisquer espaços de magia que possua.",
+        "Sua habilidade de conjuração para as magias deste talento pode ser Inteligência, Sabedoria ou Carisma (escolha ao obter o talento)."
+      ],
+      "summary": "Você estudou teoria mágica na Universidade de Strixhaven e aprendeu truques e magias fundamentais da sua faculdade escolhida.",
+      "category": "talento",
+      "summaries": {
+        "pt-BR": "Você estudou teoria mágica na Universidade de Strixhaven e aprendeu truques e magias fundamentais da sua faculdade escolhida."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.feat.mascote_de_strixhaven",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 4,
+    "name_pt": "Mascote de Strixhaven",
+    "name_en": "Strixhaven Mascot",
+    "name_es": null,
+    "description_pt": "Você aprendeu a invocar um mascote animado ou vivo da sua faculdade de Strixhaven para auxiliá-lo em tarefas acadêmicas e combate.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": [
+      "4º nível, talento Iniciado de Strixhaven"
+    ],
+    "action_cost": null,
+    "traits": [
+      "Strixhaven"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 36,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.feat.mascote_de_strixhaven",
+      "name": "Mascote de Strixhaven",
+      "prerequisite": "4º nível, talento Iniciado de Strixhaven",
+      "benefits": [
+        "Você pode conjurar a magia Encontrar Familiar como um ritual. Seu familiar assume a forma do mascote da sua faculdade (Estátua Espiritual, Elementar de Arte, Mascote Fractal, Tinteiro Inkling ou Praga de Pântano).",
+        "Ao realizar a ação de Ataque no seu turno, você pode renunciar a um dos seus ataques para permitir que o familiar mascote realize um ataque próprio usando a reação dele.",
+        "Se o familiar mascote estiver a até 18 metros de você, você pode usar uma ação para se teletransportar magicamente, trocando de lugar com ele. Pode usar esta troca uma vez por descanso longo (ou gastando um espaço de magia de 2º nível ou superior)."
+      ],
+      "summary": "Você aprendeu a invocar um mascote animado ou vivo da sua faculdade de Strixhaven para auxiliá-lo em tarefas acadêmicas e combate.",
+      "category": "talento",
+      "summaries": {
+        "pt-BR": "Você aprendeu a invocar um mascote animado ou vivo da sua faculdade de Strixhaven para auxiliá-lo em tarefas acadêmicas e combate."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]

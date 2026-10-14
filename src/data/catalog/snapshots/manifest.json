@@ -151,6 +151,17 @@
   },
   {
     "systemId": "dnd5e",
+    "ruleset": "dnd5e-strixhaven",
+    "categories": {
+      "ancestry": 1,
+      "background": 5,
+      "feat": 2,
+      "item": 8,
+      "spell": 5
+    }
+  },
+  {
+    "systemId": "dnd5e",
     "ruleset": "standard",
     "categories": {
       "action": 8,

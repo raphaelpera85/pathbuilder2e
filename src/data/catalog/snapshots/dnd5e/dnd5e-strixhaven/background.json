@@ -1,0 +1,328 @@
+[
+  {
+    "id": "dnd5e.strixhaven.background.lorehold",
+    "name_pt": "Estudante de Lorehold",
+    "name_en": "Lorehold Student",
+    "name_es": null,
+    "description_pt": "Faculdade: Lorehold. Perícias: História, Religião. Equipamento: Um vidro de tinta preta, uma pena de escrever, um martelo de geólogo, um uniforme escolar e uma algibeira com 15 po. Característica: Iniciado de Lorehold.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "skills": [
+      "História",
+      "Religião"
+    ],
+    "lore_options": [],
+    "traits": [
+      "Strixhaven",
+      "Lorehold"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 31,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "college": "Lorehold",
+      "skills": [
+        "História",
+        "Religião"
+      ],
+      "tools": [],
+      "languages": "Dois idiomas à sua escolha",
+      "equipment": "Um vidro de tinta preta, uma pena de escrever, um martelo de geólogo, um uniforme escolar e uma algibeira com 15 po",
+      "featureName": "Iniciado de Lorehold",
+      "featureDescription": "Você ganha o talento Iniciado de Strixhaven (Lorehold). Se você tiver a característica Conjuração ou Magia de Pacto, as magias da tabela de Magias de Lorehold são adicionadas à lista da sua classe.",
+      "bonusSpells": {
+        "1": [
+          "Compreender Idiomas",
+          "Santuário"
+        ],
+        "2": [
+          "Conhecimento Emprestado",
+          "Locomover-se sem Pegadas"
+        ],
+        "3": [
+          "Falar com os Mortos",
+          "Espíritos Guardiões"
+        ],
+        "4": [
+          "Olho Arcano",
+          "Guardião da Fé"
+        ],
+        "5": [
+          "Coluna de Chamas",
+          "Lendas e Histórias"
+        ]
+      },
+      "summaries": {
+        "pt-BR": "Faculdade: Lorehold. Perícias: História, Religião. Equipamento: Um vidro de tinta preta, uma pena de escrever, um martelo de geólogo, um uniforme escolar e uma algibeira com 15 po. Característica: Iniciado de Lorehold."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.background.prismari",
+    "name_pt": "Estudante de Prismari",
+    "name_en": "Prismari Student",
+    "name_es": null,
+    "description_pt": "Faculdade: Prismari. Perícias: Acrobacia, Atuação. Equipamento: Um vidro de tinta azul, uma pena de escrever, um instrumento musical ou ferramentas de artesão, um uniforme escolar e uma algibeira com 15 po. Característica: Iniciado de Prismari.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "skills": [
+      "Acrobacia",
+      "Atuação"
+    ],
+    "lore_options": [],
+    "traits": [
+      "Strixhaven",
+      "Prismari"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 32,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "college": "Prismari",
+      "skills": [
+        "Acrobacia",
+        "Atuação"
+      ],
+      "tools": [
+        "Um instrumento musical ou ferramentas de artesão à escolha"
+      ],
+      "languages": "Um idioma à sua escolha",
+      "equipment": "Um vidro de tinta azul, uma pena de escrever, um instrumento musical ou ferramentas de artesão, um uniforme escolar e uma algibeira com 15 po",
+      "featureName": "Iniciado de Prismari",
+      "featureDescription": "Você ganha o talento Iniciado de Strixhaven (Prismari). Se você tiver Conjuração ou Magia de Pacto, as magias de Prismari entram na lista de magias da sua classe.",
+      "bonusSpells": {
+        "1": [
+          "Orbe Cromático",
+          "Onda Trovejante"
+        ],
+        "2": [
+          "Esfera Flamejante",
+          "Passada Cinética"
+        ],
+        "3": [
+          "Velocidade",
+          "Caminhar sobre as Águas"
+        ],
+        "4": [
+          "Libertar",
+          "Tempestade de Gelo"
+        ],
+        "5": [
+          "Cone de Frio",
+          "Golpe de Vento Forte"
+        ]
+      },
+      "summaries": {
+        "pt-BR": "Faculdade: Prismari. Perícias: Acrobacia, Atuação. Equipamento: Um vidro de tinta azul, uma pena de escrever, um instrumento musical ou ferramentas de artesão, um uniforme escolar e uma algibeira com 15 po. Característica: Iniciado de Prismari."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.background.quandrix",
+    "name_pt": "Estudante de Quandrix",
+    "name_en": "Quandrix Student",
+    "name_es": null,
+    "description_pt": "Faculdade: Quandrix. Perícias: Arcanismo, Natureza. Equipamento: Um vidro de tinta verde, uma pena de escrever, um pequeno ábaco, um uniforme escolar e uma algibeira com 15 po. Característica: Iniciado de Quandrix.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "skills": [
+      "Arcanismo",
+      "Natureza"
+    ],
+    "lore_options": [],
+    "traits": [
+      "Strixhaven",
+      "Quandrix"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 33,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "college": "Quandrix",
+      "skills": [
+        "Arcanismo",
+        "Natureza"
+      ],
+      "tools": [
+        "Ferramentas de artesão à escolha"
+      ],
+      "languages": "Um idioma à sua escolha",
+      "equipment": "Um vidro de tinta verde, uma pena de escrever, um pequeno ábaco, um uniforme escolar e uma algibeira com 15 po",
+      "featureName": "Iniciado de Quandrix",
+      "featureDescription": "Você ganha o talento Iniciado de Strixhaven (Quandrix). Se tiver Conjuração ou Magia de Pacto, as magias de Quandrix são adicionadas à sua lista de magias de classe.",
+      "bonusSpells": {
+        "1": [
+          "Fogo das Fadas",
+          "Riso Histérico de Tasha"
+        ],
+        "2": [
+          "Aumentar/Reduzir",
+          "Dobra de Vórtice"
+        ],
+        "3": [
+          "Aura de Vitalidade",
+          "Ampliar Plantas"
+        ],
+        "4": [
+          "Controlar a Água",
+          "Tentáculos Negros de Evard"
+        ],
+        "5": [
+          "Círculo de Teletransporte",
+          "Passo das Árvores"
+        ]
+      },
+      "summaries": {
+        "pt-BR": "Faculdade: Quandrix. Perícias: Arcanismo, Natureza. Equipamento: Um vidro de tinta verde, uma pena de escrever, um pequeno ábaco, um uniforme escolar e uma algibeira com 15 po. Característica: Iniciado de Quandrix."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.background.silverquill",
+    "name_pt": "Estudante de Silverquill",
+    "name_en": "Silverquill Student",
+    "name_es": null,
+    "description_pt": "Faculdade: Silverquill. Perícias: Intimidação, Persuasão. Equipamento: Um vidro de tinta preta, uma pena de escrever, um livro de poesia, um uniforme escolar e uma algibeira com 15 po. Característica: Iniciado de Silverquill.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "skills": [
+      "Intimidação",
+      "Persuasão"
+    ],
+    "lore_options": [],
+    "traits": [
+      "Strixhaven",
+      "Silverquill"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 34,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "college": "Silverquill",
+      "skills": [
+        "Intimidação",
+        "Persuasão"
+      ],
+      "tools": [],
+      "languages": "Dois idiomas à sua escolha",
+      "equipment": "Um vidro de tinta preta, uma pena de escrever, um livro de poesia, um uniforme escolar e uma algibeira com 15 po",
+      "featureName": "Iniciado de Silverquill",
+      "featureDescription": "Você ganha o talento Iniciado de Strixhaven (Silverquill). Suas listas de magias de classe recebem a lista de magias expandidas de Silverquill.",
+      "bonusSpells": {
+        "1": [
+          "Sussurros Dissonantes",
+          "Farpas Prateadas"
+        ],
+        "2": [
+          "Acalmar Emoções",
+          "Escuridão"
+        ],
+        "3": [
+          "Sinal de Esperança",
+          "Luz do Dia"
+        ],
+        "4": [
+          "Compulsão",
+          "Confusão"
+        ],
+        "5": [
+          "Dominar Pessoa",
+          "Vínculo Telepático de Rary"
+        ]
+      },
+      "summaries": {
+        "pt-BR": "Faculdade: Silverquill. Perícias: Intimidação, Persuasão. Equipamento: Um vidro de tinta preta, uma pena de escrever, um livro de poesia, um uniforme escolar e uma algibeira com 15 po. Característica: Iniciado de Silverquill."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.background.witherbloom",
+    "name_pt": "Estudante de Witherbloom",
+    "name_en": "Witherbloom Student",
+    "name_es": null,
+    "description_pt": "Faculdade: Witherbloom. Perícias: Natureza, Sobrevivência. Equipamento: Um vidro de tinta preta, uma pena, um livro de botânica, caldeirão de ferro, kit de herbalismo, uniforme escolar e algibeira com 15 po. Característica: Iniciado de Witherbloom.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "skills": [
+      "Natureza",
+      "Sobrevivência"
+    ],
+    "lore_options": [],
+    "traits": [
+      "Strixhaven",
+      "Witherbloom"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 35,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "college": "Witherbloom",
+      "skills": [
+        "Natureza",
+        "Sobrevivência"
+      ],
+      "tools": [
+        "Kit de herbalismo"
+      ],
+      "languages": "Um idioma à sua escolha",
+      "equipment": "Um vidro de tinta preta, uma pena, um livro de botânica, caldeirão de ferro, kit de herbalismo, uniforme escolar e algibeira com 15 po",
+      "featureName": "Iniciado de Witherbloom",
+      "featureDescription": "Você ganha o talento Iniciado de Strixhaven (Witherbloom). Suas listas de magias de classe recebem a lista de magias expandidas de Witherbloom.",
+      "bonusSpells": {
+        "1": [
+          "Curar Ferimentos",
+          "Infligir Ferimentos"
+        ],
+        "2": [
+          "Restauração Menor",
+          "Fenecer e Florescer"
+        ],
+        "3": [
+          "Reviver",
+          "Toque Vampírico"
+        ],
+        "4": [
+          "Assolar",
+          "Proteção contra a Morte"
+        ],
+        "5": [
+          "Casulo Antivida",
+          "Restauração Maior"
+        ]
+      },
+      "summaries": {
+        "pt-BR": "Faculdade: Witherbloom. Perícias: Natureza, Sobrevivência. Equipamento: Um vidro de tinta preta, uma pena, um livro de botânica, caldeirão de ferro, kit de herbalismo, uniforme escolar e algibeira com 15 po. Característica: Iniciado de Witherbloom."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]

@@ -1,0 +1,259 @@
+[
+  {
+    "id": "dnd5e.strixhaven.spell.silvery_barbs",
+    "name_pt": "Farpas Prateadas",
+    "name_en": "Silvery Barbs",
+    "name_es": null,
+    "description_pt": "Você distrai magicamente a criatura desencadeadora e transforma a incerteza momentânea dela em encorajamento para outro aliado. A criatura desencadeadora deve rolar novamente o d20 e usar o menor resultado. Você pode então escolher uma criatura diferente que possa ver a até 18 metros (incluindo você mesmo); a criatura escolhida tem vantagem na próxima jogada de ataque, teste de habilidade ou salvaguarda que fizer dentro de 1 minuto.",
+    "description_en": null,
+    "description_es": null,
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [],
+    "cast_actions": "1 reação (quando criatura a 18m tem sucesso em ataque, teste de habilidade ou salvaguarda)",
+    "range": "18 metros (60 pés)",
+    "targets": null,
+    "duration": "Instantânea",
+    "defense": null,
+    "traits": [
+      "Encantamento"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 37,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.spell.silvery_barbs",
+      "name": "Farpas Prateadas",
+      "range": "18 metros (60 pés)",
+      "summary": "Reação que força o alvo a rolar novamente um teste bem-sucedido e concede vantagem ao próximo teste de um aliado.",
+      "category": "magia",
+      "classIds": [
+        "bard",
+        "sorcerer",
+        "wizard"
+      ],
+      "spellLevel": 1,
+      "school": "Encantamento",
+      "castingTime": "1 reação (quando criatura a 18m tem sucesso em ataque, teste de habilidade ou salvaguarda)",
+      "components": "V",
+      "duration": "Instantânea",
+      "higherLevels": null,
+      "sourcePage": 37,
+      "summaries": {
+        "pt-BR": "Reação que força o alvo a rolar novamente um teste bem-sucedido e concede vantagem ao próximo teste de um aliado."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.spell.borrowed_knowledge",
+    "name_pt": "Conhecimento Emprestado",
+    "name_en": "Borrowed Knowledge",
+    "name_es": null,
+    "description_pt": "Você canaliza o conhecimento dos espíritos do passado para enriquecer sua mente. Escolha uma perícia na qual você não possua proficiência. Pela duração da magia, você passa a ter proficiência na perícia escolhida. A magia termina antecipadamente se você a conjurar de novo.",
+    "description_en": null,
+    "description_es": null,
+    "rank": 2,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [],
+    "cast_actions": "1 ação",
+    "range": "Pessoal",
+    "targets": null,
+    "duration": "1 hora",
+    "defense": null,
+    "traits": [
+      "Adivinhação"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 37,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.spell.borrowed_knowledge",
+      "name": "Conhecimento Emprestado",
+      "range": "Pessoal",
+      "summary": "Garante proficiência temporária em qualquer perícia à sua escolha por 1 hora.",
+      "category": "magia",
+      "classIds": [
+        "bard",
+        "cleric",
+        "warlock",
+        "wizard"
+      ],
+      "spellLevel": 2,
+      "school": "Adivinhação",
+      "castingTime": "1 ação",
+      "components": "V, S, M (um livro valendo ao menos 25 po)",
+      "duration": "1 hora",
+      "higherLevels": null,
+      "sourcePage": 37,
+      "summaries": {
+        "pt-BR": "Garante proficiência temporária em qualquer perícia à sua escolha por 1 hora."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.spell.kinetic_jaunt",
+    "name_pt": "Passada Cinética",
+    "name_en": "Kinetic Jaunt",
+    "name_es": null,
+    "description_pt": "Você capacita magicamente seus passos com uma cadência fluida e dançante. Pela duração, seu deslocamento de caminhada aumenta em 3 metros, você não provoca ataques de oportunidade e pode se mover através do espaço de outras criaturas sem que isso conte como terreno difícil. Se terminar seu turno no espaço de outra criatura, é empurrado para o último espaço livre e sofre 1d8 de dano de força.",
+    "description_en": null,
+    "description_es": null,
+    "rank": 2,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [],
+    "cast_actions": "1 ação bônus",
+    "range": "Pessoal",
+    "targets": null,
+    "duration": "Concentração, até 1 minuto",
+    "defense": null,
+    "traits": [
+      "Transmutação"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 37,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.spell.kinetic_jaunt",
+      "name": "Passada Cinética",
+      "range": "Pessoal",
+      "summary": "Ação bônus que concede +3m de deslocamento, nega ataques de oportunidade e permite atravessar criaturas.",
+      "category": "magia",
+      "classIds": [
+        "artificer",
+        "bard",
+        "sorcerer",
+        "wizard"
+      ],
+      "spellLevel": 2,
+      "school": "Transmutação",
+      "castingTime": "1 ação bônus",
+      "components": "S",
+      "duration": "Concentração, até 1 minuto",
+      "higherLevels": null,
+      "sourcePage": 37,
+      "summaries": {
+        "pt-BR": "Ação bônus que concede +3m de deslocamento, nega ataques de oportunidade e permite atravessar criaturas."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.spell.vortex_warp",
+    "name_pt": "Dobra de Vórtice",
+    "name_en": "Vortex Warp",
+    "name_es": null,
+    "description_pt": "Você distorce o tecido do espaço ao redor de outra criatura que possa ver dentro do alcance. O alvo deve ter sucesso em uma salvaguarda de Constituição (ele pode escolher falhar voluntariamente), ou é teletransportado para um espaço desocupado à sua escolha visível dentro do alcance. O espaço de destino deve estar sobre uma superfície ou líquido capaz de sustentá-lo.",
+    "description_en": null,
+    "description_es": null,
+    "rank": 2,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [],
+    "cast_actions": "1 ação",
+    "range": "27 metros (90 pés)",
+    "targets": null,
+    "duration": "Instantânea",
+    "defense": null,
+    "traits": [
+      "Conjuração"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 38,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.spell.vortex_warp",
+      "name": "Dobra de Vórtice",
+      "range": "27 metros (90 pés)",
+      "summary": "Teletransporta uma criatura voluntária ou forçada para um espaço livre a até 27 metros.",
+      "category": "magia",
+      "classIds": [
+        "artificer",
+        "sorcerer",
+        "wizard"
+      ],
+      "spellLevel": 2,
+      "school": "Conjuração",
+      "castingTime": "1 ação",
+      "components": "V, S",
+      "duration": "Instantânea",
+      "higherLevels": "Ao conjurar com espaço de 3º nível ou superior, o alcance da magia aumenta em 9 metros (30 pés) para cada nível acima do 2º.",
+      "sourcePage": 38,
+      "summaries": {
+        "pt-BR": "Teletransporta uma criatura voluntária ou forçada para um espaço livre a até 27 metros."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "dnd5e.strixhaven.spell.wither_and_bloom",
+    "name_pt": "Fenecer e Florescer",
+    "name_en": "Wither and Bloom",
+    "name_es": null,
+    "description_pt": "Você evoca a morte e a vida simultaneamente em uma esfera de 3 metros de raio a partir de um ponto no alcance. Criaturas à sua escolha na área devem fazer uma salvaguarda de Constituição, sofrendo 2d6 de dano necrótico se falharem, ou metade desse dano em caso de sucesso. Vegetação não mágica na área murcha instantaneamente. Além disso, uma criatura à sua escolha na área pode gastar e rolar um de seus Dados de Vida não gastos para recuperar pontos de vida iguais ao resultado rolado mais seu modificador de habilidade de conjuração.",
+    "description_en": null,
+    "description_es": null,
+    "rank": 2,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [],
+    "cast_actions": "1 ação",
+    "range": "18 metros (60 pés)",
+    "targets": null,
+    "duration": "Instantânea",
+    "defense": null,
+    "traits": [
+      "Necromancia"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 38,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "id": "dnd5e.strixhaven.spell.wither_and_bloom",
+      "name": "Fenecer e Florescer",
+      "range": "18 metros (60 pés)",
+      "summary": "Esfera que causa 2d6 necrótico a inimigos e permite a um aliado gastar Dado de Vida para cura imediata.",
+      "category": "magia",
+      "classIds": [
+        "druid",
+        "sorcerer",
+        "wizard"
+      ],
+      "spellLevel": 2,
+      "school": "Necromancia",
+      "castingTime": "1 ação",
+      "components": "V, S, M (uma vinha murcha amarrada em laço)",
+      "duration": "Instantânea",
+      "higherLevels": "Ao conjurar com espaço de 3º nível ou superior, o dano aumenta em 1d6 e a criatura pode gastar um Dado de Vida adicional para cura para cada nível acima do 2º.",
+      "sourcePage": 38,
+      "summaries": {
+        "pt-BR": "Esfera que causa 2d6 necrótico a inimigos e permite a um aliado gastar Dado de Vida para cura imediata."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]

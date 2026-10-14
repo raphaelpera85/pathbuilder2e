@@ -1,0 +1,51 @@
+[
+  {
+    "id": "dnd5e.strixhaven.ancestry.owlin",
+    "name_pt": "Corujoculado",
+    "name_en": "Owlin",
+    "name_es": null,
+    "description_pt": "+2 em um atributo e +1 em outro (ou +1 em três atributos); tamanho Pequeno ou Médio, deslocamento 9m (voo 9m); traços: Tipo de Criatura, Tamanho Flexível, Voo Silencioso, Visão no Escuro Superior, Penas Silenciosas.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Mais 1 idioma à escolha"
+    ],
+    "traits": [
+      "Tipo de Criatura",
+      "Tamanho Flexível",
+      "Voo Silencioso",
+      "Visão no Escuro Superior",
+      "Penas Silenciosas"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-strixhaven",
+    "source_book": "D&D 5e · Strixhaven: Currículo do Caos",
+    "source_page": 29,
+    "created_at": "2026-10-14T19:32:20.806Z",
+    "updated_at": "2026-10-14T19:32:20.806Z",
+    "system_id": "dnd5e",
+    "data": {
+      "abilityBonuses": "+2 em um atributo e +1 em outro (ou +1 em três atributos)",
+      "size": "Pequeno ou Médio",
+      "speedMeters": 9,
+      "flySpeedMeters": 9,
+      "traits": [
+        "Tipo de Criatura: Humanoide.",
+        "Tamanho Flexível: Você escolhe se é de tamanho Médio ou Pequeno ao criar o personagem.",
+        "Voo Silencioso: Graças às suas asas, você tem deslocamento de voo igual ao seu deslocamento de caminhada (9 metros). Você não pode voar se estiver vestindo armadura média ou pesada.",
+        "Visão no Escuro Superior: Você enxerga na penumbra a até 36 metros como se fosse luz plena e na escuridão como penumbra.",
+        "Penas Silenciosas: Suas penas não emitem som ao se mover ou voar. Você tem proficiência na perícia Furtividade."
+      ],
+      "summaries": {
+        "pt-BR": "+2 em um atributo e +1 em outro (ou +1 em três atributos); tamanho Pequeno ou Médio, deslocamento 9m (voo 9m); traços: Tipo de Criatura, Tamanho Flexível, Voo Silencioso, Visão no Escuro Superior, Penas Silenciosas."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]
