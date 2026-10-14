@@ -240,9 +240,9 @@
     "semantic_hash": ""
   },
   "src/data/sources.ts": {
-    "mtime": 1792011234.2413688,
-    "seen": 1792011684.5093865,
-    "ast_hash": "9ce84ed27e8e1298f0f325607315632b",
+    "mtime": 1792012776.8682816,
+    "seen": 1792012991.5975592,
+    "ast_hash": "9553c798c72339e78604d1cda35f27fe",
     "semantic_hash": ""
   },
   "src/data/spellcasting-engine.test.ts": {
@@ -816,9 +816,9 @@
     "semantic_hash": ""
   },
   "src/services/admin.test.ts": {
-    "mtime": 1792011402.6151192,
-    "seen": 1792011684.5448275,
-    "ast_hash": "96933be68b28c99c3a6fcced88cbee8a",
+    "mtime": 1792012853.8353493,
+    "seen": 1792012991.6155,
+    "ast_hash": "ce226bbb74ab9a7680caafc190f21ae1",
     "semantic_hash": ""
   },
   "src/services/admin.ts": {
@@ -1171,13 +1171,13 @@
   },
   ".planning/graphs/.last-build-snapshot.json": {
     "mtime": 1788464729.817343,
-    "seen": 1792010364.6127331,
+    "seen": 1792011752.6765354,
     "ast_hash": "",
     "semantic_hash": ""
   },
   ".planning/graphs/graph.json": {
     "mtime": 1788464729.0434592,
-    "seen": 1792010364.6127367,
+    "seen": 1792011752.6765378,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1195,31 +1195,31 @@
   },
   "scripts/extracted_all_feats_master.json": {
     "mtime": 1788294828.5723233,
-    "seen": 1792010364.613277,
+    "seen": 1792011752.6769638,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608270001_accounts_and_characters.sql": {
     "mtime": 1787872547.9143429,
-    "seen": 1792010364.6167552,
+    "seen": 1792011752.6799605,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608270002_character_limits.sql": {
     "mtime": 1788260933.2179694,
-    "seen": 1792010364.616758,
+    "seen": 1792011752.6799636,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608300001_campaigns_and_gm_sharing.sql": {
     "mtime": 1788766556.6440303,
-    "seen": 1792010364.6167603,
+    "seen": 1792011752.6799662,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/schema_full.sql": {
     "mtime": 1789191316.5193534,
-    "seen": 1792010364.617085,
+    "seen": 1792011752.6802053,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1236,9 +1236,9 @@
     "semantic_hash": ""
   },
   "src/services/catalog.test.ts": {
-    "mtime": 1792011376.2855556,
-    "seen": 1792011684.5473459,
-    "ast_hash": "2e01a45b51cacf36bfa951530f6cdab7",
+    "mtime": 1792012835.381997,
+    "seen": 1792012991.6178641,
+    "ast_hash": "69aa1e63ce520826485baf81caca09ec",
     "semantic_hash": ""
   },
   "src/services/catalog.ts": {
@@ -1297,7 +1297,7 @@
   },
   "scripts/catalog_data/catalog_feats.json": {
     "mtime": 1791769643.223946,
-    "seen": 1792010364.613218,
+    "seen": 1792011752.6769056,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1339,7 +1339,7 @@
   },
   "supabase/migrations/202609040001_catalog_tables.sql": {
     "mtime": 1788493864.528052,
-    "seen": 1792010364.6167626,
+    "seen": 1792011752.679969,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1369,43 +1369,43 @@
   },
   "supabase/seed_catalog.sql": {
     "mtime": 1791662149.0599706,
-    "seen": 1792010364.6170866,
+    "seen": 1792011752.6802082,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/01_ancestries_classes_items.sql": {
     "mtime": 1788828468.062582,
-    "seen": 1792010364.6170886,
+    "seen": 1792011752.6802106,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/02_heritages_subclasses_backgrounds_archetypes.sql": {
     "mtime": 1788828468.06458,
-    "seen": 1792010364.6170902,
+    "seen": 1792011752.6802132,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/03_spells_rituals_actions_conditions_pets.sql": {
     "mtime": 1788828468.068148,
-    "seen": 1792010364.6170921,
+    "seen": 1792011752.6802156,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/04_weapons_armors_shields_formulas.sql": {
     "mtime": 1791662148.9961977,
-    "seen": 1792010364.6170936,
+    "seen": 1792011752.6802175,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/05_feats_part1.sql": {
     "mtime": 1788828468.0721307,
-    "seen": 1792010364.6170957,
+    "seen": 1792011752.6802197,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/06_feats_part2.sql": {
     "mtime": 1788828468.0761144,
-    "seen": 1792010364.6170974,
+    "seen": 1792011752.6802218,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1663,7 +1663,7 @@
   },
   "supabase/migrations/202609040002_site_visits_and_profile_email.sql": {
     "mtime": 1788500807.9926589,
-    "seen": 1792010364.6167648,
+    "seen": 1792011752.679972,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -2167,7 +2167,7 @@
   },
   "supabase/migrations/202609080001_campaigns_realtime.sql": {
     "mtime": 1788840232.582438,
-    "seen": 1792010364.6167672,
+    "seen": 1792011752.6799746,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -2179,7 +2179,7 @@
   },
   "supabase/migrations/202609080002_campaign_notes.sql": {
     "mtime": 1788840665.6405127,
-    "seen": 1792010364.6167696,
+    "seen": 1792011752.6799772,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -4075,7 +4075,7 @@
   },
   "public/data/pf2e_feats_mechanics.json": {
     "mtime": 1788936439.4327824,
-    "seen": 1792010364.6127994,
+    "seen": 1792011752.6766837,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -10537,7 +10537,7 @@
   },
   ".agents/skills/operator-approval-loop/references/approval-ledger.sql": {
     "mtime": 1789189211.5286157,
-    "seen": 1792010364.6114876,
+    "seen": 1792011752.6761658,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -10591,13 +10591,13 @@
   },
   "supabase/migrations/202609120001_multi_system_support.sql": {
     "mtime": 1789205645.6712203,
-    "seen": 1792010364.6167717,
+    "seen": 1792011752.6799796,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120002_add_ose_system.sql": {
     "mtime": 1789204859.9817202,
-    "seen": 1792010364.6167738,
+    "seen": 1792011752.6799817,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -10921,109 +10921,109 @@
   },
   "supabase/migrations/202609120003_expand_character_rulesets.sql": {
     "mtime": 1789214542.5568097,
-    "seen": 1792010364.6167765,
+    "seen": 1792011752.6799843,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120004_split_catalog_admin_policies.sql": {
     "mtime": 1789214652.5597816,
-    "seen": 1792010364.6167781,
+    "seen": 1792011752.6799865,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120005_secure_functions_index_foreign_keys.sql": {
     "mtime": 1789214710.0750096,
-    "seen": 1792010364.6167803,
+    "seen": 1792011752.6799884,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120006_seed_t20_dnd5e_core_catalogs.sql": {
     "mtime": 1789217408.935156,
-    "seen": 1792010364.6167822,
+    "seen": 1792011752.6799905,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120007_seed_t20_dnd5e_backgrounds.sql": {
     "mtime": 1789217584.3366225,
-    "seen": 1792010364.6167846,
+    "seen": 1792011752.6799932,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120008_seed_t20_dnd5e_compendium.sql": {
     "mtime": 1789217645.5372512,
-    "seen": 1792010364.6167867,
+    "seen": 1792011752.6799948,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120009_seed_dnd5e_subraces_subclasses.sql": {
     "mtime": 1789218308.697317,
-    "seen": 1792010364.616789,
+    "seen": 1792011752.679997,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120010_enrich_core_equipment_rules.sql": {
     "mtime": 1789219025.0723977,
-    "seen": 1792010364.6167912,
+    "seen": 1792011752.679999,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120011_seed_core_armor_items.sql": {
     "mtime": 1789219067.3771992,
-    "seen": 1792010364.616794,
+    "seen": 1792011752.6800017,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120012_add_core_equipment_weights.sql": {
     "mtime": 1789219439.7787197,
-    "seen": 1792010364.6167972,
+    "seen": 1792011752.6800044,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120013_seed_core_compendium_expanded.sql": {
     "mtime": 1789222651.0883038,
-    "seen": 1792010364.6168,
+    "seen": 1792011752.680007,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120014_seed_core_compendium_latest.sql": {
     "mtime": 1789222668.5439572,
-    "seen": 1792010364.616802,
+    "seen": 1792011752.6800091,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120015_seed_core_compendium_with_prerequisites.sql": {
     "mtime": 1789222900.9414601,
-    "seen": 1792010364.6168048,
+    "seen": 1792011752.680012,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120016_seed_core_compendium_granted_powers.sql": {
     "mtime": 1789223212.1644871,
-    "seen": 1792010364.6168077,
+    "seen": 1792011752.6800144,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120017_align_core_rulesets.sql": {
     "mtime": 1789223718.959503,
-    "seen": 1792010364.61681,
+    "seen": 1792011752.6800172,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120018_seed_ose_core_catalog.sql": {
     "mtime": 1789331929.9906716,
-    "seen": 1792010364.6168127,
+    "seen": 1792011752.6800196,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120019_move_admin_check_private.sql": {
     "mtime": 1789224843.4899297,
-    "seen": 1792010364.6168153,
+    "seen": 1792011752.6800225,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120020_seed_dnd5e_adventuring_gear.sql": {
     "mtime": 1789226098.1071439,
-    "seen": 1792010364.616818,
+    "seen": 1792011752.680025,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -11203,313 +11203,313 @@
   },
   "supabase/migrations/202609120021_add_t20_equipment_costs.sql": {
     "mtime": 1789228231.7242253,
-    "seen": 1792010364.6168203,
+    "seen": 1792011752.6800275,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120022_add_dnd5e_ammunition.sql": {
     "mtime": 1789228470.5747042,
-    "seen": 1792010364.6168222,
+    "seen": 1792011752.6800299,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120023_add_t20_armor_material_metadata.sql": {
     "mtime": 1789229004.840889,
-    "seen": 1792010364.6168246,
+    "seen": 1792011752.6800323,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130001_seed_core_compendium_current.sql": {
     "mtime": 1789340304.673108,
-    "seen": 1792010364.6168265,
+    "seen": 1792011752.6800344,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130002_reconcile_pf2e_subclass_orphans.sql": {
     "mtime": 1789308149.189088,
-    "seen": 1792010364.6168287,
+    "seen": 1792011752.6800363,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130003_refresh_core_spell_metadata.sql": {
     "mtime": 1789340304.6795635,
-    "seen": 1792010364.6168308,
+    "seen": 1792011752.6800387,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130004_enrich_dnd5e_background_choices.sql": {
     "mtime": 1789309089.832338,
-    "seen": 1792010364.6168332,
+    "seen": 1792011752.6800416,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130005_refresh_core_feat_summaries.sql": {
     "mtime": 1789340304.681677,
-    "seen": 1792010364.6168356,
+    "seen": 1792011752.6800435,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130006_refresh_t20_general_power_summaries.sql": {
     "mtime": 1789340304.6826975,
-    "seen": 1792010364.616838,
+    "seen": 1792011752.6800454,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130007_refresh_t20_granted_tormenta_summaries.sql": {
     "mtime": 1789340304.683678,
-    "seen": 1792010364.6168401,
+    "seen": 1792011752.6800475,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130008_reconcile_t20_core_power_catalog.sql": {
     "mtime": 1789340304.683678,
-    "seen": 1792010364.6168754,
+    "seen": 1792011752.6800504,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130009_refresh_t20_spell_effect_summaries.sql": {
     "mtime": 1789340304.684564,
-    "seen": 1792010364.616886,
+    "seen": 1792011752.6800528,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130010_refresh_dnd5e_feat_choices.sql": {
     "mtime": 1789340304.6855636,
-    "seen": 1792010364.616889,
+    "seen": 1792011752.6800559,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130011_refresh_t20_power_choices.sql": {
     "mtime": 1789340304.6865642,
-    "seen": 1792010364.6168933,
+    "seen": 1792011752.6800585,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130012_refresh_t20_class_choices.sql": {
     "mtime": 1789312953.4893596,
-    "seen": 1792010364.6168962,
+    "seen": 1792011752.680061,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130013_refresh_t20_spell_effects_complete.sql": {
     "mtime": 1789340304.6875634,
-    "seen": 1792010364.616899,
+    "seen": 1792011752.6800637,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130014_refresh_t20_spell_operational_metadata.sql": {
     "mtime": 1789340304.688568,
-    "seen": 1792010364.6169019,
+    "seen": 1792011752.6800663,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130015_fix_t20_deflagracao_operational_metadata.sql": {
     "mtime": 1789313759.822318,
-    "seen": 1792010364.616905,
+    "seen": 1792011752.680069,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130016_refresh_t20_structured_class_choices.sql": {
     "mtime": 1789314070.1183102,
-    "seen": 1792010364.616909,
+    "seen": 1792011752.6800718,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130017_add_t20_personal_strike_choices.sql": {
     "mtime": 1789314327.9340723,
-    "seen": 1792010364.6169112,
+    "seen": 1792011752.6800747,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130018_expand_dnd5e_level1_spells.sql": {
     "mtime": 1789315018.8801186,
-    "seen": 1792010364.616913,
+    "seen": 1792011752.6800773,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130019_fix_dnd5e_ranger_spell_lists.sql": {
     "mtime": 1789315229.9325945,
-    "seen": 1792010364.6169155,
+    "seen": 1792011752.68008,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130020_expand_dnd5e_level2_spells.sql": {
     "mtime": 1789315479.8311353,
-    "seen": 1792010364.6169186,
+    "seen": 1792011752.6800828,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130021_expand_dnd5e_level3_spells.sql": {
     "mtime": 1789315651.5345366,
-    "seen": 1792010364.6169212,
+    "seen": 1792011752.6800847,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130022_expand_dnd5e_level4_spells.sql": {
     "mtime": 1789315827.8142476,
-    "seen": 1792010364.616924,
+    "seen": 1792011752.6800873,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130023_expand_dnd5e_level5_spells.sql": {
     "mtime": 1789316021.0230224,
-    "seen": 1792010364.6169262,
+    "seen": 1792011752.6800897,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130024_expand_dnd5e_level6_spells.sql": {
     "mtime": 1789316206.4610891,
-    "seen": 1792010364.6169286,
+    "seen": 1792011752.6800916,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130025_expand_dnd5e_level7_spells.sql": {
     "mtime": 1789316374.7631328,
-    "seen": 1792010364.61693,
+    "seen": 1792011752.6800938,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130026_expand_dnd5e_level8_spells.sql": {
     "mtime": 1789316510.4252474,
-    "seen": 1792010364.6169322,
+    "seen": 1792011752.6800957,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130027_expand_dnd5e_level9_spells.sql": {
     "mtime": 1789316633.1882198,
-    "seen": 1792010364.6169343,
+    "seen": 1792011752.680098,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130028_expand_t20_equipment_catalog.sql": {
     "mtime": 1789340304.676705,
-    "seen": 1792010364.6169364,
+    "seen": 1792011752.6801007,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130029_expand_dnd5e_mounts_vehicles.sql": {
     "mtime": 1789340304.6776695,
-    "seen": 1792010364.616939,
+    "seen": 1792011752.6801035,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130030_expand_dnd5e_core_gear_tools.sql": {
     "mtime": 1789340304.6776695,
-    "seen": 1792010364.6169415,
+    "seen": 1792011752.6801057,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130031_refresh_dnd5e_weapon_metadata.sql": {
     "mtime": 1789340304.6786344,
-    "seen": 1792010364.6169434,
+    "seen": 1792011752.6801078,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130032_remove_legacy_dnd5e_weapon_duplicate.sql": {
     "mtime": 1789318069.2701304,
-    "seen": 1792010364.6169457,
+    "seen": 1792011752.68011,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130033_refresh_t20_weapon_metadata.sql": {
     "mtime": 1789340304.6795635,
-    "seen": 1792010364.6169481,
+    "seen": 1792011752.6801121,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130034_refresh_dnd5e_subclass_choices.sql": {
     "mtime": 1789321329.8262002,
-    "seen": 1792010364.6169503,
+    "seen": 1792011752.6801147,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130035_refresh_dnd5e_race_choices.sql": {
     "mtime": 1789321877.6549308,
-    "seen": 1792010364.6169527,
+    "seen": 1792011752.6801167,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130036_refresh_dnd5e_subrace_choices.sql": {
     "mtime": 1789322341.065037,
-    "seen": 1792010364.6169543,
+    "seen": 1792011752.6801186,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130037_expand_t20_magic_items.sql": {
     "mtime": 1789323781.065247,
-    "seen": 1792010364.6169565,
+    "seen": 1792011752.6801202,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130038_expand_t20_specific_weapons.sql": {
     "mtime": 1789324115.3124175,
-    "seen": 1792010364.6169586,
+    "seen": 1792011752.6801229,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130039_expand_dnd5e_magic_items.sql": {
     "mtime": 1789324552.843306,
-    "seen": 1792010364.6170137,
+    "seen": 1792011752.6801252,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130040_refresh_t20_spell_schools.sql": {
     "mtime": 1789327074.840751,
-    "seen": 1792010364.6170228,
+    "seen": 1792011752.6801279,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130041_seed_ose_classic_catalog.sql": {
     "mtime": 1789331929.9916775,
-    "seen": 1792010364.6170259,
+    "seen": 1792011752.6801298,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130042_seed_core_actions_conditions.sql": {
     "mtime": 1789336960.1210096,
-    "seen": 1792010364.6170282,
+    "seen": 1792011752.6801322,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130043_create_core_skills_catalog.sql": {
     "mtime": 1789338703.5933282,
-    "seen": 1792010364.6170309,
+    "seen": 1792011752.6801367,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130044_seed_ose_classic_actions.sql": {
     "mtime": 1789338221.8742094,
-    "seen": 1792010364.6170332,
+    "seen": 1792011752.6801403,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130045_refresh_dnd5e_power_attack_weapon_metadata.sql": {
     "mtime": 1789345601.8687086,
-    "seen": 1792010364.6170356,
+    "seen": 1792011752.6801429,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130046_refresh_dnd5e_attunement_metadata.sql": {
     "mtime": 1789348204.6177154,
-    "seen": 1792010364.6170378,
+    "seen": 1792011752.6801455,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130047_backfill_character_system_metadata.sql": {
     "mtime": 1789348791.7575169,
-    "seen": 1792010364.61704,
+    "seen": 1792011752.6801474,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609130048_refresh_dnd5e_granted_magic_spells.sql": {
     "mtime": 1789349400.871853,
-    "seen": 1792010364.6170416,
+    "seen": 1792011752.6801581,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609140001_backfill_character_payload_metadata.sql": {
     "mtime": 1789356150.6212363,
-    "seen": 1792010364.6170437,
+    "seen": 1792011752.6801605,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -11581,43 +11581,43 @@
   },
   "supabase/migrations/202609190001_refresh_dnd5e_subclass_skill_choices.sql": {
     "mtime": 1789812450.0661302,
-    "seen": 1792010364.6170456,
+    "seen": 1792011752.6801631,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609190002_refresh_dnd5e_light_domain_choice.sql": {
     "mtime": 1789813687.1950433,
-    "seen": 1792010364.6170478,
+    "seen": 1792011752.680165,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609190003_reconcile_dnd5e_subclass_choices.sql": {
     "mtime": 1789813786.4330063,
-    "seen": 1792010364.61705,
+    "seen": 1792011752.6801672,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609190004_add_dnd5e_land_circle_spells.sql": {
     "mtime": 1789814424.8605754,
-    "seen": 1792010364.6170514,
+    "seen": 1792011752.680169,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609190005_refresh_dnd5e_cleric_domain_spells.sql": {
     "mtime": 1789815013.7844713,
-    "seen": 1792010364.6170535,
+    "seen": 1792011752.6801715,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609190006_add_dnd5e_domain_spells.sql": {
     "mtime": 1789815257.7081254,
-    "seen": 1792010364.6170554,
+    "seen": 1792011752.6801736,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609190007_refresh_dnd5e_ranger_class_choices.sql": {
     "mtime": 1789819128.2680345,
-    "seen": 1792010364.6170573,
+    "seen": 1792011752.6801755,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -11905,19 +11905,19 @@
   },
   "supabase/migrations/202609230001_add_dnd5e_subclass_choices.sql": {
     "mtime": 1790184250.8476284,
-    "seen": 1792010364.617061,
+    "seen": 1792011752.680178,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609230002_add_dnd5e_ranger_favored_enemy_14.sql": {
     "mtime": 1790185711.3405802,
-    "seen": 1792010364.6170635,
+    "seen": 1792011752.6801808,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609230003_add_dnd5e_sorcerer_metamagic_progression.sql": {
     "mtime": 1790186048.081899,
-    "seen": 1792010364.617066,
+    "seen": 1792011752.6801841,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -12043,7 +12043,7 @@
   },
   "supabase/migrations/202609270001_add_ose_basico_ruleset.sql": {
     "mtime": 1790553180.2522354,
-    "seen": 1792010364.6170685,
+    "seen": 1792011752.6801865,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -12349,19 +12349,19 @@
   },
   "supabase/migrations/202610030001_add_dnd35_system.sql": {
     "mtime": 1791073556.8247335,
-    "seen": 1792010364.6170719,
+    "seen": 1792011752.6801891,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202610030002_seed_dnd35_catalog.sql": {
     "mtime": 1791255930.0980327,
-    "seen": 1792010364.6170747,
+    "seen": 1792011752.6801918,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202610040001_seed_dnd35_frostburn_catalog.sql": {
     "mtime": 1791255931.4461823,
-    "seen": 1792010364.6170764,
+    "seen": 1792011752.6801944,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -12385,13 +12385,13 @@
   },
   "supabase/migrations/202610060001_seed_dnd35_cov_catalog.sql": {
     "mtime": 1791255932.630265,
-    "seen": 1792010364.6170785,
+    "seen": 1792011752.6801968,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202610060002_seed_dnd35_defensores_catalog.sql": {
     "mtime": 1791255933.5585923,
-    "seen": 1792010364.6170802,
+    "seen": 1792011752.6801996,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -12612,9 +12612,9 @@
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/manifest.json": {
-    "mtime": 1792011266.542937,
-    "seen": 1792011684.2832296,
-    "ast_hash": "097bdfc692750d049c3b5efe9c6ae77c",
+    "mtime": 1792012793.9644086,
+    "seen": 1792012991.4559035,
+    "ast_hash": "07356c8e52c40b54c3d1408c147446cf",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/ose/advanced/action.json": {
@@ -13183,7 +13183,7 @@
   },
   "src/data/catalog/snapshots/pf2e/remaster/feat.json": {
     "mtime": 1791769643.1617167,
-    "seen": 1792010364.6141253,
+    "seen": 1792011752.6776323,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -13789,7 +13789,7 @@
   },
   "src/data/knowledge-graph/graph.json": {
     "mtime": 1791773932.6828454,
-    "seen": 1792010364.6163402,
+    "seen": 1792011752.679716,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -13801,7 +13801,7 @@
   },
   "supabase/migrations/202610120001_seed_dnd35_cor_catalog.sql": {
     "mtime": 1791802317.3113081,
-    "seen": 1792010364.6170824,
+    "seen": 1792011752.6802025,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -14712,9 +14712,9 @@
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/t20/t20-ameacas/item.json": {
-    "mtime": 1791994034.5324347,
-    "seen": 1791994951.386665,
-    "ast_hash": "d36182133e67a39abe428af1a0fb7501",
+    "mtime": 1792012668.9904368,
+    "seen": 1792012991.4821408,
+    "ast_hash": "292d3582914f655a57e259641bafe9d1",
     "semantic_hash": ""
   },
   "src/data/catalog/snapshots/t20/t20-ameacas/spell.json": {

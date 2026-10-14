@@ -1922,5 +1922,1325 @@
       },
       "summaryOrigin": "structured_rules"
     }
+  },
+  {
+    "id": "ameacas-algravia",
+    "name_pt": "Algravia",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Bebida alcoólica adocicada feita da sei- va de feras-cactos. Você recebe +1 em perícias baseadas em Carisma, cumulativo com outros itens. Múltiplas doses são cumulativas entre si, mas intoxicantes; para cada dose além da primeira no mesmo dia, você deve fazer um teste de Fortitude (CD 15 + 5 para cada dose anterior). Em caso de falha, você fica enjoado e perde todos os bônus de alimentação até o fim do dia.",
+    "description_en": null,
+    "description_es": null,
+    "category": "alimentação",
+    "price_gp": 3,
+    "weight_lb": 0,
+    "traits": [
+      "alimentação",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alimentação",
+      "price": 3,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Bebida alcoólica adocicada feita da sei- va de feras-cactos. Você recebe +1 em perícias baseadas em Carisma, cumulativo com outros itens. Múltiplas doses são cumulativas entre si, mas intoxicantes; para cada dose além da primeira no mesmo dia, você deve fazer um teste de Fortitude (CD 15 + 5 para cada dose anterior). Em caso de falha, você fica enjoado e perde todos os bônus de alimentação até o fim do dia."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-banquete-de-canceronte",
+    "name_pt": "Banquete de Canceronte",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Um canceronte adulto é suficiente para produzir um pequeno ban- quete. Você recebe 1d4+1 dados de auxílio. Sempre que realizar um teste de perícia, você pode gastar 1d4 e adicionar o resultado como bônus no teste. Se o banquete for preparado por um personagem com o poder Mestre Cuca, os dados de auxílio se tornam d6. Este prato requer carne fresca de canceronte, sendo assim raramente encontrado longe de grandes cidades costeiras.",
+    "description_en": null,
+    "description_es": null,
+    "category": "alimentação",
+    "price_gp": 36,
+    "weight_lb": 0,
+    "traits": [
+      "alimentação",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alimentação",
+      "price": 36,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Um canceronte adulto é suficiente para produzir um pequeno ban- quete. Você recebe 1d4+1 dados de auxílio. Sempre que realizar um teste de perícia, você pode gastar 1d4 e adicionar o resultado como bônus no teste. Se o banquete for preparado por um personagem com o poder Mestre Cuca, os dados de auxílio se tornam d6. Este prato requer carne fresca de canceronte, sendo assim raramente encontrado longe de grandes cidades costeiras."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-coc-au-triz",
+    "name_pt": "Coc-au-Triz",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Ovos de cocatriz são ingredientes mágicos poderosos, e esta guloseima reflete esse poder; é um ninho de fios de ovos assados e gratinados. Ao consumir, escolha uma habilidade com custo em PM. Seu custo diminui em –1 PM.",
+    "description_en": null,
+    "description_es": null,
+    "category": "alimentação",
+    "price_gp": 54,
+    "weight_lb": 0,
+    "traits": [
+      "alimentação",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alimentação",
+      "price": 54,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Ovos de cocatriz são ingredientes mágicos poderosos, e esta guloseima reflete esse poder; é um ninho de fios de ovos assados e gratinados. Ao consumir, escolha uma habilidade com custo em PM. Seu custo diminui em –1 PM."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-cozido-de-serpe",
+    "name_pt": "Cozido de Serpe",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Quando cozida por várias horas em uma sopa específica, a carne da serpe fica livre de seu veneno natural. Diferente de outros alimentos, preparar este cozido é um teste estendido de Ofício (cozinheiro) com CD 20, que requer 3 su - cessos antes de 3 falhas. Se preparado com sucesso, fornece+1 em todos os testes de perícia, cumulativo com outros itens. Se falhar, os ingredientes são consumidos e você é envenenado (perde 1d12 pontos de vida por rodada durante 3 rodadas; Fort CD reduz para 1 rodada). Item Preço Espaços Item Preço Espaços Alimentação Alquímicos - Preparados Algravia T$ 3 — Bálsamo de drogadora T$ 60 0, Banquete de canceronte T$ 36 — Bomba de fumaça T$ 15 0, Coc-au-triz T$ 54 — Elixir quimérico T$ 120 0, Cozido de serpe T$ 12 — Éter elemental T$ 60 0, Gorlogg ensopado T$ 6 — Isca putrefata T$ 60 0, Omelete monstruosa T$ 3 — Lágrima pétrea T$ 30 0, Sashimi de kraken T$ 60 — Óleo de baleia T$ 30 0, Animais Óleo de besouro T$ 50 0, Bulette T$ 500 — Pó azul T$ 150 0, Capivara T$ 60 — Alquímicos - Catalisadores Corcel do deserto T$ 150 — Corrosivo mineral T$ 150 0, Dromedário T$ 75 — Gelo extremo T$ 150 0, Elefante T$ 1.500 — Pedaço de língua T$ 30 0, Hiena T$ 220 — Raio cristalizado T$ 150 0, Leão T$ 800 — Alquímicos - Venenos Rinoceronte T$ 600 — Esporos de cogumelo T$ 75 0, Urso pardo T$ 300 — Peçonha anciã T$ 1.800 0, Equipamento de Aventura Peçonha irritante T$ 10 0, Caixa de voz T$ 50 1 Veneno batráquio T$ 30 0, Corda de teia T$ 100 1 Vestuário Dente de wisphago T$ 100 1 Garra feroz T$ 60 Esotéricos Manto do mantor T$ 450 Ankh solar T$ 450 1 Manto pesado T$ 10 Tomo de guerra T$ 300 1 Sombreiro T$ 10 Tomo do rancor T$ 750 1 Traje selako T$ 90 Tabela 3-3: Novos Itens Gerais",
+    "description_en": null,
+    "description_es": null,
+    "category": "alimentação",
+    "price_gp": 12,
+    "weight_lb": 0,
+    "traits": [
+      "alimentação",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alimentação",
+      "price": 12,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Quando cozida por várias horas em uma sopa específica, a carne da serpe fica livre de seu veneno natural. Diferente de outros alimentos, preparar este cozido é um teste estendido de Ofício (cozinheiro) com CD 20, que requer 3 su - cessos antes de 3 falhas. Se preparado com sucesso, fornece+1 em todos os testes de perícia, cumulativo com outros itens. Se falhar, os ingredientes são consumidos e você é envenenado (perde 1d12 pontos de vida por rodada durante 3 rodadas; Fort CD reduz para 1 rodada). Item Preço Espaços Item Preço Espaços Alimentação Alquímicos - Preparados Algravia T$ 3 — Bálsamo de drogadora T$ 60 0, Banquete de canceronte T$ 36 — Bomba de fumaça T$ 15 0, Coc-au-triz T$ 54 — Elixir quimérico T$ 120 0, Cozido de serpe T$ 12 — Éter elemental T$ 60 0, Gorlogg ensopado T$ 6 — Isca putrefata T$ 60 0, Omelete monstruosa T$ 3 — Lágrima pétrea T$ 30 0, Sashimi de kraken T$ 60 — Óleo de baleia T$ 30 0, Animais Óleo de besouro T$ 50 0, Bulette T$ 500 — Pó azul T$ 150 0, Capivara T$ 60 — Alquímicos - Catalisadores Corcel do deserto T$ 150 — Corrosivo mineral T$ 150 0, Dromedário T$ 75 — Gelo extremo T$ 150 0, Elefante T$ 1.500 — Pedaço de língua T$ 30 0, Hiena T$ 220 — Raio cristalizado T$ 150 0, Leão T$ 800 — Alquímicos - Venenos Rinoceronte T$ 600 — Esporos de cogumelo T$ 75 0, Urso pardo T$ 300 — Peçonha anciã T$ 1.800 0, Equipamento de Aventura Peçonha irritante T$ 10 0, Caixa de voz T$ 50 1 Veneno batráquio T$ 30 0, Corda de teia T$ 100 1 Vestuário Dente de wisphago T$ 100 1 Garra feroz T$ 60 Esotéricos Manto do mantor T$ 450 Ankh solar T$ 450 1 Manto pesado T$ 10 Tomo de guerra T$ 300 1 Sombreiro T$ 10 Tomo do rancor T$ 750 1 Traje selako T$ 90 Tabela 3-3: Novos Itens Gerais"
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-gorlogg-ensopado",
+    "name_pt": "Gorlogg Ensopado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Criado nas cozinhas de Yuvalin por Rizzelena, chef élfica de grande talento, este é um ensopado altamente nutritivo. Em sua próxima noite de sono, você aumenta a sua recuperação de PV e PM em +1 por nível.",
+    "description_en": null,
+    "description_es": null,
+    "category": "alimentação",
+    "price_gp": 6,
+    "weight_lb": 0,
+    "traits": [
+      "alimentação",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alimentação",
+      "price": 6,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Criado nas cozinhas de Yuvalin por Rizzelena, chef élfica de grande talento, este é um ensopado altamente nutritivo. Em sua próxima noite de sono, você aumenta a sua recuperação de PV e PM em +1 por nível."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-omelete-monstruosa",
+    "name_pt": "Omelete Monstruosa",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Dizem que este prato foi inventado por aventureiros presos em uma ca- verna cheia de ovos. Desde então, tornou-se popular entre aqueles de baixa seletividade alimentar, ou muita coragem. É feita com ovos de qualquer praga monstruosa, mas variações mais refinadas usam ovos de corcel de Kally e outras feras dracônicas menores. Você recebe +2 em rolagens de dano e –2 em testes de perícias baseadas em Sabedoria, cumulativo com outros itens. Se feita com ovos de dragão, muda para +5 e –5. E garante que você será caçado por uma mamãe dragoa furiosa…",
+    "description_en": null,
+    "description_es": null,
+    "category": "alimentação",
+    "price_gp": 3,
+    "weight_lb": 0,
+    "traits": [
+      "alimentação",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alimentação",
+      "price": 3,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Dizem que este prato foi inventado por aventureiros presos em uma ca- verna cheia de ovos. Desde então, tornou-se popular entre aqueles de baixa seletividade alimentar, ou muita coragem. É feita com ovos de qualquer praga monstruosa, mas variações mais refinadas usam ovos de corcel de Kally e outras feras dracônicas menores. Você recebe +2 em rolagens de dano e –2 em testes de perícias baseadas em Sabedoria, cumulativo com outros itens. Se feita com ovos de dragão, muda para +5 e –5. E garante que você será caçado por uma mamãe dragoa furiosa…"
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-sashimi-de-kraken",
+    "name_pt": "Sashimi de Kraken",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Esta iguaria exótica foi criada pelos maiores chefs de Tamu-ra. Você recebe +2 em Diplomacia, cumulativo com outros itens, e",
+    "description_en": null,
+    "description_es": null,
+    "category": "alimentação",
+    "price_gp": 60,
+    "weight_lb": 0,
+    "traits": [
+      "alimentação",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alimentação",
+      "price": 60,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Esta iguaria exótica foi criada pelos maiores chefs de Tamu-ra. Você recebe +2 em Diplomacia, cumulativo com outros itens, e"
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-bulette",
+    "name_pt": "Bulette",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Temperamental e feroz, esta fera pode ser adquirida de mercadores na Grande Savana, no Deserto da Perdição ou em Doherimm — em outros lugares, atinge o dobro do preço. Pode ser usado como um parceiro montaria.",
+    "description_en": null,
+    "description_es": null,
+    "category": "animais",
+    "price_gp": 500,
+    "weight_lb": 0,
+    "traits": [
+      "animais",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Animais",
+      "price": 500,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Temperamental e feroz, esta fera pode ser adquirida de mercadores na Grande Savana, no Deserto da Perdição ou em Doherimm — em outros lugares, atinge o dobro do preço. Pode ser usado como um parceiro montaria."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-capivara",
+    "name_pt": "Capivara",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Simpática, amistosa e dotada de longos e afiados dentes, a capivara é muito apreciada por ginetes Pequenos como hynne e goblins. Pode ser usado como um parceiro montaria por personagens",
+    "description_en": null,
+    "description_es": null,
+    "category": "animais",
+    "price_gp": 60,
+    "weight_lb": 0,
+    "traits": [
+      "animais",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Animais",
+      "price": 60,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Simpática, amistosa e dotada de longos e afiados dentes, a capivara é muito apreciada por ginetes Pequenos como hynne e goblins. Pode ser usado como um parceiro montaria por personagens"
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-corcel-do-deserto",
+    "name_pt": "Corcel do Deserto",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Tipo de cavalo insetoide encontrado na Grande Savana e no Deserto da Perdição.",
+    "description_en": null,
+    "description_es": null,
+    "category": "animais",
+    "price_gp": 150,
+    "weight_lb": 0,
+    "traits": [
+      "animais",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Animais",
+      "price": 150,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Tipo de cavalo insetoide encontrado na Grande Savana e no Deserto da Perdição."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-dromed-rio",
+    "name_pt": "Dromedário",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Disponível em regiões áridas ou montanhosas, pode ser um parceiro montaria.",
+    "description_en": null,
+    "description_es": null,
+    "category": "animais",
+    "price_gp": 75,
+    "weight_lb": 0,
+    "traits": [
+      "animais",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Animais",
+      "price": 75,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Disponível em regiões áridas ou montanhosas, pode ser um parceiro montaria."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-elefante",
+    "name_pt": "Elefante",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Grande demais para ambientes urbanos, é empregado como animal de trabalho em áreas abertas, como fazendas e áreas de mineração.",
+    "description_en": null,
+    "description_es": null,
+    "category": "animais",
+    "price_gp": 1500,
+    "weight_lb": 0,
+    "traits": [
+      "animais",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Animais",
+      "price": 1500,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Grande demais para ambientes urbanos, é empregado como animal de trabalho em áreas abertas, como fazendas e áreas de mineração."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-hiena",
+    "name_pt": "Hiena",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Embora sejam mais comuns entre gnolls, hienas podem ocasionalmente ser domesticadas por outros povos. Uma hiena pode ser usada como um parceiro especial (veja p. 119) por personagens treina- dos em Adestramento, ou montaria por personagens",
+    "description_en": null,
+    "description_es": null,
+    "category": "animais",
+    "price_gp": 220,
+    "weight_lb": 0,
+    "traits": [
+      "animais",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Animais",
+      "price": 220,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Embora sejam mais comuns entre gnolls, hienas podem ocasionalmente ser domesticadas por outros povos. Uma hiena pode ser usada como um parceiro especial (veja p. 119) por personagens treina- dos em Adestramento, ou montaria por personagens"
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-le-o",
+    "name_pt": "Leão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Considerado símbolo de nobreza e força, o majestoso leão pode ser treinado para aceitar um cavaleiro, sendo usado como um parceiro montaria.",
+    "description_en": null,
+    "description_es": null,
+    "category": "animais",
+    "price_gp": 800,
+    "weight_lb": 0,
+    "traits": [
+      "animais",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Animais",
+      "price": 800,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Considerado símbolo de nobreza e força, o majestoso leão pode ser treinado para aceitar um cavaleiro, sendo usado como um parceiro montaria."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-rinoceronte",
+    "name_pt": "Rinoceronte",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Eram animais de gado dos anões quando estes ainda viviam na superfície; hoje são selvagens e perigosos, de difícil domesticação. Podem ser usados como parceiros montaria, mas raramente são encontrados à venda.",
+    "description_en": null,
+    "description_es": null,
+    "category": "animais",
+    "price_gp": 600,
+    "weight_lb": 0,
+    "traits": [
+      "animais",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Animais",
+      "price": 600,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Eram animais de gado dos anões quando estes ainda viviam na superfície; hoje são selvagens e perigosos, de difícil domesticação. Podem ser usados como parceiros montaria, mas raramente são encontrados à venda."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-urso-pardo",
+    "name_pt": "Urso Pardo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Este robusto predador pode ser en- contrado em várias regiões de Arton. Ainda que incomum, pode ser empregado como um parceiro montaria. Itens Superiores Novas Melhorias Multifuncional (ferramenta ou ves - tuário). Esta melhoria só pode ser aplicada em um item que modifica uma perícia (fornecendo bônus ou reduzindo penalidade). Escolha outra perícia que usa o mesmo atributo-chave; o item passa a funcionar também para a segunda perícia escolhida (mas não se aplica a testes de ataque). Penetrante (arma). A arma ignora 5 pontos da redução de dano. Pré-requisito: cruel. Materiais Especiais Casco de Monstro Os cascos protetores de certos monstros podem substituir aço e outros materiais rígidos, embora sejam mais frágeis; ao sofrer dano de impacto, um item mundano feito de casco de monstro sofre 1 ponto a mais por dado de dano.",
+    "description_en": null,
+    "description_es": null,
+    "category": "animais",
+    "price_gp": 300,
+    "weight_lb": 0,
+    "traits": [
+      "animais",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Animais",
+      "price": 300,
+      "spaces": 0,
+      "summaries": {
+        "pt-BR": "Este robusto predador pode ser en- contrado em várias regiões de Arton. Ainda que incomum, pode ser empregado como um parceiro montaria. Itens Superiores Novas Melhorias Multifuncional (ferramenta ou ves - tuário). Esta melhoria só pode ser aplicada em um item que modifica uma perícia (fornecendo bônus ou reduzindo penalidade). Escolha outra perícia que usa o mesmo atributo-chave; o item passa a funcionar também para a segunda perícia escolhida (mas não se aplica a testes de ataque). Penetrante (arma). A arma ignora 5 pontos da redução de dano. Pré-requisito: cruel. Materiais Especiais Casco de Monstro Os cascos protetores de certos monstros podem substituir aço e outros materiais rígidos, embora sejam mais frágeis; ao sofrer dano de impacto, um item mundano feito de casco de monstro sofre 1 ponto a mais por dado de dano."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-caixa-de-voz",
+    "name_pt": "Caixa de Voz",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Este complexo mecanismo tem 1d4 cargas: quando usa uma habilidade de bardo ou nobre com alcance curto ou médio, você pode gastar uma carga para aumentar seu alcance em um passo. Segredo de engenharia da Supremacia Purista, este item não pode ser fabricado, sendo encontrado apenas nos destroços de corcéis e carruagens de comando.",
+    "description_en": null,
+    "description_es": null,
+    "category": "equipamento-de-aventura",
+    "price_gp": 50,
+    "weight_lb": 1,
+    "traits": [
+      "equipamento de aventura",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Equipamento de Aventura",
+      "price": 50,
+      "spaces": 1,
+      "summaries": {
+        "pt-BR": "Este complexo mecanismo tem 1d4 cargas: quando usa uma habilidade de bardo ou nobre com alcance curto ou médio, você pode gastar uma carga para aumentar seu alcance em um passo. Segredo de engenharia da Supremacia Purista, este item não pode ser fabricado, sendo encontrado apenas nos destroços de corcéis e carruagens de comando."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-corda-de-teia",
+    "name_pt": "Corda de Teia",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Feita de teia de aranha gigante, esta corda de 10m funciona como uma corda normal, mas é mais resistente. Arrebentá-la exige 5 pontos de dano de corte ou um teste de Força (CD 28).",
+    "description_en": null,
+    "description_es": null,
+    "category": "equipamento-de-aventura",
+    "price_gp": 100,
+    "weight_lb": 1,
+    "traits": [
+      "equipamento de aventura",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Equipamento de Aventura",
+      "price": 100,
+      "spaces": 1,
+      "summaries": {
+        "pt-BR": "Feita de teia de aranha gigante, esta corda de 10m funciona como uma corda normal, mas é mais resistente. Arrebentá-la exige 5 pontos de dano de corte ou um teste de Força (CD 28)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-dente-de-wisphago",
+    "name_pt": "Dente de Wisphago",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Um dente de wisphago pode ser vestido como um amuleto. Quando faz um teste de resistência contra uma magia arcana, você pode gastar o amuleto para rolar novamente esse teste com um bônus de +2. Uma vez ativado, o amuleto se desfaz. Um dente de wisphago não pode ser fabricado.",
+    "description_en": null,
+    "description_es": null,
+    "category": "equipamento-de-aventura",
+    "price_gp": 100,
+    "weight_lb": 1,
+    "traits": [
+      "equipamento de aventura",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Equipamento de Aventura",
+      "price": 100,
+      "spaces": 1,
+      "summaries": {
+        "pt-BR": "Um dente de wisphago pode ser vestido como um amuleto. Quando faz um teste de resistência contra uma magia arcana, você pode gastar o amuleto para rolar novamente esse teste com um bônus de +2. Uma vez ativado, o amuleto se desfaz. Um dente de wisphago não pode ser fabricado."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-ankh-solar",
+    "name_pt": "Ankh Solar",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Este item raro é encontrado em corpos embalsamados no Deserto da Perdição. Pode ser usado como arma leve simples corpo a corpo (dano 1d6, crítico 19, corte). Suas magias que tenham testes de resistência recebem o seguinte aprimoramento: +2 PM. Além do normal, criaturas que falham na resistência não podem recuperar PV por 1 rodada.",
+    "description_en": null,
+    "description_es": null,
+    "category": "esotéricos",
+    "price_gp": 450,
+    "weight_lb": 1,
+    "traits": [
+      "esotéricos",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Esotéricos",
+      "price": 450,
+      "spaces": 1,
+      "summaries": {
+        "pt-BR": "Este item raro é encontrado em corpos embalsamados no Deserto da Perdição. Pode ser usado como arma leve simples corpo a corpo (dano 1d6, crítico 19, corte). Suas magias que tenham testes de resistência recebem o seguinte aprimoramento: +2 PM. Além do normal, criaturas que falham na resistência não podem recuperar PV por 1 rodada."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-tomo-de-guerra",
+    "name_pt": "Tomo de Guerra",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Quando lança uma magia de evocação, você recebe +1 PM para gastar em aprimoramentos.",
+    "description_en": null,
+    "description_es": null,
+    "category": "esotéricos",
+    "price_gp": 300,
+    "weight_lb": 1,
+    "traits": [
+      "esotéricos",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Esotéricos",
+      "price": 300,
+      "spaces": 1,
+      "summaries": {
+        "pt-BR": "Quando lança uma magia de evocação, você recebe +1 PM para gastar em aprimoramentos."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-tomo-do-rancor",
+    "name_pt": "Tomo do Rancor",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Quando lança uma magia de evocação, você recebe +1 PM para gastar em aprimoramentos.",
+    "description_en": null,
+    "description_es": null,
+    "category": "esotéricos",
+    "price_gp": 750,
+    "weight_lb": 1,
+    "traits": [
+      "esotéricos",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Esotéricos",
+      "price": 750,
+      "spaces": 1,
+      "summaries": {
+        "pt-BR": "Quando lança uma magia de evocação, você recebe +1 PM para gastar em aprimoramentos."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-b-lsamo-de-drogadora",
+    "name_pt": "Bálsamo de Drogadora",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Produzido por curandeiras dos povos-trovão, este pote de cerâmica contém uma pasta gosmenta. Aplicá-la é uma ação completa e cura 4d6+4 PV .",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---preparados",
+    "price_gp": 60,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - preparados",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Preparados",
+      "price": 60,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Produzido por curandeiras dos povos-trovão, este pote de cerâmica contém uma pasta gosmenta. Aplicá-la é uma ação completa e cura 4d6+4 PV ."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-bomba-de-fuma-a",
+    "name_pt": "Bomba de Fumaça",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Saco de estopa com pavio, contendo uma pólvora especial que produz mais fu- maça do que fogo. Segue as mesmas regras da bomba, mas, em vez de causar dano, emite uma nuvem de fumaça espessa com 6m de raio, que obscurece toda a visão e dura até o fim da cena. Criaturas a até 1,5m têm camuflagem leve e criaturas a partir de 3m têm camuflagem total.",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---preparados",
+    "price_gp": 15,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - preparados",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Preparados",
+      "price": 15,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Saco de estopa com pavio, contendo uma pólvora especial que produz mais fu- maça do que fogo. Segue as mesmas regras da bomba, mas, em vez de causar dano, emite uma nuvem de fumaça espessa com 6m de raio, que obscurece toda a visão e dura até o fim da cena. Criaturas a até 1,5m têm camuflagem leve e criaturas a partir de 3m têm camuflagem total."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-elixir-quim-rico",
+    "name_pt": "Elixir Quimérico",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Beber este elixir é uma ação padrão; até o fim da cena, você ganha uma arma natural de mordida (dano 1d6, crítico x2, perfuração). Uma vez por rodada, quando usa a ação agredir para atacar com outra arma, pode gastar 1 PM para fazer um ataque corpo a corpo extra com a mordida. Se já possui uma mordida, seu dano aumenta em um passo.",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---preparados",
+    "price_gp": 120,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - preparados",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Preparados",
+      "price": 120,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Beber este elixir é uma ação padrão; até o fim da cena, você ganha uma arma natural de mordida (dano 1d6, crítico x2, perfuração). Uma vez por rodada, quando usa a ação agredir para atacar com outra arma, pode gastar 1 PM para fazer um ataque corpo a corpo extra com a mordida. Se já possui uma mordida, seu dano aumenta em um passo."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-ter-elemental",
+    "name_pt": "Éter Elemental",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Extraído de elementais, este líquido viscoso tem cor e textura relacionados ao ele- mento de origem. Uma dose é suficiente para cobrir uma arma corpo a corpo ou 20 munições; aplicá-lo é uma ação padrão e faz a arma (ou as munições) causar +1d4 pontos de dano do tipo do dano elemental até o fim da cena. Múltiplas doses não são cumulativas.",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---preparados",
+    "price_gp": 60,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - preparados",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Preparados",
+      "price": 60,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Extraído de elementais, este líquido viscoso tem cor e textura relacionados ao ele- mento de origem. Uma dose é suficiente para cobrir uma arma corpo a corpo ou 20 munições; aplicá-lo é uma ação padrão e faz a arma (ou as munições) causar +1d4 pontos de dano do tipo do dano elemental até o fim da cena. Múltiplas doses não são cumulativas."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-isca-putrefata",
+    "name_pt": "Isca Putrefata",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Frasco de restos mortais diluídos em uma solução macabra. Você pode gastar uma ação padrão para arremessar a isca em um local ou criatura em alcance médio. A isca se gruda ao alvo (Ref CD Des evita) e dura 1d6 rodadas. Durante esse tempo, cada morto-vivo não inteligente em alcance curto é atraído (Von CD Des evita), gastando todas as suas ações para se deslocar até a isca. Quando a alcança, fica fascinado ou, se a isca estiver presa a uma criatura, a ataca.",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---preparados",
+    "price_gp": 60,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - preparados",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Preparados",
+      "price": 60,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Frasco de restos mortais diluídos em uma solução macabra. Você pode gastar uma ação padrão para arremessar a isca em um local ou criatura em alcance médio. A isca se gruda ao alvo (Ref CD Des evita) e dura 1d6 rodadas. Durante esse tempo, cada morto-vivo não inteligente em alcance curto é atraído (Von CD Des evita), gastando todas as suas ações para se deslocar até a isca. Quando a alcança, fica fascinado ou, se a isca estiver presa a uma criatura, a ataca."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-l-grima-p-trea",
+    "name_pt": "Lágrima Pétrea",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Este líquido cristalino tem o poder de devolver criaturas à sua forma original. Você pode gastar uma ação padrão para aplicá-lo em uma criatura adjacente ou arremessá-lo em uma criatura em alcance curto; uma dose remove todos os efeitos de metamorfose (Ref CD Des evita).",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---preparados",
+    "price_gp": 30,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - preparados",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Preparados",
+      "price": 30,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Este líquido cristalino tem o poder de devolver criaturas à sua forma original. Você pode gastar uma ação padrão para aplicá-lo em uma criatura adjacente ou arremessá-lo em uma criatura em alcance curto; uma dose remove todos os efeitos de metamorfose (Ref CD Des evita)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-leo-de-baleia",
+    "name_pt": "Óleo de Baleia",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Este antigo preparado é um destilado de gordura de baleia. Você pode usar uma ação padrão para aplicar o óleo em uma arma ou pacote de munições para ignorar penalidades de combate submerso com esse item até o fim da cena.",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---preparados",
+    "price_gp": 30,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - preparados",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Preparados",
+      "price": 30,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Este antigo preparado é um destilado de gordura de baleia. Você pode usar uma ação padrão para aplicar o óleo em uma arma ou pacote de munições para ignorar penalidades de combate submerso com esse item até o fim da cena."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-leo-de-besouro",
+    "name_pt": "Óleo de Besouro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Este antigo preparado é um destilado de gordura de baleia. Você pode usar uma ação padrão para aplicar o óleo em uma arma ou pacote de munições para ignorar penalidades de combate submerso com esse item até o fim da cena.",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---preparados",
+    "price_gp": 50,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - preparados",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Preparados",
+      "price": 50,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Este antigo preparado é um destilado de gordura de baleia. Você pode usar uma ação padrão para aplicar o óleo em uma arma ou pacote de munições para ignorar penalidades de combate submerso com esse item até o fim da cena."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-p-azul",
+    "name_pt": "Pó Azul",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Saquinho de couro com pó feito a partir de uma planta exótica de Galrasia, capaz de absorver energia mágica ambiente. Inalar o pó é uma ação completa e recupera 2d4 PM.",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---preparados",
+    "price_gp": 150,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - preparados",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Preparados",
+      "price": 150,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Saquinho de couro com pó feito a partir de uma planta exótica de Galrasia, capaz de absorver energia mágica ambiente. Inalar o pó é uma ação completa e recupera 2d4 PM."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-corrosivo-mineral",
+    "name_pt": "Corrosivo Mineral",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Pasta mineral corrosiva produzida com ingredientes naturais. Aumenta os dados de dano de magias de ácido em uma categoria: d4 para d6, d6 para d8, d8 para d10 e d10 para d12 (máximo).",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---catalisadores",
+    "price_gp": 150,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - catalisadores",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Catalisadores",
+      "price": 150,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Pasta mineral corrosiva produzida com ingredientes naturais. Aumenta os dados de dano de magias de ácido em uma categoria: d4 para d6, d6 para d8, d8 para d10 e d10 para d12 (máximo)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-gelo-extremo",
+    "name_pt": "Gelo Extremo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Cristais minerais que eliminam todo o calor ao redor. Aumenta os dados de dano de magias de frio em uma categoria: d4 para d6, d6 para d8, d8 para d10 e d10 para d12 (máximo).",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---catalisadores",
+    "price_gp": 150,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - catalisadores",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Catalisadores",
+      "price": 150,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Cristais minerais que eliminam todo o calor ao redor. Aumenta os dados de dano de magias de frio em uma categoria: d4 para d6, d6 para d8, d8 para d10 e d10 para d12 (máximo)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-peda-o-de-l-ngua",
+    "name_pt": "Pedaço de Língua",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Glândulas que podem ser usadas como um catalisador que fornece +1 na CD dos testes de Fortitude para resistir a suas magias.",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---catalisadores",
+    "price_gp": 30,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - catalisadores",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Catalisadores",
+      "price": 30,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Glândulas que podem ser usadas como um catalisador que fornece +1 na CD dos testes de Fortitude para resistir a suas magias."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-raio-cristalizado",
+    "name_pt": "Raio Cristalizado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Eletricidade gerada por elementais e outros seres mágicos pode ser solidificada na forma de pequenos cristais. Aumenta os dados de dano de magias de eletricidade em uma categoria: d4 para d6, d6 para d8, d8 para d10 e d10 para d12 (máximo).",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---catalisadores",
+    "price_gp": 150,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - catalisadores",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Catalisadores",
+      "price": 150,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Eletricidade gerada por elementais e outros seres mágicos pode ser solidificada na forma de pequenos cristais. Aumenta os dados de dano de magias de eletricidade em uma categoria: d4 para d6, d6 para d8, d8 para d10 e d10 para d12 (máximo)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-esporos-de-cogumelo",
+    "name_pt": "Esporos de Cogumelo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Extraído de certos cogumelos e criaturas aparentadas, causa breve mas perigosa paralisia. Inalação, vítima fica paralisada (lenta) por 1 rodada, depois imune a paralisia por este veneno pela cena.",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---venenos",
+    "price_gp": 75,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - venenos",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Venenos",
+      "price": 75,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Extraído de certos cogumelos e criaturas aparentadas, causa breve mas perigosa paralisia. Inalação, vítima fica paralisada (lenta) por 1 rodada, depois imune a paralisia por este veneno pela cena."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-pe-onha-anci",
+    "name_pt": "Peçonha Anciã",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Veneno poderoso, extraído de serpes anciãs, capaz de afetar até criaturas imunes. Contato, perde 3d12 PV por rodada durante 3 rodadas e ignora imunidade a venenos (perde 3d12 PV).",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---venenos",
+    "price_gp": 1800,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - venenos",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Venenos",
+      "price": 1800,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Veneno poderoso, extraído de serpes anciãs, capaz de afetar até criaturas imunes. Contato, perde 3d12 PV por rodada durante 3 rodadas e ignora imunidade a venenos (perde 3d12 PV)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-pe-onha-irritante",
+    "name_pt": "Peçonha Irritante",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Veneno poderoso, extraído de serpes anciãs, capaz de afetar até criaturas imunes. Contato, perde 3d12 PV por rodada durante 3 rodadas e ignora imunidade a venenos (perde 3d12 PV).",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---venenos",
+    "price_gp": 10,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - venenos",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Venenos",
+      "price": 10,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Veneno poderoso, extraído de serpes anciãs, capaz de afetar até criaturas imunes. Contato, perde 3d12 PV por rodada durante 3 rodadas e ignora imunidade a venenos (perde 3d12 PV)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-veneno-batr-quio",
+    "name_pt": "Veneno Batráquio",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Produzida a partir da saliva de sapos gigantes, esta gosma machuca e enjoa. Contato, perde 1d12 PV e fica enjoado por 1 rodada (perde 1d6 PV).",
+    "description_en": null,
+    "description_es": null,
+    "category": "alquímicos---venenos",
+    "price_gp": 30,
+    "weight_lb": 0.5,
+    "traits": [
+      "alquímicos - venenos",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Alquímicos - Venenos",
+      "price": 30,
+      "spaces": 0.5,
+      "summaries": {
+        "pt-BR": "Produzida a partir da saliva de sapos gigantes, esta gosma machuca e enjoa. Contato, perde 1d12 PV e fica enjoado por 1 rodada (perde 1d6 PV)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-garra-feroz",
+    "name_pt": "Garra Feroz",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Estas pinças de insetos gigantes, presas com tiras de couro, funcionam como uma manopla (Tormenta20, p. 159), mas seus benefícios também se aplicam a uma garra ou a uma arma natural de um personagem sob efeito de habilidades como",
+    "description_en": null,
+    "description_es": null,
+    "category": "vestuário",
+    "price_gp": 60,
+    "weight_lb": 1,
+    "traits": [
+      "vestuário",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Vestuário",
+      "price": 60,
+      "spaces": 1,
+      "summaries": {
+        "pt-BR": "Estas pinças de insetos gigantes, presas com tiras de couro, funcionam como uma manopla (Tormenta20, p. 159), mas seus benefícios também se aplicam a uma garra ou a uma arma natural de um personagem sob efeito de habilidades como"
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-manto-do-mantor",
+    "name_pt": "Manto do Mantor",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Este manto, feito a partir do couro de um mantor, oferece parte de sua furtividade. Na escuridão completa fornece camuflagem total, mesmo contra criaturas que vejam no escuro.",
+    "description_en": null,
+    "description_es": null,
+    "category": "vestuário",
+    "price_gp": 450,
+    "weight_lb": 1,
+    "traits": [
+      "vestuário",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Vestuário",
+      "price": 450,
+      "spaces": 1,
+      "summaries": {
+        "pt-BR": "Este manto, feito a partir do couro de um mantor, oferece parte de sua furtividade. Na escuridão completa fornece camuflagem total, mesmo contra criaturas que vejam no escuro."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-manto-pesado",
+    "name_pt": "Manto Pesado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Este manto, feito a partir do couro de um mantor, oferece parte de sua furtividade. Na escuridão completa fornece camuflagem total, mesmo contra criaturas que vejam no escuro.",
+    "description_en": null,
+    "description_es": null,
+    "category": "vestuário",
+    "price_gp": 10,
+    "weight_lb": 1,
+    "traits": [
+      "vestuário",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Vestuário",
+      "price": 10,
+      "spaces": 1,
+      "summaries": {
+        "pt-BR": "Este manto, feito a partir do couro de um mantor, oferece parte de sua furtividade. Na escuridão completa fornece camuflagem total, mesmo contra criaturas que vejam no escuro."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-sombreiro",
+    "name_pt": "Sombreiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Tipo de chapéu com abas muito largas, comum nas proximidades de Smokestone. Fornece resistência a efeitos de sentidos +2.",
+    "description_en": null,
+    "description_es": null,
+    "category": "vestuário",
+    "price_gp": 10,
+    "weight_lb": 1,
+    "traits": [
+      "vestuário",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Vestuário",
+      "price": 10,
+      "spaces": 1,
+      "summaries": {
+        "pt-BR": "Tipo de chapéu com abas muito largas, comum nas proximidades de Smokestone. Fornece resistência a efeitos de sentidos +2."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ameacas-traje-selako",
+    "name_pt": "Traje Selako",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Feito com couro de selako, este traje fornece parte das capacidades desses predadores. Você recebe +2 em testes de Atletismo para nadar e +3m em seu deslocamento de natação.",
+    "description_en": null,
+    "description_es": null,
+    "category": "vestuário",
+    "price_gp": 90,
+    "weight_lb": 1,
+    "traits": [
+      "vestuário",
+      "bazar-de-tamu-ra"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20: Ameaças de Arton",
+    "source_page": 398,
+    "system_id": "t20",
+    "data": {
+      "category": "Vestuário",
+      "price": 90,
+      "spaces": 1,
+      "summaries": {
+        "pt-BR": "Feito com couro de selako, este traje fornece parte das capacidades desses predadores. Você recebe +2 em testes de Atletismo para nadar e +3m em seu deslocamento de natação."
+      },
+      "summaryOrigin": "structured_rules"
+    }
   }
 ]

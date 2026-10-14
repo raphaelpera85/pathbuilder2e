@@ -393,7 +393,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "partial",
-    linkedRecords: 86,
+    linkedRecords: 130,
     verifiedAt: "2026-10-14",
     filename: "Tormenta20 - Ameacas de Arton.pdf",
     downloadUrl: T20_DRIVE_FOLDER_URL,
