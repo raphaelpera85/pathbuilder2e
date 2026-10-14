@@ -119,6 +119,7 @@ function catalogRulesetLabel(ruleset: string): string {
     "dnd5e-ggtr": "D&D 5e · Guia dos Mestres de Guilda de Ravnica",
     "dnd5e-mtof": "D&D 5e · Tomo de Inimigos de Mordenkainen",
     "dnd5e-strixhaven": "D&D 5e · Strixhaven: Currículo do Caos",
+    "dnd5e-pota": "D&D 5e · Príncipes do Apocalipse",
     padrao: "Tormenta20 padrão",
     "t20-ameacas": "Tormenta20 · Ameaças de Arton",
     "t20-atlas": "Tormenta20 · Atlas de Arton",

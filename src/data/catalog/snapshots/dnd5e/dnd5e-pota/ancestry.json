@@ -1,0 +1,235 @@
+[
+  {
+    "id": "genasi",
+    "name_pt": "Genasi (Base)",
+    "name_en": "Genasi (Base)",
+    "name_es": null,
+    "description_pt": "+2 Constituição; tamanho Médio, deslocamento 9m; traços: Aumento no Valor de Habilidade, Idade, Alinhamento, Tamanho, Deslocamento, Idiomas.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Primordial"
+    ],
+    "traits": [
+      "Aumento no Valor de Habilidade",
+      "Idade",
+      "Alinhamento",
+      "Tamanho",
+      "Deslocamento",
+      "Idiomas"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 227,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "abilityBonuses": "+2 Constituição",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Aumento no Valor de Habilidade: Seu valor de Constituição aumenta em 2.",
+        "Idade: Os genasi amadurecem no mesmo ritmo que os humanos e atingem a idade adulta no final da adolescência. Eles vivem um pouco mais que os humanos, até 120 anos.",
+        "Alinhamento: Independentes e autossuficientes, os genasi tendem a um alinhamento neutro.",
+        "Tamanho: Os genasi variam de 1,50 m a mais de 1,80 m de altura. Seu tamanho é Médio.",
+        "Deslocamento: Seu deslocamento base de caminhada é de 9 metros (30 pés).",
+        "Idiomas: Você pode falar, ler e escrever Comum e Primordial (dialetos Aquan, Auran, Ignan e Terran)."
+      ],
+      "summaries": {
+        "pt-BR": "+2 Constituição; tamanho Médio, deslocamento 9m; traços: Aumento no Valor de Habilidade, Idade, Alinhamento, Tamanho, Deslocamento, Idiomas."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "air-genasi",
+    "name_pt": "Genasi do Ar",
+    "name_en": "Air Genasi",
+    "name_es": null,
+    "description_pt": "+1 Destreza, +2 Constituição; tamanho Médio, deslocamento 9m; traços: Aumento no Valor de Habilidade, Respiração Eterna, Misturar-se ao Vento.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Primordial"
+    ],
+    "traits": [
+      "Aumento no Valor de Habilidade",
+      "Respiração Eterna",
+      "Misturar-se ao Vento"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 228,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "abilityBonuses": "+1 Destreza, +2 Constituição",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Aumento no Valor de Habilidade: Seu valor de Destreza aumenta em 1 e Constituição em 2.",
+        "Respiração Eterna: Você pode prender a respiração indefinidamente enquanto não estiver incapacitado.",
+        "Misturar-se ao Vento: Você pode conjurar a magia levitação uma vez com esta característica, sem exigir componentes materiais, recuperando a capacidade após um descanso longo. Constituição é sua habilidade de conjuração."
+      ],
+      "summaries": {
+        "pt-BR": "+1 Destreza, +2 Constituição; tamanho Médio, deslocamento 9m; traços: Aumento no Valor de Habilidade, Respiração Eterna, Misturar-se ao Vento."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "earth-genasi",
+    "name_pt": "Genasi da Terra",
+    "name_en": "Earth Genasi",
+    "name_es": null,
+    "description_pt": "+1 Força, +2 Constituição; tamanho Médio, deslocamento 9m; traços: Aumento no Valor de Habilidade, Caminhar na Terra, Fundir-se à Pedra.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Primordial"
+    ],
+    "traits": [
+      "Aumento no Valor de Habilidade",
+      "Caminhar na Terra",
+      "Fundir-se à Pedra"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 229,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "abilityBonuses": "+1 Força, +2 Constituição",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Aumento no Valor de Habilidade: Seu valor de Força aumenta em 1 e Constituição em 2.",
+        "Caminhar na Terra: Você pode se mover através de terreno difícil feito de terra ou pedra sem gastar movimento extra.",
+        "Fundir-se à Pedra: Você pode conjurar a magia passos sem pegadas uma vez com esta característica, sem exigir componentes materiais, recuperando a capacidade após um descanso longo. Constituição é sua habilidade de conjuração."
+      ],
+      "summaries": {
+        "pt-BR": "+1 Força, +2 Constituição; tamanho Médio, deslocamento 9m; traços: Aumento no Valor de Habilidade, Caminhar na Terra, Fundir-se à Pedra."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "fire-genasi",
+    "name_pt": "Genasi do Fogo",
+    "name_en": "Fire Genasi",
+    "name_es": null,
+    "description_pt": "+1 Inteligência, +2 Constituição; tamanho Médio, deslocamento 9m; traços: Aumento no Valor de Habilidade, Visão no Escuro, Resistência ao Fogo, Alcançar a Chama.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Primordial"
+    ],
+    "traits": [
+      "Aumento no Valor de Habilidade",
+      "Visão no Escuro",
+      "Resistência ao Fogo",
+      "Alcançar a Chama"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 229,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "abilityBonuses": "+1 Inteligência, +2 Constituição",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Aumento no Valor de Habilidade: Seu valor de Inteligência aumenta em 1 e Constituição em 2.",
+        "Visão no Escuro: Você pode ver na penumbra a até 18 metros como se fosse luz brilhante, e na escuridão como penumbra em tons de vermelho.",
+        "Resistência ao Fogo: Você possui resistência a dano de fogo.",
+        "Alcançar a Chama: Você conhece o truque chama produzida. No 3º nível, pode conjurar a magia mãos flamejantes de 1º nível uma vez por descanso longo. Constituição é sua habilidade de conjuração."
+      ],
+      "summaries": {
+        "pt-BR": "+1 Inteligência, +2 Constituição; tamanho Médio, deslocamento 9m; traços: Aumento no Valor de Habilidade, Visão no Escuro, Resistência ao Fogo, Alcançar a Chama."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "water-genasi",
+    "name_pt": "Genasi da Água",
+    "name_en": "Water Genasi",
+    "name_es": null,
+    "description_pt": "+1 Sabedoria, +2 Constituição; tamanho Médio, deslocamento 9m (natação 9m); traços: Aumento no Valor de Habilidade, Resistência a Ácido, Anfíbio, Natação, Chamar a Onda.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Primordial"
+    ],
+    "traits": [
+      "Aumento no Valor de Habilidade",
+      "Resistência a Ácido",
+      "Anfíbio",
+      "Natação",
+      "Chamar a Onda"
+    ],
+    "rarity": "common",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 229,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "abilityBonuses": "+1 Sabedoria, +2 Constituição",
+      "size": "Médio",
+      "speedMeters": 9,
+      "swimSpeedMeters": 9,
+      "traits": [
+        "Aumento no Valor de Habilidade: Seu valor de Sabedoria aumenta em 1 e Constituição em 2.",
+        "Resistência a Ácido: Você possui resistência a dano de ácido.",
+        "Anfíbio: Você pode respirar ar e água.",
+        "Natação: Você tem deslocamento de natação de 9 metros (30 pés).",
+        "Chamar a Onda: Você conhece o truque moldar água. No 3º nível, pode conjurar a magia criar ou destruir água de 2º nível uma vez por descanso longo. Constituição é sua habilidade de conjuração."
+      ],
+      "summaries": {
+        "pt-BR": "+1 Sabedoria, +2 Constituição; tamanho Médio, deslocamento 9m (natação 9m); traços: Aumento no Valor de Habilidade, Resistência a Ácido, Anfíbio, Natação, Chamar a Onda."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]

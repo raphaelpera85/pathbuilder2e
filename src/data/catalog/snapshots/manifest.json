@@ -141,6 +141,15 @@
   },
   {
     "systemId": "dnd5e",
+    "ruleset": "dnd5e-pota",
+    "categories": {
+      "ancestry": 5,
+      "item": 16,
+      "spell": 43
+    }
+  },
+  {
+    "systemId": "dnd5e",
     "ruleset": "dnd5e-scag",
     "categories": {
       "ancestry": 4,

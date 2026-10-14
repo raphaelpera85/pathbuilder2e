@@ -1,0 +1,559 @@
+[
+  {
+    "id": "balloon-pack",
+    "name_pt": "Pacote de Balão",
+    "name_en": "Balloon Pack",
+    "name_es": null,
+    "description_pt": "Esta mochila de couro contém uma bexiga de ar que pode ser inflada rapidamente como uma reação ao cair. Enquanto inflado, você desce a 18 metros por rodada e não sofre dano de queda, além de flutuar na água por 1 hora.",
+    "description_en": null,
+    "description_es": null,
+    "category": "wondrous",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "uncommon",
+      "wondrous"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 222,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "wondrous",
+      "rarity": "uncommon",
+      "requiresAttunement": false,
+      "mechanicsSummary": "Mochila inflável de reação; desce suavemente e flutua na água por 1 hora.",
+      "summaries": {
+        "pt-BR": "Mochila inflável de reação; desce suavemente e flutua na água por 1 hora."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "bottled-breath",
+    "name_pt": "Sopro Engarrafado",
+    "name_en": "Bottled Breath",
+    "name_es": null,
+    "description_pt": "Este frasco de vidro contém uma amostra de ar puro do Plano Elemental do Ar. Quando você o inala com uma ação, não precisa respirar por 1 hora, ou pode exalá-lo como a magia lufada de vento (CD 13).",
+    "description_en": null,
+    "description_es": null,
+    "category": "potion",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "uncommon",
+      "potion"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 222,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "potion",
+      "rarity": "uncommon",
+      "requiresAttunement": false,
+      "mechanicsSummary": "Inalação concede 1 hora sem respirar ou exala lufada de vento (CD 13).",
+      "summaries": {
+        "pt-BR": "Inalação concede 1 hora sem respirar ou exala lufada de vento (CD 13)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "claws-of-the-umber-hulk",
+    "name_pt": "Garras do Umber Hulk",
+    "name_en": "Claws of the Umber Hulk",
+    "name_es": null,
+    "description_pt": "Pesadas manoplas de ferro esculpidas como mandíbulas de escavação. Enquanto as usa, você ganha deslocamento de escavação de 6 metros através de terra e 1,5 metro através de rocha sólida, além de desferir ataques desarmados que causam 1d8 de dano cortante.",
+    "description_en": null,
+    "description_es": null,
+    "category": "wondrous",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "rare",
+      "wondrous"
+    ],
+    "rarity": "rare",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 222,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "wondrous",
+      "rarity": "rare",
+      "requiresAttunement": true,
+      "attunementDetails": "sintonia exigida",
+      "mechanicsSummary": "Manoplas de escavação (6m terra, 1,5m pedra sólida) e ataques desarmados de 1d8 cortante.",
+      "summaries": {
+        "pt-BR": "Manoplas de escavação (6m terra, 1,5m pedra sólida) e ataques desarmados de 1d8 cortante."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "devastation-orb-air",
+    "name_pt": "Orbe de Devastação do Ar",
+    "name_en": "Devastation Orb of Air",
+    "name_es": null,
+    "description_pt": "Um orbe de vidro contendo um turbilhão em miniatura do Plano Elemental do Ar. Quando detonado, desencadeia ventos com força de furacão em um raio de 1,5 km por 24 horas, arrancando árvores e derrubando estruturas.",
+    "description_en": null,
+    "description_es": null,
+    "category": "wondrous",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "very_rare",
+      "wondrous"
+    ],
+    "rarity": "very_rare",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 222,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "wondrous",
+      "rarity": "very_rare",
+      "requiresAttunement": false,
+      "mechanicsSummary": "Orbe de destruição climática que gera ventos de furacão em raio de 1,5 km por 24 horas.",
+      "summaries": {
+        "pt-BR": "Orbe de destruição climática que gera ventos de furacão em raio de 1,5 km por 24 horas."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "devastation-orb-earth",
+    "name_pt": "Orbe de Devastação da Terra",
+    "name_en": "Devastation Orb of Earth",
+    "name_es": null,
+    "description_pt": "Uma esfera de pedra pesada pulsando com energia sísmica elemental. Quando detonada, causa um terremoto massivo de magnitude colossal em um raio de 1,5 km, abrindo fissuras no solo e colapsando construções.",
+    "description_en": null,
+    "description_es": null,
+    "category": "wondrous",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "very_rare",
+      "wondrous"
+    ],
+    "rarity": "very_rare",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 222,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "wondrous",
+      "rarity": "very_rare",
+      "requiresAttunement": false,
+      "mechanicsSummary": "Orbe de destruição sísmica que gera terremoto colossal e fissuras em raio de 1,5 km.",
+      "summaries": {
+        "pt-BR": "Orbe de destruição sísmica que gera terremoto colossal e fissuras em raio de 1,5 km."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "devastation-orb-fire",
+    "name_pt": "Orbe de Devastação do Fogo",
+    "name_en": "Devastation Orb of Fire",
+    "name_es": null,
+    "description_pt": "Uma esfera de bronze incandescente que queima ao toque. Ao ser detonada, irrompe em uma tempestade de fogo e onda de calor sufocante em raio de 1,5 km por 24 horas, iniciando incêndios em vegetação e madeira.",
+    "description_en": null,
+    "description_es": null,
+    "category": "wondrous",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "very_rare",
+      "wondrous"
+    ],
+    "rarity": "very_rare",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 222,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "wondrous",
+      "rarity": "very_rare",
+      "requiresAttunement": false,
+      "mechanicsSummary": "Orbe de destruição ígnea que gera onda de calor e tempestade de chamas em raio de 1,5 km.",
+      "summaries": {
+        "pt-BR": "Orbe de destruição ígnea que gera onda de calor e tempestade de chamas em raio de 1,5 km."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "devastation-orb-water",
+    "name_pt": "Orbe de Devastação da Água",
+    "name_en": "Devastation Orb of Water",
+    "name_es": null,
+    "description_pt": "Um globo de vidro repleto de água salgada em turbulência violenta. Quando detonado, provoca chuvas torrenciais ininterruptas e inundações catastróficas em um raio de 1,5 km por 24 horas.",
+    "description_en": null,
+    "description_es": null,
+    "category": "wondrous",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "very_rare",
+      "wondrous"
+    ],
+    "rarity": "very_rare",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 222,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "wondrous",
+      "rarity": "very_rare",
+      "requiresAttunement": false,
+      "mechanicsSummary": "Orbe de destruição aquática que provoca chuva torrencial e inundação catastrófica em raio de 1,5 km.",
+      "summaries": {
+        "pt-BR": "Orbe de destruição aquática que provoca chuva torrencial e inundação catastrófica em raio de 1,5 km."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "seeker-dart",
+    "name_pt": "Dardo Buscador",
+    "name_en": "Seeker Dart",
+    "name_es": null,
+    "description_pt": "Quando você arremessa este dardo e sussurra a palavra de comando, ele voa até 36 metros contornando cantos e obstáculos em direção a um alvo visto no último minuto, fazendo um ataque à distância com +4 de bônus e causando 1d4 perfurante + 1d6 elétrico.",
+    "description_en": null,
+    "description_es": null,
+    "category": "weapon",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "uncommon",
+      "weapon"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 223,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "weapon",
+      "rarity": "uncommon",
+      "requiresAttunement": false,
+      "weaponType": "Dardo",
+      "damage": "1d4 + 1d6",
+      "damageType": "elétrico",
+      "mechanicsSummary": "Dardo teleguiado a até 36 metros com +4 de ataque e 1d4 perfurante + 1d6 elétrico.",
+      "summaries": {
+        "pt-BR": "Dardo teleguiado a até 36 metros com +4 de ataque e 1d4 perfurante + 1d6 elétrico."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "storm-boomerang",
+    "name_pt": "Bumerangue da Tempestade",
+    "name_en": "Storm Boomerang",
+    "name_es": null,
+    "description_pt": "Este bumerangue esculpido em osso de grifo retorna à mão do arremessador caso erre. No acerto, causa 1d4 de concussão + 3d4 trovejante, e o alvo deve passar em salvaguarda de Constituição CD 10 ou ficar atordoado até o fim do seu próximo turno.",
+    "description_en": null,
+    "description_es": null,
+    "category": "weapon",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "uncommon",
+      "weapon"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 223,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "weapon",
+      "rarity": "uncommon",
+      "requiresAttunement": false,
+      "weaponType": "Bumerangue",
+      "damage": "1d4 + 3d4",
+      "damageType": "trovejante",
+      "mechanicsSummary": "Bumerangue que retorna; causa 1d4 concussão + 3d4 trovejante e pode atordoar alvo (CD 10 Con).",
+      "summaries": {
+        "pt-BR": "Bumerangue que retorna; causa 1d4 concussão + 3d4 trovejante e pode atordoar alvo (CD 10 Con)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "weird-tank",
+    "name_pt": "Tanque Esquisito",
+    "name_en": "Weird Tank",
+    "name_es": null,
+    "description_pt": "Um barril reforçado com placas de vidro e bronze que abriga um Estranho da Água (Water Weird) amigável. Como uma ação, você pode abrir o tanque para que a criatura saia e ataque seus inimigos sob seus comandos por até 1 hora.",
+    "description_en": null,
+    "description_es": null,
+    "category": "wondrous",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "rare",
+      "wondrous"
+    ],
+    "rarity": "rare",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 223,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "wondrous",
+      "rarity": "rare",
+      "requiresAttunement": true,
+      "attunementDetails": "sintonia exigida",
+      "mechanicsSummary": "Tanque que abriga um Water Weird amigável que luta ao seu comando por até 1 hora.",
+      "summaries": {
+        "pt-BR": "Tanque que abriga um Water Weird amigável que luta ao seu comando por até 1 hora."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "lost-crown-of-besilmer",
+    "name_pt": "Coroa Perdida de Besilmer",
+    "name_en": "Lost Crown of Besilmer",
+    "name_es": null,
+    "description_pt": "A magnífica coroa real dos reis anões de Besilmer. Concede telepatia em raio de 18 metros e permite conjurar detectar pensamentos e sugestão (CD 15) à vontade, além de conceder vantagem em testes de persuasão contra anões.",
+    "description_en": null,
+    "description_es": null,
+    "category": "wondrous",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "legendary",
+      "wondrous"
+    ],
+    "rarity": "legendary",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 223,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "wondrous",
+      "rarity": "legendary",
+      "requiresAttunement": true,
+      "attunementDetails": "sintonia exigida",
+      "mechanicsSummary": "Coroa antiga anã; telepatia 18m, detectar pensamentos/sugestão à vontade (CD 15) e liderança.",
+      "summaries": {
+        "pt-BR": "Coroa antiga anã; telepatia 18m, detectar pensamentos/sugestão à vontade (CD 15) e liderança."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "orcsplitter",
+    "name_pt": "Divisor de Orcs",
+    "name_en": "Orcsplitter",
+    "name_es": null,
+    "description_pt": "Machado grande de guerra rúnico +2 forjado para a defesa de Besilmer. Concede vantagem em salvaguardas contra magias de orcs, brilha com luz tênue quando orcs estão a 36 metros e causa 2d6 de dano cortante adicional contra qualquer criatura da linhagem orc.",
+    "description_en": null,
+    "description_es": null,
+    "category": "weapon",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "legendary",
+      "weapon"
+    ],
+    "rarity": "legendary",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 224,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "weapon",
+      "rarity": "legendary",
+      "requiresAttunement": true,
+      "attunementDetails": "sintonia por um anão ou criatura de alinhamento bom",
+      "weaponType": "Machado Grande",
+      "damage": "1d12 + 2d6",
+      "damageType": "cortante",
+      "mechanicsSummary": "Machado grande +2 lendário; detecta orcs a 36m, causa +2d6 cortante contra orcs e concede vantagem contra magias de orcs.",
+      "summaries": {
+        "pt-BR": "Machado grande +2 lendário; detecta orcs a 36m, causa +2d6 cortante contra orcs e concede vantagem contra magias de orcs."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "windvane",
+    "name_pt": "Cata-Vento (Windvane)",
+    "name_en": "Windvane",
+    "name_es": null,
+    "description_pt": "A arma lendária do Príncipe do Ar Maligno Yan-C-Bin. Esta lança de prata é uma arma mágica +3 que causa 1d6 de dano elétrico adicional a cada Golpe. Concede resistência a dano elétrico, permite conjurar rajada de vento, lufada de vento e forma gasosa, além de dominar criaturas do ar.",
+    "description_en": null,
+    "description_es": null,
+    "category": "weapon",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "legendary",
+      "weapon"
+    ],
+    "rarity": "legendary",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 225,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "weapon",
+      "rarity": "legendary",
+      "requiresAttunement": true,
+      "attunementDetails": "sintonia exigida",
+      "weaponType": "Lança",
+      "damage": "1d6 + 1d6",
+      "damageType": "elétrico",
+      "mechanicsSummary": "Lança elemental lendária +3; +1d6 elétrico, resistência a eletricidade e magias de vento/ar.",
+      "summaries": {
+        "pt-BR": "Lança elemental lendária +3; +1d6 elétrico, resistência a eletricidade e magias de vento/ar."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "ironfang",
+    "name_pt": "Garra de Ferro (Ironfang)",
+    "name_en": "Ironfang",
+    "name_es": null,
+    "description_pt": "A arma lendária do Príncipe da Terra Maligna Ogrémoch. Esta picareta forjada de ferro negro e estalactite é uma arma mágica +3 que causa 1d8 de dano trovejante adicional. Concede resistência a dano de ácido, visão no tremor de 18 metros e magias de moldar terra e despedaçar.",
+    "description_en": null,
+    "description_es": null,
+    "category": "weapon",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "legendary",
+      "weapon"
+    ],
+    "rarity": "legendary",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 225,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "weapon",
+      "rarity": "legendary",
+      "requiresAttunement": true,
+      "attunementDetails": "sintonia exigida",
+      "weaponType": "Picareta de Guerra",
+      "damage": "1d8 + 1d8",
+      "damageType": "trovejante",
+      "mechanicsSummary": "Picareta de guerra lendária +3; +1d8 trovejante, resistência a ácido, visão no tremor 18m e controle da terra.",
+      "summaries": {
+        "pt-BR": "Picareta de guerra lendária +3; +1d8 trovejante, resistência a ácido, visão no tremor 18m e controle da terra."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "tinderstrike",
+    "name_pt": "Faísca de Pederneira (Tinderstrike)",
+    "name_en": "Tinderstrike",
+    "name_es": null,
+    "description_pt": "A arma lendária do Príncipe do Fogo Maligno Imix. Esta adaga de obsidiana flamejante é uma arma mágica +3 que causa 2d6 de dano de fogo adicional. Concede resistência a dano de fogo, imunidade a calor extremo e permite conjurar raio de fogo, mãos flamejantes e bola de fogo.",
+    "description_en": null,
+    "description_es": null,
+    "category": "weapon",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "legendary",
+      "weapon"
+    ],
+    "rarity": "legendary",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 225,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "weapon",
+      "rarity": "legendary",
+      "requiresAttunement": true,
+      "attunementDetails": "sintonia exigida",
+      "weaponType": "Adaga",
+      "damage": "1d4 + 2d6",
+      "damageType": "fogo",
+      "mechanicsSummary": "Adaga elemental lendária +3; +2d6 fogo, resistência a fogo, imunidade a calor e magias de chamas.",
+      "summaries": {
+        "pt-BR": "Adaga elemental lendária +3; +2d6 fogo, resistência a fogo, imunidade a calor e magias de chamas."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "drown",
+    "name_pt": "Afogador (Drown)",
+    "name_en": "Drown",
+    "name_es": null,
+    "description_pt": "A arma lendária do Príncipe da Água Maligna Olhydra. Este tridente de bronze com pontas incrustadas de conchas marinhas é uma arma mágica +3 que causa 1d8 de dano de frio adicional. Concede deslocamento de natação igual ao de caminhada, respiração sob a água e magias de criar ou destruir água e tempestade de gelo.",
+    "description_en": null,
+    "description_es": null,
+    "category": "weapon",
+    "price_gp": null,
+    "weight_lb": null,
+    "traits": [
+      "legendary",
+      "weapon"
+    ],
+    "rarity": "legendary",
+    "ruleset": "dnd5e-pota",
+    "source_book": "D&D 5e · Príncipes do Apocalipse",
+    "source_page": 225,
+    "created_at": "2026-10-14T19:58:16.064Z",
+    "updated_at": "2026-10-14T19:58:16.064Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "weapon",
+      "rarity": "legendary",
+      "requiresAttunement": true,
+      "attunementDetails": "sintonia exigida",
+      "weaponType": "Tridente",
+      "damage": "1d6 + 1d8",
+      "damageType": "frio",
+      "mechanicsSummary": "Tridente elemental lendário +3; +1d8 frio, deslocamento de natação, respiração anfíbia e magias aquáticas.",
+      "summaries": {
+        "pt-BR": "Tridente elemental lendário +3; +1d8 frio, deslocamento de natação, respiração anfíbia e magias aquáticas."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]
