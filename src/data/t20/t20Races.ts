@@ -4,7 +4,7 @@ export interface T20RaceRules {
   sourcePage: number;
   abilityBonuses: string;
   attributeAdjustments: Partial<Record<"str" | "dex" | "con" | "int" | "wis" | "cha", number>>;
-  size: "Pequeno" | "Médio" | "Minúsculo";
+  size: "Pequeno" | "Médio" | "Minúsculo" | "Grande";
   speed: number;
   traits: string[];
   abilityChoices?: { count: number; amount: number; exclude?: string[] };

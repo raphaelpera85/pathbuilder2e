@@ -116,6 +116,7 @@ function catalogRulesetLabel(ruleset: string): string {
   const labels: Record<string, string> = {
     standard: "D&D 5e 2014",
     padrao: "Tormenta20 padrão",
+    "t20-ameacas": "Tormenta20 · Ameaças de Arton",
     advanced: "OSE Advanced Fantasy",
     classic: "OSE Classic Fantasy",
     basico: "OSE Criação Básica/Especialista",

@@ -237,5 +237,14 @@
       "skill": 29,
       "spell": 66
     }
+  },
+  {
+    "systemId": "t20",
+    "ruleset": "t20-ameacas",
+    "categories": {
+      "ancestry": 29,
+      "item": 49,
+      "spell": 8
+    }
   }
 ]

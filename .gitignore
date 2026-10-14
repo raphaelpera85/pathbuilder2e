@@ -6,6 +6,7 @@ dist/
 *.log
 *.tsbuildinfo
 .audit-current.json
+scratch/
 scratch/cdp-profile/
 scratch/viewport-*.png
 scratch/viewport-smoke-profile*/

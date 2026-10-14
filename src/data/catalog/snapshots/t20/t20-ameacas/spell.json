@@ -1,0 +1,385 @@
+[
+  {
+    "id": "t20.ameacas.magia.acoite_flamejante",
+    "name_pt": "Açoite Flamejante",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Cria um açoite de chamas na mão. Ação padrão causa 2d6 pontos de dano de fogo em criatura em alcance curto e a deixa em chamas e enredada.",
+    "description_en": null,
+    "description_es": null,
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcana"
+    ],
+    "cast_actions": "padrao",
+    "range": "pessoal",
+    "targets": null,
+    "duration": "sustentada",
+    "defense": "Reflexos reduz parcial",
+    "traits": [
+      "convocacao"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 404,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.ameacas.magia.acoite_flamejante",
+      "name": "Açoite Flamejante",
+      "sourcePage": 404,
+      "category": "magia",
+      "spellLevel": 1,
+      "tradition": "arcana",
+      "school": "convocacao",
+      "castingTime": "padrao",
+      "range": "pessoal",
+      "duration": "sustentada",
+      "savingThrow": "Reflexos reduz parcial",
+      "summary": "Cria um açoite de chamas na mão. Ação padrão causa 2d6 pontos de dano de fogo em criatura em alcance curto e a deixa em chamas e enredada.",
+      "summaries": {
+        "pt-BR": "Cria um açoite de chamas na mão. Ação padrão causa 2d6 pontos de dano de fogo em criatura em alcance curto e a deixa em chamas e enredada."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.magia.dardo_gelido",
+    "name_pt": "Dardo Gélido",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Dispara um dardo de gelo causando 2d6 pontos de dano de frio e deixa o alvo lento por 1 rodada (Fortitude reduz à metade e evita a lentidão).",
+    "description_en": null,
+    "description_es": null,
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcana"
+    ],
+    "cast_actions": "padrao",
+    "range": "curto",
+    "targets": "1 criatura",
+    "duration": "instantanea",
+    "defense": "Fortitude parcial",
+    "traits": [
+      "evocacao"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 404,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.ameacas.magia.dardo_gelido",
+      "name": "Dardo Gélido",
+      "sourcePage": 404,
+      "category": "magia",
+      "spellLevel": 1,
+      "tradition": "arcana",
+      "school": "evocacao",
+      "castingTime": "padrao",
+      "range": "curto",
+      "target": "1 criatura",
+      "duration": "instantanea",
+      "savingThrow": "Fortitude parcial",
+      "summary": "Dispara um dardo de gelo causando 2d6 pontos de dano de frio e deixa o alvo lento por 1 rodada (Fortitude reduz à metade e evita a lentidão).",
+      "summaries": {
+        "pt-BR": "Dispara um dardo de gelo causando 2d6 pontos de dano de frio e deixa o alvo lento por 1 rodada (Fortitude reduz à metade e evita a lentidão)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.magia.invocar_fagulha_elemental",
+    "name_pt": "Invocar Fagulha Elemental",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Transforma uma porção de elemento inerte em um familiar elemental Pequeno (ar, água, fogo ou terra) que auxilia o conjurador sem contar no limite de parceiros.",
+    "description_en": null,
+    "description_es": null,
+    "rank": 2,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcana"
+    ],
+    "cast_actions": "completa",
+    "range": "curto",
+    "targets": null,
+    "duration": "sustentada",
+    "defense": null,
+    "traits": [
+      "convocacao"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 404,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.ameacas.magia.invocar_fagulha_elemental",
+      "name": "Invocar Fagulha Elemental",
+      "sourcePage": 404,
+      "category": "magia",
+      "spellLevel": 2,
+      "tradition": "arcana",
+      "school": "convocacao",
+      "castingTime": "completa",
+      "range": "curto",
+      "duration": "sustentada",
+      "summary": "Transforma uma porção de elemento inerte em um familiar elemental Pequeno (ar, água, fogo ou terra) que auxilia o conjurador sem contar no limite de parceiros.",
+      "summaries": {
+        "pt-BR": "Transforma uma porção de elemento inerte em um familiar elemental Pequeno (ar, água, fogo ou terra) que auxilia o conjurador sem contar no limite de parceiros."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.magia.jato_corrosivo",
+    "name_pt": "Jato Corrosivo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Dispara um jato ácido causando 2d6 pontos de dano de ácido às criaturas na área (+1 por dado contra construtos e objetos soltos).",
+    "description_en": null,
+    "description_es": null,
+    "rank": 1,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcana"
+    ],
+    "cast_actions": "padrao",
+    "range": "pessoal",
+    "targets": null,
+    "duration": "instantanea",
+    "defense": "Reflexos reduz à metade",
+    "traits": [
+      "evocacao"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 404,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.ameacas.magia.jato_corrosivo",
+      "name": "Jato Corrosivo",
+      "sourcePage": 404,
+      "category": "magia",
+      "spellLevel": 1,
+      "tradition": "arcana",
+      "school": "evocacao",
+      "castingTime": "padrao",
+      "range": "pessoal",
+      "area": "linha de 9m",
+      "duration": "instantanea",
+      "savingThrow": "Reflexos reduz à metade",
+      "summary": "Dispara um jato ácido causando 2d6 pontos de dano de ácido às criaturas na área (+1 por dado contra construtos e objetos soltos).",
+      "summaries": {
+        "pt-BR": "Dispara um jato ácido causando 2d6 pontos de dano de ácido às criaturas na área (+1 por dado contra construtos e objetos soltos)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.magia.katana_celestial",
+    "name_pt": "Katana Celestial",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Golpe vindo dos céus causa 12d8 pontos de dano de luz (12d12 em mortos-vivos) e deixa os alvos cegos e surdos até o fim da cena.",
+    "description_en": null,
+    "description_es": null,
+    "rank": 5,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "divina"
+    ],
+    "cast_actions": "padrao",
+    "range": "pessoal",
+    "targets": null,
+    "duration": "instantanea",
+    "defense": "Reflexos parcial",
+    "traits": [
+      "evocacao"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 404,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.ameacas.magia.katana_celestial",
+      "name": "Katana Celestial",
+      "sourcePage": 404,
+      "category": "magia",
+      "spellLevel": 5,
+      "tradition": "divina",
+      "school": "evocacao",
+      "castingTime": "padrao",
+      "range": "pessoal",
+      "area": "linha de 60m ou duas de 30m",
+      "duration": "instantanea",
+      "savingThrow": "Reflexos parcial",
+      "summary": "Golpe vindo dos céus causa 12d8 pontos de dano de luz (12d12 em mortos-vivos) e deixa os alvos cegos e surdos até o fim da cena.",
+      "summaries": {
+        "pt-BR": "Golpe vindo dos céus causa 12d8 pontos de dano de luz (12d12 em mortos-vivos) e deixa os alvos cegos e surdos até o fim da cena."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.magia.momento_de_tormenta",
+    "name_pt": "Momento de Tormenta",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Invoca uma nuvem rubra de tempestade lefeu que a cada turno manifesta chuva ácida (6d4 ácido), neblina venenosa (perde 2d12 PV), raios escarlates (6d8 eletricidade) ou pesadelos reais (4d6 psíquico e perde 1d4 PM).",
+    "description_en": null,
+    "description_es": null,
+    "rank": 2,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "universal"
+    ],
+    "cast_actions": "completa",
+    "range": "pessoal",
+    "targets": null,
+    "duration": "sustentada",
+    "defense": "veja texto",
+    "traits": [
+      "convocacao"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 404,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.ameacas.magia.momento_de_tormenta",
+      "name": "Momento de Tormenta",
+      "sourcePage": 404,
+      "category": "magia",
+      "spellLevel": 2,
+      "tradition": "universal",
+      "school": "convocacao",
+      "castingTime": "completa",
+      "range": "pessoal",
+      "area": "cubo de 30m",
+      "duration": "sustentada",
+      "savingThrow": "veja texto",
+      "summary": "Invoca uma nuvem rubra de tempestade lefeu que a cada turno manifesta chuva ácida (6d4 ácido), neblina venenosa (perde 2d12 PV), raios escarlates (6d8 eletricidade) ou pesadelos reais (4d6 psíquico e perde 1d4 PM).",
+      "summaries": {
+        "pt-BR": "Invoca uma nuvem rubra de tempestade lefeu que a cada turno manifesta chuva ácida (6d4 ácido), neblina venenosa (perde 2d12 PV), raios escarlates (6d8 eletricidade) ou pesadelos reais (4d6 psíquico e perde 1d4 PM)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.magia.transformacao_em_dragao",
+    "name_pt": "Transformação em Dragão",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Concede +2 em For, Con, Int e Car, +5 na Defesa, RD 30 contra elemento dracônico e sopro de 8d6+8 em cone de 9m.",
+    "description_en": null,
+    "description_es": null,
+    "rank": 4,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "arcana"
+    ],
+    "cast_actions": "completa",
+    "range": "pessoal",
+    "targets": "você",
+    "duration": "sustentada",
+    "defense": null,
+    "traits": [
+      "transmutacao"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 405,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.ameacas.magia.transformacao_em_dragao",
+      "name": "Transformação em Dragão",
+      "sourcePage": 405,
+      "category": "magia",
+      "spellLevel": 4,
+      "tradition": "arcana",
+      "school": "transmutacao",
+      "castingTime": "completa",
+      "range": "pessoal",
+      "target": "você",
+      "duration": "sustentada",
+      "summary": "Concede +2 em For, Con, Int e Car, +5 na Defesa, RD 30 contra elemento dracônico e sopro de 8d6+8 em cone de 9m.",
+      "summaries": {
+        "pt-BR": "Concede +2 em For, Con, Int e Car, +5 na Defesa, RD 30 contra elemento dracônico e sopro de 8d6+8 em cone de 9m."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.magia.conjurar_mortos_vivos_aprimoramentos",
+    "name_pt": "Conjurar Mortos-vivos (Aprimoramentos de Ameaças)",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Novas opções de invocação: Soterrados (+2 PM, causam frio e enredam), Fúria de Tauron (+3 PM, voo 12m e incorpóreo), Guerreiro Perpétuo (+3 PM, devotos de Arsenal, Defesa 33) e Zumbi Peçonha (+3 PM, devotos de Sszzaas, atordoa e envenena).",
+    "description_en": null,
+    "description_es": null,
+    "rank": 3,
+    "is_cantrip": false,
+    "is_focus": false,
+    "traditions": [
+      "universal"
+    ],
+    "cast_actions": "padrao",
+    "range": null,
+    "targets": null,
+    "duration": null,
+    "defense": null,
+    "traits": [
+      "necromancia"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 405,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.ameacas.magia.conjurar_mortos_vivos_aprimoramentos",
+      "name": "Conjurar Mortos-vivos (Aprimoramentos de Ameaças)",
+      "sourcePage": 405,
+      "category": "magia",
+      "spellLevel": 3,
+      "tradition": "universal",
+      "school": "necromancia",
+      "summary": "Novas opções de invocação: Soterrados (+2 PM, causam frio e enredam), Fúria de Tauron (+3 PM, voo 12m e incorpóreo), Guerreiro Perpétuo (+3 PM, devotos de Arsenal, Defesa 33) e Zumbi Peçonha (+3 PM, devotos de Sszzaas, atordoa e envenena).",
+      "summaries": {
+        "pt-BR": "Novas opções de invocação: Soterrados (+2 PM, causam frio e enredam), Fúria de Tauron (+3 PM, voo 12m e incorpóreo), Guerreiro Perpétuo (+3 PM, devotos de Arsenal, Defesa 33) e Zumbi Peçonha (+3 PM, devotos de Sszzaas, atordoa e envenena)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]

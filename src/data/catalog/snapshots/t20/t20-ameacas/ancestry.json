@@ -1,0 +1,1639 @@
+[
+  {
+    "id": "t20.ameacas.ancestry.bugbear",
+    "name_pt": "Bugbear",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Força +2, Destreza +1, Carisma -1; tamanho médio, deslocamento 9m; traços: Empunhadura Poderosa: ao usar arma de tamanho maior, penalidade diminui para -2 (ou 0 se receber novamente), Saborear Pavor: pode usar Força para Intimidação; se criatura em alcance curto estiver abalada ou apavorada, recebe bônus no ataque igual à penalidade, Sentidos de Predador: faro e visão no escuro.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "str",
+      "dex"
+    ],
+    "attribute_flaw": "cha",
+    "languages": [],
+    "traits": [
+      "Empunhadura Poderosa",
+      "Saborear Pavor",
+      "Sentidos de Predador"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 79,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "str": 2,
+        "dex": 1,
+        "cha": -1
+      },
+      "abilityBonuses": "Força +2, Destreza +1, Carisma -1",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Empunhadura Poderosa: ao usar arma de tamanho maior, penalidade diminui para -2 (ou 0 se receber novamente)",
+        "Saborear Pavor: pode usar Força para Intimidação; se criatura em alcance curto estiver abalada ou apavorada, recebe bônus no ataque igual à penalidade",
+        "Sentidos de Predador: faro e visão no escuro"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Força +2, Destreza +1, Carisma -1; tamanho médio, deslocamento 9m; traços: Empunhadura Poderosa: ao usar arma de tamanho maior, penalidade diminui para -2 (ou 0 se receber novamente), Saborear Pavor: pode usar Força para Intimidação; se criatura em alcance curto estiver abalada ou apavorada, recebe bônus no ataque igual à penalidade, Sentidos de Predador: faro e visão no escuro."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.centauro",
+    "name_pt": "Centauro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Sabedoria +2, Força +1, Inteligência -1; tamanho grande, deslocamento 12m; traços: Avantajado: tamanho Grande e deslocamento 12m, Cascos: arma natural (1d8, x2, impacto); com ação agredir, gasta 1 PM para ataque extra com cascos, Ginete Natural: considerado montado para investidas e armas; pode escolher Carga de Cavalaria sem pré-requisitos; não se beneficia de montaria, Medo de Altura: abalado se adjacente a queda de 3m ou mais.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Large",
+    "speed_feet": 40,
+    "attribute_boosts": [
+      "wis",
+      "str"
+    ],
+    "attribute_flaw": "int",
+    "languages": [],
+    "traits": [
+      "Avantajado",
+      "Cascos",
+      "Ginete Natural",
+      "Medo de Altura"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 105,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "wis": 2,
+        "str": 1,
+        "int": -1
+      },
+      "abilityBonuses": "Sabedoria +2, Força +1, Inteligência -1",
+      "size": "Grande",
+      "speedMeters": 12,
+      "traits": [
+        "Avantajado: tamanho Grande e deslocamento 12m",
+        "Cascos: arma natural (1d8, x2, impacto); com ação agredir, gasta 1 PM para ataque extra com cascos",
+        "Ginete Natural: considerado montado para investidas e armas; pode escolher Carga de Cavalaria sem pré-requisitos; não se beneficia de montaria",
+        "Medo de Altura: abalado se adjacente a queda de 3m ou mais"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Sabedoria +2, Força +1, Inteligência -1; tamanho grande, deslocamento 12m; traços: Avantajado: tamanho Grande e deslocamento 12m, Cascos: arma natural (1d8, x2, impacto); com ação agredir, gasta 1 PM para ataque extra com cascos, Ginete Natural: considerado montado para investidas e armas; pode escolher Carga de Cavalaria sem pré-requisitos; não se beneficia de montaria, Medo de Altura: abalado se adjacente a queda de 3m ou mais."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.ceratops",
+    "name_pt": "Ceratops",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Constituição +2, Força +1, Destreza -1, Inteligência -1; tamanho grande, deslocamento 9m; traços: Chifres: arma natural (1d8, x2, perfuração); com ação agredir, gasta 1 PM para ataque extra com chifres, Papel Tribal: treinado em Cura, Intimidação, Ofício ou Sobrevivência, Paquidérmico: tamanho Grande, +1 na Defesa, pode usar Força para Intimidação, Medo de Altura: abalado se adjacente a queda de 3m ou mais.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Large",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "con",
+      "str"
+    ],
+    "attribute_flaw": "dex",
+    "languages": [],
+    "traits": [
+      "Chifres",
+      "Papel Tribal",
+      "Paquidérmico",
+      "Medo de Altura"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 265,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "con": 2,
+        "str": 1,
+        "dex": -1,
+        "int": -1
+      },
+      "abilityBonuses": "Constituição +2, Força +1, Destreza -1, Inteligência -1",
+      "size": "Grande",
+      "speedMeters": 9,
+      "traits": [
+        "Chifres: arma natural (1d8, x2, perfuração); com ação agredir, gasta 1 PM para ataque extra com chifres",
+        "Papel Tribal: treinado em Cura, Intimidação, Ofício ou Sobrevivência",
+        "Paquidérmico: tamanho Grande, +1 na Defesa, pode usar Força para Intimidação",
+        "Medo de Altura: abalado se adjacente a queda de 3m ou mais"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 1,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Constituição +2, Força +1, Destreza -1, Inteligência -1; tamanho grande, deslocamento 9m; traços: Chifres: arma natural (1d8, x2, perfuração); com ação agredir, gasta 1 PM para ataque extra com chifres, Papel Tribal: treinado em Cura, Intimidação, Ofício ou Sobrevivência, Paquidérmico: tamanho Grande, +1 na Defesa, pode usar Força para Intimidação, Medo de Altura: abalado se adjacente a queda de 3m ou mais."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.elfo_do_mar",
+    "name_pt": "Elfo-do-Mar",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Destreza +2, Constituição +1, Inteligência -1; tamanho médio, deslocamento 9m; traços: Arsenal do Oceano: proficiência e +2 em ataque com arpão, rede e tridente; pode considerá-las armas leves se receber novamente, Cria das Águas: deslocamento natação igual ao terrestre, visão na penumbra; na água recebe percepção às cegas, +2 Defesa, Furtividade e Sobrevivência, Dependência de Água: se passar mais de 1 dia sem contato com água, não recupera PM em descanso.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "dex",
+      "con"
+    ],
+    "attribute_flaw": "int",
+    "languages": [],
+    "traits": [
+      "Arsenal do Oceano",
+      "Cria das Águas",
+      "Dependência de Água"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 316,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "dex": 2,
+        "con": 1,
+        "int": -1
+      },
+      "abilityBonuses": "Destreza +2, Constituição +1, Inteligência -1",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Arsenal do Oceano: proficiência e +2 em ataque com arpão, rede e tridente; pode considerá-las armas leves se receber novamente",
+        "Cria das Águas: deslocamento natação igual ao terrestre, visão na penumbra; na água recebe percepção às cegas, +2 Defesa, Furtividade e Sobrevivência",
+        "Dependência de Água: se passar mais de 1 dia sem contato com água, não recupera PM em descanso"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Destreza +2, Constituição +1, Inteligência -1; tamanho médio, deslocamento 9m; traços: Arsenal do Oceano: proficiência e +2 em ataque com arpão, rede e tridente; pode considerá-las armas leves se receber novamente, Cria das Águas: deslocamento natação igual ao terrestre, visão na penumbra; na água recebe percepção às cegas, +2 Defesa, Furtividade e Sobrevivência, Dependência de Água: se passar mais de 1 dia sem contato com água, não recupera PM em descanso."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.finntroll",
+    "name_pt": "Finntroll",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Inteligência +2, Constituição +1, Força -1; tamanho médio, deslocamento 9m; traços: Corpo Vegetal: tipo monstro, natureza vegetal e visão no escuro, Presença Arcana: +2 em Misticismo e resistência a magia +2, Regeneração Vegetal: 1/rodada gasta 1 PM para curar 5 PV (exceto dano de ácido ou fogo), Intolerância a Luz: sensibilidade a luz; sob luz do sol não ativa Regeneração Vegetal.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "int",
+      "con"
+    ],
+    "attribute_flaw": "str",
+    "languages": [],
+    "traits": [
+      "Corpo Vegetal",
+      "Presença Arcana",
+      "Regeneração Vegetal",
+      "Intolerância a Luz"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 339,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "int": 2,
+        "con": 1,
+        "str": -1
+      },
+      "abilityBonuses": "Inteligência +2, Constituição +1, Força -1",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Corpo Vegetal: tipo monstro, natureza vegetal e visão no escuro",
+        "Presença Arcana: +2 em Misticismo e resistência a magia +2",
+        "Regeneração Vegetal: 1/rodada gasta 1 PM para curar 5 PV (exceto dano de ácido ou fogo)",
+        "Intolerância a Luz: sensibilidade a luz; sob luz do sol não ativa Regeneração Vegetal"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Inteligência +2, Constituição +1, Força -1; tamanho médio, deslocamento 9m; traços: Corpo Vegetal: tipo monstro, natureza vegetal e visão no escuro, Presença Arcana: +2 em Misticismo e resistência a magia +2, Regeneração Vegetal: 1/rodada gasta 1 PM para curar 5 PV (exceto dano de ácido ou fogo), Intolerância a Luz: sensibilidade a luz; sob luz do sol não ativa Regeneração Vegetal."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.gnoll",
+    "name_pt": "Gnoll",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Constituição +2, Sabedoria +1, Inteligência -1; tamanho médio, deslocamento 9m; traços: Faro: olfato apurado; não fica desprevenido e camuflagem total causa só 20% de falha contra inimigos em alcance curto não vistos, Mordida: arma natural (1d6, x2, perfuração); com ação agredir, gasta 1 PM para ataque extra com mordida, Oportunista: +2 em dano contra criaturas que sofreram dano de outros desde o último turno, Rendição: recebe 1d4 PM temporários quando inimigo se rende; fica alquebrado se continuar lutando com 1/4 PV ou menos.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "con",
+      "wis"
+    ],
+    "attribute_flaw": "int",
+    "languages": [],
+    "traits": [
+      "Faro",
+      "Mordida",
+      "Oportunista",
+      "Rendição"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 115,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "con": 2,
+        "wis": 1,
+        "int": -1
+      },
+      "abilityBonuses": "Constituição +2, Sabedoria +1, Inteligência -1",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Faro: olfato apurado; não fica desprevenido e camuflagem total causa só 20% de falha contra inimigos em alcance curto não vistos",
+        "Mordida: arma natural (1d6, x2, perfuração); com ação agredir, gasta 1 PM para ataque extra com mordida",
+        "Oportunista: +2 em dano contra criaturas que sofreram dano de outros desde o último turno",
+        "Rendição: recebe 1d4 PM temporários quando inimigo se rende; fica alquebrado se continuar lutando com 1/4 PV ou menos"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Constituição +2, Sabedoria +1, Inteligência -1; tamanho médio, deslocamento 9m; traços: Faro: olfato apurado; não fica desprevenido e camuflagem total causa só 20% de falha contra inimigos em alcance curto não vistos, Mordida: arma natural (1d6, x2, perfuração); com ação agredir, gasta 1 PM para ataque extra com mordida, Oportunista: +2 em dano contra criaturas que sofreram dano de outros desde o último turno, Rendição: recebe 1d4 PM temporários quando inimigo se rende; fica alquebrado se continuar lutando com 1/4 PV ou menos."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.golem_desperto",
+    "name_pt": "Golem Desperto (Novas Opções)",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Força +1, Carisma -1 (cumulativo com Chassi e Tamanho); tamanho médio, deslocamento 6m; traços: Chassi Expandido: escolha material entre Barro, Bronze, Carne, Espelhos, Ferro, Gelo Eterno, Pedra ou Sucata, Criatura Artificial: tipo construto, visão no escuro, imunidade a cansaço, efeitos metabólicos e veneno; inerte 8h por dia, Fonte de Energia: escolha Alquímica, Elemental, Sagrada ou Vapor, Propósito de Criação: sem origem, recebe um poder geral a sua escolha, Tamanho Variável: Pequeno (+1 Des), Médio, ou Grande (-1 Des).",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 20,
+    "attribute_boosts": [
+      "str"
+    ],
+    "attribute_flaw": "cha",
+    "languages": [],
+    "traits": [
+      "Chassi Expandido",
+      "Criatura Artificial",
+      "Fonte de Energia",
+      "Propósito de Criação",
+      "Tamanho Variável"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 134,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "str": 1,
+        "cha": -1
+      },
+      "abilityBonuses": "Força +1, Carisma -1 (cumulativo com Chassi e Tamanho)",
+      "size": "Médio",
+      "speedMeters": 6,
+      "traits": [
+        "Chassi Expandido: escolha material entre Barro, Bronze, Carne, Espelhos, Ferro, Gelo Eterno, Pedra ou Sucata",
+        "Criatura Artificial: tipo construto, visão no escuro, imunidade a cansaço, efeitos metabólicos e veneno; inerte 8h por dia",
+        "Fonte de Energia: escolha Alquímica, Elemental, Sagrada ou Vapor",
+        "Propósito de Criação: sem origem, recebe um poder geral a sua escolha",
+        "Tamanho Variável: Pequeno (+1 Des), Médio, ou Grande (-1 Des)"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": "general",
+      "raceChoices": [
+        {
+          "id": "golem-chassi",
+          "label": "Material de Chassi",
+          "options": [
+            "Barro (+2 Con)",
+            "Bronze (+1 dois atributos)",
+            "Carne (+2 Con, +1 For, -1 Car)",
+            "Espelhos (+2 Car, +1 Sab, -1 Con)",
+            "Ferro (+1 For, +1 Con, +2 Defesa)",
+            "Gelo Eterno (+2 Con, imune frio, RD fogo 10)",
+            "Pedra (+2 Con, RD corte/fogo/perfuração 5)",
+            "Sucata (+1 For, +1 Con)"
+          ],
+          "count": 1
+        },
+        {
+          "id": "golem-tamanho",
+          "label": "Categoria de Tamanho",
+          "options": [
+            "Pequeno (+1 Destreza)",
+            "Médio",
+            "Grande (-1 Destreza)"
+          ],
+          "count": 1
+        }
+      ],
+      "summaries": {
+        "pt-BR": "Força +1, Carisma -1 (cumulativo com Chassi e Tamanho); tamanho médio, deslocamento 6m; traços: Chassi Expandido: escolha material entre Barro, Bronze, Carne, Espelhos, Ferro, Gelo Eterno, Pedra ou Sucata, Criatura Artificial: tipo construto, visão no escuro, imunidade a cansaço, efeitos metabólicos e veneno; inerte 8h por dia, Fonte de Energia: escolha Alquímica, Elemental, Sagrada ou Vapor, Propósito de Criação: sem origem, recebe um poder geral a sua escolha, Tamanho Variável: Pequeno (+1 Des), Médio, ou Grande (-1 Des)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.harpia",
+    "name_pt": "Harpia",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Destreza +2, Carisma +1, Inteligência -1; tamanho médio, deslocamento 9m; traços: Asas de Abutre: pairar a 1,5m do chão com deslocamento 12m (ignora terreno difícil, imune a dano de queda); gasta 1 PM/rodada para voar com deslocamento 12m, Cria de Masmorra: tipo monstro, visão no escuro e +2 em Intimidação e Sobrevivência, Grito Aterrorizante: ação padrão e 1 PM para deixar criaturas em alcance curto abaladas (Von CD Car evita), Pés Rapinantes: pés usados como mãos ou 2 armas naturais de garras (1d6, x2, corte); 1 PM ataque extra.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "dex",
+      "cha"
+    ],
+    "attribute_flaw": "int",
+    "languages": [],
+    "traits": [
+      "Asas de Abutre",
+      "Cria de Masmorra",
+      "Grito Aterrorizante",
+      "Pés Rapinantes"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 201,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "dex": 2,
+        "cha": 1,
+        "int": -1
+      },
+      "abilityBonuses": "Destreza +2, Carisma +1, Inteligência -1",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Asas de Abutre: pairar a 1,5m do chão com deslocamento 12m (ignora terreno difícil, imune a dano de queda); gasta 1 PM/rodada para voar com deslocamento 12m",
+        "Cria de Masmorra: tipo monstro, visão no escuro e +2 em Intimidação e Sobrevivência",
+        "Grito Aterrorizante: ação padrão e 1 PM para deixar criaturas em alcance curto abaladas (Von CD Car evita)",
+        "Pés Rapinantes: pés usados como mãos ou 2 armas naturais de garras (1d6, x2, corte); 1 PM ataque extra"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Destreza +2, Carisma +1, Inteligência -1; tamanho médio, deslocamento 9m; traços: Asas de Abutre: pairar a 1,5m do chão com deslocamento 12m (ignora terreno difícil, imune a dano de queda); gasta 1 PM/rodada para voar com deslocamento 12m, Cria de Masmorra: tipo monstro, visão no escuro e +2 em Intimidação e Sobrevivência, Grito Aterrorizante: ação padrão e 1 PM para deixar criaturas em alcance curto abaladas (Von CD Car evita), Pés Rapinantes: pés usados como mãos ou 2 armas naturais de garras (1d6, x2, corte); 1 PM ataque extra."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.hobgoblin",
+    "name_pt": "Hobgoblin",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Constituição +2, Destreza +1, Carisma -1; tamanho médio, deslocamento 9m; traços: Arte da Guerra: treinado em Guerra e proficiência em armas marciais (+2 dano se receber novamente), Metalurgia Hobgoblin: +2 em Ofício (armeiro), fabrica armas e armaduras superiores com 1 melhoria ou gasta apenas 1/4 do preço, Táticas de Guerrilha: visão no escuro e +2 em Furtividade.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "con",
+      "dex"
+    ],
+    "attribute_flaw": "cha",
+    "languages": [],
+    "traits": [
+      "Arte da Guerra",
+      "Metalurgia Hobgoblin",
+      "Táticas de Guerrilha"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 84,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "con": 2,
+        "dex": 1,
+        "cha": -1
+      },
+      "abilityBonuses": "Constituição +2, Destreza +1, Carisma -1",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Arte da Guerra: treinado em Guerra e proficiência em armas marciais (+2 dano se receber novamente)",
+        "Metalurgia Hobgoblin: +2 em Ofício (armeiro), fabrica armas e armaduras superiores com 1 melhoria ou gasta apenas 1/4 do preço",
+        "Táticas de Guerrilha: visão no escuro e +2 em Furtividade"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Constituição +2, Destreza +1, Carisma -1; tamanho médio, deslocamento 9m; traços: Arte da Guerra: treinado em Guerra e proficiência em armas marciais (+2 dano se receber novamente), Metalurgia Hobgoblin: +2 em Ofício (armeiro), fabrica armas e armaduras superiores com 1 melhoria ou gasta apenas 1/4 do preço, Táticas de Guerrilha: visão no escuro e +2 em Furtividade."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.kallyanach",
+    "name_pt": "Kallyanach",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "+2 em um atributo a sua escolha ou +1 em dois atributos a sua escolha; tamanho médio, deslocamento 9m; traços: Herança Dracônica: tipo monstro, redução de dano 5 contra ácido, eletricidade, fogo, frio, luz ou trevas, Bênção de Kallyadranoch: escolha dois poderes (Armamento, Asas Dracônicas, Escamas Elementais, Prática Arcana, Sentidos Dracônicos, Sopro de Dragão).",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Herança Dracônica",
+      "Bênção de Kallyadranoch"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 151,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {},
+      "abilityBonuses": "+2 em um atributo a sua escolha ou +1 em dois atributos a sua escolha",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Herança Dracônica: tipo monstro, redução de dano 5 contra ácido, eletricidade, fogo, frio, luz ou trevas",
+        "Bênção de Kallyadranoch: escolha dois poderes (Armamento, Asas Dracônicas, Escamas Elementais, Prática Arcana, Sentidos Dracônicos, Sopro de Dragão)"
+      ],
+      "abilityChoices": {
+        "count": 2,
+        "amount": 1
+      },
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [
+        {
+          "id": "kallyanach-bencaos",
+          "label": "Bênçãos de Kallyadranoch",
+          "options": [
+            "Armamento Kallyanach",
+            "Asas Dracônicas",
+            "Escamas Elementais",
+            "Prática Arcana",
+            "Sentidos Dracônicos",
+            "Sopro de Dragão"
+          ],
+          "count": 2
+        }
+      ],
+      "summaries": {
+        "pt-BR": "+2 em um atributo a sua escolha ou +1 em dois atributos a sua escolha; tamanho médio, deslocamento 9m; traços: Herança Dracônica: tipo monstro, redução de dano 5 contra ácido, eletricidade, fogo, frio, luz ou trevas, Bênção de Kallyadranoch: escolha dois poderes (Armamento, Asas Dracônicas, Escamas Elementais, Prática Arcana, Sentidos Dracônicos, Sopro de Dragão)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.kaijin",
+    "name_pt": "Kaijin",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Força +2, Constituição +1, Carisma -2; tamanho médio, deslocamento 9m; traços: Couraça Rubra: redução de dano 2; conta como poder da Tormenta sem perda de Carisma, Cria da Tormenta: tipo monstro, +5 contra efeitos da Tormenta e lefeu; imune a efeitos da Tormenta que não afetam lefou, Disforme: itens não mágicos exigem adaptação (+50% do preço, 1 dia); conta como poder da Tormenta sem perda de Carisma, Terror Vivo: Força para Intimidação; recebe um poder da Tormenta a sua escolha sem perda de Carisma.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "str",
+      "con"
+    ],
+    "attribute_flaw": "cha",
+    "languages": [],
+    "traits": [
+      "Couraça Rubra",
+      "Cria da Tormenta",
+      "Disforme",
+      "Terror Vivo"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 157,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "str": 2,
+        "con": 1,
+        "cha": -2
+      },
+      "abilityBonuses": "Força +2, Constituição +1, Carisma -2",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Couraça Rubra: redução de dano 2; conta como poder da Tormenta sem perda de Carisma",
+        "Cria da Tormenta: tipo monstro, +5 contra efeitos da Tormenta e lefeu; imune a efeitos da Tormenta que não afetam lefou",
+        "Disforme: itens não mágicos exigem adaptação (+50% do preço, 1 dia); conta como poder da Tormenta sem perda de Carisma",
+        "Terror Vivo: Força para Intimidação; recebe um poder da Tormenta a sua escolha sem perda de Carisma"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": "tormenta",
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Força +2, Constituição +1, Carisma -2; tamanho médio, deslocamento 9m; traços: Couraça Rubra: redução de dano 2; conta como poder da Tormenta sem perda de Carisma, Cria da Tormenta: tipo monstro, +5 contra efeitos da Tormenta e lefeu; imune a efeitos da Tormenta que não afetam lefou, Disforme: itens não mágicos exigem adaptação (+50% do preço, 1 dia); conta como poder da Tormenta sem perda de Carisma, Terror Vivo: Força para Intimidação; recebe um poder da Tormenta a sua escolha sem perda de Carisma."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.kappa",
+    "name_pt": "Kappa",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Destreza +2, Constituição +1, Carisma -1; tamanho médio, deslocamento 9m; traços: Alma da Água: tipo espírito, natação igual ao deslocamento terrestre, Carapaça Kappa: não pode ser flanqueado, cobertura leve submerso/caído; soma Con na Defesa até o nível sem armadura pesada (+2 se já somar), Cura das Águas: lança Curar Ferimentos (Sabedoria, custo diminui em -1 PM se aprender novamente), Tigela D’água: falha por 5+ em evitar agarrar/derrubar/empurrar derrama água e fica enjoado até reabastecer (ação padrão).",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "dex",
+      "con"
+    ],
+    "attribute_flaw": "cha",
+    "languages": [],
+    "traits": [
+      "Alma da Água",
+      "Carapaça Kappa",
+      "Cura das Águas",
+      "Tigela D’água"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 158,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "dex": 2,
+        "con": 1,
+        "cha": -1
+      },
+      "abilityBonuses": "Destreza +2, Constituição +1, Carisma -1",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Alma da Água: tipo espírito, natação igual ao deslocamento terrestre",
+        "Carapaça Kappa: não pode ser flanqueado, cobertura leve submerso/caído; soma Con na Defesa até o nível sem armadura pesada (+2 se já somar)",
+        "Cura das Águas: lança Curar Ferimentos (Sabedoria, custo diminui em -1 PM se aprender novamente)",
+        "Tigela D’água: falha por 5+ em evitar agarrar/derrubar/empurrar derrama água e fica enjoado até reabastecer (ação padrão)"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Destreza +2, Constituição +1, Carisma -1; tamanho médio, deslocamento 9m; traços: Alma da Água: tipo espírito, natação igual ao deslocamento terrestre, Carapaça Kappa: não pode ser flanqueado, cobertura leve submerso/caído; soma Con na Defesa até o nível sem armadura pesada (+2 se já somar), Cura das Águas: lança Curar Ferimentos (Sabedoria, custo diminui em -1 PM se aprender novamente), Tigela D’água: falha por 5+ em evitar agarrar/derrubar/empurrar derrama água e fica enjoado até reabastecer (ação padrão)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.kobolds",
+    "name_pt": "Kobolds (Bando)",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Destreza +2, Força -1; tamanho médio, deslocamento 9m; traços: Ajuntamento Escamoso: criatura Média de dois braços; conta como Pequeno para espaços; rola 2 dados contra efeito de alvo único que não causa dano; vulnerabilidade a área, Praga Monstruosa: tipo monstro, visão no escuro e +2 em Sobrevivência, Sensibilidade a Luz: ofuscado sob luz do sol, Talentos do Bando: escolha dois poderes entre Amontoados, Armadilha Terrível e outros.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "dex"
+    ],
+    "attribute_flaw": "str",
+    "languages": [],
+    "traits": [
+      "Ajuntamento Escamoso",
+      "Praga Monstruosa",
+      "Sensibilidade a Luz",
+      "Talentos do Bando"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 183,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "dex": 2,
+        "str": -1
+      },
+      "abilityBonuses": "Destreza +2, Força -1",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Ajuntamento Escamoso: criatura Média de dois braços; conta como Pequeno para espaços; rola 2 dados contra efeito de alvo único que não causa dano; vulnerabilidade a área",
+        "Praga Monstruosa: tipo monstro, visão no escuro e +2 em Sobrevivência",
+        "Sensibilidade a Luz: ofuscado sob luz do sol",
+        "Talentos do Bando: escolha dois poderes entre Amontoados, Armadilha Terrível e outros"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [
+        {
+          "id": "kobolds-talentos",
+          "label": "Talentos do Bando",
+          "options": [
+            "Amontoados (conta como Grande para espaço e manobras)",
+            "Armadilha Terrível (magia de 1º círculo como armadilha)"
+          ],
+          "count": 2
+        }
+      ],
+      "summaries": {
+        "pt-BR": "Destreza +2, Força -1; tamanho médio, deslocamento 9m; traços: Ajuntamento Escamoso: criatura Média de dois braços; conta como Pequeno para espaços; rola 2 dados contra efeito de alvo único que não causa dano; vulnerabilidade a área, Praga Monstruosa: tipo monstro, visão no escuro e +2 em Sobrevivência, Sensibilidade a Luz: ofuscado sob luz do sol, Talentos do Bando: escolha dois poderes entre Amontoados, Armadilha Terrível e outros."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.mashin",
+    "name_pt": "Mashin",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "+1 em dois atributos a sua escolha; tamanho médio, deslocamento 9m; traços: Chassi Mashin: +1 em dois atributos, treinado em duas perícias (pode trocar uma por maravilha mecânica), sempre Médio, Maravilha Mecânica: poderes modulares avançados (Adaptação Elemental, Arma Acoplada, Arma Elemental, Auxílio de Mira), Criatura Artificial: tipo construto, visão no escuro, imunidades padrão de construto.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Chassi Mashin",
+      "Maravilha Mecânica",
+      "Criatura Artificial"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 160,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {},
+      "abilityBonuses": "+1 em dois atributos a sua escolha",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Chassi Mashin: +1 em dois atributos, treinado em duas perícias (pode trocar uma por maravilha mecânica), sempre Médio",
+        "Maravilha Mecânica: poderes modulares avançados (Adaptação Elemental, Arma Acoplada, Arma Elemental, Auxílio de Mira)",
+        "Criatura Artificial: tipo construto, visão no escuro, imunidades padrão de construto"
+      ],
+      "abilityChoices": {
+        "count": 2,
+        "amount": 1
+      },
+      "skillChoices": 2,
+      "skillOrFeatChoice": null,
+      "raceChoices": [
+        {
+          "id": "mashin-maravilha",
+          "label": "Maravilha Mecânica",
+          "options": [
+            "Adaptação Elemental",
+            "Arma Acoplada",
+            "Arma Elemental",
+            "Auxílio de Mira"
+          ],
+          "count": 1
+        }
+      ],
+      "summaries": {
+        "pt-BR": "+1 em dois atributos a sua escolha; tamanho médio, deslocamento 9m; traços: Chassi Mashin: +1 em dois atributos, treinado em duas perícias (pode trocar uma por maravilha mecânica), sempre Médio, Maravilha Mecânica: poderes modulares avançados (Adaptação Elemental, Arma Acoplada, Arma Elemental, Auxílio de Mira), Criatura Artificial: tipo construto, visão no escuro, imunidades padrão de construto."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.meio_orc",
+    "name_pt": "Meio-Orc",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Força +2, +1 em outro atributo (exceto Carisma); tamanho médio, deslocamento 9m; traços: Adaptável: +2 em Intimidação e treinado em uma perícia a sua escolha, Criatura das Profundezas: visão no escuro e +2 em Percepção e Sobrevivência no subterrâneo, Sangue Orc: +1 em dano com armas corpo a corpo e de arremesso; considerado orc.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "str"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Adaptável",
+      "Criatura das Profundezas",
+      "Sangue Orc"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 31,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "str": 2
+      },
+      "abilityBonuses": "Força +2, +1 em outro atributo (exceto Carisma)",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Adaptável: +2 em Intimidação e treinado em uma perícia a sua escolha",
+        "Criatura das Profundezas: visão no escuro e +2 em Percepção e Sobrevivência no subterrâneo",
+        "Sangue Orc: +1 em dano com armas corpo a corpo e de arremesso; considerado orc"
+      ],
+      "abilityChoices": {
+        "count": 1,
+        "amount": 1,
+        "exclude": [
+          "cha"
+        ]
+      },
+      "skillChoices": 1,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Força +2, +1 em outro atributo (exceto Carisma); tamanho médio, deslocamento 9m; traços: Adaptável: +2 em Intimidação e treinado em uma perícia a sua escolha, Criatura das Profundezas: visão no escuro e +2 em Percepção e Sobrevivência no subterrâneo, Sangue Orc: +1 em dano com armas corpo a corpo e de arremesso; considerado orc."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.minauro",
+    "name_pt": "Minauro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Força +1, +1 em dois atributos; tamanho médio, deslocamento 9m; traços: Faro: olfato apurado; não fica desprevenido e camuflagem total causa 20% falha em alcance curto, Mente Aberta: +2 em Diplomacia e Investigação, Plurivalente: recebe um poder geral a sua escolha.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "str"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Faro",
+      "Mente Aberta",
+      "Plurivalente"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 175,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "str": 1
+      },
+      "abilityBonuses": "Força +1, +1 em dois atributos",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Faro: olfato apurado; não fica desprevenido e camuflagem total causa 20% falha em alcance curto",
+        "Mente Aberta: +2 em Diplomacia e Investigação",
+        "Plurivalente: recebe um poder geral a sua escolha"
+      ],
+      "abilityChoices": {
+        "count": 2,
+        "amount": 1
+      },
+      "skillChoices": 0,
+      "skillOrFeatChoice": "general",
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Força +1, +1 em dois atributos; tamanho médio, deslocamento 9m; traços: Faro: olfato apurado; não fica desprevenido e camuflagem total causa 20% falha em alcance curto, Mente Aberta: +2 em Diplomacia e Investigação, Plurivalente: recebe um poder geral a sua escolha."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.moreau",
+    "name_pt": "Moreau",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Variável por herança animal (+1 em atributo fixo e +1 em dois atributos a escolha); tamanho médio, deslocamento 9m; traços: Herança Animal: escolha uma das 12 heranças de Moreania (Coruja, Hiena, Raposa, Serpente, Búfalo, Coelho, Crocodilo, Gato, Leão, Lobo, Morcego ou Urso), Sangue Humano: considerado humano para quaisquer fins.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Herança Animal",
+      "Sangue Humano"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 303,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {},
+      "abilityBonuses": "Variável por herança animal (+1 em atributo fixo e +1 em dois atributos a escolha)",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Herança Animal: escolha uma das 12 heranças de Moreania (Coruja, Hiena, Raposa, Serpente, Búfalo, Coelho, Crocodilo, Gato, Leão, Lobo, Morcego ou Urso)",
+        "Sangue Humano: considerado humano para quaisquer fins"
+      ],
+      "abilityChoices": {
+        "count": 2,
+        "amount": 1
+      },
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [
+        {
+          "id": "moreau-heranca",
+          "label": "Herança Animal de Moreania",
+          "options": [
+            "Coruja (+1 Sab; Espreitador, Garras, Sapiência)",
+            "Hiena (+1 Sab; Destemor, Faro, Mordida)",
+            "Raposa (+1 Int; Agarra-me Se Puderes, Esperteza Vulpina, Faro)",
+            "Serpente (+1 Int; Arborícola, Constritor, Instintos Traiçoeiros)",
+            "Búfalo (+1 For; Chifres, Faro, Marrada Impressionante)",
+            "Coelho (+1 Des; Patas Ligeiras, Pé de Coelho, Senso de Preservação)",
+            "Crocodilo (+1 Con; Mordida Poderosa, Predador Aquático, Surto Reptiliano)",
+            "Gato (+1 Car; As Muitas Vidas de um Gato, Garras, Sentidos Felinos)",
+            "Leão (+1 For; Mordida, Rugido Imponente, Sentidos da Realeza)",
+            "Lobo (+1 Car; Faro, Mordida, Táticas de Matilha)",
+            "Morcego (+1 Des; Asas, Criatura da Noite, Ecolocalização)",
+            "Urso (+1 Con; Abraço de Urso [Grande], Faro, Mordida)"
+          ],
+          "count": 1
+        }
+      ],
+      "summaries": {
+        "pt-BR": "Variável por herança animal (+1 em atributo fixo e +1 em dois atributos a escolha); tamanho médio, deslocamento 9m; traços: Herança Animal: escolha uma das 12 heranças de Moreania (Coruja, Hiena, Raposa, Serpente, Búfalo, Coelho, Crocodilo, Gato, Leão, Lobo, Morcego ou Urso), Sangue Humano: considerado humano para quaisquer fins."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.nagah",
+    "name_pt": "Nagah",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Macho: For +1, Des +1, Con +1 / Fêmea: Int +1, Sab +1, Car +1; tamanho médio, deslocamento 9m; traços: Cauda: arma natural (1d6, x2, impacto); com ação agredir, gasta 1 PM para ataque extra com cauda, Inocência Dissimulada: +2 em Enganação; gasta 2 PM para substituir perícia baseada em Int, Sab ou Car por Enganação, Presentes de Sszzaas: visão na penumbra, +1 na Defesa e resistência a veneno +5, Fraquezas Ofídicas: +1 ponto de dano por dado de dano de frio; -5 contra Músicas de bardo.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Cauda",
+      "Inocência Dissimulada",
+      "Presentes de Sszzaas",
+      "Fraquezas Ofídicas"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 333,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {},
+      "abilityBonuses": "Macho: For +1, Des +1, Con +1 / Fêmea: Int +1, Sab +1, Car +1",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Cauda: arma natural (1d6, x2, impacto); com ação agredir, gasta 1 PM para ataque extra com cauda",
+        "Inocência Dissimulada: +2 em Enganação; gasta 2 PM para substituir perícia baseada em Int, Sab ou Car por Enganação",
+        "Presentes de Sszzaas: visão na penumbra, +1 na Defesa e resistência a veneno +5",
+        "Fraquezas Ofídicas: +1 ponto de dano por dado de dano de frio; -5 contra Músicas de bardo"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [
+        {
+          "id": "nagah-genero",
+          "label": "Gênero do Nagah",
+          "options": [
+            "Macho (Força +1, Destreza +1, Constituição +1)",
+            "Fêmea (Inteligência +1, Sabedoria +1, Carisma +1)"
+          ],
+          "count": 1
+        }
+      ],
+      "summaries": {
+        "pt-BR": "Macho: For +1, Des +1, Con +1 / Fêmea: Int +1, Sab +1, Car +1; tamanho médio, deslocamento 9m; traços: Cauda: arma natural (1d6, x2, impacto); com ação agredir, gasta 1 PM para ataque extra com cauda, Inocência Dissimulada: +2 em Enganação; gasta 2 PM para substituir perícia baseada em Int, Sab ou Car por Enganação, Presentes de Sszzaas: visão na penumbra, +1 na Defesa e resistência a veneno +5, Fraquezas Ofídicas: +1 ponto de dano por dado de dano de frio; -5 contra Músicas de bardo."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.nezumi",
+    "name_pt": "Nezumi",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Constituição +2, Destreza +1, Inteligência -1; tamanho pequeno, deslocamento 9m; traços: Empunhadura Poderosa: reduz para -2 a penalidade ao usar arma feita para tamanho maior (ou 0 se receber novamente), Pequeno, Mas Não Metade: tamanho Pequeno com deslocamento 9m, resistência a medo +5 contra criaturas maiores, +2 Intimidação, Roedor: arma natural de mordida (1d6, x2, corte); 1 PM ataque extra; no crítico avaria armadura ou aumenta multiplicador, Sentidos Murídeos: faro e visão na penumbra.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Small",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "con",
+      "dex"
+    ],
+    "attribute_flaw": "int",
+    "languages": [],
+    "traits": [
+      "Empunhadura Poderosa",
+      "Pequeno, Mas Não Metade",
+      "Roedor",
+      "Sentidos Murídeos"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 162,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "con": 2,
+        "dex": 1,
+        "int": -1
+      },
+      "abilityBonuses": "Constituição +2, Destreza +1, Inteligência -1",
+      "size": "Pequeno",
+      "speedMeters": 9,
+      "traits": [
+        "Empunhadura Poderosa: reduz para -2 a penalidade ao usar arma feita para tamanho maior (ou 0 se receber novamente)",
+        "Pequeno, Mas Não Metade: tamanho Pequeno com deslocamento 9m, resistência a medo +5 contra criaturas maiores, +2 Intimidação",
+        "Roedor: arma natural de mordida (1d6, x2, corte); 1 PM ataque extra; no crítico avaria armadura ou aumenta multiplicador",
+        "Sentidos Murídeos: faro e visão na penumbra"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Constituição +2, Destreza +1, Inteligência -1; tamanho pequeno, deslocamento 9m; traços: Empunhadura Poderosa: reduz para -2 a penalidade ao usar arma feita para tamanho maior (ou 0 se receber novamente), Pequeno, Mas Não Metade: tamanho Pequeno com deslocamento 9m, resistência a medo +5 contra criaturas maiores, +2 Intimidação, Roedor: arma natural de mordida (1d6, x2, corte); 1 PM ataque extra; no crítico avaria armadura ou aumenta multiplicador, Sentidos Murídeos: faro e visão na penumbra."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.ogro",
+    "name_pt": "Ogro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Força +3, Constituição +2, Inteligência -1, Carisma -1; tamanho grande, deslocamento 9m; traços: Quanto Maior o Tamanho…: humanoide gigante, tamanho Grande, visão na penumbra, …Maior a Porrada!: ao acertar ataque corpo a corpo, gasta 1 PM para causar +1d8 de dano, Camada de Ingenuidade: -5 em Intuição e Vontade.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Large",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "str",
+      "con"
+    ],
+    "attribute_flaw": "int",
+    "languages": [],
+    "traits": [
+      "Quanto Maior o Tamanho…",
+      "…Maior a Porrada!",
+      "Camada de Ingenuidade"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 40,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "str": 3,
+        "con": 2,
+        "int": -1,
+        "cha": -1
+      },
+      "abilityBonuses": "Força +3, Constituição +2, Inteligência -1, Carisma -1",
+      "size": "Grande",
+      "speedMeters": 9,
+      "traits": [
+        "Quanto Maior o Tamanho…: humanoide gigante, tamanho Grande, visão na penumbra",
+        "…Maior a Porrada!: ao acertar ataque corpo a corpo, gasta 1 PM para causar +1d8 de dano",
+        "Camada de Ingenuidade: -5 em Intuição e Vontade"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Força +3, Constituição +2, Inteligência -1, Carisma -1; tamanho grande, deslocamento 9m; traços: Quanto Maior o Tamanho…: humanoide gigante, tamanho Grande, visão na penumbra, …Maior a Porrada!: ao acertar ataque corpo a corpo, gasta 1 PM para causar +1d8 de dano, Camada de Ingenuidade: -5 em Intuição e Vontade."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.orc",
+    "name_pt": "Orc",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Força +2, Constituição +1, Inteligência -1; tamanho médio, deslocamento 9m; traços: Feroz: +2 em dano com armas corpo a corpo e de arremesso (+4 até fim do próximo turno se sofrer dano), Habitante das Cavernas: visão no escuro, +2 em Percepção e Sobrevivência no subterrâneo; sensibilidade a luz, Vigor Brutal: +2 em Fortitude e soma Força no total de pontos de vida.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "str",
+      "con"
+    ],
+    "attribute_flaw": "int",
+    "languages": [],
+    "traits": [
+      "Feroz",
+      "Habitante das Cavernas",
+      "Vigor Brutal"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 33,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "str": 2,
+        "con": 1,
+        "int": -1
+      },
+      "abilityBonuses": "Força +2, Constituição +1, Inteligência -1",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Feroz: +2 em dano com armas corpo a corpo e de arremesso (+4 até fim do próximo turno se sofrer dano)",
+        "Habitante das Cavernas: visão no escuro, +2 em Percepção e Sobrevivência no subterrâneo; sensibilidade a luz",
+        "Vigor Brutal: +2 em Fortitude e soma Força no total de pontos de vida"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Força +2, Constituição +1, Inteligência -1; tamanho médio, deslocamento 9m; traços: Feroz: +2 em dano com armas corpo a corpo e de arremesso (+4 até fim do próximo turno se sofrer dano), Habitante das Cavernas: visão no escuro, +2 em Percepção e Sobrevivência no subterrâneo; sensibilidade a luz, Vigor Brutal: +2 em Fortitude e soma Força no total de pontos de vida."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.pteros",
+    "name_pt": "Pteros",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Sabedoria +2, Destreza +1, Inteligência -1; tamanho médio, deslocamento 9m; traços: Ligação Natural: ligação mental com criatura inteligente em alcance longo, Mãos Rudimentares: não empunha itens normais sem adaptação prévia (+50% custo), Pés Rapinantes: duas garras (1d6 cada, x2, corte); 1 PM ataque extra, Senhor dos Céus: pairar a 1,5m (9m); gasta 1 PM/rodada para voar 12m.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "wis",
+      "dex"
+    ],
+    "attribute_flaw": "int",
+    "languages": [],
+    "traits": [
+      "Ligação Natural",
+      "Mãos Rudimentares",
+      "Pés Rapinantes",
+      "Senhor dos Céus"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 267,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "wis": 2,
+        "dex": 1,
+        "int": -1
+      },
+      "abilityBonuses": "Sabedoria +2, Destreza +1, Inteligência -1",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Ligação Natural: ligação mental com criatura inteligente em alcance longo",
+        "Mãos Rudimentares: não empunha itens normais sem adaptação prévia (+50% custo)",
+        "Pés Rapinantes: duas garras (1d6 cada, x2, corte); 1 PM ataque extra",
+        "Senhor dos Céus: pairar a 1,5m (9m); gasta 1 PM/rodada para voar 12m"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Sabedoria +2, Destreza +1, Inteligência -1; tamanho médio, deslocamento 9m; traços: Ligação Natural: ligação mental com criatura inteligente em alcance longo, Mãos Rudimentares: não empunha itens normais sem adaptação prévia (+50% custo), Pés Rapinantes: duas garras (1d6 cada, x2, corte); 1 PM ataque extra, Senhor dos Céus: pairar a 1,5m (9m); gasta 1 PM/rodada para voar 12m."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.soterrado",
+    "name_pt": "Soterrado (Variante Osteon)",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "+2 em três atributos diferentes (exceto Constituição), Constituição -2; tamanho médio, deslocamento 9m; traços: Abraço Gélido: +2 em testes para agarrar; ataques desarmados e armas naturais causam +2 dano de frio, Esquife de Gelo: redução de corte e perfuração 5 e redução de frio 10; sofre +1 dano por dado de dano de fogo, Natureza Esquelética: tipo morto-vivo, imunidades e descanso de osteon.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": "con",
+    "languages": [],
+    "traits": [
+      "Abraço Gélido",
+      "Esquife de Gelo",
+      "Natureza Esquelética"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 354,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "con": -2
+      },
+      "abilityBonuses": "+2 em três atributos diferentes (exceto Constituição), Constituição -2",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Abraço Gélido: +2 em testes para agarrar; ataques desarmados e armas naturais causam +2 dano de frio",
+        "Esquife de Gelo: redução de corte e perfuração 5 e redução de frio 10; sofre +1 dano por dado de dano de fogo",
+        "Natureza Esquelética: tipo morto-vivo, imunidades e descanso de osteon"
+      ],
+      "abilityChoices": {
+        "count": 3,
+        "amount": 2,
+        "exclude": [
+          "con"
+        ]
+      },
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "+2 em três atributos diferentes (exceto Constituição), Constituição -2; tamanho médio, deslocamento 9m; traços: Abraço Gélido: +2 em testes para agarrar; ataques desarmados e armas naturais causam +2 dano de frio, Esquife de Gelo: redução de corte e perfuração 5 e redução de frio 10; sofre +1 dano por dado de dano de fogo, Natureza Esquelética: tipo morto-vivo, imunidades e descanso de osteon."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.tabrachi",
+    "name_pt": "Tabrachi",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Constituição +2, Força +1, Carisma -1; tamanho médio, deslocamento 9m; traços: Batráquio: visão na penumbra e deslocamento de natação igual ao terrestre, Linguarudo: língua natural de alcance 3m (1d4, x2, impacto); versátil (+2 desarmar/derrubar); 1 PM ataque extra, Saltador: +10 em testes de Atletismo para saltar.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "con",
+      "str"
+    ],
+    "attribute_flaw": "cha",
+    "languages": [],
+    "traits": [
+      "Batráquio",
+      "Linguarudo",
+      "Saltador"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 37,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "con": 2,
+        "str": 1,
+        "cha": -1
+      },
+      "abilityBonuses": "Constituição +2, Força +1, Carisma -1",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Batráquio: visão na penumbra e deslocamento de natação igual ao terrestre",
+        "Linguarudo: língua natural de alcance 3m (1d4, x2, impacto); versátil (+2 desarmar/derrubar); 1 PM ataque extra",
+        "Saltador: +10 em testes de Atletismo para saltar"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Constituição +2, Força +1, Carisma -1; tamanho médio, deslocamento 9m; traços: Batráquio: visão na penumbra e deslocamento de natação igual ao terrestre, Linguarudo: língua natural de alcance 3m (1d4, x2, impacto); versátil (+2 desarmar/derrubar); 1 PM ataque extra, Saltador: +10 em testes de Atletismo para saltar."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.tengu",
+    "name_pt": "Tengu",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Destreza +2, Inteligência +1; tamanho médio, deslocamento 9m; traços: Asas Desorientadoras: benefícios de Finta Aprimorada; se já possuir esse poder, bônus em Enganação para finta aumenta para +5, Caminhante do Céu: pairar a 1,5m (9m); gasta 1 PM/rodada para voar 12m (ocupa espaço de criatura maior), Espírito Corvino: tipo espírito, visão no escuro e +2 em Percepção.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "dex",
+      "int"
+    ],
+    "attribute_flaw": null,
+    "languages": [],
+    "traits": [
+      "Asas Desorientadoras",
+      "Caminhante do Céu",
+      "Espírito Corvino"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 164,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "dex": 2,
+        "int": 1
+      },
+      "abilityBonuses": "Destreza +2, Inteligência +1",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Asas Desorientadoras: benefícios de Finta Aprimorada; se já possuir esse poder, bônus em Enganação para finta aumenta para +5",
+        "Caminhante do Céu: pairar a 1,5m (9m); gasta 1 PM/rodada para voar 12m (ocupa espaço de criatura maior)",
+        "Espírito Corvino: tipo espírito, visão no escuro e +2 em Percepção"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Destreza +2, Inteligência +1; tamanho médio, deslocamento 9m; traços: Asas Desorientadoras: benefícios de Finta Aprimorada; se já possuir esse poder, bônus em Enganação para finta aumenta para +5, Caminhante do Céu: pairar a 1,5m (9m); gasta 1 PM/rodada para voar 12m (ocupa espaço de criatura maior), Espírito Corvino: tipo espírito, visão no escuro e +2 em Percepção."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.trog_anao",
+    "name_pt": "Trog Anão (Variante)",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Constituição +4, Força +2, Destreza -1, Inteligência -2; tamanho médio, deslocamento 6m; traços: Quase Anão: tipo monstro, visão no escuro, +1 PV por nível; deslocamento 6m não reduzido por armadura ou sobrecarga, Mordida: arma natural (1d6, x2, perfuração); 1 PM ataque extra, Sangue Frio: +1 ponto de dano adicional por dado de dano de frio, Sobrevivente: rola dois dados em testes de resistência e usa o melhor resultado.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 20,
+    "attribute_boosts": [
+      "con",
+      "str"
+    ],
+    "attribute_flaw": "dex",
+    "languages": [],
+    "traits": [
+      "Quase Anão",
+      "Mordida",
+      "Sangue Frio",
+      "Sobrevivente"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 39,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "con": 4,
+        "str": 2,
+        "dex": -1,
+        "int": -2
+      },
+      "abilityBonuses": "Constituição +4, Força +2, Destreza -1, Inteligência -2",
+      "size": "Médio",
+      "speedMeters": 6,
+      "traits": [
+        "Quase Anão: tipo monstro, visão no escuro, +1 PV por nível; deslocamento 6m não reduzido por armadura ou sobrecarga",
+        "Mordida: arma natural (1d6, x2, perfuração); 1 PM ataque extra",
+        "Sangue Frio: +1 ponto de dano adicional por dado de dano de frio",
+        "Sobrevivente: rola dois dados em testes de resistência e usa o melhor resultado"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Constituição +4, Força +2, Destreza -1, Inteligência -2; tamanho médio, deslocamento 6m; traços: Quase Anão: tipo monstro, visão no escuro, +1 PV por nível; deslocamento 6m não reduzido por armadura ou sobrecarga, Mordida: arma natural (1d6, x2, perfuração); 1 PM ataque extra, Sangue Frio: +1 ponto de dano adicional por dado de dano de frio, Sobrevivente: rola dois dados em testes de resistência e usa o melhor resultado."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.velocis",
+    "name_pt": "Velocis",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Destreza +2, Sabedoria +1, Inteligência -1; tamanho médio, deslocamento 12m; traços: Através de Espinheiros: redução de corte e perfuração 2; sem redução de deslocamento por terreno difícil natural, Sentidos Selvagens: +2 em Sobrevivência, visão na penumbra e faro, Velocista da Planície: deslocamento 12m; pode usar Destreza em Atletismo; rola dois dados para correr ou saltar.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 40,
+    "attribute_boosts": [
+      "dex",
+      "wis"
+    ],
+    "attribute_flaw": "int",
+    "languages": [],
+    "traits": [
+      "Através de Espinheiros",
+      "Sentidos Selvagens",
+      "Velocista da Planície"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 268,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "dex": 2,
+        "wis": 1,
+        "int": -1
+      },
+      "abilityBonuses": "Destreza +2, Sabedoria +1, Inteligência -1",
+      "size": "Médio",
+      "speedMeters": 12,
+      "traits": [
+        "Através de Espinheiros: redução de corte e perfuração 2; sem redução de deslocamento por terreno difícil natural",
+        "Sentidos Selvagens: +2 em Sobrevivência, visão na penumbra e faro",
+        "Velocista da Planície: deslocamento 12m; pode usar Destreza em Atletismo; rola dois dados para correr ou saltar"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Destreza +2, Sabedoria +1, Inteligência -1; tamanho médio, deslocamento 12m; traços: Através de Espinheiros: redução de corte e perfuração 2; sem redução de deslocamento por terreno difícil natural, Sentidos Selvagens: +2 em Sobrevivência, visão na penumbra e faro, Velocista da Planície: deslocamento 12m; pode usar Destreza em Atletismo; rola dois dados para correr ou saltar."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.voracis",
+    "name_pt": "Voracis",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Destreza +2, Constituição +1, Inteligência -1; tamanho médio, deslocamento 9m; traços: Garras: duas armas naturais de garras (1d6 cada, x2, corte); 1 PM ataque extra, Rainha da Selva: deslocamento de escalada 9m, +2 em Atletismo, +1 PV por nível ao descansar, Sentidos Selvagens: +2 em Sobrevivência, visão na penumbra e faro.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "dex",
+      "con"
+    ],
+    "attribute_flaw": "int",
+    "languages": [],
+    "traits": [
+      "Garras",
+      "Rainha da Selva",
+      "Sentidos Selvagens"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 270,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "dex": 2,
+        "con": 1,
+        "int": -1
+      },
+      "abilityBonuses": "Destreza +2, Constituição +1, Inteligência -1",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Garras: duas armas naturais de garras (1d6 cada, x2, corte); 1 PM ataque extra",
+        "Rainha da Selva: deslocamento de escalada 9m, +2 em Atletismo, +1 PV por nível ao descansar",
+        "Sentidos Selvagens: +2 em Sobrevivência, visão na penumbra e faro"
+      ],
+      "abilityChoices": null,
+      "skillChoices": 0,
+      "skillOrFeatChoice": null,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Destreza +2, Constituição +1, Inteligência -1; tamanho médio, deslocamento 9m; traços: Garras: duas armas naturais de garras (1d6 cada, x2, corte); 1 PM ataque extra, Rainha da Selva: deslocamento de escalada 9m, +2 em Atletismo, +1 PV por nível ao descansar, Sentidos Selvagens: +2 em Sobrevivência, visão na penumbra e faro."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.ameacas.ancestry.yidishan",
+    "name_pt": "Yidishan",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "+1 em três atributos diferentes (exceto Carisma), Carisma -2; tamanho médio, deslocamento 9m; traços: Híbrido Mecânico: tipo construto, visão no escuro, imunidade a cansaço, efeitos metabólicos e veneno; inerte 8h por dia, Natureza Orgânica: treinado em uma perícia ou recebe um poder geral a sua escolha, Peças Metálicas: +2 na Defesa, mas impõe penalidade de armadura de -2.",
+    "description_en": null,
+    "description_es": null,
+    "hp_base": 8,
+    "size": "Medium",
+    "speed_feet": 30,
+    "attribute_boosts": [],
+    "attribute_flaw": "cha",
+    "languages": [],
+    "traits": [
+      "Híbrido Mecânico",
+      "Natureza Orgânica",
+      "Peças Metálicas"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-ameacas",
+    "source_book": "Tormenta20 — Ameaças de Arton",
+    "source_page": 300,
+    "created_at": "2026-10-14T16:07:14.528Z",
+    "updated_at": "2026-10-14T16:07:14.528Z",
+    "system_id": "t20",
+    "data": {
+      "attributeAdjustments": {
+        "cha": -2
+      },
+      "abilityBonuses": "+1 em três atributos diferentes (exceto Carisma), Carisma -2",
+      "size": "Médio",
+      "speedMeters": 9,
+      "traits": [
+        "Híbrido Mecânico: tipo construto, visão no escuro, imunidade a cansaço, efeitos metabólicos e veneno; inerte 8h por dia",
+        "Natureza Orgânica: treinado em uma perícia ou recebe um poder geral a sua escolha",
+        "Peças Metálicas: +2 na Defesa, mas impõe penalidade de armadura de -2"
+      ],
+      "abilityChoices": {
+        "count": 3,
+        "amount": 1,
+        "exclude": [
+          "cha"
+        ]
+      },
+      "skillChoices": 1,
+      "skillOrFeatChoice": "general",
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "+1 em três atributos diferentes (exceto Carisma), Carisma -2; tamanho médio, deslocamento 9m; traços: Híbrido Mecânico: tipo construto, visão no escuro, imunidade a cansaço, efeitos metabólicos e veneno; inerte 8h por dia, Natureza Orgânica: treinado em uma perícia ou recebe um poder geral a sua escolha, Peças Metálicas: +2 na Defesa, mas impõe penalidade de armadura de -2."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]
