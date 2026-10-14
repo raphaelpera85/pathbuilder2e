@@ -1,0 +1,111 @@
+﻿Pré-Requisitos
+Para se tornar um andarilho fantasma, o personagem deve
+preencher todos os seguintes critérios:
+Bônus Base de Ataque: +6
+Tendência: Leal e Bom, Leal e Mau, Caótico e Bom,
+Caótico e Mau, ou Neutro.
+Talentos: Tolerância, Vontade de Ferro, Vitalidade.
+Intimidar: 4 graduações.
+Furtividade: 4 graduações.
+Perícias de Classe
+As perícias de classe de um andarilho fantasma (e a habili-
+dade chave para cada perícia) são: Blefar (Car), Conheci-
+mento (lei) (Int), Diplomacia (Car), Furtividade (Des),
+Observar (Sab), Obter Informação (Car), Ouvir (Sab), Profis-
+são (Int), Senso de Direção (Sab) e Sentir Motivação (Sab).
+Consulte o Capítulo 4: Perícias, no Livro do Jogador, para
+obter as descrições das perícias.
+Pontos de Perícia a cada nível: 4 + modificador de
+Inteligência.
+Características da Classe
+Usar Armas e Armaduras: Os andarilhos fantasmas
+sabem usar todas as armas simples e comuns, armaduras
+leves e médias e escudos.
+Recompensa Dolorosa: Caso o andarilho fantasma
+perca mais da metade de seu total de pontos de vida em um
+encontro (e sobreviva), ele receberá o bônus indicado na
+tabela para as jogadas de ataque e dano e na CA quando
+enfrentar este(s) mesmo(s) adversário(s) específico(s)
+novamente.
+Aura Resoluta (Ext): Seja por medo ou respeito, qual-
+quer humanóide confrontado pelo andarilho costuma parar
+e obedecê-lo. O personagem adiciona sua quantidade de
+níveis nessa classe de prestígio em seus testes de Intimidar.
+Assim, um andarilho fantasma de 50 nível receberia +5 de
+bônus em qualquer teste de Intimidar.
+Anonimato: Um andarilho fantasma se beneficia do
+anonimato, mas caso seu nome seja descoberto por algum
+adversário, seus poderes serão enfraquecidos; sua aura reso-
+luta não surtirá efeito contra qualquer oponente que
+conheça seu nome. Caso eles sejam hostis, será impossível
+para o andarilho utilizar as habilidades Morte Aparente,
+Forma Etérea ou Andar nas Sombras na presença desses
+oponentes (num raio de 3() m); além disso, seu bônus da
+Recompensa Dolorosa, se houver, será reduzido pela metade
+contra eles.
+Morte Aparente (SM): Uma vez por dia, o andarilho
+fantasma pode entrar num estado cataléptico impossível
+de distinguir da morte natural ---- geralmente para termi-
+nar um encontro; esse efeito dura 10 rodadas por nível.
+Embora ele ainda possa sentir cheiros, sons e reconhecer
+os eventos à sua volta, nenhum tipo de sensação ou visão
+estarão disponíveis nesse estado: qualquer ferimento não
+será percebido e ele sofrerá somente metade do dano
+normal. Os efeitos de paralisia, veneno e drenar energia
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+não afetarão o andarilho fantasma, mas qualquer veneno
+injetado no seu corpo se tornará ativo quando a duração da
+habilidade terminar.
+Vontade de Ferro Superior: Esta habilidade concede
++2 de bônus adicional nos testes de resistência de Vontade.
+Este bônus se acumula com o talento Vontade de Ferro.
+Forma Etérea (Sob): Invocando as forças místicas e
+obscuras que o impelem a vagar pelo mundo, o andarilho
+adquire o poder de se tornar etéreo, similar ao efeito da magia
+passeio etéreo. Este efeito dura 1 rodada por nível do andarilho
+fantasma. Essa é uma habilidade sobrenatural.
+Andar nas Sombras (Sob): O andarilho fantasma
+pode caminhar pelas sombras, com efeitos idênticos à magia
+andar nas sombras. O personagem percorre 1,5 km a cada (11
+— a quantidade de níveis de andarilho fantasma) minutos. O
+tempo máximo de utilização dessa habilidade equivale a 1
+hora a cada nível por dia e ela pode ser ativada três vezes por
+dia. Além disso, enquanto estiver neste estado, o andarilho
+recupera 3 pontos de vida por hora a cada nível da classe de
+prestígio.
+CAVALEIRO
+Como representante do mais avançado recurso marcial
+montado, esse personagem é o cavaleiro de armadura relu-
+zente das fábulas. A investida de um cavaleiro faz parte das
+armas ofensivas mais devastadoras que qualquer cultura já
+presenciou no campo de batalha.
+A maioria dos cavaleiros pertence às classes sociais mais
+elevadas ou à nobreza de uma sociedade. O cavaleiro coloca
+sua vida a serviço de uma autoridade superior, como um
+nobre ou monarca, uma divindade, uma ordem militar ou
+religiosa ou mesmo a uma causa em especial. Eles possuem
+uma honra hereditária obtida através de uma vida inteira de
+serviços prestados ao seu monarca, país ou outro mandatário.
+Espera-se que o cavaleiro participe de quaisquer guerras ou
+conflitos armados que envolvam seu senhor ou causa. Os
+cavaleiros cujos patronos são outros nobres, muitas vezes
+servem seus mestres além dos campos de batalha, sempre
+dispostos a cumprir as tarefas designadas por seus senhores e
+que estejam dentro das suas capacidades.
+Com freqüência, o cavaleiro busca cumprir propósitos
+altruístas, como a erradicação do mal e do caos do mundo ao
+seu alcance ou a manutenção da justiça para todos os súditos
+de suas terras. No entanto, ele também pode se tornar um
+tirano fanfarrão, que utiliza seu status e seus privilégios
+apenas para alcançar seus objetivos pessoais.
+Dado de Vida: dlO
+Pré-Requisitos
+Para se tornar um cavaleiro, o personagem deve preencher
+todos os seguintes critérios:
+Bônus Base de Ataque: +8
+Tendência: Leal
+Talentos: Investida Implacável, Foco em Arma (lança),
+Foco em Arma (qualquer espada), Combate Montado,
+Investida Montada.
+4
+15

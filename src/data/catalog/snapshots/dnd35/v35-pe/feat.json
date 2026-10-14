@@ -1,0 +1,1095 @@
+[
+  {
+    "id": "dnd35.pe.feat.pe-feat-apanhar-objetos",
+    "name_pt": "Apanhar Objetos",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "É necessário ter pelo menos uma mão livre para usar este talento. Quando utilizar o talento Desviar Objetos, o personagem poderá agarrar o projétil no lugar de desviá-lo. Armas de arremesso podem ser arremessadas de volta ao atacante original como ação livre imediata ou guardadas. Projéteis como flechas ou virotes podem ser usados no próximo turno (ação padrão) com o arco ou besta apropriado.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +3",
+      "Desviar Objetos",
+      "Des 15+",
+      "Ataque Desarmado Aprimorado"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 6,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-apanhar-objetos",
+      "name": "Apanhar Objetos",
+      "category": "geral",
+      "page": 6,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +3",
+        "Desviar Objetos",
+        "Des 15+",
+        "Ataque Desarmado Aprimorado"
+      ],
+      "benefit": "É necessário ter pelo menos uma mão livre para usar este talento. Quando utilizar o talento Desviar Objetos, o personagem poderá agarrar o projétil no lugar de desviá-lo. Armas de arremesso podem ser arremessadas de volta ao atacante original como ação livre imediata ou guardadas. Projéteis como flechas ou virotes podem ser usados no próximo turno (ação padrão) com o arco ou besta apropriado."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-arquearia-zen",
+    "name_pt": "Arquearia Zen",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "O personagem pode utilizar seu modificador de Sabedoria no lugar do modificador de Destreza para realizar jogadas de ataque à distância contra alvos num raio de até 9 metros.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +3",
+      "Sab 13+"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 6,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-arquearia-zen",
+      "name": "Arquearia Zen",
+      "category": "geral",
+      "page": 6,
+      "fighterBonus": false,
+      "prerequisites": [
+        "Bônus base de ataque +3",
+        "Sab 13+"
+      ],
+      "benefit": "O personagem pode utilizar seu modificador de Sabedoria no lugar do modificador de Destreza para realizar jogadas de ataque à distância contra alvos num raio de até 9 metros."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-arremessar-arma",
+    "name_pt": "Arremessar Arma",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Você é capaz de arremessar qualquer arma que saiba utilizar, independente dela ter sido projetada como arma de ataque à distância ou não. O incremento de distância das armas utilizadas somente com este talento é de 3 metros.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +2",
+      "Des 15+"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 7,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-arremessar-arma",
+      "name": "Arremessar Arma",
+      "category": "geral",
+      "page": 7,
+      "fighterBonus": false,
+      "prerequisites": [
+        "Bônus base de ataque +2",
+        "Des 15+"
+      ],
+      "benefit": "Você é capaz de arremessar qualquer arma que saiba utilizar, independente dela ter sido projetada como arma de ataque à distância ou não. O incremento de distância das armas utilizadas somente com este talento é de 3 metros."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-ataques-atordoantes-adicionais",
+    "name_pt": "Ataques Atordoantes Adicionais",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Você adquire a capacidade de executar três Ataques Atordoantes adicionais por dia. É possível selecionar esse talento diversas vezes.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +2",
+      "Ataque Atordoante"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 7,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-ataques-atordoantes-adicionais",
+      "name": "Ataques Atordoantes Adicionais",
+      "category": "geral",
+      "page": 7,
+      "fighterBonus": false,
+      "prerequisites": [
+        "Bônus base de ataque +2",
+        "Ataque Atordoante"
+      ],
+      "benefit": "Você adquire a capacidade de executar três Ataques Atordoantes adicionais por dia. É possível selecionar esse talento diversas vezes.",
+      "special": "Pode ser escolhido várias vezes; seus efeitos são cumulativos."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-ataque-mortifero",
+    "name_pt": "Ataque Mortífero",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Você pode executar um Golpe de Misericórdia contra um oponente indefeso usando uma ação padrão.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +2",
+      "Iniciativa Aprimorada"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 7,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-ataque-mortifero",
+      "name": "Ataque Mortífero",
+      "category": "geral",
+      "page": 7,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +2",
+        "Iniciativa Aprimorada"
+      ],
+      "benefit": "Você pode executar um Golpe de Misericórdia contra um oponente indefeso usando uma ação padrão.",
+      "normal": "Executar um Golpe de Misericórdia exige uma ação de rodada completa."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-bloqueio-ambidestro",
+    "name_pt": "Bloqueio Ambidestro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Quando você estiver lutando com duas armas e declarar a ação de ataque total, poderá decidir atacar normalmente ou sacrificar todos os seus ataques com a mão inábil para adquirir +2 de bônus de esquiva na CA. Caso também esteja usando um broquel, o bônus do escudo na CA será cumulativo. Exige arma metálica ou empunhadura protegida de tamanho inferior ao personagem.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +3",
+      "Ambidestria",
+      "Des 13+",
+      "Combater com Duas Armas",
+      "Usar a respectiva arma"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 7,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-bloqueio-ambidestro",
+      "name": "Bloqueio Ambidestro",
+      "category": "geral",
+      "page": 7,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +3",
+        "Ambidestria",
+        "Des 13+",
+        "Combater com Duas Armas",
+        "Usar a respectiva arma"
+      ],
+      "benefit": "Quando você estiver lutando com duas armas e declarar a ação de ataque total, poderá decidir atacar normalmente ou sacrificar todos os seus ataques com a mão inábil para adquirir +2 de bônus de esquiva na CA. Caso também esteja usando um broquel, o bônus do escudo na CA será cumulativo. Exige arma metálica ou empunhadura protegida de tamanho inferior ao personagem."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-chute-circular",
+    "name_pt": "Chute Circular",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Uma jogada bem-sucedida de ataque desarmado lhe permite realizar uma segunda jogada de ataque contra um oponente diferente dentro da sua área ameaçada. Exige uma ação de rodada completa.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +3",
+      "Ataque Desarmado Aprimorado",
+      "Des 15+"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 7,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-chute-circular",
+      "name": "Chute Circular",
+      "category": "geral",
+      "page": 7,
+      "fighterBonus": false,
+      "prerequisites": [
+        "Bônus base de ataque +3",
+        "Ataque Desarmado Aprimorado",
+        "Des 15+"
+      ],
+      "benefit": "Uma jogada bem-sucedida de ataque desarmado lhe permite realizar uma segunda jogada de ataque contra um oponente diferente dentro da sua área ameaçada. Exige uma ação de rodada completa."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-combater-em-dupla",
+    "name_pt": "Combater em Dupla",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Caso você e outro aliado tenham esse talento e estejam flanqueando o mesmo adversário, ambos recebem +4 de bônus nas suas jogadas de ataque corporal.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +3",
+      "Reflexos de Combate"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 7,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-combater-em-dupla",
+      "name": "Combater em Dupla",
+      "category": "geral",
+      "page": 7,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +3",
+        "Reflexos de Combate"
+      ],
+      "benefit": "Caso você e outro aliado tenham esse talento e estejam flanqueando o mesmo adversário, ambos recebem +4 de bônus nas suas jogadas de ataque corporal.",
+      "normal": "O bônus padrão para as jogadas de ataque contra oponentes flanqueados é +2."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-combater-engajado",
+    "name_pt": "Combater Engajado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Quando um adversário tentar lhe imobilizar, qualquer dano causado com seu ataque de oportunidade será adicionado ao seu próximo teste resistido de Agarrar para evitar a imobilização. Você pode desferir o ataque de oportunidade mesmo contra criaturas com Agarrar Aprimorado.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +3"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 7,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-combater-engajado",
+      "name": "Combater Engajado",
+      "category": "geral",
+      "page": 7,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +3"
+      ],
+      "benefit": "Quando um adversário tentar lhe imobilizar, qualquer dano causado com seu ataque de oportunidade será adicionado ao seu próximo teste resistido de Agarrar para evitar a imobilização. Você pode desferir o ataque de oportunidade mesmo contra criaturas com Agarrar Aprimorado."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-combater-no-solo",
+    "name_pt": "Combater no Solo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Você pode executar um ataque corpo a corpo quando estiver caído sem sofrer penalidades na jogada. Se o ataque for bem-sucedido, você é capaz de levantar-se imediatamente como uma ação livre.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +2",
+      "Des 15+",
+      "Reflexos Rápidos"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 7,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-combater-no-solo",
+      "name": "Combater no Solo",
+      "category": "geral",
+      "page": 7,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +2",
+        "Des 15+",
+        "Reflexos Rápidos"
+      ],
+      "benefit": "Você pode executar um ataque corpo a corpo quando estiver caído sem sofrer penalidades na jogada. Se o ataque for bem-sucedido, você é capaz de levantar-se imediatamente como uma ação livre.",
+      "normal": "Atacar caído impõe -4 de penalidade nas jogadas de ataque corpo a corpo."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-empunhadura-primata",
+    "name_pt": "Empunhadura Primata",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Você pode empunhar uma arma branca que pertença a uma categoria de tamanho superior à sua usando apenas uma das mãos (ex.: halfling usando espada longa com uma mão). Você sofre -2 de penalidade nas jogadas de ataque com essa arma.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +3",
+      "Foco em Arma (na respectiva arma)",
+      "For 13+"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 8,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-empunhadura-primata",
+      "name": "Empunhadura Primata",
+      "category": "geral",
+      "page": 8,
+      "fighterBonus": false,
+      "prerequisites": [
+        "Bônus base de ataque +3",
+        "Foco em Arma (na respectiva arma)",
+        "For 13+"
+      ],
+      "benefit": "Você pode empunhar uma arma branca que pertença a uma categoria de tamanho superior à sua usando apenas uma das mãos (ex.: halfling usando espada longa com uma mão). Você sofre -2 de penalidade nas jogadas de ataque com essa arma.",
+      "normal": "Personagens só podem brandir armas de sua categoria de tamanho ou menor usando uma mão.",
+      "special": "Você pode adquirir esse talento diversas vezes, aplicando-o a uma nova arma a cada escolha."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-especializacao-em-escudo",
+    "name_pt": "Especialização em Escudo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "O personagem consegue executar um ataque com seu escudo sem perder o bônus que ele proporciona na CA durante a rodada. Esse ataque continua sujeito às penalidades de combate com duas armas.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +3",
+      "Usar Escudos"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 8,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-especializacao-em-escudo",
+      "name": "Especialização em Escudo",
+      "category": "geral",
+      "page": 8,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +3",
+        "Usar Escudos"
+      ],
+      "benefit": "O personagem consegue executar um ataque com seu escudo sem perder o bônus que ele proporciona na CA durante a rodada. Esse ataque continua sujeito às penalidades de combate com duas armas.",
+      "normal": "Usar um escudo como arma anula o bônus que ele fornece para a CA durante aquela rodada."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-especialista-tatico",
+    "name_pt": "Especialista Tático",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Permite realizar um ataque corpo a corpo adicional contra um adversário que perca seu bônus de Destreza na CA por qualquer motivo e esteja ao alcance de ataque. O ataque é executado no seu turno, antes ou depois de suas ações regulares.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +3"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 8,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-especialista-tatico",
+      "name": "Especialista Tático",
+      "category": "geral",
+      "page": 8,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +3"
+      ],
+      "benefit": "Permite realizar um ataque corpo a corpo adicional contra um adversário que perca seu bônus de Destreza na CA por qualquer motivo e esteja ao alcance de ataque. O ataque é executado no seu turno, antes ou depois de suas ações regulares."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-fingir-fraqueza",
+    "name_pt": "Fingir Fraqueza",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Caso obtenha sucesso num teste de Blefar resistido pelo Sentir Motivação do oponente, seu próximo ataque desarmado nessa rodada pega o adversário desprevenido (ele perde o bônus de Destreza na CA).",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +2",
+      "Ataque Desarmado Aprimorado"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 8,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-fingir-fraqueza",
+      "name": "Fingir Fraqueza",
+      "category": "geral",
+      "page": 8,
+      "fighterBonus": false,
+      "prerequisites": [
+        "Bônus base de ataque +2",
+        "Ataque Desarmado Aprimorado"
+      ],
+      "benefit": "Caso obtenha sucesso num teste de Blefar resistido pelo Sentir Motivação do oponente, seu próximo ataque desarmado nessa rodada pega o adversário desprevenido (ele perde o bônus de Destreza na CA)."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-garra-de-aguia",
+    "name_pt": "Garra de Águia",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Você é capaz de atingir a arma ou escudo do adversário com as mãos vazias desferindo a manobra Separar. Adiciona seu modificador de Sabedoria ao dano causado aos objetos atacados.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +2",
+      "Ataque Desarmado Aprimorado"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 8,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-garra-de-aguia",
+      "name": "Garra de Águia",
+      "category": "geral",
+      "page": 8,
+      "fighterBonus": false,
+      "prerequisites": [
+        "Bônus base de ataque +2",
+        "Ataque Desarmado Aprimorado"
+      ],
+      "benefit": "Você é capaz de atingir a arma ou escudo do adversário com as mãos vazias desferindo a manobra Separar. Adiciona seu modificador de Sabedoria ao dano causado aos objetos atacados.",
+      "special": "Dureza e PV dos objetos se aplicam normalmente."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-investida-poderosa",
+    "name_pt": "Investida Poderosa",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Qualquer ataque de investida bem-sucedido permite adicionar o dobro do seu modificador de Força ao dano, em vez do valor normal. Em contrapartida, você sofre -2 adicional na CA na rodada da investida.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +3",
+      "Ataque Poderoso"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 8,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-investida-poderosa",
+      "name": "Investida Poderosa",
+      "category": "geral",
+      "page": 8,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +3",
+        "Ataque Poderoso"
+      ],
+      "benefit": "Qualquer ataque de investida bem-sucedido permite adicionar o dobro do seu modificador de Força ao dano, em vez do valor normal. Em contrapartida, você sofre -2 adicional na CA na rodada da investida."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-linha-de-frente",
+    "name_pt": "Linha de Frente",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Você pode desferir um ataque de oportunidade contra um adversário que realize uma investida contra você, no exato momento em que ele adentrar a sua área ameaçada.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +2",
+      "Reflexos de Combate"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 9,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-linha-de-frente",
+      "name": "Linha de Frente",
+      "category": "geral",
+      "page": 9,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +2",
+        "Reflexos de Combate"
+      ],
+      "benefit": "Você pode desferir um ataque de oportunidade contra um adversário que realize uma investida contra você, no exato momento em que ele adentrar a sua área ameaçada."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-lutar-sujo",
+    "name_pt": "Lutar Sujo",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Antes de desferir seu ataque corpo a corpo, você pode declarar uma manobra suja. Se acertar o ataque, você causa +1d4 pontos de dano adicionais. O dano extra não é multiplicado em acertos decisivos.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +2"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 9,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-lutar-sujo",
+      "name": "Lutar Sujo",
+      "category": "geral",
+      "page": 9,
+      "fighterBonus": false,
+      "prerequisites": [
+        "Bônus base de ataque +2"
+      ],
+      "benefit": "Antes de desferir seu ataque corpo a corpo, você pode declarar uma manobra suja. Se acertar o ataque, você causa +1d4 pontos de dano adicionais. O dano extra não é multiplicado em acertos decisivos."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-manter-a-consciencia",
+    "name_pt": "Manter a Consciência",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Mesmo quando seus pontos de vida são reduzidos a 0 ou menos (até -9), você permanece consciente e capaz de realizar uma ação parcial durante seu turno em vez de ficar incapacitado.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +2",
+      "Tolerância",
+      "For 13+"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 9,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-manter-a-consciencia",
+      "name": "Manter a Consciência",
+      "category": "geral",
+      "page": 9,
+      "fighterBonus": false,
+      "prerequisites": [
+        "Bônus base de ataque +2",
+        "Tolerância",
+        "For 13+"
+      ],
+      "benefit": "Mesmo quando seus pontos de vida são reduzidos a 0 ou menos (até -9), você permanece consciente e capaz de realizar uma ação parcial durante seu turno em vez de ficar incapacitado.",
+      "normal": "Personagens com 0 PV ficam incapacitados e personagens com -1 a -9 PV caem inconscientes e morrendo."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-nocautear",
+    "name_pt": "Nocautear",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Em combates corpo a corpo, sempre que você causar 10 ou mais pontos de dano num único golpe, poderá realizar uma tentativa de imobilização (derrubar) contra o oponente atingido como uma ação livre.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +2",
+      "Imobilização Aprimorada",
+      "For 15+"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 9,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-nocautear",
+      "name": "Nocautear",
+      "category": "geral",
+      "page": 9,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +2",
+        "Imobilização Aprimorada",
+        "For 15+"
+      ],
+      "benefit": "Em combates corpo a corpo, sempre que você causar 10 ou mais pontos de dano num único golpe, poderá realizar uma tentativa de imobilização (derrubar) contra o oponente atingido como uma ação livre.",
+      "special": "Não concede ataque adicional cumulativo de Imobilização Aprimorada ou Trespassar."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-olhos-na-nuca",
+    "name_pt": "Olhos na Nuca",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Os atacantes não recebem o bônus de +2 nas jogadas de ataque quando estiverem flanqueando você. Não surte efeito se você perder o bônus de Destreza na CA (ex.: surpreso).",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +3",
+      "Sab 19+"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 9,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-olhos-na-nuca",
+      "name": "Olhos na Nuca",
+      "category": "geral",
+      "page": 9,
+      "fighterBonus": false,
+      "prerequisites": [
+        "Bônus base de ataque +3",
+        "Sab 19+"
+      ],
+      "benefit": "Os atacantes não recebem o bônus de +2 nas jogadas de ataque quando estiverem flanqueando você. Não surte efeito se você perder o bônus de Destreza na CA (ex.: surpreso).",
+      "normal": "Oponentes flanqueando recebem +2 de bônus de ataque."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-percepcao-as-cegas",
+    "name_pt": "Percepção às Cegas, 1,5 m de raio",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Usando audição aguçada e sensibilidade a vibrações, você detecta a localização exata de oponentes num raio de 1,5 metros. Invisibilidade e escuridão são irrelevantes nessa área, embora criaturas incorpóreas ainda não sejam distinguidas.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +4",
+      "Lutar às Cegas",
+      "Sab 19+"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 9,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-percepcao-as-cegas",
+      "name": "Percepção às Cegas, 1,5 m de raio",
+      "category": "geral",
+      "page": 9,
+      "fighterBonus": false,
+      "prerequisites": [
+        "Bônus base de ataque +4",
+        "Lutar às Cegas",
+        "Sab 19+"
+      ],
+      "benefit": "Usando audição aguçada e sensibilidade a vibrações, você detecta a localização exata de oponentes num raio de 1,5 metros. Invisibilidade e escuridão são irrelevantes nessa área, embora criaturas incorpóreas ainda não sejam distinguidas."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-pontaria-agucada",
+    "name_pt": "Pontaria Aguçada",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Você recebe +2 de bônus nas jogadas de ataque à distância contra alvos protegidos por qualquer nível de cobertura inferior a cobertura total.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +3",
+      "Tiro Certeiro",
+      "Precisão"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 10,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-pontaria-agucada",
+      "name": "Pontaria Aguçada",
+      "category": "geral",
+      "page": 10,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +3",
+        "Tiro Certeiro",
+        "Precisão"
+      ],
+      "benefit": "Você recebe +2 de bônus nas jogadas de ataque à distância contra alvos protegidos por qualquer nível de cobertura inferior a cobertura total."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-punhos-de-ferro",
+    "name_pt": "Punhos de Ferro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Declare que está utilizando esse talento antes do ataque. Se acertar o ataque desarmado, você causa +1d4 pontos de dano adicionais. Pode ser usado 3 + modificador de Sabedoria vezes por dia.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +2",
+      "Ataque Desarmado Aprimorado"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 10,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-punhos-de-ferro",
+      "name": "Punhos de Ferro",
+      "category": "geral",
+      "page": 10,
+      "fighterBonus": false,
+      "prerequisites": [
+        "Bônus base de ataque +2",
+        "Ataque Desarmado Aprimorado"
+      ],
+      "benefit": "Declare que está utilizando esse talento antes do ataque. Se acertar o ataque desarmado, você causa +1d4 pontos de dano adicionais. Pode ser usado 3 + modificador de Sabedoria vezes por dia."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-rajada-relampago",
+    "name_pt": "Rajada Relâmpago",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Você pode realizar dois ataques desarmados extras na mesma rodada com uma ação de ataque total. Todas as jogadas de ataque da rodada sofrem -5 de penalidade. Não pode ser combinada com Rajada de Golpes.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "4º nível de monge",
+      "Des 15+"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 10,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-rajada-relampago",
+      "name": "Rajada Relâmpago",
+      "category": "geral",
+      "page": 10,
+      "fighterBonus": false,
+      "prerequisites": [
+        "4º nível de monge",
+        "Des 15+"
+      ],
+      "benefit": "Você pode realizar dois ataques desarmados extras na mesma rodada com uma ação de ataque total. Todas as jogadas de ataque da rodada sofrem -5 de penalidade. Não pode ser combinada com Rajada de Golpes."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-rapidez-de-recarga",
+    "name_pt": "Rapidez de Recarga",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Recarrega uma besta de mão ou besta leve como ação livre (provoca ataque de oportunidade). Recarrega uma besta pesada como ação de movimento. Limite de uma vez por rodada.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +2",
+      "Usar Arma (besta em questão)"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 10,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-rapidez-de-recarga",
+      "name": "Rapidez de Recarga",
+      "category": "geral",
+      "page": 10,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +2",
+        "Usar Arma (besta em questão)"
+      ],
+      "benefit": "Recarrega uma besta de mão ou besta leve como ação livre (provoca ataque de oportunidade). Recarrega uma besta pesada como ação de movimento. Limite de uma vez por rodada.",
+      "normal": "Recarregar besta de mão/leve exige ação de movimento; besta pesada requer ação de rodada completa."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-salto-do-louva-a-deus",
+    "name_pt": "Salto do Louva-a-Deus",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Realize um teste normal de Saltar contra um oponente dentro do alcance máximo; se obtiver sucesso, disfere um ataque de investida como parte da mesma ação, causando dano normal mais o dobro do modificador de Força.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "7º nível de monge",
+      "Saltar 5 graduações"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 10,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-salto-do-louva-a-deus",
+      "name": "Salto do Louva-a-Deus",
+      "category": "geral",
+      "page": 10,
+      "fighterBonus": false,
+      "prerequisites": [
+        "7º nível de monge",
+        "Saltar 5 graduações"
+      ],
+      "benefit": "Realize um teste normal de Saltar contra um oponente dentro do alcance máximo; se obtiver sucesso, disfere um ataque de investida como parte da mesma ação, causando dano normal mais o dobro do modificador de Força."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-separar-aprimorado",
+    "name_pt": "Separar Aprimorado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Quando acerta a arma ou item de um oponente com a manobra Separar, você causa o dobro do dano normal contra o objeto atingido.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +2",
+      "Separar"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 10,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-separar-aprimorado",
+      "name": "Separar Aprimorado",
+      "category": "geral",
+      "page": 10,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +2",
+        "Separar"
+      ],
+      "benefit": "Quando acerta a arma ou item de um oponente com a manobra Separar, você causa o dobro do dano normal contra o objeto atingido."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-sobrepujar-escudos",
+    "name_pt": "Sobrepujar Escudos",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Ataque o escudo do adversário com a arma da mão inábil. Se obtiver sucesso, imobiliza momentaneamente o escudo e disfere imediatamente um ataque de oportunidade com a arma primária com bônus total, ignorando a CA concedida pelo escudo.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +4",
+      "Combater com Duas Armas"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 10,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-sobrepujar-escudos",
+      "name": "Sobrepujar Escudos",
+      "category": "geral",
+      "page": 10,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Bônus base de ataque +4",
+        "Combater com Duas Armas"
+      ],
+      "benefit": "Ataque o escudo do adversário com a arma da mão inábil. Se obtiver sucesso, imobiliza momentaneamente o escudo e disfere imediatamente um ataque de oportunidade com a arma primária com bônus total, ignorando a CA concedida pelo escudo."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-toque-da-dor",
+    "name_pt": "Toque da Dor",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "As vítimas dos seus ataques atordoantes bem-sucedidos sofrem dor debilitante e ficam nauseadas durante 1 rodada adicional após o término do atordoamento.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": [
+      "Bônus base de ataque +2",
+      "Ataque Atordoante",
+      "Sab 19+"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 10,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-toque-da-dor",
+      "name": "Toque da Dor",
+      "category": "geral",
+      "page": 10,
+      "fighterBonus": false,
+      "prerequisites": [
+        "Bônus base de ataque +2",
+        "Ataque Atordoante",
+        "Sab 19+"
+      ],
+      "benefit": "As vítimas dos seus ataques atordoantes bem-sucedidos sofrem dor debilitante e ficam nauseadas durante 1 rodada adicional após o término do atordoamento."
+    }
+  },
+  {
+    "id": "dnd35.pe.feat.pe-feat-ultrapassar-aprimorado",
+    "name_pt": "Ultrapassar Aprimorado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Ao tentar Ultrapassar oponentes de categoria de tamanho inferior, o alvo não pode escolher evitá-lo. Se você o derrubar, disfere imediatamente um ataque de oportunidade contra ele com +4 de bônus.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "fighter",
+    "level": 1,
+    "prerequisites": [
+      "Especialização em Combate",
+      "Encontrão Aprimorado",
+      "Imobilização Aprimorada",
+      "For 13+",
+      "Ataque Poderoso"
+    ],
+    "rarity": "common",
+    "ruleset": "v35-pe",
+    "source_book": "D&D 3.5 — Punhos e Espadas",
+    "source_page": 10,
+    "created_at": "2026-10-14T12:00:00.000+00:00",
+    "updated_at": "2026-10-14T12:00:00.000+00:00",
+    "system_id": "dnd35",
+    "data": {
+      "id": "pe-feat-ultrapassar-aprimorado",
+      "name": "Ultrapassar Aprimorado",
+      "category": "geral",
+      "page": 10,
+      "fighterBonus": true,
+      "prerequisites": [
+        "Especialização em Combate",
+        "Encontrão Aprimorado",
+        "Imobilização Aprimorada",
+        "For 13+",
+        "Ataque Poderoso"
+      ],
+      "benefit": "Ao tentar Ultrapassar oponentes de categoria de tamanho inferior, o alvo não pode escolher evitá-lo. Se você o derrubar, disfere imediatamente um ataque de oportunidade contra ele com +4 de bônus.",
+      "normal": "O alvo da manobra Ultrapassar escolhe entre evitá-lo ou bloqueá-lo."
+    }
+  }
+]

@@ -1,0 +1,112 @@
+﻿76
+CAPÍTULO 5: AS FERRAMENTAS DA ARTE
+Descrições dos Escudos
+Atração de Flechas: Um escudo com essa habilidade é
+capaz de atrair qualquer arma de ataque à distância. Ele
+concede +1 de bónus de deflexão na CA do portador, pois
+qualquer projétil será desviado em sua direção. Além disso,
+um disparo ou arma que vise uma criatura adjacente ao porta-
+dor (1,5 m) mudará sua trajetória e visará o usuário do escudo
+de atração de flechas (caso este tenha cobertura total em rela-
+ção ao atacante, o projétil não será atraído). Os atacantes
+ignoram qualquer chance de falha que esteja afetando o
+portador do escudo. As trajetórias dos projéteis que tenham
+um bônus de melhoria superior ao modificador de CA do
+escudo não serão afetadas, mas o bônus de armadura conce-
+dido pelo item ainda se aplica à CA do portador. Essa habili-
+dade é ativada e desativada com uma única palavra de
+comando. Todos os modificadores e efeitos aplicam-se
+somente contra ataques à distância.
+Nível do Item: 80; pré-requisitos: Criar Armaduras e Armas
+Mágicas, escudo entrópico; preço de mercado: +1 de bônus.
+Dançarino: Usando uma ação padrão, o usuário é capaz
+de largar o escudo dançarino e forçá-lo a proteger uma única
+criatura (ou mesmo o portador). O item flutuará diante do
+alvo selecionado, obstruindo os golpes adversários e forne-
+cendo proteção contra os ataques de um único inimigo a cada
+rodada (ele defenderá a criatura de um atacante qualquer, a
+menos que já o tenha feito desde o último turno de seu dono),
+Use o bónus de armadura do escudo (incluindo seu bónus de
+melhoria) para determinar o modificador de cobertura na CA.
+Depois de 4 rodadas, o escudo dançarino cairá no solo
+usuário precisará apanhá-lo e ativá-lo novamente.
+É impossível proteger a mesma criatura com dois escudos
+dançarinos. Além disso, sua eficácia é limitada quando o alvo
+é uma criatura Grande (metade do bônus efetivo na CA
+como cobertura). Um escudo dançarino não consegue prote-
+ger qualquer alvo Enorme ou maior. Esse item somente será
+ativado por personagens capazes de usar escudos. O usuário
+pode desativar o escudo antes da duração terminar.
+Nível do Item: 150; pré-requisitos: Criar Armaduras e Armas
+Mágicas, animar objetos; preço de mercado: +3 de bônus.
+Descrições das Armas Mágicas
+Caçador: Essa habilidade está disponível somente para
+as armas de ataque à distância. A trajetória do disparo será
+alterada na direção do inimigo, ignorando qualquer chance
+de falha existente, como a fornecida pela camuflagem. O
+portador ainda deve mirar o ataque na direção correta. Por
+exemplo, uma flecha atirada por engano numa área vazia não
+seria desviada até um oponente invisível, mesmo se ele esti-
+vesse adjacente ao local.
+Nível do Item: 120; pré-requisitos: Criar Armaduras e Armas
+Mágicas, visão da verdade; preço de mercado: +1 de bônus.
+Dissonante: Quando uma arma dissonante atinge um
+inimigo, ela cria um lampejo de energia desarmônica que
+afeta a vítima e o portador. Essa energia causa +2d6 pontos de
+dano ao oponente e Id6 pontos de dano ao usuário. Somente
+armas brancas podem ter essa habilidade.
+Nível do Item: 90; pré-requisitos: Criar Armaduras e Arma
+Mágicas, drenar temporário; preço de mercado: +1 de bônus.
+Foco em chi: Esse item mágico é um catalisador do ch
+do usuário e lhe permite utilizar suas habilidades relaciona
+das com essa energia por meio da arma, como se estivess
+desarmado. Essas habilidades especiais incluem o ataqui
+atordoante e as mãos vibrantes do monge, além do talent'
+Ataque Atordoante. Somente armas brancas podem ter ess
+habilidade.
+Nível do Item: 80; pré-requisitos: Criar Armaduras e Arma
+Mágicas, o criador precisa ser um monge; preço de mercado
++1 de bônus.
+Misericórdia: Essa habilidade acrescenta +1d6 ponto:
+de dano à arma, mas é incapaz de infligir dano normal
+todo o dano causado será por contusão. Com apenas un
+comando, o portador consegue ativar ou desativar
+encantamento. Os arcos, bestas e fundas encantados
+modo imbuem sua munição com essa habilidade.
+Nível do Item: 50; pré-requisitos: Criar Armaduras e
+Mágicas, curar ferimentos leves; preço de mercado: +1 de bónus
+Penetrante: Uma arma penetrante é capaz de afetar as cna
+turas que tenham redução de dano como se fosse uma arma +5
+Os arcos, bestas e fundas não podem ter essa habilidade.
+Nível do Item: 60; pré-requisitos: Criar Armaduras e Armas
+Mágicas, arma mágica aprimorada; preço de mercado: +1 de
+bônus.
+Descrição das Armas Específicas
+Arco das Flechas Precisas: Esse arco longo composto
+reforçado +1 (é imprescindível ter +1 de bônus de Força)
+comporta a magia ataque certeiro, que o portador é capaz de
+ativar como um gatilho de magia (idêntico às varinhas).
+usuário somente receberá os beneficios da magia quando
+disparar esse arco. Diferente de uma varinha, não existe
+limite de cargas para a conjuração da magia. Os arqueiros
+arcanos e os iniciados da ordem do arco favorecem os arcos
+das flechas precisas.
+Nível do Item: 50; pré-requisitos: Criar Armaduras e Armas
+Mágicas, ataque certeiro; preço de mercado: 4.000 PO; custo para
+criar: 2.250 PO + 140 XP.
+Estilhaçadora: Qualquer portador da estilhaçadora que
+não tenha o talento Separar deve considerá-la apenas uma
+espada longa +1; caso contrário, ela será uma espada longa +1
+e terá as seguintes habilidades especiais: o PJ é capaz de usá•
+la para atacar a arma do oponente sem provocar um ataque de
+oportunidade e recebe +4 de bónus (já incluindo +1 de bônus
+mágico) no teste resistido para atingir uma arma inimiga.
+Caso obtenha sucesso, a estilhaçadora causará Id8+4 pontos
+de dano, mais o modificador de Força do portador à arma do
+oponente (embora a dureza da arma ainda precise ser supe
+rada a cada golpe). A estilhaçadora é capaz de afetar armas
+encantadas com até +4 de bônus.
+Nível do Item: 130: pré-requisitos: Força 13, Criar Armadu•
+ras e Armas Mágicas, Ataque Poderoso, Separar, despedaçar,
+preço de mercado: 4.315 PO; custo para criar 2,315 PO + 160 XP,
+peso: 2 kg.

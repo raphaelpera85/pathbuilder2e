@@ -1,0 +1,100 @@
+﻿(inclusive o extra) sofrem -2 de penalidade. Essa
+penalidade dura uma rodada inteira e, portanto,
+afeta os ataques de oportunidade desferidos pelo
+protetor até seu próximo turno.
+Bônus de Terreno na CA: O personagem
+tira muita vantagem dos aspectos naturais de seu lar
+e recebe o bônus de deflexão indicado na CA
+enquanto estiver na sua terra natal ou num ambiente
+similar (veja Terra Natal, acima).
+Destruir (Sob): A partir do 40 nível, o protetor
+tribal adquire a habilidade sobrenatural de executar um
+único ataque corporal contra seu inimigo tribal, recebendo
++4 de bônus de ataque e um bónus de dano equivalente ao
+seu nível. O personagem deve declarar o uso desse ataque
+antes da jogada. É possível utilizar essa habilidade duas
+vezes por dia no 70 nível e três vezes por dia a partir do
+100 nível.
+PUNHO DE HEXTOR
+Enquanto muitas pessoas consideram os Punhos de Hextor
+somente mercenários eficientes e brutais, na verdade eles
+compõem um grupo de templários leais, a serviço de sua
+divindade impiedosa. A Igreja de Hextor prega que o mundo
+é um lugar negro e cruel, onde os mais fortes apenas sobrevi-
+verão se governarem os fracos e forjarem a ordem a partir do
+caos. Para apoiar seu dogma, a Igreja formou essa companhia
+de elite de templários e a disponibilizou para ser contratada
+em prol das causas que complementam os seus objetivos
+principais (desde que, naturalmente, o contratante seja capaz
+de pagar os elevados custos para obter e manter uma unidade
+de elite de homens e mulheres bem armados e bem treina-
+dos). Os Punhos são conhecidos pela sua eficiência e brutali-
+dade: um empregador em busca de auxílio militar não
+encontrará em lugar nenhum um grupo de mercenários tão
+dedicados em assegurar o cumprimento das leis em detri-
+mento das forças da anarquia e da confusão.
+A grande maioria dos Punhos de Hextor é composta de
+guerreiros, monges ou clérigos, mas ex-bárbaros, ex-paladi-
+nos, rangers e magos também serão encontrados entre suas
+fileiras. As exigências primárias para tornar-se um membro
+são (além da veneração a Hextor, Campeão do Mal e Terror
+da Batalha) a disposição de utilizar a crueldade e outras medi-
+TABELA 2—18: O PUNHO DE HEXTOR
+Bônus Base
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+das drásticas para esmagar a discórdia, a crença que o poder é
+a maior recompensa oferecida pela vida e a convicção de
+suportar qualquer desafio em favor desses ideais.
+Os Punhos de Hextor do Mestre geralmente serão solda-
+dos mercenários, envolvidos em algum contrato militar
+correlacionado com o templo de Hextor mais próximo.
+Algumas vezes, é possível encontrar pequenos grupos (ou
+mesmo um integrante solitário) dos Punhos, mas estes indi-
+víduos também estarão cumprindo alguma tarefa ou missão
+para sua Igreja.
+Dado de Vida: dlO
+Nível
+10
+20
+30
+60
+80
+90
+de Ataque Fortitude Reflexos Vontade
++1
++3
++4
++6
++8
++10
++3
++4
++5
++6
++6
++0
++0
++1
++2
++2
++3
++3
++0
++0
++2
++2
++2
++3
++3
+Especial
+Golpe Brutal +1
+Aumento de Força l/dia
+Presença Aterradora 1 [dia
+Golpe Brutal +2
+Aumento de Força 2/dia
+Presença Aterradora 2/dia
+Golpe Brutal +3
+Aumento de Força 3/dia
+Presença Aterradora 3/dia
+Golpe Brutal +4
+37

@@ -1,0 +1,77 @@
+﻿Perícias de Classe
+As perícias de classe de um duelista (e a habilidade chave
+para cada perícia) são: Acrobacia (Des), Atuação (Car), Arte
+da Fuga (Des), Blefar (Car), Equilíbrio (Des), Mensagens
+Secretas (Sab), Observar (Sab), Ouvir (Sab), Saltar (For) e
+Sentir Motivação (Sab). Consulte o Capítulo 4: Perícias, no
+Livro do Jogador para obter as descrições das perícias.
+Pontos de Perícia a cada nível: 4 + modificador de
+Inteligência.
+Características da Classe
+Usar Armas e Armaduras: O duelista sabe usar todas
+as armas simples e comuns, mas nenhum tipo de armadura.
+Entre os escudos, ele sabe usar apenas o broquel.
+Esquiva Sagaz: Quando não estiver usando nenhuma
+armadura, os duelistas adicionam seu modificador de Inteli-
+gência (se houver) ao seu bônus de Destreza na CA enquanto
+empunhar qualquer arma branca. Caso o duelista seja
+surpreendido ou perca seu bônus de Destreza na CA, este
+modificador também será perdido.
+Golpe Preciso: A partir do 20 nível, o duelista adquire
+a habilidade extraordinária de atingir locais exatos usando
+uma arma branca, perfurante, e possível de segurar numa
+única mão, causando Id6 pontos de dano adicionais.
+Quando utilizar essa habilidade, o duelista será inca-
+paz de atacar com a arma da sua mão inábil (se
+houver), mas poderá defender-se com ela .com um
+broquel, por exemplo). O golpe preciso do
+duelista afeta somente criaturas vivas, que
+tenham anatomias distintas. Qualquer cria-
+tura imune a sucessos decisivos (entre eles
+os mortos-vivos, constructos, limos, plantas
+e criaturas incorpóreas) também será
+imune a essa habilidade; qualquer item que
+proteja a criatura de sucessos decisivos,
+como as armaduras fortificadas, também anulará um golpe
+preciso. A cada quatro níveis, o dano adicional causado pelo
+duelista aumenta em +1d6.
+Mobilidade Aprimorada: Quando não estiver usando
+nenhuma armadura, o duelista adquire +4 de bônus adicional
+na CA cbntra ataques de oportunidade provocados por seu
+deslocamento ao entrar ou sair de uma área ameaçada.
+Graça: A partir do 40 nível, quando o duelista não estiver
+usando nenhuma armadura, ele recebe +2 de bônus de
+competência em todos os testes de resistência de Reflexos.
+Ataque Acrobático: A partir do 50 nível, o duelista
+recebe +2 de bônus nas jogadas de ataque e dano quando
+atacar das seguintes formas: saltar pelo menos 1,5 m na dire-
+ção de seu adversário; pular sobre o oponente de uma altura
+de 1,5 m ou superior; ou balançar-se numa corda ou objeto
+similar sobre seu oponente. Para fazê-lo, será necessário reali-
+zar um teste de Saltar; caso o resultado seja inferior a 1,5 m, o
+duelista não conseguirá usar essa habilidade. Se o desloca-
+mento percorrido pelo salto for maior que a distância entre o
+duelista e seu adversário" possível reduzi-la como uma ação
+livre. Essa é uma habilidade extraordinária.
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+Aparar Aprimorado: Ao atingir 0 70 nível, caso o
+duelista escolha lutar defensivamente ou utilizar a ação
+defesa total, ele adquire +1 de bônus de esquiva adicional na
+CA para cada nível da classe de prestígio (inicialmente +7).
+Esta é uma habilidade extraordinária.
+Reações Aprimoradas: A partir do 80 nível, o duelista
+recebe +2 nos seus testes de Iniciativa. Esta habilidade se
+acumula com o talento Iniciativa Aprimorada.
+Desviar Objetos: O duelista adquire o talento Desviar
+Objetos (consulte o Livro do Jogador), mas somente
+enquanto estiver segurando sua arma perfurante com
+apenas uma das mãos.
+Alguns são meros escravos, jogados em fossos imundos para
+confrontar desafios insuperáveis. Outros são profissionais
+muito ricos, com uma grande equipe de empresários, agentes
+e treinadores. Ricos ou pobres, todos os gladiadores encaram
+4;
+23
+a morte sempre que entram numa arena.
+Os gladiadores são combatentes treinados para lutar
+diante de platéias em arenas de vários tamanhos. Em geral,

@@ -1,0 +1,137 @@
+﻿CAPÍTULO 2: CIASSES DE PRESTÍGIO
+dade, considere que a arma do samurai tem um bônus de
+melhoria mágico equivalente ao modificador de Sabedoria
+do personagem, mas apenas para superar a redução de dano
+da criatura atingida (não aplique o bónus ao dano). Uma vez
+ativado, o bônus permanece na arma até o próximo ataque
+bem-sucedido do mestre samurai.
+IA DA LUA CRESCENTE
+Muitos monges buscam apenas a iluminação pessoal. Outros
+são tentados por objetivos muito mais sombrios.
+Os ninjas da lua crescente compõem um clã de mercená-
+rios, envolvidos em sabotagem e outras missões escusas,
+realizadas por um preço abusivo — mas apenas se a tarefa
+respeitar seu código moral secreto. Os ninjas são uma pedra
+no sapato dos nobres justos e dos tiranos malignos; nenhum
+indivíduo além dos integrantes da sua hierarquia mais
+elevada conhece seus verdadeiros alvos. Suas bases e quartéis
+ficam escondidos de qualquer pessoa alheia à sociedade da
+Lua Crescente e os pretensos contratantes somente conse-
+guem encontrá-los por meio de uma extensa cadeia de
+intermediários.
+Uma vez contratados, os ninjas da lua crescente tentarão
+concluir a tarefa até a próxima lua crescente (por isso seu
+nome). Em geral, os ninjas usam trajes negros para se infil-
+trar no local, revelam-se e atacam num turbilhão de violência
+para depois retornarem às sombras da noite.
+A maioria dos ninjas é composta por monges que ouviram
+promessas sussurradas de segredos místicos; movidos pela
+curiosidade, eles procuraram pela sociedade da Lua Cres-
+cente, seguindo rumores dispersos até a sua fonte. Qualquer
+monge (ou ladino ou mesmo guerreiro) que consiga rastrear
+os ninjas até sua organização será convidado a fazer parte do
+clã. Qualquer integrante que abandonar a sociedade da Lua
+Crescente será marcado para morrer.
+Os ninjas do Mestre surgem aparentemente do nada e
+atacam sem misericórdia. Com freqüência, eles são contrata-
+dos para roubar um item valioso, assassinar um rival pode-
+roso ou infiltrar-se numa fortaleza como batedores de um
+ataque iminente.
+Dado de Vida: d8
+TABELA 2—16: O NINJA DA LUA CRESCENTE
+Pré-Requisitos
+Para se tornar um ninja, o personagem deve preencher tê
+os seguintes critérios:
+Bônus Base de Ataque: +6
+Talentos: Ataque Desarmado Aprimorado, Desviar 0
+tos, Saque Rápido.
+Esconder-se: 10 graduações.
+Furtividade: 10 graduações.
+Outro: Característica Evasão; é necessário encor
+algum líder da sociedade da Lua Crescente.
+Perícias de Classe
+As perícias de Classe de um ninja (e a habilidade chavei
+cada perícia) são: Acrobacia (Des), Alquimia (Int), Aru
+Fuga (Des), Equilíbrio (Des), Escalar (For), Esconde
+(Des), Furtividade (Des), Natação (For), Ofícios (Int),
+(Sab) e Saltar (For). Consulte o Capítulo 4: Perícias, no
+do Jogador, para obter as descrições das perícias.
+Pontos de Perícia a cada nível: 4 + modificador
+Inteligência.
+Características da Classe
+Bônus na CA dos Monges: Quando um ninjaj
+estiver usando nenhuma armadura ou escudo, ele recei
+bónus na CA indicado na Tabela 3-10 do Livro do Jogi
+Este bônus se acumula com qualquer outro bônus na
+adquirido em função de seus níveis como monge.
+forma, o ninja aplica seus modificadores de Destreza e S
+doria na CA caso não esteja usando nenhuma armadura
+Ataque Furtivo: Se um ninja puder atingir
+oponente incapaz de se defender adequadamente do ataç
+ele pode golpear um ponto vital e causar dano extra. Bas
+mente, esse ataque causará o dano adicional sempre qu
+vítima não puder se beneficiar de seu bônus de Destrea
+CA (exista ou não) ou estiver sendo flanqueada p
+personagem. O dano adicional será Id6 no 10 nível el.
+adicional a cada dois níveis subseqüentes (+2d6 no 30
++3d6 no 50 e assim por diante). Se o ninja obtiver um suce
+decisivo num ataque furtivo, o dano adicional nis
+multiplicado. Se o ninja já tiver (ou vier a possuir) atag
+furtivos de outras fontes, como seus níveis de ladino, o dl
+adicional se acumula.
+34
+Nível
+10
+20
+30
+40
+50
+60
+70
+80
+90
+Bônus Base
+de Ataque Fortitude Reflexos
++0
++1
++2
++3
++3
++4
++5
++0
++1
++1
++1
++2
++2
++3
++3
++3
++3
++4
++4
++5
++5
++6
++6
++7
+Vontade
++1
++1
++1
++2
++2
++2
++3
+Especial
+Bônus na CA dos Monges, Ataque Furtivo +1d6
+Evasão Aprimorada, kuji-kiri
+Usar Venenos, Ataque Furtivo +2d6
+Bônus na CA +1, Escalada Acelerada, Silenciar
+Furtividade Acelerada, Ataque Furtivo +3d6
+Invisibilidade, Oportunismo
+Forma Gasosa, Ataque Furtivo +4d6
+Kuji-kiri Aprimorado
+Bônus na CA +2, Percepção às Cegas, Ataque Furtivo +5d6
+Sempre Furtivo, Passeio Etéreo

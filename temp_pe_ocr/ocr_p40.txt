@@ -1,0 +1,119 @@
+﻿9
+grantes dessa classe liberam conforme avançam de nível
+refletem o aprimoramento dessa técnica complexa.
+Rajada Atordoante (SM): O vingador escarlate libera sua
+energia chi como um ataque sônico — o cone de energia é
+capaz de atingir 9 metros de distância. Qualquer criatura na
+área afetada deve obter sucesso num teste de resistência de
+Fortitude (CD 15 + modificador de Sabedoria do vingador) ou
+ficará atordoada durante 1 rodada. Esse ataque exige uma ação
+padrão e o personagem precisa ser capaz de gritar para ativá-lo.
+Proteção do Chi (Ext): A partir do 20 nível, o vingador
+escarlate adquire a habilidade de canalizar seu chi para prote-
+ger-se de efeitos nocivos. O personagem recebe um bônus
+equivalente ao seu modificador de Sabedoria em qualquer
+teste de resistência à sua escolha. É necessário declarar o uso
+TABELA 2—19: O VINGADOR ESCARLATE
+Bônus Base
+CAPÍTULO 2: CIASSES DE PRESTÍGIO
+dessa habilidade antes de realizar o teste de resistência. É
+possível utilizar a proteção pelo chi uma vez por dia a cada
+nível dessa classe de prestígio.
+Perícia do Chi (Ext): A partir do 30 nível, o vingador
+escarlate recebe um bônus equivalente ao seu modificador
+de Sabedoria em qualquer teste de perícia dessa classe de
+prestígio. É necessário declarar o uso dessa habilidade antes
+de realizar o teste de perícia. É possível utilizar a perícia do
+chi uma vez por dia a cada nível de vingador escarlate.
+Restauração pelo Chi (SM): A partir do 40 nível, o vinga-
+dor escarlate adquire a habilidade de canalizar seu chi como
+um tipo de cura mágica. Quando ele toca uma criatura viva
+com suas mãos, conduz o chi de modo a restaurar uma quan-
+tidade de pontos de vida equivalente ao seu nível de classe
+multiplicado pelo seu bônus de Sabedoria. É possível dividir
+essa energia de cura entre vários alvos, e não é preciso usá-la
+de uma só vez. A restauração pelo chi é uma habilidade simi-
+lar a magia que exige o uso de uma ação padrão.
+A partir do 80 nível, o vingador escarlate é capaz de restau-
+rar uma quantidade de pontos de vida equivalente ao dobro
+de seu nível de classe multiplicado pelo seu modificador de
+Sabedoria.
+Brado Mortífero (SM): O vingador escarlate libera sua
+energia chi como um ataque sônico —- o cone de energia é
+capaz de atingir 9 metros de distância. Essa habilidade
+causa 3d6 + modificador de Sabedoria pontos de dano a
+qualquer criatura na área afetada, que deve obter sucesso
+num teste de resistência de Fortitude (CD 15 + modificador
+de Sabedoria) para reduzir o dano à metade. Esse ataque
+exige uma ação padrão e o personagem precisa ser capaz de
+gritar para ativá-lo.
+Chi Ilimitado: Quando o vingador escarlate adquire
+controle absoluto do uso de sua energia chi, ele a canaliza
+com mais facilidade. No 100 nível, qualquer habilidade de
+classe relacionada ao chi permite ao vingador adicionar o
+dobro do seu modificador de Sabedoria.
+Observação para Multiclasse: Os personagens
+monges podem adquirir livremente níveis desta classe de
+prestígio. Em outras palavras, é possível um personagem
+monge escolher um nível de Vingador Escarlate e, no nível
+subseqüente, escolher outro nível de monge normalmente,
+intercalando ambas as classes sem penalidades.
+Nível
+10
+20
+30
+50
+60
+70
+80
+90
+de Ataque Fortitude Reflexos Vontade
++2
++3
++3
++4
++5
++6
++7
++8
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
++2
++3
++3
++4
++4
++5
++5
++6
++7
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
+Especial
+Rajada Atordoante 1 [dia
+Proteção do chi l/dia
+Perícia do chi l/dia
+Restauração pelo chi
+Brado Mortífero l/dia, Rajada Atordoante 2/dia
+Proteção do chi 2/dia
+Perícia do chi 2/dia
+Restauração Maior pelo chi
+Brado Mortífero 2/dia, Rajada Atordoante 3/dia
+chi Ilimitado
+39

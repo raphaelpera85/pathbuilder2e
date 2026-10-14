@@ -1,0 +1,83 @@
+﻿8
+CAPÍTULO l: TALENTOS E PERÍCIAS
+Benefício: Qualquer ataque de Investida bem-sucedido
+lhe permite causar o dano normal mais o dobro do seu modi-
+ficador de Força, independente de empunhar a arma com
+uma ou duas mãos. Você concederá um ataque de oportuni-
+dade para o oponente atacado.
+Linha de Frente* [Geral]
+Você foi treinado em técnicas defensivas contra oponentes
+em Investida.
+Pré-Requisitos: Bônus base de ataque +2, Reflexos de
+Combate.
+Benefício: Você pode desferir um ataque de oportuni-
+dade contra um adversário que esteja o atacando em Inves-
+tida, assim que ele entrar na sua área ameaçada. Seu ataque
+acontecerá imediatamente antes da Investida ser resolvida.
+Lutar Sujo [Geral]
+Você conhece as táticas de combate brutais, porém eficazes,
+das ruas e dos becos.
+Pré-Requisito: Bônus base de ataque +2.
+Benefício: Realize sua jogada de ataque normalmente.
+Caso obtenha sucesso, você poderá causar +1d4 pontos de
+dano adicionais. A utilização deste talento requer uma ação
+de ataque total.
+Manter a Consciência [Geral]
+Sua força de vontade é tão firme que o sustenta mesmo
+quando tudo parece perdido.
+Pré-Requisitos: Bônus base de ataque +2, Tolerância,
+Vontade de Ferro, Vitalidade.
+Benefício: Mesmo quando seus pontos de vida são redu-
+zidos a 0, você ainda conseguirá realizar uma ação parcial
+durante seu turno até atin-
+gir -10 pontos de vida.
+Nocautear*
+[Geral]
+Seus golpes são tão pode-
+rosos que chegam a derru-
+bar seus adversários no
+chão.
+Pré-Requisitos:
+Bônus base de ataque +2,
+Imobilização Aprimorada,
+For 15+.
+Benefício: Em comba-
+tes corpo a corpo, sempre
+que você causar 10 ou mais
+pontos de dano num único
+ataque, poderá realizar um
+ataque de imobilização
+contra o oponente atin-
+gido como uma ação livre.
+É impossível combinar
+esse talento com Imobili-
+zação Aprimorada para
+conseguir um ataque extra; o uso bem-sucedido deste talent
+não garante nenhum ataque adicional em função dos talei
+tos Trespassar ou Trespassar Aprimorado.
+Olhos na Nuca [Geral]
+Suas habilidades supremas de combate o auxiliam a reduzir
+ameaça de ataques pelos flancos.
+Pré-Requisitos: Bônus base de ataque +3, Sab 19+.
+Beneficio: Os atacantes não recebem +2 de bônus nas jog
+das quando estiverem flanqueando-o. Esse talento não surt
+nenhum efeito quando você perde seu bônus de Destreza n
+CA, como quando você for surpreendido, por exemplo.
+Normal: Quando seu personagem é flanqueado, c
+oponentes em seus flancos recebem +2 de bônus nas jogade
+de ataque contra ele.
+Percepção às Cegas, 1,5 m de raio [Geral]
+Você é capaz de sentir seus oponentes na escuridão.
+Pré-Requisitos: Bônus base de ataque +4, Lutar à
+Cegas, Sab 19+.
+Beneficio: Usando sentidos como audição aguçada
+sensibilidade a vibrações, você' consegue detectar a localiz
+ção dos oponentes num raio de 1,5 m do seu corpo. As magia
+de invisibilidade e escuridão são irrelevantes, embora aind
+seja impossível distinguir criaturas incorpóreas.Com exceçã
+do alcance, esse talento é idêntico à habilidade extraordinári
+Percepção às Cegas descrita no Livro dos Monstros.
+Pontaria Aguçada* [Geral]
+Sua aptidão com armas de disparo lhe permite atingir alvo
+que escapariam ilesos dos demais atiradores por estaren
+escondidos atrás de coberturas.

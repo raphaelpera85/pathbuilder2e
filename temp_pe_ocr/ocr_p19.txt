@@ -1,0 +1,111 @@
+﻿18
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+todos os testes de resistência de Vontade e +4 de bônus de
+esquiva na CA.
+Essa habilidade permanece ativa durante (3 + o modifica-
+dor de Destreza [recém ajustado] do halfling) rodadas. O
+batedor é capaz de terminar a cavalgada defensiva
+voluntariamente. No final da cavalgada, o cavaleiro e sua
+montaria estarão ofegantes e sofrerão -2 de penalidade na
+Força até descansarem durante pelo menos 10 minutos. O
+cavaleiro halfling só consegue cavalgar defensivamente uma
+quantidade limitada de vezes por dia (determinado pelo seu
+nível). Ativar essa habilidade é uma ação livre, mas o cava-
+leiro batedor só poderá fazê-la durante o seu turno.
+Defletir Ataques (Ext): A partir do 30 nível,
+o cavaleiro batedor halfling pode
+tentar defletir ataques corpo a
+corpo desferidos contra a sua
+montaria. Para fazê-lo, ele
+precisa empunhar uma arma
+branca ou um escudo. Uma vez
+por rodada, quando a sua monta-
+ria for atacada, você pode realizar
+um teste de ataque resistido
+contra o inimigo. O batedor
+recebe o bônus de compe-
+téncia indicado na tabela
+para esse teste resistido.
+Caso seja bem-sucedido, o
+ataque será desviado ou
+aparado. O personagem
+deve estar ciente do ataque;
+essa habilidade é ineficaz
+contra batedores halflings
+surpreendidos.
+Saltar da Sela
+(Ext): O batedor pode
+desmontar como uma
+ação livre, se obtiver
+sucesso num teste de Adestrar
+Animais (CD 20), caindo no
+espaço adjacente da sua montaria.
+O animal deve estar percorrendo o
+dobro do próprio deslocamento normal
+ou menos. Caso haja um oponente na área amea-
+çada pelo halfling (depois que ele desmontar), ele poderá
+realizar um ataque de Investida contra esse oponente. Esse
+uso da habilidade exige uma ação de rodada completa.
+CAVALEIRO PROTETOR DO
+GRANDE REINO
+Os Cavaleiros Protetores são os escolhidos e os valorosos —
+guerreiros dedicados a restaurar os ideais da cavalaria
+montada antes que eles sejam erradicados para sempre. Em
+virtude do descaso com a conduta ética, resultante do
+colapso do antes imponente Grande Reino, os Protetores
+encontram apenas decadência moral em qualquer lugar onde
+procuram no mundo ao seu redor. Os Protetores são os últ
+mos remanescentes de uma antiga e grandiosa ordem
+cavaleiros, que juraram por suas vidas defender uma naçâ
+hoje moribunda. Atualmente, poucos integrantes dess
+linhagem ancestral continuam vivos e tudo que resta d
+Grande Reino é o seu nome e algumas províncias herdadas
+espalhadas pelo mundo. Entretanto, aqueles que ainda hoj
+carregam o manto dos Cavaleiros Protetores cultivam a esp
+rança de um dia restaurar o Grande Reino; eles acreditai
+que são capazes de acelerar essa restauração e ainda sanar c
+males da sociedade vivendo como modelos perfeitos de se
+venerado código de cavalaria.
+Assim como os paladinos, os cavaleiros prott
+tores respeitam um código de conduta rígido, qu
+expressa valores como honra, honestidade, nobre
+e coragem. Diferente dos paladinos, que asst
+mem um compromisso com uma divindad
+ou ordem sagrada, o juramento primário dc
+cavaleiros protetores diz respeito ao se
+código e à nação extinta que ele
+representam. O Protetor dev
+demonstrar esses ideai
+em todos os aspecto
+de sua conduta, e ele
+devem guiar todas a
+suas ações e feito
+não importa quâ
+dificil seja. Um cave
+leiro que viole est
+código involuntarit
+mente ou por ignorân
+cia, ou desobedeça-a
+arbitrariamente en
+prol de um bem mai01
+poderá se redimi
+aceitando e comple
+tando com sucess«
+uma busca ou missã(
+perigosa designada pel(
+líder da ordem. Um cava
+leiro que tenha violado
+código consciente e voluntariamente
+sem uma razão adequada, será expulso da ordem
+não poderá mais adquirir níveis como Cavaleiro Protetor
+Dado de Vida: d10
+Pré-Requisitos
+Para se tornar um Cavaleiro Protetor do Grande Reino,
+personagem deve preencher todos os seguintes critérios:
+Bônus Base de Ataque: +4
+Raça: Anão, elfo, meio-elfo, humano
+Tendência: Leal
+Talentos: Ataque Poderoso, Combate Montado, Trespas
+sar, Trespassar Aprimorado, Usar Armadura Pesada.
+Cavalgar: 6 graduações.
+Conhecimento (nobreza e realeza): 4 graduações.

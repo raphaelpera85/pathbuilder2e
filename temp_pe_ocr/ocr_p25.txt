@@ -1,0 +1,148 @@
+﻿CAPÍTULO 2: CLASSES DE PRESTÍGIO
+eles enfrentam outros gladiadores em duelos simples, mas
+nas arenas maiores também são promovidas lutas entre
+grupos. Algumas vezes, são permitidos combates entre
+homens e monstros, onde um ou mais gladiadores enfren-
+tam uma besta capturada nos lugares selvagens. Os especta-
+dores aclamam vigorosamente seus gladiadores favoritos;
+muitos deles apostam altas quantias nos resultados do
+combate. No entanto, ninguém aposta mais no resultado que
+o próprio gladiador, pois quase sempre o combate só acaba
+quando o perdedor morre.
+Quase todos os gladiadores já foram guerreiros ou bárba-
+ros, mas os ladinos e os monges algumas vezes descobrem
+o caminho para dentro de uma arena (para a humilhação
+de seus oponentes surpreendidos). Em alguns casos raros,
+as arenas promovem "duelos de conjuradores" ou confron-
+tam um guerreiro contra um mago, assegurando-se que o
+repertório do conjurador é bastante espalhafatoso e dificil-
+mente irá ferir a multidão de espectadores. Tornar-se um
+gladiador é muito simples, como dizem os veteranos de
+arena: "sobreviva ao seu primeiro combate e você já poderá
+chamar-se de gladiador. Um destino de sorte realmente o
+transformará num...".
+Os gladiadores do Mestre geralmente estarão em carava-
+nas que viajam de arena em arena, mas alguns serão emprega-
+dos regulares dos vastos palácios das grandes cidades. Em
+certas ocasiões, os gladiadores mais famosos são contratados
+para agir como guarda-costas de aristocratas, enquanto os
+gladiadores veteranos avaliam novos candidatos e treinam
+aprendizes de gladiadores para sua primeira luta no fosso.
+Dado de Vida: d10
+Pré-Requisitos
+Para se tornar um gladiador, o personagem deve preencher
+todos os seguintes critérios:
+Bônus Base de Ataque: +5.
+Talentos: É necessário possuir no mínimo dois talentos
+da lista de talentos adicionais dos guerreiros. O personagem
+não precisa pertencer a essa classe para adquiri-los, mas eles
+precisam constar daquela lista de talentos adicionais.
+Atuação ou Intimidar: 4 graduações (as platéias
+respondem melhor aos combatentes mais atrativos e
+ameaçadores).
+TABELA 2—9: O GLADIADOR
+Bônus Base
+Perícias de Classe
+As perícias de classe de um gladiador (e a habilidade chave de
+cada perícia) são: Acrobacia (Des), Adestrar Animais (Car),
+Atuação (Car), Blefar (Car), Cavalgar (Des), Escalar (For), Inti-
+midar (Car), Oficios (Int) e Saltar (For). Consulte o Capítulo
+4: Perícias do Livro do Jogador para as descrições das perícias.
+Pontos de Perícia a cada nível: 4 + modificador de
+Inteligência.
+Características da Classe
+Fintar Aprimorado: Os gladiadores aprendem técni-
+cas furtivas, como chutar areia nos olhos do adversário, fingir
+estar mortalmente ferido ou forçar um oponente a olhar
+diretamente para o sol. Você poderá usar a manobra fintando
+em combate da perícia Blefar (pág. 64 do Livro do Jogador)
+como uma ação equivalente a movimento.
+Analisar Oponente: Você é capaz de perceber os
+pontos fracos do estilo de luta do seu adversário. Caso o
+gladiador escolha a ação defesa total, receberá um bônus de
+esquiva na CA, indicado na tabela, contra qualquer oponente
+que tente atacá-lo em combate corporal na mesma rodada.
+Este bônus de esquiva é concedído na rodada subseqüente ao
+ataque do oponente e permanece até o fim do combate.
+Cansar Oponente (Ext): Ao longo do combate, o
+gladiador consegue cansar seu adversário. O personagem
+precisa atacar o mesmo oponente durante 3 rodadas
+consecutivas. Após a terceira ação de ataque, o adversário
+precisará obter sucesso num teste de resistência de Forti-
+tude, ou sofrerá Id6 pontos de dano por contusão devido à
+exaustão. A CD inicial para o teste de resistência será 15, mas
+aumentará 1 ponto a cada rodada além da 3a em que o gladia-
+dor continuar a castigar o mesmo inimigo. Muitos gladiado-
+res lutam defensivamente enquanto utilizam essa técnica;
+caso o personagem deixe de atacar durante uma rodada
+sequer, a contagem será reiniciada.
+Furor da Platéia: O gladiador pode animar seus torce-
+dores com floreios, brados ou movimentos espetaculares.
+Usando uma ação equivalente a movimento, faça um teste de
+Atuação (CD 15). Caso obtenha sucesso, o personagem rece-
+berá +1 de bônus de moral para suas jogadas de ataque e dano
+durante todo o combate. Os espectadores não podem estar
+envolvidos na luta e deve haver pelo menos seis deles.
+24
+Nível
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+de Ataque Fortitude Reflexos Vontade
++1
++2
++3
++4
++5
++6
++7
++8
++9
++10
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
++0
++0
++1
++1
++1
++2
++2
++2
++3
++3
++0
++1
++1
++1
++2
++2
++2
++3
++3
+Especial
+Fintar Aprimorado
+Analisar Oponente +1
+Cansar Oponente
+Furor da Platéia
+Analisar Oponente +2
+Golpe de Misericórdia Aprimorado
+Usar Venenos
+Analisar Oponente +3
+'Faça-os Sangrar'
+A Platéia vai à Loucura

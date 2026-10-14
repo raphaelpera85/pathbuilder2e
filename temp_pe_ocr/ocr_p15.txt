@@ -1,0 +1,149 @@
+﻿G:tà.
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+na sua mão inábil, realizando os testes pertinentes e usando
+uma ação equivalente a movimento. Considere o chicote
+uma arma Média para definir os modificadores da manobra
+desarmar.
+Açoite Atordoante: Além de causar dano normal ou
+por contusão um açoiteador é capaz de atordoar uma cria-
+tura por meio do estalo de seu chicote. O personagem pode
+usar essa habilidade uma vez por rodada, mas apenas uma vez
+por dia a cada nível. O açoiteador precisa declarar que deseja
+utilizar um ataque atordoante antes da jogada de ataque (logo,
+uma jogada fracassada gastará uma tentativa). Um inimigo
+atingido pelo chicote deve realizar um teste de resistência de
+Fortitude (CD 10 + nível do açoiteador + modificador de
+Força), além de receber o dano normal (normal ou por contu-
+são); Se o teste resultar num fracasso, o oponente ficará ator-
+doado durante uma rodada. Um personagem nesse estado
+não pode agir e perde qualquer bônus de Destreza na CA;
+quem tentar golpeá-lo recebe +2 de bônus nas jogadas de
+ataque. Os constructos, limos, plantas, mortos-vivos, criatu-
+ras incorpóreas e criaturas imunes a sucessos decisivos não
+podem ser atordoadas por essa habilidade.
+Açoite Relâmpago: A partir do 80 nível, o açoiteador é
+capaz de desferir dois ataques extras por rodada usando qual-
+quer chicote. Essa habilidade substitui e não se acumula com
+a Rajada de Estalos. Esse ataque considera o bónus de ataque
+mais elevado do personagem, mas todos os ataques dessa
+rodada (os extras e os normais) sofrem -4 de penalidade. A
+utilização dessa habilidade exige a ação de ataque total.
+Espiral da Morte (Sob): Ao atingir 0 100 nível, o açoi-
+teador adquire uma compreensão transcendental do seu
+chicote. Uma vez por dia, ele é capaz de girar a arma sobre
+sua cabeça com velocidade sobrenatural. Todos os adversá-
+rios num raio de 4,5 m do açoiteador devem obter sucesso
+num teste de resistência de Reflexos contra uma CD igual à
+jogada de ataque do personagem. Qualquer criatura que
+fracassar nesse teste ficará atordoada durante Id4+1 rodadas.
+Os oponentes atordoados devem obter sucesso num
+segundo teste de resistência (Fortitude, CD 18) ou ficarão
+indefesos durante Id4-1 rodadas (mínimo de 1 rodada). Os
+aliados (conforme definido pelo personagem) na área afetada
+serão poupados dos efeitos da Espiral da Morte. Essa é uma
+habilidade sobrenatural.
+TABELA 2—2: O ANDARILHO FANTASMA
+ANDARILHO FANTASMÊ
+Uma figura misteriosa torna-se visível nos limites da cidade
+Sem nenhum aviso e sem ser percebido até dar o primeir«
+passo sobre a rua de lama seca, a única companhia desn
+forasteiro é o silêncio. Ele atrai o olhar inexpressivo da
+crianças, que param de brincar e correm em busca de un
+lugar para se esconder e observá-lo às ocultas. Atrás das sua
+cortinas fechadas e suas portas trancadas, os pais e comer
+ciantes param suas conversas enquanto seus olhos seguem o
+lentos passos do forasteiro. As marteladas do ferreiro cessan
+e o repentino relinchar de um cavalo parece absurdamentt
+alto. Ninguém nunca viu esse homem antes dele surgir entr«
+a brisa de verão, mas todos sabem que suas vidas mudarãc
+antes que ele decida partir.
+O andarilho fantasma não é um papel indicado parã
+muitos heróis. Ele vaga de lugar em lugar, quase sempre sozi
+nho, enquanto cuida de seus próprios interesses. A motiva
+çâo exata que impulsiona um andarilho a peregrinar de umÉ
+cidade a outra varia conforme o indivíduo. Muitos sác
+monges que abandonaram seu confinamento, pois nác
+conseguiam mais suportar uma vida de contemplação, ou sc
+rebelaram contra uma vida ordenada e protegida em um
+mundo de caos. Um andarilho fantasma pode estar tentandc
+corrigir um erro do seu passado, outro em busca de vingança
+contra um inimigo distante e outro tentando se redimir de
+algum pecado trágico. Alguns andarilhos fantasmas repre
+sentam uma fonte de justiça implacável, à medida que corri*
+gem erros e castigam os vilões. Outros se tornam mais
+clementes conforme viajam de uma comunidade para outra,
+ajudando os necessitados. Existem andarilhos que invadem
+as cidades determinados a propagar sua vilania e seus desejos
+pessoais como um câncer. Suas habilidades denotam um
+misticismo implícito e misterioso que os cerca e acompanha;
+muitas vezes, eles surgem apenas onde e quando são
+necessários.
+A maioria dos andarilhos fantasmas é composta de comba-
+tentes, mas suas características anteriores lembram guerrei-
+ros, monges ou rangers. Os ex-bárbaros, paladinos caídos,
+ladinos e alguns bardos também escolhem as estradas poei-
+rentas da vida de andarilho. Os magos, clérigos, druidas e
+feiticeiros raramente se tornam andarilhos fantasmas, mas
+existem algumas exceções.
+Dado de Vida: dlO
+14
+Nível
+10
+20
+30
+40
+50
+60
+70
+80
+90
+Bônus Base
+de Ataque Fortitude Reflexos
++1
++2
++3
++5
++6
++7
++8
++9
++10
++2
++3
++3
++4
++4
++5
++5
++6
++6
++0
++1
++1
++2
++2
++2
++3
++3
+Vontade
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
+Especial
+Recompensa Dolorosa +1, Aura Resoluta, Anonimato
+Morte Aparente, Recompensa Dolorosa +2
+Vontade de Ferro Superior, Recompensa Dolorosa +3
+Forma Etérea l/dia, Recompensa Dolorosa +4
+Andar nas Sombras, Recompensa Dolorosa +5
+Recompensa Dolorosa +6
+Forma Etérea 2/dia, Recompensa Dolorosa +7
+Recompensa Dolorosa +8
+Recompensa Dolorosa +9
+Forma Etérea 3/dia, Recompensa Dolorosa +10

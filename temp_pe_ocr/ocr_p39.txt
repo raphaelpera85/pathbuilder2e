@@ -1,0 +1,109 @@
+﻿38
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+Pré-Requisitos
+Para se tornar um punho de Hextor, o personagem deve
+preencher todos os seguintes critérios:
+Bônus Base de Ataque: +5
+Tendência: Leal e Mau, Neutro e Mau ou Leal e Neutro.
+Talentos: Ataque Poderoso, Trespassar, Usar Arma
+Simples (manopla com cravos).
+Intimidar: 4 graduações.
+Observar: 4 graduações.
+Conhecimento (Religião): 4 graduações.
+Outros: É necessário servir a Hextor e sobreviver à ceri-
+mônia ritual de iniciação dos Punhos de Hextor (consulte
+Organizações, na pág. 44 desse livro).
+Perícias de Classe
+As perícias de classe de um Punho de Hextor (e a habilidade
+chave para cada perícia) são: Cavalgar (Des), Conhecimento
+(Religião) (Int), Escalar (For), Intimidar (Car), Observar
+(Sab), Profissão (Int) e Sentir Motivação (Sab). Consulte o
+Capítulo 4: Perícias, no Livro do Jogador, para obter as descri-
+çôes das perícias.
+Pontos de Perícia a cada nível: 2 + modificador de
+Inteligência.
+Características da Classe
+Usar Armas e Armaduras: Os Punhos de Hextor
+sabem usar todas as armas simples e comuns, todos os tipos
+de armaduras e escudos.
+Golpe Brutal (Ext): A Igreja de Hextor treina seus
+templários para lutarem com uma eficiência implacável. A
+cada ação, o Punho pode adicionar o bônus indicado na
+sua jogada de ataque ou dano, mas nunca em ambas. O
+jogador precisa declarar onde usará seu bônus no início do
+seu turno.
+Aumento de Força (Ext): A partir do 20 nível, o
+Punho pode invocar Hextor e receber +4 de bônus de
+Força uma vez por dia. O personagem conseguirá ativar
+essa habilidade uma vez a mais por dia a cada 3 níveis além
+do 20. Este bônus permanece durante 4 rodadas + o nível
+do Punho.
+Presença Aterradora (Ext): Quando um Punho de
+Hextor alcança 0 30 nível, ele adquire a habilidade extraor-
+dinária de inspirar medo nos seus inimigos como uma ação
+livre, uma vez por dia. O Punho precisa realizar alguma
+ação dramática na rodada de ativação dessa habilidade; ela
+afetará apenas os oponentes capazes de enxergá-lo (ou ouvi-
+10, dependendo da ação). O alcance dessa habilidade equi-
+vale a 1,5 m por nível da classe de prestígio. Todas as criatu-
+ras (exceto outros Punhos) dentro deste raio ficarão assusta-
+das durante 5d6 rodadas; as criaturas que obtiverem sucesso
+no teste de resistência ficarão apenas abaladas. A CD para o
+teste de resistência de Vontade é 10 + o nível do Punho + o
+modificador de Carisma. Esta habilidade extraordinária
+gera um efeito de ação mental e de medo. O personagem
+conseguirá ativar essa habilidade uma vez a mais por dia a
+cada 3 níveis além do 30.
+VINGADOR ESCARLATE
+O Vingador Escarlate é o mestre absoluto do chi, um ensi-
+namento antigo e fascinante que lhe permite realizar feitos
+extraordinários. Por meio de estudo e treinamento, o
+vingador aprende a canalizar essa energia e ativar uma
+grande variedade de efeitos, inclusive a capacidade de
+causar dano aos adversários liberando a energia chi de seu
+próprio corpo. Embora seus objetivos primários estejam
+relacionados com um ajuste de contas muito antigo
+(consulte a organização dos Vingadores Escarlates, pág. 52,
+para obter mais detalhes), em certas ocasiões os vingadores
+escarlates aceitam trabalhar para indivíduos capazes de
+pagar por seus serviços, tornando-se agentes da destruição
+e da ruína.
+A maioria dos vingadores escarlates é composta por
+monges: o domínio do chi é uma extensão natural das habili-
+dades dessa classe. Algumas vezes, os guerreiros, rangers e
+paladinos adotam a classe de prestígio, tornando-se comba-
+tentes mais formidáveis devido aos modificadores de inicia-
+tiva e da habilidade chi. Os ladinos podem aproveitar a versa•
+tilidade do domínio do chi, enqyanto os druidas consideram
+o estudo dessa energia interior uma forma de ampliar os
+horizontes do mundo natural.
+Dado de Vida: d8
+Pré-Requisitos
+Para se tornar um vingador escarlate, o personagem deve
+preencher todos os seguintes critérios:
+Bônus Base de Ataque: +5
+Talentos: Ataque Desarmado Aprimorado, Ataque
+Atordoante.
+Acrobacia: 8 graduações.
+Ouvir: 8 graduações.
+Perícias de Classe
+As perícias de classe de um vingador escarlate (e a habili-
+dade chave de cada perícia) são: Acrobacia (Des), Equilíbrio i
+(Des), Esconder-se (Des), Furtividade (Des), Obter Informa-
+ção (Car), Observar (Sab) e Ouvir (Sab). Consulte o Capítulo
+4: Perícias, no Livro do Jogador, para obter as descrições das L
+perícias.
+Pontos de Perícia a cada nível: 4 + modificador de
+Inteligência.
+Características da Classe
+Usar Armas e Armaduras: Os vingadores escarlates
+sabem usar todas as armas simples, armaduras leves, médias
+e escudos (Observação: As armaduras mais pesadas que um
+corselete de couro impõem penalidades nas perícias Escon-
+der-se e Furtividade, entre outras).
+Ki: No 10 nível, o vingador escarlate adquire uma
+compreensão maior sobre a habilidade sobrenatural de
+controlar e canalizar o chi. O chi é a fonte da energia gerada
+pelos seres vivos e que flui dentro de todos eles. A maior
+parte do treinamento de um vingador é devotada ao entendi-
+mento e concentração dessa energia; os efeitos que os inte-

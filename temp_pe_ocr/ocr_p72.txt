@@ -1,0 +1,161 @@
+﻿quando é usada para desarmar um oponente (inclusive no
+teste para evitar ser desarmado caso a tentativa fracasse). É
+possível utilizar essa arma como uma adaga normal, mas
+nesse caso todas as penalidades por combater com duas
+armas se aplicam normalmente.
+Arpão: O arpão é uma lança de ponta larga, repleta de
+farpas afiadas. A haste do arpão contém uma corda de tração,
+usada para arrastar a vítima atingida. Embora seu uso primá-
+rio seja caçar baleias e outras criaturas marítimas grandes, é
+possível utilizá-lo em terra firme. Mesmo que tenha o talento
+Usar Arma Exótica (arpão), qualquer criatura Pequena ou
+menor sofrerá —2 de penalidade nas suas jogadas de ataque
+em função do peso da arma.
+Caso inflija dano ao oponente, o arpão se alojará no corpo
+da vítima, a menos que ela obtenha sucesso num teste de
+resistência de Reflexos (CD 10 + o dano sofrido). As criaturas
+arpoadas percorrem apenas metade de seu deslocamento e
+são incapazes de correr ou atacar em Investida. Se o arpoador
+segurar a corda de tração —— obtendo sucesso num teste resis-
+tido de Força a vítima somente conseguirá se mover na
+área permitida pela corda (uma corda de tração tem 10
+ARMAS EXÓTICAS — ATAQUE À DISTÂNCIA
+CAPÍTULO 5: AS FERRAMENTAS DA ARTE
+metros de comprimento). Caso a vítima tente conjurar uma
+magia, deverá obter sucesso num teste de Concentração (CD
+15) ou perderá a magia.
+Qualquer criatura arpoada é capaz de retirar a arma do seu
+corpo usando uma ação de rodada completa, mas precisará
+ter as duas mãos livres. Isso é doloroso e causará uma quanti-
+dade de dano equivalente ao dano inicial infligido pelo
+arpão; por exemplo, se a arma causou 8 pontos de dano
+quando se alojou, remover o arpão infligirá mais 8 pontos de
+dano.
+Azagaia Giratória: Esta lança leve e flexível foi desen-
+volvida para ataques à distância; ela parece uma azagaia
+comum, exceto pelas ranhuras em espiral que recobrem seu
+cabo. É possível enrolar uma linha de arremesso em torno da
+arma (uma ponta da linha ficará presa ao seu dedo). A linha
+fará a azagaia girar após o arremesso, elevando sua precisão,
+alcance e capacidade de penetração, graças ao seu trajeto
+mais retilíneo. Preparar a arma para arremessá-la é uma ação
+equivalente a movimento que provoca ataques de
+oportunidade. Amarrar a corda de arremesso ao dedo é uma
+ação de rodada completa que provoca ataques de oportuni-
+Arma
+Miúdo
+Fukimi-Bari (dardos bucais)
+Pedra Halfling de Ricochete
+Pequeno
+Boleadeira dupla
+Médio
+Azagaia Giratória
+Manopla com Atiradeira
+Grande
+Arpão
+Besta Maciça
+Pedra de Arremesso Orc
+Especial
+Chicote, Reforçado*
++1 bônus de For
++2 bônus de For
++3 bônus de For
++4 bônus de For
+Chicote.ferrão
+Chicote-ferrão, Reforçado*
++1 bônus de For
++2 bônus de For
++3 bônus de For
++4 bônus de For
+Custo
+1 PO
+200 PO
+15 PO
+100 PO
+10 PO
+200 PO
+300 PO
+400 PO
+500 PO
+25 PO
+225 PO
+325 PO
+425 PO
+525 PO
+Dano
+Id3
+Id8
+Id4
+Id10
+Id12
+2d6
+1 d2S
+Id2S
+1 d2S
+Id2S
+Id6
+Id6
+Id6
+Id6
+Id6
+Incremento
+Decisivo
+19-20/x 2
+19-20/x 2
+19-20/x 3
+19-20/x 2
+19-20/x 2
+19-20/x 2
+19-20/x 2
+19-20/x 2
+de Distância
+15m
+10m
+45 m
+4,5 m*
+4,5 m*
+4,5 m*
+Peso
+50 g
+125 g
+1 kg
+2 kg
+7,5 kg
+7,5 kg
+1,5 kg
+2 kg
+2,5 kg
+3 kg
+kg
+2 kg
+2,5 kg
+3 kg
+3,5 kg
+100g
+100 g
+Tipo
+Perfurante
+Concussão
+Concussão
+Perfurante
+Perfurante
+Perfurante
+Perfurante
+Concussão
+Cortante
+Cortante
+Cortante
+Cortante
+Cortante
+Cortante
+Cortante
+Cortante
+Cortante
+Munição (não são consideradas armas exóticas)
+Flecha de Alquimista (1)
+Virote Acrobata (1)
+75 PO
+50 PO
+71
+* Veja a descrição da arma para regras especiais.
+S A arma causa dano por contusão em vez de dano normal.

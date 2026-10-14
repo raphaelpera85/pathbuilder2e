@@ -1,0 +1,145 @@
+﻿CAPÍTULO 2: CIASSES DE PRESTÍGIO
+Pré-Requisitos
+Para se tornar um protetor tribal, o personagem deve preen-
+cher todos os seguintes critérios:
+Bônus Base de Ataque: +5
+Raça: Qualquer humanóide ou humanóide mons-
+truoso, exceto anões, elfos, gnomos, halflings,
+meio-elfos ou humanos.
+Tendência: Idêntica à maio-
+ria dos membros da tribo.
+Talentos: Ataque Poderoso,
+Trespassar, Trespassar Aprimorado.
+Sobrevivência: 4
+graduações.
+Perícias de Classe
+As perícias de classe de
+um Protetor Tribal (e a
+habilidade chave para
+cada perícia) são:
+Blefar (Car), Escalar
+(For), Esconder-se
+(Des), Furtividade
+(Des), Intimidar
+(Car), Ofícios (Int), Saltar
+(For), Senso de Direção
+(Sab), Sentir Motivação (Sab) e
+Sobrevivência (Sab). Consulte
+o Capítulo 4: Perícias, no
+Livro do Jogador, para obter
+as descrições das perícias.
+Pontos de Perícia a cada
+nível: 4 + modificador de
+Inteligência.
+Características da Classe
+Usar Armas e Armaduras: Os protetores tribais
+sabem usar todas as armas simples e comuns, todos os tipos
+de armaduras e escudos.
+Talentos Adicionais: O protetor tribal recebe um
+talento adicional ao atingir 0 10, 50 e 90 níveis. Esses talentos
+adicionais devem constar na lista de talentos adicionais dos
+guerreiros.
+TABELA 2—17: O PROTETOR TRIBAL
+Inimigo Tribal: No 10nível, o protetor tribal seleciona
+um grupo específico de pessoas ou monstros como seu
+inimigo tribal; esse grupo deve ser muito mais limitado
+que uma categoria de inimigos
+prediletos do ranger. Os inimigos
+tribais podem incluir os humanos
+nativos de tribos vizinhas, membros
+de uma religião específica, uma tribo
+humanóiderival ou os drow das
+montanhas circunvizinhas. Os
+protetores tribais recebem +3 de
+bônus em testes de Blefar e
+Sentir Motivação, além de +3 de
+bônus nas jogadas de dano,
+contra os inimigos selecionados.
+O bônus de dano não se aplica
+a criaturas imunes a sucessos
+decisivos, nem ao dano
+causado por armas de ataque
+à distância disparadas contra
+alvos a mais de 9 metros de
+'distância. Caso um protetor
+tribal também seja um
+ranger, precisará escolher um
+subgrupo dos seus inimigos
+prediletos como inimigo
+tribal; os bônus das duas
+habilidades se acumulam
+Terra Natal: O protetor tribal
+recebe +2 de bônus em testes de Escon-
+der-se, Furtividade, Senso de Direção e
+Sobrevivência quando estiver no mesmo tipo de terreno e
+área geográfica da terra natal de sua tribo. Alguns exemplos
+de terras natais incluem o Condado de Urnst, a Floresta de
+Adri e o Vale do Mago. Esses bônus refletem a familiaridade
+do protetor com o meio-ambiente de sua terra.
+Combate Selvagem (Ext): Similar ao ataque 'rajada de
+golpes' do monge; um protetor tribal de 20 nível se entrega
+a um frenesi selvagem de combate, atacando em uma
+tempestade de golpes e investidas ferozes. O personagem
+recebe um ataque extra por rodada, usando seu bônus de
+ataque mais elevado, mas todos os ataques dessa rodada
+1
+36
+Nível
+10
+20
+30
+40
+50
+60
+70
+80
+90
+Bônus Base
+de Ataque Fortitude Reflexos
++1
++2
++3
++4
++5
++6
++7
++8
++9
++10
++2
++3
++3
++4
++4
++5
++5
++6
++7
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
+Vontade
++0
++1
++2
++2
++3
++3
+Especial
+Talento Adicional, Inimigo Tribal, Terra Natal
+Combate Selvagem
+Bônus de Terreno na CA +2
+Destruir Ilidia
+Talento Adicional
+Bônus de Terreno na CA +3
+Destruir 2/dia
+Bônus de Terreno na CA +4
+Talento Adicional
+Destruir 3/dia

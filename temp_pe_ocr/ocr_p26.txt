@@ -1,0 +1,162 @@
+﻿de
+r)
+tia
+10
+s.
+ir
+10
+r)
+e
+e
+1.
+O
+3
+S
+Golpe de Misericórdia Aprimorado: Você elimina
+os adversários derrotados rapidamente ou de maneiras
+impressionantes. Você pode usar uma arma branca para
+desferir um golpe de misericórdia usando uma ação padrão.
+Caso queira impressionar a multidão, é possível usar uma
+ação de rodada completa para executar o golpe de misericór-
+dia; nesse caso, o gladiador recebe +2 de bônus de moral nas
+jogadas de ataque até o fim do combate.
+Usar Venenos: Você foi treinado no uso de venenos da
+mesma forma que os assassinos. Pergunte ao Mestre para
+obter mais detalhes sobre as regras para venenos encontradas
+no Livro do Mestre.
+'Faça-os Sangrar' (Ext): Você foi treinado para acertar
+golpes que sangram muito. Quando o gladiador causar dano
+com uma arma cortante, o ferimento causará 1 ponto de dano
+a cada rodada subseqüente, até que um teste de Cura (CD 15)
+ou qualquer magia de cura sejam aplicados sobre ele, ou
+durante 10 rodadas menos o modificador de Constituição da
+vítima. Os efeitos de vários ferimentos se acumulam, mas as
+criaturas que não tenham uma anatomia distinta, como os
+constructos, os mortos-vivos e as plantas, são imunes a essa
+habilidade.
+A Platéia vai à Loucura: Cada golpe certeiro do gladia-
+dor fará os espectadores o aclamarem com mais vigor. Se o
+personagem já os tiver conquistado com a habilidade Furor
+da Platéia, ele receberá +2 de bônus de moral nas jogadas de
+dano do primeiro ataque a atingir o alvo. Este bônus aumenta
+em +2 para cada golpe consecutivo que cause dano ao
+adversário. A contagem será reiniciada se o gladiador não
+atingir a vítima.
+Iniciado da Ordem do Arco
+O Caminho do Arco é utilizado por alguns praticantes para
+I alcançar a iluminação espiritual, mas outros o encaram como
+uma arte filosófica. Há pessoas que o consideram um modo
+de vida e algumas que o veneram como uma cerimônia
+religiosa. É claro que muitos consideram a arte de lutar com
+um arco uma capacidade importante num mundo perigoso.
+O Caminho do Arco sempre será aquilo que o personagem
+fizer dele, mas ele abrange os seguintes conceitos:
+Através do estilo de arquearia, é possível determinar a
+personalidade de um indivíduo.
+TABELA 2—10: O INICIADO DA ORDEM DO ARCO
+Bônus Base
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+O Caminho do Arco é uma arte espiritual. Ao estudá-la, o
+arqueiro descobre a si mesmo. Conforme se aprimora no
+Caminho do Arco, o arqueiro aprimora a si mesmo.
+O Caminho do Arco é uma arte marcial altamente medita-
+tiva, cujos objetivos finais são a Verdade, a Bondade e a Beleza.
+Quando lhe perguntam "O que é a Verdade?", um mestre
+arqueiro apanha seu arco, dispara uma flecha e, sem dizer
+uma única palavra, deixa que sua maestria com o arco sirva
+de escala para seu progresso ao longo do "caminho", expondo
+dessa forma seu conhecimento em relação à realidade ou à
+"verdade".
+O Caminho do Arco engloba precisão e disciplina: ele
+representa o relacionamento que o personagem tem com seu
+arco, suas flechas, seu corpo e sua mente. O Caminho do
+Arco é meditação plena. Quando o arqueiro mira, enxerga
+um reflexo da sua mente num espelho: o alvo é esse espelho.
+Quando finalmente dispara, livra-se do próprio ego. É possí-
+vel enxergar sua própria mente no disparo.
+Os guerreiros compõem maior parte dos iniciados da Ordem
+do Arco. Os rangers experientes, paladinos e alguns bárbaros
+mais poderosos também seguem essas filosofias e técnicas.
+Dado de Vida: dlO
+Pré-Requisitos
+Para se tornar um iniciado da Ordem do Arco, o personagem
+deve preencher todos os seguintes critérios:
+Bônus Base de Ataque: +5
+Talentos: Tiro Certeiro, Precisão, Tiro Rápido, Usar Arma
+Comum (arco longo ou curto, comum ou composto), Foco
+em Arma (arco longo ou curto, comum ou composto), Espe-
+cialização em Arma (arco longo ou curto, comum ou
+composto).
+Conhecimento (Religião): 2 graduações.
+Perícias de Classe
+As perícias de Classe de um iniciado da Ordem do Arco (e a
+habilidade chave para cada perícia) são: Cavalgar (Des),
+Conhecimento (religião) (Int), Natação (For), Ofícios (arcos)
+(Int) e Observar (Sab). Consulte o Capítulo 4: Perícias, no
+Livro do Jogador, para obter as descrições das perícias.
+Pontos de Perícia a cada nível: 2 + modificador de
+Inteligência.
+Nível
+10
+30
+40
+50
+60
+70
+80
+90
+100
+de Ataque Fortitude Reflexos Vontade
+Espeaal
+Disparo Furtivo +1d6
+Tiro a Queima-roupa
+Disparo Furtivo +2d6
+Foco em Arma Superior
+Disparo Furtivo +3d6
+Ataque Livre, Arquearia Zen
+Especialização em Arma Superior
+Disparo Furtivo +4d6
+Ricochete
+Disparo Furtivo +5d6
+4
+25
+y.
++1
++2
++3
++4
++5
++6
++7
++8
++9
++10
++0
++1
++1
++1
++2
++2
++2
++3
++3
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7

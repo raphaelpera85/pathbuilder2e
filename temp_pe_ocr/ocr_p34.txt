@@ -1,0 +1,80 @@
+﻿samurai, mas os indivíduos que conseguem se beneficiam
+muito dos aprimoramentos marciais da classe de prestígio.
+Dado de Vida: dlO
+Pré-Requisitos
+Para se tornar um mestre samurai, o personagem deve preen-
+cher todos os seguintes critérios:
+Bônus Base de Ataque: +5
+Tendência: Qualquer uma Leal
+Talentos: Iniciativa Aprimorada, Combate Montado,
+Arqueirismo Montado, Ataque Poderoso, Trespassar, Foco
+em Arma (espada bastarda).
+Cavalgar: 4 graduações.
+Conhecimento (Nobreza e Realeza): 4 graduações.
+Intimidar: 4 graduações.
+Perícias de Classe
+As perícias de classe de um mestre samurai (e a habilidade
+chave para cada perícia) são: Acrobacia (Des), Cavalgar (Des),
+Conhecimento (código de honra marcial) (Int), Conheci-
+mento (nobreza e realeza) (Int), Intimidar (Car) e Saltar
+(For). Consulte o Capítulo 4: Perícias, no Livro do Jogador,
+para obter as descrições das perícias.
+Pontos de Perícia a cada nível: 2 + modificador de
+Inteligência.
+Características da Classe
+Usar Armas e Armaduras: O mestre samurai sabe
+usar todas as armas simples e comuns, todos os tipos de
+armaduras e escudos.
+Código de Conduta: O mestre samurai deve
+pertencer a uma tendência Leal e obedecer ao
+código de honra marcial (veja a coluna lateral). Caso
+o mestre samurai viole esse código, precisará se
+redimir cumprindo alguma tarefa árdua ou desagradável; se a
+violação for muito grave, talvez o senhor feudal lhe peça para
+cometer suicídioxitual. Em algumas culturas, quando um
+senhor feudal é morto, derrotado ou desonrado, espera-se
+que seus mestres samurais o acompanhem no suicídio ritual.
+Apoio: O mestre samurai receberá armas e armaduras
+comuns 'e obras-primas (mas não mágicas), acomodações,
+alimentação, transporte adequado e qualquer outro requisito
+imprescindível do seu senhor feudal enquanto obedecê-lo e
+respeitar o código. Os mestres samurais que não servem a um
+senhor feudal são chamados ronins e não recebem os benefi-
+cios do Apoio.
+Bônus em Acrobacia: No 10 nível, o mestre samurai
+recebe +2 de bônus de competência em testes de Acrobacia.
+Trespassar Aprimorado: No 10 nível, o mestre samu-
+rai recebe este talento gratuitamente.
+Lâminas da Fúria: Quando o mestre samurai adiar um
+ataque com sua katana até ser atacado na mesma rodada,
+poderá obter vantagem da guarda aberta do oponente e rece-
+berá +2 de bônus nas jogadas de ataque e dano. Em outras
+palavras, é necessário adiar sua ação até depois do samurai
+sofrer um ataque corporal para receber esse bônus.
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+€JJf
+4. / 32<7
+Trespassar Supremo: Ao atingir 0 20 nível, o mestre
+samurai adquire o talento para se deslocar 1,5 m antes de
+realizar um ataque de Trespassar ou Trespassar Aprimorado.
+Mobilidade Suprema: O mestre samurai recebe +6 de
+bónus de esquiva na CA contra os ataques de oportunidade
+provocados quando ele entra ou sai de uma área ameaçada.
+Observação: Qualquer condição que o faça perder seu bônus
+de Destreza na CA (caso exista) também o fará perder esse
+bônus de esquiva. Essa habilidade substitui o talento
+Mobilidade.
+Lâminas da Morte: Quando o mestre samurai empu-
+nha sua katana como uma arma de duas mãos, adiciona o
+dobro do seu modificador de Força ao dano causado.
+Força chi (Ext): A partir do 50 nível, o mestre samurai
+aprende a canalizar seu chi, a fonte de energia e força interior
+compartilhada por todas as criaturas vivas. O samurai pode
+adicionar +2 ao seu valor de Força durante uma quantidade
+de rodadas equivalente ao seu modificador de Sabedoria.
+Golpe chi (Ext): A partir do 60 nível, o mestre samurai
+adquire a habilidade extraordinária de infundir a energia chi
+aos seus ataques corporais como uma ação livre. O dano
+proveniente deste ataque será capaz de ferir até mesmo as
+criaturas com Redução de Dano. Quando ativar essa habili-
+33

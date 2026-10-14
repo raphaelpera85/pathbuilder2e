@@ -1,0 +1,114 @@
+﻿P(JDHOS e
+Um Suplemento para Guerreiros e Monges
+Jason Carl
+Créditos
+Design Adicionais e Desenvolvimento:
+Editor:
+Diretor de Criação:
+Diretor de Arte:
+Ilustração da Capa:
+Ilustrações Internas:
+Desenvolvimento Gráfico:
+Cartógrafo:
+Tipografia:
+Desenvolvimento Gráfico:
+Gerente de Produção:
+Assessoria Legal:
+Andy Collins, Monte Cook, Bruce Cordell, Dale Donovan,
+David Eckelberry, David Noonan, Jonathan Tweet, James Wyatt
+Dale Donovan
+Ed Stark
+Dawn Murin
+Jeff Easley
+Dennis Cramer
+Sean Glenn e Sherry Ford
+Dennis Kauth
+Erin Dorries
+Larry Weiner, Josh Fischer
+Chas DeLong
+Brian Lewis
+A pedra de ricochete halfling e a classe de prestígio Duelista apareceram originalmente na revista Dragon Magazine no 275.
+Nossos agradecimentos à equipe da revista por sua colaboração.
+Baseado nas regras originais de Dungeons & Dragons criadas por Gary Gygax e Dave Arneson e na 3a Edição de D&D
+desenvolvida por Jonathan Tweet, Monte Cook, Skip Williams, Richard Baker e Peter Adkison.
+Esse produto é uma obra de ficção e deve ser encarado como tal. A classe Mestre Bêbado representa um herói ficcional álcool faz mal à saúde!.
+Lembre-se de manter o jogo na mesa e aprecie suas tardes de insônia.
+U.S.. CANADA.
+ASIA. PACIFIC, & LATIN AMERICA
+Mzards oftbe Coast, Inc.
+?.O. Box 707
+Renton WA 980'7•0707
+COPYRIGHT@ Wizards Coast
+at'd
+EUROPE.ANHE.ADQVARTERS
+Wrzards oftbc Cout, Bclõum
+Bcrcbem
+mmgcons & Dragons e o logo da Waards ofthc Coast sio marcas registradas, propriedade
+da Wizards ofthc Coast, Inc. O logo d10 system é mama cotncrctal registrada. propriedade
+da Wtz.ards of the Coast. Inc. Todos os nomes e catEterísticas "o marcas
+comerciais registradas da Wizards oftbc Coast, Inc. Este material está protegido pelas leis
+dc copyright dos Estados Unidos da Aménca- É terminantcmcntc proibida a reproduçáo ou
+utilizaçáo náo autorizada dos materiais ou aqui contidos sem a
+Belõutn expressa e porescritoda Wtzardsofthc Coast, Inc. Esse produto é uma obra dc semelhança com
+lugares, organizaçócsou pessoas reais é mera coincidéncaa@ woo,toot. WaardsoftheCoast, Inc. Impresso no
+Brasil Todos os direitos reservados. A cdiçáo onginal desta obra foi publicada em inglês pr Wvzards oftbc Coast,
+Inc. dc Seattlc com o titulo Sword and Fut.
+EDIÇÃO BRASILEIRA
+Ttrul..o ORIGINAL & DRAGONs: SWORD
+COORDENAÇÃO EDITORIAL
+ISBN: 85-7532-032-7
+PUBLICADO EM JUNHO/2002
+DADOS INTERNACIONAIS DE CATALOGAÇÃO NA PUBLICAÇÃO (CIP)
+(CÂMARA BRASILEIRA DO LIVRO, SP, BRASIL)
+Carl, Jason
+Dungeons & Dragons: Punhos e Espadasl / Jason ; ilustradores
+Dennis Cramer e Jeff Easley ; Tradução: Bruno Cobbi Silva Sio Paulo :
+Devir, 2002.
+Título Original: Dungeons & Dragons : Sword and Fist
+TRADUÇÃO.
+REVISÃO: DOUGLAS RICARDO GUIMARÃES E DEBORAH FISK
+EDITORAÇÃO ELETRÔNICA: TINO CHAGAS
+AGRADECIMENTOS:
+D — A todos os bons bonsais.
+& D3 -- Aos jogadores que mantém o RPG nas mesas! Boas aventuras!
+"Altino Veio rápido, saiu rápido.
+Cobbi -- Ao pessoal da Aliança e do D3 System, que possibilitaram esse trampo.
+Todos os direitos reservados e protegidos pela Lei 5988 de 14/12/73.
+É proibida a reprodução total ou parcial, por quaisquer meios
+existentes ou que venham a ser criados no futuro
+sem autorização prévia, por escrito, da editora.
+Todos os direitos desta edição reservados sa
+d!llir
+DEVIR LIVRARIA LTDA.
+1. Jogos de aventura 2- Jogos de Fantasia
+02-2246
+índices para catálogo sistemático:
+1. Jogos de aventura : Recreaçao
+2. Jogos de fantasia : Recreação
+3. "Roleplaying games": Recreação
+CDD793.9
+793.9
+793.9
+793.9
+BRASIL
+Rua Teodureto Souto, 624
+CEP 01599-970 Paulo sp
+Fone: (t 1) 3272-8200
+Fax (11) 3272-8264
+Site: www.devir.eom.br
+PORTUGAL
+ESPANHA
+Av. Inhnte D. Henrique, 332 Rambla Catalunya. i 17
+Pátio Traseiro, ed 3
+1800-224 -
+Fone (35) 21 8310045
+Fax (35) 21 8380591
+devit@devir.pt
+Site www.devir.pt
+Principal
+08008 - Barcelona
+Fone (34) 93 238-9870
+Fax (34) 93 4191342
+Site: ww.devir.pt/spain/
+no Brasil
+1

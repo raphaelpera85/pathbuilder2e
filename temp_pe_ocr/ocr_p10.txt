@@ -1,0 +1,104 @@
+﻿Pré-Requisitos: Bónus base de ataque +3, Tiro Certeiro,
+Precisão.
+Benefício: Você recebe +2 de bônus nas jogadas de
+ataque à distância contra alvos protegidos por qualquer
+cobertura. Este talento não afeta os adversários que estive-
+rem sem cobertura alguma ou sob cobertura total.
+Punhos de Ferro [Geral]
+Você aprendeu os segredos de imbuir força extra em seus
+ataques desarmados.
+Pré-Requisitos: Bônus base de ataque +2, Ataque Desar-
+mado Aprimorado.
+Benefício: Declare que está utilizando esse talento antes
+de realizar uma jogada de ataque (logo, uma falha na jogada
+de ataque gasta a tentativa). Você causará Id4 pontos de dano
+adicionais quando atingir um adversário com um ataque
+desarmado. É possível usar esse talento uma quantidade de
+vezes por dia equivalente a 3 + seu modificador de Sabedoria.
+Rajada Relâmpago [Geral]
+Sua perícia e agilidade lhe permitem aplicar uma série de
+golpes extremamente rápidos.
+Pré-Requisitos: 40 nível de monge, Des 15+.
+Benefício: Você pode realizar dois ataques extras na
+mesma rodada. Todas as jogadas de ataque dessa rodada
+sofrem -5 de penalidade. A utilização deste talento exige uma
+ação de ataque total. É impossível executar uma Rajada
+Relâmpago e uma Rajada de Golpes ao mesmo tempo.
+Rapidez de Recarga* [Geral]
+Você consegue recarregar bestas muito rapidamente.
+Pré-Requisitos: Bônus base de ataque +2, Talento Usar
+da besta em questão.
+Benefício: O personagem poderá recarregar uma besta
+de mão ou uma besta leve como uma ação livre que provoca
+ataques de oportunidade. Ele poderá recarregar uma besta
+pesada usando uma ação equivalente a movimento, que
+também provoca esse tipo de ataque. Não é possível usar esse
+talento mais de uma vez por rodada.
+Normal: Recarregar uma besta de mão ou leve exige uma
+ação equivalente a movimentação; recarregar uma besta
+pesada requer uma ação de rodada completa.
+Salto do Louva-a-Deus [Geral]
+Você desfere um poderoso ataque quando salta na direção do
+adversário.
+Pré-Requisitos: 70 nível de monge, 5 graduações em
+Saltar.
+Benefício: Escolha um oponente que esteja dentro da
+distância máxima capaz de ser percorrida com um salto bem-
+sucedido; realize um teste normal de Saltar; caso obtenha
+sucesso, você poderá desferir um ataque de Investida regular
+contra o oponente escolhido como parte da mesma ação.
+Caso o ataque atinja o adversário, você causará o dano normal
+mais o dobro do seu modificador de Força.
+CAPÍTULO l: TALENTOS E PERÍCIAS
+Separar Aprimorado* [Geral]
+Você é capaz de atingir seus ataques exatamente onde deseja
+que eles acertem.
+Pré-Requisitos: Bônus base de ataque +2, Separar.
+Benefício: Quando acerta a arma de um oponente, você
+causa o dobro do dano.
+Sobrepujar Escudos* [Geral]
+Você sabe como ultrapassar a guarda do seu oponente, sobre-
+pujando a defesa do seu escudo.
+Pré-Requisitos: Bônus base de ataque +4, Combater
+com Duas Armas.
+Benefício: Este talento somente pode ser utilizado
+contra oponentes que estejam empunhando um escudo e
+pertençam a uma categoria de tamanho inferior, superior ou
+igual a categoria do personagem. Faça uma jogada de ataque
+contra o escudo do inimigo usando a arma da mão inábil, de
+acordo com as regras normais para atingir armas (veja a pág.
+136 do Livro do Jogador). Caso obtenha sucesso, você terá
+imobilizado momentaneamente o escudo do adversário com
+seu ataque; imediatamente depois, será possível realizar um
+ataque de oportunidade contra ele, usando sua arma primária
+— aplique seu bônus total de ataque. O oponente não rece-
+berá nenhum beneficio devido ao escudo contra esse ataque
+de oportunidade. É impossível utilizar esse talento empu-
+nhando apenas uma arma (exceto as duplas).
+Toque da Dor [Geral]
+Você causa uma dor intensa aos oponentes atingidos por seus
+ataques atordoantes.
+Pré-Requisitos: Bônus base de ataque +2, Ataque Ator-
+doante, Sab 19+.
+Benefício: As vítimas dos seus ataques atordoantes
+sofrem uma dor debilitante e ficam nauseadas durante 1
+rodada após a rodada de atordoamento normal. Esse talento
+precisa ser utilizado em conjunto com a habilidade Ataque
+Atordoante dos monges ou o talento Ataque Atordoante. As
+criaturas imunes a ataques atordoantes também são imunes
+ao uso desse talento, assim como qualquer criatura que tenha
+duas categorias de tamanho superiores ao personagem.
+Ultrapassar Aprimorado* [Geral]
+Você foi treinado para ultrapassar os oponentes menores
+que você.
+Pré-Requisitos: Especialização, Encontrão Aprimo-
+rado, Imobilização Aprimorada, For 13+, Ataque Poderoso.
+Benefício: Quando você tentar usar a manobra Ultrapas-
+sar (LdJ, pág. 139) contra oponentes que pertençam a uma
+categoria de tamanho inferior à sua, ele não pode escolher
+evitá-lo. Caso você o derrube, poderá desferir imediatamente
+um ataque de oportunidade contra ele, recebendo +4 de
+bônus na sua jogada de ataque contra oponentes caídos.
+Normal: O alvo da manobra Ultrapassar escolhe entre
+evitá-lo ou bloqueá-lo.
+9

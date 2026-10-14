@@ -1,0 +1,144 @@
+﻿CAPÍTULO 2: CLASSES DE PRESTÍGIO
+Adestrar Animais: 4 graduações
+Conhecimento (Nobreza e Realeza): 4 graduações
+Cavalgar: 6 graduações
+Equipamento: Armadura pesada (obra-prima) e um
+escudo grande (obra-prima).
+Perícias de Classe
+As perícias de classe de um cavaleiro (e a habilidade chave
+para cada perícia) são: Cavalgar (Des), Conhecimento
+(nobreza e realeza) (Int), Diplomacia (Car), Intimidar (Car) e
+Profissão (Int). Consulte o Capítulo 4: Perícias,
+no Livro do Jogador para obter as descrições
+das perícias.
+Pontos de Perícia a cada nível: 2 +
+modificador de Inteligência.
+Características da
+Classe
+Usar Armas e Armaduras:
+O cavaleiro sabe usar todas as
+armas simples e comuns,
+todos os tipos de armaduras
+e escudos.
+Conhecimento
+(Nobreza e Realeza):
+O cavaleiro recebe +2 de
+bônus em todos os testes
+dessa perícia.
+Permanecer na
+Sela: O cavaleiro recebe
+um bônus no seu teste da
+perícia Cavalgar quando
+usa o talento Combate
+Montado para evitar que
+sua montaria seja atingida
+durante a batalha.
+TABELA 2—3: O CAVALEIRO
+Investida Mortífera: Quando o cavaleiro estive
+montado e realizar uma Investida, ele causará o triplo dg
+dano de qualquer arma branca utili-
+zada no ataque (o dano das lanças
+é quadruplicado); essa habili-
+dade pode ser usada uma
+quantidade de vezes por
+dia indicada na tabela
+Esta habilidade supera
+substitui o talento Investidã
+Implacável.
+Bônus Montado (arma): C
+cavaleiro recebe
+bônus (indicado
+tabela) para as joga
+das de ataque
+enquanto estivei
+montado e empu
+nhando a arma
+adequada.
+Bônus em
+Cavalgar: O cavaleiro
+recebe o bônus
+de competência
+indicado em todos
+os seus testes da
+perícia Cavalgar.
+Cavalgada
+Acelerada
+(Ext): A partir do 30
+nível, o cavaleiro pode forçar
+de maneira incomum o
+deslocamento de sua
+montaria. Esta habili-
+dade dobra a distância
+normal percorrida pela
+Nível
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+Bônus Base
+de Ataque Fortitude
+e'
+16
++1
++2
++3
++4
++5
++6
++7
++8
++9
++10
++2
++3
++3
++4
++4
++5
++5
++6
++7
+Reflexos
++0
++1
++1
++1
++2
++2
++2
++3
++3
+Vontade
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
+Especial
+Bônus Montado +1 (lança), Bônus em Cavalgar +2,
+Permanecer na Sela +1
+Investida Mortífera l/dia, Bônus Montado +1 (espada)
+Cavalgada Acelerada, Bônus Montado +2 (lança),
+Permanecer na Sela +2
+Investida Mortífera 2/dia, Bônus Montado +2 (espada), Bônus
+em Cavalgar +4
+Bônus Montado +3 (lança), Permanecer na Sela +3
+Investida Mortífera 3/dia, Ataque Total Montado, Bônus
+Montado +3 (espada)
+Bônus Montado +4 (lança), Bônus em Cavalgar +6,
+Permanecer na Sela +4
+Investida Mortífera 4/dia, Bônus Montado +5 (espada)
+Bônus Montado +5 (lança), Bônus em Cavalgar +8,
+Permanecer na Sela +5
+Investida Mortífera 5/dia

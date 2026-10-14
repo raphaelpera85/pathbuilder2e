@@ -1,0 +1,127 @@
+﻿ga
+10
+Beneficio: A penalidade que você sofre quando dispara
+uma arma de combate à distância sobre uma biga em movi-
+mento é reduzida à metade: —2 em vez de —4 para movimentos
+dobrados, e —4 em vez de —8 quando a biga estiver correndo.
+tropelar com Biga
+Você foi treinado para utilizar sua biga como uma forma de
+e s derrubar seus oponentes.
+10 Pré-requisitos: Perícia Adestrar Animais, Combate de
+'ate
+les
+tác
+ev
+ese
+ides
+10
+10
+10
+10
+15
+20
+20
+20
+25
+25
+30
+Bigas.
+Beneficio: Quando você estiver numa biga e tentar atro-
+pelar um oponente, o alvo não poderá decidir evitá-lo.
+Se derrubar a vítima, cada um dos seus animais podera
+fazer um ataque de casco contra ele, ganhando o
+bônus normal de +4 na jogada de ataque contra
+oponentes caídos. As rodas da biga causam
+2d6 pontos de dano automaticamente, mas o
+condutor deve obter sucesso num teste de
+Adestrar Animais (a CD varia conforme o
+tamanho do alvo) ou haverá uma colisão. Veja
+a tabela de CDs acima.
+olisão Lateral
+Você foi treinado para
+atacar de modo eficiente
+usando as foices laterais
+de sua biga.
+Pré-requisitos:
+Pericia Adestrar
+Animais,
+Combate de
+Bigas.
+Beneficio:
+Durante uma
+Investida, o
+personagem é capaz de se deslocar,
+anobrar a biga, atacar um inimigo com as foices laterais
+as rodas (supondo que elas tenham essa arma) e continuar seu
+CAPÍTULO 5: AS FERRAMENTAS DA ARTE
+O vagão de guerra halfling é grande o suficiente para
+comportar um ser humano, mas seu interior é construído de
+forma a proteger os halflings corajosos que lutarão a partir
+dele. As paredes, o chão e o teto dessa carroça são feitos de
+carvalho resistente (dureza 5, 60 P V); ele tem rodas largas,
+mais difíceis de afundar na lama do campo de batalha.
+A parte interna do vagão é dividida em dois 'andares'. A
+plataforma superior comporta 6 arqueiros, capazes de dispa-
+rar através das inúmeras seteiras nas laterais do veículo. No
+andar mais baixo, ficam agachados 6 halflings "secretos"
+batedores treinados para abrir um alçapão na base da carroça
+e atacar rapidamente qualquer adversário externo enquanto
+o veículo se desloca.
+O último tripulante conduz o vagão a partir
+de um compartimento dianteiro
+lacrado. Alguns desses
+veículos têm balestras sobre o
+teto, recobertas por cúpulas
+giratórias que protegem
+o atirador (meia
+cobertura).
+Dois pôneis de
+guerra robustos
+puxam a carroça.
+Há um aríete
+pesado entre os
+animais, mas
+nem sequer
+essas
+montarias
+treinadas
+investiriam contra
+9
+T-p,.r$
+um muro, portanto o aríete
+é quase decorativo.
+Entretanto, dizem
+os rumores que
+estrategistas
+da raça já
+Capí ovimento. É preciso manter o deslocamento em linha reta
+urante a Investida e o movimento total dessa rodada não pode
+trapassar o dobro do deslocamento do veículo. Nenhum dos
+fensores provocam ataques de oportunidade do alvo.
+vestida com Biga
+de océ foi treinado para realizar uma investida devastadora
+lizar om o seu veículo.
+aque Pré-requisitos: Perícia Adestrar Animais, Combate de
+iogadBigas, Colisão Lateral.
+Class Beneficio: Durante uma ação de Investida a bordo de uma
+10). iga, o personagem causará dano dobrado se atacar com uma
+rma branca (ou triplicado usando uma lança pesada ou longa).
+distâ gão de Guerra Halfling
+uitos clãs de halflings peregrinam entre os vilarejos em
+Abate aravanas de vagões. Portanto, não é nenhuma surpresa que a
+ça adapte essas carroças em tempos de guerra.
+empurraram o vagão de guerra colina abaixo (contra a fortaleza
+inimiga), repleto de combatentes halflings em seu interior.
+O vagão de guerra tem deslocamento de 9 metros, mas é
+incapaz de realizar curvas superiores a 90 graus na mesma
+rodada. Se o condutor escolher uma ação de movimento
+dobrado, conseguirá fazer uma curva de 45 graus.
+Esse veículo tem 3 m de largura e 4,5 m de comprimento.
+Ele custa 5.000 PO, sem os pôneis.
+TORRES, FORTALEZAS
+observa, atrás das seteiras, portões e muralhas de pedra resis-
+tentes, o exército arregimentado sob seu comando. Além
+disso, embora vários monges peregrinem entre as cidades,
+muitos outros estudam e tremam em monastérios e templos
+bem escondidos.
+79

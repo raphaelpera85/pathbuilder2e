@@ -1,0 +1,149 @@
+﻿CAPÍTULO 2: CLASSES DE PRESTÍGIO
+DEFENSOR DEDICADO
+O defensor dedicado é um guardião profissional. Ele é um
+indivíduo treinado para proteger seus clientes de qualquer
+tipo de perigo, muitas vezes tomando o lugar deste como
+alvo de ameaças ou ataques. Em troca de seus serviços, o
+defensor dedicado geralmente exige recompensas em
+moedas, acomodações, alimentação e até mesmo outros
+recursos como cura mágica, mas os detalhes de cada acordo
+dependem do defensor e de seu empregador. Não é
+incomum um nobre ou outras personalida-
+des importantes contratarem pelo menos
+um defensor para sua comitiva pessoal;
+com freqüência, esse guardião se
+torna o chefe da sua guarda
+pessoal.
+A maioria dos defenso-
+res dedicados é composta
+por guerreiros, mas qual-
+quer personagem que
+se torne um defensor
+se beneficiará de seus
+bônus de ataque, de resis-
+tência e na Classe de
+Armadura. Algumas vezes,
+um monge se torna um
+defensor dedicado, assim como
+certos clérigos, em especial
+quando são designados para
+proteger indivíduos
+importantes de sua ordem
+ou clero. Os defensores
+dedicados do Mestre em
+geral serão guerreiros que
+abandonaram o serviço
+militar e entraram no
+ramo de segurança
+pessoal para viver.
+Dado de Vida: d12
+TABELA 2—6: O DEFENSOR DEDICADO
+Bônus Base
+Pré-Requisitos
+Para se tornar um dedicado, o personagem deve
+preencher todos os seguintes critérios:
+Bônus Base de Ataque: +5
+Talentos: Foco em Arma
+(qualquer arma branca),
+Prontidão.
+Procurar:
+4 graduações
+Observar:
+4 graduações
+Sentir
+Motivação:
+4 graduações
+Perícias de
+Classe
+As perícias de classe de
+um defensordedicado
+(e a habilidade chave de
+cada perícia) são: Esca-
+lar (For), Mensa-
+gens Secretas
+(Sab), Observar
+(Sab), Ouvir (Sab),
+Procurar (Int),
+Profissão (Int),
+Saltar (For) e
+Sentir Motivação
+(Sab). Consulte o
+Capítulo 4:
+Perícias, no
+Livro do Jogador
+para obter as descri-
+ções das perícias.
+Pontos de Perícia a cada
+nível: 2 + modificador de Inteligência.
+Nível
+20
+30
+50
+60
+70
+80
+90
+de Ataque Fortitude Reflexos
+Vontade
++1
++1
++1
++2
++2
++3
++3
+Especial
++1
++2
++3
++4
++5
++6
++7
++8
++9
++10
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
++1
++1
++2
++2
++3
++3
++4
++4
++5
++5
+Prostrar-se ao Perigo
+Golpe Defensivo
+Defletir Ataques +1
+Golpe Defensivo +1
+Defletir Ataques +2
+Golpe Defensivo +2
+Defletir Ataques +3
+Golpe Defensivo +3
+Defletir Ataques +4
+Golpe Defensivo +4
+20
+Bónus na CA: Esse bônus defensivo para a Classe de Armadura é adicionado ao modificador normal da CA do personagem. Ele se aplica apenas quando o
+defensor dedicado estiver ativamente envolvido em combate para proteger seu cliente de ataques; nos demais casos, use o bônus normal da CA do
+personagem.

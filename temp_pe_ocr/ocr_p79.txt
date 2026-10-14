@@ -1,0 +1,124 @@
+﻿CAPÍTULO 5: AS FERRAMENTAS DA ARTE
+Jogador apresenta as estatísticas de alguns veículos; a seguir,
+existem duas opções para os jogadores que necessitam de
+meios de transporte mais versáteis.
+Bigas
+Embora a cavalaria de grande parte dos exércitos seja
+composta de soldados em montarias pesadas, algumas nações
+preferem as bigas. Esse veículo é formado por uma plata-
+forma com duas rodas, capaz de sustentar um par de solda-
+dos; ela é puxada por dois cavalos de guerra pesados. A biga é
+feita de madeira e aço e fornece um quarto de cobertura aos
+seus ocupantes.
+O deslocamento desse veículo equivale a 15 metros quando
+é puxado por dois cavalos, mas diminui para 12 metros se
+apenas um animal for usado. As bigas são incapazes de realizar
+curvas superiores a 90 graus na mesma rodada. Se o condutor
+escolher uma ação de movimento dobrado, conseguirá fazer
+uma curva de 45 graus -— depois de realizá-la, será necessário
+percorrer 9 metros antes do veículo alterar sua direção nova-
+mente, ou 12 metros para virá-lo na direção oposta.
+As regras para conduzir uma biga são semelhantes à mecâ-
+nica de Cavalgar e de Combate Montado, mas a perícia rele-
+vante será Adestrar Animais.
+CD
+Tarefa de Adestrar Animais
+Lutar com uma das mãos e conduzir com a outra 5
+Os ataques à distância executados a partir de uma biga em
+movimento sofrem as mesmas penalidades associadas aos
+disparos montados, mas é possível disparar um arco longo
+sobre uma biga.
+Caso esteja usando miniaturas, uma biga tem 1,5 m de
+largura por 3 m de comprimento. Uma biga padrão custa 300
+PO + 100 PO pelas lâminas nas Ela pesa 150 kg e
+comporta até 400 kg, incluindo os passageiros e seu
+equipamento. A tração desse veículo exige no mínimo um
+cavalo de guerra leve.
+Quando um dos animais é eliminado em combate, o
+condutor deve realizar imediatamente um teste de Adestrar
+Animais (CD 15) para liberar suas rédeas e o arreio. Caso
+fracasse, o corpo do animal será tratado como um obstáculo,
+exigindo outro teste de Adestrar Animais (CD 15) para evitar
+uma colisão. É necessário realizar esses testes a cada rodada,
+ate que o animal seja descartado.
+CD's para Colisão de Bigas
+É óbvio que existem milhares de coisas onde um condutor
+pode bater, cair ou atravessar tl#indo uma biga. Apresenta-
+mos uma lista das CDs mais comuns dos testes de Adestrar
+Animais para evitar as colisões desses veículos:
+Cortar as rédeas e amarras de um
+cavalo ferido/inconsciente
+Evitar uma colisão
+Atacar usando colisões laterais
+15
+Variável
+20
+Obstrução ou item atropelado
+Vegetação leve
+Tronco
+Solo lamacento
+Pedestre Pequeno
+Pedestre Médio
+Pedestre Grande (incluindo cavalos)
+Cerca
+Vegetação densa
+Penhasco
+Outra biga, pela lateral ou retaguarda
+Outra bica, de frente
+CD
+10
+10
+10
+10
+15
+20
+20
+20
+25
+25
+30
+78
+Colisões: As bigas são vulneráveis a obstruções de
+terreno, como árvores caídas, poços de lama ou inimigos
+derrotados. Caso haja um desses obstáculos no caminho da
+biga, o condutor deve realizar um teste de Adestrar Animais
+para tentar desviar (o Mestre determina a CD de acordo com
+o tamanho do obstáculo), Se o teste fracassar, a biga colidirá:
+o dano infligido dependerá da violência do impacto; caso o
+deslocamento seja inferior a 12 m por rodada, os passageiros
+e os cavalos sofrerão Id6 pontos de dano; caso contrário,
+todos sofrerão 2d6 pontos de dano.
+Colisões Laterais: Muitas vezes, as bigas têm lâminas
+semelhantes a foices presas em suas rodas. Se o condutor
+conseguir manobrar a lateral do veículo até um oponente (ou
+área adjacente), as lâminas servirão como um ataque; o
+condutor deve obter sucesso num teste de Adestrar Animais
+(CD 20). Essa manobra é considerada um golpe com uma
+-— seu modificador de ataque e dano será +1 para cada
+foice
+3 metros percorridos pela biga na mesma rodada que atinge
+o inimigo. Por exemplo, se o veículo percorrer 12 metros e
+realizar uma colisão lateral, receberá +4 de bônus de ataque e
+causará 2d4+4 pontos de dano.
+Quase sempre, o passageiro estará equipado com um arco
+curto composto e uma lança longa, enquanto o condutor
+empunha uma meia-lança (ele dirige a biga usando uma mão
+e luta usando a outra).
+TALENTOS PARA BIGAS
+Os talentos adquiridos pelos condutores são similares àque
+les selecionados ao combate montado, descritos no Capítulo
+5 do Livro do Jogador.
+Combate de Bigas
+Você foi treinado no combate de bigas.
+Pré-requisitos: Perícia Adestrar Animais.
+Beneficio: Uma vez por rodada, quando uma de suas
+montarias for atingida em combate, você pode realizar um
+teste de Adestrar Animais para evitar esse golpe. O ataque será
+evitado caso seu teste de Adestrar Animais supere a jogada de
+ataque (essencialmente, o teste de perícia se torna a Classe de
+Armadura do animal de tração, caso seja mais elevado).
+Arquearia em Biga
+Você tem habilidade em usar armas de ataque à distância
+sobre bigas em movimento.
+Pré-requisitos: Perícia Adestrar Animais, Combate de
+Bigas.

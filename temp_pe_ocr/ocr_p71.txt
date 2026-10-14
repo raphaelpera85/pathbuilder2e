@@ -1,0 +1,146 @@
+﻿CAPÍTULO 5: AS FERRAMENTAS DA ARTE
+CAPÍTULO 5: as
+F€RRAO€ÔTAS
+DA ARTE
+Dinheiro: Sempre será necessário e, a menos que um patrono
+generoso sustente os seus gastos ou você pertença a uma
+organização com muitos recursos, seu personagem precisará
+de muito dinheiro para gastar com todas as armas, armaduras
+e equipamento de aventuras que ele carrega pelo mundo. As
+vantagens trazidas pelo dinheiro são óbvias, e em geral perce-
+bidas logo depois do final da sua primeira aventura bem-
+sucedida. Muitas vezes, isso criará um círculo vicioso: aven-
+turar-se, conseguir dinheiro, gastá-lo em equipamentos,
+aventurar-se com o equipamento novo, conseguir mais
+dinheiro, gastar com mais equipamento, e assim por diante,
+até chegar no cúmulo onde você e os seus companheiros se
+sentirão os principais (ou únicos) contribuintes financeiros
+da sua comunidade, na verdade transformando-se nos pilares
+da economia local!
+Para ajudá-lo a encontrar novos meios de gastar os recursos
+arduamente obtidos dos seus personagens, apresentamos a
+seguir uma coletânea de novas armas exóticas, uma lista de
+armas incomuns adaptadas para a mecânica de jogo, itens
+mágicos especificamente desenvolvidos para monges e guer-
+reiros e, finalmente, um conjunto de seis localidades diferen-
+tes -—- com mapas, PdMs e custos que os jogadores podem
+explorar, descobrir, construir e comprar.
+TABELA 5—1: ARMAS EXÓTICAS
+ARMAS EXÓTICAS — CORPO A CORPO
+NOVAS ARMAS EXÓTICAS
+"Nunca se tem armas demais".
+—Tordek
+Os guerreiros e monges costumam se beneficiar de armas
+que tenham "algo a mais". De fato, uma arma exótica pode se
+tornar a marca registrada de um personagem. No entanto,
+antes que seja capaz de adquirir um leque laminado ou uma
+espada larga de mercúrio e usá-los adequadamente, será
+necessário escolher o talento Usar Arma Exótica pertinente.
+É possível utilizar uma arma exótica sem esse talento, mas o
+PJ sofrerá —4 de penalidade em todas as jogadas de ataque
+com ela.
+Os itens relacionados sob a categoria "Munição" não são
+considerados armas exóticas e, portanto, não exigem o
+talento Usar Arma Exótica para serem usados.
+Adaga de Punho: Uma adaga de punho é semelhante a
+uma adaga de soco, mas é presa firmemente na mão, em subs-
+tituição a um membro perdido. Qualquer criatura treinada
+em sua utilização é capaz de considerá-la uma extensão do
+próprio corpo. Quando é empregada numa luta extensa, a
+margem de ameaça dessa arma é dobrada (17-20), mas
+somente contra adversários previamente feridos pela adaga
+durante o mesmo combate. Não é possível desarmar uma
+adaga de punho.
+Adaga Tripla: Esta arma é empunhada na mão inábil e
+serve para desarmar os inimigos — ela é considerada um
+escudo, não uma segunda arma, portanto não inflige as pena-
+lidades relacionadas ao combate com duas armas. A adaga
+tripla concede +3 de bónus nas jogadas de ataque resistidas
+Incremento
+de Distancia
+70
+Arma
+Ataques Desarmados
+Manopla Reforçada
+Miúdo
+Adaga de Punho
+Adaga Tripla
+Pequeno
+Leque Laminado
+Manopla com Lâminas
+Picareta de Batalha Gnomo
+Médio
+Espada Longa de Mercúrio
+Corrente-punhal
+Grande
+Bastão tri-seccionado
+Duom
+Espada Larga de Mercúrio
+Espada-mangual
+Manti
+Enorme
+Montante
+Custo
+10 PO
+8 PO
+10 PO
+30 PO
+30 PO
+10 PO
+400 PO
+4 PO
+20 PO
+600 PO
+90 PO
+15 PO
+100 PO
+Dano
+Id4
+Id4
+Id6
+Id6
+Id6
+Id8
+Id4
+Id8
+Id8
+2d6
+Id8/1d8
+Id8
+2d8
+Decisivo
+19-20/x 2
+19-20/x 2
+19-20/x 2
+19-20/x 2
+19-20/x 2
+Peso
+2 kg
+1 kg
+kg
+1,5 kg
+2 kg
+2,5 kg
+3 kg
+2 kg
+4 kg
+4 kg
+8,5 kg
+10 kg
+4,5 kg
+11,5 kg
+Tipo
+Perfurante
+Perfurante
+Cortante
+Cortante
+Perfurante
+Cortante
+Perfurante
+Concussão
+Perfurante
+Cortante
+Cortante e
+Concussão
+Perfurante
+Cortante

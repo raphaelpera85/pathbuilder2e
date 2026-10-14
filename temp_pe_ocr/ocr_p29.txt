@@ -1,0 +1,113 @@
+﻿28
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+Nenhum desses lutadores adquire muito respeito entre as
+demais escolas de artes marciais, pois o estilo embriagado
+exige muito de seus praticantes. Os mestres bêbados permane-
+cem embriagados durante horas após um combate e freqüen-
+temente são encontrados adormecidos nos cantos das taver-
+nas, resmungando sem coerência. Isso é contrário aos princí-
+pios ascéticos de todos os outros estilos de artes marciais.
+Porém, os estilos rivais devem ficar atentos — eles nunca sabe-
+rão realmente se aquele ébrio desajeitado no bar é apenas um
+rufião inofensivo ou um mestre bêbado quase invencível.
+Os monges formam a espinha dorsal dessa classe de
+prestígio, Eles abdicam de parte do prestígio que têm em
+seus estilos originais ou nos monastérios onde viveram ao se
+tornarem mestres bêbados, mas as brilhantes demonstra-
+çôes do estilo embriagado podem muitas vezes silenciar
+essas críticas. Os integrantes de outras classes raramente são
+escolhidos para esse estilo, mas existem rumores entre os
+estudantes dessa arte sobre um bárbaro do norte que se
+tornou um mestre bêbado fenomenal.
+Os alunos em potencial são avaliados à distância pelos
+mestres bêbados, então presenciam (ou sofrem) uma
+demonstração do poder dessa classe. Caso o aluno apresente
+algum interesse no aprendizado dessas novas técnicas, um
+grupo de mestres bêbados o arrastará de taverna em taverna,
+embriagando-o, causando problemas e ensinando os primei-
+ros segredos de suas técnicas. Aqueles que sobreviverem a
+esta 'celebração' serão aceitos como novos mestres bêbados.
+Os PdM mestres bêbados quase sempre são encontrados
+em tavernas e bares. Eles raramente iniciam combates nestes
+locais, mas ajudarão prontamente qualquer grupo em
+desvantagem numa briga de taverna. Muitos permanecem
+na marginalidade, enquanto outros são famosos — ou infa-
+pelos feitos praticados enquanto estavam
+mes
+embriagados.
+Dado de Vida: d8
+Pré-Requisitos
+Para se tornar um mestre bêbado, o personagem deve preen-
+cher todos os seguintes critérios:
+Bônus Base de Ataque: +4
+Bônus Base de Ataque Desarmado: +4
+Talentos: Grande Fortitude, Esquiva
+Acrobacia: 6 graduações
+Outros: Habilidade Evasão; o candidato precisa ser esco-
+lhido por mestres bêbados graduados e sobreviver a uma
+noite de boemia entre eles sem ser preso, intoxicado e supor-
+tar a vergonha da ressaca.
+Perícias de Classe
+As perícias de classe de um mestre bêbad9 (e a habilidade
+chave para cada perícia) são: Acrobacia (Des), Arte da Fuga
+(Des), Atuação (Car), Blefar (Car), Equilíbrio (Des), Escalar
+(For), Esconder-se (Des), Furtividade (Des), Natação (For),
+Ofícios (Int), Ouvir (Sab), Profissão (Int) e Saltar (For).
+Consulte o Capítulo 4: Perícias, no Livro do Jogador para obter
+as descrições das perícias.
+Pontos de Perícia a cada nível: 4 + modificador de
+Inteligência.
+Características da Classe
+Beber como um Cão (Ext): Seu corpo assimila o álcool
+de maneira diferente das outras pessoas. Você pode beber
+uma grande caneca de cerveja, um odre de vinho ou uma
+quantidade equivalente de bebida com um teor alcoólico
+elevado como uma ação equivalente a movimento. Cada
+garrafa ou odre de álcool consumido durante o combate
+Reduz sua Destreza, Sabedoria e Inteligência em 1 ponto
+cada, mas aumenta sua Força ou Constituição (a escolha do
+jogador) em 1 ponto. Entretanto, os modificadores de
+Destreza nos testes de resistência de Reflexos, na perícia
+Acrobacia e na CA não se alteram, independente de seu novo
+valor de Destreza. Seu corpo absorve uma dose de álcool por
+hora, reduzindo todas as penalidades e os bônus adequada-
+mente. Você recebe os modificadores de Força e Constitui-
+ção em função do álcool apenas durante o combate
+— os
+bônus duram somente até o final da batalha (as penalidades
+desaparecem mais lentamente). A quantidade de álcool que
+pode ser considerada uma '"dose" é deliberadamente
+indefinida.
+Usar Arma Exótica (Garrafas): Você pode brandir
+garrafas e odres grandes como armas, utilizando seu bônus
+base de ataque desarmado, inclusive a quantidade mais
+rável de ataques por rodada. As garrafas causam Id6 pontos
+de dano de concussão no primeiro ataque; a partir do
+segundo, elas causam Id4 pontos de dano por corte. Os
+odres ou canecas causam Id6 pontos de dano por dano de
+concussão. Além disso, é possível executar esses ataques sem
+derramar a maioria do líquido que há dentro dos odres.
+Cambalear: Tropeçando, cambaleando e se esquivando
+você pode realizar um ataque de Investida que surpreenderá
+seu adversário. Essa habilidade apresenta dois aspectos posi-
+tivos: primeiro, suas Investidas não precisam de uma linha
+de movimento direto e você continua percorrendo o dobro
+de seu deslocamento (no máximo). Segundo, caso você obte-
+nha sucesso num teste de Acrobacia (CD 15) no início da
+Investida, poderá atravessar espaços ameaçados durante o
+deslocamento sem provocar ataques de oportunidade.
+Jogo de Cintura: Você cambaleia e se esquiva e ainda
+assim mantém sua postura de combate. Você recebe +2 de
+bônus de esquiva na CA contra qualquer oponente selecio-
+nado durante seu turno. Esta habilidade substitui os benefi-
+cios do talento Esquiva, mas funciona de forma idêntica em
+todos os demais aspectos.
+Improvisar Armas: Você pode usar mobília, instru-
+mentos agrícolas ou qualquer outra coisa disponível para
+atacar seus oponentes. Qualquer objeto, desde uma escada
+até uma tábua de carne, passando por cadeiras e pés de mesa,
+torna-se uma arma quando você as carrega com sua energia
+chi. A despeito do tipo exato do objeto, a "arma" causará Id6
+pontos de dano e você usará sua maior quantidade de ataques
+por rodada. A maioria dos objetos causa dano de concussão,
+mas itens pontiagudos ou cheios de quinas causarão dano

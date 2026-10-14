@@ -1,0 +1,110 @@
+﻿7 pontos de dano. Shaez cat para O PV e está incapacitada, embora não
+esteja mon•endo.
+Com seu último sopro de vida, Shaez se joga da mesa e afasta-
+se de François. Ela ingere sua última poção, que recupera parte
+da vitalidade de seu corpo gravemente ferido. A poção de curar
+ferimentos moderados recupera 9 pontos de vida, tudo que ela tem no
+momento. Impiedoso, François continua seu ataque, mirando o
+sabre contra o coração da sua inimiga. Sua primeira jogada de
+ataque resulta em 18 + 17 = 35, mas cle obtém 1 na avaliação de golpe
+decisivo. Mesmo assim, ele causa 12 pontos de dano, reduzindo Shaez a
+3 P V; a duelista está morrendo e François é capaz de eliminá-la rapi-
+damente, termtnando uma década de intensa rivalidade.
+François: Humano Gue 7/Duelista 4; ND 11; Humanóide
+(Médio); DV 7d10+7 (guerreiro) + 4d10+4 (duelista); 87 P V; Inic
++8 (+4 Des, +4 Iniciativa Aprimorada); Desl.: 9 m; CA 21 (+4 Des,
++2 Int, +3 braçadeiras, +1 anel, +1 amuleto) + Esquiva; Corpo a
+corpo: sabre +1 +17/+12/+7 ----- base 11, +4 Des +1 mágico, +1 foco;
+Dano: Id8+3 + Id6 golpe preciso/dec 18-20; AE Golpe preciso
++1d6; QE Mobilidade aprimorada (+4 na CA); Tend CB; TR Fort
++7, Ref+12, Von +3; For 10, Des 19, Cons 12, Int 14, Sab 8, Car 13.
+Pericias e Talentos: Acrobacia +17, Atuação +14, Blefar +14,
+Equilíbrio +17, Saltar +12; Acuidade em Arma (sabre), Desarme
+Aprimorado, Especialização, Especialização em Arma (sabre),
+Esquiva, Foco em Arma (sabre), Iniciativa Aprimorada, Mobili-
+dade, Reflexos de Combate.
+Equipamentos: Sabre +1, braçadeiras da armadura +3, luvas da
+destreza +2, anel de proteção +2, amuleto de armadura natural +1, 2
+poções de curar ferimentos graves.
+Shaez Mar-Yinan: Tiefling Gue 7/Duelista 4; ND 11; Huma-
+nóide (Médio); DV 7d10+14 (guerreiro) + 4d10+8 (duelista); 98
+pv; Inic +4 (Des)•, Desl.: 9 m; CA 21 (+4 Des, +3 Int, +2 anel, +2
+braçadeiras) + Esquiva; Corpo a corpo: sabre flamejante +1
++17/+12/+5 —base 11, +4 Des, +1 mágico, +1 foco; Dano: Id8+2 +
+Id6 fogo + Id6 golpe preciso/dec 18-20; AE Escuridão, golpe
+preciso +1d6; QE Resistência a fogo, frio e eletricidade 5, mobi-
+lidade aprimorada (+4 na CA); Tend CM; TR Fort +8, Ref +10,
+Von +2; For 12, Des 18, Cons 14, Int 16, Sab 8, Car 8.
+Perícias e Talentos: Acrobacia +15, Atuação +10, Blefar +12,
+Equilíbrio +15, Saltar +15; Acuidade em Arma (sabre), Ambides-
+tria, Deslocamento, Especialização, Esquiva, Foco em Arma
+(sabre), Imobilização Aprimorada, Mobilidade,
+Ataques Especiais: Escuridão — Uma vez por dia, conjurada
+como um Fet 11.
+Equipamentos: Sabre flamejante +1, anel de proteção +2, braçadeiras
+da armadura +2, 2 poções de curar ferimentos moderados.
+VARIAÇÕES
+O mestre pode utilizar essas variações de regras para arbitrar
+situações comuns entre guerreiros e monges.
+Contra-Acrobacia
+Um personagem pode realizar um teste de Acrobacia para atra-
+vessar o espaço ocupado por um inimigo, sem sofrer ataques de
+oportunidade. A capacidade do defensor nunca é relevante
+nessa manobra. Usando essa variação, o oponente que o acrobata
+está tentando ultrapassar também é capaz de realizar um teste da
+CAPÍTULO 4: O JOGO DENTRO DO JOGO
+perícia Acrobacia. Nesse caso, o acrobata deve superar a CD
+normal do teste mas, além disso, vencer o resultado obtido pelo
+defensor.
+Dificilmente essa variação afetará o jogo, pois a maioria dos perso-
+nagens e monstros não tem graduações na perícia Acrobacia (e,
+portanto, são incapazes de utilizi-la). Entretanto, ela torna os monges
+experientes mais dificeis de superar que um ogro, por exemplo.
+Suponha que Ember precisa obter 15 ou mais no teste de
+Acrobacia para atravessar a área ocupada por um inimigo e
+evitar ataques de oportunidade. Quando tenta usar sua Acroba-
+cia contra um monge maligno, ele realiza um teste de Acrobacia
+com resultado 17. Agora, Ember deve superar esse resultado (em
+vez da CD 15 original). Se o resultado do monge fosse 14 ou infe-
+rior, Ember ainda precisaria superar a CD 15 para obter sucesso.
+Foco Adaptável em Arma para Arcos
+Um guerreiro que adquire o talento Foco em Arma (arco longo) ou
+(arco curto) no 10 nível ficará bem chateado quando adquirir seu
+arco composto reforçado e começar a usá-lo. No lugar de forçar o
+jogador a conviver com um talento inútil para arcos mais podero-
+sos, o Mestre poderia permitir que ele trocasse seu Foco em Arma
+entre os tipos de arco. Essas armas contêm tantas semelhanças que
+o personagem conseguiria utilizar seu aprendizado numa delas de
+modo a aprimorar o uso da outra. Para manter o realismo, o perso-
+nagem somente poderia trocar seu Foco em Arma quando aumen-
+tar seu bônus base de ataque. Desse modo, a capacidade do perso-
+nagem com o primeiro arco nunca será reduzida.
+Por exemplo: um guerreiro elfo de 10 nível começa com o
+talento Foco em Arma (arco longo). Antes de alcançar 0 20
+nível, ele compra um arco longo composto reforçado, e seu
+talento não se aplica mais. Quando atinge 0 20 nível, com a
+permissão do Mestre, o jogador troca o talento Foco em Arma
+(arco longo) para (arco longo composto). O modificador de
+ataque do arco comum ainda será o mesmo para esse guerreiro
+(ele perde o bônus de +1 do talento, mas compensa com a eleva-
+çâo do bônus base de ataque da classe).
+Desarmar Usando as Duas Mãos
+As tentativas para desarmar um adversário usando as duas mãos
+deveriam ser mais fáceis que as tentativas de fazê-lo com apenas
+uma. As regras de combate com duas armas são muito restritas
+para representar essa vantagem. Nessa variação, quando o PJ usar
+as duas mãos simultaneamente para desarmar um inimigo,
+considere-as uma arma da mesma categoria de tamanho do
+atacante (quando são usadas dessa forma, as mãos desarmadas do
+PJ são consideradas armas com duas categorias de tamanho
+abaixo da categoria do mesmo).
+Por exemplo: se Ember usar as mãos nuas para arrancar uma
+espada longa de um adversário, este receberá +8 de bônus na
+jogada resistida de ataque, pois a espada (uma arma Média)
+pertence a duas categorias de tamanho superior aos ataques
+desarmados (Miúdos, para personagens Médios). Todavia, caso
+ela utilize as duas mãos, poderá considerá-las uma arma Média.
+Ela continua realizando um único ataque (e não dois, por usar
+ambas as mãos), mas o defensor não receberá o bônus em função
+do tamanho da arma maior.
+69

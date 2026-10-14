@@ -1,0 +1,112 @@
+﻿Os ataques à distância só podem funcionar como ataques
+furtivos quando o alvo estiver a menos de 9 metros, já que
+não é possível atingir com precisão ou força suficiente a uma
+distância maior.
+O ataque furtivo só funciona contra criaturas com anatomias
+visíveis —- mortos-vivos, constructos, limos, plantas e criaturas
+incorpóreas não possuem áreas vitais para serem atingidas.
+Qualquer criatura imune a sucessos decisivos também não é
+vulnerável a ataques furtivos. O ninja precisa ver sua vítima
+com clareza suficiente para reconhecer um ponto vital e atingi-
+10. O ninja não pode usar o ataque furtivo contra uma criatura
+camuflada ou se estiver atacando os membros de uma criatura
+cujas áreas vitais estão fora de alcance.
+Evasão Aprimorada: Ao atingir 0 20 nível, a habilidade
+de Evasão do ninja se aprimora. Ele ainda não sofrerá dano
+algum enquanto obtiver sucesso no teste de resistência de
+Reflexos (contra o sopro de um dragão ou uma bola de fogo,
+por exemplo) mas a partir de agora ele sofrerá metade do
+dano mesmo que falhe no teste de resistência.
+Kuji-kiri (SM): Usando uma ação padrão para realizar
+gestos manuais místicos, o ninja pode deixar seus oponentes
+indefesos, como os efeitos da magia padrão hipnótico. O perso-
+nagem é capaz de afetar (2d4 +1 por nível de ninja) Dados de
+Vida em criaturas com essa habilidade. As vítimas devem
+obter sucesso num teste de resistência de Vontade, CD 12 +
+modificador de Carisma do ninja, para anular o efeito. O
+padrão hipnótico dura enquanto o ninja continuar a gesticu-
+lar, mais uma rodada posterior. Essa habilidade pode ser
+ativada uma vez por dia a cada nível dessa classe de prestígio.
+Usar Venenos: Os ninjas são treinados no uso de vene-
+nos e não existe risco deles se envenenarem acidentalmente
+enquanto aplicam veneno sobre uma lâmina.
+Escalada Acelerada: O ninja consegue escalar paredes
+numa velocidade inacreditável. Cada teste bem-sucedido de
+Escalar permite,ao ninja percorrer metade do seu desloca-
+mento usando uma ação equivalente a movimento ou todo o
+seu deslocamento usando uma ação de rodada completa.
+Além disso, ele mantém seu bônus de Destreza na CA
+enquanto escala.
+Silenciar (Sob): Caso o ninja atinja um oponente
+surpreendido com um ataque corporal, o alvo ficará incapaz
+de falar durante uma rodada. Isso impede a conjuração de
+magias que tenham componentes verbais, gritos de alerta e
+pedidos de socorro.
+Furtividade Acelerada: Quando utiliza as perícias
+Furtividade e Esconder-se, o ninja consegue percorrer seu
+deslocamento normal, sem sofrer penalidades nessas
+pericias.
+Invisibilidade (SM): O ninja é capaz de ficar invisível
+(idêntico à magia invisibilidade, mas o efeito é apenas
+pessoal) uma vez por dia a cada nível dessa classe de
+prestígio.
+Oportunismo: Uma vez por rodada, o ninja poderá
+realizar um ataque de oportunidade contra um inimigo que
+tenha sido atingido em combate por outro personagem. Esse
+ataque será considerado o ataque de oportunidade do ninja
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+naquela rodada. Nem sequer os ninjas que tenham o talento
+Reflexos de Combate poderão utilizar essa habilidade mais
+de uma vez por rodada.
+Forma Gasosa (SM): Uma vez por dia, o ninja pode assu-
+mir uma forma gasosa, com efeitos idênticos à magia
+(consulte o Livro do Jogador), com duração de 1 rodada por
+nível de classe. Essa habilidade requer uma ação de rodada
+completa.
+Kuji-kiri Aprimorado (SM): Os gestos sinuosos das mãos
+do ninja são mais difíceis de evitar. Os efeitos do kuji-kiri
+agora afetam (3d6 +1 por nível de ninja) Dados de Vida e a
+CD do teste de resistência de Vontade aumenta para 15 +
+modificador de Carisma do ninja.
+Percepção às Cegas (Ext): Com base em sentidos
+distintos da visão, como a sensibilidade a vibrações, olfato,
+audição aguçada ou eco-localização, o ninja consegue execu-
+tar manobras e lutar no escuro absoluto. Os efeitos de invisi-
+bilidade ou escuridão são irrelevantes, embora ainda seja
+impossível distinguir criaturas incorpóreas. A percepção às
+cegas do ninja tem alcance de 18 metros.
+Sempre Furtivo: O ninja sempre poderá "escolher 10"
+em testes de Furtividade ou Esconder-se. A menos que o
+personagem deseje ser visto ou ouvido, o Mestre deve reali-
+zar testes resistidos de Observar e Ouvir para a presença do
+ninja ser detectada.
+Passeio Etéreo (SM): Concentrando seu chi, o ninja conse-
+gue se tornar etéreo durante alguns momentos. Três vezes
+por dia, como uma ação livre, o personagem é capaz de reali-
+zar um passeio etéreo (idêntico à magia homônima, exceto
+pela duração de I rodada).
+PROTETOR TRIBAL
+O protetor tribal é o campeão de uma raça humanóide
+selvagem. Num campo de batalha, enquanto os combatentes da
+tribo compõem a infantaria, e os bárbaros representam os
+soldados mais ferozes, os protetores tribais serão guerreiros
+disciplinados e letais que lideram todos os confrontos militares.
+A maioria dos protetores tribais é composta por guerrei-
+ros, combatentes ou bárbaros que adotaram esta classe de
+prestígio para receber (ou continuar) o treinamento especia-
+lizado dos guerreiros em manobras de combate, habilidades
+poderosas e destrutivas de ataque, compreensão adequada
+das vantagens do campo de batalha de suas terras natais e do
+confronto direto contra os adversários tradicionais da tribo.
+Algumas vezes, adeptos, clérigos e feiticeiros tribais exercem
+esse papel, de acordo com a raça da tribo.
+Com freqüência, os protetores tribais do Mestre serão
+encontrados na vanguarda dos exércitos humanóides. Caso a
+honra exija um combate entre campeões, o protetor tribal
+dará um passo a frente. Nas demais ocasiões, o protetor
+tentará encontrar os lideres combatentes do exército inimigo
+e os enfrentará sozinho ou como último recurso --— abrirá
+caminho entre as fileiras dos oponentes para diminuir sua
+quantidade.
+Dado de Vida: dlO
+35

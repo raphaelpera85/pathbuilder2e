@@ -95,6 +95,15 @@
     }
   },
   {
+    "systemId": "dnd35",
+    "ruleset": "v35-pe",
+    "categories": {
+      "class": 19,
+      "feat": 31,
+      "weapon": 27
+    }
+  },
+  {
     "systemId": "dnd5e",
     "ruleset": "standard",
     "categories": {

@@ -1,0 +1,62 @@
+﻿CAPÍTULO l: TALENTOS E PERÍCIAS
+Caso também esteja usando um broquel, o bônus do escudo
+na CA será cumulativo. Esse talento exige o uso de armas
+metálicas ou que tenham uma empunhadura protegida e
+pertençam a uma categoria de tamanho inferior à do
+personagem.
+Chute Circular [Geral]
+Você é capaz de atingir diversos oponentes usando a mesma
+ação de ataque.
+Pré-Requisitos: Bônus base de ataque +3, Ataque Desar-
+mado Aprimorado, Des 15+.
+Benefício: Uma jogada bem-sucedida de ataque desar-
+mado lhe permite realizar uma segunda jogada de ataque
+contra um oponente diferente, conquanto ele esteja dentro
+da sua área ameaçada. Esse talento exige uma ação de rodada
+completa.
+Combater em Dupla* [Geral]
+Combater em equipe o torna um adversário mais perigoso.
+Pré-Requisitos: Bônus base de ataque +3, Reflexos de
+Combate.
+Benefício: Caso você e outro aliado tenham esse talento
+e estejam flanqueando o mesmo adversário, ambos recebem
++4 de bônus nas suas jogadas de ataque.
+Normal: O bônus padrão para as jogadas de ataque
+contra oponentes flanqueados é +2.
+Combater Engajado* [Geral]
+Você foi treinado nas técnicas de luta corporal e para evitar as
+manobras Agarrar.
+Pré-Requisito: Bónus base de ataque +3.
+000
+Benefício: Quando um adversário tentar lhe imobiliza
+qualquer dano causado com seu ataque de oportunidad
+(provocado pela tentativa de Agarrar) será adicionado a
+próximo teste resistido da manobra Agarrar para evitar a su
+própria imobilização. Além disso, você está apto a desferi
+um ataque de oportunidade mesmo quando a criatura advei
+sária tiver a habilidade Agarrar Aprimorado.
+Esse talento não lhe concede ataques de oportunidad
+adicionais na mesma rodada; portanto, caso você não tenh
+mais nenhum ataque de oportunidade disponível quand
+seu inimigo tentar agarrá-lo, será impossível receber o bene
+fício concedido por Combater Engajado.
+Por exemplo, um urso atroz acerta um monge com sua
+garras. Caso ele não tenha esse talento, a habilidade Agarra
+Aprimorado do urso lhe permite realizar um teste de Agarra
+imediatamente, sem provocar ataques de oportunidade. N'
+entanto, seX) monge tiver Combater Engajado, ele será capa:
+de desferir o ataque de oportunidade contra o urso e, casc
+obtenha sucesso e cause 8 pontos de dano, ainda receberá +é
+de bónus (além do seu bônus base de ataque, modificador
+Força e de tamanho) no teste resistido de Agarrar para evita
+a imobilização por parte da criatura.
+Combater no Solo* [Geral]
+Você não sofre penalidades para atacar quando estiver caídc
+no chão (ou numa posição semelhante).
+Pré-Requisitos: Bónus base de ataque +2, Des 15+
+Reflexos Rápidos.
+Benefício: Você pode executar um ataque quando esti-
+ver caído sem sofrer nenhuma penalidade na sua jogada.
+Caso o ataque seja bem-sucedido, você é capaz de levantar-se
+imediatamente como uma ação livre.
+0

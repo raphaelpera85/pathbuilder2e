@@ -1,0 +1,170 @@
+﻿Diplomacia: 6 graduações.
+Outros: Ser digno para tornar-se membro da ordem (em
+geral, adequar-se ao código).
+Perícias de Classe
+As perícias de classe de um Cavaleiro Protetor (e a habilidade
+chave para cada perícia) são: Cavalgar (Des), Conhecimento
+(nobreza e realeza) (Int), Diplomacia (Car), Intimidar (Car) e
+Observar (Sab). Consulte o Capítulo 4: Perícias, no Livro do
+Jogador, para obter as descrições das perícias.
+Pontos de Perícia a cada nível: 2 + modificador de
+Inteligência.
+Características da Classe
+Usar Armas e Armaduras: Os cavaleiros
+protetores sabem usar todas as armas simples e
+comuns, todos os tipos de armaduras e escudos.
+Proteger Inocentes: Sempre que um cava-
+leiro protetor se envolver num combate corpo-
+ral e tentar proteger criaturas mais fracas que ele
+(menos DV ou total de níveis)
+ou que estejam indefesas,
+o personagem receberá o
+bônus de moral indicado
+na tabela para suas joga-
+das de ataque e dano.
+Porto Seguro
+(Sob): Um Cavaleiro
+Protetor é a personifica-
+ção fisica e espiritual de
+ideais supremos. Todos
+os seus aliados recebem
++4 de bônus de moral em
+testes de resistência contra
+efeitos de medo enquanto
+estiverem a 3 m ou menos do
+cavaleiro. Esta habilidade será
+anulada se o cavaleiro ficar
+inconsciente, imobilizado
+ou indefeso de qualquer
+outra forma.
+TABELA 2—5: O CAVALEIRO PROTETOR DO GRANDE REINO
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+Esforço Extra (Ext): A natureza desafiadora dos objeti-
+vos de um cavaleiro protetor com freqüência exige um
+esforço fora do comum. Ao atingir 0 20 nível, o cavaleiro
+recebe o bônus indicado na tabela para qualquer teste de
+perícia, uma vez por dia. O jogador precisa declarar que está
+usando essa habilidade antes de realizar o teste.
+Vontade de Ferro: No 20 nível, o cavaleiro protetor
+adquire o talento Vontade de Ferro.
+Trespassar Supremo: Ao atingir 0 30 nível,
+o cavaleiro protetor é capaz de se deslocar 1,5 m entre
+seus ataques se estiver usando os talentos Trespassar ou
+Trespassar Aprimorado.
+Implacável: A partir do 60 nível, o cava-
+leiro protetor adquire a habilidade de execu-
+tar a quantidade indicada na tabela
+de ataques de oportunidade
+adicionais. Esses ataques
+utilizam o bônus de
+ataque mais alto do
+personagem.
+Especial: O
+açoiteador deve
+possuir um
+chicote comum
+ou chicote-
+ferrão (consulte
+o Capítulo 5).
+Geralmente, um
+açoiteador possui
+os dois tipos de
+armas (e, se tiver
+dinheiro suficiente-
+mente, versões
+reforçadas de
+ambas).
+O
+o
+ú'
+Nível
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+Bônus Base
+de Ataque Fortitude Reflexos Vontade
++3
++4
++5
++6
++7
++8
++9
++10
++0
++1
++1
++1
++2
++2
++3
++3
++0
++1
++1
++2
++2
++2
++3
++3
++3
++3
++4
++4
++5
++5
++6
++6
++7
+Especial
+Proteger Inocentes +2, Porto Seguro
+Esforço Extra +2, Vontade de Ferro
+Trespassar Supremo
+Proteger Inocentes +3
+Esforço Extra +3
+Implacável +1
+Proteger Inocentes +4
+Esforço Extra +4
+Implacável +2
+Esforço Extra +5, Proteger Inocentes +5
+O Código do Cavaleiro
+Protetor
+Código de Conduta: O cava-
+leiro protetor deve pertencer a
+uma tendência Leal e obedecer
+ao código de conduta da
+ordem (veja abaixo).
+Apoio: A ordem apóia todos
+os seus membros. O Cavaleiro
+Protetor receberá armas e
+armaduras comuns (mas não
+mágicas), acomodações, ali-
+mentação, uma montaria e
+seus acessórios da ordem
+enquanto integrar suas fileiras
+e respeitar o código.
+O Código:
+Coragem e bravura em obe-
+diência a Ordem.
+Defender qualquer missão
+até a morte.
+Respeitar todos os superio•
+res e iguais; mostrar cortesia
+com todos os inferiores.
+O combate é a glória; a bata-
+lha é o verdadeiro teste do
+valor pessoal; a guerra é a raiz
+dos ideais nobres da cavalaria.
+Glorificar a todos em
+batalha.
+Morte a todos os opositores
+do Grande Reino.
+Antes a morte à desonra.
+19

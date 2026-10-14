@@ -1,0 +1,111 @@
+﻿30
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+rado, Foco em Arma (corrente com cravos), Especialização
+em Arma (corrente com cravos).
+Abrir Fechaduras: 4 graduações.
+Arte da Fuga: 6 graduações.
+Intimidar: 4 graduações.
+Valor de Habilidade: Int 13+ (pré-requisito para
+Especialização)
+Perícias de Classe
+As perícias de classe de um mestre das correntes (e a habili-
+dade chave para cada perícia) são: Abrir Fechaduras (Des),
+Arte da Fuga (Des), Equilíbrio (Des), Escalar (For), Esconder-
+se (Des), Intimidar (Car) e Ofícios (forja) (Int). Consulte o
+Capítulo 4: Perícias, no Livro do Jogador, para obter as descri-
+çôes das perícias.
+Pontos de Perícia a cada nível: 4 + modificador de
+Inteligência.
+Características da Classe
+Usar Armas e Armaduras: Os mestres das correntes
+não sabem usar nenhuma arma, armadura ou escudo
+adicional.
+Aterrorizar (Sob): Usando uma ação padrão, o mestre
+das correntes pode agitar suas correntes e induzir um efeito
+de medo sobre uma criatura, de modo idêntico à magia
+homônima; o nível de conjurador equivale ao nível da classe
+de prestígio (consulte o Livro do Jogador). É possível ativar
+essa habilidade sobrenatural somente uma vez por dia.
+Combate Vertical: Caso o mestre das correntes esteja
+escalando uma corda ou corrente, não sofrerá nenhuma pena-
+lidade nas suas jogadas de ataques e seus adversários não rece-
+berão nenhum bônus para atacá-lo; normalmente, quando um
+personagem está escalando, ele perde seu modificador de
+Destreza na CA e seus inimigos recebem +2 nas jogadas de
+ataque contra ele. Se o mestre das correntes estiver pendurado
+numa corrente capaz de transpor mais de 1,5 m, poderá usar o
+movimento em seu benefício e receberá +2 de bônus na CA.
+Foco em Arma Superior: Essa habilidade concede ao
+mestre das correntes +1 de bônus adicional em todas as joga-
+das de ataque com uma corrente com cravos; esse modifica-
+dor se acumula com o bônus de Foco em Arma já adquirido
+pelo personagem (se houver).
+Aprisionamento: A partir do 40 nível, o mestre das
+correntes é capaz de usar sua arma e um cadeado simples (o
+processo exige uma ação de rodada completa) para aprisionar
+uma única criatura Pesquena, Média ou Grande. Essa habili-
+dade deve ser considerada um ataque com uma rede, mas a
+CD para o teste de Arte da Fuga será 25 e a CD para quebrar
+será 30. A manobra exige uma corrente de 3 metros de
+comprimento ou mais. Quando for aprisionada numa
+corrente com cravos, a criatura sofrerá 1 ponto de dano por
+rodada, a menos que permaneça imóvel.
+Armadura de Correntes: Ao atingir 0 50 nível, o
+mestre das correntes poderá se envolver com suas correntes
+(são necessários 6 metros livres de corrente) para receber +5
+de bônus de armadura na CA. Essa 'armadura' tem -2 de pena-
+lidade de armadura, nenhum limite máximo para o bônus de
+Destreza e 30% de chance de falha de magia arcana. O desb
+camento não é afetado.
+Corrente Dupla: A partir do 50 nível, o mestre das
+correntes poderá utilizar a corrente com cravos como uma
+arma de haste ou uma arma dupla. Ele é capaz de alternar
+esses dois tipos de uso no início de cada rodada.
+Golpe Reforçado: A partir do 60 nível, o mestre das
+correntes causa +1d6 pontos de dano usando uma corrente
+com cravos, atingindo o adversário com uma parte mais
+longa dessa arma. O uso dessa habilidade exige uma ação de
+ataque total.
+Defletir Ataques: A partir do 60 nível, o personagem
+pode girar suas correntes de modo a adquirir +4 de bônus de
+deflexão na CA contra qualquer ataque desferido num arco de I
+180 graus à sua escolha. Esta é uma habilidade extraordinária
+e exige uma ação equivalente a movimento para ser ativada.
+Especialização em Arma Superior: Somada a qual-
+quer outro bônus de Especialização em Arma existente, essa
+habilidade garante ao mestre das correntes +1 de bônus
+adicional nas jogadas de dano com uma corrente com cravos.
+Corrente com Cravos' Superior: No 80 nível, o
+mestre das correntes pode modificar sua arma e acrescentar
+cravos terríveis, que se estilhaçam ao atingir o alvo. Uma
+corrente dessas deixará ferimentos que causam 1 ponto de
+dano por rodada, até que um teste de Cura (CD 15) ou qual•
+quer magia de cura sejam aplicados sobre eles. Este aprimo-
+ramento custa 25 PO e mais 10 PO para recuperar os cravos
+quebrados depois de cinco utilizações (após cinco usos ou
+golpes, a corrente modificada poderá ser usada como uma
+corrente com cravos normal). Apenas os mestres das corren-
+tes de 80 nível ou superior conseguem brandir esta arma
+modificada adequadamente nas mãos de outra pessoa ela
+será apenas uma corrente com cravos.
+Balanço: A partir do 90 nível, usando uma ação de rodada
+completa, o mestre das correntes será capaz de fixar a ponta
+de sua corrente em torno de objetos salientes (qualquer local
+elevado que consiga suportar seu peso) e balançar-se até um
+alvo a 3 metros de distância ou menos. Esse adversário será
+surpreendido e o mestre das correntes recebe +2 de bônus na
+jogada de ataque e causa +3d6 pontos de dano adicional com
+essa manobra (é possível desferir apenas um ataque).
+Dominar Correntes (Sob): Como uma habilidade
+sobrenatural, o mestre das correntes pode animar uma
+corrente (similar a magia animar cordas, mas afeta apenas
+correntes) com 15 m de comprimento ou menos durante 10
+rodadas. O mestre das correntes pode ativar essa habilidade
+uma quantidade de vezes por dia igual ao 3 + seu modificador
+de Carisma.
+MESTRE DA GUERRA
+Numa colina verdejante perto de Chendl, a capital de
+Furyondy, existe uma vasta mansão branca, rodeada de está-
+bulos e baluartes. Grande parte dos viajantes civis a enxerga
+como a casa de algum lorde rico, mas olhos militarmente
+treinados notarão que alguns de seus muros e catapultas são

@@ -1,0 +1,115 @@
+﻿74
+CAPÍTULO 5: AS FERRAMENTAS DA ARTE
+Espada-mangual: Uma espada-mangual é uma arma
+dupla. Um cabo maciço suporta um mangual de um lado e
+uma espada longa do outro. Você pode lutar usando-a como
+se empunhasse duas armas, mas se o fizer sofrerá as penalida-
+des normais de ataque associadas a combater com duas
+armas, como se estivesse usando uma arma de uma mão e
+outra leve.
+Quando você usa uma espada-mangual, recebe +2 de
+bônus em seu teste resistido de ataque para desarmar um
+inimigo (inclusive na jogada para evitar ser desarmado caso a
+tentativa fracasse).
+Também é possível utilizar essa arma em ataques de
+Imobilização. Caso você seja imobilizado em sua tentativa,
+poderá largar a espada-mangual para se libertar.
+Flecha de Alquimista: Uma das obras-primas desses
+profissionais, a flecha de alquimista carrega uma dose mortí-
+fera de fogo grego, num minúsculo compartimento em sua
+ponta oca. Quando o alvo é atingido, o compartimento se
+rompe, espalhando o fogo grego diretamente sobre a vítima.
+Na rodada subseqüente ao impacto, o produto se incendiará
+em contato com o ar, causando Id4 pontos de dano no alvo;
+ele pode usar uma ação de rodada completa para extinguir as
+chamas antes que inflijam o dano adicional. Para tanto, é
+necessário obter sucesso num teste de resistência de Refle-
+xos (CD 15). Rolar no chão concede +2 de bônus neste teste.
+Submergir na água (como mergulhar num lago) ou extinguir
+as chamas através de magia automaticamente evitará o dano.
+Fukimi-Bari (Dardos Bucais): Estes dardos estreitos
+de metal, muito similares a agulhas, são escondidos entre os
+lábios e então disparados sobre a vítima. Seu alcance efetivo
+é extremamente curto e seu dano também é limitado, mas
+eles são muito úteis para surpreender o adversário. É possível
+disparar até três dardos bucais a cada ataque (todos contra o
+mesmo alvo).
+O modificador de Força não afeta o dano causado pelos
+dardos. Eles são pequenos demais para transferir a força de
+qualquer atacante ao dano infligido com armas de arremesso.
+O custo e o peso indicados se referem a um único dardo.
+Leque Laminado: Para olhos desatentos, essa arma é
+um simples leque feminino, bonito e bem feito. Na verdade,
+as hastes do leque são forjadas em aço e as pontas são muito
+afiadas. Durante seu primeiro uso num combate corporal, o
+usuário pode realizar um teste de Blefar, resistido pelo teste
+de Sentir Motivação do oponente. Caso vença, ele recebe +4
+de bônus nas suas jogadas de ataque durante a primeira
+rodada de combate.
+Manopla com Atiradeira: Esta manopla possui um
+compartimento de metal que se estende desde a base do ante-
+braço até a articulação do punho, onde um orifício circular é
+visível. Esse compartimento abriga um mecanismo de mola
+peculiar, capaz de disparar um virote de besta com muita
+força, semelhante a uma besta de mão. Para recarregar a
+manopla, basta inserir um virote no orifício e puxar uma
+alavanca para trás; isso é uma ação equivalente a movimento
+que provoca ataques de oportunidade. Para disparar o virote,
+o usuário aponta o braço na direção do alvo e abre a mão, de
+modo que a palma aberta fique de frente para a vítima
+—-- este
+movimento ativa a mola. Um personagem que tente disparar
+duas atiradeiras simultaneamente sofrerá as penalidades
+normais associadas a combater com duas armas; o talento
+Combater com Duas Armas não elimina essas penalidades,
+pois afeta o uso de armas brancas, não de armas de ataque à
+distância. O talento Ambidestria permite evitar o redutor da
+mão inábil (-4). O custo e o peso indicados se referem a uma
+única manopla.
+Manopla com Lâminas: Considere um golpe usando
+uma manopla com lâminas como um ataque armado, dife-
+rente das regras dos equipamentos similares. Essa luva metá-
+lica tem duas lâminas afiadas, que se estendem do meio do
+antebraço até o dorso do punho. O custo e o peso indicados
+se referem a uma única manopla.
+Manopla Reforçada: Essas luvas de couro resistente são
+dotadas de placas de metal, rebitadas sobre o dorso da mão.
+Um golpe usando uma manopla reforçada é considerado um
+ataque desarmado. Caso você escolha a ação de defesa total,
+receberá +1 de bônus de deflexão adicional na CA, represen-
+tando os golpes bloqueados com as proteções nas costas de
+suas mãos. É impossível desarmar uma manopla reforçada. O
+custo e o peso indicados se referem a uma única manopla.
+Manti: Um manti é uma lança curta, dotada de quatro
+hastes adicionais perpendiculares ao cabo, que criam um
+padrão em forma de estrela com as cinco pontas de lança (no
+lugar de uma lâmina única na extremidade). Os usuários trei-
+nados no uso dessa arma podem executar um ataque de
+oportunidade extra a cada rodada.
+Montante: Uma montante é 45 cm maior que uma espada
+larga; portanto, é grande demais para ser empunhada por qual-
+quer criatura Média. Uma criatura Grande é capaz de atacar
+com uma montante usando as duas mãos (considerando-a
+uma arma comum) ou com apenas uma, sofrendo o redutor
+padrão nas jogadas de ataque (-4) por empunhar uma arma
+sem o talento adequado. Uma criatura Grande que tenha o
+talento Usar Arma Exótica (montante) poderá brandi-la com
+uma única mão, sem nenhuma penalidade. A montante
+também é chamada de espada larga dos ogros.
+Pedra de Arremesso Orc: Um treinamento especial
+consegue transformar uma esfera de ferro, do tamanho de
+uma laranja, num projétil mortífero. Somente as criaturas de
+tamanho Médio ou superior são capazes de utilizar essa arma
+com eficácia, mas devem adquirir o talento pertinente (as
+criaturas menores sofrem —3 de penalidade nas jogadas de
+ataque, além do redutor padrão por usar armas sem o talento
+adequado).
+Pedra Halfling de Ricochete: Estas rochas polidas e
+perfeitamente balanceadas são estimadas pelos halflings,
+capazes de arremessá-las num alvo e fazê-las ricochetear até
+outro. Caso acerte o adversário, ela será impelida até um
+segundo inimigo adjacente ao alvo original (à escolha do
+atirador, num raio de 1,5 m). O halfling realiza imediata-
+mente uma segunda jogada de ataque contra a nova vítima,
+usando o modificador de ataque da primeira jogada, —2.
+É possível disparar as pedras de ricochete numa funda, mas

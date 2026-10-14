@@ -1,0 +1,172 @@
+﻿CAPÍTULO 2: CLASSES DE PRESTÍGIO
+Torre: Uma organização ligada ao personagem (o exército
+ou um nobre importante, por exemplo) se ofereceu para
+construir uma torre num local adequado a ambos. Enquanto
+o mestre da guerra sustentar os ideais da organização envol-
+vida, poderá controlar a torre como quiser; no entanto, o
+personagem será responsável pelo custo de manutenção do
+local. A torre é uma construção redonda ou retangular, com
+três andares e feita de pedra.
+Incitar Tropas (Sob): A presença do mestre da guerra é o
+suficiente para garantir que todos os aliados num raio de 9 m
+Castelo: Como "Torre", acima. Um castelo é uma forta-
+leza, cercada por uma muralha de pedra com 5 m de altura
+com quatro torres. A muralha tem 30 cm de espessura.
+Morra pelo Seu País: Sua presença inspira as tropas a
+realizarem o sacrifício máximo pela causa da batalha. Qual-
+quer aliado num raio de 9 m do mestre da guerra continuará
+a lutar mesmo se estiver incapacitado ou morrendo, sem
+sofrer nenhuma penalidade. Eles continuarão a combater até
+atingirem -10 pontos de vida.
+Castelo Enorme: Como "Torre", acima. Este complexo
+imenso possui diversas construções coligadas (estábulos,
+uma forja, celeiros, etc...) e uma muralha elaborada de 6 m de
+altura e 3 m de espessura que cerca pátios extensos entre as
+construções. Essa muralha tem seis torres.
+MESTRE SAMURAI
+O mestre samurai é o servo militar dos senhores feudais do
+oriente; ele segue um código marcial de conduta que enfatiza
+o valor da honra pessoal acima da própria vida. Em algumas
+culturas, ele faz parte da aristocracia guerreira.
+Os detalhes sobre o código de conduta do mestre samu-
+rai são muito específicos. Eles são forçados a demonstrar
+obediência absoluta ao seu senhor feudal, mesmo que as
+ordens desse superior certamente resultem na morte do
+samurai. Ele deve estar pronto para se sacrificar pelo seu
+senhor ou pela sua honra a qualquer momento -—- e para
+vingar até a morte qualquer ofensa a um deles. Sua honra
+pessoal exige que ele retribua com justiça qualquer dívida.
+A diretriz mais importante desse código talvez seja a expec-
+tativa de que o mestre samurai jamais cometerá atos deson-
+rosos ou demonstrará o menor temor diante de ameaças ou
+da própria morte. O mestre samurai que fracassar em
+manter essas diretrizes confrontará uma humilhação
+pessoal tão avassaladora que escolherá o suicídio a uma vida I
+sob essa mácula.
+Os guerreiros, rangers e paladinos se tornam excelentes
+mestres samurais, pois as habilidades da classe podem apri-
+morar seu potencial de combate. Os monges também são
+ótimos mestres samurais: a disciplina do bushido é um
+reflexo natural da aspiração dessa classe em estudar a
+fia ou a crença de uma determinação inexorável. Os magos e
+feiticeiros encontram dificuldades para se tornar um mestre
+p
+O Código do Mestre
+Samurai
+O mestre samurai deve total
+obediência ao seu senhor.
+É direito do mestre samurai
+protestar contra julgamentos
+ou ordens injustas do seu
+senhor; a própria morte é o
+protesto extremo que o samu-
+rai pode realizar.
+O mestre samurai está
+sempre pronto para morrer.
+Não existe fracasso, apenas
+sucesso ou morte.
+Morrer a serviço do senhor é
+a maior tarefa que o mestre
+samurai pode executar.
+Desonrar seu senhor ou sua
+família é desonrar a si mesmo.
+Todos os débitos, de honra
+ou vingança, devem ser pagos.
+O inimigo não merece
+piedade.
+A covardia é a desonra.
+dele recebam um segundo teste de resistên-
+cia contra efeitos de medo e encantamento.
+Mesmo que fracassem nesse segundo teste
+de resistência, os efeitos de medo serão
+amenizados: criaturas apavoradas ficam
+apenas assustadas, criaturas assustadas ficam
+abaladas e criaturas abaladas ficarão imunes
+ao efeito.
+Marcha Forçada: Você pode incitar
+suas tropas a marcharem mais rápido.
+Qualquer viajante ao seu lado recebe +4 de
+bônus de moral nos testes de Constituição
+realizados para resistir a marchas forçadas
+ou qualquer outra tarefa que exija muito
+esforço físico. Os animais não são afetados
+por essa habilidade.
+Fortaleza: Como "Torre", acima. Uma
+fortaleza é uma construção de pedra fortifi-
+cada, que tem entre quinze e vinte e cinco
+cômodos.
+Estandarte de Batalha (Sob): A
+mera visão do seu brasão ou qualquer outro
+símbolo heráldico é o suficiente para
+mudar os ânimos da batalha. Todos os alia-
+dos num raio de 9 m do seu estandarte
+recebem os efeitos acumulados do Grito de
+Guerra e Incitar Tropas, enquanto o estan-
+darte estiver dentro do alcance e for
+sustentado pelo mestre da guerra. Caso o
+estandarte seja capturado durante a batalha, além de perder
+os benefícios descritos acima, todos os seus aliados cientes
+do ocorrido sofrerão -1 de penalidade de moral em todas as
+jogadas de ataque e dano até a recuperação do símbolo.
+TABELA 2—15: O MESTRE SAMURAI
+32
+Nível
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+Bônus Base
+de Ataque Fortitude Reflexos Vontade
++1
++2
++3
++4
++5
++6
++7
++8
++9
++10
++1
++1
++1
++2
++2
++3
++3
++2
++3
++3
++4
++4
++5
++5
++6
++7
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
+Especial
+Bônus em Acrobacia, Trespassar Aprimorado
+Lâminas da Fúria, Trespassar Supremo
+Mobilidade Suprema
+Lâminas da Morte
+Força chi l/dia
+Golpe chi I/dia
+Força chi 2/dia
+Golpe chi 2/dia
+Força chi 3/dia
+Golpe chi 3/dia

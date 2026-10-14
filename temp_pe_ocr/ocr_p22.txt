@@ -1,0 +1,142 @@
+﻿Características da Classe
+Usar Armas e Armaduras: O defensor dedicado sabe
+usar todas as armas simples e comuns, todos os tipos de arma-
+duras e escudos.
+Bônus na Classe de Armadura: O defensor dedicado
+concentra-se unicamente na própria defesa e na proteção de
+seu cliente. Ele recebe este bônus na CA como resultado
+dessa atenção.
+Prostrar-se ao Perigo (Ext): A partir do 10 nível, o
+defensor dedicado pode se interpor no caminho dos perigos
+que ameaçam um cliente específico. Caso o defensor esteja a
+1,5 m do seu protegido e este seja alvo de um ataque, ele
+poderá trocar de lugar com a vítima e sofrer o ataque em seu
+lugar É necessário declarar essa ação antes da jogada de
+ataque. Um protegido é selecionado durante o teste de
+Iniciativa, como uma ação livre; é impossível alterar essa
+escolha durante o mesmo combate.
+Golpe Defensivo (Ext): O personagem pode desferir
+um ataque de oportunidade contra qualquer adversário
+adjacente que vise seu protegido com um ataque corporal.
+Você recebe +1 de bônus nesse ataque a cada dois níveis
+depois do 20.
+Defletir Ataques (Ext): A partir do 30 nível, o defensor
+dedicado pode tentar defletir ataques corpo a corpo desferi-
+dos contra seu protegido. Para fazê-lo, ele precisa estar a 1,5 m
+do alvo e empunhar uma arma branca ou um escudo. Uma
+vez por rodada, quando seu protegido for atacado, você pode
+realizar um teste de ataque resistido contra o inimigo. O
+defensor dedicado recebe o bônus de competência indicado
+na tabela para esse teste resistido. Caso seja bem-sucedido, o
+ataque será desviado ou aparado. O personagem deve estar
+ciente do ataque; essa habilidade é ineficaz contra defensores
+dedicados surpreendidos.
+Temido por muitos, compreendido por poucos, o infame
+Destruidor é um indivíduo que se dedica ao serviço de
+Erythnul, o Deus da Matança. Com sua vida repleta de
+violência e selvageria, o destruidor propaga a influência
+maligna dessa divindade por onde passa, e nunca permanece
+num único lugar por muito tempo, para evitar que as forças
+do bem e da ordem o aprisionem.
+TABELA 2—7: O DESTRUIDOR
+Bônus Base
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+Os destruidores que eram guerreiros ou monges conside-
+ram que as capacidades ofensivas dessa classe de prestígio
+aprimoram sua capacidade de combate, enquanto os que
+eram magos, feiticeiros, clérigos e druidas consideram a
+habilidade de causar terror aos seus inimigos uma manobra
+defensiva eficiente. Os destruidores passam muito tempo em
+companhia de outros integrantes dessa classe; eles vagam em
+bandos pequenos e leais entre si, que atacam de surpresa as
+comunidades desavisadas e depois retornam para as áreas
+mais remotas para planejar seu próximo ataque. Algumas
+vezes, o sacerdócio de Erythnul envia um destruidor solitá-
+rio em alguma missão ou projeto, que o obrigará a se aliar
+com integrantes de outras classes, mas esse tipo de aliança
+costuma ser temporária e deve ser administrada com
+cuidado, para evitar dissensões ou conseqüências piores.
+Geralmente, os destruidores do Mestre serão encontrados
+em pequenos bandos de guerra, com dois a seis indivíduos,
+mas é possível encontrar um único destruidor cumprindo
+alguma missão especial.
+Todos os destruidores são facilmente reconhecidos devido
+às tatuagens bizarras e terríveis em seu rosto, que ostentam
+para identificá-los como instrumentos de Erythnul.
+Dado de Vida: dlO
+Pré-Requisitos
+Para se tornar um destruidor, o personagem deve preencher
+todos os seguintes critérios:
+Bônus Base de Ataque: +5
+Tendência: Caótico e Mau, Caótico e Neutro ou
+Neutro e Mau.
+Talentos: Lutar Sujo, Ataque Poderoso, Separar.
+Conhecimento (Religião): 3 graduações.
+Intimidar: 3 graduações.
+Sobrevivência: 4 graduações.
+Outro: É necessário sobreviver ao ritual cerimonial de
+iniciação dos destruidores (consulte Destruidores, na pág. 50
+desse livro).
+Perícias de Classe
+As perícias de Classe de um destruidor (e a habilidade chave
+para cada perícia) são: Cavalgar (Des), Conhecimento (reli-
+gião) (Int), Furtividade (Des), Intimidar (Car) e Profissão
+4
+Nível
+10
+20
+30
+40
+50
+60
+80
+90
+100
+de Ataque Fortitude
++1
++2
++3
++4
++5
++6
++7
++8
++9
++10
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
+Reflexos
++0
++1
++2
++2
++3
++3
+Vontade
++1
++1
++1
++2
++2
++3
++3
+Especial
+Toque da Dor l/dia
+Aura de Medo 3 m l/dia
+Corte Cruel 1 [dia
+Toque da Dor 2/dia
+Aura de Medo 6 m 2/dia
+Corte Cruel 2/dia
+Toque da Dor 3/dia
+Aura de Medo 9 m 3/dia
+Corte Cruel 3/dia
+Ilusão Aterrorizante
+21

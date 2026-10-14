@@ -1,0 +1,144 @@
+﻿CAPÍTULO 2: CLASSES DE PRESTÍGIO
+(Int). Consulte o Capítulo 4: Perícias, no Livro do Jogador,
+para obter as descrições das perícias.
+Pontos de Perícia a cada nível: 2 + modificador de
+Inteligência.
+Características da Classe
+Usar Armas e Armaduras: Todos os destruidores
+sabem usar todas as armas simples e comuns, todos os tipos
+de armaduras e escudos.
+Toque da Dor (Sob): Erythnul ensina que a vida é
+composta de dot; isso é transmitido pelo toque do destruidor.
+O personagem é capaz de desferir um ataque de toque desar-
+mado que causará Id8 pontos de dano, +1 por nível dessa
+classe de prestígio. A dor de Erythnul pode ser transmitida
+através de armas brancas, mas causará apenas Id4 pontos de
+dano, +1 por nível de destruidor. O personagem pode ativar
+essa habilidade uma vez por dia, mais uma a cada 3 níveis
+subseqüentes.
+Aura de Medo (Sob): Todos os inimigos dentro do
+alcance indicado na tabela sofrem -2 de penalidade moral em
+todos os testes de resistência enquanto permanecerem na
+área afetada. É possível ativar essa habilidade sobrenatural
+poucas vezes por dia, conforme indicado na tabela.
+Corte Cruel (Sob): A familiaridade do personagem com a
+dor e o medo lhe concedem uma precisão cruel em seus ataques
+corporais. O destruidor precisa declarar o uso dessa habilidade
+antes da jogada de ataque (logo, uma jogada fracassada gastará a
+tentativa). Um oponente atingido pelo corte cruel sofrerá Id4
+pontos de dano temporário na Constituição, além do dano
+normal do ataque. É possível ativar essa habilidade sobrenatural
+uma vez por dia a cada nível da classe de prestígio.
+Ilusão Aterrorizante (SM): O destruidor tocou os abis-
+mos mais profundos do horror e do desespero. Uma vez por
+dia, ele é capaz de ativar uma habilidade similar a magia idên-
+tica à magia assassino fantasmagórico (CD 14 + nível da classe
+destruidor) usando uma ação padrão. O alvo escolhido enxer-
+gará o destruidor com a forma de seu maior medo. Para os
+demais, incluindo o próprio destruidor, não haverá nenhum
+efeito visível. Para que a ilusão atinja o alvo, o personagem
+deverá realizar um ataque de toque bem-sucedido. Em todos
+os outros aspectos, essa habilidade é idêntica à magia descrita
+no Livro do Jogador.
+TABELA 2—8: O DUELISTA
+Bônus Base
+Num mundo repleto de cavaleiros, vestidos com armaduras
+pesadas e cavalgando enormes montarias de batalha, e de
+poderosos magos que manipulam feitiços inacreditáveis não
+existe lugar para fanfarrões ousados, que confiam apenas na
+sua esperteza e nos seus reflexos para sobreviver, certo?
+Errado. O duelista é a prova que a precisão e a perícia são
+alternativas viáveis para substituir as armas maciças, e a agili-
+dade é uma excelente substituta para as armaduras pesadas.
+O duelista é um guerreiro gracioso e inteligente, treinado
+para desferir ataques precisos usando armas leves, como o
+sabre por exemplo. Também conhecido como esgrimista, o
+duelista tira toda a vantagem possível de seus reflexos rápidos e
+seu raciocínio durante um combate. No lugar de ostentar uma
+armadura desajeitada, os integrantes dessa classe descobriram
+que a melhor maneira para se proteger é evitar ser atingido.
+Em geral, os duelistas são guerreiros ou rangers, mas exis-
+tem muitos deles que são ladinos e bardos. Os magos, feiticei-
+ros e monges costumam se tornar excelentes duelistas, em
+função da confiança reduzida que essas classes depositam nas
+armaduras. Eles obtêm diversos benefícios das capacidades
+de combate oferecidas pela classe de prestígio. Os paladinos
+e os bárbaros que se afastam bastante de seus arquétipos
+também podem se tornar duelistas. Os elfos têm mais facili-
+dade que os anões para se tornarem duelistas, mas os duelis-
+tas halflings e gnomos também são comuns. Os duelistas
+meio-orcs são muito raros.
+Os duelistas do Mestre geralmente são indivíduos solitá-
+rios em busca de aventuras ou de uma forma de enriquecer
+rapidamente. Ocasionalmente, eles operam em grupos
+pequenos, unidos e restritos e se especializam em táticas de
+combate em equipe.
+Dado de Vida: d10
+Pré-Requisitos
+Para se tornar um duelista, o personagem deve preencher
+todos os seguintes critérios:
+Bônus Base de Ataque: +6
+Talentos: Esquiva, Usar Arma Comum (sabre), Ambides-
+tria, Mobilidade.
+Acrobacia: 5 graduações
+Atuação: 3 graduações
+22
+Nível
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+de Ataque Fortitude Reflexos
++1
++2
++3
++5
++7
++8
++9
++10
++0
++1
++1
++1
++2
++2
++2
++3
++3
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
+Vontade
++0
++1
++1
++1
++2
++2
++3
++3
+Especial
+Esquiva Sagaz
+Golpe Preciso +1d6
+Mobilidade Aprimorada
+Graça
+Ataque Acrobático
+Golpe Preciso +2d6
+Aparar Aprimorado
+Reações Aprimoradas
+Desviar Objetos
+Golpe Preciso +3d6

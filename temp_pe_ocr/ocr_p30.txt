@@ -1,0 +1,144 @@
+﻿perfurante. Os apetrechos longos (como escadas, por exeni-
+PIO) são considerados armas de haste de acordo com o seu
+comprimento; outros itens mais incomuns (como cadeiras),
+concedem +2 de bônus em tentativas de desarmar o
+oponente. Finalmente, objetos grandes, com superfícies
+largas e chatas (como mesas), podem ser erguidos para servi-
+rem como escudos de corpo.
+Fúria Ébria (Ext): Você pode sucumbir a uma fúria
+semelhante à dos bárbaros; esse frenesi dura uma quantidade
+de rodadas equivalente ao seu modificador de Constituição
+(recém ajustado pela fúria ébria), mais uma rodada por dose
+de álcool consumida. Você recebe +4 de Força e Constituição
+e +2 de bônus de moral em testes de resistência de Vontade,
+mas também sofre -2 de penalidade na CA. Esta habilidade
+substitui os bônus concedidos pela habilidade Beber como
+um Cão.
+Guinar: Uma vez por rodada, como uma ação equiva-
+lente a movimento, seu deslocamento cambaleante lhe
+permite executar a manobra fintando em combate usando um
+teste de Blefar (resistido pela perícia Sentir Motivação do
+alvo). Você recebe +4 de bônus de competência nos testes de
+Blefar com esse propósito.
+Abraço de Bêbado (Ext): Você pode agarrar um
+oponente sem provocar um ataque de oportunidade e recebe
++4 de bônus de competência em todos os testes resistidos de
+Agarrar.
+Para Fins Medicinais (SM): Ao combinar o poder do seu
+chi com o álcool, o mestre bêbado é capaz de transformar
+uma dose de bebida alcoólica numa poção de curar ferimentos
+moderados até três vezes por dia. A ativação depende do seu
+chi, portanto a poção só funciona com o próprio mestre.
+Embriagar-se dessa maneira não piora e nem melhora seus
+valores de habilidade.
+Investida Espiralada: Você pode saltar e contorcer seu
+corpo no ar para desferir uma poderosa cabeçada no
+adversário. Esse ataque equivale a uma Investida mas, além de
+causar o dano normal, inicia automaticamente uma manobra
+Encontrão (sem provocar ataques de oportunidade). Além
+disso, considera-se que o personagem tem o talento Ataque
+Poderoso quando utiliza a investida espiralada; caso atinja o
+inimigo, ele ficará atordoado a menos que obtenha sucesso
+num teste de resistência de Vontade (CD 17 + o modificador
+TABELA 2—13: O MESTRE DAS CORRENTES
+Bônus Base
+CAPÍTULO 2: CIASSES DE PRESTÍGIO
+de Sabedoria do mestre bêbado). Contudo, caso o ataque não
+atinja o adversário, você cairá no chão diante dele.
+Sopro de Fogo (SM): Você pode usar a sua energia chi para
+incendiar o álcool dentro do seu organismo e expelir um jato
+de fogo pela boca. O sopro de fogo causa 3d12 pontos de
+dano por fogo num cone de 6 metros (Reflexos, CD 18, para
+reduzir o dano à metade). Cada vez que você utilizar o sopro
+de fogo, consumirá uma dose de álcool ingerida anterior-
+mente, reduzindo as penalidades e os bônus concedidos aos
+seus valores de habilidade.
+MESTRE DAS CORRENTES
+O mestre das correntes é um combatente especializado no
+uso de correntes como armas — de preferência a corrente
+com cravos. Em geral, eles emanam uma aura sinistra e
+nunca são completamente bondosos. Além disso, eles usam
+as correntes como ferramentas de terror e intimidação, bem
+como armas letais. Devido a sua afinidade com correntes, os
+mestres são muito bons com cadeados e trancas.
+Os guerreiros são os mais aptos a se tornarem mestres das
+correntes, mas os ladinos, rangers e bárbaros também seriam
+ótimos integrantes desse grupo raro e terrível.
+Com freqüência, um mestre das correntes constrói um
+refúgio subterrâneo repleto de correntes espalhadas pelo
+chão e penduradas no teto. Ele prende vários conjuntos de
+elos metálicos no local: o ranger e a oscilação desses objetos
+criam uma atmosfera enervante e perigosa para os invasores.
+Dificilmente os membros dessa classe de prestígio trabalha-
+rão juntos, mas um mestre das correntes muitas vezes se
+aliará a integrantes de outras classes se houver benefícios
+mútuos. Em função das suas afinidades, estes indivíduos
+costumam se aliar aos extra-planares conhecidos como
+kytons (consulte o Livro dos Monstros).
+Dado de Vida: dlO
+Pré-Requisitos
+Para se tornar um mestre das correntes, o personagem deve
+preencher todos os seguintes critérios:
+Tendência: Qualquer uma — exceto Neutro e Bom, Leal
+e Bom ou Caótico e Bom.
+Talentos: Usar Arma Exótica (corrente com cravos),
+Especialização, Imobilização Aprimorada, Desarme Aprimo-
+Nível
+10
+20
+30
+40
+50
+60
+80
+90
+100
+de Ataque Fortitude Reflexos Vontade
++1
++2
++3
++4
++5
++6
++7
++8
++9
++10
++1
++1
++1
++2
++2
++3
++3
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
++0
++1
++1
++1
++2
++2
++2
++3
++3
+Especial
+Aterrorizar
+Combate Vertical
+Foco em Arma Superior
+Aprisionamento
+Armadura de Correntes, Corrente Dupla
+Defletir Ataques, Golpe Reforçado
+Especialização em Arma Superior
+Corrente com Cravos Superior
+Balanço
+Dominar Correntes
+29

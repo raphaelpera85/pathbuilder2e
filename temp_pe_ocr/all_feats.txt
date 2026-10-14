@@ -1,0 +1,582 @@
+
+--- PAGE 6 ---
+﻿CAPÍTULO 1:
+TAL€DTOS e
+PeRíClAS
+Os talentos representam um elemento novo e fascinante de
+D&D3. Esse capítulo descreve opções ainda mais recentes
+de combate, voltadas para os guerreiros e monges (embora
+qualquer personagem qualificado possa selecioná-las). Estes
+novos talentos possuem pré-requisitos como um valor
+mínimo de habilidade ou de bônus base de ataque, por
+exemplo. Todos os talentos que tenham um asterisco depois
+do título estarão disponíveis como talentos adicionais para os
+guerreiros.
+TALENTOS VIRTUAIS
+Caso você tenha adquirido um talento em função da classe
+do seu personagem ou de uma habilidade especial, você
+poderá usá-lo como um talento virtual para adquirir outros
+talentos que o exijam como pré-requisito. O que isso signi-
+fica? Por exemplo, caso você tenha um talento ou habilidade
+de classe que afirme: "equivalente ao talento Mobilidade",
+deve assumir que já tem o talento Mobilidade se quiser sele-
+cionar o talento Deslocamento. Caso seu personagem perca
+esse pré-requisito virtual, também perderá acesso a quaisquer
+talentos adquiridos em decorrência da sua existência.
+NOVOS TALENTOS
+"Eu tenho uma surpresa pra você. Chegue mais perto e eu lhe
+mostrarei o que ê'.
+• Regdar
+Apanhar Objetos* [Geral]
+O herói é capaz de agarrar flechas atiradas contra ele,
+assim como virotes de besta, lanças e outros projé-
+teis e armas de arremesso.
+Pré-Requisitos: Bônus base de ataque +3,
+CAPÍTULO l: TALENTOS E PERÍCIAS
+Arquearia Zen [Geral]
+Sua intuição guia as suas mãos para utilizar armas de ataque à
+distância.
+Pré-Requisitos: Bônus base de ataque +3, Sab 13+.
+Benefício: O personagem pode utilizar seu modificador
+de Sabedoria no lugar do modificador de Destreza para reali-
+zar ataques à distância contra alvos num raio de 9 metros ou
+menos.
+Arremessar Arma [Geral]
+Nas suas mãos, qualquer arma se torna um perigoso projétil.
+Pré-Requisitos: Bônus base de ataque +2, Des 15+.
+Benefício: Você é capaz de arremessar qualquer arma
+que saiba utilizar, independente dela ter sido projetada como
+arma de ataque à distância ou não. O incremento de distância
+das armas utilizadas somente com este talento é de 3 m.
+Ataques Atordoantes Adicionais [Geral]
+Você adquire ataques atordoantes adicionais quando luta
+desarmado.
+Pré-Requisitos: Bônus base de ataque +2, Ataque
+Atordoante.
+Benefício: Você adquire a capacidade de executar três
+Ataques Atordoantes adicionais por dia. É possível selecionar
+esse talento diversas vezes.
+Ataque Mortífero* [Geral]
+Você não perde tempo para eliminar oponentes derrotados.
+Pré-Requisitos: Bônus base de ataque +2, Iniciativa
+Aprimorada.
+Benefício: Você pode executar um Golpe de Misericór-
+dia contra um oponente indefeso usando
+uma ação padrão.
+Normal: Executar um Golpe
+de Misericórdia exige uma ação
+de rodada completa.
+Bloqueio
+Ambidestro*
+[Geral]
+Você pode utilizar a arma da sua
+mão inábil para se defender
+contra ataques corporais.
+Pré-Requisitos: Bônus base
+de ataque +3, Ambidestria,
+Des 13+, Combater com
+Duas Armas, Usar a arma.
+Benefício: Quando
+você estiver lutando com
+duas armas e declarar a ação
+de ataque total, poderá deci-
+dir atacar normalmente
+ou sacrificar todos os seus
+ataques com a mão
+inábil para adquirir +2
+de bônus de esquiva na CA.
+4
+t
+Desviar Objetos, Des 15+, Ataque Desar-
+mado Aprimorado.
+Benefício: É necessário ter pelo
+menos uma mão livre (sem estar segu-
+rando nada) para usar este talento.
+Quando o personagem utilizar o
+talento Desviar Objetos, poderá agar-
+rar o projétil no lugar de desviá-lo. As
+armas de arremesso, como lanças e
+machados, podem ser arremessadas
+de volta ao atacante original como uma
+ação livre imediata ou mantidas pelo
+personagem. Os projéteis, como
+flechas ou virotes, também podem
+ser usados no próximo turno do persona-
+gem (como uma ação padrão), mas ele
+precisa ter o tipo de arco ou besta
+apropriado.
+69
+5
+--- PAGE 7 ---
+﻿CAPÍTULO l: TALENTOS E PERÍCIAS
+Caso também esteja usando um broquel, o bônus do escudo
+na CA será cumulativo. Esse talento exige o uso de armas
+metálicas ou que tenham uma empunhadura protegida e
+pertençam a uma categoria de tamanho inferior à do
+personagem.
+Chute Circular [Geral]
+Você é capaz de atingir diversos oponentes usando a mesma
+ação de ataque.
+Pré-Requisitos: Bônus base de ataque +3, Ataque Desar-
+mado Aprimorado, Des 15+.
+Benefício: Uma jogada bem-sucedida de ataque desar-
+mado lhe permite realizar uma segunda jogada de ataque
+contra um oponente diferente, conquanto ele esteja dentro
+da sua área ameaçada. Esse talento exige uma ação de rodada
+completa.
+Combater em Dupla* [Geral]
+Combater em equipe o torna um adversário mais perigoso.
+Pré-Requisitos: Bônus base de ataque +3, Reflexos de
+Combate.
+Benefício: Caso você e outro aliado tenham esse talento
+e estejam flanqueando o mesmo adversário, ambos recebem
++4 de bônus nas suas jogadas de ataque.
+Normal: O bônus padrão para as jogadas de ataque
+contra oponentes flanqueados é +2.
+Combater Engajado* [Geral]
+Você foi treinado nas técnicas de luta corporal e para evitar as
+manobras Agarrar.
+Pré-Requisito: Bónus base de ataque +3.
+000
+Benefício: Quando um adversário tentar lhe imobiliza
+qualquer dano causado com seu ataque de oportunidad
+(provocado pela tentativa de Agarrar) será adicionado a
+próximo teste resistido da manobra Agarrar para evitar a su
+própria imobilização. Além disso, você está apto a desferi
+um ataque de oportunidade mesmo quando a criatura advei
+sária tiver a habilidade Agarrar Aprimorado.
+Esse talento não lhe concede ataques de oportunidad
+adicionais na mesma rodada; portanto, caso você não tenh
+mais nenhum ataque de oportunidade disponível quand
+seu inimigo tentar agarrá-lo, será impossível receber o bene
+fício concedido por Combater Engajado.
+Por exemplo, um urso atroz acerta um monge com sua
+garras. Caso ele não tenha esse talento, a habilidade Agarra
+Aprimorado do urso lhe permite realizar um teste de Agarra
+imediatamente, sem provocar ataques de oportunidade. N'
+entanto, seX) monge tiver Combater Engajado, ele será capa:
+de desferir o ataque de oportunidade contra o urso e, casc
+obtenha sucesso e cause 8 pontos de dano, ainda receberá +é
+de bónus (além do seu bônus base de ataque, modificador
+Força e de tamanho) no teste resistido de Agarrar para evita
+a imobilização por parte da criatura.
+Combater no Solo* [Geral]
+Você não sofre penalidades para atacar quando estiver caídc
+no chão (ou numa posição semelhante).
+Pré-Requisitos: Bónus base de ataque +2, Des 15+
+Reflexos Rápidos.
+Benefício: Você pode executar um ataque quando esti-
+ver caído sem sofrer nenhuma penalidade na sua jogada.
+Caso o ataque seja bem-sucedido, você é capaz de levantar-se
+imediatamente como uma ação livre.
+0
+--- PAGE 8 ---
+﻿Empunhadura Primata [Geral]
+Você é capaz de utilizar armas de diversos tamanhos.
+Pré-Requisitos: Bônus -base de ataque +3, Foco em
+Arma (na respectiva arma), For 13+.
+Benefício: Você pode empunhar uma arma branca que
+pertença a uma categoria de tamanho superior à sua usando
+apenas uma das mãos. Por exemplo, um halfling com esse
+talento seria capaz de brandir uma espada longa
+usando somente uma mão. O personagem sofre -2
+de penalidade nas jogadas de ataque enquanto estiver
+utilizando a Empunhadura Primata. Você pode
+adquirir esse talento diversas vezes.
+Cada vez que o escolher, ele se
+aplica a uma nova arma.
+Normal: Os personagens
+somente podem brandir as
+armas que pertençam à sua
+categoria de tamanho ou
+menores usando apenas
+uma das mãos.
+Especialização em
+Escudo* [Geral]
+Você usa seu escudo como
+arma secundária enquanto
+conserva seu bônus de
+armadura.
+Pré-Requisitos: Bônus
+base de ataque +3, Usar
+escudos.
+Benefício: O persona-
+gem consegue executar um
+ataque com seu escudo sem
+perder o bônus que ele propor-
+ciona na CA. Este ataque estará
+sujeito às penalidades de
+combate com duas armas.
+Normal: Usar um escudo como arma anula o bônus
+que ele fornece para a CA durante aquela rodada.
+Especialista Tático* [Geral]
+Sua capacidade tática lhe concede mais vantagens em
+combate.
+Pré-Requisito: Bônus base de ataque +3.
+Benefício: Esse talento lhe permite realizar um ataque
+corpo a corpo adicional (ou qualquer ação parcial equiva-
+lente a um ataque corporal) contra um adversário que perca
+seu bônus de Destreza na CA por qualquer motivo e esteja
+ao alcance de ataque do personagem. Esse ataque adicional
+será executado durante seu turno, seja antes ou depois das
+suas ações regulares. Caso diversos oponentes estejam ao
+alcance do personagem e percam seu bônus de Destreza na
+CA, o jogador deve escolher apenas um deles como alvo
+desse talento.
+CAPÍTULO l: TALENTOS E PERÍCIAS
+Fingir Fraqueza [Geral]
+Você se aproveita da percepção falha de seus oponentes
+quando está desarmado.
+Pré-Requisitos: Bónus base de ataque +2, Ataque Desar-
+mado Aprimorado.
+Benefício: Caso obtenha sucesso num teste de Blefar,
+resistido pelo teste de Sentir Motivação do seu oponente,
+você será capaz de enganá-lo e levá-lo a realizar um
+ataque de oportuni-
+dade achando que
+você está
+desarmado. Porém, você é considerado um adversá-
+rio armado e pode desferir um ataque regular
+contra o oponente enganado: ele será surpreen-
+dido e golpeado antes de realizar seu ataque.
+Também é possível utilizar esse talento bran-
+dindo uma arma Miúda ou Pequena (que seu
+personagem saiba usar), escondendo-a até o
+último segundo antes do ataque, mas
+isso acarreta, respectivamente, -2 ou
+o
+-6 de penalidade no seu teste de
+Blefar. Caso utilize esse talento
+com uma arma disfarçada,
+como um leque laminado,
+não sofrerá nenhuma pena-
+lidade no teste de Blefar.
+Fingir Fraqueza exige
+uma ação padrão,
+similar a manobra
+0 fintando em combate,
+mas caso obtenha
+sucesso você
+executará seu ataque
+imediatamente. Esse
+talento pode ser
+usado apenas uma vez
+por encontro; depois,
+seus oponentes estarão
+conscientes de suas capacidades
+para caírem no mesmo truque.
+4
+4
+o
+o
+Garra de Águia [Geral]
+Seus ataques desarmados destroem objetos.
+Pré-Requisitos: Bônus base de ataque +2, Ataque Desar-
+mado Aprimorado, Separar, Des 15+.
+Benefício: Você é capaz de atingir a arma ou escudo do
+oponente usando um ataque desarmado.
+Especial: Os valores de dureza e os pontos de vida desses
+itens são fornecidos na tabela 8-13: Dureza e PV de Armas e
+Escudos Comuns, no Livro do Jogador.
+Investida Poderosa* [Geral]
+A ferocidade dos seus ataques pode surpreender os oponen-
+tes despreparados.
+Pré-Requisitos: Bônus base de ataque +3, Ataque
+Poderoso.
+7
+--- PAGE 9 ---
+﻿8
+CAPÍTULO l: TALENTOS E PERÍCIAS
+Benefício: Qualquer ataque de Investida bem-sucedido
+lhe permite causar o dano normal mais o dobro do seu modi-
+ficador de Força, independente de empunhar a arma com
+uma ou duas mãos. Você concederá um ataque de oportuni-
+dade para o oponente atacado.
+Linha de Frente* [Geral]
+Você foi treinado em técnicas defensivas contra oponentes
+em Investida.
+Pré-Requisitos: Bônus base de ataque +2, Reflexos de
+Combate.
+Benefício: Você pode desferir um ataque de oportuni-
+dade contra um adversário que esteja o atacando em Inves-
+tida, assim que ele entrar na sua área ameaçada. Seu ataque
+acontecerá imediatamente antes da Investida ser resolvida.
+Lutar Sujo [Geral]
+Você conhece as táticas de combate brutais, porém eficazes,
+das ruas e dos becos.
+Pré-Requisito: Bônus base de ataque +2.
+Benefício: Realize sua jogada de ataque normalmente.
+Caso obtenha sucesso, você poderá causar +1d4 pontos de
+dano adicionais. A utilização deste talento requer uma ação
+de ataque total.
+Manter a Consciência [Geral]
+Sua força de vontade é tão firme que o sustenta mesmo
+quando tudo parece perdido.
+Pré-Requisitos: Bônus base de ataque +2, Tolerância,
+Vontade de Ferro, Vitalidade.
+Benefício: Mesmo quando seus pontos de vida são redu-
+zidos a 0, você ainda conseguirá realizar uma ação parcial
+durante seu turno até atin-
+gir -10 pontos de vida.
+Nocautear*
+[Geral]
+Seus golpes são tão pode-
+rosos que chegam a derru-
+bar seus adversários no
+chão.
+Pré-Requisitos:
+Bônus base de ataque +2,
+Imobilização Aprimorada,
+For 15+.
+Benefício: Em comba-
+tes corpo a corpo, sempre
+que você causar 10 ou mais
+pontos de dano num único
+ataque, poderá realizar um
+ataque de imobilização
+contra o oponente atin-
+gido como uma ação livre.
+É impossível combinar
+esse talento com Imobili-
+zação Aprimorada para
+conseguir um ataque extra; o uso bem-sucedido deste talent
+não garante nenhum ataque adicional em função dos talei
+tos Trespassar ou Trespassar Aprimorado.
+Olhos na Nuca [Geral]
+Suas habilidades supremas de combate o auxiliam a reduzir
+ameaça de ataques pelos flancos.
+Pré-Requisitos: Bônus base de ataque +3, Sab 19+.
+Beneficio: Os atacantes não recebem +2 de bônus nas jog
+das quando estiverem flanqueando-o. Esse talento não surt
+nenhum efeito quando você perde seu bônus de Destreza n
+CA, como quando você for surpreendido, por exemplo.
+Normal: Quando seu personagem é flanqueado, c
+oponentes em seus flancos recebem +2 de bônus nas jogade
+de ataque contra ele.
+Percepção às Cegas, 1,5 m de raio [Geral]
+Você é capaz de sentir seus oponentes na escuridão.
+Pré-Requisitos: Bônus base de ataque +4, Lutar à
+Cegas, Sab 19+.
+Beneficio: Usando sentidos como audição aguçada
+sensibilidade a vibrações, você' consegue detectar a localiz
+ção dos oponentes num raio de 1,5 m do seu corpo. As magia
+de invisibilidade e escuridão são irrelevantes, embora aind
+seja impossível distinguir criaturas incorpóreas.Com exceçã
+do alcance, esse talento é idêntico à habilidade extraordinári
+Percepção às Cegas descrita no Livro dos Monstros.
+Pontaria Aguçada* [Geral]
+Sua aptidão com armas de disparo lhe permite atingir alvo
+que escapariam ilesos dos demais atiradores por estaren
+escondidos atrás de coberturas.
+--- PAGE 10 ---
+﻿Pré-Requisitos: Bónus base de ataque +3, Tiro Certeiro,
+Precisão.
+Benefício: Você recebe +2 de bônus nas jogadas de
+ataque à distância contra alvos protegidos por qualquer
+cobertura. Este talento não afeta os adversários que estive-
+rem sem cobertura alguma ou sob cobertura total.
+Punhos de Ferro [Geral]
+Você aprendeu os segredos de imbuir força extra em seus
+ataques desarmados.
+Pré-Requisitos: Bônus base de ataque +2, Ataque Desar-
+mado Aprimorado.
+Benefício: Declare que está utilizando esse talento antes
+de realizar uma jogada de ataque (logo, uma falha na jogada
+de ataque gasta a tentativa). Você causará Id4 pontos de dano
+adicionais quando atingir um adversário com um ataque
+desarmado. É possível usar esse talento uma quantidade de
+vezes por dia equivalente a 3 + seu modificador de Sabedoria.
+Rajada Relâmpago [Geral]
+Sua perícia e agilidade lhe permitem aplicar uma série de
+golpes extremamente rápidos.
+Pré-Requisitos: 40 nível de monge, Des 15+.
+Benefício: Você pode realizar dois ataques extras na
+mesma rodada. Todas as jogadas de ataque dessa rodada
+sofrem -5 de penalidade. A utilização deste talento exige uma
+ação de ataque total. É impossível executar uma Rajada
+Relâmpago e uma Rajada de Golpes ao mesmo tempo.
+Rapidez de Recarga* [Geral]
+Você consegue recarregar bestas muito rapidamente.
+Pré-Requisitos: Bônus base de ataque +2, Talento Usar
+da besta em questão.
+Benefício: O personagem poderá recarregar uma besta
+de mão ou uma besta leve como uma ação livre que provoca
+ataques de oportunidade. Ele poderá recarregar uma besta
+pesada usando uma ação equivalente a movimento, que
+também provoca esse tipo de ataque. Não é possível usar esse
+talento mais de uma vez por rodada.
+Normal: Recarregar uma besta de mão ou leve exige uma
+ação equivalente a movimentação; recarregar uma besta
+pesada requer uma ação de rodada completa.
+Salto do Louva-a-Deus [Geral]
+Você desfere um poderoso ataque quando salta na direção do
+adversário.
+Pré-Requisitos: 70 nível de monge, 5 graduações em
+Saltar.
+Benefício: Escolha um oponente que esteja dentro da
+distância máxima capaz de ser percorrida com um salto bem-
+sucedido; realize um teste normal de Saltar; caso obtenha
+sucesso, você poderá desferir um ataque de Investida regular
+contra o oponente escolhido como parte da mesma ação.
+Caso o ataque atinja o adversário, você causará o dano normal
+mais o dobro do seu modificador de Força.
+CAPÍTULO l: TALENTOS E PERÍCIAS
+Separar Aprimorado* [Geral]
+Você é capaz de atingir seus ataques exatamente onde deseja
+que eles acertem.
+Pré-Requisitos: Bônus base de ataque +2, Separar.
+Benefício: Quando acerta a arma de um oponente, você
+causa o dobro do dano.
+Sobrepujar Escudos* [Geral]
+Você sabe como ultrapassar a guarda do seu oponente, sobre-
+pujando a defesa do seu escudo.
+Pré-Requisitos: Bônus base de ataque +4, Combater
+com Duas Armas.
+Benefício: Este talento somente pode ser utilizado
+contra oponentes que estejam empunhando um escudo e
+pertençam a uma categoria de tamanho inferior, superior ou
+igual a categoria do personagem. Faça uma jogada de ataque
+contra o escudo do inimigo usando a arma da mão inábil, de
+acordo com as regras normais para atingir armas (veja a pág.
+136 do Livro do Jogador). Caso obtenha sucesso, você terá
+imobilizado momentaneamente o escudo do adversário com
+seu ataque; imediatamente depois, será possível realizar um
+ataque de oportunidade contra ele, usando sua arma primária
+— aplique seu bônus total de ataque. O oponente não rece-
+berá nenhum beneficio devido ao escudo contra esse ataque
+de oportunidade. É impossível utilizar esse talento empu-
+nhando apenas uma arma (exceto as duplas).
+Toque da Dor [Geral]
+Você causa uma dor intensa aos oponentes atingidos por seus
+ataques atordoantes.
+Pré-Requisitos: Bônus base de ataque +2, Ataque Ator-
+doante, Sab 19+.
+Benefício: As vítimas dos seus ataques atordoantes
+sofrem uma dor debilitante e ficam nauseadas durante 1
+rodada após a rodada de atordoamento normal. Esse talento
+precisa ser utilizado em conjunto com a habilidade Ataque
+Atordoante dos monges ou o talento Ataque Atordoante. As
+criaturas imunes a ataques atordoantes também são imunes
+ao uso desse talento, assim como qualquer criatura que tenha
+duas categorias de tamanho superiores ao personagem.
+Ultrapassar Aprimorado* [Geral]
+Você foi treinado para ultrapassar os oponentes menores
+que você.
+Pré-Requisitos: Especialização, Encontrão Aprimo-
+rado, Imobilização Aprimorada, For 13+, Ataque Poderoso.
+Benefício: Quando você tentar usar a manobra Ultrapas-
+sar (LdJ, pág. 139) contra oponentes que pertençam a uma
+categoria de tamanho inferior à sua, ele não pode escolher
+evitá-lo. Caso você o derrube, poderá desferir imediatamente
+um ataque de oportunidade contra ele, recebendo +4 de
+bônus na sua jogada de ataque contra oponentes caídos.
+Normal: O alvo da manobra Ultrapassar escolhe entre
+evitá-lo ou bloqueá-lo.
+9
+--- PAGE 11 ---
+﻿CAPÍTULO l: TALENTOS E PERÍCIAS
+"Você me subestima por não me enfurnar dentro de placas de
+metal. Eu não preciso disso; possuo perícias que você nunca
+compreenderá".
+- Ember
+As perícias são um componente vital durante a construção de
+um aventureiro ousado e bem-sucedido. Conforme avança
+de nível, o seu monge ou guerreiro adquire pontos de perícia;
+talvez você passe superficialmente pelo processo de seleção e
+distribuição de perícias. Nós temos uma dica muito útil:
+jamais cometa esse engano. Muitas vezes, escolher cuidado-
+samente suas perícias pode significar a diferença entre o
+sucesso e o fracasso (ou a vida e a morte) do seu personagem.
+Assim como as perícias apresentadas no Livro do Jogador,
+as perícias indicadas a seguir representam uma grande varie-
+dade de habilidades; a aptidão do seu personagem para
+executá-las será maior conforme seu nível avançar e mais
+pontos forem dedicados às suas graduações.
+NOVOS CONHECIMENTOS
+Assim como as perícias Oficios e Profissão, descritas no Livro
+do Jogador, os Conhecimentos englobam uma enorme quan-
+tidade de perícias sem ligação direta. O Conhecimento
+representa o estudo de algum tipo de informação, em geral
+uma disciplina acadêmica ou científica. A seguir, estão indi-
+cados alguns campos de estudo novos. Com a aprovação do
+seu Mestre, você poderá inventar novas áreas de
+conhecimento.
+Sabedoria Popular (folclore, mitos, origem dos nomes dos
+lugares, remédios populares para doenças comuns).
+• Literatura (histórias, canções, baladas, poesia épica,
+•
+lendas).
+• Matemática (mate-
+mática básica, geo-
+metria, álgebra).
+Política (burocra-
+•
+cia governamen-
+tal, petições,
+subornos, subterfú-
+gios, arte do acordo).
+• Manha (boemia,
+paquera, jogo, vigília
+urbana).
+Guerra (máquinas de
+•
+cerco, minar o adver-
+sário, táticas de cerco e
+estratégia de guerra).
+4
+o
+10
+AS MESMAS PERÍCIAS,
+NOVAS UTILIZAÇÕES
+As perícias exercem um papel vital no sucesso das aventuras
+e façanhas do seu personagem. Sem essas aptidões, ele seria
+incapaz de executar uma grande variedade de tarefas, desde as
+mais simples (avistar um bote na linha do horizonte do
+oceano) até as mais cruciais (escalar a parede de uma caverna
+para fugir de um Urso-coruja enfurecido). No entanto, o
+sistema de perícias foi desenvolvido de modo a permitir utili-
+zações diversificadas da mesma perícia, extrapolando as apli-
+cações óbvias. A seguir, descrevemos algumas sugestões para
+extrair mais das perícias apresentadas no Livro do Jogador.
+Blefar (Car)
+Uso Normal: Algumas vezes, é necessário persuadir
+alguém de que os seus argumentos estranhos ou mesmo
+improváveis são verdadeiros e que você é confiável. Isto é
+bastante útil em inúmeras situações, não apenas quando seu
+personagem precisa vender aqueles itens mágicos obtidos na
+torre do mago maluco.
+Novo Uso: Sedução. É possíVel usar Blefar para conven-
+cer os integrantes do sexo oposto que as suas intenções
+românticas com eles são sinceras, persuadindo-a (o) a lhe
+prestar um pequeno favor temporário (como vigiar enquanto
+você escala as paredes e entra pela janela ou lhe contar a
+senha que permitirá passar em segurança pelos guardas).
+Esta ação não pode ser usada durante o combate.
+Diplomacia (Car)
+Uso Normal: Algumas vezes, é importante que as
+pessoas o considerem uma pessoa agradável, cooperativa ou
+socialmente aceitável — mesmo quando isso não é verdade.
+Você pode achar que seu guerreiro é imponente e austero
+enfurnado na sua cota de malha
+manchada de sangue e coberto
+pelos farrapos de seu manto
+de viagem, mas o Mestre de
+Cerimônias não concordará
+até você convencê-lo a
+permitir sua entrada no
+salão de baile do rei, apesar
+de sua aparência desleixada.
+Novo Uso: Reverência.
+Mesmo os mais talentosos
+matadores de dragões não
+estão em condições de se opor
+aos indivíduos que ocupam posi-
+ções de autoridade e poder. Geral-
+mente, os nobres e demais dignitá-
+rios esperam ser tratados
+corretamente. Saber quando se diri-
+w
+gir a um patrono rico como "Vossa
+Alteza" em vez de "Vossa Excelên-
+cia" pode ajudar a virar a escala de reações a
+seu favor.

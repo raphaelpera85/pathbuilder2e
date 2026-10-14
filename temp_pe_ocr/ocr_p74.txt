@@ -1,0 +1,67 @@
+﻿versão comum e causa dano regular devido às farpas em sua
+extensão e da lâmina na ponta do chicote (que inflige cortes
+profundos quando estalados por usuários treinados). Dife-
+rente dos chicotes regulares, os bônus de armadura e arma-
+dura natural não impedem o dano causado por essa arma.
+Embora seja empunhado, trate-o como uma arma de disparo
+com alcance máximo de 4,5 metros e nenhuma penalidade
+por distância.
+Como o chicote pode se enrolar na perna ou outro
+membro de um inimigo, é possível tentar uma Imobilização
+usando-o. Caso você seja imobilizado em sua tentativa,
+poderá largar o chicote para se libertar.
+Quando você usa um chicote-ferrão, recebe +2 de bônus
+em seu teste resistido de ataque para desarmar um inimigo
+(inclusive na jogada para evitar ser desarmado caso a tenta-
+tiva fracasse).
+Chicote Reforçado (Comum ou Ferrão): Qualquer
+personagem que adquira o talento Usar Arma Exótica
+(chicote) também saberá utilizar um chicote ou chicote-
+ferrão reforçado. A versão reforçada dessas armas é mais
+pesada e resistente, de modo a permitir que o usuário apro-
+veite sua Força e aplique seu modificador ao dano causado —
+um chicote reforçado inflige dano por contusão (ou dano
+normal nas mãos de um Açoiteador) e um chicote-ferrão
+Adaga
+de Punho
+Manopla
+Reforçada
+Manopla com
+Atirad ra
+Mânti
+Duom
+CAPÍTULO 5: AS FERRAMENTAS DA ARTE
+reforçado sempre inflige dano normal
+— até o bônus
+máximo indicado na tabela.
+Duom: O duom é uma lança longa, com uma ponta
+normal, além de duas lâminas diagonais invertidas na
+metade superior do cabo. Ela é uma arma de haste, que
+permite atacar oponentes a 3 metros de distância. Qualquer
+personagem que adquira o talento Usar Arma Exótica
+(duom) será capaz de atingir os inimigos adjacentes usando
+as pontas invertidas. Aplique +2 de bônus à primeira jogada
+de ataque feita com o duom contra um oponente adjacente.
+Espada Larga de Mercúrio: Essa arma enorme
+contém um reservatório secreto e interno de um metal
+líquido (chamado de mercúrio pelos alquimistas) que
+percorre um canal estreito ao longo da lâmina. Quando a
+espada é empunhada verticalmente, o mercúrio escorre pelo
+canal até um espaço oco no cabo, mas quando a arma é bran-
+dida, o líquido preenche o interior da lâmina, tornando-a
+mais pesada. Em mãos sem treinamento, esse balanço impõe
+—3 de penalidade nas jogadas de ataque, além do redutor
+padrão (—4) por utilizar uma arma sem o talento adequado.
+Espada Longa de Mercúrio: Idêntica à arma descrita
+acima, mas a penalidade imposta nas jogadas de ataque dos
+usuários sem treinamento é —2, além do redutor padrão (—4)
+por utilizar uma arma sem o talento adequado.
+Azagaia Giratória
+Manopla com
+Adaga Tripla
+Espada Longa deMerctirio
+1
+Espada Larga de
+Mo
+tante
+73

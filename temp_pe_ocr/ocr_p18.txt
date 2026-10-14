@@ -1,0 +1,159 @@
+﻿a
+u
+re
+d
+ii
+d
+o
+rç
+bi
+n
+nu
+montaria durante uma Investida; é possível utilizá-la uma vez
+por dia sem acarretar nenhuma penalidade para o animal.
+Cada uso adicional no mesmo dia exige um teste de resistên-
+cia de Vontade (CD 2()) da montaria, realizado imediata-
+mente após o término da cavalgada acelerada; caso fracasse, o
+animal sofrerá 2d6 pontos de dano.
+Ataque Total Montado: A partir do 60 nível, os ataques
+do cavaleiro usam uma ação padrão, mesmo quando sua
+montaria se desloca mais de 1,5 m — supondo que haja
+oponentes para serem atacados; em geral, depois do desloca-
+mento resta apenas uma ação parcial (que não permite um
+ataque total).
+CAVALEIRO BATEDOR
+A cultura nômade da raça halfling muitas vezes resulta em
+encontros inesperados com o perigo. Para resguardá-los desse
+risco, várias comunidades halfling confiam em seus batedores
+--— campeões de elite com a tarefa de alertar e proteger seus
+companheiros de qualquer ameaça. Naturalmente, estes bate-
+dores são treinados na arte de cavalgar e patrulhar.
+Quase todos os cavaleiros batedores halflings eram guer-
+reiros, rangers, druidas ou ladinos. Entretanto, qualquer
+personagem pode se beneficiar dos bônus na CA e das capa-
+cidades defensivas de cavalgar dessa classe de prestígio.
+Os cavaleiros batedores halflings do Mestre geralmente
+são encontrados durante suas missões de campo ou rela-
+xando durante suas horas de folga. A presença de um batedor
+halfling (trabalhando ou descansando) significa que uma
+comunidade da raça está por perto.
+No entanto, alguns batedores sentem mais profunda-
+mente o chamado para a aventura. Estes cavaleiros deixam
+suas terras e seus lares para trás em busca de uma vida mais
+excitante nas estradas do mundo.
+Dado de Vida: dlO
+ré-Requisitos
+Para se tornar um cavaleiro batedor halfling, o personagem
+deve preencher todos os seguintes critérios:
+ABELA 2—4: O CAVALEIRO BATEDOR HALFLING
+Bônus Base
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+Bônus Base de Ataque: +5
+Raça: Halfling.
+Talentos: Combate Montado, Arqueirismo Montado.
+Cavalgar: 6 graduações.
+Observar: 4 graduações.
+Ouvir: 4 graduações.
+Perícias de Classe
+As perícias de classe de um cavaleiro batedor halfling (e a habi-
+lidade chave para cada perícia) são: Adestrar Animais (Car),
+Cavalgar (Des), Empatia com Animais (Car), Observar (Sab),
+Ouvir (Sab) e Procurar (Int). Consulte o Capítulo 4: Perícias,
+no Livro do Jogador, para obter as descrições das perícias.
+Pontos de Perícia a cada nível: 2 + modificador de
+Inteligência.
+Características da Classe
+Usar Armas e Armaduras: Os cavaleiros batedores
+halflings sabem usar todas as armas simples e comuns, arma-
+duras leves e escudos.
+Montaria: No 10 nível, os cavaleiros batedores halflings
+recebem uma montaria apropriada aos recursos de sua
+comunidade. A maioria das comunidades halflings tentará
+fornecer pôneis de guerra para seus batedores, mas existem
+algumas aldeias que forneceram animais mais baratos e
+outras que alardearam criaturas mais exóticas. Não é necessá-
+rio que o personagem pague sua montaria, nem os equipa-
+mentos pertinentes (como sela, estribos e freio).
+Prontidão: Os batedores halflings recebem +2 de bônus
+em testes de Observar e Ouvir.
+Bônus em Cavalgar: O cavaleiro halfling recebe +2 de
+bônus de competência em todos os seus testes da perícia
+Cavalgar.
+Cavalgar Defensivamente (Ext): A natureza das
+responsabilidades do batedor halfling lhe ensinou truques
+para cavalgar na defensiva, conquanto ele não execute
+nenhuma ação além disso (é impossível atacar enquanto ele
+cavalga defensivamente). O personagem recebe +2 de
+Destreza e +4 de bónus de esquiva na CA. Além disso, sua
+montaria adquire deslocamento dobrado, +2 de bônus em
+Nível
+10
+20
+30
+40
+50
+60
+80
+90
+de Ataque Fortitude Reflexos Vontade
+Especial
++1
++2
++3
++4
++5
++7
++8
++9
++10
++1
++1
++2
++2
++3
++3
++4
++4
++5
++5
++0
++1
++1
++1
++2
++2
++3
++3
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
++0
++0
++1
++1
++1
++2
++2
++2
++3
++3
+Prontidão, Bônus em Cavalgar
+Cavalgar Defensivamente l/dia
+Defletir Ataques +1
+Cavalgar Defensivamente 2/dia
+Saltar da Sela
+Cavalgar Defensivamente 3/dia
+Defletir Ataques +2
+Cavalgar Defensivamente 4/dia
+Defletir Ataques +3
+Cavalgar Defensivamente 5/dia
+'1
+Bônus na CA: Este é um bónus de deflexão (mas não mágico) aplicado na Classe de Armadura do personagem quando estiver montado, independente da
+armadura usada.

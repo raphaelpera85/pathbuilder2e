@@ -1,0 +1,114 @@
+﻿O açoite furtivo só funciona contra criaturas com anato-
+mia visível — mortos-vivos, constructos, limos, plantas e
+criaturas incorpóreas não possuem áreas vitais para serem
+atingidas. Qualquer criatura imune a sucessos decisivos
+também não é vulnerável ao açoite furtivo. O açoiteador
+precisa ver sua vítima com clareza suficiente para reconhecer
+um ponto vital e atingi-lo. O personagem não pode usar o
+açoite furtivo contra uma criatura camuflada ou se estiver
+atacando os membros de uma criatura cujas áreas vitais estão
+fora de alcance.
+Se o açoiteador possuir ataques furtivos de outras fontes
+(como seus níveis de ladino), o dano adicional se acumula.
+Combater Próximo: A partir do 10 nível, o açoiteador
+é capaz de atacar um oponente usando qualquer chicote sem
+provocar ataques de oportunidade quando estiver numa área
+ameaçada.
+Ferir: A partir do 10 nível, o açoiteador pode causar dano
+normal aos seus oponentes; um chicote comum sempre
+causa dano por contusão. Essa habilidade permite ao perso-
+nagem infligir dano a criaturas que tenham +1 de bônus de
+armadura ou superior, ou +3 de bônus de armadura natural
+ou superior +3; caso utilize o chicote para causar dano por
+contusão, ele ainda será ineficaz contra os bônus de arma-
+dura citados acima. Os açoiteadores que utilizam o chicote-
+ferrão sempre causam dano regular.
+Estalar: O açoiteador é capaz de desferir ataques de opor-
+tunidade usando seu chicote (comum ou ferrão) contra qual-
+quer oponente num raio de 1,5 m, como se empunhasse uma
+arma branca.
+Imobilização Aprimorada: Ao atingir 0 20 nível, o
+açoiteador recebe o talento Imobilização Aprimorada caso
+utilize um chicote comum ou ferrão para imobilizar um
+adversário. Não é necessário adquirir o talento Especializa-
+ção, normalmente um pré-requisito para este talento de
+imobilização.
+Terceira Mão: Ao atingir 0 20 nível, a precisão do açoi-
+teador com chicotes lhe permite brandir essa arma quase
+como uma outra mão adicional — com alcance de 4,5 m —
+usando uma ação padrão. Trazer um objeto até você por meio
+do chicote é uma ação equivalente a movimento. Observa-
+ção: Geralmente, o açoiteador utilizará um chicote comum
+para desfrutar das habilidades oferecidas pela habilidade
+Terceira Mão, pois o chicote ferrão causará seu dano ao
+objeto ou indivíduo apanhados dessa forma, enquanto o
+chicote comum não. Algumas vezes, isto não será um
+problema, em especial quando o item possuir a caracterís-
+tica dureza; no entanto, em certas ocasiões infligir dano por
+meio dessa habilidade não é uma boa idéia. Esse é o princi-
+pal motivo para os açoiteadores carregarem os dois tipos de
+chicote. O açoiteador será bem-sucedido no uso dessa habi-
+lidade caso sua jogada de ataque supere a CD da tarefa em
+questão.
+• Pressionar um botão, apagar a chama de uma vela, girar
+uma moeda caída no chão, etc. exige uma ação equivalen-
+te a movimento. Alcance: 4,5 m, CD 15.
+•
+•
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+Apanhar um objeto com até 10 kg, livre e soltá-lo na sua
+mão inábil exige uma ação equivalente a movimento.
+Alcance: 4,5 m, CD 20.
+Prender com firmeza a ponta do chicote em torno de um
+mastro, protuberância ou qualquer projeção semelhante a
+4,5 m de distância exige uma ação equivalente a
+movimento. A CD será 22. Caso essa manobra seja usada
+para escalar uma parede, reduza a CD de Escalar em 5. Se
+o ponto de fixação estiver no topo de um local elevado,
+será possível atravessar uma distância de 7,5 m balançan-
+do-se no chicote. O personagem também pode apanhar
+objetos com mais de 10 kg, mas não é possível soltá-los
+automaticamente na sua mão inábil; será preciso arrastá-
+los. O açoiteador é capaz de liberar a ponta de seu chicote
+como uma ação livre.
+Quando sofrer uma queda inesperada, o personagem
+pode desistir do seu teste de resistência de Reflexos para
+tentar prender seu chicote numa projeção, Pilar, beirada,
+etc. que esteja a uma distância máxima de 4,5 m da beira-
+da do poço, penhasco, ponte, etc. Em geral, um objeto
+(como uma estátua ou mesa, etc.) precisará ter o dobro do
+peso do PJ para suportar sua queda; caso contrário, ele
+simplesmente arrastará o item consigo. Também é possí-
+vel laçar um aliado ou inimigo que esteja perto da beirada
+do precipício. Para fazê-lo, o personagem realiza um ata-
+que de toque à distância contra a CA da criatura escolhida
+(um aliado não deveria considerar seu bônus de Destreza
+na CA, mas os inimigos — e os amigos indispostos —
+deveriam). Caso obtenha sucesso, o chicote se enrolará no
+corpo da criatura, que deverá obter sucesso num teste de
+Força (CD 20) para sustentá-lo, ou ambos cairão no
+precipício. O personagem é capaz de liberar a ponta de
+seu chicote como uma ação livre.
+Rajada de Estalos: Ao atingir 0 30 nível, o açoiteador é
+capaz de desferir um ataque extra por rodada usando qual-
+quer chicote. Este ataque considera o bônus de ataque mais
+elevado do personagem, mas todos os ataques dessa rodada (o
+extra e os normais) sofrem -2 de penalidade. A utilização
+dessa habilidade exige a ação de ataque total.
+Açoite Poderoso: A partir do 40 nível, o açoiteador
+adiciona +2 de bônus nas suas jogadas de dano com qualquer
+chicote. Caso esteja empunhando um chicote comum, ele
+pode aplicar esse bônus ao dano regular ou ao dano por
+contusão. Caso o personagem já tenha adquirido o talento
+Especialização em Arma em outra classe (guerreiro, por
+exemplo), os bônus de dano se acumulam.
+Desarme Aprimorado: A partir do 60 nível, o açoitea-
+dor adquire o talento Desarme Aprimorado quando utilizar
+qualquer chicote para tentar desarmar seu oponente (veja a
+pág. 137 do Livro do Jogador). Para usufruir os benefícios
+dessa habilidade não é preciso adquirir o talento Especializa-
+ção (normalmente um pré-requisito do Desarme Aprimo-
+rado). Caso o açoiteador seja bem-sucedido na tentativa de
+desarmar o oponente, poderá usar sua habilidade Terceira
+Mão para apanhar uma arma com 10 kg ou menos e soltá-la
+13

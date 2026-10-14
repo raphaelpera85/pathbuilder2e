@@ -1,0 +1,113 @@
+﻿Empunhadura Primata [Geral]
+Você é capaz de utilizar armas de diversos tamanhos.
+Pré-Requisitos: Bônus -base de ataque +3, Foco em
+Arma (na respectiva arma), For 13+.
+Benefício: Você pode empunhar uma arma branca que
+pertença a uma categoria de tamanho superior à sua usando
+apenas uma das mãos. Por exemplo, um halfling com esse
+talento seria capaz de brandir uma espada longa
+usando somente uma mão. O personagem sofre -2
+de penalidade nas jogadas de ataque enquanto estiver
+utilizando a Empunhadura Primata. Você pode
+adquirir esse talento diversas vezes.
+Cada vez que o escolher, ele se
+aplica a uma nova arma.
+Normal: Os personagens
+somente podem brandir as
+armas que pertençam à sua
+categoria de tamanho ou
+menores usando apenas
+uma das mãos.
+Especialização em
+Escudo* [Geral]
+Você usa seu escudo como
+arma secundária enquanto
+conserva seu bônus de
+armadura.
+Pré-Requisitos: Bônus
+base de ataque +3, Usar
+escudos.
+Benefício: O persona-
+gem consegue executar um
+ataque com seu escudo sem
+perder o bônus que ele propor-
+ciona na CA. Este ataque estará
+sujeito às penalidades de
+combate com duas armas.
+Normal: Usar um escudo como arma anula o bônus
+que ele fornece para a CA durante aquela rodada.
+Especialista Tático* [Geral]
+Sua capacidade tática lhe concede mais vantagens em
+combate.
+Pré-Requisito: Bônus base de ataque +3.
+Benefício: Esse talento lhe permite realizar um ataque
+corpo a corpo adicional (ou qualquer ação parcial equiva-
+lente a um ataque corporal) contra um adversário que perca
+seu bônus de Destreza na CA por qualquer motivo e esteja
+ao alcance de ataque do personagem. Esse ataque adicional
+será executado durante seu turno, seja antes ou depois das
+suas ações regulares. Caso diversos oponentes estejam ao
+alcance do personagem e percam seu bônus de Destreza na
+CA, o jogador deve escolher apenas um deles como alvo
+desse talento.
+CAPÍTULO l: TALENTOS E PERÍCIAS
+Fingir Fraqueza [Geral]
+Você se aproveita da percepção falha de seus oponentes
+quando está desarmado.
+Pré-Requisitos: Bónus base de ataque +2, Ataque Desar-
+mado Aprimorado.
+Benefício: Caso obtenha sucesso num teste de Blefar,
+resistido pelo teste de Sentir Motivação do seu oponente,
+você será capaz de enganá-lo e levá-lo a realizar um
+ataque de oportuni-
+dade achando que
+você está
+desarmado. Porém, você é considerado um adversá-
+rio armado e pode desferir um ataque regular
+contra o oponente enganado: ele será surpreen-
+dido e golpeado antes de realizar seu ataque.
+Também é possível utilizar esse talento bran-
+dindo uma arma Miúda ou Pequena (que seu
+personagem saiba usar), escondendo-a até o
+último segundo antes do ataque, mas
+isso acarreta, respectivamente, -2 ou
+o
+-6 de penalidade no seu teste de
+Blefar. Caso utilize esse talento
+com uma arma disfarçada,
+como um leque laminado,
+não sofrerá nenhuma pena-
+lidade no teste de Blefar.
+Fingir Fraqueza exige
+uma ação padrão,
+similar a manobra
+0 fintando em combate,
+mas caso obtenha
+sucesso você
+executará seu ataque
+imediatamente. Esse
+talento pode ser
+usado apenas uma vez
+por encontro; depois,
+seus oponentes estarão
+conscientes de suas capacidades
+para caírem no mesmo truque.
+4
+4
+o
+o
+Garra de Águia [Geral]
+Seus ataques desarmados destroem objetos.
+Pré-Requisitos: Bônus base de ataque +2, Ataque Desar-
+mado Aprimorado, Separar, Des 15+.
+Benefício: Você é capaz de atingir a arma ou escudo do
+oponente usando um ataque desarmado.
+Especial: Os valores de dureza e os pontos de vida desses
+itens são fornecidos na tabela 8-13: Dureza e PV de Armas e
+Escudos Comuns, no Livro do Jogador.
+Investida Poderosa* [Geral]
+A ferocidade dos seus ataques pode surpreender os oponen-
+tes despreparados.
+Pré-Requisitos: Bônus base de ataque +3, Ataque
+Poderoso.
+7

@@ -1,0 +1,148 @@
+﻿CAPÍTULO 2: CLASSES DE PRESTÍGIO
+Características da Classe
+Usar Armas e Armaduras: Nenhuma adicional.
+Disparo Furtivo: Sempre que o iniciado atingir um
+oponente incapaz de se defender adequadamente (ou seja,
+que tenha perdido seu bônus de Destreza na CA, exista ou
+não), poderá visar um ponto vital e causar dano extra. O dano
+adicional será +1d6 no 10 nível e Id6 adicional a cada dois
+níveis subseqüentes nessa classe de prestígio. Os ataques à
+distância só podem funcionar como ataques furtivos quando
+o alvo estiver a menos de 9 metros, já que não é possível atin-
+gir um alvo com uma precisão letal a uma distância maior.
+Para todos os demais propósitos, essa habilidade é idêntica ao
+ataque furtivo dos ladinos. Se o iniciado possuir ataques
+furtivos de outras fontes (como seus níveis de ladino), o dano
+adicional se acumula.
+Tiro a Queima-Roupa: A partir do 20 nível, o iniciado
+é capaz de disparar com seu arco sem provocar ataques de
+oportunidade, mesmo dentro de uma área ameaçada por
+oponentes.
+Foco em Arma Superior: Essa habilidade concede ao
+iniciado +1 de bônus adicional em todas as jogadas de ataque
+com seu arco; esse modificador se acumula com o bônus de
+Foco em Arma já adquirido pelo personagem (se houver).
+Ataque Livre: Uma vez por rodada, como uma ação
+livre, o iniciado poderá disparar uma flecha contra um adver-
+sário atingido por um ataque de oportunidade desferido por
+qualquer aliado; o alvo precisa estar na linha de visão do
+arqueiro e o disparo considera o bônus de ataque à distância
+mais elevado do personagem.
+Arquearia Zen: No 60 nível, o iniciado adquire esse
+talento gratuitamente (consulte a pág. 10). Caso o persona-
+gem já tenha o talento Arquearia Zen, seu modificador de
+Sabedoria será somado ao bônus de Destreza em qualquer
+ataque à distância.
+Especialização em Arma Superior: Essa habilidade
+concede ao iniciado +2 de bónus adicional em todas as joga-
+das de dano com um arco curto ou longo; esse modificador se
+acumula com o bônus de Especialização em Arma já adqui-
+rido pelo personagem (se houver).
+Ricochete (Ext): Esta habilidade extraordinária
+permite ao iniciado atingir um alvo que esteja a 6 metros de
+distância de um muro ou menos (mas não adjacente ao
+TABELA 2—11: O MESTRE DE ARMAS
+muro), e considerá-lo surpreendido para definir sua Classe
+de Armadura e o dano causado (o Disparo Furtivo funciona
+num Ricochete). Esse ataque exige uma ação de rodada
+completa, pois é extremamente dificil.
+MESTRE DE ARMAS
+O monge, o vingador escarlate, o mestre bêbado e o mestre
+samurai incorporam a energia chi como parte de suas disci-
+plinas marciais; contudo, não são os únicos a fazê-lo. Alguns
+indivíduos utilizam o estudo do chi ao dominar as técnicas de
+uma única arma branca. O objetivo do mestre de armas é
+unir a arma escolhida ao seu corpo, torná-los um só ser, usá-
+la como uma extensão natural e de modo instintivo, como
+qualquer outro membro.
+Os monges que seguem esse caminho podem escolher o
+ataque desarmado, o kama, o nunchaku, o siangham (consul-
+te o Capítulo 7: Equipamento, do Livro do Jogador) ou o
+bastão tri-seccionado (consulte o Capítulo 5 desse livro)
+como arma predileta. Para beneficiar-se de qualquer habili-
+dade especial da classe Mestre de Armas, é necessário que o
+personagem esteja empunhando sua arma predileta. É
+impossível mudar a sua arma posteriormente.
+Entretanto, isso não implica que, caso você tenha esco-
+lhido a sua espada longa (por exemplo), seja obrigado a utili-
+zar a mesma espada que empunhava quando se tornou um
+mestre de armas. O único pré-requisito material para esta
+classe é uma versão obra-prima da arma selecionada.
+Portanto, o mestre de armas poderia empunhar qualquer
+espada longa (obra-prima) para receber os benefícios dessa
+classe de prestígio.
+Caso o personagem utilize qualquer outra arma, não será
+capaz de executar nenhuma das manobras especiais descritas
+a seguir.
+Dado de Vida: d10
+Pré-Requisitos
+Para se tornar um mestre de armas, o personagem deve
+preencher todos os seguintes critérios:
+Bônus Base de Ataque: +5
+Talentos: Esquiva, Mobilidade, Reflexos de Combate,
+Especialização, Foco em Arma, Ataque Giratório, Des 13+,
+Usar Armas (arma predileta).
+Intimidar: 4 graduações.
+26
+Nível
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+Bônus Base
+de Ataque Fortitude Reflexos Vontade
++1
++3
++4
++5
++6
++7
++8
++9
++10
++0
++0
++1
++1
++1
++2
++2
++2
++3
++3
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
++0
++0
++1
++1
++1
++2
++2
++3
++3
+Especial
+Dano pelo chi— l/dia/nível
+Multiplicador Aprimorado l/dia
+Foco em Arma Superior
+Multiplicador Aprimorado 2/dia
+Reflexos de Combate Superiores
+MultiplicadorAprimorado 3/dia
+Sucesso Decisivo chi
+Multiplicador Aprimorado 4/dia
+Ataque Giratório chi
+Multiplicador Aprimorado 5/dia

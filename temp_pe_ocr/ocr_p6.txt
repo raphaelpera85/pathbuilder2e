@@ -1,0 +1,107 @@
+﻿CAPÍTULO 1:
+TAL€DTOS e
+PeRíClAS
+Os talentos representam um elemento novo e fascinante de
+D&D3. Esse capítulo descreve opções ainda mais recentes
+de combate, voltadas para os guerreiros e monges (embora
+qualquer personagem qualificado possa selecioná-las). Estes
+novos talentos possuem pré-requisitos como um valor
+mínimo de habilidade ou de bônus base de ataque, por
+exemplo. Todos os talentos que tenham um asterisco depois
+do título estarão disponíveis como talentos adicionais para os
+guerreiros.
+TALENTOS VIRTUAIS
+Caso você tenha adquirido um talento em função da classe
+do seu personagem ou de uma habilidade especial, você
+poderá usá-lo como um talento virtual para adquirir outros
+talentos que o exijam como pré-requisito. O que isso signi-
+fica? Por exemplo, caso você tenha um talento ou habilidade
+de classe que afirme: "equivalente ao talento Mobilidade",
+deve assumir que já tem o talento Mobilidade se quiser sele-
+cionar o talento Deslocamento. Caso seu personagem perca
+esse pré-requisito virtual, também perderá acesso a quaisquer
+talentos adquiridos em decorrência da sua existência.
+NOVOS TALENTOS
+"Eu tenho uma surpresa pra você. Chegue mais perto e eu lhe
+mostrarei o que ê'.
+• Regdar
+Apanhar Objetos* [Geral]
+O herói é capaz de agarrar flechas atiradas contra ele,
+assim como virotes de besta, lanças e outros projé-
+teis e armas de arremesso.
+Pré-Requisitos: Bônus base de ataque +3,
+CAPÍTULO l: TALENTOS E PERÍCIAS
+Arquearia Zen [Geral]
+Sua intuição guia as suas mãos para utilizar armas de ataque à
+distância.
+Pré-Requisitos: Bônus base de ataque +3, Sab 13+.
+Benefício: O personagem pode utilizar seu modificador
+de Sabedoria no lugar do modificador de Destreza para reali-
+zar ataques à distância contra alvos num raio de 9 metros ou
+menos.
+Arremessar Arma [Geral]
+Nas suas mãos, qualquer arma se torna um perigoso projétil.
+Pré-Requisitos: Bônus base de ataque +2, Des 15+.
+Benefício: Você é capaz de arremessar qualquer arma
+que saiba utilizar, independente dela ter sido projetada como
+arma de ataque à distância ou não. O incremento de distância
+das armas utilizadas somente com este talento é de 3 m.
+Ataques Atordoantes Adicionais [Geral]
+Você adquire ataques atordoantes adicionais quando luta
+desarmado.
+Pré-Requisitos: Bônus base de ataque +2, Ataque
+Atordoante.
+Benefício: Você adquire a capacidade de executar três
+Ataques Atordoantes adicionais por dia. É possível selecionar
+esse talento diversas vezes.
+Ataque Mortífero* [Geral]
+Você não perde tempo para eliminar oponentes derrotados.
+Pré-Requisitos: Bônus base de ataque +2, Iniciativa
+Aprimorada.
+Benefício: Você pode executar um Golpe de Misericór-
+dia contra um oponente indefeso usando
+uma ação padrão.
+Normal: Executar um Golpe
+de Misericórdia exige uma ação
+de rodada completa.
+Bloqueio
+Ambidestro*
+[Geral]
+Você pode utilizar a arma da sua
+mão inábil para se defender
+contra ataques corporais.
+Pré-Requisitos: Bônus base
+de ataque +3, Ambidestria,
+Des 13+, Combater com
+Duas Armas, Usar a arma.
+Benefício: Quando
+você estiver lutando com
+duas armas e declarar a ação
+de ataque total, poderá deci-
+dir atacar normalmente
+ou sacrificar todos os seus
+ataques com a mão
+inábil para adquirir +2
+de bônus de esquiva na CA.
+4
+t
+Desviar Objetos, Des 15+, Ataque Desar-
+mado Aprimorado.
+Benefício: É necessário ter pelo
+menos uma mão livre (sem estar segu-
+rando nada) para usar este talento.
+Quando o personagem utilizar o
+talento Desviar Objetos, poderá agar-
+rar o projétil no lugar de desviá-lo. As
+armas de arremesso, como lanças e
+machados, podem ser arremessadas
+de volta ao atacante original como uma
+ação livre imediata ou mantidas pelo
+personagem. Os projéteis, como
+flechas ou virotes, também podem
+ser usados no próximo turno do persona-
+gem (como uma ação padrão), mas ele
+precisa ter o tipo de arco ou besta
+apropriado.
+69
+5

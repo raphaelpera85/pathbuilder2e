@@ -1,0 +1,111 @@
+﻿Shuriken da Eletrocussão: Esses shurikens +1 são vendidos
+em trios. Caso um personagem atinja um oponente com um
+deles, causará +1d6 pontos de dano elétrico. Se a mesma cria-
+tura for atingida por dois shurikens, sofrerá +1d6 pontos de
+dano elétrico do primeiro e +2d6 pontos de dano elétrico do
+segundo. Finalmente, se os três shurikens atingirem o mesmo
+alvo, cada um infligirá +1d6, +2d6 e +3d6 pontos de dano
+elétrico respectivamente, para um total de 6d6 pontos de dano.
+Nível do Item: 120; pré-requisitos: Criar Armaduras e
+Armas Mágicas, relâmpago; preço de mercado: 31.000 PO; custo
+para criar: 16.000 PO + 1.200 X?
+Descrições das Poções
+Punhos Flamejantes: Os punhos do usuário irrompem em
+chamas e causam +1d6 pontos de dano de fogo aos seus
+ataques desarmados. As chamas não afetam o usuário da
+poção e o efeito permanece durante 3 minutos.
+Nível do Item: 30; pré-requisitos: Preparar Poção, mão flame-
+jantes; preço de mercado: 300 PO
+Vitalidade Ilusória: O usuário adquire Id10+3 pontos de
+vida temporários. O efeito permanece durante 3 horas.
+Nível do Item: 30; pré-requisitos: Preparar Poção, vigor; preço
+de mercado: 300 PO.
+Descrições dos Anéis
+Armadura Arcana: Esse anel afeta o usuário de forma
+idêntica à magia armadura arcana (+4 de bônus de armadura
+na CA).
+Nível do Item: 10; pré-requisitos: Forjar Anel, armadura
+arcana; preço de mercado: 12.000 PO
+Golpes Elétricos: Com apenas um comando, esse anel
+envolve as mãos do usuário com energia elétrica. Uma vez
+por rodada, ele é capaz de desferir um ataque de toque que
+causa Id8+3 pontos de dano elétrico. Semelhante às magias
+de toque normais, o usuário pode realizar seus ataques desar-
+mados regulares e o anel descarregará a magia quando o
+primeiro golpe atingir o adversário.
+Nível do Item: 30; pré-requisitos: Forjar Anel, toque chocante;
+preço de mercado: 13.000 PO
+Descrições dos Itens Maravilhosos
+Amuleto dos Punhos Poderosos: Este amuleto concede
+entre +1 e +5 de bônus de aprimoramento nas jogadas de
+ataque e dano para golpes desarmados.
+Nível do Item: 50; pré-requisitos: Criar Item Maravilhoso,
+presa mágica, o nível do conjurador precisa ser o triplo do
+bônus do item; preço de mercado: 6.000 PO (amuleto +1);
+24.000 PO (amuleto +2); 54.000 PO (amuleto +3); 96.000 PO
+(amuleto +4); 150.000 PO (amuleto +5).
+Bandana da Excelência Suprema: Essa tira feita em seda
+pura é usada como uma faixa na cabeça. Ela concede ao usuá-
+rio +6 de bônus de aprimoramento na Força, Destreza e
+Sabedoria.
+Nível do Item: 180; pré-requisitos: Criar Item Maravilhoso,
+força do touro, agilidade felina e comunhão ou lendas e histórias;
+preço de mercado: 180.000 PO.
+CAPÍTULO 5: AS FERRAMENTAS DA ARTE
+Bandana da Ferocidade: Esta faixa de couro, retirada de
+um javali selvagem, permite que o usuário continue lutando
+quando já deveria ter caído em função de seus ferimentos. O
+personagem é capaz de agir normalmente quando tiver O PV
+(embora ações cansativas lhe causem 1 ponto de dano). Se o
+portador estiver com pontos de vida negativos (até o limite
+de —9), ainda conseguirá agir, mas correrá o risco de perder
+mais 1 PV a cada rodada, conforme a regra. Quando chegar a
+—10 P V, ele morrerá. De modo similar, o personagem é
+menos suscetível ao dano por contusão; esses ferimentos são
+incapazes de deixá-lo zonzo e ele cairá inconsciente apenas
+quando os pontos de dano por contusão excederem seu total
+de PV em 10 ou mais.
+Nível do Item: 80; pré-requisitos: Criar Item Maravilhoso,
+vigor; preço de mercado: 2.000 PO
+Cinto da Bravura Implacável: Esse cinto largo é feito de
+couro batido e adamante, e concede ao usuário +6 de bónus
+de aprimoramento na Força e na Constituição.
+Nível do Item: 150; pré-requisitos: Criar Item Maravilhoso,
+força do touro, vigor; preço de mercado: 108.000 PO.
+Faixas do Ki: Quando são atadas em volta dos punhos,
+essas faixas de couro concedem +5 de bônus de aprimora-
+mento na CD para os testes de resistência contra os ataques
+' — sejam da classe monge ou do
+atordoantes do usuar10
+talento Ataque Atordoante. As faixas trançadas nos punhos
+equivalem a um par de luvas; elas ocupam o "espaço mágico"
+das luvas no corpo do personagem.
+Nível do Item: 70; pré-requisitos: Criar Item Maravilhoso,
+monge 3+; preço de mercado: 5.000 PO
+Luvas do Aperto Esmagador: Estas luvas de couro flexível
+aumentam a força da pegada do usuário. Elas concedem +5
+de bônus de aprimoramento nos testes de Escalar, Agarrar e
+testes resistidos de ataque para os oponentes (sejam
+ofensivas ou defensivas).
+Nível do Item: 100; pré-requisitos: Criar Item Maravilhoso,
+força do touro; preço de mercado: 15.000 PO.
+Sandálias do Salto Felino: Essas sandálias permitem que
+o usuário realize chutes aéreos devastadores. O portador
+deve ter 5 graduações em Saltar ou Acrobacia para ativá-las.
+Quando executar um ataque de Investida, ele será capaz de
+aplicar uma voadora. Considere-a um ataque desarmado que
+causa o dobro do dano normal.
+Nível do Item: 90; pré-requisitos: Criar Item Maravilhoso,
+salto; preço de mercado: 3.500 PO.
+Veste da Vitalidade Ilusória: Enquanto trajar essa veste, o
+personagem adquire +10 P V. Quando tirá-la, perderá imedia-
+tamente 10 PV (não os considere pontos de vida temporários
+regulares).
+Nível do Item: 60; pré-requisitos: Criar Item Maravilhoso,
+vigor; preço de mercado: 12.000 PO.
+VEÍCULOS
+Em certas ocasiões, não é possível andar ou mesmo cavalgar.
+Talvez os PJs estejam carregando espólios demais ou trans-
+portando diversos itens incômodos e grandes. Não importa,
+com o tempo será necessário comprar um veículo. O Livro do
+1

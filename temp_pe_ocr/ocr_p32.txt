@@ -1,0 +1,148 @@
+﻿TABELA 2—14: O MESTRE DA GUERRA
+Nível
+10
+20
+30
+40
+50
+60
+70
+80
+90
+Bônus Base
+de Ataque Fortitude Reflexos
++1
++2
++3
++4
++5
++6
++7
++8
++9
++10
++2
++3
++3
++4
++4
++5
++5
++7
++0
++1
++1
++1
++2
++2
++2
++3
++3
+Vontade
++0
++0
++1
++1
++1
++2
++2
++2
++3
++3
+CAPÍTULO 2: CLASSES DE PRESTÍGIO
+Especial
+Irmandade, Bônus de Liderança +1
+Grito de Guerra
+Direcionar Tropas, Bônus de Liderança +2
+Torre, Reunir Tropas
+Marcha Forçada, Bônus de Liderança +3
+Fortaleza
+Estandarte de Batalha, Bônus de Liderança +4
+Castelo
+Morra pelo seu País, Bônus de Liderança +5
+Castelo Enorme
+voltados uns para os outros, e não contra qualquer ameaça
+externa. Além disso, os oficiais militares ao redor do mundo
+reconhecerão a mansão como um campo de treinamento
+consagrado: a Academia de Guerra de Furyondy.
+Os indivíduos graduados pela Academia — chamados de
+mestres da guerra — vêm servindo o exército de Furyondy
+há gerações, compondo a maioria dos seus generais de alta
+patente. Uma indicação para estudar na Academia de Guerra
+é a melhor medalha que um jovem oficial pode receber e
+todos capazes de superar esse treinamento árduo se tornam
+presenças respeitáveis no campo de batalha.
+Geralmente, os mestres da guerra advêm das fileiras do
+desse modo, os guerreiros predominam na
+exército
+Academia. Mesmo assim, o processo de indicação tem um
+aspecto político (como tudo mais em Furyondy), logo é
+possível encontrar os "— heróis civis do reino" sendo treina-
+dos como mestres da guerra.
+Os clérigos e paladinos de Heironeous e St. Cuthbert são
+presenças comuns, mas as demais classes são raras (embora
+todas as turmas da Academia tenham alguns magos e
+rangers). Em sua grande maioria, os candidatos a mestres da
+guerra são humanos,. mas todas as raças comuns possuem
+representantes na universidade.
+Em geral, os mestres da guerra do Mestre serão encontra-
+dos no comando de um exército em marcha ou defendendo
+um castelo situado num lugar estrategicamente importante.
+Quase todos estão sempre dispostos a auxiliar seus compa-
+nheiros de classe de prestígio; as turmas de alunos formados
+compõem uma pequena "rede de veteranos". Muitas vezes,
+essa camaradagem se estende além dos campos de batalha,
+pois os mestres da guerra enfatizam a lealdade como uma
+virtude primária.
+Não é possível enquadrar essa classe de prestígio em todas
+as campanhas, em função das responsabilidades dos mestres
+da guerra e da complexidade envolvida na manutenção de
+uma fortaleza ou castelo. Como sempre, o Mestre tem a pala-
+vra final sobre a disponibilidade dessa classe.
+Dado de Vida: d10
+Pré-Requisitos
+Para se tornar um mestre da guerra, o personagem deve
+preencher todos os seguintes critérios:
+Bônus Base de Ataque: +7
+Tendência: Qualquer uma, exceto as combinações
+Caóticas e as combinações Malignas.
+Talentos: Liderança (descrita no Livro do Mestre), Usar
+Armas Comuns, Especialização em Arma.
+Diplomacia: 5 graduações.
+Perícias de Classe
+As perícias de classe de um mestre da guerra (e a habilidade
+chave para cada perícia) são: Blefar (Car), Cavalgar (Des),
+Conhecimento (Int), Diplomacia (Car), Intimidar (Car),
+Ofícios (Int), Profissão (Int), Sentir Motivação (Sab).
+Consulte o Capítulo 4: Perícias, no Livro do Jogador, para
+obter as descrições das perícias.
+Pontos de Perícia a cada nível: 4 + modificador de
+Inteligência.
+Características da Classe
+Irmandade: Os mestres da guerra são uma organização
+fraterna e, em geral, seus membros estão dispostos a ajudar
+seus iguais. O personagem recebe +4 de bônus de competên-
+cia em testes de Diplomacia para influenciar outros mestres
+da guerra. Essa vantagem é uma faca de dois gumes: o perso-
+nagem sempre deve tratar os demais mestres da guerra com
+honra e disposição para ajudar.
+Bônus de Liderança: Os mestres da guerra recebem
+bônus em seu nível de Liderança (nível do personagem +
+modificador de Carisma), permitindo-lhes atrair seguidores
+e aliados mais poderosos quando utilizam o talento Lide-
+rança sempre que alcançam um novo nível de personagem.
+Grito de Guerra (Sob): Quando seu grito ecoa no
+campo de batalha, eleva o espírito dos seus aliados. Essa habi-
+lidade é semelhante a Inspirar Coragem dos bardos, descrita
+na pág. 28 do Livro do Jogador. Este bônus permanece ativo
+durante uma quantidade de rodadas igual ao modificador de
+Carisma do personagem; é possível ativá-lo uma vez por dia
+para cada nível de mestre da guerra.
+Direcionar Tropas (Sob): Usando uma ação de rodada
+completa, o mestre pode gritar comandos capazes de aprimo-
+rar o desempenho das tropas. O personagem concede +2 de
+bônus de competência nas jogadas de ataque ou nos testes de
+perícias de qualquer aliado num raio de 9 m. Esse bônus
+permanece ativo uma quantidade de rodadas igual ao modifi-
+cador de Carisma do personagem.
+31

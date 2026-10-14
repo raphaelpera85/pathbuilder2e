@@ -1,0 +1,140 @@
+﻿CAPÍTULO 2: CLASSES DE PRESTÍGIO
+CAPÍTULO 2:
+cLasses De
+PR€STíGlO
+"Como você fez aquilo?".
+- Regdar
+Apresentadas no Livro do Mestre, as Classes de Prestígio são
+determinadas classes especiais que os jogadores podem esco-
+lher, mas têm alguns pré-requisitos para tanto. Essas exigên-
+cias estarão indicadas nas suas respectivas seções, sob cada
+classe. Exceto quando especificado o contrário, siga todas as
+regras padrão dos personagens multiclasse para adicionar
+uma classe de prestígio aos seus PJs.
+A classe de prestígio açoiteador utiliza o chicote como uma
+extensão de si mesmo. Um chicote nas mãos deste especia-
+lista assemelha-se a algo vivo, obedecendo a todos os coman-
+dos do personagem. O treinamento como açoiteador vai
+muito além do simples uso de sua arma exótica, e nem todos
+que se submetem a ele sobrevivem até sua conclusão. Os
+açoiteadores preferem utilizar um chicote ou um chicote-
+ferrão (ambas armas exóticas), tornando-se guerreiros
+mortíferos a serem temidos por sua habilidade com esse
+instrumento.
+Os guerreiros, ex-paladinos, rangers, ex-druidas e bárbaros
+são atraídos pela arte do açoite, que transforma uma ferra-
+menta interessante em uma arma mortífera. Os ladinos,
+monges e bardos consideram a imagem subestimada de um
+chicote uma vantagem em muitas de suas atividades. É
+pouco provável que os feiticeiros, magos e clérigos sejam
+atraídos por esta arte.
+Como PdMs, os açoiteadores são indivíduos que adoram
+exibir os estalos e estragos de sua habilidade com o chicote.
+Embora considerem o uso do chicote um estilo de arte, eles
+o reconhecem como uma arte marcial voltada principal-
+mente ao combate.
+Dado de Vida: dlO
+TABELA 2—1: O AÇOITEADOR
+Pré-Requisitos
+Para se tornar um açoiteador, o personagem deve preenchei
+todos os seguintes critérios:
+Bônus Base de Ataque: +5
+Talentos: Usar Arma Exótica (chicote), Foco em Arma
+(chicote).
+Ofícios (curtume): 2 graduações.
+Usar Cordas: 2 graduações.
+Especial: O açoiteador deve possuir um chicote comum
+ou chicote-ferrão (consulte o Capítulo 5). Geralmente, um
+açoiteador possui os dois tipos de armas (e, se tiver dinheirc
+suficiente versões reforçadas de ambas).
+Perícias de Classe
+As perícias de classe de um açoiteador (e a habilidade chave
+para cada perícia) são: Arte da Fuga (Des), Equill$rio (Des)
+Intimidar (Car), Observar (Sab), Ofícios (Int), Saltar (For) e
+Usar Cordas (Des). Consulte o Capítulo 4: Perícias, no Livro
+do Jogador, para obter as descrições das perícias.
+Pontos de Perícia a cada nível: 2 + modificador de
+Inteligência.
+Características da Classe
+Usar Armas e Armaduras: O foco do treinamento dos
+açoiteadores é o chicote. Esses personagens não sabem usar
+armaduras ou escudos.
+Açoite Furtivo: Se um açoiteador puder atingir um
+oponente incapaz de se defender adequadamente do ataque e
+que esteja dentro do alcance do seu chicote ou chicote-
+ferrão (4,5 m), ele pode golpear um ponto vital e causar dano
+extra —- um açoiteador não consegue desferir ataques furti-
+vos com nenhuma outra arma. Basicamente, esse ataque
+causará o dano adicional sempre que a vítima não puder se
+beneficiar de seu bônus de Destreza na CA (exista ou não) ou
+estiver sendo flanqueada pelo personagem. O dano adicional
+será +1d6 no 10 nível e Id6 adicional a cada quatro níveis
+subseqüentes nessa classe de prestígio (+2d6 no 50 nível e
++3d6 no 90). Se o açoiteador obtiver um sucesso decisivo
+num açoite furtivo, o dano adicional não é multiplicado.
+Usando um chicote comum (mas não um chicote-ferrão),
+é possível realizar um açoite furtivo que causa dano por
+contusão (veja Ferir, abaixo).
+12
+Nível
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+Bônus Base
+de Ataque Fortitude
++2
++3
++4
++5
++6
++7
++8
++9
++10
++0
++1
++1
++1
++2
++2
++3
++3
+Reflexos
++2
++3
++3
++4
++4
++5
++5
++6
++6
++7
+Vontade
++0
++1
++1
++1
++2
++2
++2
++3
++3
+Especial
+Açoite Furtivo +1 d6, Combater Próximo, Ferir, Estalar
+Imobilização Aprimorada, Terceira Mão
+Rajada de Estalos
+Açoite Poderoso
+Açoite Furtivo +2d6
+Desarmar Aprimorado
+Açoite Atordoante
+Açoite Relâmpago
+Açoite Furtivo +3d6
+Espiral da Morte
