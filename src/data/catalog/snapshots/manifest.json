@@ -122,6 +122,14 @@
   },
   {
     "systemId": "dnd5e",
+    "ruleset": "dnd5e-coa",
+    "categories": {
+      "feat": 7,
+      "item": 28
+    }
+  },
+  {
+    "systemId": "dnd5e",
     "ruleset": "dnd5e-ggtr",
     "categories": {
       "ancestry": 6,

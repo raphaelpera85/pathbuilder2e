@@ -1,0 +1,293 @@
+[
+  {
+    "id": "coa-patron-hellriders-of-elturel",
+    "name_pt": "Hellriders of Elturel",
+    "name_en": "Hellriders of Elturel",
+    "name_es": null,
+    "description_pt": "Cavaleiros sagrados devotados a salvar almas e resgatar celestiais aprisionados nas profundezas dos Nove Infernos.\n\nAlignment: Good\nContacts: Ramius Dangremond\n\n**Hellrider's Blessing**: The Hellriders know better than most the evils found in the Nine Hells and would never send anyone there without protection. After spending the entirety of a long rest in the Nine Hells, you gain the benefit of a Greater Restoration spell.\n\n**Celestial Cavalry**: While much of the journey through the Nine Hells follows the River Styx, it is likely that you will occasionally leave on excursions or scouting missions. While you remain in the Nine Hells, you may cast the Phantom Steed spell at will, as a ritual.\n\n**Hellrider's Salvation**: You're taught a ritual to help save missing Celestials. The ritual requires 1 minute to complete and targets all Celestials within 100 feet. Once the ritual is complete, if the Celestial is willing, they're transported to a location on the Material Plane of their choosing.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": "Patrono de Grupo (Good)",
+    "traits": [
+      "group-patron",
+      "good"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "dnd5e-coa",
+    "source_book": "Chains of Asmodeus (D&D 5e)",
+    "source_page": 22,
+    "created_at": "2026-10-14T20:51:56.860Z",
+    "updated_at": "2026-10-14T20:51:56.860Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "group-patron",
+      "alignment": "Good",
+      "contacts": [
+        "Ramius Dangremond"
+      ],
+      "perks": [
+        {
+          "name": "Hellrider's Blessing",
+          "description": "The Hellriders know better than most the evils found in the Nine Hells and would never send anyone there without protection. After spending the entirety of a long rest in the Nine Hells, you gain the benefit of a Greater Restoration spell."
+        },
+        {
+          "name": "Celestial Cavalry",
+          "description": "While much of the journey through the Nine Hells follows the River Styx, it is likely that you will occasionally leave on excursions or scouting missions. While you remain in the Nine Hells, you may cast the Phantom Steed spell at will, as a ritual."
+        },
+        {
+          "name": "Hellrider's Salvation",
+          "description": "You're taught a ritual to help save missing Celestials. The ritual requires 1 minute to complete and targets all Celestials within 100 feet. Once the ritual is complete, if the Celestial is willing, they're transported to a location on the Material Plane of their choosing."
+        }
+      ],
+      "summaries": {
+        "pt-BR": "Cavaleiros sagrados devotados a salvar almas e resgatar celestiais aprisionados nas profundezas dos Nove Infernos."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "coa-patron-conclave-of-halruaa",
+    "name_pt": "Conclave of Halruaa",
+    "name_en": "Conclave of Halruaa",
+    "name_es": null,
+    "description_pt": "Uma sociedade secreta de arquimagos de Halruaa dedicada a conter abusos mágicos e recuperar segredos infernais.\n\nAlignment: Neutral\nContacts: Zythan Avhoste\n\n**Arcane Communication**: The Conclave gives you a Sending Stone and a Halruaan Ethereal Vessel. The Sending Stone communicates directly with your contact. The Halruaan Ethereal Vessel is a transparent container (up to 12 cubic feet) that can be recalled from the Ethereal Plane with an action to store or exchange items across planes.\n\n**Arcane Quartermasters**: The Conclave grants preferred access to rare spell scrolls (especially Divination up to 5th level), crystal balls, gems of seeing, and brooms of flying, and buys excess spellbooks and scrolls recovered from Hell.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": "Patrono de Grupo (Neutral)",
+    "traits": [
+      "group-patron",
+      "neutral"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "dnd5e-coa",
+    "source_book": "Chains of Asmodeus (D&D 5e)",
+    "source_page": 22,
+    "created_at": "2026-10-14T20:51:56.860Z",
+    "updated_at": "2026-10-14T20:51:56.860Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "group-patron",
+      "alignment": "Neutral",
+      "contacts": [
+        "Zythan Avhoste"
+      ],
+      "perks": [
+        {
+          "name": "Arcane Communication",
+          "description": "The Conclave gives you a Sending Stone and a Halruaan Ethereal Vessel. The Sending Stone communicates directly with your contact. The Halruaan Ethereal Vessel is a transparent container (up to 12 cubic feet) that can be recalled from the Ethereal Plane with an action to store or exchange items across planes."
+        },
+        {
+          "name": "Arcane Quartermasters",
+          "description": "The Conclave grants preferred access to rare spell scrolls (especially Divination up to 5th level), crystal balls, gems of seeing, and brooms of flying, and buys excess spellbooks and scrolls recovered from Hell."
+        }
+      ],
+      "summaries": {
+        "pt-BR": "Uma sociedade secreta de arquimagos de Halruaa dedicada a conter abusos mágicos e recuperar segredos infernais."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "coa-patron-deathstalkers-of-bhaal",
+    "name_pt": "Deathstalkers of Bhaal",
+    "name_en": "Deathstalkers of Bhaal",
+    "name_es": null,
+    "description_pt": "Cultistas fanáticos do Senhor do Assassinato que buscam colher almas valiosas e Soul Coins no inferno.\n\nAlignment: Evil\nContacts: Sarevok Anchev\n\n**Death Token**: Each party member receives a Token of Bhaal. The first time you fail a death saving throw that does not kill you outright, the token transports you and any fallen allies within 30 feet to an empty demiplane chamber, healing each 10 hit points before returning to the battlefield at the start of your turn. Single use (turns to dust).\n\n**Deathstalker's Blessing**: You have advantage on attack rolls against any creature that hasn't taken a turn in combat yet. In addition, any creature that hasn't taken a turn in combat has disadvantage on saving throws against your spells. Applies while in the Nine Hells.\n\n**Soul Coin Market**: Provides access to the Soul Coin market and black market bartering with devils and deathstalkers.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": "Patrono de Grupo (Evil)",
+    "traits": [
+      "group-patron",
+      "evil"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "dnd5e-coa",
+    "source_book": "Chains of Asmodeus (D&D 5e)",
+    "source_page": 22,
+    "created_at": "2026-10-14T20:51:56.860Z",
+    "updated_at": "2026-10-14T20:51:56.860Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "group-patron",
+      "alignment": "Evil",
+      "contacts": [
+        "Sarevok Anchev"
+      ],
+      "perks": [
+        {
+          "name": "Death Token",
+          "description": "Each party member receives a Token of Bhaal. The first time you fail a death saving throw that does not kill you outright, the token transports you and any fallen allies within 30 feet to an empty demiplane chamber, healing each 10 hit points before returning to the battlefield at the start of your turn. Single use (turns to dust)."
+        },
+        {
+          "name": "Deathstalker's Blessing",
+          "description": "You have advantage on attack rolls against any creature that hasn't taken a turn in combat yet. In addition, any creature that hasn't taken a turn in combat has disadvantage on saving throws against your spells. Applies while in the Nine Hells."
+        },
+        {
+          "name": "Soul Coin Market",
+          "description": "Provides access to the Soul Coin market and black market bartering with devils and deathstalkers."
+        }
+      ],
+      "summaries": {
+        "pt-BR": "Cultistas fanáticos do Senhor do Assassinato que buscam colher almas valiosas e Soul Coins no inferno."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "coa-corruption-stage-1",
+    "name_pt": "Infernal Corruption: Stage One (Beginnings)",
+    "name_en": "Infernal Corruption: Stage One (Beginnings)",
+    "name_es": null,
+    "description_pt": "Uma vez que o personagem se sintoniza com um item amaldiçoado ou artefato infernal, o processo de corrupção se inicia a cada descanso longo.\n\n**Resistência**: DC 10 Wisdom saving throw (Tieflings have advantage)\n\n**Efeitos Mecânicos**:\n- A cada descanso longo concluído, faça um teste de resistência de Sabedoria DC 10 (Tieflings têm vantagem).\n- Em um sucesso, o personagem não sofre efeitos, mas a DC aumenta em +1 para o próximo teste.\n- Em uma falha, avança para o Estágio 2, a menos que Dispel Evil and Good seja conjurado antes do próximo descanso longo.\n- Quebrar a sintonização interrompe os testes e reseta a DC, mas apenas se o personagem ainda estiver no Estágio 1.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 1,
+    "prerequisites": "Estágio 1 de Corrupção Infernal",
+    "traits": [
+      "infernal-corruption",
+      "fiend"
+    ],
+    "rarity": "rare",
+    "ruleset": "dnd5e-coa",
+    "source_book": "Chains of Asmodeus (D&D 5e)",
+    "source_page": 272,
+    "created_at": "2026-10-14T20:51:56.860Z",
+    "updated_at": "2026-10-14T20:51:56.860Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "infernal-corruption",
+      "stage": 1,
+      "dcText": "DC 10 Wisdom saving throw (Tieflings have advantage)",
+      "effects": [
+        "A cada descanso longo concluído, faça um teste de resistência de Sabedoria DC 10 (Tieflings têm vantagem).",
+        "Em um sucesso, o personagem não sofre efeitos, mas a DC aumenta em +1 para o próximo teste.",
+        "Em uma falha, avança para o Estágio 2, a menos que Dispel Evil and Good seja conjurado antes do próximo descanso longo.",
+        "Quebrar a sintonização interrompe os testes e reseta a DC, mas apenas se o personagem ainda estiver no Estágio 1."
+      ],
+      "summaries": {
+        "pt-BR": "Uma vez que o personagem se sintoniza com um item amaldiçoado ou artefato infernal, o processo de corrupção se inicia a cada descanso longo."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "coa-corruption-stage-2",
+    "name_pt": "Infernal Corruption: Stage Two (Sufferings)",
+    "name_en": "Infernal Corruption: Stage Two (Sufferings)",
+    "name_es": null,
+    "description_pt": "O personagem entra em sofrimento agudo, com ilusões de perseguição e pesadelos infernais.\n\n**Resistência**: DC acumulativa de Sabedoria\n\n**Efeitos Mecânicos**:\n- O personagem torna-se delirante, enxergando conspirações inexistentes contra si.\n- Sussurros e visões terríveis a cada descanso.\n- Ao concluir um descanso longo, sofre 6 (1d12) de dano necrótico que ignora resistências e imunidades e não pode ser curado até que Remove Curse ou Dispel Evil and Good seja conjurado.\n- Apenas magias como Divine Word, Heal, Mass Heal, True Polymorph, True Resurrection ou Wish podem remover a corrupção neste estágio.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 2,
+    "prerequisites": "Estágio 2 de Corrupção Infernal",
+    "traits": [
+      "infernal-corruption",
+      "fiend"
+    ],
+    "rarity": "rare",
+    "ruleset": "dnd5e-coa",
+    "source_book": "Chains of Asmodeus (D&D 5e)",
+    "source_page": 272,
+    "created_at": "2026-10-14T20:51:56.860Z",
+    "updated_at": "2026-10-14T20:51:56.860Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "infernal-corruption",
+      "stage": 2,
+      "dcText": "DC acumulativa de Sabedoria",
+      "effects": [
+        "O personagem torna-se delirante, enxergando conspirações inexistentes contra si.",
+        "Sussurros e visões terríveis a cada descanso.",
+        "Ao concluir um descanso longo, sofre 6 (1d12) de dano necrótico que ignora resistências e imunidades e não pode ser curado até que Remove Curse ou Dispel Evil and Good seja conjurado.",
+        "Apenas magias como Divine Word, Heal, Mass Heal, True Polymorph, True Resurrection ou Wish podem remover a corrupção neste estágio."
+      ],
+      "summaries": {
+        "pt-BR": "O personagem entra em sofrimento agudo, com ilusões de perseguição e pesadelos infernais."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "coa-corruption-stage-3",
+    "name_pt": "Infernal Corruption: Stage Three (Departings & Mutations)",
+    "name_en": "Infernal Corruption: Stage Three (Departings & Mutations)",
+    "name_es": null,
+    "description_pt": "A vontade do personagem foi quebrada e seu corpo começa a mutar para a forma de um diabo (1d10 na tabela de deformidades).\n\n**Resistência**: Inerente (transformação física diabólica)\n\n**Efeitos Mecânicos**:\n- O personagem torna-se estéril e é detectado como Corruptor (Fiend) por magias como Detect Evil and Good.\n- Rola 1d10 na tabela de mutações físicas: 1) Garras alongadas; 2) Asas de couro vestigiais; 3) Chifres diabólicos; 4) Pele queimada/carbonizada; 5) Olho leitoso e olho amarelo; 6) Cauda esquelética; 7) Pele calcificada em osso; 8) Cascos fendidos; 9) Espinhos no lugar do cabelo; 10) Dentes serrilhados pontiagudos.\n- A cada descanso curto ou longo, teste de Sabedoria DC 10 (com desvantagem se tiver cometido um ato maligno recente). Falha avança para o Estágio 4.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 3,
+    "prerequisites": "Estágio 3 de Corrupção Infernal",
+    "traits": [
+      "infernal-corruption",
+      "fiend"
+    ],
+    "rarity": "rare",
+    "ruleset": "dnd5e-coa",
+    "source_book": "Chains of Asmodeus (D&D 5e)",
+    "source_page": 272,
+    "created_at": "2026-10-14T20:51:56.860Z",
+    "updated_at": "2026-10-14T20:51:56.860Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "infernal-corruption",
+      "stage": 3,
+      "dcText": "Inerente (transformação física diabólica)",
+      "effects": [
+        "O personagem torna-se estéril e é detectado como Corruptor (Fiend) por magias como Detect Evil and Good.",
+        "Rola 1d10 na tabela de mutações físicas: 1) Garras alongadas; 2) Asas de couro vestigiais; 3) Chifres diabólicos; 4) Pele queimada/carbonizada; 5) Olho leitoso e olho amarelo; 6) Cauda esquelética; 7) Pele calcificada em osso; 8) Cascos fendidos; 9) Espinhos no lugar do cabelo; 10) Dentes serrilhados pontiagudos.",
+        "A cada descanso curto ou longo, teste de Sabedoria DC 10 (com desvantagem se tiver cometido um ato maligno recente). Falha avança para o Estágio 4."
+      ],
+      "summaries": {
+        "pt-BR": "A vontade do personagem foi quebrada e seu corpo começa a mutar para a forma de um diabo (1d10 na tabela de deformidades)."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "coa-corruption-stage-4",
+    "name_pt": "Infernal Corruption: Stage Four (Finalities & Damnation)",
+    "name_en": "Infernal Corruption: Stage Four (Finalities & Damnation)",
+    "name_es": null,
+    "description_pt": "A alma foi completamente reclamada pelo inferno e o personagem transforma-se plenamente em um servo de Asmodeus.\n\n**Resistência**: Irreversível sem Wish ou Contrato Infernal\n\n**Efeitos Mecânicos**:\n- A tendência do personagem muda permanentemente para Leal e Mau (Lawful Evil).\n- O personagem fica vinculado ao Código dos Diabos: deve honrar qualquer pacto assinado e colher almas a serviço de Asmodeus.\n- A forma física transmuta-se para a de um diabo escolhido pelo Mestre.\n- As únicas curas possíveis são a magia Wish (além do escopo padrão da magia) ou a assinatura de um contrato com o próprio Asmodeus para reaver a alma.",
+    "description_en": null,
+    "description_es": null,
+    "feat_type": "general",
+    "level": 4,
+    "prerequisites": "Estágio 4 de Corrupção Infernal",
+    "traits": [
+      "infernal-corruption",
+      "fiend"
+    ],
+    "rarity": "rare",
+    "ruleset": "dnd5e-coa",
+    "source_book": "Chains of Asmodeus (D&D 5e)",
+    "source_page": 272,
+    "created_at": "2026-10-14T20:51:56.860Z",
+    "updated_at": "2026-10-14T20:51:56.860Z",
+    "system_id": "dnd5e",
+    "data": {
+      "category": "infernal-corruption",
+      "stage": 4,
+      "dcText": "Irreversível sem Wish ou Contrato Infernal",
+      "effects": [
+        "A tendência do personagem muda permanentemente para Leal e Mau (Lawful Evil).",
+        "O personagem fica vinculado ao Código dos Diabos: deve honrar qualquer pacto assinado e colher almas a serviço de Asmodeus.",
+        "A forma física transmuta-se para a de um diabo escolhido pelo Mestre.",
+        "As únicas curas possíveis são a magia Wish (além do escopo padrão da magia) ou a assinatura de um contrato com o próprio Asmodeus para reaver a alma."
+      ],
+      "summaries": {
+        "pt-BR": "A alma foi completamente reclamada pelo inferno e o personagem transforma-se plenamente em um servo de Asmodeus."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]

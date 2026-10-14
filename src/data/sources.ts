@@ -648,6 +648,25 @@ export const multiSystemSources: MultiSystemSource[] = [
     viewUrl: DND5E_DRIVE_FOLDER_URL,
     driveUrl: DND5E_DRIVE_FOLDER_URL
   },
+  {
+    id: "dnd5e-chains-of-asmodeus",
+    system: "dnd5e",
+    systemLabel: { "pt-BR": "D&D 5e", en: "D&D 5e", es: "D&D 5e" },
+    title: "Chains of Asmodeus",
+    titles: { "pt-BR": "Chains of Asmodeus", en: "Chains of Asmodeus", es: "Chains of Asmodeus" },
+    language: "en",
+    pages: 288,
+    ruleset: "standard",
+    pageCountStatus: "verified_with_pdfinfo",
+    languageEvidence: "inferred_from_filename",
+    catalogStatus: "partial",
+    linkedRecords: 35,
+    verifiedAt: "2026-10-14",
+    filename: "Chains Of Asmodeus - Vários autores.pdf",
+    downloadUrl: DND5E_DRIVE_FOLDER_URL,
+    viewUrl: DND5E_DRIVE_FOLDER_URL,
+    driveUrl: DND5E_DRIVE_FOLDER_URL
+  },
   // ─── Old-School Essentials ───────────────────────────────────────────────────
   {
     id: "ose-classic-fantasy",
