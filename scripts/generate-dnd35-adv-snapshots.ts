@@ -14,6 +14,7 @@ import { CG_ADV_NINJA } from "../src/data/dnd35/dnd35AdvNinja";
 import { CG_ADV_PRESTIGE } from "../src/data/dnd35/dnd35AdvPrestige";
 import { DND35_ADV_FEATS } from "../src/data/dnd35/dnd35AdvFeats";
 import { DND35_ADV_WEAPONS } from "../src/data/dnd35/dnd35AdvEquipment";
+import { DND35_ADV_SPELLS } from "../src/data/dnd35/dnd35AdvSpells";
 
 const BOOK = "D&D 3.5 — Livro Completo do Aventureiro";
 const RULESET = "v35-adv";
@@ -63,3 +64,27 @@ const weapons = DND35_ADV_WEAPONS.map((w) => ({
 }));
 writeFileSync(join(dir, "weapon.json"), `${JSON.stringify(weapons, null, 2)}\n`, "utf8");
 console.log(`weapon=${weapons.length}`);
+
+const levelNum = (s: string) => {
+  const nums = [...s.matchAll(/(\d+)/g)].map((m) => Number(m[1]));
+  return nums.length ? Math.min(...nums) : null;
+};
+const spells = DND35_ADV_SPELLS.map((s) => ({
+  id: `dnd35.adv.spell.${s.id}`,
+  ...names(s.name, s.description),
+  rank: levelNum(s.level),
+  is_cantrip: false,
+  is_focus: false,
+  traditions: [s.level],
+  cast_actions: s.castingTime,
+  range: s.range,
+  targets: s.target ?? s.area ?? s.effect ?? null,
+  duration: s.duration,
+  defense: s.savingThrow,
+  traits: [s.school],
+  ...common(s.page),
+  data: s,
+}));
+writeFileSync(join(dir, "spell.json"), `${JSON.stringify(spells, null, 2)}\n`, "utf8");
+console.log(`spell=${spells.length}`);
+

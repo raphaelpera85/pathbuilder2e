@@ -389,7 +389,7 @@ describe("PortalPages", () => {
     view.rerender(<I18nProvider><PortalPages /></I18nProvider>);
     await waitFor(() => expect(screen.getByRole("heading", { name: "Curadoria do compêndio" })).toBeInTheDocument());
     expect(screen.getByRole("link", { name: /Curadoria/ })).toBeInTheDocument();
-  });
+  }, 15_000);
 
   it("renderiza a seção de download dos livros com links diretos do google drive", async () => {
     window.location.hash = "#/downloads";

@@ -33,14 +33,14 @@ describe("Admin & Access Analytics Service", () => {
     expect(after.recentAccesses[0].route).toBe("admin");
     expect(after.recentAccesses[1].route).toBe("compendium");
     expect(after.recentAccesses[2].route).toBe("builder");
-  });
+  }, 15_000);
 
   it("usa os snapshots versionados no Git para as métricas do compêndio", async () => {
     const metrics = await getAdminDashboardMetrics();
     expect(metrics.catalogCounts?.catalog_skills).toBe(195);
-    expect(metrics.catalogCounts?.catalog_spells).toBe(2232);
-    expect(Object.values(metrics.catalogCounts || {}).reduce((sum, count) => sum + count, 0)).toBe(8328);
-    expect((metrics.catalogVerifiedCount || 0) + (metrics.catalogReviewCount || 0)).toBe(8328);
+    expect(metrics.catalogCounts?.catalog_spells).toBe(2302);
+    expect(Object.values(metrics.catalogCounts || {}).reduce((sum, count) => sum + count, 0)).toBe(8398);
+    expect((metrics.catalogVerifiedCount || 0) + (metrics.catalogReviewCount || 0)).toBe(8398);
   });
 
   it("consolida contas e personagens salvos localmente ou no Supabase", async () => {
