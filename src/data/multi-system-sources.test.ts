@@ -34,8 +34,8 @@ describe("fontes multi-sistema do acervo de downloads", () => {
       if (!/^\d{4}-\d{2}-\d{2}$/.test(source.verifiedAt)) problems.push(`${source.id}: data de verificação inválida`);
     }
     expect(problems).toEqual([]);
-    // 7 Tormenta 20 + 8 D&D 5e + 2 OSE + 21 D&D 3.5 + 3 Pathfinder 1e, conforme o lote catalogado.
-    expect(multiSystemSources).toHaveLength(41);
+    // 7 Tormenta 20 + 9 D&D 5e + 2 OSE + 21 D&D 3.5 + 3 Pathfinder 1e, conforme o lote catalogado.
+    expect(multiSystemSources).toHaveLength(42);
   });
 
   it("não repete identificadores nem arquivos entre PF2e e os demais sistemas", () => {

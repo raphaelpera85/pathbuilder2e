@@ -372,8 +372,9 @@ describe("PortalPages", () => {
     expect(pathfinderSources.find((source) => source.id === "war-immortals")).toMatchObject({ catalogStatus: "partial", linkedRecords: 181, ruleset: "remaster" });
     expect(pathfinderSources.find((source) => source.id === "howl-wild")).toMatchObject({ catalogStatus: "partial", linkedRecords: 122, ruleset: "remaster" });
     expect(pathfinderSources.find((source) => source.id === "battlecry")).toMatchObject({ catalogStatus: "partial", linkedRecords: 289, ruleset: "remaster" });
+    expect(pathfinderSources.find((source) => source.id === "ancestry-guide-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 18, ruleset: "legacy" });
     expect(pathfinderSources.filter((source) => source.catalogStatus === "partial").every((source) => source.linkedRecords > 0)).toBe(true);
-    expect(pathfinderSources.filter((source) => source.catalogStatus === "pending")).toHaveLength(3);
+    expect(pathfinderSources.filter((source) => source.catalogStatus === "pending")).toHaveLength(2);
     expect(pathfinderSources.find((source) => source.id === "manual-jogador-compilacao-pt")).toMatchObject({ ruleset: "remaster", catalogStatus: "pending" });
     expect(pathfinderSources.every((source) => source.titles?.["pt-BR"] && source.titles?.en && source.titles?.es)).toBe(true);
   });

@@ -127,6 +127,7 @@ function catalogRulesetLabel(ruleset: string): string {
     "t20-deuses": "Tormenta20 · Deuses de Arton",
     "t20-codice": "Tormenta20 · Código de Poderes",
     "t20-npcs": "Tormenta20 · Guia de NPCs",
+    "t20-so-aventuras": "Tormenta20 · Só Aventuras",
     advanced: "OSE Advanced Fantasy",
     classic: "OSE Classic Fantasy",
     basico: "OSE Criação Básica/Especialista",

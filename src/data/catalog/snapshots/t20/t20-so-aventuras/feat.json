@@ -1,0 +1,1282 @@
+[
+  {
+    "id": "t20.sa.poder.parceiro_capita_joldan",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Parceiro: Capitã Joldan",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "A Capitã Joldan atua como um parceiro mestre náutico. Enquanto estiver a bordo ou atuando dentro de embarcações, ela fornece um bônus de +2 em testes de ataque e na margem de ameaça de seus ataques, além de +3m de deslocamento em convés e passadiços.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Confiança e aliança com a Capitã Joldan",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "parceiro"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 146,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.poder.parceiro_capita_joldan",
+      "name": "Parceiro: Capitã Joldan",
+      "category": "parceiro",
+      "prerequisites": "Confiança e aliança com a Capitã Joldan",
+      "description": "A Capitã Joldan atua como um parceiro mestre náutico. Enquanto estiver a bordo ou atuando dentro de embarcações, ela fornece um bônus de +2 em testes de ataque e na margem de ameaça de seus ataques, além de +3m de deslocamento em convés e passadiços.",
+      "sourcePage": 146,
+      "summaries": {
+        "pt-BR": "A Capitã Joldan atua como um parceiro mestre náutico. Enquanto estiver a bordo ou atuando dentro de embarcações, ela fornece um bônus de +2 em testes de ataque e na margem de ameaça de seus ataques, além de +3m de deslocamento em convés e passadiços."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.poder.parceiro_kalyadrix",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Parceiro: Kalyadrix",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Kalyadrix, princesa guerreira dracônica, conta como uma parceira Mestre marcial e de sobrevivência. Ela fornece aos aventureiros +4 em testes de Percepção e Sobrevivência e +2 na margem de ameaça de ataques corpo a corpo.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Respeito das dragoas caçadoras de Galrasia",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "parceiro"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 147,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.poder.parceiro_kalyadrix",
+      "name": "Parceiro: Kalyadrix",
+      "category": "parceiro",
+      "prerequisites": "Respeito das dragoas caçadoras de Galrasia",
+      "description": "Kalyadrix, princesa guerreira dracônica, conta como uma parceira Mestre marcial e de sobrevivência. Ela fornece aos aventureiros +4 em testes de Percepção e Sobrevivência e +2 na margem de ameaça de ataques corpo a corpo.",
+      "sourcePage": 147,
+      "summaries": {
+        "pt-BR": "Kalyadrix, princesa guerreira dracônica, conta como uma parceira Mestre marcial e de sobrevivência. Ela fornece aos aventureiros +4 em testes de Percepção e Sobrevivência e +2 na margem de ameaça de ataques corpo a corpo."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.poder.parceiro_lislah_ceu_negro",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Parceira: Lislah Céu Negro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Lislah atua como parceira iniciante curandeira devota de Tenebra. Uma vez por rodada, o personagem pode gastar uma ação livre para solicitar que Lislah cure um alvo em alcance curto, recuperando 1d6+1 PV sem custo. Lislah não conta no limite máximo de parceiros do personagem.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Hospitalidade no Cemitério dos Colonos",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "parceiro"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 51,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.poder.parceiro_lislah_ceu_negro",
+      "name": "Parceira: Lislah Céu Negro",
+      "category": "parceiro",
+      "prerequisites": "Hospitalidade no Cemitério dos Colonos",
+      "description": "Lislah atua como parceira iniciante curandeira devota de Tenebra. Uma vez por rodada, o personagem pode gastar uma ação livre para solicitar que Lislah cure um alvo em alcance curto, recuperando 1d6+1 PV sem custo. Lislah não conta no limite máximo de parceiros do personagem.",
+      "sourcePage": 51,
+      "summaries": {
+        "pt-BR": "Lislah atua como parceira iniciante curandeira devota de Tenebra. Uma vez por rodada, o personagem pode gastar uma ação livre para solicitar que Lislah cure um alvo em alcance curto, recuperando 1d6+1 PV sem custo. Lislah não conta no limite máximo de parceiros do personagem."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.poder.parceiros_vulneraveis_noivos",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Parceiros Vulneráveis: Noivos de Tollon",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Regra especial de acompanhantes civis: não fornecem bônus de combate e devem ser defendidos ativamente. Cada personagem de nível 4 pode proteger apenas um dos noivos por vez. Quando o protetor sofre dano, rola 1d4; com resultado 1, o noivo fica ferido (ou morre caso já esteja ferido). Podem receber efeitos de cura para remover a condição ferido.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Missão de escolta de Bryann e Yrene",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "parceiro"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 50,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.poder.parceiros_vulneraveis_noivos",
+      "name": "Parceiros Vulneráveis: Noivos de Tollon",
+      "category": "parceiro",
+      "prerequisites": "Missão de escolta de Bryann e Yrene",
+      "description": "Regra especial de acompanhantes civis: não fornecem bônus de combate e devem ser defendidos ativamente. Cada personagem de nível 4 pode proteger apenas um dos noivos por vez. Quando o protetor sofre dano, rola 1d4; com resultado 1, o noivo fica ferido (ou morre caso já esteja ferido). Podem receber efeitos de cura para remover a condição ferido.",
+      "sourcePage": 50,
+      "summaries": {
+        "pt-BR": "Regra especial de acompanhantes civis: não fornecem bônus de combate e devem ser defendidos ativamente. Cada personagem de nível 4 pode proteger apenas um dos noivos por vez. Quando o protetor sofre dano, rola 1d4; com resultado 1, o noivo fica ferido (ou morre caso já esteja ferido). Podem receber efeitos de cura para remover a condição ferido."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.poder.falange_tauron",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Falange Legionária de Tauron",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Como uma ação de movimento, se estiver usando um escudo e adjacente a um aliado que também possua esta habilidade, você pode formar uma falange com ele. Enquanto estiverem adjacentes um ao outro, todos os participantes da falange recebem +2 na Defesa e em testes de resistência.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Treinamento legionário, uso de escudo",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "tatica"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 51,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.poder.falange_tauron",
+      "name": "Falange Legionária de Tauron",
+      "category": "tatica",
+      "prerequisites": "Treinamento legionário, uso de escudo",
+      "description": "Como uma ação de movimento, se estiver usando um escudo e adjacente a um aliado que também possua esta habilidade, você pode formar uma falange com ele. Enquanto estiverem adjacentes um ao outro, todos os participantes da falange recebem +2 na Defesa e em testes de resistência.",
+      "sourcePage": 51,
+      "summaries": {
+        "pt-BR": "Como uma ação de movimento, se estiver usando um escudo e adjacente a um aliado que também possua esta habilidade, você pode formar uma falange com ele. Enquanto estiverem adjacentes um ao outro, todos os participantes da falange recebem +2 na Defesa e em testes de resistência."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.poder.lider_de_falange",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Líder de Falange",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Enquanto estiver participando ativamente de uma falange e coordenando seus companheiros de linha, todos os integrantes da falange recebem +2 em jogadas de ataque corpo a corpo.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Habilidade Falange Legionária, Guerra 1º nível",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "tatica"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 51,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.poder.lider_de_falange",
+      "name": "Líder de Falange",
+      "category": "tatica",
+      "prerequisites": "Habilidade Falange Legionária, Guerra 1º nível",
+      "description": "Enquanto estiver participando ativamente de uma falange e coordenando seus companheiros de linha, todos os integrantes da falange recebem +2 em jogadas de ataque corpo a corpo.",
+      "sourcePage": 51,
+      "summaries": {
+        "pt-BR": "Enquanto estiver participando ativamente de uma falange e coordenando seus companheiros de linha, todos os integrantes da falange recebem +2 em jogadas de ataque corpo a corpo."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.poder.parede_de_escudos",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Parede de Escudos",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Uma vez por rodada, como reação, quando um inimigo se move para ficar adjacente a qualquer personagem integrante da falange da qual você faz parte, você pode realizar um ataque corpo a corpo imediato contra esse inimigo ou ordenar que um dos participantes da formação o faça.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Habilidade Falange Legionária",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "tatica"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 51,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.poder.parede_de_escudos",
+      "name": "Parede de Escudos",
+      "category": "tatica",
+      "prerequisites": "Habilidade Falange Legionária",
+      "description": "Uma vez por rodada, como reação, quando um inimigo se move para ficar adjacente a qualquer personagem integrante da falange da qual você faz parte, você pode realizar um ataque corpo a corpo imediato contra esse inimigo ou ordenar que um dos participantes da formação o faça.",
+      "sourcePage": 51,
+      "summaries": {
+        "pt-BR": "Uma vez por rodada, como reação, quando um inimigo se move para ficar adjacente a qualquer personagem integrante da falange da qual você faz parte, você pode realizar um ataque corpo a corpo imediato contra esse inimigo ou ordenar que um dos participantes da formação o faça."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.poder.loba_em_pele_de_cordeiro",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Loba em Pele de Cordeiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Como uma reação que consome 2 PM, a aparência angelical mesclada aos encantamentos vampíricos desestabiliza a determinação de ex-aliados. A primeira vez que cada criatura tenta executar uma ação hostil contra você, deve realizar um teste de Vontade (CD 30). Se falhar, perde a ação completamente.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Maldição vampírica inicial de Tenebra",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "sobrenatural"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 146,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.poder.loba_em_pele_de_cordeiro",
+      "name": "Loba em Pele de Cordeiro",
+      "category": "sobrenatural",
+      "prerequisites": "Maldição vampírica inicial de Tenebra",
+      "description": "Como uma reação que consome 2 PM, a aparência angelical mesclada aos encantamentos vampíricos desestabiliza a determinação de ex-aliados. A primeira vez que cada criatura tenta executar uma ação hostil contra você, deve realizar um teste de Vontade (CD 30). Se falhar, perde a ação completamente.",
+      "sourcePage": 146,
+      "summaries": {
+        "pt-BR": "Como uma reação que consome 2 PM, a aparência angelical mesclada aos encantamentos vampíricos desestabiliza a determinação de ex-aliados. A primeira vez que cada criatura tenta executar uma ação hostil contra você, deve realizar um teste de Vontade (CD 30). Se falhar, perde a ação completamente."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.poder.predadora_noturna_tenebra",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Predadora Noturna de Tenebra",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Enquanto estiver sob penumbra ou escuridão, recebe +10 em testes de Furtividade. Além disso, ao acertar um ataque com sua mordida desarmada, recupera uma quantidade de pontos de vida igual à metade do dano total infligido.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Bênção sombria de Tenebra",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "sobrenatural"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 147,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.poder.predadora_noturna_tenebra",
+      "name": "Predadora Noturna de Tenebra",
+      "category": "sobrenatural",
+      "prerequisites": "Bênção sombria de Tenebra",
+      "description": "Enquanto estiver sob penumbra ou escuridão, recebe +10 em testes de Furtividade. Além disso, ao acertar um ataque com sua mordida desarmada, recupera uma quantidade de pontos de vida igual à metade do dano total infligido.",
+      "sourcePage": 147,
+      "summaries": {
+        "pt-BR": "Enquanto estiver sob penumbra ou escuridão, recebe +10 em testes de Furtividade. Além disso, ao acertar um ataque com sua mordida desarmada, recupera uma quantidade de pontos de vida igual à metade do dano total infligido."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.aharadak",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Aharadak",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Versão deturpada e aberrante dos ritos matrimoniais artonianos que interpreta metáforas ao pé da letra. A promessa de 'tornar-se um só' funde carnes e mentes em cerimônias de comunhão lefeu.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Aharadak",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 48,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.aharadak",
+      "name": "Rito de Matrimônio: Aharadak",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Aharadak",
+      "description": "Versão deturpada e aberrante dos ritos matrimoniais artonianos que interpreta metáforas ao pé da letra. A promessa de 'tornar-se um só' funde carnes e mentes em cerimônias de comunhão lefeu.",
+      "sourcePage": 48,
+      "summaries": {
+        "pt-BR": "Versão deturpada e aberrante dos ritos matrimoniais artonianos que interpreta metáforas ao pé da letra. A promessa de 'tornar-se um só' funde carnes e mentes em cerimônias de comunhão lefeu."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.allihanna",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Allihanna",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Cerimônia realizada ao ar livre debaixo de galhos de azevinho longe de povoados. Noivos juram lealdade mútua e proteção à natureza, interpretando augúrios trazidos pelos animais selvagens que testemunham o voto.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Allihanna",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 48,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.allihanna",
+      "name": "Rito de Matrimônio: Allihanna",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Allihanna",
+      "description": "Cerimônia realizada ao ar livre debaixo de galhos de azevinho longe de povoados. Noivos juram lealdade mútua e proteção à natureza, interpretando augúrios trazidos pelos animais selvagens que testemunham o voto.",
+      "sourcePage": 48,
+      "summaries": {
+        "pt-BR": "Cerimônia realizada ao ar livre debaixo de galhos de azevinho longe de povoados. Noivos juram lealdade mútua e proteção à natureza, interpretando augúrios trazidos pelos animais selvagens que testemunham o voto."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.arsenal",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Arsenal",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "União marcial objetiva e desprovida de sentimentalismo supérfluo: noivos declaram-se aliados táticos para superar desafios e conquistar vitórias conjuntas, partindo diretamente para a campanha.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Arsenal",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 48,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.arsenal",
+      "name": "Rito de Matrimônio: Arsenal",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Arsenal",
+      "description": "União marcial objetiva e desprovida de sentimentalismo supérfluo: noivos declaram-se aliados táticos para superar desafios e conquistar vitórias conjuntas, partindo diretamente para a campanha.",
+      "sourcePage": 48,
+      "summaries": {
+        "pt-BR": "União marcial objetiva e desprovida de sentimentalismo supérfluo: noivos declaram-se aliados táticos para superar desafios e conquistar vitórias conjuntas, partindo diretamente para a campanha."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.azgher",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Azgher",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Celebrado sob a luz direta do dia. Os noivos entram com rostos velados, derretem alianças de ouro em oferenda ao Deus-Sol e revelam a face exclusivamente para o cônjuge, exaltando a beleza sagrada.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Azgher",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 48,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.azgher",
+      "name": "Rito de Matrimônio: Azgher",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Azgher",
+      "description": "Celebrado sob a luz direta do dia. Os noivos entram com rostos velados, derretem alianças de ouro em oferenda ao Deus-Sol e revelam a face exclusivamente para o cônjuge, exaltando a beleza sagrada.",
+      "sourcePage": 48,
+      "summaries": {
+        "pt-BR": "Celebrado sob a luz direta do dia. Os noivos entram com rostos velados, derretem alianças de ouro em oferenda ao Deus-Sol e revelam a face exclusivamente para o cônjuge, exaltando a beleza sagrada."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.hyninn",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Hyninn",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Cada nubente deve bolar e executar com sucesso uma trapaça ou peça engenhosa contra o outro. Cumprido o desafio, o sacerdote consagra ambos como iguais e parceiros de crime vitalícios.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Hyninn",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 48,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.hyninn",
+      "name": "Rito de Matrimônio: Hyninn",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Hyninn",
+      "description": "Cada nubente deve bolar e executar com sucesso uma trapaça ou peça engenhosa contra o outro. Cumprido o desafio, o sacerdote consagra ambos como iguais e parceiros de crime vitalícios.",
+      "sourcePage": 48,
+      "summaries": {
+        "pt-BR": "Cada nubente deve bolar e executar com sucesso uma trapaça ou peça engenhosa contra o outro. Cumprido o desafio, o sacerdote consagra ambos como iguais e parceiros de crime vitalícios."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.kallyadranoch",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Kallyadranoch",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Rito rápido, prático e hierárquico voltado a perpetuar linhagens de poder draconiano e gerar soldados devotos para as hostes do Deus dos Dragões.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Kallyadranoch",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 48,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.kallyadranoch",
+      "name": "Rito de Matrimônio: Kallyadranoch",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Kallyadranoch",
+      "description": "Rito rápido, prático e hierárquico voltado a perpetuar linhagens de poder draconiano e gerar soldados devotos para as hostes do Deus dos Dragões.",
+      "sourcePage": 48,
+      "summaries": {
+        "pt-BR": "Rito rápido, prático e hierárquico voltado a perpetuar linhagens de poder draconiano e gerar soldados devotos para as hostes do Deus dos Dragões."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.keenn",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Keenn",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Cerimônia belicosa em que os noivos prestam continência e selam um pacto de sangue e ferro como camaradas de pelotão prontos para a batalha total.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Keenn",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 48,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.keenn",
+      "name": "Rito de Matrimônio: Keenn",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Keenn",
+      "description": "Cerimônia belicosa em que os noivos prestam continência e selam um pacto de sangue e ferro como camaradas de pelotão prontos para a batalha total.",
+      "sourcePage": 48,
+      "summaries": {
+        "pt-BR": "Cerimônia belicosa em que os noivos prestam continência e selam um pacto de sangue e ferro como camaradas de pelotão prontos para a batalha total."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.khalmyr",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Khalmyr",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Procedimento formal, solene e estritamente contratual similar a um registro civil. O clérigo realiza um minucioso interrogatório para assegurar a clareza jurídica e o consentimento de todos os termos.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Khalmyr",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 48,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.khalmyr",
+      "name": "Rito de Matrimônio: Khalmyr",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Khalmyr",
+      "description": "Procedimento formal, solene e estritamente contratual similar a um registro civil. O clérigo realiza um minucioso interrogatório para assegurar a clareza jurídica e o consentimento de todos os termos.",
+      "sourcePage": 48,
+      "summaries": {
+        "pt-BR": "Procedimento formal, solene e estritamente contratual similar a um registro civil. O clérigo realiza um minucioso interrogatório para assegurar a clareza jurídica e o consentimento de todos os termos."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.lena",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Lena",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Festa festiva com cantigas e bênçãos celebrada sob a lua cheia. Marca a maturidade dos cônjuges e inclui votos sagrados de procriação ou adoção compassiva de crianças desamparadas.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Lena",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 48,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.lena",
+      "name": "Rito de Matrimônio: Lena",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Lena",
+      "description": "Festa festiva com cantigas e bênçãos celebrada sob a lua cheia. Marca a maturidade dos cônjuges e inclui votos sagrados de procriação ou adoção compassiva de crianças desamparadas.",
+      "sourcePage": 48,
+      "summaries": {
+        "pt-BR": "Festa festiva com cantigas e bênçãos celebrada sob a lua cheia. Marca a maturidade dos cônjuges e inclui votos sagrados de procriação ou adoção compassiva de crianças desamparadas."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.lin_wu",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Lin-Wu",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Celebração tamuraniana tradicional com arranjos florais, música refinada e profundo respeito às dinastias ancestrais, com juramentos solenes de honra, lealdade e dever familiar.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Lin-Wu",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 48,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.lin_wu",
+      "name": "Rito de Matrimônio: Lin-Wu",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Lin-Wu",
+      "description": "Celebração tamuraniana tradicional com arranjos florais, música refinada e profundo respeito às dinastias ancestrais, com juramentos solenes de honra, lealdade e dever familiar.",
+      "sourcePage": 48,
+      "summaries": {
+        "pt-BR": "Celebração tamuraniana tradicional com arranjos florais, música refinada e profundo respeito às dinastias ancestrais, com juramentos solenes de honra, lealdade e dever familiar."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.marah",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Marah",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Explosão de alegria, banquete e dança com troca de coroas de flores. A igreja de Marah celebra o amor livre e pacífico, consagrando também uniões poliamorosas entre múltiplos participantes.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Marah",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 48,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.marah",
+      "name": "Rito de Matrimônio: Marah",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Marah",
+      "description": "Explosão de alegria, banquete e dança com troca de coroas de flores. A igreja de Marah celebra o amor livre e pacífico, consagrando também uniões poliamorosas entre múltiplos participantes.",
+      "sourcePage": 48,
+      "summaries": {
+        "pt-BR": "Explosão de alegria, banquete e dança com troca de coroas de flores. A igreja de Marah celebra o amor livre e pacífico, consagrando também uniões poliamorosas entre múltiplos participantes."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.megalokk",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Megalokk",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Rito primal repleto de danças frenéticas e selvagens onde os noivos se declaram parceiros de caça e selam o vínculo banhando-se no sangue fresco de uma fera abatida.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Megalokk",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 49,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.megalokk",
+      "name": "Rito de Matrimônio: Megalokk",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Megalokk",
+      "description": "Rito primal repleto de danças frenéticas e selvagens onde os noivos se declaram parceiros de caça e selam o vínculo banhando-se no sangue fresco de uma fera abatida.",
+      "sourcePage": 49,
+      "summaries": {
+        "pt-BR": "Rito primal repleto de danças frenéticas e selvagens onde os noivos se declaram parceiros de caça e selam o vínculo banhando-se no sangue fresco de uma fera abatida."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.nimb",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Nimb",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Ritual caótico para atrair boa sorte aos amantes. Regras e votos são inventados na hora pelos noivos; qualquer discordância é resolvida no dado pelo sacerdote de Nimb.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Nimb",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 49,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.nimb",
+      "name": "Rito de Matrimônio: Nimb",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Nimb",
+      "description": "Ritual caótico para atrair boa sorte aos amantes. Regras e votos são inventados na hora pelos noivos; qualquer discordância é resolvida no dado pelo sacerdote de Nimb.",
+      "sourcePage": 49,
+      "summaries": {
+        "pt-BR": "Ritual caótico para atrair boa sorte aos amantes. Regras e votos são inventados na hora pelos noivos; qualquer discordância é resolvida no dado pelo sacerdote de Nimb."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.oceano",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Oceano",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Entre piratas e marinheiros, noivos juram lealdade mútua como um capitão a seu navio, lavam o rosto com água salgada, repartem seus tesouros igualmente e bebem rum ao som de canções navais.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Oceano",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 49,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.oceano",
+      "name": "Rito de Matrimônio: Oceano",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Oceano",
+      "description": "Entre piratas e marinheiros, noivos juram lealdade mútua como um capitão a seu navio, lavam o rosto com água salgada, repartem seus tesouros igualmente e bebem rum ao som de canções navais.",
+      "sourcePage": 49,
+      "summaries": {
+        "pt-BR": "Entre piratas e marinheiros, noivos juram lealdade mútua como um capitão a seu navio, lavam o rosto com água salgada, repartem seus tesouros igualmente e bebem rum ao som de canções navais."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.ragnar",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Ragnar",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Sem casamento institucionalizado: sacerdotes goblinoides abençoam concubinatos e acordos de chefes guerreiros para zelar pelas vidas que um dia pertencerão à Morte.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Ragnar",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 49,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.ragnar",
+      "name": "Rito de Matrimônio: Ragnar",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Ragnar",
+      "description": "Sem casamento institucionalizado: sacerdotes goblinoides abençoam concubinatos e acordos de chefes guerreiros para zelar pelas vidas que um dia pertencerão à Morte.",
+      "sourcePage": 49,
+      "summaries": {
+        "pt-BR": "Sem casamento institucionalizado: sacerdotes goblinoides abençoam concubinatos e acordos de chefes guerreiros para zelar pelas vidas que um dia pertencerão à Morte."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.sszzaas",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Sszzaas",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Farsa conspiratória executada por sacerdotes disfarçados como outros clérigos. O rito é concebido para profanar a confiança alheia e arquitetar intrigas, adultérios e chantagens pós-matrimônio.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Sszzaas",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 49,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.sszzaas",
+      "name": "Rito de Matrimônio: Sszzaas",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Sszzaas",
+      "description": "Farsa conspiratória executada por sacerdotes disfarçados como outros clérigos. O rito é concebido para profanar a confiança alheia e arquitetar intrigas, adultérios e chantagens pós-matrimônio.",
+      "sourcePage": 49,
+      "summaries": {
+        "pt-BR": "Farsa conspiratória executada por sacerdotes disfarçados como outros clérigos. O rito é concebido para profanar a confiança alheia e arquitetar intrigas, adultérios e chantagens pós-matrimônio."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.tanna_toh",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Tanna-Toh",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Conduzido à luz de velas. Os cônjuges juram verdade irrestrita, elaboram questionários detalhados um ao outro e trocam respostas públicas completas para celebrar a comunhão do saber mútuo.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Tanna-Toh",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 49,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.tanna_toh",
+      "name": "Rito de Matrimônio: Tanna-Toh",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Tanna-Toh",
+      "description": "Conduzido à luz de velas. Os cônjuges juram verdade irrestrita, elaboram questionários detalhados um ao outro e trocam respostas públicas completas para celebrar a comunhão do saber mútuo.",
+      "sourcePage": 49,
+      "summaries": {
+        "pt-BR": "Conduzido à luz de velas. Os cônjuges juram verdade irrestrita, elaboram questionários detalhados um ao outro e trocam respostas públicas completas para celebrar a comunhão do saber mútuo."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.tauron",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Tauron",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Cerimônia austera em que o sacerdote minotauro designa quem é o forte (que jura proteção) e quem é o fraco (que jura servir). O cônjuge designado como fraco possui o direito sagrado de desafiar o forte para combate e inverter os papéis em caso de vitória.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Tauron",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 49,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.tauron",
+      "name": "Rito de Matrimônio: Tauron",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Tauron",
+      "description": "Cerimônia austera em que o sacerdote minotauro designa quem é o forte (que jura proteção) e quem é o fraco (que jura servir). O cônjuge designado como fraco possui o direito sagrado de desafiar o forte para combate e inverter os papéis em caso de vitória.",
+      "sourcePage": 49,
+      "summaries": {
+        "pt-BR": "Cerimônia austera em que o sacerdote minotauro designa quem é o forte (que jura proteção) e quem é o fraco (que jura servir). O cônjuge designado como fraco possui o direito sagrado de desafiar o forte para combate e inverter os papéis em caso de vitória."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.tenebra",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Tenebra",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Cerimônia noturna com cálices de vinho e troca de alianças na mão esquerda e direita, recitando os votos solenes da sombra perante Tenebra, celebrando um afeto eterno que se estende além do túmulo.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Tenebra",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 49,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.tenebra",
+      "name": "Rito de Matrimônio: Tenebra",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Tenebra",
+      "description": "Cerimônia noturna com cálices de vinho e troca de alianças na mão esquerda e direita, recitando os votos solenes da sombra perante Tenebra, celebrando um afeto eterno que se estende além do túmulo.",
+      "sourcePage": 49,
+      "summaries": {
+        "pt-BR": "Cerimônia noturna com cálices de vinho e troca de alianças na mão esquerda e direita, recitando os votos solenes da sombra perante Tenebra, celebrando um afeto eterno que se estende além do túmulo."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.thyatis",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Thyatis",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Animado com pirotecnia mágica e profecia sacerdotal. Se o augúrio for benéfico, os noivos queimam juntos um objeto marcante do passado para renascer como um só; se for desfavorável, o rito é adiado para um novo recomeço.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Thyatis",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 49,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.thyatis",
+      "name": "Rito de Matrimônio: Thyatis",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Thyatis",
+      "description": "Animado com pirotecnia mágica e profecia sacerdotal. Se o augúrio for benéfico, os noivos queimam juntos um objeto marcante do passado para renascer como um só; se for desfavorável, o rito é adiado para um novo recomeço.",
+      "sourcePage": 49,
+      "summaries": {
+        "pt-BR": "Animado com pirotecnia mágica e profecia sacerdotal. Se o augúrio for benéfico, os noivos queimam juntos um objeto marcante do passado para renascer como um só; se for desfavorável, o rito é adiado para um novo recomeço."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.thwor",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Thwor",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Celebração duyshidakk coletiva com combates amistosos e música, afirmando a continuidade no Akzath e a integração ao povo contra a estagnação.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Thwor",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 49,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.thwor",
+      "name": "Rito de Matrimônio: Thwor",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Thwor",
+      "description": "Celebração duyshidakk coletiva com combates amistosos e música, afirmando a continuidade no Akzath e a integração ao povo contra a estagnação.",
+      "sourcePage": 49,
+      "summaries": {
+        "pt-BR": "Celebração duyshidakk coletiva com combates amistosos e música, afirmando a continuidade no Akzath e a integração ao povo contra a estagnação."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.valkaria",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Valkaria",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Apesar do tabu, desafiar a deusa da ambição casando-se é tido como grande façanha heroica. Os noivos trocam troféus de aventura, juram desbravar o mundo juntos e renovam a conquista mútua a cada novo dia.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Valkaria",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 49,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.valkaria",
+      "name": "Rito de Matrimônio: Valkaria",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Valkaria",
+      "description": "Apesar do tabu, desafiar a deusa da ambição casando-se é tido como grande façanha heroica. Os noivos trocam troféus de aventura, juram desbravar o mundo juntos e renovam a conquista mútua a cada novo dia.",
+      "sourcePage": 49,
+      "summaries": {
+        "pt-BR": "Apesar do tabu, desafiar a deusa da ambição casando-se é tido como grande façanha heroica. Os noivos trocam troféus de aventura, juram desbravar o mundo juntos e renovam a conquista mútua a cada novo dia."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  },
+  {
+    "id": "t20.sa.rito.wynna",
+    "class_id": null,
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "general",
+    "level": 1,
+    "name_pt": "Rito de Matrimônio: Wynna",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Celebrado entre conjuradores arcanos onde os parceiros assumem mutuamente o papel de mestre e aprendiz, ensinando um ao outro uma magia nova e declarando que o amor é a maior das magias.",
+    "description_en": null,
+    "description_es": null,
+    "prerequisites": "Sacerdote ou devoto de Wynna",
+    "action_cost": null,
+    "traits": [
+      "t20",
+      "so-aventuras",
+      "matrimonio"
+    ],
+    "rarity": "common",
+    "ruleset": "t20-so-aventuras",
+    "source_book": "T20 - Só Aventuras",
+    "source_page": 49,
+    "created_at": "2026-10-15T08:52:41.816Z",
+    "updated_at": "2026-10-15T08:52:41.816Z",
+    "system_id": "t20",
+    "data": {
+      "id": "t20.sa.rito.wynna",
+      "name": "Rito de Matrimônio: Wynna",
+      "category": "matrimonio",
+      "prerequisites": "Sacerdote ou devoto de Wynna",
+      "description": "Celebrado entre conjuradores arcanos onde os parceiros assumem mutuamente o papel de mestre e aprendiz, ensinando um ao outro uma magia nova e declarando que o amor é a maior das magias.",
+      "sourcePage": 49,
+      "summaries": {
+        "pt-BR": "Celebrado entre conjuradores arcanos onde os parceiros assumem mutuamente o papel de mestre e aprendiz, ensinando um ao outro uma magia nova e declarando que o amor é a maior das magias."
+      },
+      "summaryOrigin": "structured_rules"
+    }
+  }
+]
