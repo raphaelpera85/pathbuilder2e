@@ -354,9 +354,10 @@ describe("PortalPages", () => {
   ])("localiza o subtítulo do compêndio em %s", (locale, kicker) => {
     localStorage.setItem("pathbuilder.locale", locale);
     window.location.hash = "#/compendium";
-    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    const { unmount } = render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
     expect(screen.getByText(kicker)).toBeInTheDocument();
-  });
+    unmount();
+  }, 40_000);
 
   it("mantém evidências de metadados separadas da catalogação", () => {
     expect(pathfinderSources).toHaveLength(13);

@@ -1,7 +1,7 @@
 # Graph Report - pathbuilder2e_local  (2026-10-15)
 
 ## Corpus Check
-- 1593 files · ~18,226,943 words
+- 1593 files · ~18,226,937 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 76 file(s) not represented in the graph (top: .gd 40, (none) 14, .css 10)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `25dcca5f`
+- Built from commit: `6b596d7b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -462,7 +462,7 @@
 - extract_bash
 - Human Probability Intuition Is Wrong
 - Fase 1 — regras de criação compartilhadas e específicas
-- _bash_assignment_base
+- audit-local-rls-contract.cjs
 - Template-Driven Forms
 - audit-local-character-matrix.cjs
 - iOS Icon Generator
@@ -516,7 +516,7 @@
 - How It Works
 - Spring Boot Verification Loop
 - Index Schema and On-Disk Contract
-- mass_compendium_revamp.cjs
+- generate-t20-spell-school-migration.cjs
 - Handling Errors
 - Everything Claude Code (ECC) — エージェント指示書
 - Next.js and Turbopack
@@ -532,7 +532,7 @@
 - Email Ops
 - Mechanics That Concentrate Spotlight
 - Using Lottie Animations in Remotion
-- audit-local-rls-contract.cjs
+- extract-pc2-class-feats.cjs
 - Permadeath Without Narrative Weight
 - How It Works
 - How It Works
@@ -544,8 +544,8 @@
 - recsys-pipeline-architect
 - Regex vs LLM for Structured Text Parsing
 - Research Ops
-- Video Object
-- Real-Time Capture (Desktop/Meeting)
+- mass_compendium_revamp.cjs
+- sync-dnd5e-ranger-class-choices-to-supabase.cjs
 - dnd35EeACF.ts
 - dnd35DivDomains.ts
 - tinystruct Database Persistence
@@ -603,7 +603,7 @@
 - The workflow, drawn
 - The Fable Method
 - FastAPI Patterns
-- generate-t20-spell-school-migration.cjs
+- Show Routes with Outlets
 - responsive-view.test.ts
 - How It Works
 - Homelab Network Readiness
@@ -642,10 +642,10 @@
 - ito-baskets.js
 - How It Works
 - Checking if a video can be decoded
-- extract-pc2-class-feats.cjs
+- enrich-all-compendium-items.cjs
 - MCP Server Patterns
 - Netmiko SSH Automation
-- sync-dnd5e-ranger-class-choices-to-supabase.cjs
+- localizeSourceBookName
 - Local fonts with @remotion/fonts
 - .init
 - How It Works
@@ -655,7 +655,7 @@
 - codex-config.test.js
 - Components
 - Angular CLI MCP Server
-- Show Routes with Outlets
+- Video Object
 - Benchmark — Performance Baseline & Regression Detection
 - Brand Discovery
 - Bun Runtime
@@ -689,10 +689,10 @@
 - Manual Setup (Tailwind v4)
 - Cost Tracking
 - Domain adapter: devops and infrastructure
-- enrich-all-compendium-items.cjs
+- Complete Workflow Examples
 - LocalCharacterApiTest
 - dnd35CorSpells.ts
-- localizeSourceBookName
+- Collection RTStream Methods
 - audit-supabase-character-sync.cjs
 - dnd35CorRaces.ts
 - dnd35CovFeats.ts
@@ -700,14 +700,14 @@
 - dnd35CovSubstitutions.ts
 - OfflineFixtureTests
 - FixturePackTests
-- Collection RTStream Methods
+- Real-Time Capture (Desktop/Meeting)
 - dnd35FrostburnPrestige.ts
 - dnd35CorEpicSpells.ts
 - Hermes Imports
 - HIPAA Compliance
 - iconify_gen.sh
+- _bash_assignment_base
 - Examples
-- Dubbing and Translation
 - How it works
 - ML Adoption Playbook
 - Step 5：头像风格 & 生图
@@ -741,8 +741,8 @@
 - Domain adapter: research and reporting
 - 4. State Management (Library-Agnostic)
 - Social Mechanics That Feel Like Combat
+- Dubbing and Translation
 - Transactions
-- Complete Workflow Examples
 - Itô Inference
 - Itô Training
 - Mutual Mapper Agent
@@ -2504,6 +2504,10 @@ Nodes (8): **Detection Pattern**, Human Probability Intuition Is Wrong, **Id**, 
 Cohesion: 0.29
 Nodes (7): Checklist comum para cada sistema, D&D 5e 2014 — criação, Fase 1 — regras de criação compartilhadas e específicas, OSE Advanced Fantasy — criação, OSE Classic Fantasy — criação, Pathfinder 2e Remaster — criação, Tormenta20 — criação
 
+### Community 449 - "audit-local-rls-contract.cjs"
+Cohesion: 0.18
+Nodes (9): admin, characters, checks, failed, fs, path, root, skills (+1 more)
+
 ### Community 450 - "Template-Driven Forms"
 Cohesion: 0.10
 Nodes (17): Building the Form Template, Core Directives, Form and Control State, Resetting the Form, Setup, Submitting the Form, Template-Driven Forms, Two-Way Binding with `[(ngModel)]` (+9 more)
@@ -2704,9 +2708,9 @@ Nodes (14): API Tests with MockMvc, Common Security Findings, Continuous Mode, I
 Cohesion: 0.20
 Nodes (10): Baseline + Delta Overlay, Canonical Symbol IDs, Compatibility JSONL Export, Content-Addressed Cache Key, Edge Kinds, Index Schema and On-Disk Contract, Manifest Schema (`manifest.json`), On-Disk Layout (+2 more)
 
-### Community 503 - "mass_compendium_revamp.cjs"
+### Community 503 - "generate-t20-spell-school-migration.cjs"
 Cohesion: 0.22
-Nodes (8): content, dataFilePath, eqContent, eqFilePath, fs, path, petsContent, petsFilePath
+Nodes (9): contextModule, fs, output, path, root, rows, source, sql() (+1 more)
 
 ### Community 504 - "Handling Errors"
 Cohesion: 0.22
@@ -2768,9 +2772,9 @@ Nodes (8): **Detection Pattern**, **Id**, Mechanics That Concentrate Spotlight, 
 Cohesion: 0.40
 Nodes (4): Displaying a Lottie file, Prerequisites, Styling and animating, Using Lottie Animations in Remotion
 
-### Community 519 - "audit-local-rls-contract.cjs"
-Cohesion: 0.18
-Nodes (9): admin, characters, checks, failed, fs, path, root, skills (+1 more)
+### Community 519 - "extract-pc2-class-feats.cjs"
+Cohesion: 0.22
+Nodes (6): classes, extractedFeats, fs, path, seenSlugs, txt
 
 ### Community 520 - "Permadeath Without Narrative Weight"
 Cohesion: 0.25
@@ -2812,13 +2816,13 @@ Nodes (13): 1. Regex Parser (Handles the Majority), 2. Confidence Scoring, 3. LL
 Cohesion: 0.14
 Nodes (13): 1. Start from what the user already gave you, 2. Classify the ask, 3. Take the lightest useful evidence path first, 4. Report with explicit evidence boundaries, 5. Decide whether the task should stay manual, Guardrails, Output Format, Pitfalls (+5 more)
 
-### Community 531 - "Video Object"
-Cohesion: 0.40
-Nodes (5): Reframe, reframe Parameters, Video Methods, Video Object, Video Properties
+### Community 531 - "mass_compendium_revamp.cjs"
+Cohesion: 0.22
+Nodes (8): content, dataFilePath, eqContent, eqFilePath, fs, path, petsContent, petsFilePath
 
-### Community 532 - "Real-Time Capture (Desktop/Meeting)"
-Cohesion: 0.40
-Nodes (5): Meeting Capture with Summarization, Post-Session Processing, Real-Time Capture (Desktop/Meeting), Screen Activity Tracking, Screen + Audio Recording with AI
+### Community 532 - "sync-dnd5e-ranger-class-choices-to-supabase.cjs"
+Cohesion: 0.22
+Nodes (7): classChoices, { createClient }, envPath, fs, options, path, terrains
 
 ### Community 534 - "dnd35DivDomains.ts"
 Cohesion: 0.50
@@ -3032,9 +3036,9 @@ Nodes (11): Compressed examples, Modes, Step 0 - Classify the ask, Step 1 - Defi
 Cohesion: 0.17
 Nodes (11): Anti-Patterns, App Factory and Lifespan, Best Practices, Configuration with pydantic-settings, Dependency Injection, FastAPI Patterns, Project Structure, Pydantic Schemas (v2) (+3 more)
 
-### Community 590 - "generate-t20-spell-school-migration.cjs"
-Cohesion: 0.22
-Nodes (9): contextModule, fs, output, path, root, rows, source, sql() (+1 more)
+### Community 590 - "Show Routes with Outlets"
+Cohesion: 0.29
+Nodes (6): Basic Usage, Named Outlets (Secondary Routes), Nested Outlets, Outlet Lifecycle Events, Passing Data via `routerOutletData`, Show Routes with Outlets
 
 ### Community 591 - "responsive-view.test.ts"
 Cohesion: 0.46
@@ -3176,9 +3180,9 @@ Nodes (10): 1. Inventory before creating anything, 2. Assign four roles, 3. Wire
 Cohesion: 0.40
 Nodes (4): Checking if a video can be decoded, The `canDecode()` function, Usage, Using with Blob
 
-### Community 629 - "extract-pc2-class-feats.cjs"
-Cohesion: 0.22
-Nodes (6): classes, extractedFeats, fs, path, seenSlugs, txt
+### Community 629 - "enrich-all-compendium-items.cjs"
+Cohesion: 0.29
+Nodes (6): content, coreArmors, coreShields, dataFilePath, fs, path
 
 ### Community 630 - "MCP Server Patterns"
 Cohesion: 0.18
@@ -3187,10 +3191,6 @@ Nodes (10): Best Practices, Connecting with stdio, Core concepts, Examples, How 
 ### Community 631 - "Netmiko SSH Automation"
 Cohesion: 0.18
 Nodes (10): Anti-Patterns, Batch Collection, Guarded Config Pattern, Netmiko SSH Automation, Read-Only Connection Pattern, Review Checklist, Safety Defaults, See Also (+2 more)
-
-### Community 632 - "sync-dnd5e-ranger-class-choices-to-supabase.cjs"
-Cohesion: 0.22
-Nodes (7): classChoices, { createClient }, envPath, fs, options, path, terrains
 
 ### Community 633 - "Local fonts with @remotion/fonts"
 Cohesion: 0.18
@@ -3228,9 +3228,9 @@ Nodes (9): Component Definition, Components, Conditional Rendering (`@if`), Core
 Cohesion: 0.20
 Nodes (9): Angular CLI MCP Server, Antigravity IDE, Available Tools (Default), Command Options, Configuration, Cursor, Experimental Tools, Gemini CLI (+1 more)
 
-### Community 643 - "Show Routes with Outlets"
-Cohesion: 0.29
-Nodes (6): Basic Usage, Named Outlets (Secondary Routes), Nested Outlets, Outlet Lifecycle Events, Passing Data via `routerOutletData`, Show Routes with Outlets
+### Community 643 - "Video Object"
+Cohesion: 0.40
+Nodes (5): Reframe, reframe Parameters, Video Methods, Video Object, Video Properties
 
 ### Community 644 - "Benchmark — Performance Baseline & Regression Detection"
 Cohesion: 0.20
@@ -3356,13 +3356,17 @@ Nodes (8): Anti-Patterns, Cost Tracking, Example — summary, by model, last 7 d
 Cohesion: 0.22
 Nodes (8): Authority order, Domain adapter: devops and infrastructure, Done, by example, Evidence and primary sources, Fraud table (for fable-judge), Minimum evidence set (binding, before any change is applied), Sources, Verification by observation
 
-### Community 679 - "enrich-all-compendium-items.cjs"
-Cohesion: 0.29
-Nodes (6): content, coreArmors, coreShields, dataFilePath, fs, path
+### Community 679 - "Complete Workflow Examples"
+Cohesion: 0.40
+Nodes (5): Add Generated Music to Video, Complete Workflow Examples, Generate Narration for a Video, Generate Thumbnail from Prompt, Structured JSON Output
 
 ### Community 681 - "dnd35CorSpells.ts"
 Cohesion: 0.33
 Nodes (3): COR_SPELLS, CorSpell, ABBR
+
+### Community 682 - "Collection RTStream Methods"
+Cohesion: 0.40
+Nodes (5): Collection RTStream Methods, Connect RTStream, From Capture Session, Get Existing RTStream, List RTStreams
 
 ### Community 685 - "audit-supabase-character-sync.cjs"
 Cohesion: 0.40
@@ -3380,9 +3384,9 @@ Nodes (3): DND35_COV_PRESTIGE_CLASSES, Dnd35CovPrestigeClass, Dnd35CovPrestigeLe
 Cohesion: 0.40
 Nodes (3): DND35_COV_SUBSTITUTIONS, Dnd35CovSubstitution, Dnd35CovSubstitutionLevel
 
-### Community 692 - "Collection RTStream Methods"
+### Community 692 - "Real-Time Capture (Desktop/Meeting)"
 Cohesion: 0.40
-Nodes (5): Collection RTStream Methods, Connect RTStream, From Capture Session, Get Existing RTStream, List RTStreams
+Nodes (5): Meeting Capture with Summarization, Post-Session Processing, Real-Time Capture (Desktop/Meeting), Screen Activity Tracking, Screen + Audio Recording with AI
 
 ### Community 693 - "dnd35FrostburnPrestige.ts"
 Cohesion: 0.40
@@ -3400,13 +3404,9 @@ Nodes (8): Example 1: Product request framed as HIPAA, Example 2: Vendor/tooling
 Cohesion: 0.42
 Nodes (8): CURL_OPTS, generate_icon(), list_collections(), preview_icon(), require_value(), search_icons(), iconify_gen.sh script, usage()
 
-### Community 698 - "Examples"
+### Community 699 - "Examples"
 Cohesion: 0.50
 Nodes (4): DAO Entity Usage, DSL Query, Examples, HikariCP Configuration
-
-### Community 699 - "Dubbing and Translation"
-Cohesion: 0.50
-Nodes (4): Dub a Video, dub_video Parameters, Dubbing and Translation, Translate Transcript
 
 ### Community 700 - "How it works"
 Cohesion: 0.06
@@ -3540,13 +3540,13 @@ Nodes (8): 4. State Management (Library-Agnostic), Architecture:, Immutability &
 Cohesion: 0.25
 Nodes (8): **Detection Pattern**, **Id**, **Severity**, **Situation**, Social Mechanics That Feel Like Combat, **Solution**, **Symptoms**, **Why**
 
-### Community 733 - "Transactions"
+### Community 733 - "Dubbing and Translation"
+Cohesion: 0.50
+Nodes (4): Dub a Video, dub_video Parameters, Dubbing and Translation, Translate Transcript
+
+### Community 734 - "Transactions"
 Cohesion: 0.67
 Nodes (3): Suspend Transaction Support, Transaction Isolation, Transactions
-
-### Community 736 - "Complete Workflow Examples"
-Cohesion: 0.40
-Nodes (5): Add Generated Music to Video, Complete Workflow Examples, Generate Narration for a Video, Generate Thumbnail from Prompt, Structured JSON Output
 
 ### Community 738 - "Itô Inference"
 Cohesion: 0.25
