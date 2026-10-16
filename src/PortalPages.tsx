@@ -548,7 +548,8 @@ function CatalogPage() {
       : filtered.length === 0 ? <div className="portal-empty">{hasHiddenCatalogMatches && <p className="portal-warning" role="status">{t("catalogHiddenByFilters")}</p>}<p>{t("noCatalogResults")}</p></div> : <><section className="catalog-grid" aria-label={t("compendiumTitle")}>
       {paginatedEntries.items.map((entry) => {
         const catalogEntryKey = entry.id ?? entry.data?.id ?? `${entry.category}:${entry.name}`;
-        return <CatalogCard key={`${entry.category}-${catalogEntryKey}`} entry={entry} onInspect={(trigger) => openInspectedEntry(entry, trigger)} />;
+        const scopeKey = `${entry.systemId ?? entry.data?.system_id ?? "core"}:${entry.ruleset ?? entry.data?.ruleset ?? "std"}`;
+        return <CatalogCard key={`${scopeKey}-${entry.category}-${catalogEntryKey}`} entry={entry} onInspect={(trigger) => openInspectedEntry(entry, trigger)} />;
       })}
     </section>{paginatedEntries.pageCount > 1 && <nav className="catalog-pagination" aria-label={locale === "en" ? "Catalog pages" : locale === "es" ? "Páginas del catálogo" : "Páginas do catálogo"}>
       <button type="button" onClick={() => setCatalogPage((page) => Math.max(1, page - 1))} disabled={paginatedEntries.page === 1}>{locale === "en" ? "Previous" : locale === "es" ? "Anterior" : "Anterior"}</button>

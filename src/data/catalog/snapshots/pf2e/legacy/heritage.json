@@ -118,5 +118,220 @@
     "created_at": "2026-09-04T04:37:46.178157+00:00",
     "updated_at": "2026-09-23T18:16:30.941191+00:00",
     "system_id": "pf2e"
+  },
+  {
+    "id": "heritage.aphorite",
+    "ancestry_id": null,
+    "is_versatile": true,
+    "name_pt": "Aforita",
+    "name_en": "Aphorite",
+    "name_es": "Aforita",
+    "description_pt": "Mortais imbuídos com a essência da ordem axiomática de Axis.",
+    "description_en": "Mortals imbued with the essence of lawful planar order from Axis.",
+    "description_es": "Mortales imbuidos con la esencia del orden planar de Axis.",
+    "prerequisite": null,
+    "traits": [
+      "Aforita",
+      "Planar"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 74,
+    "data": {
+      "grants": null,
+      "needs_review": false
+    },
+    "created_at": "2026-10-16T00:00:00.000000+00:00",
+    "updated_at": "2026-10-16T00:00:00.000000+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "heritage.beastkin",
+    "ancestry_id": null,
+    "is_versatile": true,
+    "name_pt": "Bestiano",
+    "name_en": "Beastkin",
+    "name_es": "Teriano",
+    "description_pt": "Humanoides tocados pela ferocidade animal capazes de assumir formas híbridas.",
+    "description_en": "Humanoids touched by bestial nature capable of taking hybrid forms.",
+    "description_es": "Humanoides tocados por la naturaleza bestial capazes de asumir formas híbridas.",
+    "prerequisite": null,
+    "traits": [
+      "Bestiano"
+    ],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 78,
+    "data": {
+      "grants": null,
+      "needs_review": false
+    },
+    "created_at": "2026-10-16T00:00:00.000000+00:00",
+    "updated_at": "2026-10-16T00:00:00.000000+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "heritage.ganzi",
+    "ancestry_id": null,
+    "is_versatile": true,
+    "name_pt": "Ganzi",
+    "name_en": "Ganzi",
+    "name_es": "Ganzi",
+    "description_pt": "Descendentes mortais imbuídos com o caos maleável e imprevisível do Maelstrom.",
+    "description_en": "Mortals carrying the unpredictable and mutable chaos of the Maelstrom.",
+    "description_es": "Mortales que portan el caos impredecible y mutable del Maelstrom.",
+    "prerequisite": null,
+    "traits": [
+      "Ganzi",
+      "Planar"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 94,
+    "data": {
+      "grants": null,
+      "needs_review": false
+    },
+    "created_at": "2026-10-16T00:00:00.000000+00:00",
+    "updated_at": "2026-10-16T00:00:00.000000+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "heritage.ifrit",
+    "ancestry_id": null,
+    "is_versatile": true,
+    "name_pt": "Ifrite",
+    "name_en": "Ifrit",
+    "name_es": "Ifrit",
+    "description_pt": "Descendentes planares tocados pela centelha ardente do Plano Elemental do Fogo.",
+    "description_en": "Planar scions touched by the flame of the Elemental Plane of Fire.",
+    "description_es": "Descendientes planares tocados por la llama del Plano Elemental del Fuego.",
+    "prerequisite": null,
+    "traits": [
+      "Ifrite",
+      "Planar"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 100,
+    "data": {
+      "grants": null,
+      "needs_review": false
+    },
+    "created_at": "2026-10-16T00:00:00.000000+00:00",
+    "updated_at": "2026-10-16T00:00:00.000000+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "heritage.oread",
+    "ancestry_id": null,
+    "is_versatile": true,
+    "name_pt": "Oréade",
+    "name_en": "Oread",
+    "name_es": "Oréade",
+    "description_pt": "Descendentes planares que canalizam a solidez imutável do Plano Elemental da Terra.",
+    "description_en": "Planar scions channeling the enduring strength of the Elemental Plane of Earth.",
+    "description_es": "Descendientes planares que canalizan la fuerza duradera del Plano Elemental de la Tierra.",
+    "prerequisite": null,
+    "traits": [
+      "Oréade",
+      "Planar"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 104,
+    "data": {
+      "grants": null,
+      "needs_review": false
+    },
+    "created_at": "2026-10-16T00:00:00.000000+00:00",
+    "updated_at": "2026-10-16T00:00:00.000000+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "heritage.suli",
+    "ancestry_id": null,
+    "is_versatile": true,
+    "name_pt": "Suli",
+    "name_en": "Suli",
+    "name_es": "Suli",
+    "description_pt": "Descendentes de jann que combinam em harmonia os quatro poderes elementais primordiais.",
+    "description_en": "Descendants of jann balancing the four primordial elemental powers.",
+    "description_es": "Descendientes de jann que combinan los cuatro poderes elementales primordiales.",
+    "prerequisite": null,
+    "traits": [
+      "Suli",
+      "Planar"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 108,
+    "data": {
+      "grants": null,
+      "needs_review": false
+    },
+    "created_at": "2026-10-16T00:00:00.000000+00:00",
+    "updated_at": "2026-10-16T00:00:00.000000+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "heritage.sylph",
+    "ancestry_id": null,
+    "is_versatile": true,
+    "name_pt": "Sílfide",
+    "name_en": "Sylph",
+    "name_es": "Sílfide",
+    "description_pt": "Descendentes planares abençoados pela brisa veloz e etérea do Plano Elemental do Ar.",
+    "description_en": "Planar scions blessed with the swift, airy grace of the Elemental Plane of Air.",
+    "description_es": "Descendientes planares bendecidos con la gracia aérea del Plano Elemental del Aire.",
+    "prerequisite": null,
+    "traits": [
+      "Sílfide",
+      "Planar"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 112,
+    "data": {
+      "grants": null,
+      "needs_review": false
+    },
+    "created_at": "2026-10-16T00:00:00.000000+00:00",
+    "updated_at": "2026-10-16T00:00:00.000000+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "heritage.undine",
+    "ancestry_id": null,
+    "is_versatile": true,
+    "name_pt": "Ondina",
+    "name_en": "Undine",
+    "name_es": "Ondina",
+    "description_pt": "Descendentes planares vinculados à correnteza e adaptabilidade do Plano Elemental da Água.",
+    "description_en": "Planar scions attuned to the fluid grace of the Elemental Plane of Water.",
+    "description_es": "Descendientes planares vinculados a la gracia fluida del Plano Elemental del Agua.",
+    "prerequisite": null,
+    "traits": [
+      "Ondina",
+      "Planar"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 116,
+    "data": {
+      "grants": null,
+      "needs_review": false
+    },
+    "created_at": "2026-10-16T00:00:00.000000+00:00",
+    "updated_at": "2026-10-16T00:00:00.000000+00:00",
+    "system_id": "pf2e"
   }
 ]

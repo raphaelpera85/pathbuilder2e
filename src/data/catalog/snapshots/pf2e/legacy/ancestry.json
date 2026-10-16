@@ -242,5 +242,138 @@
     "created_at": "2026-09-04T04:37:36.853905+00:00",
     "updated_at": "2026-09-23T18:16:25.280686+00:00",
     "system_id": "pf2e"
+  },
+  {
+    "id": "ancestry.fleshwarp",
+    "name_pt": "Mutacarne",
+    "name_en": "Fleshwarp",
+    "name_es": "Deforme",
+    "description_pt": "Seres transformados física e magicamente por energias bizarras ou alquimia cruel.",
+    "description_en": "People transformed physically and magically by strange energies or cruel fleshcrafting.",
+    "description_es": "Seres transformados física y mágicamente por energías extrañas o alquimia cruel.",
+    "hp_base": 10,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Constituição",
+      "Livre"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum"
+    ],
+    "traits": [
+      "Aberração",
+      "Humanoide"
+    ],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 88,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "needs_review": false,
+      "heritagesList": [
+        "Mutacarne Aberrante",
+        "Mutacarne Criado",
+        "Mutacarne Descartado",
+        "Mutacarne Mutável"
+      ]
+    },
+    "created_at": "2026-10-16T00:00:00.000000+00:00",
+    "updated_at": "2026-10-16T00:00:00.000000+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "ancestry.sprite",
+    "name_pt": "Sprite",
+    "name_en": "Sprite",
+    "name_es": "Sprite",
+    "description_pt": "Criaturas feéricas minúsculas transbordando de curiosidade e magia natural.",
+    "description_en": "Tiny fey creatures brimming with curiosity and natural magic.",
+    "description_es": "Criaturas feéricas diminutas rebosantes de curiosidad y magia natural.",
+    "hp_base": 6,
+    "size": "Minúsculo",
+    "speed_feet": 20,
+    "attribute_boosts": [
+      "Destreza",
+      "Inteligência",
+      "Livre"
+    ],
+    "attribute_flaw": "Força",
+    "languages": [
+      "Comum",
+      "Silvestre"
+    ],
+    "traits": [
+      "Fada",
+      "Sprite"
+    ],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 126,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "needs_review": false,
+      "heritagesList": [
+        "Sprite Dracônico",
+        "Sprite Grig",
+        "Sprite Luminoso",
+        "Sprite Melodia",
+        "Sprite Pixie"
+      ]
+    },
+    "created_at": "2026-10-16T00:00:00.000000+00:00",
+    "updated_at": "2026-10-16T00:00:00.000000+00:00",
+    "system_id": "pf2e"
+  },
+  {
+    "id": "ancestry.strix",
+    "name_pt": "Estrige",
+    "name_en": "Strix",
+    "name_es": "Estrige",
+    "description_pt": "Humanoides alados reservados e protetores que habitam altos penhascos e montanhas.",
+    "description_en": "Reclusive winged humanoids who fiercely defend their homeland and aeries.",
+    "description_es": "Humanoides alados reservados que defienden ferozmente sus hogares en las alturas.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Destreza",
+      "Livre"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Estrige"
+    ],
+    "traits": [
+      "Humanoide",
+      "Estrige"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 132,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "needs_review": false,
+      "heritagesList": [
+        "Estrige Noturno",
+        "Estrige Predador",
+        "Estrige do Litoral",
+        "Estrige de Penhasco"
+      ]
+    },
+    "created_at": "2026-10-16T00:00:00.000000+00:00",
+    "updated_at": "2026-10-16T00:00:00.000000+00:00",
+    "system_id": "pf2e"
   }
 ]
