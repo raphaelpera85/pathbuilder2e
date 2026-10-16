@@ -101,6 +101,13 @@
   },
   {
     "systemId": "dnd35",
+    "ruleset": "v35-epic",
+    "categories": {
+      "feat": 10
+    }
+  },
+  {
+    "systemId": "dnd35",
     "ruleset": "v35-frostburn",
     "categories": {
       "ancestry": 2,

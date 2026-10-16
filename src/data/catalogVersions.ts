@@ -45,6 +45,7 @@ export const CURRENT_CATALOG_VERSIONS: Record<string, Record<string, string>> = 
     "v35-cov": "dnd35-v35-cov-2026.10",
     "v35-defensores": "dnd35-v35-defensores-2026.10",
     "v35-ee": "dnd35-v35-ee-2026.10",
+    "v35-epic": "dnd35-v35-epic-2026.10",
     "v35-frostburn": "dnd35-v35-frostburn-2026.10",
     "v35-pe": "dnd35-v35-pe-2026.10",
     needs_review: "dnd35-review-2026.09",
