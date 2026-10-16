@@ -1,11 +1,22 @@
 // ============================================================================
 // D&D 3.5 — Livro Completo do Aventureiro (ed. BR), Capítulo 4: Ferramentas
-// e Equipamentos, seção "Novas Armas" (pp. 115-117, Tabela 4-1: Armas).
-// Transcrição por leitura visual direta de páginas renderizadas em alta
-// resolução (200dpi) — fonte é scan sem camada de texto. 5 armas exóticas
-// completas (todas as da Tabela 4-1). Itens Alquímicos (p.118+) e demais
-// seções do Capítulo 4 (armaduras, ferramentas de ladrão, itens mágicos)
-// ainda não catalogados.
+// e Equipamentos, seção "Novas Armas" (pp. 115-117, Tabela 4-1: Armas),
+// "Itens Alquímicos" (pp.118-119, Tabela 4-2), "Cápsulas Alquímicas"
+// (pp.120-121, Tabela 4-3), "Cápsulas Alquímicas para Armas" (p.122,
+// Tabela 4-4), "Ferramentas e Kits de Perícia" (pp.122-123, Tabela 4-5) e
+// "Instrumentos Musicais Obra-Primas" (pp.124-127, Tabela 4-6), e da
+// seção "Itens Mágicos": "Armas Específicas" COMPLETA (p.127, 129-130),
+// "Anéis" COMPLETA (p.130: só 2 anéis neste livro — Abrir Fechaduras,
+// Amigo dos Gatunos) e "Itens Maravilhosos" COMPLETA (Tabela 4-11,
+// pp.132-136, 30 itens: 21 menores + 5 médios + 4 maiores). Transcrição
+// por leitura visual direta de páginas renderizadas em alta resolução
+// (200-300dpi) — fonte é scan sem camada de texto. Ainda NÃO transcritos:
+// "Descrição das Habilidades Especiais de Armaduras e Escudos
+// Mágicos"/"...de Armas" (templates genéricos, p.127-129), "Poções",
+// "Pergaminhos", "Varinhas" (Tabelas 4-7 a 4-10, pp.130-132 — tabelas de
+// preço que só referenciam magias do Capítulo 5, ainda não transcrito) —
+// e todo o Capítulo 5 (Magias, a partir da p.137) e Capítulo 6
+// (Organizações). Não inventar dados para eles.
 // ============================================================================
 
 export type Dnd35AdvWeaponGroup = "Leve — Corpo a Corpo" | "Uma Mão — Corpo a Corpo" | "Duas Mãos — Corpo a Corpo";
@@ -94,361 +105,948 @@ export const DND35_ADV_WEAPONS: Dnd35AdvWeapon[] = [
   },
 ];
 
-export interface Dnd35AdvItem {
+export interface Dnd35AdvAlchemicalItem {
   id: string;
   name: string;
-  category: "alquimico" | "capsula" | "ferramenta";
+  /** Perícia(s)/uso a que o item se aplica, como impresso na Tabela 4-2. */
+  benefitAppliesTo: string;
   cost: string;
+  /** "—" quando a tabela não lista peso. */
   weight: string;
-  craftDc?: number;
-  duration?: string;
+  duration: string;
+  craftDc: number;
   description: string;
 }
 
-export const DND35_ADV_ITEMS: Dnd35AdvItem[] = [
-  // Tabela 4-2: Itens Alquímicos (pp. 118-120)
+export const DND35_ADV_ALCHEMICAL_ITEMS: Dnd35AdvAlchemicalItem[] = [
   {
     id: "adv-item-apertofirme",
     name: "Apertofirme",
-    category: "alquimico",
+    benefitAppliesTo: "Escalar",
     cost: "20 PO",
-    weight: "0,5 kg",
-    craftDc: 20,
+    weight: "—",
     duration: "1 minuto",
-    description: "Essa pasta branca e grossa, ao ser aplicada às mãos e aos pés, fortalece e dá firmeza, tornando mais fácil escalar. Apertofirme fornece +1 de bônus alquímico nos testes de Escalar durante 1 minuto. Uma dose é suficiente para cobrir as mãos e os pés de uma criatura Média. Aplicar a substância é uma ação padrão que provoca ataques de oportunidade.",
+    craftDc: 20,
+    description: "Essa pasta branca e grossa, ao ser aplicada às mãos e aos pés, fortalece e dá firmeza, tornando mais fácil escalar. Apertofirme fornece +1 de bônus nos testes de Escalar durante 1 minuto. Uma dose de apertofirme é suficiente para cobrir as mãos e os pés de uma criatura Média. Aplicar a substância é uma ação padrão que provoca ataques de oportunidade.",
   },
   {
     id: "adv-item-balsamo-de-cura",
     name: "Bálsamo de Cura",
-    category: "alquimico",
+    benefitAppliesTo: "Cura",
     cost: "10 PO",
-    weight: "0,5 kg",
-    craftDc: 20,
+    weight: "—",
     duration: "1 minuto",
-    description: "Esse bálsamo suave, de cheiro adocicado, permite que um curandeiro alivie os efeitos de ferimentos, doenças e venenos. O bálsamo de cura fornece +1 de bônus alquímico nos testes de Cura para ajudar a criatura afetada. Seus efeitos duram 1 minuto. Uma dose é suficiente para cobrir uma criatura Média. Aplicar é uma ação padrão que provoca ataques de oportunidade.",
+    craftDc: 25,
+    description: "Esse bálsamo suave, de cheiro adocicado, permite que um curandeiro alivie os efeitos de ferimentos, doenças e venenos. O bálsamo de cura fornece +1 de bônus alquímico nos testes de Cura para ajudar uma criatura afetada. Seus efeitos duram 1 minuto. Uma dose de bálsamo de cura é suficiente para tratar uma criatura Média. Aplicar a substância é uma ação padrão que provoca ataques de oportunidade, ainda que possa ser ministrada durante uma ação padrão que preste primeiros socorros, trate um ferimento ou envenenamento.",
   },
   {
     id: "adv-item-bebida-natural",
     name: "Bebida Natural",
-    category: "alquimico",
-    cost: "30 PO",
-    weight: "0,5 kg",
-    craftDc: 20,
+    benefitAppliesTo: "Adestrar Animais, empatia com a natureza",
+    cost: "50 PO",
+    weight: "—",
     duration: "12 horas",
-    description: "Essa poção é um líquido turvo e pungente. Ao ser consumida, provoca alterações sutis no odor do usuário: animais respondem bem e o consideram menos ameaçador e mais digno de confiança. Ingerir um frasco fornece +1 de bônus alquímico nos testes de Adestrar Animais e Empatia com a Natureza durante 12 horas.",
+    craftDc: 20,
+    description: "Essa substância é um líquido turvo e pungente. Ao ser consumida, a bebida natural provoca alterações sutis no odor do usuário. Os animais respondem bem a um personagem que tenha consumido a bebida natural, e o consideram menos ameaçador e mais digno de confiança. Ingerir um frasco de bebida natural fornece +1 de bônus alquímico nos testes de Adestrar Animais e Empatia com a Natureza durante as próximas 12 horas.",
   },
   {
     id: "adv-item-creme-da-camuflagem",
     name: "Creme da Camuflagem",
-    category: "alquimico",
-    cost: "25 PO",
+    benefitAppliesTo: "Pele",
+    cost: "50 PO",
     weight: "0,5 kg",
-    craftDc: 20,
     duration: "1 hora",
-    description: "Esse creme cinza-claro embota a cor da pele, pelos, escamas e cabelos, permitindo que o usuário se misture melhor à paisagem e às sombras. Fornece +1 de bônus alquímico nos testes de Esconder-se durante 1 hora. Não concede camuflagem ou capacidade de esconder-se sem cobertura.",
+    craftDc: 20,
+    description: "Esse creme cinza-claro embota a cor da pele, pêlo, escamas e cabelos, permitindo que seus usuários se misturem melhor à paisagem e às sombras e facilitando que eles se escondam. Aplicar o creme de camuflagem é uma ação padrão que provoca ataques de oportunidade. Ele fornece +1 de bônus alquímico nos testes de Esconder-se. Seus efeitos duram 1 hora. Ele não concede a capacidade de mimetismo ou de esconder-se sem cobertura suficiente.",
   },
   {
     id: "adv-item-fedegato",
     name: "Fedegato",
-    category: "alquimico",
-    cost: "20 PO",
-    weight: "0,5 kg",
-    craftDc: 20,
+    benefitAppliesTo: "n/d",
+    cost: "50 PO",
+    weight: "—",
     duration: "10 minutos",
-    description: "Uma dose desse composto aspergida sobre o rastro confunde temporariamente o olfato de rastreadores: quem utilizar faro para rastreá-lo deve passar num teste de Sobrevivência (CD 15) ou perderá o rastro. Para reencontrar o rastro com Rastrear, a CD aumenta em +2. O odor permanece ativo por 10 minutos.",
+    craftDc: 20,
+    description: "Uma dose desse composto alquímico, aspergida sobre o rastro do personagem, confunde temporariamente a habilidade faro de qualquer criatura. Um indivíduo empregando o faro para rastreá-lo deve obter sucesso num teste de Sobrevivência (CD 15) ou perderá o rastro. Nesse caso, a criatura pode tentar recuperar o rastro utilizando as regras normais do talento Rastrear, mas a CD do teste aumenta em 2 pontos. O odor de fedegato continua ativo por 10 minutos após a utilização da substância. Aspergir fedegato sobre o próprio rastro é uma ação padrão que provoca ataques de oportunidade.",
   },
   {
     id: "adv-item-gel-sabao",
     name: "Gel-Sabão",
-    category: "alquimico",
+    benefitAppliesTo: "Arte da Fuga",
     cost: "20 PO",
-    weight: "0,5 kg",
-    craftDc: 20,
+    weight: "—",
     duration: "1 hora",
-    description: "Gel cinza-esverdeado aplicado na pele, roupas ou armadura. Torna a superfície escorregadia e difícil de agarrar, concedendo +2 de bônus alquímico nos testes de Arte da Fuga durante 1 hora.",
+    craftDc: 20,
+    description: "Esse gel cinza-esverdeado pode ser aplicado na pele, pelagem, roupas ou armadura de uma criatura. Ele torna a superfície afetada escorregadia e difícil de segurar, concedendo +1 de bônus alquímico nos testes de Arte da Fuga durante 1 hora. Uma dose de gel-sabão é suficiente para cobrir uma criatura Média. Aplicar o gel é uma ação padrão que provoca ataques de oportunidade. Caso a substância seja aplicada sobre roupas ou armaduras, seus benefícios são neutralizados se essas peças forem removidas. Da mesma forma, se for aplicada à pele ou couro de uma criatura, seus benefícios desaparecem se mais tarde a criatura vestir roupas ou armaduras.",
   },
   {
     id: "adv-item-graxa-de-engrenagem",
     name: "Graxa de Engrenagem",
-    category: "alquimico",
-    cost: "20 PO",
-    weight: "0,5 kg",
-    craftDc: 20,
+    benefitAppliesTo: "Abrir Fechaduras",
+    cost: "50 PO",
+    weight: "—",
     duration: "1 minuto",
-    description: "Óleo espesso e avermelhado que afrouxa as engrenagens de fechaduras mecânicas mundanas. Fornece +1 de bônus alquímico nos testes de Abrir Fechaduras contra a tranca afetada durante 1 minuto. Não tem efeito sobre trancas mágicas.",
+    craftDc: 20,
+    description: "A graxa de engrenagem é o óleo espesso e avermelhado que afrouxa as engrenagens mecânicas de fechaduras mundanas. A graxa funciona por um curto período e fornece uma pequena vantagem para indivíduos tentando arrombar uma tranca. A graxa de engrenagem fornece +1 de bônus alquímico nos testes de Abrir Fechaduras contra a tranca afetada durante 1 minuto. Uma dose de óleo de engrenagem é o suficiente para afetar o mecanismo de um cadeado de qualquer tamanho. Embora a graxa de engrenagem possa afetar qualquer tipo de fechadura mundana, ela não tem efeito sobre travas mágicas. Aplicar a graxa de engrenagem em uma fechadura é uma ação padrão que provoca ataques de oportunidade.",
   },
   {
     id: "adv-item-oleo-de-vistalonga",
     name: "Óleo de Vistalonga",
-    category: "alquimico",
-    cost: "20 PO",
-    weight: "0,5 kg",
-    craftDc: 20,
+    benefitAppliesTo: "Observar",
+    cost: "25 PO",
+    weight: "—",
     duration: "1 minuto",
-    description: "Aplicado sobre os olhos, esse óleo translúcido aguça a visão por um breve período, concedendo +1 de bônus alquímico nos testes de Observar durante 1 minuto. Aplicar é uma ação padrão que provoca ataques de oportunidade.",
+    craftDc: 20,
+    description: "Ao ser aplicado sobre os olhos, esse óleo translúcido aguça a visão do usuário por um breve período de tempo, concedendo +1 de bônus alquímico nos testes de Observar durante 1 minuto. Uma dose de óleo de vistalonga é suficiente para afetar os olhos de uma criatura de qualquer tamanho, mas ela precisa dispor desses órgãos para receber os benefícios. Aplicar óleo de vistalonga é uma ação padrão que provoca ataques de oportunidade.",
   },
   {
-    id: "adv-item-passomacio",
-    name: "Passomacio",
-    category: "alquimico",
-    cost: "20 PO",
+    id: "adv-item-passamocio",
+    name: "Passamocio",
+    benefitAppliesTo: "Furtividade",
+    cost: "50 PO",
     weight: "0,5 kg",
-    craftDc: 20,
     duration: "1 hora",
-    description: "Pó fino e acinzentado que abafa os sons quando aplicado à sola dos pés ou calçados. Fornece +1 de bônus alquímico nos testes de Furtividade durante 1 hora.",
+    craftDc: 20,
+    description: "Passamocio é um pó fino e acinzentado que abafa os sons quando aplicado à sola do pé ou das botas. Ele fornece +1 de bônus alquímico nos testes de Furtividade durante 1 hora. Uma dose de passamocio é o suficiente para afetar uma criatura Média com um par de pés. Cada par adicional (ou apêndice similar) exige outra dose. Aplicar passamocio é uma ação padrão que provoca ataques de oportunidade. Se a substância for aplicada sobre botas ou outros calçados, seus benefícios são anulados se eles forem removidos. Da mesma forma, se for aplicado sobre a pele ou o couro de uma criatura, o efeito se perde se mais tarde ela se calçar.",
   },
   {
     id: "adv-item-pelota-luminosa",
     name: "Pelota Luminosa",
-    category: "alquimico",
-    cost: "30 PO",
+    benefitAppliesTo: "n/d",
+    cost: "50 PO",
     weight: "—",
-    craftDc: 25,
     duration: "1 rodada + 1 rodada",
-    description: "Objeto pequeno e quebradiço que pode ser lançado como arma de arremesso (incremento de distância 3 m). Ao colidir contra superfície dura, explode num clarão: criaturas a até 3 m devem obter sucesso em Fortitude (CD 15) ou ficam cegas por 1 rodada e ofuscadas na rodada seguinte.",
+    craftDc: 25,
+    description: "Esse objeto pequeno e quebradiço muitas vezes fica disfarçado como um botão ou outro ornamento. É possível atirar uma pelota luminosa como um ataque à distância, com incremento de distância de 1,5 m. Ao lançar contra uma superfície resistente, ela explode num clarão luminoso. Todas as criaturas numa explosão de 1,5 m devem obter sucesso num teste de resistência de Fortitude (CD 15) ou ficarão cegas por 1 rodada e ofuscadas na rodada subsequente.",
   },
   {
     id: "adv-item-po-de-ouvidobom",
     name: "Pó de Ouvidobom",
-    category: "alquimico",
+    benefitAppliesTo: "Ouvir",
     cost: "20 PO",
-    weight: "0,5 kg",
-    craftDc: 20,
+    weight: "—",
     duration: "1 minuto",
-    description: "Pó branco e seco que aguça a audição quando aplicado às orelhas. Concede +1 de bônus alquímico nos testes de Ouvir durante 1 minuto.",
+    craftDc: 20,
+    description: "Esse pó branco e seco aguça a audição de uma criatura quando aplicado nas orelhas. Ele só funciona durante um período curto de tempo, logo costuma ser mais usado por quem deseja evitar guardas ou sentinelas do que pelos encarregados de vigiar uma área em períodos maiores de tempo. Pó de ouvidobom concede +1 de bônus alquímico nos testes de Ouvir durante 1 minuto. Uma dose de pó de ouvidobom é suficiente para afetar a audição de uma criatura de qualquer tamanho, mas ela precisa dispor desses órgãos para receber os benefícios da substância. Aplicar pó de ouvidobom é uma ação padrão que provoca ataques de oportunidade.",
   },
   {
     id: "adv-item-unguento-da-aguia",
     name: "Ungüento da Águia",
-    category: "alquimico",
-    cost: "25 PO",
-    weight: "0,5 kg",
+    benefitAppliesTo: "Procurar, Observar",
+    cost: "50 PO",
+    weight: "—",
+    duration: "2 minutos/10 minutos",
     craftDc: 25,
-    duration: "2 minutos / 10 minutos",
-    description: "Gel espesso e ácido que aguça temporariamente a visão: concede +2 de bônus alquímico nos testes de Procurar e Observar durante 2 minutos. Após esse período, arde nos olhos infligindo -2 de penalidade nos mesmos testes por 10 minutos (pode ser lavada com água limpa em 1 rodada).",
+    description: "Esse gel grosso e ácido aguça temporariamente a visão do usuário. Contudo, depois que seus efeitos benéficos se esvaem, o gel queima e arde nos olhos por alguns minutos. Após espalhar o gel sobre seus olhos, o personagem recebe +1 de bônus nos testes de Procurar e Observar durante 2 minutos. Após esse intervalo, ele sofrerá -2 de penalidade nos mesmos testes durante 10 minutos. Os personagens são capazes de reduzir a duração remanescente dessa penalidade empregando uma rodada para enxaguar os olhos com água limpa. Aplicar ungüento da águia é uma ação de rodada completa que provoca ataques de oportunidade.",
   },
   {
     id: "adv-item-vela-do-foco",
     name: "Vela do Foco",
-    category: "alquimico",
-    cost: "30 PO",
+    benefitAppliesTo: "Avaliação, Decifrar Escrita, Falsificação, Procurar",
+    cost: "100 PO",
     weight: "0,5 kg",
-    craftDc: 20,
     duration: "1 hora",
-    description: "Grande círio verde que queima durante 1 hora emanando aroma refrescante e agreste. Personagens a até 6 m de uma vela do foco acesa recebem +1 de bônus de circunstância nos testes de Avaliação, Decifrar Escrita, Falsificação e Procurar.",
-  },
-
-  // Tabela 4-3: Cápsulas Alquímicas e Instrumentos (pp. 120-122)
-  {
-    id: "adv-item-dente-alquimico",
-    name: "Dente Alquímico",
-    category: "capsula",
-    cost: "30 PO",
-    weight: "—",
     craftDc: 25,
-    description: "Dente postiço oco e disfarçado para comportar uma cápsula alquímica ou dose de veneno. Exige teste de Procurar (CD 25) para ser detectado. Romper a cápsula armazenada é uma ação rápida.",
+    description: "Esse grande círio verde queima rapidamente, e sua duração, apesar do tamanho, é de apenas 1 hora. Enquanto estiver acesa, a vela do foco emana um odor refrescante e agreste. Ela é um grande auxílio para indivíduos envolvidos em atividades mentais estressantes. Os personagens a até 6 m de uma vela do foco acesa recebem +1 de bônus de circunstância nos testes de Avaliação, Decifrar Escrita, Falsificação e Procurar. Ao realizar um teste de perícia que exija mais de uma ação para ser completado (como Decifrar Escrita), os personagens só adquirem os bônus da vela do foco se passarem toda a duração da ação a até 6 m da vela acesa.",
   },
+];
+
+// ----------------------------------------------------------------------------
+// Cápsulas Alquímicas (pp. 120-121, Tabela 4-3). Dispositivos de ingestão
+// rápida (ação padrão sem provocar ataque de oportunidade se usadas com um
+// porta-cápsulas) que concedem bônus alquímicos de curtíssima duração.
+// ----------------------------------------------------------------------------
+export interface Dnd35AdvCapsule {
+  id: string;
+  name: string;
+  cost: string;
+  /** "n/d" quando a Tabela 4-3 não lista o valor (itens acessórios). */
+  duration: string;
+  craftDc: number | null;
+  description: string;
+}
+
+export const DND35_ADV_CAPSULES: Dnd35AdvCapsule[] = [
   {
-    id: "adv-item-porta-capsulas",
-    name: "Porta-Cápsulas",
-    category: "capsula",
-    cost: "5 PO",
-    weight: "—",
-    description: "Fino cordão elástico enrolado ao redor de um dente segurando um pequeno anel de metal com uma cápsula alquímica. Romper a cápsula armazenada na boca é uma ação rápida.",
-  },
-  {
-    id: "adv-item-capsula-de-antitoxina",
+    id: "adv-capsule-antitoxina",
     name: "Cápsula de Antitoxina",
-    category: "capsula",
     cost: "15 PO",
-    weight: "—",
-    craftDc: 20,
     duration: "1 minuto",
-    description: "Armazena dose concentrada de antitoxina suave. Ao ser ingerida, concede +1 de bônus alquímico nos testes de Fortitude contra venenos durante 1 minuto.",
+    craftDc: 20,
+    description: "Esta cápsula armazena uma dose de antitoxina suave. Ao ser ingerida, ela fornece +1 de bônus alquímico nos testes de resistência de Fortitude contra venenos. Esse bônus dura 1 minuto.",
   },
   {
-    id: "adv-item-capsula-da-estabilidade",
+    id: "adv-capsule-estabilidade",
     name: "Cápsula da Estabilidade",
-    category: "capsula",
     cost: "15 PO",
-    weight: "—",
-    craftDc: 20,
     duration: "1 rodada",
-    description: "Líquido espesso que amplia temporariamente o senso de equilíbrio. O usuário recebe +4 de bônus alquímico nos testes de Equilíbrio durante 1 rodada.",
+    craftDc: 20,
+    description: "O líquido azul espesso nessa cápsula amplia temporariamente o senso de equilíbrio do usuário. Enquanto ele estiver agindo, o indivíduo recebe +4 de bônus alquímico nos testes de Equilíbrio. Esse benefício dura apenas 1 rodada, e termina imediatamente após a conclusão das ações do usuário.",
   },
   {
-    id: "adv-item-capsula-de-forca",
+    id: "adv-capsule-forca",
     name: "Cápsula de Força",
-    category: "capsula",
-    cost: "25 PO",
-    weight: "—",
-    craftDc: 25,
+    cost: "125 PO",
     duration: "2 rodadas",
-    description: "Líquido avermelhado que amplia a força física: concede +1 de bônus alquímico nas jogadas de dano com armas corpo a corpo e testes de Força por 2 rodadas. Em seguida, o usuário fica fatigado (ou exausto se já estiver fatigado).",
+    craftDc: 35,
+    description: "Essa cápsula pequena armazena uma dose de um líquido ralo e avermelhado. Quando ingerida, a substância amplia temporariamente a força física ao custo de deixar o usuário fatigado. Ao ser ingerida, a cápsula de força fornece +1 de bônus alquímico nos testes de Força e dano de armas corpo a corpo. Esse benefício dura 2 rodadas, e em seguida o usuário fica fatigado. Se um personagem já estiver fatigado quando o efeito da cápsula se encerrar, ele ficará exausto.",
   },
   {
-    id: "adv-item-capsula-do-salto",
+    id: "adv-capsule-salto",
     name: "Cápsula do Salto",
-    category: "capsula",
     cost: "15 PO",
-    weight: "—",
-    craftDc: 20,
     duration: "1 rodada",
-    description: "Líquido acinzentado que permite executar saltos mais vigorosos: concede +4 de bônus alquímico nos testes de Saltar durante 1 rodada.",
+    craftDc: 20,
+    description: "O líquido espesso e acinzentado nessa cápsula permite que o usuário execute saltos mais poderosos por um breve período. Ele recebe +4 de bônus alquímico nos testes de Saltar. Esse benefício dura apenas 1 rodada, e termina imediatamente após a conclusão das ações do usuário.",
   },
   {
-    id: "adv-item-capsula-da-velocidade",
+    id: "adv-capsule-velocidade",
     name: "Cápsula da Velocidade",
-    category: "capsula",
-    cost: "25 PO",
-    weight: "—",
-    craftDc: 25,
+    cost: "15 PO",
     duration: "2 rodadas",
-    description: "Líquido azulado que acelera o passo do usuário: aumenta o deslocamento base em +1,5 m durante 2 rodadas. Em seguida, o usuário fica fatigado (ou exausto se já estiver fatigado).",
+    craftDc: 35,
+    description: "Essa cápsula pequena armazena uma dose de um líquido ralo e azulado. Quando ingerida, a substância acelera o passo do usuário por um breve período de tempo, através de uma ampliação temporária no deslocamento ao custo de deixar o usuário fatigado. Uma cápsula da velocidade aumenta o deslocamento base do usuário em 1,5 m. Esse benefício dura 2 rodadas, e em seguida o usuário fica fatigado. Se um personagem já estiver fatigado quando o efeito da cápsula se encerrar, ele ficará exausto.",
   },
   {
-    id: "adv-item-capsula-do-vigor",
+    id: "adv-capsule-vigor",
     name: "Cápsula do Vigor",
-    category: "capsula",
-    cost: "25 PO",
-    weight: "—",
-    craftDc: 25,
+    cost: "15 PO",
     duration: "1 rodada",
-    description: "Líquido de cor clara que permite ignorar dores e restrições da condição zonzo na rodada em que é ingerida (ação rápida), permitindo realizar uma ação de movimento e uma ação padrão completas.",
+    craftDc: 25,
+    description: "Essa cápsula armazena um líquido espesso de cor clara que permite que seu usuário ignore dores e distrações. Qualquer indivíduo que utilize a cápsula do vigor enquanto estiver zonzo consegue ignorar as restrições sobre o número de ações realizadas numa única rodada devido a essa condição (ou seja, o limite de uma ação padrão). Esse benefício só se aplica à rodada em que a cápsula é ingerida, e o efeito termina imediatamente após o usuário realizar suas ações da rodada. Por exemplo, um personagem zonzo com um porta-cápsulas pode utilizar a cápsula no início do seu turno (uma ação rápida) e em seguida realizar uma ação de movimento e uma ação padrão.",
   },
+  {
+    id: "adv-capsule-dente-alquimico",
+    name: "Dente Alquímico",
+    cost: "300 PO",
+    duration: "n/d",
+    craftDc: null,
+    description: "Item acessório listado na Tabela 4-3 (pp. 120-121); a fonte não traz um parágrafo descritivo dedicado a ele — a página segue diretamente da tabela para a seção \"Cápsulas Alquímicas para Armas\". Mecânica completa não disponível; não inventada.",
+  },
+  {
+    id: "adv-capsule-porta-capsulas",
+    name: "Porta-Cápsulas",
+    cost: "100 PO",
+    duration: "n/d",
+    craftDc: null,
+    description: "Item acessório listado na Tabela 4-3 (pp. 120-121) para transportar e ingerir cápsulas alquímicas com uma ação rápida; a fonte não traz um parágrafo descritivo dedicado a ele — apenas o \"Porta-Cápsulas para Arma\" (equivalente para cápsulas alquímicas para armas) é descrito em prosa. Mecânica completa não disponível; não inventada.",
+  },
+];
 
-  // Tabela 4-4: Cápsulas Alquímicas para Armas (pp. 122-123)
+// ----------------------------------------------------------------------------
+// Cápsulas Alquímicas para Armas (p. 122, Tabela 4-4). Revestem uma arma
+// corpo a corpo ou de arremesso com dano/efeito elemental temporário, uma
+// ação rápida se usadas com um porta-cápsulas para arma.
+// ----------------------------------------------------------------------------
+export interface Dnd35AdvWeaponCapsule {
+  id: string;
+  name: string;
+  cost: string;
+  duration: string;
+  craftDc: number | null;
+  description: string;
+}
+
+export const DND35_ADV_WEAPON_CAPSULES: Dnd35AdvWeaponCapsule[] = [
   {
-    id: "adv-item-retentor-de-capsulas",
-    name: "Retentor de Cápsulas",
-    category: "ferramenta",
+    id: "adv-weapon-capsule-anti-fantasma",
+    name: "Anti-Fantasma",
     cost: "100 PO",
-    weight: "0,5 kg",
-    description: "Dispositivo acoplado a uma arma corpo a corpo ou de arremesso que comporta uma cápsula alquímica para armas. Ativar a cápsula para cobrir a lâmina/cabeça da arma é uma ação rápida.",
+    duration: "3 rodadas",
+    craftDc: 35,
+    description: "Uma cápsula alquímica anti-fantasma reveste uma arma corpo a corpo ou uma arma de arremesso com um líquido espesso e acinzentado. Essa substância permite que a arma ignore a chance de falha de 50% que normalmente é aplicada quando o portador está combatendo criaturas incorpóreas (como se a arma possuísse a propriedade mágica toque espectral). Os efeitos da cápsula duram 3 rodadas.",
   },
   {
-    id: "adv-item-capsula-anti-fantasma",
-    name: "Cápsula Anti-fantasma",
-    category: "capsula",
+    id: "adv-weapon-capsule-chamas-instantaneas",
+    name: "Chamas Instantâneas",
+    cost: "25 PO",
+    duration: "1 rodada",
+    craftDc: 25,
+    description: "Uma cápsula alquímica de chamas instantâneas reveste uma arma corpo a corpo ou de arremesso com uma fina camada de óleo que entra imediatamente em combustão. Essa substância permite que a arma inflija dano adicional de fogo por um breve período de tempo, sem que isso prejudique a própria arma ou seu portador. Uma arma tratada com chamas instantâneas inflige 1d6 pontos de dano por fogo a cada ataque bem sucedido. O efeito da cápsula dura 1 rodada e termina no início do próximo turno do usuário. Esse dano por fogo não é cumulativo com qualquer outro dano por fogo que a arma inflige.",
+  },
+  {
+    id: "adv-weapon-capsule-faiscas-instantaneas",
+    name: "Faíscas Instantâneas",
+    cost: "25 PO",
+    duration: "1 rodada",
+    craftDc: 25,
+    description: "Uma cápsula alquímica de faíscas instantâneas reveste uma arma corpo a corpo ou de arremesso com uma fina camada de óleo que crepita com uma perigosa energia elétrica. Essa substância permite que a arma inflija dano adicional de eletricidade por um breve período de tempo, sem que isso prejudique a própria arma ou seu portador. Uma arma tratada com faíscas instantâneas inflige 1d6 pontos de dano por eletricidade a cada ataque bem sucedido. O efeito da cápsula dura 1 rodada e termina no início do próximo turno do usuário. Esse dano por eletricidade não é cumulativo com qualquer outro dano por eletricidade que a arma inflige.",
+  },
+  {
+    id: "adv-weapon-capsule-gelo-instantaneo",
+    name: "Gelo Instantâneo",
+    cost: "25 PO",
+    duration: "1 rodada",
+    craftDc: 25,
+    description: "Uma cápsula alquímica de gelo instantâneo reveste uma arma corpo a corpo ou de arremesso com uma fina camada de óleo que imediatamente se resfria a uma temperatura perigosamente baixa. Essa substância permite que a arma inflija dano adicional de frio por um breve período de tempo, sem que isso prejudique a própria arma ou seu portador. Uma arma tratada com gelo instantâneo inflige 1d6 pontos de dano por frio a cada ataque bem sucedido. O efeito da cápsula dura 1 rodada e termina no início do próximo turno do usuário. Esse dano por frio não é cumulativo com qualquer outro dano por frio que a arma inflige.",
+  },
+  {
+    id: "adv-weapon-capsule-porta-capsulas-para-arma",
+    name: "Porta-Cápsulas para Arma",
     cost: "100 PO",
-    weight: "—",
+    duration: "n/d",
+    craftDc: null,
+    description: "O método mais comum de inocular uma cápsula alquímica para arma é através do porta-cápsulas para arma. Essa tira comprida de couro, que pode ser amarrada em torno de uma arma corpo a corpo ou de arremesso (mas não de uma arma de projétil) na base da lâmina ou da superfície de impacto, sustenta um anel fino do tamanho de uma cápsula alquímica. Usar uma cápsula alquímica para arma exige apenas uma ação rápida (e não provoca ataques de oportunidade) se ela estiver num porta-cápsulas para arma; caso contrário, aplicar a cápsula é equivalente a aplicar um óleo mágico (uma ação padrão que provoca ataques de oportunidade).",
+  },
+  {
+    id: "adv-weapon-capsule-porta-capsulas-triplo-para-arma",
+    name: "Porta-Cápsulas Triplo para Arma",
+    cost: "450 PO",
+    duration: "n/d",
+    craftDc: null,
+    description: "Versão do porta-cápsulas para arma (listada na Tabela 4-4, p.122) que sustenta três cápsulas alquímicas para arma simultaneamente em vez de uma só. A fonte não traz parágrafo descritivo adicional além da linha da tabela; mecânica idêntica ao porta-cápsulas para arma simples, aplicada a cada uma das três cápsulas carregadas.",
+  },
+  {
+    id: "adv-weapon-capsule-prata-instantanea",
+    name: "Prata Instantânea",
+    cost: "50 PO",
+    duration: "3 rodadas",
     craftDc: 30,
-    duration: "3 rodadas",
-    description: "Reveste uma arma com óleo que permite ignorar a chance de falha normal de 50% contra criaturas incorpóreas (como na propriedade toque espectral) durante 3 rodadas.",
+    description: "Uma cápsula alquímica de prata instantânea reveste uma arma corpo a corpo ou de arremesso com um fino líquido prateado. Essa substância permite que a arma inflija dano como se estivesse revestida com prata (incluindo -1 de penalidade normal nas jogadas de dano com armas de prata). O efeito da cápsula dura 3 rodadas, e substitui quaisquer efeitos de materiais especiais da arma.",
   },
-  {
-    id: "adv-item-capsula-de-chamas-instantaneas",
-    name: "Cápsula de Chamas Instantâneas",
-    category: "capsula",
-    cost: "25 PO",
-    weight: "—",
-    craftDc: 20,
-    duration: "1 rodada",
-    description: "Reveste a arma em combustão temporária segura para o portador: inflige +1d6 pontos de dano por fogo em cada ataque bem-sucedido durante 1 rodada.",
-  },
-  {
-    id: "adv-item-capsula-de-faiscas-instantaneas",
-    name: "Cápsula de Faíscas Instantâneas",
-    category: "capsula",
-    cost: "25 PO",
-    weight: "—",
-    craftDc: 20,
-    duration: "1 rodada",
-    description: "Reveste a arma com óleo elétrico crepitante: inflige +1d6 pontos de dano por eletricidade em cada ataque bem-sucedido durante 1 rodada.",
-  },
-  {
-    id: "adv-item-capsula-de-gelo-instantaneo",
-    name: "Cápsula de Gelo Instantâneo",
-    category: "capsula",
-    cost: "25 PO",
-    weight: "—",
-    craftDc: 20,
-    duration: "1 rodada",
-    description: "Reveste a arma em camada fria perigosa: inflige +1d6 pontos de dano por frio em cada ataque bem-sucedido durante 1 rodada.",
-  },
-  {
-    id: "adv-item-capsula-de-prata-instantanea",
-    name: "Cápsula de Prata Instantânea",
-    category: "capsula",
-    cost: "25 PO",
-    weight: "—",
-    craftDc: 25,
-    duration: "3 rodadas",
-    description: "Reveste a arma com fino líquido prateado: a arma inflige dano como se fosse feita de prata (incluindo -1 de penalidade no dano) durante 3 rodadas.",
-  },
+];
 
-  // Tabela 4-5: Ferramentas e Kits de Perícia (pp. 124-125)
+// ----------------------------------------------------------------------------
+// Ferramentas e Kits de Perícia (pp. 122-123, Tabela 4-5).
+// ----------------------------------------------------------------------------
+export interface Dnd35AdvSkillTool {
+  id: string;
+  name: string;
+  cost: string;
+  weight: string;
+  description: string;
+}
+
+export const DND35_ADV_SKILL_TOOLS: Dnd35AdvSkillTool[] = [
   {
-    id: "adv-item-cone-de-audicao",
+    id: "adv-tool-cone-de-audicao",
     name: "Cone de Audição",
-    category: "ferramenta",
     cost: "20 PO",
     weight: "0,5 kg",
-    description: "Cone de latão ou madeira projetado para ser encostado em portas ou paredes. Concede +2 de bônus de circunstância nos testes de Ouvir através de portas ou superfícies sólidas.",
+    description: "Esse instrumento é feito para ouvir através de portas e outras superfícies sólidas. Ele fornece +2 de bônus de circunstância nos testes de Ouvir realizados através de uma porta ou outro obstáculo sólido de pouca espessura.",
   },
   {
-    id: "adv-item-ferramentas-de-ladrao-longo-alcance",
+    id: "adv-tool-ferramentas-de-ladrao-longo-alcance",
     name: "Ferramentas de Ladrão de Longo Alcance",
-    category: "ferramenta",
-    cost: "30 PO",
+    cost: "80 PO",
     weight: "1,5 kg",
-    description: "Conjunto de hastes extensíveis e espelhos angulares que permite ao ladino abrir fechaduras e desarmar dispositivos a até 1,5 m de distância (evitando armadilhas de toque imediato). Aplica -2 de penalidade no teste.",
+    description: "Essas ferramentas especialmente modificadas possuem cabos longos e delgados, que permitem que o usuário manipule trancas, arrombe cadeados e teste armadilhas de uma posição a até 1,5 m de distância e a partir do lado oposto-alvo. Um espelho com 2,5 cm de diâmetro e um cabo comprido permite que o usuário tenha uma boa visão do objeto sendo manipulado. Embora algumas armadilhas possam infligir dano mesmo à distância, essas ferramentas permitem que um ladino precavido evite vários perigos comuns, como agulhas envenenadas, jatos de ácido e similares. Utilizar essas ferramentas exige mais tempo e oferece menor precisão que a abordagem direta: ferramentas de longo alcance adicionam 2 rodadas ao tempo necessário para um teste de Operar Mecanismo ou Abrir Fechadura e impõem -2 de penalidade nesses testes.",
   },
   {
-    id: "adv-item-ferramentas-de-ladrao-longo-alcance-obra-prima",
-    name: "Ferramentas de Ladrão de Longo Alcance (Obra-prima)",
-    category: "ferramenta",
+    id: "adv-tool-ferramentas-de-ladrao-longo-alcance-obra-prima",
+    name: "Ferramentas de Ladrão de Longo Alcance (Obra-Prima)",
     cost: "150 PO",
     weight: "1,5 kg",
-    description: "Versão de manufatura excepcional das ferramentas de longo alcance. Permite operar dispositivos e trancas a 1,5 m de distância sem qualquer penalidade.",
+    description: "As ferramentas de ladrão de longo alcance estão disponíveis nas versões normal e obra-prima. A versão obra-prima fornece +2 de bônus nos testes de Operar Mecanismo e Abrir Fechaduras, mas o tempo necessário para o teste não é reduzido.",
   },
   {
-    id: "adv-item-kit-de-camuflagem",
+    id: "adv-tool-kit-de-camuflagem",
     name: "Kit de Camuflagem",
-    category: "ferramenta",
     cost: "40 PO",
     weight: "2,5 kg",
-    description: "Bolsa com maquiagens, tinturas e tecidos coloridos que concede +2 de bônus de circunstância nos testes de Esconder-se após 1 minuto de preparação. Contém material suficiente para 10 usos.",
+    description: "Essa bolsa contém maquiagens, tinturas, tecidos coloridos e outros acessórios apropriados para camuflagem. Trata-se da ferramenta perfeita para se esconder e fornece +2 de bônus de circunstância nos testes de Esconder-se. Para receber o bônus, o personagem precisa trabalhar durante 1 minuto. Um kit de camuflagem é suficiente para 10 usos.",
   },
   {
-    id: "adv-item-kit-de-falsificacao",
+    id: "adv-tool-kit-de-falsificacao",
     name: "Kit de Falsificação",
-    category: "ferramenta",
     cost: "40 PO",
-    weight: "1,5 kg",
-    description: "Estojo com papéis de vários tipos, penas, ceras para selo, tintas de cores variadas e modelos de brasões nobres. Concede +2 de bônus de circunstância nos testes de Falsificação. 10 usos.",
-  },
-  {
-    id: "adv-item-kit-de-adestramento-de-animais",
-    name: "Kit de Adestramento de Animais",
-    category: "ferramenta",
-    cost: "75 PO",
     weight: "2,5 kg",
-    description: "Chicotes acolchoados, apitos de alta frequência, guloseimas e arreios especiais que concedem +2 de bônus de circunstância nos testes de Adestrar Animais.",
+    description: "Esse pequeno estojo contém uma ampla seleção de tipos de papel, penas e diversas cores de tintas. Além disso, ele contém exemplos de brasões nacionais e familiares proeminentes. Trata-se da ferramenta perfeita para tentativas de forjar documentos e concede +2 de bônus de circunstância nos testes de Falsificação. Um kit de falsificação é suficiente para 10 usos.",
   },
   {
-    id: "adv-item-sela-obra-prima-montaria",
-    name: "Sela (Obra-prima) de Montaria",
-    category: "ferramenta",
-    cost: "60 PO",
-    weight: "12,5 kg",
-    description: "Sela refinada e confortável ajustada ao tipo de montaria. Concede +1 de bônus de circunstância nos testes de Cavalgar.",
+    id: "adv-tool-kit-de-adestramento-de-animais",
+    name: "Kit de Adestramento de Animais",
+    cost: "75 PO",
+    weight: "7,5 kg",
+    description: "Esse kit inclui apitos de instrução, uma vara pequena com um laço de corda, petiscos saborosos e outros itens de qualidade destinados ao adestramento de animais. Esse kit concede +2 de bônus de circunstância nos testes de Adestrar Animais para ensinar truques, tarefas gerais ou domesticar um animal selvagem. Ele não concede bônus para outros usos da mesma perícia.",
   },
   {
-    id: "adv-item-sela-obra-prima-militar",
-    name: "Sela (Obra-prima) Militar",
-    category: "ferramenta",
-    cost: "80 PO",
+    id: "adv-tool-sela-obra-prima-de-montaria",
+    name: "Sela (Obra-Prima) de Montaria",
+    cost: "210 PO",
+    weight: "20 kg",
+    description: "Esse equipamento de qualidade, que pode ser uma sela de montaria ou militar, é mais confortável e receptiva que uma sela normal. Devido à sua excelente manufatura, uma sela (obra-prima) concede +1 de bônus de circunstância nos testes de Cavalgar. Se for militar, o bônus será cumulativo com o bônus de circunstância de +2 que a sela militar concede nos testes dessa perícia relacionados a permanecer sobre a sela (consulte o Livro do Jogador). Cada sela (obra-prima) é confeccionada para um tipo específico de criatura. Por isso, ela se ajusta melhor a criaturas desse tipo, e só fornece seus bônus quando utilizada com elas. Por exemplo, uma sela (obra-prima) para cavalos de guerra pesados concederia seus bônus ao ser usada em qualquer cavalo de guerra pesado, mas não funcionaria caso fosse posta em um dragão (supondo que seu tamanho servisse para o dragão).",
+  },
+  {
+    id: "adv-tool-sela-obra-prima-comum",
+    name: "Sela (Obra-Prima) Comum",
+    cost: "180 PO",
     weight: "15 kg",
-    description: "Sela militar com apoios para pernas e torso de excelente manufatura. Concede +1 de bônus de circunstância em testes de Cavalgar, cumulativo com o bônus de +2 da sela militar para permanecer sobre a sela (+3 no total).",
+    description: "Versão comum (não militar) da sela obra-prima — ver \"Sela (Obra-Prima) de Montaria\" para a mecânica completa (+1 de bônus de circunstância nos testes de Cavalgar, ajustada a um tipo específico de criatura).",
   },
   {
-    id: "adv-item-vara-de-equilibrio",
+    id: "adv-tool-vara-de-equilibrio",
     name: "Vara de Equilíbrio",
-    category: "ferramenta",
-    cost: "10 PO",
-    weight: "4 kg",
-    description: "Vara comprida e flexível de 3 metros que concede +2 de bônus de circunstância nos testes de Equilíbrio, desde que haja espaço livre de pelo menos 1,5 m de cada lado do personagem.",
+    cost: "5 PO",
+    weight: "2,5 kg",
+    description: "Essa vara comprida e flexível é o instrumento perfeito para se manter o equilíbrio. Ela tem 3 m de comprimento, portanto não pode ser usada num local que permita menos de 1,5 m de espaço livre de cada lado do personagem. Desde que o usuário disponha de espaço para empregá-la corretamente, a vara de equilíbrio fornece +2 de bônus de circunstância nos testes de Equilíbrio.",
+  },
+];
+
+// ----------------------------------------------------------------------------
+// Instrumentos Musicais Obra-Primas (pp. 124-126, Tabela 4-6). Cada um
+// concede um benefício específico de "Música de Barda" além do bônus
+// padrão de obra-prima (+2 de circunstância nos testes de Atuação).
+// ----------------------------------------------------------------------------
+export type Dnd35AdvInstrumentCategory = "corda" | "sopro" | "percussão";
+
+export interface Dnd35AdvInstrument {
+  id: string;
+  name: string;
+  category: Dnd35AdvInstrumentCategory;
+  description: string;
+  bardMusicNote: string;
+}
+
+export const DND35_ADV_INSTRUMENTS: Dnd35AdvInstrument[] = [
+  {
+    id: "adv-instrument-alaude",
+    name: "Alaúde",
+    category: "corda",
+    description: "O alaúde essencial do violão tem uma caixa de ressonância em forma de pêra e um braço curvado característico com trastes para o dedilhado. Entre quatro e oito cordas vão-se entre a base do corpo e a ponta do braço. Os alaúdes variam entre 75 e 90 cm de comprimento, com o corpo perfazendo cerca de dois terços do total. O músico toca ou belisca as cordas para produzir a música. Um instrumento extremamente versátil graças à ampla gama de notas e inflexões, o alaúde é acessível para os principiantes, mas capaz de grande sutileza nas mãos de um mestre. O corpo fundo é responsável por um som rico e vibrante, diferente de qualquer outro instrumento de corda. Ele é de longe o instrumento mais popular entre os bardos, especialmente entre meio-elfos e humanos.",
+    bardMusicNote: "Um bardo tocando um alaúde é tratado como se tivesse um nível a mais para determinar o poder dos efeitos de sua música (por exemplo, um bardo 3 usando um alaúde poderia fascinar duas criaturas de uma vez, e um bardo 6 usando o instrumento para transmitir uma sugestão calcularia a CD do teste de resistência como se pertencesse ao 7º nível). Nota de transcrição: o fim exato da frase de exemplo, cortado na margem da página 124, não foi recuperado — a regra central (+1 nível efetivo) está confirmada.",
+  },
+  {
+    id: "adv-instrument-bandolim",
+    name: "Bandolim",
+    category: "corda",
+    description: "Essencialmente uma versão menor do alaúde, o bandolim costuma ter entre 50 e 60 cm. Seu pescoço é mais reto que o do alaúde, e sua extremidade se inclina pouco ou quase nada para trás. A peculiaridade do bandolim é o seu número de cordas — de quatro a seis pares (oito a doze cordas no total) ou mais. O bandolim normalmente é tocado com palheta, tanto para proteger os dedos do músico quanto para permitir que as cordas, que ficam muito juntas, sejam tocadas corretamente. O som do bandolim é mais doce que o do alaúde, e graças às suas cordas curtas, também mais agudo. Sua ampla gama de alcance e sua expressividade o tornam um preferido dos gnomos e dos halflings, que o consideram superior até mesmo ao alaúde.",
+    bardMusicNote: "Quando um bardo usa o bandolim para inspirar coragem, o bônus de moral nas jogadas de ataque aumenta em 1 ponto, mas o bônus de moral nos testes de resistência contra feitiços e medo é reduzido em 1 ponto. Um bardo usando o bandolim para acionar sua habilidade música de bardo é capaz de conjurar magias enquanto toca, mas apenas se não houver componentes gestuais, materiais ou foco.",
+  },
+  {
+    id: "adv-instrument-flauta-de-pa",
+    name: "Flauta de Pã",
+    category: "sopro",
+    description: "Essencialmente, um conjunto de flautas de Pã é uma série de caniços ou tubos de madeira ocos de comprimentos diversos, atados em fila, do maior para o menor. Para tocá-los, o músico sopra sobre a extremidade desses tubos, produzindo um som muito similar ao de várias pequenas flautas de madeira. Movendo a flauta de um lado para outro, o flautista pode alcançar diversas notas. A rápida variação entre as notas cria o efeito suave e ondulante desse instrumento. Simples mas evocativas, as flautas de Pã são as favoritas de sátiros e outras fadas silvestres. Os humanos e alguns elfos também acham sua música agradável.",
+    bardMusicNote: "Um bardo usando flautas de Pã recebe +1 de bônus nos testes de Atuação para fascinar as criaturas, e também acrescenta 1 ponto à CD do teste contra sua habilidade sugestão.",
+  },
+  {
+    id: "adv-instrument-flauta",
+    name: "Flauta",
+    category: "sopro",
+    description: "A flauta é o mais agudo de todos os instrumentos de sopro de madeira. Essa categoria inclui instrumentos que variam desde a primitiva flauta-doce — um simples tubo de madeira oca com o qual se produz música sopranado diretamente — à flauta transversal, que deve ser mantida em ângulo reto com a boca do músico. O comprimento das flautas varia de 20 cm a cerca de 60 cm. O instrumento (normalmente) possui seis orifícios, mais um que, quando tapado, abaixa todas as outras notas em uma oitava. As flautas possuem a reputação de produzir música suave e idílica, mas também podem criar efeitos marciais ou sons de lamentos distorcidos. As flautas abissais sempre possuem um número ímpar de orifícios, e não se adequam a nenhuma escala ou chave usada por bardos humanoides.",
+    bardMusicNote: "Um bardo tocando uma flauta recebe +2 de bônus nos testes de Atuação para usar a habilidade música de proteção.",
+  },
+  {
+    id: "adv-instrument-harpa",
+    name: "Harpa",
+    category: "corda",
+    description: "Uma harpa normalmente tem dezessete cordas, mas pode possuir até doze num instrumento menor e até quarenta e sete num maior. As cordas de prata são a escolha mais comum, mas ocasionalmente também são utilizados outros metais. O instrumento costuma ser feito em madeira, embora alguns artesãos o esculpam em osso ou marfim. Não importa o material, a maioria das harpas é muito polida e decorada com ornamentos entalhados. As melhores podem ser consideradas obras de arte por si mesmas, independente de seu uso como instrumento. Apesar das harpas terem até 1,80 m de altura, existem versões bem menores (às vezes chamadas de cítaras) — com cerca de 60 cm de altura — e mais simples de transportar. A harpa é privilegiada especialmente pelos bardos élficos por seu som luminoso e alentador e suas notas ondulantes e suaves. As harpas costumam ser passadas de geração em geração entre os elfos, e muitas acabam por adquirir nomes e lendas próprias. Qualquer personagem com a habilidade conhecimento de bardo que examinar uma harpa élfica automaticamente recebe +5 de bônus no teste para identificar o instrumento e seu portador.",
+    bardMusicNote: "Um bardo tocando uma harpa é capaz de atingir uma criatura a mais que o normal com suas habilidades fascinar e inspirar grandeza. Um bardo usando a harpa para acionar sua habilidade música de bardo é capaz de conjurar magias enquanto toca, mas apenas se não houver componentes gestuais, materiais ou foco.",
+  },
+  {
+    id: "adv-instrument-lira",
+    name: "Lira",
+    category: "corda",
+    description: "Um ancestral mais simples da cítara, a lira normalmente tem o corpo feito com casco de tartaruga, mas dois braços curtos e uma barra transversal que mantém esticadas suas quatro a seis (ou mais raramente, oito) cordas de tripa ou tendão. Para tocar a lira, o músico segura o instrumento com uma das mãos enquanto solta ou belisca as cordas com a outra. A própria simplicidade da lira constitui seu maior encanto, já que até mesmo um iniciante consegue produzir sons razoáveis. Devido a essa acessibilidade e ao fato de serem fáceis de fazer, as liras são populares entre fadas silvestres (especialmente os sátiros) e entre a população do campo em geral. Contudo, ocasionalmente um verdadeiro mestre a adota como seu instrumento característico, produzindo efeitos surpreendentes.",
+    bardMusicNote: "Um bardo tocando uma lira é capaz de atingir uma criatura a mais que o normal com sua habilidade fascinar e inspirar heroísmo. Um bardo usando a lira para acionar sua habilidade música de bardo é capaz de conjurar magias enquanto toca, mas apenas se não houver componentes gestuais, materiais ou foco.",
+  },
+  {
+    id: "adv-instrument-rabeca",
+    name: "Rabeca",
+    category: "corda",
+    description: "Um ancestral do violino moderno, a rabeca é um instrumento de corda pequeno e portátil com a forma de uma ampulheta. Quatro ou cinco cordas feitas com tripas ou tendões se estendem sobre esse volume, presas em parafusos no fim de um braço longo e estreito. As cordas são tocadas com uma peça independente chamada de arco — uma vara comprida e delgada com fios delicados de pêlo animal. O comprimento de uma rabeca varia entre 60 cm (para criaturas Médias) até 45 cm (para halflings e kobolds). Para tocar o instrumento, o músico o segura na horizontal, normalmente prendendo-o sob o queixo, e passa o arco sobre as cordas. A rabeca é popular entre os bardos que preferem músicas animadas para dançar (quadrilhas e jigas) à de distante da música \"pura\". Embora seja apreciada praticamente em todos os lugares, a rabeca é o instrumento favorito dos kobolds, cujas mãos ágeis dominam seu dedilhado há eras (eles insistem que são os verdadeiros inventores do instrumento, mas as outras raças acham essa alegação duvidosa). Os menestréis kobolds e os dos halflings normalmente dançam enquanto tocam, dando o exemplo para a audiência. Os músicos de outras raças geralmente se sentam ou ficam de pé para tocar.",
+    bardMusicNote: "Quando é utilizada por um bardo para inspirar coragem, a rabeca aumenta o bônus moral nos testes de resistência contra feitiços e medo em 1 ponto. Nas mãos de um bardo com 5 ou mais graduações em Atuação (dança), esse bônus aumenta em 2 pontos.",
+  },
+  {
+    id: "adv-instrument-tambor",
+    name: "Tambor",
+    category: "percussão",
+    description: "Um tambor típico é constituído de couro, pergaminho ou outro material similar bem esticado sobre a abertura de um cilindro ou de um recipiente oco de madeira. O som é produzido golpeando o couro com baquetas, martelos ou mesmo com as mãos nuas. Alguns tambores possuem apenas uma peça, e outros duas ou mais. Esses instrumentos podem ser grandes (como o bumbo) ou pequenos (como o bongô ou o tamborim). Os tambores são apreciados por quase todas as raças e culturas devido à sua capacidade de despertar emoções, marcar a batida para danças e fazer contraponto com a melodia produzida por outro instrumento. Os anões, os orcs e outras raças que vivem nos subterrâneos apreciam particularmente o ecoar dos tambores. As raças pequenas, como os goblins e halflings, gostam dos bongôs pela facilidade de transporte. As raras criaturas que não apreciam esse tipo de instrumento incluem os celestiais, que consideram os ritmos de percussão primitivos, e os elfos, que os consideram vagamente perturbadores e entediantes (um preconceito que talvez seja reforçado pelo entusiasmo com que muitos dos seus inimigos apreciam esses sons).",
+    bardMusicNote: "Quando um bardo usa um tambor para inspirar coragem, o bônus de moral nas jogadas de dano aumenta em 1 ponto, mas o bônus de moral nos testes de resistência contra feitiços e medo é reduzido em 1 ponto.",
+  },
+  {
+    id: "adv-instrument-trompa",
+    name: "Trompa",
+    category: "sopro",
+    description: "Originalmente, as trompas eram feitas dos chifres de touros ou feras mais exóticas. Em sua versão mais simples, as trompas consistem de uma ponta estreita conectada a um orifício maior e circular através de um tubo oco, geralmente curvo. O músico toca a trompa simplesmente soprando na extremidade menor. Existem outras formas de trompas, desde as conchas empregadas pelo povo do mar ao trompete do arauto, mas todos esses instrumentos funcionam de forma mais ou menos idêntica. As trompas são populares em todos os tipos de sociedades primitivas. Elas podem ser de qualquer tamanho: as utilizadas por criaturas Médias costumam ter 30 a 60 cm de comprimento. Os hobgoblins e os orcs em especial adoram o som alto, estimulante e marcial desse instrumento. Humanoides maiores e gigantes preferem trompas extraídas de criaturas maiores. As lendas afirmam que os minotauros usam instrumentos feitos de chifres de outros indivíduos de sua raça, derrotados em confrontos de honra homem a homem. Uma trompa pode ser um ótimo sinal de alarme — especialmente quando usada sob a água, já que o som viaja muito mais rápido nesse meio do que no ar. Algumas raças aquáticas, como o povo do mar e os kuo-toa, colecionam uma grande variedade de conchas em forma de trompa de diferentes tamanhos e as tocam em diferentes situações.",
+    bardMusicNote: "Quando um bardo toca uma trompa para inspirar coragem, ela aumenta o bônus de moral nas jogadas de dano com armas e testes contra medo em 1 ponto, mas o efeito dura apenas 1 rodada depois que o aliado deixa de ouvir o personagem tocar.",
+  },
+];
+
+// ----------------------------------------------------------------------------
+// Itens Mágicos — Armas Específicas (p. 127, 129-130). Armas mágicas
+// nomeadas e únicas, com escola de magia/CN/preço de criação.
+// ----------------------------------------------------------------------------
+export interface Dnd35AdvMagicWeapon {
+  id: string;
+  name: string;
+  /** Arma base (ex.: "adaga +4", "arco curto +2"). */
+  baseWeapon: string;
+  /** Ex.: "Abjuração (moderada)". */
+  school: string;
+  casterLevel: number;
+  /** Magia(s)/requisito exigido no requisito de criação (itálico na fonte). */
+  craftRequirement: string;
+  marketPrice: string;
+  /** "n/d" quando a fonte não lista custo de criação separado. */
+  craftCost: string;
+  description: string;
+}
+
+export const DND35_ADV_MAGIC_WEAPONS: Dnd35AdvMagicWeapon[] = [
+  {
+    id: "adv-magicweapon-adaga-da-defesa",
+    name: "Adaga da Defesa",
+    baseWeapon: "adaga +4",
+    school: "Abjuração (moderada)",
+    casterLevel: 12,
+    craftRequirement: "escudo arcano",
+    marketPrice: "Preço +1 de bônus",
+    craftCost: "n/d",
+    description: "Essa adaga defensiva +4 possui uma lâmina longa e delgada e uma guarda ampla, o que a torna uma arma excelente para aparar ataques. Além disso, enquanto o personagem empunhar a adaga de defesa em sua mão inábil, ele não poderá ser flanqueado.",
+  },
+  {
+    id: "adv-magicweapon-arco-das-cancoes",
+    name: "Arco das Canções",
+    baseWeapon: "arco curto +2",
+    school: "Transmutação (moderada)",
+    casterLevel: 8,
+    craftRequirement: "esculpir o som, o criador deve ser um elfo e o criador deve possuir a habilidade música de bardo",
+    marketPrice: "32.330 PO",
+    craftCost: "16.330 PO + 1.280 XP",
+    description: "Construído com madeira de lei por mãos élficas, este arco curto +2 combina música com cada tiro, com efeitos letais. Como uma ação de movimento que não provoca ataques de oportunidade, o portador é capaz de abrir mão de um uso diário de música de bardo para adquirir um bônus equivalente ao seu modificador de Carisma nas jogadas de ataque e dano com o próximo ataque realizado com o arco das canções.",
+  },
+  {
+    id: "adv-magicweapon-bordoarco",
+    name: "Bordoarco",
+    baseWeapon: "bordão longo +2 ou arco longo +2",
+    school: "Transmutação (forte)",
+    casterLevel: 15,
+    craftRequirement: "metamorfosear objetos",
+    marketPrice: "5.975 PO",
+    craftCost: "400 XP",
+    description: "Como uma ação de movimento, o portador é capaz de transformar esse bordão longo +2 fino e flexível num arco longo +2 ou vice-versa. Ambos funcionam exatamente como uma arma mágica normal do tipo respectivo.",
+  },
+  {
+    id: "adv-magicweapon-garras-de-leopardo",
+    name: "Garras de Leopardo",
+    baseWeapon: "manoplas com cravos +2",
+    school: "Transmutação (moderada)",
+    casterLevel: 6,
+    craftRequirement: "agilidade do gato, o criador deve possuir 5 graduações em Escalar",
+    marketPrice: "38.305 PO",
+    craftCost: "19.305 PO + 1.520 XP",
+    description: "Esse par de manoplas com cravos +2 é modelado para se parecer com as patas de um felino enorme. Além do bônus de melhoria, as garras fornecem diversas vantagens felinas. Enquanto estiver usando as garras de leopardo, o portador recebe visão na penumbra e +10 de bônus de melhoria nos testes de Escalar. Se o personagem investir contra um adversário, poderá desferir um ataque completo com a arma. Essa habilidade funciona como o ataque especial bote (consulte o Livro dos Monstros).",
+  },
+  {
+    id: "adv-magicweapon-lamina-das-cancoes",
+    name: "Lâmina das Canções",
+    baseWeapon: "sabre +1",
+    school: "Transmutação (moderada)",
+    casterLevel: 8,
+    craftRequirement: "esculpir o som, o criador deve possuir a característica de classe música de bardo",
+    marketPrice: "6.400 PO",
+    craftCost: "3.360 PO + 243 XP",
+    description: "Cada movimento executado com este sabre +1 enche o ar com doces melodias. Enquanto estiver empunhando uma lâmina das canções desembainhada, o portador recebe +2 de bônus de melhoria nos testes de Atuação. Um bardo empunhando uma lâmina das canções pode utilizar sua música de bardo uma vez a mais por dia. A lâmina é decorada com belas e intrincadas inscrições, e o movimento do ar através desses símbolos mágicos é que origina a música da lâmina das canções. As qualidades musicais dessa arma não funcionam embaixo d'água, no vácuo ou em outros ambientes onde o ar não possa passar livremente sobre a lâmina.",
+  },
+  {
+    id: "adv-magicweapon-lamina-traicoeira",
+    name: "Lâmina Traiçoeira",
+    baseWeapon: "sabre +3",
+    school: "Ilusão (moderada)",
+    casterLevel: 9,
+    craftRequirement: "nublar",
+    marketPrice: "19.820 PO",
+    craftCost: "10.070 PO + 780 XP",
+    description: "É difícil seguir a lâmina de aço achatada desse sabre +3 durante o combate. Sempre que o personagem empregar a perícia Blefar para fintar em combate empunhando a lâmina traiçoeira, ela fornece +2 de bônus de melhoria no teste. A lâmina traiçoeira não concede bônus em outros testes de Blefar. Além disso, qualquer oponente contra o qual o personagem conseguir fintar não poderá desferir ataques de oportunidade contra ele até o início do seu próximo turno. Qualquer outro que não tenha sido alvo da finta poderá desferir ataques de oportunidade contra o portador normalmente.",
+  },
+  {
+    id: "adv-magicweapon-lanca-guerrilheira",
+    name: "Lança Guerrilheira",
+    baseWeapon: "lança curta +2",
+    school: "Ilusão (moderada)",
+    casterLevel: 7,
+    craftRequirement: "invisibilidade",
+    marketPrice: "32.301 PO",
+    craftCost: "16.302 PO + 1.280 XP",
+    description: "Esta lança curta +2 é extremamente eficiente quando empregada em emboscadas. Sempre que o portador atingir um oponente que não possa acrescentar seu bônus de Destreza na CA, a lança guerrilheira inflige 2d6 pontos de dano adicional.",
+  },
+];
+
+// ----------------------------------------------------------------------------
+// Itens Mágicos — Anéis (p. 130, início da seção; demais anéis ainda não
+// transcritos).
+// ----------------------------------------------------------------------------
+export interface Dnd35AdvMagicRing {
+  id: string;
+  name: string;
+  school: string;
+  casterLevel: number;
+  craftRequirement: string;
+  marketPrice: string;
+  description: string;
+}
+
+export const DND35_ADV_MAGIC_RINGS: Dnd35AdvMagicRing[] = [
+  {
+    id: "adv-magicring-abrir-fechaduras",
+    name: "Anel de Abrir Fechaduras",
+    school: "Transmutação (tênue)",
+    casterLevel: 3,
+    craftRequirement: "arrombar",
+    marketPrice: "4.500 PO",
+    description: "Esse anel é composto de pequenas gazuas, arames e outros instrumentos pequenos que aparecem com uma palavra de comando. Um anel de abrir fechaduras concede ao usuário +5 de bônus de competência nos testes de Abrir Fechaduras e a capacidade de utilizar arrombar uma vez por dia se o portador tocar um portal que deseja abrir.",
+  },
+  {
+    id: "adv-magicring-amigo-dos-gatunos",
+    name: "Amigo dos Gatunos",
+    school: "Transmutação (tênue)",
+    casterLevel: 12,
+    craftRequirement: "mãos mágicas",
+    marketPrice: "2.500 PO",
+    description: "Ao ser ativado, esse simples aro de ferro atrai qualquer objeto de metal solto a até 30 cm e pesando não mais de 0,5 kg (geralmente moedas, jóias ou chaves pequenas). Os objetos não precisam ser de ferro, apenas algum metal. Um amigo dos gatunos também concede +5 de bônus nos testes de Prestidigitação que envolvam objetos de metal.",
+  },
+];
+
+// ----------------------------------------------------------------------------
+// Itens Mágicos — Itens Maravilhosos (Tabela 4-11, pp. 132-136, COMPLETA).
+// 21 menores + 5 médios + 4 maiores = 30 itens.
+// ----------------------------------------------------------------------------
+export type Dnd35AdvWondrousTier = "menor" | "medio" | "maior";
+
+export interface Dnd35AdvWondrousItem {
+  id: string;
+  name: string;
+  tier: Dnd35AdvWondrousTier;
+  school: string;
+  casterLevel: number;
+  craftRequirement: string;
+  marketPrice: string;
+  weight: string;
+  description: string;
+}
+
+export const DND35_ADV_WONDROUS_ITEMS: Dnd35AdvWondrousItem[] = [
+  {
+    id: "adv-wondrous-estirpes-saltadores",
+    name: "Estrepes Saltadores",
+    tier: "menor",
+    school: "Transmutação (moderada)",
+    casterLevel: 11,
+    craftRequirement: "animar objetos",
+    marketPrice: "150 PO",
+    weight: "1 kg",
+    description: "Esses itens incomuns na verdade são objetos animados Mínimos. Quando são retirados da bolsa que os contêm, eles começam a saltar pelo quadrado de 1,5 m onde pousarem. Quando alguém tenta entrar, atravessar ou sair desse quadrado a pé, os estrepes saltadores imediatamente tentam se posicionar sob seus pés. Os estrepes saltadores não conseguem sair do quadrado em que pousaram. O número de ataques dos estrepes enquanto a criatura estiver na área afetada dependem de sua velocidade: quatro se ela ingressou no quadrado com velocidade normal, dois se entrou com metade do deslocamento, e nenhum se ela se mover com um quarto do deslocamento ou menos (essa opção supõe que a criatura está arrastando os pés, sem levantá-los). Os bônus de escudo, de armadura e de deflexão do alvo não são computados nesses ataques. Se estiver calçando sapatos ou outro tipo de proteção para os pés, o alvo receberá +2 de bônus na CA. O deslocamento de qualquer alvo que sofrer dano dos estrepes é reduzido à metade do normal devido aos ferimentos nos pés. Após serem liberados, os estrepes saltadores continuam a se mover durante 11 rodadas, embora seu dono possa ordenar que eles voltem à bolsa antes desse prazo. Contudo, eles só podem se mover (e portanto atacar por conta própria) na primeira vez em que forem utilizados; a partir de então, tornam-se estrepes comuns. Estrepe Saltador: ND 1/4; construto (Mínimo); 1/4d10 DV; 1 PV; Inic. +3; Desl. n/d; CA 17, toque 17, surpresa 14; Atq Base +0; Agr -14; Atq ou Atq Ttl corpo a corpo: empalar +7 (dano: 1); Espaço/Alcance 0,15 m/0 m; QE características de constructo, utiliza Destreza em vez de Força para ataques corpo a corpo; Tend. N; TR Fort +0, Ref +3, Von -5; For 6, Des 16, Con —, Int —, Sab 1, Car 1.",
+  },
+  {
+    id: "adv-wondrous-cachecol-caloroso",
+    name: "Cachecol Caloroso",
+    tier: "menor",
+    school: "Abjuração (tênue)",
+    casterLevel: 3,
+    craftRequirement: "suportar elementos",
+    marketPrice: "250 PO",
+    weight: "—",
+    description: "Esse cachecol de lã fornece ao usuário +4 de bônus nos testes de Fortitude para resistir aos efeitos do clima frio (consulte Perigos do Frio no Livro do Mestre). Um cachecol ocupa o mesmo espaço no corpo que um amuleto, colar ou outro item que deve ser utilizado em volta do pescoço.",
+  },
+  {
+    id: "adv-wondrous-medalha-da-bravura",
+    name: "Medalha da Bravura",
+    tier: "menor",
+    school: "Encantamento (tênue)",
+    casterLevel: 4,
+    craftRequirement: "heroísmo",
+    marketPrice: "1.000 PO",
+    weight: "—",
+    description: "Esse broche fornece ao portador +2 de bônus nos testes de resistência contra efeitos de medo. Esse bônus aumenta para +4 para evitar entrar em pânico.",
+  },
+  {
+    id: "adv-wondrous-medalha-da-galhardia",
+    name: "Medalha da Galhardia",
+    tier: "menor",
+    school: "Abjuração (tênue)",
+    casterLevel: 3,
+    craftRequirement: "santuário",
+    marketPrice: "1.100 PO",
+    weight: "—",
+    description: "Esse broche prateado em forma de sol concede ao seu portador +2 de bônus nos testes de Diplomacia, mas impõe -2 de penalidade nos testes de Blefar. Essa penalidade permanece por 24 horas após a remoção da medalha. Três vezes por dia, o usuário é capaz de utilizar santuário sobre si mesmo como uma ação rápida. Se o portador atacar enquanto estiver protegido por este efeito, sofrerá -1 de penalidade de moral nesse ataque e em todos os subseqüentes durante 1 hora.",
+  },
+  {
+    id: "adv-wondrous-amuleto-da-empatia-aberrante",
+    name: "Amuleto da Empatia Aberrante",
+    tier: "menor",
+    school: "Encantamento (moderada)",
+    casterLevel: 11,
+    craftRequirement: "enfeitiçar monstro",
+    marketPrice: "1.400 PO",
+    weight: "—",
+    description: "Este amuleto estranho e retorcido permite que o usuário utilize a perícia Adestrar Animais no lugar de Diplomacia quando estiver lidando com certas aberrações. Enquanto estiver usando o amuleto da empatia aberrante, o personagem é capaz de empregar a perícia Adestrar Animais nos testes de perícia para influenciar a atitude de aberrações com Inteligência 9 ou menos.",
+  },
+  {
+    id: "adv-wondrous-coleira-da-obediencia",
+    name: "Coleira da Obediência",
+    tier: "menor",
+    school: "Encantamento (tênue)",
+    casterLevel: 3,
+    craftRequirement: "enfeitiçar animal",
+    marketPrice: "1.400 PO",
+    weight: "—",
+    description: "Qualquer animal ou besta mágica utilizando esta coleira torna-se mais fácil de ser comandado. A CD para qualquer teste de Adestrar Animais para adestrar, forçar, ensinar, treinar ou domesticar o usuário diminui em 5 pontos. Uma coleira ocupa o mesmo espaço no corpo que um amuleto, broche ou outro item que deve ser utilizado em volta do pescoço.",
+  },
+  {
+    id: "adv-wondrous-bolsa-do-marsupial",
+    name: "Bolsa do Marsupial",
+    tier: "menor",
+    school: "Ilusão (tênue)",
+    casterLevel: 3,
+    craftRequirement: "transformação momentânea",
+    marketPrice: "1.800 PO",
+    weight: "0,5 kg",
+    description: "Também conhecida como barriga falsa, uma bolsa do marsupial é uma algibeira pequena, circular e achatada, com cerca de 25 a 30 cm de diâmetro e até 5 cm de espessura. Quando colocada contra o abdômen de um humanoide e fixada com uma palavra de comando, ela se camufla completamente na pele ao seu redor, exigindo um teste de Procurar (CD 30) para ser detectada. Espiões e mensageiros acham esses itens muito úteis como transportes diplomáticos, enquanto os nobres e os mercadores ricos às vezes os usam para guardar dinheiro. Os assassinos, ninjas e ladrões adoram as bolsas do marsupial porque elas facilitam o contrabando de venenos, adagas e pequenos itens valiosos para dentro ou para fora de edifícios bem protegidos.",
+  },
+  {
+    id: "adv-wondrous-papiro-da-trapaca",
+    name: "Papiro da Trapaça",
+    tier: "menor",
+    school: "Adivinhação (tênue)",
+    casterLevel: 5,
+    craftRequirement: "ler magias",
+    marketPrice: "2.000 PO",
+    weight: "—",
+    description: "Essa folha de papel encantado normalmente parece ser grossa e amarelada pela idade. Contudo, ao ser usado como base para forjar um documento, o papiro é extremamente útil, pois altera seu tamanho, consistência e aspecto de acordo com a descrição mental do falsificador. Quando utilizado dessa forma, o papiro da trapaça acrescenta +5 de bônus de melhoria ao teste de Falsificação. O papiro nunca conseguirá duplicar uma folha de papel com mais de 30 cm de lado ou menos de 7,5 cm. Os papiros da trapaça podem ser reutilizados.",
+  },
+  {
+    id: "adv-wondrous-carretel-de-corda-infinita",
+    name: "Carretel de Corda Infinita",
+    tier: "menor",
+    school: "Conjuração (moderada)",
+    casterLevel: 9,
+    craftRequirement: "arte secreta de Leomund",
+    marketPrice: "2.000 PO",
+    weight: "0,5 kg",
+    description: "Alguns aventureiros parecem jamais ter corda suficiente. Um carretel de corda infinita contém uma quantidade ilimitada da melhor corda de seda, no entanto pesa somente 0,5 kg. O carretel vem com um gancho para que possa ser convenientemente preso ao cinto do personagem. Para usar um carretel de corda infinita, o usuário puxa a quantidade de corda que desejar, até o máximo de 150 m por vez. Quando terminar de usar a corda, o proprietário pode simplesmente enrolá-la de volta no carretel (puxar ou enrolar a corda exige 1 rodada para cada 15 m). A corda não pode ser totalmente separada do carretel, embora possa ser cortada ou rompida como uma corda de seda normal. Qualquer porção retirada do carretel desaparece no mesmo instante, mas o item imediatamente repõe a extensão perdida. A corda de um carretel de corda infinita pode ser trançada ou amarrada com outra (inclusive proveniente de outro carretel de corda infinita), mas não poderá ser enrolada novamente enquanto estiver nesse estado.",
+  },
+  {
+    id: "adv-wondrous-frasco-do-ultimo-suspiro",
+    name: "Frasco do Último Suspiro",
+    tier: "menor",
+    school: "Necromancia (tênue)",
+    casterLevel: 4,
+    craftRequirement: "drenar força vital",
+    marketPrice: "2.200 PO",
+    weight: "—",
+    description: "Trata-se do último suspiro de algum personagem famoso, preservado por necromancia e aprisionado em um frasco. O frasco do último suspiro permite que o usuário extraia força e conhecimento da criatura falecida. Qualquer um que destape o frasco e inale os seus vapores (o equivalente a ingerir uma poção) recebe 1d8 pontos de vida temporários, +2 de bônus de melhoria em Força e +4 de bônus de intuição nos testes utilizando uma perícia de Conhecimento ou Profissão possuída pelo morto (no entanto, os vapores do frasco do último suspiro não permitem que um indivíduo sem graduações empregue uma perícia que não possa ser usada sem treinamento). O criador especifica a perícia à qual o bônus será aplicado durante a criação do item; geralmente trata-se da perícia em que o falecido possuía o maior número de graduações. Além disso, os vapores aumentam o nível efetivo de conjuração do personagem em 1. Esses efeitos duram 10 minutos.",
+  },
+  {
+    id: "adv-wondrous-oculos-da-visao-arcana",
+    name: "Óculos da Visão Arcana",
+    tier: "menor",
+    school: "Adivinhação (tênue)",
+    casterLevel: 3,
+    craftRequirement: "ler magias",
+    marketPrice: "2.500 PO",
+    weight: "—",
+    description: "Esses óculos concedem ao usuário +5 de bônus de competência nos testes de Identificar Magia para decifrar pergaminhos, e +5 de bônus de competência nos testes de Usar Instrumento Mágico para acionar pergaminhos. Os óculos ocupam o mesmo espaço no corpo que um par de lentes.",
+  },
+  {
+    id: "adv-wondrous-tunica-da-conjuracao-serena",
+    name: "Túnica da Conjuração Serena",
+    tier: "menor",
+    school: "Transmutação (tênue)",
+    casterLevel: 3,
+    craftRequirement: "vigor do urso",
+    marketPrice: "2.500 PO",
+    weight: "—",
+    description: "O usuário dessa túnica recebe +5 de bônus de competência nos testes de Concentração. Apesar de seu nome, os bônus desse item se aplicam a todos os testes de Concentração, não apenas àqueles realizados para conjurar magias.",
+  },
+  {
+    id: "adv-wondrous-corda-de-pedra",
+    name: "Corda de Pedra",
+    tier: "menor",
+    school: "Transmutação (tênue)",
+    casterLevel: 5,
+    craftRequirement: "moldar rochas",
+    marketPrice: "2.800 PO",
+    weight: "2,5 kg",
+    description: "Essa corda de seda de aspecto normal e 15 m de extensão se torna dura como pedra (dureza 8, 15 PV) com uma palavra de comando. Uma segunda palavra de comando faz com que ela retorne à sua composição normal. A corda mantém exatamente a mesma forma quando estiver endurecida (o que acresce 5 à CD do teste de Arte da Fuga para se libertar). Se for quebrado em qualquer das formas, o item será destruído.",
+  },
+  {
+    id: "adv-wondrous-caneta-da-caligrafia-magistral",
+    name: "Caneta da Caligrafia Magistral",
+    tier: "menor",
+    school: "Adivinhação (tênue)",
+    casterLevel: 3,
+    craftRequirement: "ler magias",
+    marketPrice: "3.000 PO",
+    weight: "—",
+    description: "Essa caneta de metal, elegante e robusta, fornece +5 de bônus de competência nos testes de Falsificação. Com uma palavra de comando, a caneta da caligrafia magistral também consegue recordar até três caligrafias diferentes, o que posteriormente permite que o personagem tente forjar um documento sem que seja necessário um exemplo da caligrafia (consulte Falsificação no Livro do Jogador). A CD para reproduzir essa caligrafia será fixa como o resultado do teste realizado durante a coleta da amostra. Uma segunda palavra de comando permite que o usuário apague uma amostra de caligrafia armazenada na caneta.",
+  },
+  {
+    id: "adv-wondrous-pingente-da-empatia-draconica",
+    name: "Pingente da Empatia Dracônica",
+    tier: "menor",
+    school: "Encantamento (moderada)",
+    casterLevel: 11,
+    craftRequirement: "enfeitiçar monstro",
+    marketPrice: "3.300 PO",
+    weight: "—",
+    description: "Esse amuleto encantado permite que seu portador utilize a perícia Adestrar Animais em vez de Diplomacia para tratar com dragões com Inteligência 11 ou menor.",
+  },
+  {
+    id: "adv-wondrous-xale-do-feitico",
+    name: "Xale do Feitiço",
+    tier: "menor",
+    school: "Encantamento (tênue)",
+    casterLevel: 3,
+    craftRequirement: "enfeitiçar pessoa",
+    marketPrice: "3.500 PO",
+    weight: "—",
+    description: "Um personagem usando essa xale de aparência simples adquire +5 de bônus de competência nos testes de Blefar para esconder a verdade (mas não em qualquer outra utilização da perícia Blefar, incluindo fintar em combate, criar uma distração para esconder-se, ou trocar mensagens secretas). Ele também acrescenta 1 ao nível de conjurador do usuário para qualquer magia de encantamento (feitiço). Um xale ocupa o mesmo espaço no corpo que um manto, capa ou túnica.",
+  },
+  {
+    id: "adv-wondrous-tiara-do-esforco-consciente",
+    name: "Tiara do Esforço Consciente",
+    tier: "menor",
+    school: "Transmutação (moderada)",
+    casterLevel: 6,
+    craftRequirement: "Magias em Combate, vigor do urso",
+    marketPrice: "4.000 PO",
+    weight: "—",
+    description: "Qualquer pessoa usando essa tiara do esforço consciente é capaz de realizar um teste de Concentração no lugar do teste de resistência de Fortitude. Essa habilidade especial é usada uma vez ao dia, e a tiara é usada como uma ação imediata e não provoca ataques de oportunidade.",
+  },
+  {
+    id: "adv-wondrous-bracadeiras-do-poder",
+    name: "Braçadeiras do Poder",
+    tier: "menor",
+    school: "Transmutação (tênue)",
+    casterLevel: 3,
+    craftRequirement: "força do touro",
+    marketPrice: "4.100 PO",
+    weight: "—",
+    description: "Essas braçadeiras de bronze fornecem ao usuário +2 de bônus nos testes de Força e nos testes de perícias baseadas nessa habilidade. O portador precisa saber utilizar o talento Ataque Poderoso, recebe +2 de bônus nas jogadas de dano corpo a corpo com qualquer ataque no qual empregue esse talento, sem a penalidade de -2 adicional.",
+  },
+  {
+    id: "adv-wondrous-coroa-da-lideranca-inabalavel",
+    name: "Coroa da Liderança Inabalável",
+    tier: "menor",
+    school: "Adivinhação (tênue)",
+    casterLevel: 3,
+    craftRequirement: "ver o invisível",
+    marketPrice: "4.500 PO",
+    weight: "—",
+    description: "Essa coroa dourada e ornamentada é uma ferramenta útil para príncipes e potentados, pois permite que enxerguem através das falsidades que surgem à sua frente. O usuário adquire +5 de bônus de competência nos testes de Sentir Motivação e Observar para ver através de disfarces.",
+  },
+  {
+    id: "adv-wondrous-gargantilha-da-eloquencia-menor",
+    name: "Gargantilha da Eloqüência (Menor)",
+    tier: "menor",
+    school: "Transmutação (moderada)",
+    casterLevel: 6,
+    craftRequirement: "o criador deve ser um conjurador de 6º nível ou superior",
+    marketPrice: "6.000 PO",
+    weight: "—",
+    description: "Colhida pelos bardos e oradores, esse colar é esculpido em marfim ou jade. Existem duas versões: uma gargantilha da eloqüência menor fornece +5 de bônus de competência nos testes de Diplomacia, Blefar e Atuação (canto). A gargantilha da eloqüência maior aumenta esse bônus para +10.",
+  },
+  {
+    id: "adv-wondrous-gargantilha-da-eloquencia-maior",
+    name: "Gargantilha da Eloqüência (Maior)",
+    tier: "medio",
+    school: "Transmutação (moderada)",
+    casterLevel: 6,
+    craftRequirement: "o criador deve ser um conjurador de 6º nível ou superior",
+    marketPrice: "24.000 PO",
+    weight: "—",
+    description: "Versão maior da gargantilha da eloqüência (ver a versão menor): fornece +10 de bônus de competência nos testes de Diplomacia, Blefar e Atuação (canto), em vez de +5.",
+  },
+  {
+    id: "adv-wondrous-monoculo-do-comprador",
+    name: "Monóculo do Comprador",
+    tier: "menor",
+    school: "Adivinhação (tênue)",
+    casterLevel: 3,
+    craftRequirement: "identificação",
+    marketPrice: "6.500 PO",
+    weight: "—",
+    description: "Essa lente de cristal fornece ao portador +5 de bônus nos testes de Avaliação. Uma vez por dia ele também poderá utilizar identificação. Um monóculo ocupa o mesmo lugar no corpo que um par de lentes ou óculos.",
+  },
+  {
+    id: "adv-wondrous-dom-do-trompetista",
+    name: "Dom do Trompetista",
+    tier: "medio",
+    school: "Evocação (moderada)",
+    casterLevel: 7,
+    craftRequirement: "grito",
+    marketPrice: "12.700 PO",
+    weight: "—",
+    description: "Esse bocal brilhante se ajusta a qualquer instrumento de sopro, como um berrante ou trompete. Ele fornece +5 de bônus de competência nos testes de Atuação (instrumentos de sopro) com aquele instrumento. Uma vez por dia, o trompetista pode usar o instrumento para produzir o efeito da magia grito.",
+  },
+  {
+    id: "adv-wondrous-sandalias-do-equilibrio-harmonioso",
+    name: "Sandálias do Equilíbrio Harmonioso",
+    tier: "medio",
+    school: "Transmutação (moderada)",
+    casterLevel: 8,
+    craftRequirement: "estimular equilíbrio",
+    marketPrice: "14.000 PO",
+    weight: "—",
+    description: "Essas sandálias de madeira e couro, de aspecto ordinário, possibilitam a execução de proezas inacreditáveis de equilíbrio. Enquanto estiver calçando as sandálias do equilíbrio harmonioso, o personagem recebe +10 de bônus de competência nos testes de Equilíbrio e consegue se equilibrar em superfícies verticais. Os modificadores normais da CD (como superfícies escorregadias, por exemplo) ainda se aplicam, exceto os relacionados à inclinação da superfície. Se estiver se equilibrando em uma superfície vertical, o usuário pode se deslocar para cima ou para baixo como se estivesse escalando. Contudo, ele não está realmente escalando, e portanto é capaz de desferir ataques normalmente, conserva seu bônus de Destreza na Classe de Armadura, e de forma geral segue as regras da perícia Equilíbrio em vez de Escalar. Se possuir 10 ou mais graduações em Equilíbrio, o portador consegue se equilibrar em líquidos, superfícies semi-sólidas como lama ou neve, ou terrenos similares que normalmente não conseguiriam sustentar seu peso. Para cada rodada consecutiva que iniciar se equilibrando numa superfície desse tipo, a CD do teste de Equilíbrio do portador aumenta em 5 pontos. Assim como todos os usos da perícia Equilíbrio, o portador se move com metade do deslocamento a menos que decida empregar a opção de movimento acelerado (aumentando a CD do teste em 5 pontos).",
+  },
+  {
+    id: "adv-wondrous-flauta-da-serpente",
+    name: "Flauta da Serpente",
+    tier: "medio",
+    school: "Conjuração e encantamento (moderada)",
+    casterLevel: 7,
+    craftRequirement: "enfeitiçar animal, natureza IV",
+    marketPrice: "15.400 PO",
+    weight: "1 kg",
+    description: "A música dessa flauta possui o poder de controlar os tipos de ofídios. Tocando e realizando um teste de Atuação (instrumentos de sopro) (CD 15), o músico é capaz de produzir o efeito de enfeitiçar animal que só afeta as cobras. Pode ser disponível três vezes por dia. Uma vez por dia, tocando uma seqüência monótona de notas durante 1 rodada e obtendo sucesso num teste de Atuação (instrumentos de sopro) (CD 20), o músico consegue invocar 1d4+1 víboras Médias. Essas cobras aparecem onde o flautista designar, num raio de 9 m de sua posição. Elas lutam por ele, atacando no seu auxílio durante 7 rodadas ou até que morram.",
+  },
+  {
+    id: "adv-wondrous-mascara-das-mentiras",
+    name: "Máscara das Mentiras",
+    tier: "medio",
+    school: "Abjuração e transmutação (tênue)",
+    casterLevel: 5,
+    craftRequirement: "transformação momentânea, dissimular tendência",
+    marketPrice: "17.000 PO",
+    weight: "—",
+    description: "Essa máscara negra e sem quaisquer traços possui apenas fendas para os olhos e a boca. O portador pode usar transformação momentânea sobre si mesmo sem limite diário, e está continuamente sob o efeito de dissimular tendência. Além disso, ele recebe +5 de bônus de competência nos testes de Blefar. Uma máscara ocupa o mesmo espaço no corpo que um par de lentes ou óculos.",
+  },
+  {
+    id: "adv-wondrous-alaude-do-menestrel-peregrino",
+    name: "Alaúde do Menestrel Peregrino",
+    tier: "maior",
+    school: "Abjuração, conjuração e transmutação (tênue)",
+    casterLevel: 5,
+    craftRequirement: "recuo acelerado, velocidade, levitação, círculo mágico contra o mal, montaria fantasmagórica, o criador deve possuir 5 graduações em Atuação (instrumentos de corda)",
+    marketPrice: "29.500 PO",
+    weight: "1,5 kg",
+    description: "Esse instrumento esculpido funciona como um alaúde (obra-prima) com efeitos mágicos menores nas mãos de alguém com 1 ou mais graduações em Atuação (instrumentos de corda). Proferindo as palavras de comando apropriadas, o músico pode usar levitação e círculo mágico contra o mal uma vez por dia. Um músico com 5 ou mais graduações em Atuação (instrumentos de corda) consegue extrair efeitos adicionais do instrumento. Tocando uma única corda do alaúde, tal indivíduo é capaz de gerar os efeitos de recuo acelerado, velocidade ou montaria fantasmagórica. Cada uma dessas habilidades pode ser acionada uma vez por dia.",
+  },
+  {
+    id: "adv-wondrous-bandolim-da-musa-inspiradora",
+    name: "Bandolim da Musa Inspiradora",
+    tier: "maior",
+    school: "Abjuração, encantamento e transmutação (moderada)",
+    casterLevel: 9,
+    craftRequirement: "desespero esmagador, dominar pessoa, levitação, círculo mágico contra o mal, o criador deve possuir 10 graduações em Atuação (instrumentos de corda)",
+    marketPrice: "42.000 PO",
+    weight: "1,5 kg",
+    description: "Os bardos e outros músicos apreciam esse instrumento cuidadosamente preparado, que funciona como um bandolim (obra-prima) com efeitos mágicos menores nas mãos de alguém com 1 ou mais graduações em Atuação (instrumentos de corda). Proferindo as palavras de comando apropriadas, o músico pode usar levitação e círculo mágico contra o mal uma vez por dia. Além disso, um músico com pelo menos 10 graduações em Atuação (instrumentos de corda) consegue utilizar o bandolim para gerar os efeitos de desespero esmagador, dominar pessoa e boa esperança uma vez por dia, tocando as cordas corretas.",
+  },
+  {
+    id: "adv-wondrous-corda-de-armazenar-magia",
+    name: "Cordas de Armazenar Magia",
+    tier: "maior",
+    school: "Transmutação (tênue)",
+    casterLevel: 9,
+    craftRequirement: "transferência de poder divino, o criador deve possuir 5 graduações em Atuação (instrumentos de corda)",
+    marketPrice: "45.000 PO",
+    weight: "—",
+    description: "Esse conjunto de cordas de tripa de gato para bandolim, alaúde ou qualquer outro instrumento musical é capaz de armazenar até cinco níveis de magia. Realizando um teste de Atuação (instrumentos de corda) (CD 15) enquanto emprega um instrumento musical (obra-prima) equipado com essas cordas, o músico consegue conjurar a magia desejada. Cada magia tem nível de conjurador equivalente ao nível mínimo necessário para conjurá-la. O usuário não precisa fornecer componentes materiais ou focos, nem pagar os custos de XP necessários, e não há chance de falha de magia arcana devido à armadura que ele estiver vestindo. O tempo de ativação das cordas é igual ao tempo de execução da magia correspondente, com o mínimo de 1 ação padrão. Trate um conjunto de cordas de armazenar magia gerado aleatoriamente como um pergaminho para determinar as magias já contidas (consulte o Livro do Mestre). Ignore o resultado da jogada se a magia estiver acima do limite de cinco níveis; essas cordas não possuem mais nenhuma magia armazenada (nem todo conjunto de cordas encontrado estará completamente carregado). As cordas transmitem ao usuário os nomes de todas as magias que contêm. O procedimento para conjurar magias sobre as cordas funciona exatamente como o processo do anel de armazenar magias (consulte o Livro do Mestre), mas o conjurador precisa ter pelo menos 1 graduação de Atuação (instrumentos de corda) e deve obter sucesso num teste dessa perícia (CD 10 + nível da magia). Caso fracasse, a magia será perdida sem qualquer outro efeito.",
+  },
+  {
+    id: "adv-wondrous-harpa-do-mestre-imortal",
+    name: "Harpa do Mestre Imortal",
+    tier: "maior",
+    school: "Abjuração, divinação, ilusão e transmutação (moderada)",
+    casterLevel: 9,
+    craftRequirement: "curar ferimentos críticos, deslocamento, levitação, círculo mágico contra o mal, invocar criaturas V, o criador deve possuir 15 graduações em Atuação (instrumentos de corda)",
+    marketPrice: "51.000 PO",
+    weight: "1,5 kg",
+    description: "Esse ápice da fabricação de instrumentos funciona como uma harpa (obra-prima) com efeitos mágicos menores nas mãos de alguém com 1 ou mais graduações em Atuação (instrumentos de corda). Proferindo as palavras de comando apropriadas, o músico pode usar levitação e círculo mágico contra o mal uma vez por dia. A harpa funciona melhor nas mãos de um músico com 15 ou mais graduações em Atuação (instrumentos de corda). Tal indivíduo é capaz de, simplesmente dedilhando a harpa, gerar os seguintes efeitos uma vez ao dia: curar ferimentos críticos, deslocamento e invocar criaturas V.",
   },
 ];
 
