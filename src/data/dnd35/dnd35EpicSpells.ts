@@ -1,0 +1,398 @@
+// ============================================================================
+// D&D — Livro dos Níveis Épicos (Epic Level Handbook, ed. BR), Capítulo 2:
+// Magias Épicas — Descrições das Magias Épicas (pp. 74+). Transcrição por
+// leitura visual direta de páginas renderizadas em alta resolução
+// (150-220dpi) — fonte é scan sem camada de texto.
+//
+// SISTEMA: diferente de magias comuns, magias épicas não têm nível fixo —
+// são construídas por conjuradores a partir de "Palavras de Poder"
+// (seeds) com um Fator DC base, modificado por Fatores/Fatores Atenuantes
+// (texto livre, como no modelo irmão `dnd35CorEpicSpells.ts`). O campo
+// "CD de Identificar Magia" (cdIdentificarMagia) substitui o nível/CD de
+// Spellcraft do D&D padrão. "Desenvolvimento" é o custo de criação
+// (PO + dias + XP) pago pelo conjurador antes de poder lançar a magia.
+//
+// COBERTURA PARCIAL (lote 4, ordem alfabética A-Eidolon, pp.74-79, 15
+// magias, p.79 FECHADA): a p.73-74 lista ~50 magias épicas em ordem de CD
+// (não alfabética) como sumário — a ordem de transcrição aqui segue a
+// ordem alfabética real da seção "Descrições das Magias Épicas" (p.74+).
+// Lote 4 fecha a p.79 com Eclipse e Eidolon (duplicata do conjurador em
+// 21º nível, aceita níveis negativos para fortalecer a cópia). Restam
+// ~35 magias sem descrição transcrita — não inventar o conteúdo;
+// continuar a leitura a partir da p.80.
+// ============================================================================
+
+export type Dnd35EpicSpell = {
+  id: string;
+  name: string;
+  school: string;
+  cdIdentificarMagia: number;
+  components: string;
+  castingTime: string;
+  range: string;
+  target?: string;
+  area?: string;
+  effect?: string;
+  duration: string;
+  savingThrow: string;
+  spellResistance: string;
+  developmentGp: number;
+  developmentDays: number;
+  developmentXp: number;
+  /** Palavras de Poder (seeds) com CD base. */
+  seeds: { name: string; dc: number }[];
+  /** Fatores e fatores atenuantes como impressos (texto livre). */
+  factors?: string;
+  description: string;
+  materialComponent?: string;
+  page: number;
+};
+
+export const DND35_EPIC_SPELLS: Dnd35EpicSpell[] = [
+  {
+    id: "epic-spell-armadura-arcana-epica",
+    name: "Armadura Arcana Épica",
+    school: "Conjuração (Criação) [Energia]",
+    cdIdentificarMagia: 46,
+    components: "V, G",
+    castingTime: "1 minuto",
+    range: "Toque",
+    target: "Criatura tocada",
+    duration: "24 horas (D)",
+    savingThrow: "Vontade anula (benéfica)",
+    spellResistance: "Sim (benéfica)",
+    developmentGp: 414000,
+    developmentDays: 9,
+    developmentXp: 16560,
+    seeds: [{ name: "armadura", dc: 14 }],
+    factors: "Fatores: +16 de bônus adicional (+32 CD).",
+    description:
+      "Um campo de energia invisível, mas tangível, cerca o alvo da armadura arcana épica, garantindo +20 de bônus na Classe de Armadura. Diferente das armaduras comuns, a armadura arcana épica não impõe nenhuma penalidade de chance de falha de magia arcana ou redução no deslocamento. Uma vez que a armadura arcana épica é composta de energia, as criaturas incorpóreas são incapazes de atravessá-la como fazem com as armaduras comuns.",
+    page: 74,
+  },
+  {
+    id: "epic-spell-cinzas-da-mumia",
+    name: "Cinzas da Múmia",
+    school: "Necromancia [Mal]",
+    cdIdentificarMagia: 35,
+    components: "V, G, M, XP",
+    castingTime: "1 ação",
+    range: "Toque",
+    effect: "Duas múmias de 18 DV",
+    duration: "Instantânea",
+    savingThrow: "Nenhum",
+    spellResistance: "Não",
+    developmentGp: 315000,
+    developmentDays: 7,
+    developmentXp: 12600,
+    seeds: [{ name: "criar mortos-vivos", dc: 23 }],
+    factors: "Fatores: mortos-vivos com 16 DV (+16 CD), tempo de execução de 1 ação (+20 CD). Fatores dedutivos: exige 2.000 PO (-20 CD) componente material muito caro (-4 CD, excepcional).",
+    description:
+      "Quando o conjurador espalhar as cinzas de uma múmia no chão e conjurar esta magia, duas múmias Grandes de 18 DV surgirão do pó em quadrados adjacentes ao conjurador, seguindo todas as suas capacidades, até serem destruídas ou até que o conjurador decida controlá-las ou de acordo com a quantidade de Dados de Vida em mortos-vivos superior ao seu nível de conjurador.",
+    materialComponent: "Cinzas de múmia previamente preparadas (10.000 PO).",
+    page: 74,
+  },
+  {
+    id: "epic-spell-controle-cinetico",
+    name: "Controle Cinético",
+    school: "Abjuração",
+    cdIdentificarMagia: 103,
+    components: "V, G",
+    castingTime: "1 minuto",
+    range: "Pessoal; toque",
+    target: "O conjurador; criatura ou objeto tocado",
+    duration: "12 horas ou até ser descarregada",
+    savingThrow: "Nenhum",
+    spellResistance: "Nenhum",
+    developmentGp: 927000,
+    developmentDays: 19,
+    developmentXp: 37080,
+    seeds: [
+      { name: "proteger (5 pontos contra concussão e perfuração)", dc: 14 },
+      { name: "refletir", dc: 27 },
+    ],
+    factors: "Fatores: também contra corte (+4 CD), 15 pontos de proteção adicionais (+30 CD), reflexão contingente de dano causado na criatura tocada (+28 CD).",
+    description:
+      "Esta magia for conjurada, o alvo será capaz de absorver, armazenar e redirecionar a energia contida num golpe de clava, no corte de uma espada ou no voo perfurante de uma flecha. O personagem absorverá 20 pontos de dano de cada um dos três tipos de dano (corte, perfuração e concussão) desferidos contra ele, armazenando o dano em seu corpo. O alvo será capaz de absorver até 150 pontos de dano dessa maneira; entretanto, caso o dano guardado não seja descarregado antes de atingir o limite de 150 pontos, a magia acaba automaticamente, causando 150 pontos de dano ao conjurador. O jogador deve registrar a quantidade de pontos de dano que o conjurador já absorveu (mas não é necessário especificar o tipo de dano). Enquanto a magia permanecer ativa, o personagem será capaz de realizar um ataque de toque contra outra criatura ou objeto. Se obtiver sucesso nesse ataque, ele causará todo ou parte do dano absorvido (a escolha do conjurador) contra o alvo. O dano descarregado é considerado dano de concussão. O personagem consegue absorver e descarregar dano diversas vezes enquanto a magia continuar ativa, desde que não armazene mais de 150 pontos de dano simultaneamente. Quando a duração da magia acabar, qualquer dano armazenado que ainda não foi descarregado será causado no próprio conjurador.",
+    page: 75,
+  },
+  {
+    id: "epic-spell-contramagica-epica",
+    name: "Contramágica Épica",
+    school: "Abjuração",
+    cdIdentificarMagia: 69,
+    components: "V, G",
+    castingTime: "1 ação",
+    range: "90 m",
+    target: "Uma criatura ou objeto",
+    duration: "Instantânea",
+    savingThrow: "Nenhum",
+    spellResistance: "Não",
+    developmentGp: 621000,
+    developmentDays: 13,
+    developmentXp: 24840,
+    seeds: [{ name: "dissipar", dc: 19 }],
+    factors: "Fatores: +30 no teste de dissipar (+30 CD), tempo de execução de 1 ação (+20 CD).",
+    description:
+      "O personagem pode cancelar uma magia comum ou épica de outro conjurador. Para usar a contramágica épica, o conjurador fará isso preparando a ação, decidindo aguardar para completar sua ação quando seu oponente tentar conjurar uma magia (o conjurador ainda poderá se mover usando seu deslocamento padrão). Se o alvo tentar conjurar uma magia, faça um teste de dissipar: jogue 1d20+40 contra CD 11 + nível do conjurador do adversário. Caso obtenha sucesso nesse teste, a magia do adversário será anulada.",
+    page: 76,
+  },
+  {
+    id: "epic-spell-coroa-de-insetos",
+    name: "Coroa de Insetos",
+    school: "Conjuração (Invocação)",
+    cdIdentificarMagia: 56,
+    components: "V, G",
+    castingTime: "1 minuto",
+    range: "Pessoal",
+    effect: "Aura de mil insetos que cercam o conjurador numa dispersão de 3 m de raio",
+    duration: "20 rodadas (D)",
+    savingThrow: "Nenhum (veja a descrição)",
+    spellResistance: "Nenhum",
+    developmentGp: 504000,
+    developmentDays: 11,
+    developmentXp: 20160,
+    seeds: [
+      { name: "invocar", dc: 14 },
+      { name: "fortificar", dc: 17 },
+    ],
+    factors: "Fatores: invocar enxame de insetos em vez de uma única criatura (+8 CD, excepcional), conceder Redução de Dano 1/+6 (+15 CD), permitir que o enxame percorra o deslocamento do conjurador (+2 CD, excepcional), controle absoluto sobre os insetos (+2 CD, excepcional). Fator dedutivo: mudar o alcance para pessoal (-2 CD).",
+    description:
+      "Quando o conjurador \"veste\" uma coroa de insetos, mil besouros, centopeias e aranhas venenosas surgirão do próprio ar ao redor dele, picando e aferroando. Este enxame forma uma aura viva ao seu redor, num raio de 3 m. O conjurador será imune à própria coroa de insetos. O enxame o seguirá para qualquer lugar e percorrerá o mesmo deslocamento do conjurador, mesmo que ele voe ou mergulhe na água (embora a água afogue os insetos depois de 1 rodada de completa imersão, exceto quando a magia for conjurada usando insetos marinhos ou aquáticos, incapazes de sair da água). Todos os insetos da coroa picarão as criaturas que entrarem na área ocupada pelo efeito (ou que estiverem numa área selecionada pelo conjurador) causando 1 ponto de dano por morrer em seguida. Todas as vítimas sofrem uma quantidade de pontos de dano suficiente para matá-las, destruindo a quantidade necessária de insetos no processo. As vítimas podem realizar testes de resistência de Reflexos a cada rodada para evitar o dano total, caso obtenham sucesso, sofrerão apenas 1d10 picadas (ou 1d10 pontos de dano). O enxame causará um total de 1000 pontos de dano nas suas vítimas. Caso não haja insetos suficientes para matar todas as criaturas na área de efeito da magia, as criaturas com menos pontos de vida serão atacadas primeiro. Depois que o enxame eliminar todas as criaturas possíveis, todo o dano restante será distribuído igualmente entre os sobreviventes. É impossível retirar o controle do conjurador sobre os insetos. Eles realizam todos os testes de resistência para evitar efeitos de dano usando os bônus básicos de resistência do conjurador. Eles também terão a mesma Resistência à Magia do conjurador (se houver) e podem realizar testes de resistência contra magias que mataríam os insetos automaticamente. O conjurador é capaz de enxergar através da própria coroa de insetos sem qualquer dificuldade, e recebe meia-camuflagem contra os ataques dos inimigos que estejam fora ou dentro da área da magia.",
+    page: 76,
+  },
+  {
+    id: "epic-spell-criar-camara-viva",
+    name: "Criar Câmara Viva (Ritual)",
+    school: "Conjuração (Criação)",
+    cdIdentificarMagia: 58,
+    components: "V, G, Ritual, XP",
+    castingTime: "100 dias, 11 minutos",
+    range: "0 m",
+    effect: "Uma câmara viva, 15 m por 15 m por 3 m",
+    duration: "Instantânea",
+    savingThrow: "Nenhum",
+    spellResistance: "Não",
+    developmentGp: 540000,
+    developmentDays: 11,
+    developmentXp: 21600,
+    seeds: [
+      { name: "animar grande quantidade de rochas", dc: 25 },
+      { name: "fortificar", dc: 27 },
+    ],
+    factors: "Fatores: permitir que a câmara \"cresça\" até o tamanho adequado durante 4d4 dias depois de criada (+20 CD, excepcional), adicionar 92 DV ao objeto (+184 CD), conceder imunidade à magia (+105 CD, excepcional), aumentar a Redução de Dano para 30 (+29 CD) e para +7 (+18 CD), tornar permanente (x5 CD). Fatores dedutivos: aumentar o tempo de execução em 10 minutos (-20 CD), aumentar o tempo de execução em 100 dias (-200 CD), 16d6 pontos de dano do choque de retorno (-16 CD), sete conjuradores adicionais contribuindo com uma magia épica cada um (-133 CD), quatro conjuradores adicionais contribuindo com uma magia de 2º nível cada um (-12 CD), um conjurador adicional contribuindo com uma magia de 1º nível (-1 CD), exige 20.000 XP de cada conjurador épico (-1.600 CD).",
+    description:
+      "O conjurador será capaz de criar um constructo conhecido como câmara viva (consulte o Capítulo 5: Monstros) para proteger e esconder seus tesouros. Logo após a conclusão da magia, a câmara viva será apenas um quadrado de 1,5 m de lado, mas crescerá gradualmente até seu tamanho adequado durante os próximos 4d4 dias. A câmara servirá apenas ao conjurador, permitindo que ele entre e saia de maneira similar à magia porta dimensional. Caso ele deseje que a câmara se oculte, basta um comando simples. Para invocar a câmara, é possível usar a magia enviar mensagem ou qualquer outra maneira de contatá-la diretamente.",
+    page: 77,
+  },
+  {
+    id: "epic-spell-criar-ilha",
+    name: "Criar Ilha (Ritual)",
+    school: "Conjuração (Criação)",
+    cdIdentificarMagia: 38,
+    components: "V, G, Ritual, XP",
+    castingTime: "65 dias, 11 minutos",
+    range: "0 m",
+    area: "Ilha semicircular com 30 m de raio",
+    duration: "Permanente",
+    savingThrow: "Nenhum",
+    spellResistance: "Não",
+    developmentGp: 360000,
+    developmentDays: 8,
+    developmentXp: 14400,
+    seeds: [{ name: "conjurar", dc: 21 }],
+    factors: "Fatores: alterar a área para cilindro com 3 m de raio e 9 m de altura (+2 CD), alterar o raio para 30 m (+40 CD), alterar a altura para 300 m (+133 CD), permanente (x5 CD). Fator dedutivo: aumentar o tempo de execução em 10 minutos (-20 CD), aumentar o tempo de execução em 65 dias (-130 CD), dezenove conjuradores adicionais contribuindo com uma magia épica cada um (-361 CD), um conjurador adicional contribuindo com uma magia de 6º nível (-11 CD), exige 2.000 XP de cada conjurador épico (-400 XP), a magia só funciona sobre líquido (-20, excepcional).",
+    description:
+      "O conjurador literalmente cria uma nova ilha no mar, trazendo à tona uma superfície arenosa, rochosa ou qualquer outra protuberância estéril que seja sólida, estável e permanentemente fixa. A ilha é aproximadamente circular e tem cerca de 60 m de diâmetro. A magia criar ilha só funciona onde o oceano não tenha mais de 300 m de profundidade do ponto de origem da magia.",
+    page: 77,
+  },
+  {
+    id: "epic-spell-crucificar-nos-ceus",
+    name: "Crucificar nos Céus",
+    school: "Transmutação [Teletransporte]",
+    cdIdentificarMagia: 62,
+    components: "V, G, XP",
+    castingTime: "1 ação",
+    range: "90 m",
+    target: "Criatura ou objeto pesando 500 kg no máximo",
+    duration: "Instantânea",
+    savingThrow: "Vontade anula",
+    spellResistance: "Sim",
+    developmentGp: 558000,
+    developmentDays: 12,
+    developmentXp: 22320,
+    seeds: [
+      { name: "adivinhar (para prever o destino do teletransporte)", dc: 17 },
+      { name: "transportar", dc: 27 },
+    ],
+    factors: "Fatores: alvo involuntário (+4 CD), alcance de toque (+4 CD), tempo de execução de 1 ação (+20 CD). Fator dedutivo: exige 1.000 XP (-10 CD).",
+    description:
+      "Esta magia prende a vítima no céu. Crucificar nos céus transporta a vítima para longe da superfície do mundo, com uma velocidade grande o suficiente para colocá-la numa órbita eterna. A menos que o alvo seja capaz de voar magicamente ou tenha alguma outra forma de propulsão que não seja física, ele estará preso no firmamento até que alguém venha resgatá-lo. Mesmo que a vítima puder voar, precisará viajar entre 2 e 4 horas para alcançar a superfície, assumindo o uso da magia vôo, que permite uma velocidade máxima de 216 m por rodada. Talvez a vítima não sobreviva todo esse período. Dependendo do mundo onde a magia crucificar nos céus foi conjurada, as condições ambientais de um lugar tão distante da superfície podem ser letais. Os efeitos danosos incluem calor ou frio extremos e o vácuo. As vítimas sujeitas a estas condições sofrerão 2d6 pontos de dano de calor ou frio e 1d4 pontos de dano do vácuo a cada rodada. Elas também começam a sufocar na rodada seguinte (consulte a seção Asfixia no Livro do Mestre).",
+    materialComponent: "Custo de XP: 1.000 XP.",
+    page: 77,
+  },
+  {
+    id: "epic-spell-danacao",
+    name: "Danação",
+    school: "Encantamento (Compulsão) [Teletransporte] [Ação Mental]",
+    cdIdentificarMagia: 97,
+    components: "V, G, XP",
+    castingTime: "1 ação",
+    range: "Toque",
+    target: "Criatura tocada",
+    duration: "Instantânea (20 horas de compulsão)",
+    savingThrow: "Vontade anula (veja a descrição)",
+    spellResistance: "Sim",
+    developmentGp: 873000,
+    developmentDays: 18,
+    developmentXp: 34920,
+    seeds: [
+      { name: "adivinhar (para antever o inferno)", dc: 17 },
+      { name: "teletransporte", dc: 27 },
+      { name: "compelir (para manter o alvo no inferno)", dc: 19 },
+    ],
+    factors: "Fatores: alvo involuntário (+4 CD), tempo de execução de 1 ação (+20 CD), +15 na CD do teste de resistência do alvo (+30 CD). Fator dedutivo: exige 2.000 XP (-20 CD).",
+    description:
+      "Esta magia exila a vítima no inferno. Caso o conjurador obtenha sucesso num ataque de toque corpo a corpo, o alvo deverá realizar um teste de resistência de Vontade (CD = CD padrão da magia épica +15). Caso fracasse, será diretamente enviado para um dos círculos dos Nove Infernos (ou do Abismo, se o conjurador preferir), um local repleto de seres abissais. A vítima não abandonará os Nove Infernos por livre e espontânea vontade durante um período de 20 horas, acreditando que tudo não passa de um castigo por uma vida de pecados. Mesmo depois que a compulsão terminar, ela precisará providenciar um meio de escapar dos Nove Infernos. Enquanto estiver no plano infernal — e a menos que o seu Mestre especifique localizações e situações diferentes — a vítima encontrará um grupo de 1d4 lordes das profundezas (ou balor, no caso do Abismo) a cada hora. Consulte o Livro dos Monstros para obter as estatísticas destas criaturas ou o Capítulo 5 para as estatísticas dos infernais, um novo tipo de criatura.",
+    materialComponent: "Custo de XP: 2.000 XP.",
+    page: 78,
+  },
+  {
+    id: "epic-spell-dissipar-magias-magnificas",
+    name: "Dissipar Magias Magníficas",
+    school: "Abjuração",
+    cdIdentificarMagia: 59,
+    components: "V, G",
+    castingTime: "1 ação",
+    range: "90 m",
+    target: "Uma criatura ou objeto",
+    duration: "Instantânea",
+    savingThrow: "Nenhum",
+    spellResistance: "Não",
+    developmentGp: 531000,
+    developmentDays: 11,
+    developmentXp: 21240,
+    seeds: [{ name: "dissipar", dc: 19 }],
+    factors: "Fatores: +30 de bônus adicional no teste de dissipar (+30 CD), tempo de execução de 1 ação (+20 CD). Fator dedutivo: 10d6 pontos de dano de choque de retorno (-10 CD).",
+    description:
+      "Como dissipar magias aprimoradas (consulte o Capítulo 11: Magias, no Livro do Jogador), exceto que o bônus máximo no teste de dissipar é +40 e o conjurador sofre 10d6 de choque de retorno.",
+    page: 78,
+  },
+  {
+    id: "epic-spell-divina-contemplacao-da-vinganca",
+    name: "Divina Contemplação da Vingança",
+    school: "Transmutação",
+    cdIdentificarMagia: 419,
+    components: "V, G",
+    castingTime: "1 ação",
+    range: "3.600 m",
+    target: "Uma criatura, ou um cubo de 3 m de matéria inanimada na linha de visão",
+    duration: "Instantânea",
+    savingThrow: "Fortitude para reduzir à metade",
+    spellResistance: "Sim",
+    developmentGp: 3771000,
+    developmentDays: 76,
+    developmentXp: 150840,
+    seeds: [{ name: "destruir", dc: 29 }],
+    factors: "Fatores: aumentar o dano para 305d6 (+570 CD), tempo de execução de 1 ação (+20 CD). Fator dedutivo: 200d6 pontos de dano de choque de retorno (-200 CD).",
+    description:
+      "A vítima desta magia será alvo da fúria de uma divindade, sofrendo 305d6 pontos de dano (ou metade caso obtenha sucesso em um teste de resistência de Fortitude). Caso os pontos de vida do alvo sejam reduzidos a -10 ou menos (ou um constructo, objeto ou morto-vivo seja reduzido a 0 ponto de vida), ele será totalmente destruído, como se tivesse sido desintegrado. Restarão apenas resquícios e as cinzas da vítima. Canalizar uma força tão arrebatadora tem seu preço e o conjurador também sofre 200d6 pontos de dano, conforme seus olhos sangram e sua pele convulsiona enquanto o poder é liberado. Esta magia quase sempre mata o conjurador, mas ela costuma valer o esforço. Nota: a Tabela 3-4: Resultado Médio das Jogadas de Dados é muito útil caso você não queira jogar centenas de dados de seis faces.",
+    page: 78,
+  },
+  {
+    id: "epic-spell-dominio-da-alma",
+    name: "Domínio da Alma",
+    school: "Adivinhação, Encantamento (Compulsão) [Ação Mental]",
+    cdIdentificarMagia: 72,
+    components: "V, G",
+    castingTime: "10 minutos",
+    range: "Veja a descrição",
+    target: "Uma outra criatura viva",
+    duration: "20 minutos (D)",
+    savingThrow: "Vontade anula (veja a descrição)",
+    spellResistance: "Não",
+    developmentGp: 648000,
+    developmentDays: 13,
+    developmentXp: 25920,
+    seeds: [
+      { name: "contato", dc: 23 },
+      { name: "revelar", dc: 19 },
+      { name: "compelir", dc: 19 },
+    ],
+    factors: "Fatores: afetar os cinco sentidos (+8 CD), controle compulsório total (+10 CD), compulsão estrita contra qualquer criatura (+11 CD, excepcional). Fator dedutivo: aumentar o tempo de execução em 9 minutos (-18 CD).",
+    description:
+      "Como espionar alma, exceto que o conjurador também assume controle total sobre o corpo da vítima. O alvo pode realizar um teste de resistência de Vontade; caso obtenha sucesso, evitará que o conjurador estabeleça a conexão telepática. A vítima sentirá a tentativa de domínio como um estranho formigamento repentino. Caso o alvo fracasse no teste de resistência de Vontade, o conjurador assumirá o controle sobre o corpo da vítima como se fosse o seu próprio corpo, ouvindo, enxergando, cheirando, provando e sentindo tudo o que o alvo sentir. Depois que a duração da magia terminar ou ela for dissipada, o alvo reassume o controle sobre seu corpo, completamente ciente de todos os eventos que aconteceram — ele assistiu indefeso a tudo, preso dentro de seu próprio corpo. A vítima saberá o nome e a natureza genérica do conjurador caso obtenha sucesso em um segundo teste de resistência de Vontade. Não é possível controlar mortos-vivos ou criaturas incorpóreas usando esta magia.",
+    page: 78,
+  },
+  {
+    id: "epic-spell-duplicata-temporal",
+    name: "Duplicata Temporal",
+    school: "Transmutação [Teletransporte]",
+    cdIdentificarMagia: 71,
+    components: "V, G",
+    castingTime: "1 ação livre",
+    range: "Pessoal",
+    effect: "O conjurador",
+    duration: "1 rodada (veja a descrição)",
+    savingThrow: "Nenhum (benéfica)",
+    spellResistance: "Não (benéfica)",
+    developmentGp: 639000,
+    developmentDays: 13,
+    developmentXp: 25560,
+    seeds: [{ name: "transportar (trazer o conjurador do futuro para o presente durante 1 rodada)", dc: 27 }],
+    factors: "Fatores: viajar no tempo (+8 CD, excepcional), estender o efeito temporal básico (+8 CD, excepcional), magia acelerada (+28 CD).",
+    description:
+      "Usando uma ação livre, considerada no limite de magias aceleradas por rodada, o personagem será capaz de transportar a si próprio do futuro (1 rodada subsequente) para o presente, num quadrado adjacente. Tecnicamente, o personagem do futuro é apenas uma possibilidade (a linha do tempo é um redemoinho de múltiplas probabilidades), mas o ato de trazer uma possibilidade futura para o presente colapsa com as probabilidades e o futuro possível se torna o futuro definitivo. O personagem atual e o futurístico podem agir normalmente nesta rodada (e, embora o atual já tenha utilizado seu limite de uma magia acelerada por rodada, sua duplicata ainda não o fez). O personagem do futuro terá todos os recursos que o conjurador dispunha no momento do término da conjuração desta magia. Uma vez que se trata apenas de uma possibilidade, não importa o que acontecer nesta rodada (mesmo que o próprio conjurador morra), os recursos da duplicata não serão consumidos. Similarmente, ela também não terá nenhum conhecimento específico do que pode acontecer nesta rodada. Como o personagem do futuro ainda é parte do fluxo temporal, a rodada que ele despende ao lado do conjurador será perdida no seu próprio futuro. Como a duplicata também é o personagem, ele também perderá a rodada seguinte. Ele simplesmente não estará lá — terá desaparecido. Lidar com o fluxo temporal é muito confuso. Segue abaixo um resumo das rodadas dessa magia.",
+    page: 79,
+  },
+  {
+    id: "epic-spell-eclipse",
+    name: "Eclipse",
+    school: "Conjuração (Criação)",
+    cdIdentificarMagia: 42,
+    components: "V, G, XP",
+    castingTime: "10 minutos",
+    range: "300 km",
+    area: "Raio de 7,5 km, centrado no conjurador",
+    duration: "Até 8 horas (D)",
+    savingThrow: "Nenhum",
+    spellResistance: "Não",
+    developmentGp: 378000,
+    developmentDays: 8,
+    developmentXp: 15200,
+    seeds: [
+      { name: "conjurar", dc: 21 },
+      { name: "transportar (para posicionar o disco 150 km acima)", dc: 27 },
+    ],
+    factors: "Fatores: aumentar a massa em 1.000% (+40 CD), moldar a massa num disco fino como papel (+2 CD, excepcional), manter o disco no lugar durante 8 horas (+10 CD, excepcional). Fatores dedutivos: aumentar o tempo de execução em 9 minutos (-18 na CD), exige 4.000 XP (-40 CD).",
+    description:
+      "Com esta magia, o personagem é capaz de criar um eclipse limitado, como se um corpo celeste fosse colocado entre o sol e a paisagem. Toda a paisagem num raio de 7,5 km da localização do conjurador notará a diminuição do sol conforme o disco criado pela magia se posiciona diante da estrela, culminando num eclipse total, quando restará apenas um anel de luz ao redor do disco. O eclipse seguirá o conjurador através da região durante 8 horas, até que o sol se ponha ou até ser dissipado. Não é necessário que o conjurador se concentre para manter o eclipse.",
+    materialComponent: "Custo de XP: 4.000 XP.",
+    page: 79,
+  },
+  {
+    id: "epic-spell-eidolon",
+    name: "Eidolon",
+    school: "Conjuração (Criação)",
+    cdIdentificarMagia: 79,
+    components: "V, G, XP",
+    castingTime: "1 minuto",
+    range: "1,5 m",
+    effect: "Uma duplicata do conjurador",
+    duration: "8 horas",
+    savingThrow: "Nenhum",
+    spellResistance: "Não",
+    developmentGp: 711000,
+    developmentDays: 15,
+    developmentXp: 28440,
+    seeds: [
+      { name: "conjurar (para criar a substância básica)", dc: 21 },
+      { name: "transformar", dc: 21 },
+      { name: "transportar (para transferir parte da alma do conjurador para a duplicata)", dc: 27 },
+    ],
+    factors: "Fatores: transformar substância inanimada em humanoide (+10 CD), transformar num indivíduo específico (+25 CD). Fator dedutivo: exige 2.500 XP (-25 CD).",
+    description:
+      "O conjurador compartilha parte de sua essência, criando uma duplicata de si mesmo a partir de um fragmento de sua alma. Esta magia cria uma duplicata do conjurador como o personagem era no 21º nível e ele sofrerá um nível negativo enquanto a duplicata existir. Para cada nível negativo adicional que o conjurador aceitar durante a conjuração, o eidolon receberá um nível de personagem. Independente de quantos níveis negativos forem atribuídos ao personagem, o eidolon nunca poderá ter mais níveis de personagem que o conjurador (considerando os níveis negativos recém-adquiridos). Por exemplo, um mago de 30º nível poderia lançar eidolon e aceitar quatro níveis negativos para que sua duplicata estivesse no 25º nível (e ele mesmo estaria, efetivamente, no 26º nível). Ele não pode conceder mais nenhum nível ao eidolon, senão a duplicata terá mais níveis de personagem que o próprio conjurador. Trate a duplicata como se ela fosse o próprio personagem com a quantidade de níveis necessários para pertencer ao nível selecionado. O eidolon estará descansado e curado tão logo seja criado. Ele será capaz de conjurar qualquer magia que o personagem conheça, incluindo as magias épicas. Use o modificador de Identificar Magia do eidolon como base para descobrir quantas magias épicas ele é capaz de lançar por dia, e seu nível efetivo de personagem para determinar as perícias, talentos e outras habilidades. Efetivamente, a duplicata pertence a um nível mais baixo que o personagem; sendo assim, ela provavelmente não conseguirá conjurar as mesmas magias que o conjurador. Uma duplicata poderosa o suficiente seria capaz de, inclusive, conjurar a magia eidolon sobre si mesma. Para lançar qualquer magia, a criatura deve fornecer os componentes materiais exigidos, mas os custos em XP devem ser fornecidos pelo conjurador original. Quando for criada, a duplicata surge trajando quaisquer roupas comuns que o conjurador desejar mas ela não terá nenhum outro equipamento. A cópia partilha a alma do personagem, sendo assim ela seguirá os mesmos intentos e propósitos de seu conjurador. Normalmente, o personagem e seu eidolon não invejam sua curta existência conjunta, pois um será parte do outro. Caso o eidolon seja morto antes do término da duração da magia, o conjurador receberá de volta os níveis perdidos. Normalmente, o eidolon não se mantém ativo durante tempo suficiente para ameaçar o conjurador com uma perda de nível permanente.",
+    page: 79,
+  },
+];

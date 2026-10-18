@@ -103,7 +103,8 @@
     "systemId": "dnd35",
     "ruleset": "v35-epic",
     "categories": {
-      "feat": 10
+      "feat": 154,
+      "spell": 15
     }
   },
   {
