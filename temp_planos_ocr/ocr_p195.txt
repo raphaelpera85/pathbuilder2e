@@ -1,0 +1,121 @@
+﻿Combustão As criaturas atingidas pelas gatras ou more
+dida de um gorila elemental do fogo devem Obter sucesso em um
+teste de resistência de Reflexos (CD 11) ou pegarão fogo. O fogo
+queima durante rodadas Queimando no Capítulo 3
+do Livro do Mestre).
+As criaturas que atingirem gorila elemental do fogo com
+naturais ou ataques desarmados também sofrem dano por
+fogo, como se fossem golpeadas pelo monstro, e devern obter
+sucesso em. um teste de resistência de Reflexos pata ñàO pegarem
+fogo.
+Elemental: Imune veneno, sono* paralisia, atordoamento e
+sucessos decisivos,
+Subtipo {Fogo) Imune ao fogo, sofre dano dobrado por
+frio, exceto se obtiver sucesso no reste de resistência.
+Criaturas Elementais do Frio
+As criaturas elementais do Erio habilam o Plano Elemental do
+Frio ou dominios igualmente hospitaleivos em outros lugares,
+como OS Planos Elementais do At e da Água. Possuem a mesma
+forma geral dos seres materiais correspondentes, fei
+inteiramente de gelo, geada e Lascas rehwnnres de gelo
+avermelh.ado for.'natl" os olhes, e mandíbulas são circun-
+d¿das por sincelos claros co*30 aço,
+Criando Criatura Elementai do Frio
+-Elemental do Frio* é modelo que pode ser a qual-
+quer criarura corpórea com um dos seguintes tipos básicos: aber-
+besta, besta mágica, planta ou inseto. O tipo da Cria-
+para "elemental (frio)"', ela estatísticas e
+habilidades especiais da cr'iatura•base exceção das seguinws.
+Dados de Vida: Mudam para
+CA: A armadura natural aumenta em +3.
+Ataques Especiais: Uma criatura elemental do frio conserva
+todos os ataques especiais da criatura-base e adquire 05
+seguintes:
+Resfricr (Ero: Além do dano infligido seus golpes, as cria•
+elementais do frio dano adicional pot frio cor:) Sitas
+armas naturais (incluindo garras, mordida, pancada ou golpes de
+cauda) O valor do dano depende do total de DV da criatura {con-
+Sulte a tabela a6aixo}.
+Qualidades Especiais: urna criatura elemental do frio conser•
+va todas as qualidades especiais da criatura-base e tam-
+bérn adquire as seguintes:
+• Elemenial: Ifi:iüne veneno, SOt10, paralisia, atordoamenro e
+sucessos decisivos.
+Visão no escuro 18 m.
+Redução de dano (consulte a tabela abaixo).
+Dados
+de Vida
+1-3
+12+
+Redução
+de Dano
+5/4-1
+10/+1
+Dano Adicional
+por Frio
+2d6
+• Subtipo (Erio) (Exf); Imune frio, sofre dano dobrado por fogo,
+exceto Se obtiver sucesso no teste de resistência,
+• Gelo (Ero: Essa habilidade funciona magia
+de aplica-se todas superfícies congeladas.
+No Plano Elemental do Frio, criatura elemental do frio pode
+deslocar-se nor'malmente.
+Se a criatura-b•ase já possui uma ou mais dessas qualidades espe•
+ciais, use ovalormais {Ilto-
+Testes de Resistência: Idênticos à criatura•base.
+Habilidades: Idênticos à criatura-base,
+Periciast Idênticos à Se a criatura elemental da
+terra tiver Inteligência 4 ou mais, sabe falar Aquan ou
+Auran.
+Idênticos à criatura•base.
+Talentos:
+Terreno/CIima: Terrestre/qualquer e subterrâneo,
+Organização: Mesma da criatura.base.
+Nivel de Desafio:Até 3 DV, Mesmo da criatura-base, Oe 3 DV
+a DV, Mesmo da criatura-base Acima de 8 DV,
+Mesmo da criatura,base +2.
+Tesouro: Mesmo da criatura.base.
+Tendência: Geralmente Neutro,
+Progressão: Mesma da criatura-base.
+Exempio de Criatura Elemental do Frio
+Arbusto Errante Elemental da Água
+•("Homem Vegetal da Tundra")
+Elemental (Grande Frio)
+Dados de Vida: 8d8+24 160 PV)
+Iniciativa: +0
+Deslocamento: 6 m
+CA: 23 (—1 tamanho, +14 natural}
+Ataques: Carpo a corpo; 2 pancadas +10
+Dano; Pancada 2d6+5/+1d6 de frio
+Face/Aleancet m por m/3 ro
+Ataques Especiais; Agarrar aprimorador constrição
+2d6+7/+1d6 de frio
+Qualidades Especiais; Elemental, planta, imunidade à eletri•
+cidadet resistência ao fogo 30, Redução de Dano 5/41,
+visão no escuro 18 m. subtipo {frio}, caminhar no gelo
+Testes de Resistência; Fort 49, Ref42$ Von +2
+Habilidades: For 21, Des 10, con 17, Int sab car g
+Perícias: Esconder-se Ouvir +4, Furtividade +4
+Terreno/CIima: Terrestre/qualquer e subterrâneo
+Organização: Solitário
+Nível de Desafio: g
+1/10 de moedas; 50% de bens; 50% de itens
+Tesouro:
+Tendência: Geralmente Neutro
+Progressão: 9—12 DV {Crande); 13—24 DV {Enorme)
+Conibate
+Agarrar Aprimorado (Ext}: Para utilizar essa habilidade, o
+homem vegetal da tundra precisa atingir oponente de
+vah,o Grande Ou menor eoln anabos os braços, Caso prenda a cria-
+tul•ã, pode U.Sãr constrição.
+Constrição O homem vegetal da tundra inflige 2<16+7
+pontos de dano, além do dano por frio, se conscguiv aprisionar
+uma ou menor, O homem vegetal ainda pode se
+mover, mas não é capaz de realint' àçóes de combate enquanto
+utili'iar esta habilidade,
+ElementaL Imune a veneno„ sono, atordoamento e
+sucessos
+Imunidade a Eletricidade (Ext}'/ OS bomen$ vegetais da
+tundra não sofrem por eletricidade. Em vez disso, qualquer
+00
+r9à

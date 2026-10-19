@@ -1,0 +1,154 @@
+﻿CA: Apenas os modificadores de tamanhoe Destreza e arma-
+dura natural são mantidas, Os bônus de armadura não se
+aplicam-
+Ataques: O bónus base de ataque é reduzido para +2, suleito
+a modificações por tamanho e Força. Caso o bónus base
+de ataque da criatura Seia inferior a 42, utilize o menor
+valor.
+Ataques Especiais: Um suplicante perde todas as habilidades
+sobrenaturais e similares a magia, mas conserve seus
+ataques normais e habilidades extraordinárias.
+Qualidades Especiais: Um suplicante perde todas as habili-
+dades sobrenaturais e similares a magia, mas conserva
+suas habilidades extraordinárias. Além disso, adquire as
+seguintes qualidades,
+Imunidade Mental Todos os suplicantes imunes a
+efeitos de ação mental. Isso pode ser provocado pela natureza
+irracional de sua exisaincia, pela devoçáb à divindmcle, ou por
+estar rodeado por um plano de tendência semelhante.
+Oldnas Dependendo de natureza, o
+cante é imune dois dos seguintes efeitos: ácido, frio, eletrici-
+dadm fogo, veneno, petrificação ou metamorfose. Essas iñitl•
+nidades são aplicadas da mesma forme todos Os suplicantes de
+um plano ou deidade em particular. Cot'vsulte o Capitulo 7: Os
+Planos Exteriores pata rnaiazes detalhes,
+(Ext): Dependendo da do plano do supli-
+cante* CIC adquire resistência 20 contra dois dos seguintes efeitos:
+ácido, frio„ eletricidade ou fogo. O Capítulo 7 detalha os supli-
+cantes e Silas idades
+Obriglzção Plunar Cfxt)' Os suplicantes não podem deixar o
+plano que habitam, Eles são teletransportados cento e
+quilómetros uma direção aleatória em gtralquer tentativa de
+forçá-los a partir,
+Qualidades Adicionais: Alguns planos podem conceder
+habilidades adicionais aos suplicantes rmtwos, As qualidades
+especiais adicionais podem incluir qualquer das Seguintes;
+Redução de dano 3/prata e RM 5.
+• Civulo
+• Cura acelerada 1.
+Reduçàode dano 10/+1,
+Resistência a magia 10.
+• 2d8 DV adicionais
+Remova todas as ijnllilidades e resistências excero a imu-
+nidade efeituos de ação mental. Adicione a ácido,
+frio, eletricidade, fogo e veneno S,
+Testes de Resistência: Bônus base de testes de resistência +3,
+Habilidades; Idênticos à criatura-base, Algumas cosmologias
+ou divindades particularmente inseguras podem esta bele-
+cer um limite de para os valores de habilidade de supli,
+cantes, As habilidades acima disso são reduzidas ao valor
+má mou
+Pericias: Os suplica!ües não possuem pericias. As perícias
+pré-exi são perdidas.
+Talentos.' Os suplicantes não possuem talentos. Os talentos
+pré-existentes São perdidos.
+Terreno/Clima: Qualquer terrestre e subterrâneo (no mesmo
+plano).
+Organização: A mesma da criatura-base,
+N'vel de Desafio:
+Tesouro: Nenhum.
+Tendênciz A mesma do plano natal.
+Progressão: Nenhuma,
+Suplicanres Excepcionais
+As divindades podem escolher servos especiais para tarefas
+específicâ* que podem conservar o conhecimento de suas identi-
+dades anteri01es. Esses: suplicantes excepcionais conservam os
+talentos e pericits que em vidav tão limitados
+quanto os demais suplicantes de seu plano,
+Exemplo de Suplicante
+Este é um suplicante de um plano Caótico e Em piano
+específico da cosmologia básica {como o Abismo) pode conceder
+qüahdades especiais adicionais. Constllte õ Capitulo 7 para mais
+detalhes,
+Suplicante Ogro
+(Grande — Caótico,
+Dados dc Vida: {17 P"
+Iniciativa: —l {Oes)
+Deslocamento: 9 m
+CA: 13 tamanho, —I Des. +5 natural)
+Ataques; Corpo a corpo: pancada 46
+Dano: Pancada Id447
+Face/A[canoe: 1,5 m por m/3 m
+Qualidades Especiais: Imunidade mental, imunidade a eletri-
+cidade e veneno. resistência a fogo e ácido 20
+Testes de Resistência: Fort 45, Ref42, Von 43
+Habilidades: For 21, Des 8. Con 15, Int Sab Car 7
+TerrenolClima: Terrestrelqualquer e subterrâneo.
+Organização: Solitário, par, gangue (2,4) ou bando 15-8)
+Nível de Desafio:
+Tesouro,' Nenhum
+Tendência: Sempre Caótico e Mau
+Progressão: Nenhuma.
+OO AR
+Nivel
+3-4
+9—10
+11-12
+13—14
+15-16
+Habifidade
+Mumlho de
+Formo Gasoso
+Caminhar FO
+os "fitos
+Corrente de reiampaeas
+Centro'ar o c,Grna
+Grupo de elementais*
+Viagem
+Nivel
+3-4
+7-3
+9.—10
+11-12
+15-16
+00 FOGO
+Habilidade
+Criv chamas
+É:sferaflamejonte
+Marafho de fogo
+Escudo
+Serftenee de. foge
+•rcmpcstade de fogo
+Crupo elementais*
+Viogem
+Só pode como
+TERRA
+magia do Fogo
+DA Ácu,s
+Nivel
+7—3
+9—10
+13-14
+17-18
+Habilidade
+Pedro
+e pedar
+Pedras afiadas
+Ma,rajha de pedra
+Pete
+Terremoeo
+Corpo de ferro
+Grupo de dementais*
+plano e
+Nivel
+5—6
+9—10
+13-14
+Habilidide
+Respirar na agua
+ContrJor o
+re. mpe.stade
+Cone
+Crapo de
+* pude ser
+* pode Ser Ogn)vrad3 «om O

@@ -1,0 +1,155 @@
+﻿Dados de Vida:
+Iniciativa:
+Deslocamento:
+Ataques}
+Dano;
+Face/Aleance:
+Ataques Especiai*
+Qualidades especiais;
+Testes de Resistência:
+Habilidades:
+Pericias:
+Talentos:
+Terreno/Cfirna:
+Organização:
+Nivel de Desafio:
+'Tesouro:
+Tendência:
+Progressão:
+Zelekhut
+Construto
+(Grande— Lean
+{44 PV)
+15 m, vôo 18 m (médio)
+27 (—1 tamanho, 410 naturalt
++8 armadura de montaria
+completa}
+Corpo a corpo: 2 correntes
+com cravos +10
+Corrente com cravos
+2d4+S/+Id5 de eletricidade
+m por 3 m/3 m
+Habilidades similares a magia
+Redução de dano 30/+3.
+RM 20, cura acelerada 5
+Fort +2. Ref+2, Von +5
+For Con—
+Int 8, sab car 15
+Terrestre/qualquer
+e subterrâneo
+Solitário
+9
+Nenhum
+Sempre Leal e Neutro
+9-16 DV IfCrande);
+17-24 DV (Enorme)
+Kolyarut
+Construto
+(Médio— Leali
+13d10 (71 PV)
+(Des)
+26 {410 natural, 46 loriga
+segmentada)
+Corpo a corpo'. toque vampírico
++11/+6; ou toque à distância;
+raio de drenar +10
+Toque vampirico 5d6; raio
+de drenar lonpotli;-io como a magia
+I m por I m
+Habilidades similares a magia.
+toque vampírico, raio de
+temÑr,'iriõ
+Redução de dano 30/+3.
+RM 22, cura acelerada 5
+Fort +4, Ref +5, von +7
+For 13, cor,
+Int 10, sab 17, car 16
+Terrestre/qualquer e
+subterrâneo
+Solitário
+12
+Nenhum
+Sempre Leal e Neutro
+14-22 OV (Médio)}
+23-39 DV {Crande)
+INEVITÁVEL
+Marut
+Construto
+(Grande — Leal
+15d10 pv)
++1 (Desl
+12m
+28 tamanho, natural,
++8 armadura de batalha)
+Corpo a COTO',
+2 pancadas +17
+Pancada 2d647/+3d6 sônico
+ou +3d6 de eletricidade
+I m por I m/ 3 m
+Habilidades similares a
+punhos do relâmpago e do
+trovão
+Redução de dano 40/44,
+RM 2St cura acelerada 10
+Fort 4-5, Ref +6, Von
+For 25, Des 13, con
+Int 12, Sab 17, Car 18
+Terrestre/guãlquer e
+subterrâneo
+Solitário
+15
+Nenhum
+Sempre Leal e Neutro
+16-28 OV (Cande)}
+29-45 OV
+-9
+00'
+criatilt-a) tiver pelo menos I PV No entanto, o dano
+causado por uma anárquica será reeüpetado normalmen{e.
+ZELEKHUT
+05 zelekhur são encarregados de caçar aqueles desdenham
+da justiça — especialmente os fugitivos, que pretendem
+das puniçóes devidas. Eles rastreadores experientes e
+lizam uma combinação de pericias e a:nagia para encon-
+trar fugitivos, importa onde se E vez que 05
+tenham encontrado, aplicam própri$ sentenças.
+Um 7,elekh11t é uma criatura mecanizada com a forma de um
+Centauro, Ela usa uma armadura dourada e omamentad;l, sobre
+pele de alabastro. Inicialmente» um zelekhut: parece
+muito ameaçador, quando está prestes a em combate,
+ele expele duas correntes com cravos de seus antebraços como
+ação livre, Da mesma forma, ele é capaz de desdobrar duas
+asas metilieas douradas de Suã$ costas, Retrair as correntes ou as
+asas também é ação livre.
+Combate
+Assim que encontrar scu alvo fugitivo, o zclekhut utiliza sua;
+velocidade suas habilidades similares á magia para eliminar
+maioria iotaS dc fuga prováveis. Depois, ele imobiliza
+quer adversários enquanto tenta proteger os espectadores
+inocentes. Finalmente, ele agarra o fugitivo com SLtaS correntes
+com cravos, imobilizando ou desarmando a criatura conforme
+necessário. Casa esteja cumprindo sentença de morte, o
+zelekhut executará o fugitivo sem atarde ou aclamação.
+Habilidades Similares a Magia: Sem limite—
+magia, pessoas,
+3/dia imobilizar
+t/semana missáo menor- Essas habilid*des
+são idênticas às magias conjuradas um feiticeiro de so nível
+{CO t 2 + da magia).
+KOLYARUT
+Os kolyarut representam a cláusula definitiva pnra o cumpri-
+mento de um Congrato eles punem aqueles gue desrespeitam
+acordos e juramentos Originalmente enviados de Mecáñlts para
+vingar maiores traições existentes,. vez no Plano Material
+eles caçam qualquer traidor, desde mercadores inescrupulosos
+até desertores de exércitos. Qualquer um que não cumprir una
+acotxlo honrado pode atrair a ira de um kolyarut, embora a coa,
+tura geralmente ignore acordos inconseqüentes e juramentos
+prestados sem prudência.
+de iniciar sua missão contra um infraot, um kolyatut
+descobre o máximo possivel sobre o contrato ou Jitramcnro. Ele
+não está interessado naqueles que desrespeitam um acordo aci-
+dentalmente ou contra sua vontRde —- somente os indivíduos
+violam o principio essencial sustentado pelo kolyantt de
+livre e espontânea vontade sia caçados. Se hõüver um contrato
+escrito, o kolyarut geralmente carregará cópia dele consigo,

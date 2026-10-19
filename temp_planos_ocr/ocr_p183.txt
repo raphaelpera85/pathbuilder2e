@@ -1,0 +1,196 @@
+﻿PARAELEMENTAIS DO LIMO
+Dados de Vida:
+Iniciativa:
+Deslocamento:
+CA;
+Ataques:
+Dano:
+Face/Alcanoe;
+Ataques Especiais:
+Qualidades Especiais:
+Testes de Resistência:
+Habilidades:
+Perícias:
+Talentos:
+Dados de Vida:
+Iniciativa.'
+Deslocamento:
+Ataques;
+Dano;
+Face/Alcanoe:
+Ataques Especiais;
+Qualidades Especiais:
+Testes de Resistência.
+Habilidades:
+Perícias:
+Talentos:
+Combate
+Paraelemental do timo,
+Pequeno
+Elemental
+(Pequeno —o Terra, Água)
+2d842 (11 PV)
+40
+6 m, natação IS m
+17 tamanho, +6 natural}
+Corpo a coroo:
+pancada 4-4
+Pancada Id643/+1d4 de ácido
+m por m/ m
+Ácido
+Elemental
+Fort Ref±0, Von +0
+For Des Con
+Int 4, Sab Car I I
+Ouvir Observar +5
+Ataque Poderoso
+Paraelemental do Limoi
+Enorrne
+Elemental
+(Enorme — Terra» Água}
+pvj
+4-4 (Des)
+6 m, natação m
+21 {—2 tamanho, +4 Oes,
++9 natural}
+Corpo a corpo:
+pancada +17/+12/+1
+Pancada d6
+de ácida
+3 m por m/49S m
+Ácido
+Elemental, Redução de Dano
+10/+2, imunidade a fogo
+Fort Ref49, voa
+For 24, Des con 21.
+Int 6, Sab Car 11
+Ouvir Observar +1 8
+Trespassar. Trespassar
+Aorimorado, Atacoe
+Poderoso, Quebrar
+Paraelemental do Limo,
+Médio
+Elemental
+IMédio Terra* Água}
+gd8+12 po P"
+(Desi
+6 rr'lv natação 15
+18 {41 Des. 48 natural}
+Corpo a corpo:
+pancada +6
+Pancada Id8+4/+ld6 de ácido
+1 S m por m/ 1 m
+Ácido
+Elemental
+Fort +7, Ref42, von
+For 16, Des 12, con 17.
+4, sab car 11
+Ouvir +7, Observar +7
+Ataque Poderoso
+Paraelemental do Limo,
+Maior
+Elemental
+(Enorme — Terra* Água}
+21d8+105 (199 P"
++5 (Oes)
+6 m, natação 15 m
+22 (-2 tamanhor 45
++9 natural}
+Corpo a corpo;
+pancada +21/+161+11
+Pancada 2d10+12/+2d6
+de ácido
+3 m por
+Ácido
+Reduc¿o de Dano
+10/+2, imunidade a fogo
+Fort +17, Ref +1 2, Von +7
+For 26, Des 20. Con 21.
+6, sab car 11
+Ouvir +23, Observar +23
+Trespassar„ trespassar
+Aprimorado, Sucesso Oecisivo
+Aprimorado (pancada).
+Ataque Poderoso, Quebrar
+Paraelemental do Limo,
+Grande
+Elemental
+fCrande Terra, Água)
+(68
+5 m, natação '15 m
+20 tamanho, +2 Des. +9
+natural)
+Carpo a corpo;
+pancada +10/+5
+Pancada 2d8+7/41d6 de ácido
+m por m/3 m
+Acido
+Elemental.
+Redução de Dano 10/41
+Fort +1 OE Ref+4. Von +2
+For Des con 19,
+Int 6, Sab Car 11
+Ouvir Observar 412
+Ataque Poderoso, Quebrar
+Paraelemental do Limo,
+Ancião
+Elemental
+fEn0rme — Terra. Água}
+24d8+120 {228 PV)
+(Des}
+6 m. natação 15
+23 {—2 tamanho, +6 Des.
++9 natural)
+Corpo a corpo:
+pancada +25/+201415/+10
+Pancada 2810±13/+2d6
+de ácido
+3 m por m/4,5 m
+Ácido
+Elemental, Redução de Dano
+15/+3, imunidade a fogo
+Fort +19. Ref413v von +8
+For 28, Des 22, con 21,
+Int 6, Sab Car 11
+Ouvir +26i Observar 426
+Trespassar
+Aprimorado, Sucesso
+Decisivo Aprimorado.Quebrar
+{pancada}, Ataque Poderoso
+Os paraelementais do li:no apreciam combater maioria dos
+humanóides, pois seu ácido é capaz de derreter armas,
+Ácido A lama de um pataelemenral do limo
+ácida e dissolver rapidamente metais e materi¿l Orgânico,
+Qualquer ataque corporal ativa habilidade, que inflige 40 pon-
+tos de dano por rodada a objetos de madeira ou metal- A; arma-
+ou roupas se dissolvem e imiteis imediatamente,.
+menos que obtenham sucesso em um teste de resisrência de
+Reflexos (a CO varia de acordo com o tamanho do paracletncn-
+tal). Uma arma metálica Ou de madeira que atinge iat:n paraele-
+mental do limo também se dissolve imediatammate, a que
+obrenha sucesso em um teste de resistência de Reflexos.
+TAMAN HOS PARAELEM EN TAÍS 00 L' MO
+CD do teste
+de resistência contra
+Paraelemental Altura
+Pequeno
+Médio
+Grande
+Enorme
+Maior
+Ancião
+12m
+17 kg
+kg
+kg
+9000 kg
+10.500 kg
+12,000 kg
+Ataque Acido
+11
+13
+22
+25
+28
+00
+10

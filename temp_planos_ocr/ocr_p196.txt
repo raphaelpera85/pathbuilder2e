@@ -1,0 +1,91 @@
+﻿araql;e elétrico (como toque Ou relâmpago) utilizado con•
+tra um homem vegetal da tundra lhe concede Id4 pontos tem-
+potátios de Constituição. O homem vegetal perde esses pon•
+tos 1 per hora.
+Perícias Os homens vegetais da tundra recebem
+de bónus racial cm testes de Ouvir
+e Furtividade. *Eles recebem +12 de Iónus em
+testes de Esconder-se quando em
+coberta por gelo Ou neve,
+Criannas da Madeira
+As criaturas elementais Madeira
+habitam o Plano Elemental da Madeira
+Ou domínios igualmente hospitaleiros cm
+ouaos locais, incluindo o Plano Material. 'A
+Possuem a mesma forma geral dos seres mare-
+riais correspondentes, mas são feitos inteira-
+mente de madeirat galhos e folhas, Possuem
+esferas opalinas negras no lugar dos
+e suas mios terminam em
+ras formadas por lascas de madeira.
+Criando 0113a Criatura
+Elemental da Mva¿eira
+da Madeira- é modelo que pode adicionado a
+qualquer criantra corpórea com um dos seguintes tipos básicos:
+abettaçà0* animal, bestav besta mágica, planta ou inseto. O tipo da
+criatura *'tida para "•eiemenral (madeirar; utiliza todas as
+estatística; e habilidades espeei$is da
+das seguintes,
+Dados de Vida: Mudam para d8,
+CA: A armadura natural aumenta em 4-2.
+Deslocamento: O deslocamento normal (terrestre} é reduzi,
+do à metade, Outros tipos de movimento fratação, vôo,
+escalada} não são afetados.
+Ataques Especiais: Uma criatura elemental da madeira con.
+serve todos os ataques especiais da criatura•base e
+adquire os seguintes:
+Espinhos (EXU: Uma criatura elemental da Inadeira pode lançar
+rajadas dc espiniaos ou lascas de madeira, até (Iliart'0 por rodada,
+como uma ação Pedrão, Esse ataque posstli alcance de 36 m sem
+qualquer incrernenco de distância, O dano é de 1116 + bônüS de
+Força- A criatura elemental da madeira pode dispgrar até seu total
+de DV em espinhos a cada dia,
+Qualidades Especiais; Uma criatura elemental da madeira
+conserva todas as qwaÍidades especiais da criatura,base e
+também adquire as seguintes;
+Imune a veneno, sono, paralisia, e
+sucessos decisivos.
+Visão no escuro m,
+Redução de dano (consulte tabela abauxo),
+Dados de Vida Redução de Dano
+1-1
+10/+1
+• Planta: Embora seja do Tipo elemental, crigtura elemental
+madeira tamijém é vegetal. Além dos beneficios
+i.
+didos por seu tipo elemental, criatura
+elemental da madeira adquire imunidade a metamorfose e
+efeitos de mental (efeitos de moral, feitiços, compulsões,
+fanrasmas e padrOes)
+• Sentido Vegetai A elemental da madeira pode sen-
+tir automaticamente a localização de qualquer num
+raio de IS m que esteja em. Contato com vegetação, mesmo
+ela n.10 esaja em contato egm a mesma vegetação,
+Se criatura-base possui ou ma is dessas qltalidades espe-
+ciais, use 0 valor *Iro.
+Testes de Resistência; Idênticos à criatura,base.
+Habilidades: Idênticos à criatura-base,
+Perícias: Idênticos à criatura-base, Se a criatura elemental
+da terra tiver Inteligencia 4 ou mais, sabe falar Silvestre e
+a lingua dos entes.
+Talentos: Idênticos à criatura-base„
+Terreno/Clima: Terrestre/qualquef e st•bterr2neo.
+Organização; Mesma da criatura, base.
+Nível de Desafio;Até 3 DV. Mesmo da criatura•basev Oe 3
+OV a 1 DV i Mesmo da criatura.base Acima de 8 DV,
+Mesmo da criatura-base +2.
+Tesouro: Mesmo da criatura-base,
+Tendência: Ceralmente Neutro,
+Progressão: Mesma da criatura•base.
+Exemplo de Criatura Mag:leüra
+Leopardo Elemental da Madeira
+Elemental (Médio Madeira)
+de {19
+Iniciativa: +4 (Oes}
+Deslocamento: 6 m, escalando 6 m
+CA: I / (+4 Des, 43 natural}
+Ataques: Corpo a corpo: mordida 96, 2 garras +1; au dis-
+tância'v 3 espinhos +6
+Dano: Mordida Id6+3, garra 1 d 3+1, espinho Id6+1
+Face/Alcance: m por 1,5 m/ m
+Ataques Especiais: agarrar aprimorado, rasgar Id3+1
