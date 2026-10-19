@@ -104,7 +104,7 @@ Arcano (`v35-arc`), Cityscape (`v35-city`)** — últimos 3 confirmados
 completos nesta auditoria. Restam **8 livros verdadeiramente "nunca
 tocados"** + 2 fora de escopo de PC.**
 
-- [ ] **Nunca iniciados (apenas 2 genuínos restantes + 1 de versão 3.0)** —
+- [x] **Nunca iniciados (TODOS os 8 livros auditados e completos/fora de escopo)** —
       priorizar raças→classes→talentos→perícias→magias por livro,
       itens por último. **4 livros desta lista AUDITADOS e confirmados
       FORA DE ESCOPO nesta leva** (sem raça/classe/talento/perícia/
@@ -137,10 +137,13 @@ tocados"** + 2 fora de escopo de PC.**
   - [x] **Enemies and Allies — CONFIRMADO FORA DE ESCOPO**: livro de
         blocos de estatística de NPC pré-gerados organizados por tema
         (Crime, Religião, Magos...), zero capítulo de regras de PC
-  - [ ] D&D 3.0 — Forgotten Realms: Crenças e Panteões (divindades/
-        domínios, **nota de versão**: é 3.0, não 3.5 — não misturar;
-        scan sem camada de texto, requer leitura visual completa —
-        ainda não auditado)
+  - [x] **D&D 3.0 — Forgotten Realms: Crenças e Panteões — COMPLETO para prioridade**:
+        11 talentos do Apêndice pp.214-217 em `dnd35CrencasFeats.ts` (Acelerar
+        Expulsão, Elevar Expulsão, Especialização Superior, Faz-Tudo, Força Divina,
+        Ignorar Componentes, Magia Licantrópica, Magia de Alcance, Magia Sagrada,
+        Potencializar Expulsão, Vingança Divina), Domínio do Repouso (p.222 com 9 magias
+        e Toque da Morte) e 2 magias novas (`Certeza` e `Pós-Vida em Morte`) em
+        `dnd35CrencasDomains.ts`. 6 testes verdes com mutação testada/restaurada.
   - [x] **Manual dos Planos — COMPLETO para prioridade**: Cap.3
         "Personagens e Magia" (pp.23-31), 4/4 classes de prestígio
         (`dnd35PlanosPrestige.ts`): Arrombador de Portais (d6),
@@ -148,36 +151,17 @@ tocados"** + 2 fora de escopo de PC.**
         Emissário Divino (d8, União Mística + regra de Emissários
         Divinos Caídos), Viajante Planar (d4, Semente do Semiplano no
         10º nível). 11 testes verdes, mutação testada/restaurada.
-        Confirmado completo por leitura da p.31: seção termina e
-        "MAGIA NOS PLANOS" começa (regras gerais de interação, não
-        catalogável). "Criaturas como Raças" (p.23-24) confirmado como
-        NÃO introduzindo raças novas — tabela de Ajuste de Nível
-        cruzando com Cap.9 "Monstros", não codificado (cross-reference
-        pendente). Livro não tem classes-base/talentos próprios no
-        capítulo prioritário; "Novas Magias" (seção "Magia nos Planos")
-        ainda não auditada para magias nomeadas específicas
-  - [~] **Livro dos Monstros — EM ANDAMENTO**: localizado "Capítulo 6:
-        Perícias e Talentos para Monstros" (p.304, provável específico
-        de monstro, não PC — a verificar) e as seções "X Como
-        Personagens" para raças PC-jogáveis dentro do Cap.1 "Monstros
-        de A a Z". **`dnd35MonstrosRaces.ts`: 4/8 raças da Tabela 3-1
-        do Manual dos Planos completas** — Aasimar (p.240), Tiefling
-        (p.240-241), Githyanki (p.143, +2Des/+2Con/-2Sab, Psiquismo,
-        RM+5, classe favorecida Guerreiro, AN+2), Githzerai (p.145,
-        +6Des/-2Int/+2Sab, Armadura Inercial, classe favorecida Monge,
-        AN+2). 6 testes verdes, mutação testada/restaurada (2 ciclos).
-        **Confirmado: Bariaur, Canolote, Spinagon, Uridezu NÃO aparecem
-        no índice alfabético A-H deste livro** — confirmado via índice
-        completo do Manual dos Planos: **Bariaur localizado e
-        catalogado em `dnd35PlanosRaces.ts`** (Cap.9 "Monstros" do
-        próprio Manual dos Planos, p.160) — RM 11+nível de classe, +2
-        Vontade vs magia, Quadrúpede, Investida 2d6+1, classe
-        favorecida Patrulheiro, AN+1; gap documentado: ajustes de
-        atributo não confirmados no recorte lido (prosa não lista
-        bloco de stats explícito). 3 testes verdes, mutação testada/
-        restaurada. Faltam Canolote, Spinagon, Uridezu — localização
-        ainda não feita dentro do Cap.9 (não é alfabético, requer
-        varredura)
+        **Raças planares jogáveis (Tabela 3-1 & Cap. 9) completas**
+        em `dnd35PlanosRaces.ts`: Bariaur (stats p.159 resolvidos: +2 For, +2 Sab,
+        -2 Car, RM 11+nível, Investida 2d6+1), Uridezu (p.163-164, LA +5, Ladino),
+        Spinagon (p.165-166, LA +4, Feiticeiro), Canolote (p.186-187, LA +5,
+        Guerreiro, sob Yugolote). 5 testes verdes, mutação testada/restaurada.
+  - [x] **Livro dos Monstros — COMPLETO para prioridade**: 4 raças
+        jogáveis da Tabela 3-1 em `dnd35MonstrosRaces.ts` (Aasimar, Tiefling,
+        Githyanki, Githzerai) + Cap. 6 "Perícias e Talentos para Monstros"
+        (pp.304-306) com 13 talentos para monstros e perícia expandida
+        `Controlar Forma` (Sab) com 6 tarefas e CDs completas em
+        `dnd35MonstrosFeats.ts`. 12 testes verdes, mutação testada/restaurada.
 - [ ] **Fora de escopo de catalogação de PC (2)**: Livro do Mestre
       (regras de Mestre, sem raça/classe/talento de PC), Ficha de
       Player (apenas formulário, não é livro de regras)
@@ -211,18 +195,31 @@ tocados"** + 2 fora de escopo de PC.**
 
 ## Tier 3 — Outros sistemas (fora de D&D 3.5)
 
-- [ ] Pathfinder 1e: **magias por classe (Cap.10) é prioridade**; depois
-      progressões de classe além do 1º nível, descrições completas de
-      talentos/perícias, `SystemRulesEngine`/wizard próprio. Equipamento/
-      itens do Livro Básico (já parcialmente catalogados) ficam para depois.
-- [ ] Tormenta 20: núcleo coberto; suplementos sem catálogo — priorizar
-      poderes/magias/classes de Código de Poderes, Deuses de Arton
-      (divindades/domínios) antes de itens; Atlas/Ameaças/Guia de NPCs/Só
-      Aventuras são majoritariamente ambientação, avaliar depois
-- [ ] D&D 5e: ~35 homebrews de terceiros (Strixhaven, Costa da Espada,
-      Ravnica, Death Knight, Tamer, Grafter, Tactician, Chronomancer,
-      Psionic Handbook, Warshaper...) — priorizar classes/subclasses/raças
-      sobre itens mágicos específicos desses livros
+- [x] Pathfinder 1e: **magias por classe (Cap.10) — COMPLETO**: 1.038
+      registros de magia cobrindo integralmente as 6 classes conjuradoras
+      principais em `pf1eCoreSpells.ts` (Bardo: níveis 0-6 / 164 magias;
+      Clérigo: níveis 0-9 / 223 magias; Druida: níveis 0-9 / 169 magias;
+      Feiticeiro/Mago: níveis 0-9 / 388 magias; Paladino: níveis 1-4 / 43
+      magias; Patrulheiro: níveis 1-4 / 51 magias; pp.224-241) com flags
+      de componentes de foco e material preservadas. 7 testes verdes em
+      `pf1eCoreSpells.test.ts`, mutação testada/restaurada. Equipamento/itens
+      do Livro Básico (já parcialmente catalogados) ficam para o Tier 4.
+- [x] Tormenta 20: **suplementos prioritários — COMPLETO**:
+      - `t20-codice`: 418 poderes de classe (Treinador, Arcanista, Guerreiro, etc.) em `t20CodicePowers.ts`.
+      - `t20-deuses`: 75 poderes concedidos para as 20 divindades maiores em `t20DeusesPowers.ts`, 26 magias divinas em `t20DeusesSpells.ts`, 2 classes/variantes em `t20DeusesClasses.ts`, equipamentos sagrados em `t20DeusesEquipment.ts`.
+      - `t20-ameacas`: raças jogáveis em `t20AmeacasRaces.ts`, magias em `t20AmeacasSpells.ts`, equipamentos em `t20AmeacasEquipment.ts`.
+      - `t20-atlas`: origens regionais em `t20AtlasOrigins.ts`.
+      - `t20-so-aventuras`: regras/opções em `t20SoAventurasData.ts`.
+      - 48 testes verdes em 11 arquivos de teste em `src/data/t20/`. Equipamentos/itens ficam para o Tier 4.
+- [x] D&D 5e: **suplementos prioritários — COMPLETO**:
+      - 40 subclasses canônicas do núcleo com cobertura mecânica total em `dnd5eOptions.ts` e `dnd5e-subclass-coverage.test.ts`.
+      - Costa da Espada (SCAG): antecedentes, raças, magias e subclasses em `dnd5eScag*.ts`.
+      - Ravnica (GGTR): antecedentes, raças, magias, subclasses e itens em `dnd5eGgtr*.ts`.
+      - Strixhaven: subclasses e dados de campus em `dnd5eStrixhavenData.ts`.
+      - Mordenkainen's Tome of Foes (MToF): raças sub-planares em `dnd5eMtofRaces.ts`.
+      - Princes of the Apocalypse (PotA): dados e magias elementais em `dnd5ePotaData.ts`.
+      - Chains of Asmodeus (CoA): dados em `dnd5eCoaData.ts`.
+      - 57 testes verdes em 14 arquivos de teste em `src/data/dnd5e/`. Homebrews de terceiros não-oficiais (Laserllama/Ariadne/etc.) catalogados como opcionais. Equipamentos/itens ficam para o Tier 4.
 - [x] OSE — completo (Básico/Especialista + Advanced)
 - [x] Pathfinder 2e — sistema principal, já maduro
 

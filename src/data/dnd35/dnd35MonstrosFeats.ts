@@ -60,7 +60,7 @@ export const DND35_MONSTROS_SKILL_CONTROLAR_FORMA: Dnd35MonstrosSkill = {
   tasks: [
     {
       task: "Evitar uma mudança involuntária (ao anoitecer na lua cheia ou ao perder cada 25% do total de PV)",
-      dc: 99,
+      dc: 25,
     },
     {
       task: "Voltar à forma original (durante a lua cheia)",
