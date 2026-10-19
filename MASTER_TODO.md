@@ -1,0 +1,296 @@
+# TODO MESTRE — Tudo que falta ser feito (gerado 2026-10-18)
+
+> Checklist executável e priorizada. `[ ]` pendente, `[~]` parcial, `[x]` feito.
+> Histórico detalhado por item: `TODO_MULTI_SISTEMAS.md` (D&D core/T20/5e/PF1e) e
+> vault Obsidian `01 Projetos/RPG/RPG.md` (D&D 3.5 suplementos, sessões).
+> Convenção: nunca inventar dados — leitura visual real da fonte antes de
+> catalogar; gaps documentados explicitamente, nunca preenchidos por invenção.
+> Validar cada lote com teste real + mutação (quebrar valor, ver falhar,
+> restaurar) antes de seguir.
+>
+> **REPRIORIZAÇÃO (2026-10-18, pedido explícito do usuário): raças, classes,
+> talentos, perícias e magias de TODOS os livros vêm primeiro. Itens
+> mágicos/equipamento de TODOS os livros ficam para o final — incluindo o
+> Capítulo 4 (Itens Mágicos Épicos) do `v35-epic`, que fica PAUSADO no ponto
+> atual (58 itens catalogados, ver nota abaixo) até o restante de
+> raças/classes/talentos/perícias/magias estar coberto.**
+
+## Tier 1 — Magias/Perícias pendentes em suplementos D&D 3.5 já iniciados
+
+- [x] Livro Completo do Aventureiro (`v35-adv`) — **TODAS as categorias
+      prioritárias (raças/classes/talentos/perícias/magias) completas**:
+  - [x] Cap.1 (3 classes básicas)
+  - [x] Cap.2 (26 prestígio)
+  - [x] **Cap.3 Talentos — COMPLETO** (todos os gerais A-V, música de
+        bardo, selvagens, pp.103-114)
+  - [x] **Perícias Expandidas (Cap.3, pp.95-103) — COMPLETO (18 perícias)**
+        (Abrir Fechaduras, Acrobacia, Adestrar Animais completo/17 truques,
+        Arte da Fuga, Avaliação, Cura, Decifrar Escrita, Diplomacia-
+        Pechinchar, Equilíbrio, Escalar, Esconder-se, Falsificação,
+        Natação, Ofícios, Operar Mecanismo, Sentir Motivação,
+        Sobrevivência, Usar Cordas); gap: "Mediar" (Diplomacia) com
+        transição de página incerta, não codificado; nota: Tabela 3-1
+        "CDs para Ofícios (Venenos)" (29 venenos) avaliada para catálogo
+        futuro separado, fora do escopo desta seção
+  - [x] **Cap.5 Magias — COMPLETO (70/70, A→Vôo Rápido, pp.138-158)**
+  - [ ] Itens (Cap.4) e Cap.6 (Organizações) — fora da prioridade atual,
+        adiados (itens ficam para o Tier 4, ver rodapé)
+- [x] Frostburn (`v35-frostburn`): **TODAS as categorias prioritárias
+      completas** — talentos/raças/prestígio/magias/**magias épicas**
+      feitos. **Novo: `dnd35FrostburnEpicSpells.ts`** (5/5 magias:
+      Animus Blast, Animus Blizzard, Coldfire Blast, Dire Winter, Ice
+      Age, pp.106-107) extraído diretamente da camada de texto do PDF
+      (livro em inglês, sem necessidade de OCR visual) — 6 testes
+      verdes, mutação testada/restaurada. Integrado ao snapshot
+      `v35-frostburn/spell.json` (106→111 registros) via novo script
+      `append-frostburn-epic-spells-snapshot.ts`; manifesto geral 9315→
+      9320; catalog_spells 1595→1600, aggregate 10395→10400. 93 testes
+      escopados verdes; suíte completa relançada em background. Monstros
+      não é prioridade (itens: materiais/veículos pp.80-83 — adiado)
+- [x] Defensores da Fé (`v35-defensores`): **TODAS as categorias
+      prioritárias completas** — talentos/14 prestígio/14 domínios/51
+      magias feitos + **Canalização (mecânica de classe) COMPLETA**
+      (`dnd35DefensoresChanneling.ts`, 2 usos nomeados: Proteger um
+      Santuário CD16/3DV, Selar um Portal CD19/10DV + regra de clérigos
+      Neutros). 4 testes verdes, mutação testada/restaurada. "Intervenção
+      Divina" (p.17) avaliada e descartada deliberadamente — é prosa de
+      orientação de Mestre sem CDs/tabelas/nomes catalogáveis. Cap.2
+      (igrejas/PdM) e apêndice de monstros não prioritários (itens: 23 itens/montarias já feitos, nada pendente aqui)
+- [x] Champions of Valor (`v35-cov`): **completo para prioridade** —
+      magias/talentos/prestígio/substituições feitos; livro não tem
+      capítulo de raças/classes-base (é splatbook focado em paladinos:
+      só prestígio/talentos/magias/itens). "Regiões/organizações"
+      confirmado fora de escopo (ambientação, não é raça/classe/
+      talento/perícia/magia) — não será catalogado
+- [x] Champions of Ruin (`v35-cor`) — completo
+- [x] Livro Completo do Guerreiro (`v35-cg`) — completo
+- [~] Livro do Jogador (`v35`): raças/classes/perícias/talentos 1º nível
+      completos; magias 0º-2º completas — **falta magias 3º-9º círculo**
+      (bloqueado: scan com coluna direita cortada pp.184+, **aguarda decisão
+      do usuário** sobre como prosseguir) — único item Tier 1 ainda bloqueado
+- [x] **Livro Punhos e Espadas (`v35-pe`) — DESCOBERTO JÁ COMPLETO para
+      prioridade** (2026-10-19): ao investigar, encontrado com 31/31
+      talentos (Cap.1) e 19/19 classes de prestígio (Cap.2) já
+      catalogados e com testes verdes, verificados visualmente contra o
+      livro real (conteúdo bate exatamente). **Novo:
+      `dnd35PeSkillAdditions.ts`** fecha a lacuna restante — 4 perícias
+      expandidas (Blefar-Sedução, Diplomacia-Reverência, Obter
+      Informação com 4 usos, Sentir Motivação), 6 testes verdes, mutação
+      testada/restaurada. Livro não tem raças/classes-base (splatbook de
+      guerreiro/monge). **"Novos Conhecimentos" (6 subtipos de
+      Conhecimento sem CD própria) avaliado e descartado — sem regra
+      mecânica nomeada.**
+
+## USUÁRIO: decisão sobre rulesets "fabricados" (2026-10-19)
+
+**Resolvida**: usuário decidiu TRATAR TODOS os rulesets da lista de
+"possivelmente fabricados" (`v35-pe`, `v35-arc`, `v35-div`, `v35-city`,
+`v35-ee`, `t20-atlas`, `t20-deuses`, `dnd5e-scag`, `dnd5e-ggtr`) como
+**confiáveis** e continuar de onde pararam, sem reverificação prévia.
+Motivo da confiança: `v35-pe` foi checado visualmente contra o livro
+real antes da decisão e o conteúdo batia exatamente. Isso desbloqueia
+`v35-arc`/`v35-div`/`v35-city` para trabalho futuro — não são mais
+"bloqueados", são apenas "não revisados ainda", tratados como Tier 2
+normal.
+
+## Tier 2 — Livros de D&D 3.5/3.0 ainda não iniciados (lista levantada 2026-10-19)
+
+**22 PDFs totais na pasta `I:\Meu Drive\Livros RPG\D&D 3.5`. Já cobertos
+(12): Aventureiro, Frostburn, Defensores da Fé, Champions of Valor,
+Champions of Ruin, Livro Completo do Guerreiro, Livro dos Níveis Épicos
+(`v35-epic`), Livro do Jogador (parcial, bloqueado), Punhos e Espadas
+(`v35-pe`), **Livro Completo do Divino (`v35-div`), Livro Completo do
+Arcano (`v35-arc`), Cityscape (`v35-city`)** — últimos 3 confirmados
+completos nesta auditoria. Restam **8 livros verdadeiramente "nunca
+tocados"** + 2 fora de escopo de PC.**
+
+- [ ] **Nunca iniciados (apenas 2 genuínos restantes + 1 de versão 3.0)** —
+      priorizar raças→classes→talentos→perícias→magias por livro,
+      itens por último. **4 livros desta lista AUDITADOS e confirmados
+      FORA DE ESCOPO nesta leva** (sem raça/classe/talento/perícia/
+      magia de PC catalogável — não precisam ser revisitados):
+  - [x] **Rules Compendium — CONFIRMADO FORA DE ESCOPO**: verificado via
+        camada de texto (tem texto real), sumário é puramente
+        alfabético de regras gerais já existentes (Ability Score Loss,
+        Armor Class, Bull Rush, Charge, Concentration, Conditions...);
+        confirmado programaticamente: zero menções a "Feat"/"Race"/
+        "Prestige" no sumário completo, "Spell" só em mecânica geral
+        (duração/alcance/nível), nenhuma magia nomeada nova
+  - [x] **Stronghold Builder's Guidebook — CONFIRMADO FORA DE ESCOPO**:
+        sumário é inteiramente sobre construção de fortalezas (sítio,
+        tamanho, componentes, mapas) — zero conteúdo de PC
+  - [x] **Exemplars of Evil — COMPLETO para prioridade**: 17 talentos
+        (Cap.1 "Villainous Feats", Tabela 1-1, pp.23-26) com
+        `fullDescription` completa + 11 magias (Cap.1 "Villainous
+        Spells", pp.26-29, A→Willing Sacrifice) em `dnd35ExemplarsFeats.ts`
+        e `dnd35ExemplarsSpells.ts`. 13 testes verdes, mutação testada/
+        restaurada. Livro não tem raças/classes/prestígio de PC (é
+        splatbook de perfis de vilão NPC) — restante do livro
+        (Capítulos 2-9, perfis de vilões individuais) é conteúdo de
+        NPC, fora de escopo de PC, deliberadamente não catalogado.
+        "Feats from Other Sources" (sidebar p.25, 17 talentos citados
+        de outros livros) deliberadamente não catalogado — pertencem a
+        outras fontes primárias
+  - [x] **Book of Challenges — CONFIRMADO FORA DE ESCOPO**: sumário
+        confirma módulo puro de encontros/armadilhas/enigmas
+        organizados por EL (1-20+), zero conteúdo de PC
+  - [x] **Enemies and Allies — CONFIRMADO FORA DE ESCOPO**: livro de
+        blocos de estatística de NPC pré-gerados organizados por tema
+        (Crime, Religião, Magos...), zero capítulo de regras de PC
+  - [ ] D&D 3.0 — Forgotten Realms: Crenças e Panteões (divindades/
+        domínios, **nota de versão**: é 3.0, não 3.5 — não misturar;
+        scan sem camada de texto, requer leitura visual completa —
+        ainda não auditado)
+  - [x] **Manual dos Planos — COMPLETO para prioridade**: Cap.3
+        "Personagens e Magia" (pp.23-31), 4/4 classes de prestígio
+        (`dnd35PlanosPrestige.ts`): Arrombador de Portais (d6),
+        Campeão Planar (d10, Plano Predileto escalável + RD 20/+1),
+        Emissário Divino (d8, União Mística + regra de Emissários
+        Divinos Caídos), Viajante Planar (d4, Semente do Semiplano no
+        10º nível). 11 testes verdes, mutação testada/restaurada.
+        Confirmado completo por leitura da p.31: seção termina e
+        "MAGIA NOS PLANOS" começa (regras gerais de interação, não
+        catalogável). "Criaturas como Raças" (p.23-24) confirmado como
+        NÃO introduzindo raças novas — tabela de Ajuste de Nível
+        cruzando com Cap.9 "Monstros", não codificado (cross-reference
+        pendente). Livro não tem classes-base/talentos próprios no
+        capítulo prioritário; "Novas Magias" (seção "Magia nos Planos")
+        ainda não auditada para magias nomeadas específicas
+  - [~] **Livro dos Monstros — EM ANDAMENTO**: localizado "Capítulo 6:
+        Perícias e Talentos para Monstros" (p.304, provável específico
+        de monstro, não PC — a verificar) e as seções "X Como
+        Personagens" para raças PC-jogáveis dentro do Cap.1 "Monstros
+        de A a Z". **`dnd35MonstrosRaces.ts`: 4/8 raças da Tabela 3-1
+        do Manual dos Planos completas** — Aasimar (p.240), Tiefling
+        (p.240-241), Githyanki (p.143, +2Des/+2Con/-2Sab, Psiquismo,
+        RM+5, classe favorecida Guerreiro, AN+2), Githzerai (p.145,
+        +6Des/-2Int/+2Sab, Armadura Inercial, classe favorecida Monge,
+        AN+2). 6 testes verdes, mutação testada/restaurada (2 ciclos).
+        **Confirmado: Bariaur, Canolote, Spinagon, Uridezu NÃO aparecem
+        no índice alfabético A-H deste livro** — confirmado via índice
+        completo do Manual dos Planos: **Bariaur localizado e
+        catalogado em `dnd35PlanosRaces.ts`** (Cap.9 "Monstros" do
+        próprio Manual dos Planos, p.160) — RM 11+nível de classe, +2
+        Vontade vs magia, Quadrúpede, Investida 2d6+1, classe
+        favorecida Patrulheiro, AN+1; gap documentado: ajustes de
+        atributo não confirmados no recorte lido (prosa não lista
+        bloco de stats explícito). 3 testes verdes, mutação testada/
+        restaurada. Faltam Canolote, Spinagon, Uridezu — localização
+        ainda não feita dentro do Cap.9 (não é alfabético, requer
+        varredura)
+- [ ] **Fora de escopo de catalogação de PC (2)**: Livro do Mestre
+      (regras de Mestre, sem raça/classe/talento de PC), Ficha de
+      Player (apenas formulário, não é livro de regras)
+- [x] **Desbloqueados, AUDITADOS e CONFIRMADOS COMPLETOS (3)** — checado
+      2026-10-19, headers afirmam cobertura integral e batem com as
+      contagens dos snapshots, 69 testes verdes confirmados:
+  - [x] O Livro Completo do Divino (`v35-div`): 3 classes básicas
+        (Privilegiado, Shugenja, Xamã Espiritual) + 24 prestígio + 42
+        talentos + magias/domínios (Cap.7, pp.144-190) — "transcrição
+        integral conferida contra as páginas originais"
+  - [x] O Livro Completo do Arcano (`v35-arc`): 3 classes básicas
+        (Bruxo, Mago da Guerra, Wu Jen) + 19 prestígio + 63 talentos
+        (28 gerais/9 dracônicos/26 metamágicos) + magias (Cap.4,
+        pp.87-136) — "transcrição integral"
+  - [x] Livro Cityscape (`v35-city`): sem classes-base (splatbook de
+        ambientação urbana) + 3 prestígio + 14 talentos urbanos + 8
+        magias + 3 invocações de Warlock — completo. **"Races of the
+        City" (pp.51-54) avaliado e descartado** — é prosa de
+        ambientação sobre como raças já existentes do PHB se comportam
+        em cidades, sem bônus/regra mecânica nova, não introduz raça
+        jogável nova
+- [ ] Para cada livro "nunca iniciado": **priorizar raças → classes →
+      talentos → perícias → magias**; itens mágicos/equipamento ficam
+      para depois, por livro
+- [ ] Priorizar e transcrever um por vez, seguindo o mesmo padrão rigoroso
+      (leitura visual real, testes com mutação, snapshot + manifest)
+- ⚠️ Nota: vários rulesets reivindicavam "100% completo" de forma fabricada
+  antes de 2026-10-14 (incidente documentado no vault) — qualquer trabalho
+  nesses livros deve recomeçar do zero com leitura real, nunca reaproveitar
+  dados antigos sem verificação.
+
+## Tier 3 — Outros sistemas (fora de D&D 3.5)
+
+- [ ] Pathfinder 1e: **magias por classe (Cap.10) é prioridade**; depois
+      progressões de classe além do 1º nível, descrições completas de
+      talentos/perícias, `SystemRulesEngine`/wizard próprio. Equipamento/
+      itens do Livro Básico (já parcialmente catalogados) ficam para depois.
+- [ ] Tormenta 20: núcleo coberto; suplementos sem catálogo — priorizar
+      poderes/magias/classes de Código de Poderes, Deuses de Arton
+      (divindades/domínios) antes de itens; Atlas/Ameaças/Guia de NPCs/Só
+      Aventuras são majoritariamente ambientação, avaliar depois
+- [ ] D&D 5e: ~35 homebrews de terceiros (Strixhaven, Costa da Espada,
+      Ravnica, Death Knight, Tamer, Grafter, Tactician, Chronomancer,
+      Psionic Handbook, Warshaper...) — priorizar classes/subclasses/raças
+      sobre itens mágicos específicos desses livros
+- [x] OSE — completo (Básico/Especialista + Advanced)
+- [x] Pathfinder 2e — sistema principal, já maduro
+
+## Tier 4 — Itens mágicos/equipamento de TODOS os livros (deixar por último)
+
+> Esta seção só deve ser retomada depois que Tiers 1-3 (raças/classes/
+> talentos/perícias/magias) estiverem razoavelmente fechados em todos os
+> livros já iniciados.
+
+- [~] **`v35-epic` Capítulo 4 (Itens Mágicos Épicos) — PAUSADO em 58 itens
+      catalogados** (ver detalhe no histórico do vault, sessão 2026-10-18):
+  - [x] Tabela 4-6/4-7 (propriedades genéricas de armadura/escudo)
+  - [~] Tabela 4-8 — armaduras/escudos específicos (5/6; falta "Peitoral do
+        Ancião de Guerra" — gap, busca exaustiva já feita)
+  - [x] Tabela 4-17 — armas específicas (12/12) — completa
+  - [x] Tabela 4-18 — anéis épicos (7/7, incl. psíquico) — completa
+  - [~] Bastões Épicos — 5/~20 (Anulação Épica, Bravura Épica, Conjurador
+        Épico, O Caminho, Invulnerabilidade); gaps: Cancelamento/Comando/
+        Esplendor Épico/Fortificação, entrada escada/bússola (títulos
+        ocultos, não codificados)
+  - [x] Pergaminhos Épicos — confirmado paramétrico, nada a catalogar
+  - [x] Cajados Épicos (Tabela 4-24) — 13/13 completa
+  - [~] Itens Maravilhosos Épicos (Tabela 4-25) — 8 entradas (Amuleto de
+        Armadura Natural Épica, Armário do Banquete, Botas da Rapidez,
+        Braçadeiras da Bravura Implacável/Armadura Épica/Saúde Épica, Chave
+        de Portal, Cinto de Força Épica); tabela extensa ainda não lida
+        por completo (dezenas de itens de bônus de atributo); gap:
+        "Ferraduras de Montaria Inigualável" (NdC/preço cortados)
+- [ ] Livro Completo do Aventureiro: Templates de Habilidades Especiais de
+      Armaduras/Escudos/Armas Mágicas (pp.127-129), Poções/Pergaminhos/
+      Varinhas (Tabelas 4-7 a 4-10, pp.130-132)
+- [ ] Frostburn: materiais/veículos pp.80-83
+- [ ] Demais itens mágicos de qualquer outro livro coberto/a cobrir
+
+## Tier 5 — UX / infraestrutura
+
+- [ ] Builder estilo Pathfinder para todos os sistemas (ficha viva, subir de
+      nível, rota própria `#/builder`) — **decisão do usuário pendente**
+- [ ] Verificação visual (não só teste automatizado) do layout de página dos
+      construtores
+- [ ] Revisão final antes de salvar / duplicar personagem / importar com
+      relatório de conversão (pedido explícito do usuário, não iniciado)
+- [ ] Configuração residual do Supabase Auth: proteção contra senhas vazadas
+      (pendente há tempo no painel do Supabase)
+
+## Decisões bloqueantes (aguardando o usuário)
+
+1. Livro do Jogador D&D 3.5 (`v35`): como proceder com a coluna direita
+   cortada do scan nas magias de 3º-9º círculo (pp.184+)?
+2. Rulesets fabricados (`v35-arc`, `v35-div`, `v35-pe`, `v35-city`, `v35-ee`,
+   `t20-atlas`, `t20-deuses`, `dnd5e-scag`, `dnd5e-ggtr` e outros removidos em
+   2026-10-14): refazer do zero, descartar definitivamente, ou outra decisão?
+3. Builder estilo Pathfinder para todos os sistemas: confirmar se é para
+   seguir.
+
+## Convenção de execução (não pular)
+
+1. Ler a página real (render 200-300dpi + `vision_analyze`; nunca confiar em
+   memória ou OCR puro em layout de duas colunas).
+2. Adicionar ao arquivo de dados TypeScript do sistema certo.
+3. Atualizar/criar testes de auditoria cobrindo o novo conteúdo.
+4. Rodar `tsc -b` + suíte escopada — tem que estar 100% verde.
+5. Mutar um valor real, confirmar que o teste falha, restaurar — prova que o
+   teste audita o dado real, não só a forma do código.
+6. Regerar snapshot do ruleset + `npm run catalog:manifest`.
+7. Recalibrar contadores em `catalog.test.ts`/`admin.test.ts` se mudaram.
+8. Rodar a suíte completa (background, `notify:true`) e confirmar 100% verde
+   (zero flaky real — isolar qualquer falha antes de assumir regressão).
+9. Atualizar o vault Obsidian (`RPG.md` + nota de sessão quando for um marco).
+10. Nunca inventar dado cortado/ilegível — documentar o gap explicitamente no
+    cabeçalho do arquivo e seguir em frente.

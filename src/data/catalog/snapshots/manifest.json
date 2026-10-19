@@ -104,7 +104,8 @@
     "ruleset": "v35-epic",
     "categories": {
       "feat": 154,
-      "spell": 15
+      "item": 58,
+      "spell": 43
     }
   },
   {
@@ -115,7 +116,7 @@
       "class": 10,
       "feat": 32,
       "item": 56,
-      "spell": 106,
+      "spell": 111,
       "weapon": 11
     }
   },

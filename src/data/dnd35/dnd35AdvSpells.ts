@@ -11,13 +11,11 @@
  * Transcrição por leitura visual direta de páginas renderizadas em alta
  * resolução (200dpi) — fonte é scan sem camada de texto.
  *
- * COBERTURA PARCIAL (primeiro lote, pp. 138-146): 17 magias com stat block
- * completo, da letra A à C (Abraçar a Natureza → Cajado Constritor em
- * ordem alfabética impressa no livro). O capítulo continua pelo menos até
- * a letra P/R (Pós-Cognição, Pupilo, Tempestade de Flechas, Transformação
- * Noturna, Velocidade Rápida e outras já vistas nas listas resumidas, mas
- * cujo stat block completo ainda NÃO foi lido/transcrito). NÃO inventar
- * dados para as magias faltantes — continuar a leitura em sessão futura.
+ * COBERTURA COMPLETA (pp.138-158): 70 magias com stat block completo,
+ * em ordem alfabética (Abraçar a Natureza → Vôo Rápido). Confirmado por
+ * leitura direta de p.158, onde "Vôo Rápido" é a última entrada da
+ * seção "Novas Magias", seguida do fim do capítulo — não há mais magias
+ * após essa letra.
  */
 
 export type Dnd35AdvSpellClassLevel = {

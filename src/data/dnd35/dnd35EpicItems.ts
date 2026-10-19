@@ -1,0 +1,786 @@
+/**
+ * D&D - Livro dos Níveis Épicos (D&D 3.5, tradução em português), Capítulo 4:
+ * Itens Mágicos Épicos, pp.124+. Itens épicos exigem Nível de Conjurador
+ * acima de 20 e os talentos épicos "Criar Armas e Armaduras Mágicas Épicas"
+ * / "Criar Item Maravilhoso Épico" (ver Capítulo 1: Talentos Épicos).
+ * Só dados verificados por leitura visual direta das páginas reais — nada
+ * inventado. Gaps documentados explicitamente quando o recorte lido estava
+ * incompleto.
+ *
+ * COBERTURA (lote 7, p.135, 32 entradas): **Tabela 4-18 (Anéis Épicos)
+ * 100% COMPLETA — 7/7 anéis** (6 regulares + Anel Psíquico Épico). A
+ * descrição em prosa (pp.135) confirma que a lista termina em "Fúria
+ * Caótica" seguida diretamente de "ITENS ÉPICOS PSÍQUICOS" (nova
+ * subseção, não uma continuação de anéis) — corrige a suposição do lote
+ * 3 de que restariam ~7 outros anéis genéricos (Imunidade Elemental,
+ * Mal Infalível, Refúgio de Item, Pele de Ferro, Proteção Épica +6-10,
+ * Imunidade Elemental Universal): esses nomes não existem como entradas
+ * de anel separadas nesta seção do livro — a lista real tem apenas 6
+ * anéis regulares + 1 psíquico, todos já transcritos.
+ *
+ * CORREÇÃO DE ERROS PRÓPRIOS (lote 8, releitura 300dpi de p.128-129):
+ * "Armadura de Couro de Dragão" e "Armadura do Batalhão Celestial"
+ * tinham preços e NdC TROCADOS entre si no lote 1 (erro de leitura em
+ * baixa resolução), e a descrição de Batalhão Celestial estava
+ * parcialmente ilegível/garbled ("pinta em branco com um tom firo que
+ * leve", "Ela não rouba qualquer presença" — texto sem sentido,
+ * substituído pela leitura correta: visão divinatória ilimitada +
+ * círculo mágico contra o mal permanente). "Armadura Antimagia" também
+ * corrigida (preço 871.570→871.500 PO, custo de criação adicionado,
+ * pré-requisito "dissipar magia aprimorado ou milagre" em vez de
+ * "dissipar magia" genérico, descrição com +3 de bônus de melhoria
+ * NATURAL em vez de "na Classe de Armadura"). Gap residual: o preço de
+ * mercado exato de Couro de Dragão tem os primeiros dígitos cortados
+ * pela curvatura física da página digitalizada — documentado como
+ * "...4.550 PO", não inventado. Gap persistente: "Peitoral do Ancião de
+ * Guerra" (Tabela 4-8, armaduras, ainda não localizado apesar de
+ * múltiplas buscas nas pp.124-129).
+ *
+ * COBERTURA (lote 9, p.137, 34 entradas): início da seção "BASTÕES"
+ * (Tabela 4-19: Bastões Épicos, 20 entradas percentuais 01-100,
+ * incluindo 10 variantes de material do bastão "Ancião"). 2 bastões com
+ * descrição completa: Anulação Épica (anula funções mágicas de itens,
+ * ataque de toque a distância, 75% de chance, 3x/dia) e Bravura Épica
+ * (bastão de grande poder adamantino, 6 botões, dominar pessoas/
+ * atordoar/dano 10d8, forma alternativa de 4 armas diferentes, trave de
+ * escalada mundana). Gap documentado: preço de mercado de "Bravura
+ * Épica" não aparece impresso na própria descrição nem foi localizado
+ * com certeza na Tabela 4-19 (nomes não batem exatamente) — não
+ * inventado. Restam ~16 bastões da Tabela 4-19 sem descrição completa
+ * transcrita. Próximo: continuar Bastões, depois Pergaminhos, Cajados,
+ * Itens Maravilhosos.
+ *
+ * COBERTURA (lote 11, p.139, 37 entradas): "O Caminho" (bastão
+ * exploratório — telescópio com visão triplicada + visão da verdade,
+ * Mapa, Passagem, Ponte, Passos sem Pegadas, 306.870 PO — confirma e
+ * corrige a atribuição anterior) e "Invulnerabilidade" (+3 armadura
+ * natural, +5 resistência, RD 50/+3, imunidade a sucessos decisivos,
+ * 600.000 PO) adicionados completos, ambos com preço cruzado e
+ * confirmado contra a Tabela 4-19. **Correção de atribuição do lote 10:**
+ * as funções de escada/arrombar porta e bússola magnética (NdC30,
+ * 4.293.432 PO) descritas no final da p.138 NÃO pertencem a "O Caminho"
+ * — o preço 306.870 PO de "O Caminho" bate exatamente com as habilidades
+ * de telescópio/mapa/ponte/passos sem pegadas lidas nesta página, não
+ * com a escada/bússola. A escada/bússola pertence a uma entrada ainda
+ * não identificada com certeza (possivelmente uma variante "Ancião",
+ * dado o preço alto) — permanece como gap, não codificada. "Cancelamento
+ * Épico"/"Comando Épico"/"Esplendor Épico"/"Fortificação" continuam como
+ * gaps (títulos ocultos entre entradas adjacentes, mesmo padrão de
+ * "Lâmina da Tempestade"). Gap persistente: "Peitoral do Ancião de
+ * Guerra".
+ *
+ * SEÇÃO "BASTÕES" ENCERRADA em algum ponto entre p.139-140 (a p.140
+ * inicia "ITENS ÉPICOS: PERGAMINHOS" com Tabelas 4-20/4-21/4-22,
+ * conteúdo inteiramente paramétrico — tipo de pergaminho, nível de
+ * magia x NdC x preço, nível real de magia com ajuste metamágico — não
+ * catalogável, mesmo padrão já visto no Cap.2 e nas tabelas de armas/
+ * armaduras genéricas deste capítulo). Gaps remanescentes de Bastões
+ * NÃO FECHADOS (Cancelamento Épico, Comando Épico, Esplendor Épico,
+ * Fortificação, entrada escada/bússola, Peitoral do Ancião de Guerra da
+ * Tabela 4-8) ficam como trabalho pendente para investigação futura; a
+ * seção avança para Pergaminhos nomeados específicos (se existirem).
+ *
+ * COBERTURA (lote 12, pp.142-143, 50 entradas): **Tabela 4-24 (Cajados
+ * Épicos) 13/13 COMPLETA** — Esferas, Energia Poderosa, Muralhas,
+ * Inverno, Barragem Rápida, Bravura Extra-Planar, Dominação, Poder
+ * Flamejante, Fúria da Natureza, Hierofantes, Cosmos, Necromancia. A
+ * seção "Pergaminhos" (p.140-141) é inteiramente paramétrica (Tabela
+ * 4-20/4-21/4-22/4-23: tipo/nível/preço/ajuste metamágico de pergaminho
+ * aleatório) — não catalogável como item nomeado, confirmado por
+ * leitura completa, nenhum pergaminho específico com nome próprio
+ * encontrado nessas páginas. Gaps documentados (não inventados):
+ * "Prisma" (confirmado pela Tabela 4-24, preço 326.812 PO, mas
+ * descrição completa não localizada nas pp.142-143 lidas); "Poder
+ * Flamejante" tem a descrição completa mas o Nível de Conjurador/
+ * pré-requisitos exatos não foram isolados com certeza no recorte (lista
+ * de magias do corpo da descrição confirma o conteúdo mecânico). Gaps
+ * persistentes do Capítulo 4: Bastões Cancelamento/Comando/Esplendor
+ * Épico/Fortificação (títulos ocultos), entrada escada/bússola, Peitoral
+ * do Ancião de Guerra. Próximo: Itens Maravilhosos (maior seção restante
+ * do capítulo).
+ *
+ * COBERTURA (lote 13, p.144, 56 entradas): **GAP "Prisma" FECHADO**
+ * (cajado de cristal, 1,80m, esfera/rajada/muralha prismática
+ * estendidas, NdC21, 326.812 PO — confirmado contra a Tabela 4-24).
+ * Início de "ITENS MARAVILHOSOS" com 6 entradas completas: Amuleto de
+ * Armadura Natural Épica, Armário do Banquete (comida ilimitada para 20
+ * pessoas), Botas da Rapidez (+6 Destreza, deslocamento dobrado,
+ * velocidade 3x/dia), Braçadeiras da Bravura Implacável (+12 Força/
+ * Constituição, ignora tamanho), Braçadeiras da Armadura Épica (+11 CA
+ * ou mais), Braçadeiras da Saúde Épica (+12 Constituição ou mais). Nota
+ * de impressão preservada: "Braçadeiras da Armadura Épica" tem um valor
+ * de preço (+13) menor que o de (+12) na tabela impressa — inconsistente
+ * com a escala crescente das demais entradas, documentado literalmente
+ * no campo, não corrigido/inventado. Gaps persistentes: Bastões
+ * Cancelamento/Comando/Esplendor Épico/Fortificação, entrada escada/
+ * bússola, "Peitoral do Ancião de Guerra". Próximo: continuar Itens
+ * Maravilhosos (seção extensa, muito conteúdo restante).
+ *
+ * COBERTURA (lote 14, pp.144-145, 58 entradas): "Chave de Portal"
+ * (conclusão — sintoniza até 60 localidades visitadas, invisível sem a
+ * chave) e "Cinto de Força Épica" (+8 a +12 de Força) adicionados
+ * completos. Tabela 4-25 (Itens Maravilhosos Épicos) localizada na p.145
+ * — tabela extensa com dezenas de itens de bônus de atributo variável
+ * (Cinto de Força, Manto de Resistência, Braçadeiras de Saúde/Armadura,
+ * Manto de Carisma, Luvas de Destreza, Tiara do Intelecto, Periapto da
+ * Sabedoria, Amuleto de Armadura Natural — cada um em múltiplos graus de
+ * bônus +6 a +12+), ainda não totalmente lida. "Ferraduras de Montaria
+ * Inigualável" tem descrição parcialmente lida (RM32 contra
+ * encantamento, dobra deslocamento, concede talentos de montaria) mas
+ * NdC/preço cortados — gap, não codificado. Gaps persistentes: Bastões
+ * Cancelamento/Comando/Esplendor Épico/Fortificação, entrada escada/
+ * bússola, "Peitoral do Ancião de Guerra".
+ */
+export type Dnd35EpicItem = {
+  id: string;
+  name: string;
+  category: "armor ability" | "specific armor" | "weapon ability" | "specific weapon" | "wondrous item" | "ring" | "rod" | "staff";
+  casterLevel: string;
+  prerequisites?: string;
+  marketPrice?: string;
+  /** Bônus de propriedade de armadura/arma (quando aplicável, ex: "+6 de bônus"). */
+  bonusPrice?: string;
+  description: string;
+  page: number;
+};
+
+export const DND35_EPIC_ITEMS: Dnd35EpicItem[] = [
+  {
+    id: "epic-item-protecao-contra-o-fogo",
+    name: "Proteção Contra o Fogo",
+    category: "armor ability",
+    casterLevel: "21º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, proteção contra elementos",
+    bonusPrice: "+6 de bônus",
+    description:
+      "A armadura ou um escudo com essa propriedade tem uma tonalidade avermelhada e fortemente adornada com padrões de fogo. A armadura absorve os 50 primeiros pontos de dano de fogo infligidos ao usuário a cada rodada (similar à proteção contra elementos).",
+    page: 128,
+  },
+  {
+    id: "epic-item-protecao-contra-o-frio",
+    name: "Proteção Contra o Frio",
+    category: "armor ability",
+    casterLevel: "21º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, proteção contra elementos",
+    bonusPrice: "+6 de bônus",
+    description:
+      "A armadura ou um escudo com essa propriedade tem uma tonalidade esbranquiçada e gelo e adornada com padrões de frio. A armadura absorve os 50 primeiros pontos de dano de frio infligidos ao usuário a cada rodada (similar à proteção contra elementos).",
+    page: 128,
+  },
+  {
+    id: "epic-item-reflexao-maior",
+    name: "Reflexão Maior",
+    category: "armor ability",
+    casterLevel: "25º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, reverter magia",
+    bonusPrice: "+10 de bônus",
+    description:
+      "Esse escudo épico é totalmente reflexivo. Sempre que o usuário retornar atacado por uma magia, uma magia divina retorna ao conjurador (idêntico à magia reverter magia). O usuário pode escolher desativar o efeito uma vez livre (por rodada) sob efeitos de magias benéficas que desejar.",
+    page: 128,
+  },
+  {
+    id: "epic-item-resistencia-a-magia-maior",
+    name: "Resistência à Magia Maior",
+    category: "armor ability",
+    casterLevel: "21º (RM 21), 22º (RM 23), 24º (RM 25), 27º (RM 27)",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, resistência a magias",
+    bonusPrice: "+6 (RM 21), +7 (RM 23), +8 (RM 25), +9 (RM 27)",
+    description:
+      "Essa armadura épica concede a habilidade Resistência à Magia ao usuário. A RM varia entre 21, 23, 25 ou 27, conforme o bônus da armadura.",
+    page: 128,
+  },
+  {
+    id: "epic-item-armadura-de-couro-de-dragao",
+    name: "Armadura de Couro de Dragão",
+    category: "specific armor",
+    casterLevel: "24º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, proteção contra elementos, alterar forma",
+    marketPrice: "...4.550 PO (primeiro(s) dígito(s) cortado(s) pela curvatura física da página no recorte lido — não inventado); custo de criação: 283.250 PO + 15.629 XP",
+    description:
+      "Esta armadura de batalha +5 é fabricada com o couro de um grande ancião. Com um único comando do usuário, a armadura expele enormes rajadas de energia, permitindo deslocamento aéreo de 27 m (deslocamento) durante um período total de 4 horas por dia. A armadura concede resistência de um tipo específico ao material e cor correspondente ao tipo de dragão usado na armadura, de acordo com a tabela ao lado (coluna de cor/imunidade): Preto/ácido, Azul/eletricidade, Latão/fogo, Bronze/eletricidade, Cobre/ácido, Ouro/fogo, Verde/ácido, Vermelho/fogo, Prata/frio, Branco/frio.",
+    page: 128,
+  },
+  {
+    id: "epic-item-armadura-do-batalhao-celestial",
+    name: "Armadura do Batalhão Celestial",
+    category: "specific armor",
+    casterLevel: "20º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, o criador deve ser Bom, círculo mágico contra o mal",
+    marketPrice: "616.300 PO; custo de criação: 308.300 PO + 16.160 XP",
+    description:
+      "Esta cota de malha +7 em prata ou ouro brilhante é tão fina e leve que pode ser usada sob as roupas normais sem revelar sua presença, embora a maioria dos usuários use-a abertamente com orgulho. Ela tem um bônus máximo de Destreza de +10, nenhuma penalidade de armadura e 10% de chance de falha arcana. É considerada uma armadura leve e permite que o usuário conjure visão divinatória (idêntico à magia) sem limite diário. Além disso, o usuário está sempre sob os efeitos de um círculo mágico contra o mal (idêntico à magia) que, caso seja neutralizado ou dissipado, poderá ser reativado como uma ação livre.",
+    page: 128,
+  },
+  {
+    id: "epic-item-armadura-antimagia",
+    name: "Armadura Antimagia",
+    category: "specific armor",
+    casterLevel: "21º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, dissipar magia aprimorado ou milagre",
+    marketPrice: "871.500 PO; custo de criação: 436.500 PO + 18.700 XP",
+    description:
+      "Esta armadura de batalha de invulnerabilidade e anulação +1 foi forjada com adamante (portanto, concede +3 de bônus de melhoria natural). A armadura impõe -5 de penalidade nos testes de dissipar magias realizados contra ela ou seu usuário.",
+    page: 128,
+  },
+  {
+    id: "epic-item-armadura-da-horda-abissal",
+    name: "Armadura da Horda Abissal",
+    category: "specific armor",
+    casterLevel: "20º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, o criador deve ser Mau, drenar energia",
+    marketPrice: "385.260 PO; custo de criação: 385.260 PO + 17.660 XP",
+    description:
+      "Este armadura de batalha +6 carmesim e negra é forjada de forma que o usuário tenha uma aparência demoníaca. O elmo tem o formato da cabeça de um demônio com chifres; o usuário enxerga através de uma abertura semelhante a uma boca, repleta de dentes. As manoplas garras da armadura são efetivamente armas afiadas +4 (dano 1d10; dec. 19–20) que impõem os efeitos da magia drenar energia sobre as vítimas atingidas (Fortitude anula, CD 23). A armadura impõe dois níveis negativos a qualquer criatura Neutra ou Boa (mas não maligna) que a vestir. Estes níveis negativos persistem enquanto a armadura for usada e desaparecem quando ela é removida. Os níveis negativos nunca reduzem definitivamente o nível do personagem, mas não podem ser superados de qualquer maneira (incluindo magias de restauração) enquanto a armadura estiver sendo usada.",
+    page: 129,
+  },
+  {
+    id: "epic-item-armadura-do-metamorfo",
+    name: "Armadura do Metamorfo",
+    category: "specific armor",
+    casterLevel: "21º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, habilidades de alterar forma ou forma selvagem",
+    marketPrice: "200.165 PO; custo de criação: 200.165 PO + 14.000 XP",
+    description:
+      "Esse gibão de peles +6 mantém seu bônus total na Classe de Armadura independente da forma que o usuário adotar (por meio de metamorfosear-se, alterar forma, forma selvagem ou habilidades similares).",
+    page: 129,
+  },
+  {
+    id: "epic-item-baluarte-do-grande-dragao",
+    name: "Baluarte do Grande Dragão",
+    category: "specific armor",
+    casterLevel: "23º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, sombras, proteção contra elementos",
+    marketPrice: "1.612.980 PO",
+    description:
+      "Este escudo grande +6 é fabricado a partir das escamas de um grande ancião de qualquer cor de dragão, e ostenta a cabeça do dragão esculpida na face do escudo. Três vezes por dia, o usuário do escudo pode ativá-lo para expelir um sopro de dragão idêntico ao tipo de escudo de dragão escolhido (consulte a tabela a seguir). Além disso, o usuário tem resistência de 50 a um tipo de energia correspondente ao dragão do escudo. Para determinar a cor do escudo de dragão, jogue 1d8 e consulte a tabela: 1-10 Preto (ácido), 11-30 Azul (eletricidade), 31-40 Latão (fogo), 41-55 Bronze (eletricidade), 56-62 Cobre (ácido), 63-70 Ouro (fogo), 71-80 Verde (cone de gás corrosivo/ácido), 81-90 Vermelho (cone de fogo), 91-100 Prata (cone de frio).",
+    page: 129,
+  },
+  {
+    id: "epic-item-anel-de-protecao-epica",
+    name: "Anel de Proteção Épica",
+    category: "ring",
+    casterLevel: "20º",
+    prerequisites: "Forjar Anel, Forjar Anel Épico, escudo da fé; o nível de conjurador do criador precisa ser o triplo do bônus ao anel",
+    marketPrice: "720.000 PO (+6), 980.000 PO (+7), 1.280.000 PO (+8), 1.620.000 PO (+9), 2.000.000 PO (+10)",
+    description:
+      "Este anel oferece proteção mágica contínua, na forma de +6 de bônus de deflexão na Classe de Armadura ou maior.",
+    page: 135,
+  },
+  {
+    id: "epic-item-anel-arcano-epico",
+    name: "Arcano Épico",
+    category: "ring",
+    casterLevel: "23º (anel arcano épico V), 26º (anel arcano épico VI), 29º (anel arcano épico VII), 32º (anel arcano épico VIII), 35º (anel arcano épico IX)",
+    prerequisites: "Forjar Anel, Forjar Anel Épico",
+    marketPrice: "250.000 PO (V), 360.000 PO (VI), 490.000 PO (VII), 640.000 PO (VIII), 810.000 PO (IX)",
+    description:
+      "Semelhante ao anel arcano, este anel especial é encontrado em diversas categorias, úteis somente para conjuradores arcanos. As magias arcanas diárias do usuário são dobradas para um nível de magia específico. Um anel arcano épico V dobra as magias de 5º nível, um anel arcano épico VI dobra as magias de 6º nível, um anel arcano épico VII dobra as magias de 7º nível, um anel arcano épico VIII dobra as magias de 8º nível e um anel arcano épico IX dobra as magias de 9º nível. As magias adicionais provenientes de valores elevados de habilidade, especialização em escola ou qualquer outra fonte não são afetadas.",
+    page: 135,
+  },
+  {
+    id: "epic-item-anel-bem-virtuoso",
+    name: "Bem Virtuoso",
+    category: "ring",
+    casterLevel: "15º",
+    prerequisites: "Forjar Anel, Forjar Anel Épico, aura sagrada, o criador deve ser Bom",
+    marketPrice: "250.000 PO; custo de criação: 125.000 PO + 12.500 XP",
+    description:
+      "O usuário deste anel de ouro puro está constantemente envolto em um efeito de aura sagrada. Ele impõe um nível negativo a qualquer criatura Má que utilizá-lo. Este nível negativo persiste enquanto ele estiver sendo usado e desaparece quando o portador largá-lo. O nível negativo nunca reduz definitivamente o nível do personagem, mas não pode ser superado de qualquer maneira (incluindo magias de restauração) enquanto o anel estiver sendo usado.",
+    page: 135,
+  },
+  {
+    id: "epic-item-anel-cura-rapida",
+    name: "Cura Rápida",
+    category: "ring",
+    casterLevel: "20º",
+    prerequisites: "Forjar Anel, Forjar Anel Épico, regeneração",
+    marketPrice: "300.000 PO",
+    description:
+      "O usuário deste anel de ossos adquire Cura Acelerada 3; ele afeta somente criaturas vivas. O anel deve ser usado durante 24 horas para que o poder se ative; caso seja removido, não funcionará novamente até que seja utilizado durante mais 24 horas pelo mesmo indivíduo.",
+    page: 135,
+  },
+  {
+    id: "epic-item-anel-estilhacador",
+    name: "Estilhaçador",
+    category: "ring",
+    casterLevel: "20º",
+    prerequisites: "Forjar Anel, Forjar Anel Épico, corpo de ferro, despedaçar",
+    marketPrice: "600.000 PO; custo de criação: 300.000 PO + 16.000 XP",
+    description:
+      "Um anel estilhaçador é similar a um anel de pele de ferro, mas tem uma habilidade adicional. Qualquer arma que golpear o usuário deve obter sucesso em um teste de resistência de Fortitude (CD 20) ou será estilhaçada em vários pedaços.",
+    page: 135,
+  },
+  {
+    id: "epic-item-weaponability-rompimento-maior",
+    name: "Rompimento Maior",
+    category: "weapon ability",
+    casterLevel: "21º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, palavra sagrada",
+    bonusPrice: "+8 de bônus",
+    description:
+      "Similar a uma arma de rompimento, este tipo de encantamento é a ruína dos morto-vivos. Qualquer morto-vivo atingido por esta arma deve obter sucesso em um teste de resistência de Fortitude (CD 21) ou será destruído. Uma arma de rompimento maior deve ser uma arma de concussão. Caso obtenha esta habilidade aleatoriamente para armas perfurantes ou cortantes, jogue de novo.",
+    page: 133,
+  },
+  {
+    id: "epic-item-weaponability-precisao-sobrenatural",
+    name: "Precisão Sobrenatural",
+    category: "weapon ability",
+    casterLevel: "21º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, visão da verdade",
+    bonusPrice: "+6 de bônus",
+    description:
+      "Uma arma de precisão sobrenatural ignora qualquer bônus de cobertura ou camuflagem (exceto cobertura ou camuflagem total) do alvo.",
+    page: 133,
+  },
+  {
+    id: "epic-item-weaponability-tiro-longinquo",
+    name: "Tiro Longínquo",
+    category: "weapon ability",
+    casterLevel: "21º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, ressurreição verdadeira",
+    bonusPrice: "+6 de bônus",
+    description:
+      "Uma arma de tiro longínquo pode ser disparada contra qualquer alvo na linha de visão do usuário, sem penalidades devido à distância.",
+    page: 133,
+  },
+  {
+    id: "epic-item-arauto-do-caos",
+    name: "Arauto do Caos",
+    category: "specific weapon",
+    casterLevel: "23º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, emoções, enfeitiçar multidões",
+    marketPrice: "4.025.350 PO; custo de criação: 2.012.850 PO + 50.250 XP",
+    description:
+      "Este machado grande de poder do caos +6 fornece ao usuário a habilidade de entrar em fúria (idêntica à fúria do bárbaro) uma vez por dia ou uma vez adicional por dia caso o usuário já possuir essa característica de classe. Se o usuário tiver a habilidade de classe fúria maior, a arma concede o talento épico Incitar Fúria.",
+    page: 133,
+  },
+  {
+    id: "epic-item-arco-elfico-superior",
+    name: "Arco Élfico Superior",
+    category: "specific weapon",
+    casterLevel: "23º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, força do touro, visão da verdade",
+    marketPrice: "2.900.400 PO (custo de criação com valor de XP não visível no recorte lido — não inventado)",
+    description:
+      "Nas mãos de qualquer criatura, este arco é apenas um arco composto +2. Nas mãos de um elfo, esta arma funciona como um arco longo composto reforçado com +5 de precisão sobrenatural. Sua \"corda\" (que define o bônus de força de característica reforçado) se adapta à Força de qualquer usuário élfico. Além disso, quaisquer flechas disparadas do arco são consideradas afiadas, independente do bônus de melhoria da munição.",
+    page: 133,
+  },
+  {
+    id: "epic-item-atacante-furtiva",
+    name: "Atacante Furtiva",
+    category: "specific weapon",
+    casterLevel: "21º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, infligir ferimentos moderados",
+    marketPrice: "770.310 PO; custo de criação: 385.310 PO + 17.700 XP",
+    description:
+      "Esta espada curta +6 adiciona +2d6 ao dano do ataque furtivo do usuário. Se o usuário não possuir a habilidade de classe ataque furtivo, esta arma não a concede.",
+    page: 133,
+  },
+  {
+    id: "epic-item-bordao-da-alacridade",
+    name: "Bordão da Alacridade",
+    category: "specific weapon",
+    casterLevel: "21º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, proteção contra flechas, escudo arcano",
+    marketPrice: "462.600 PO; custo de criação: 231.600 PO + 14.620 XP",
+    description:
+      "As duas extremidades deste bordão da velocidade +5 possuem os mesmos bônus de melhoria e habilidades especiais, permitindo um ataque adicional com cada extremidade a cada rodada. Enquanto o usuário empunhar o bordão da alacridade, a arma fornece ao usuário bônus de resistência nos testes de resistência de Reflexos, também desvia armas de ataque à distância como se o usuário tivesse os talentos Desviar Objetos e Deflexão Infinita.",
+    page: 134,
+  },
+  {
+    id: "epic-item-corrente-de-reflexos-rapidos",
+    name: "Corrente de Reflexos Rápidos",
+    category: "specific weapon",
+    casterLevel: "23º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, animar objetos, velocidade, escudo arcano (ou escudo divino)",
+    marketPrice: "5.220.325 PO; custo de criação: 2.610.325 PO + 52.200 XP",
+    description:
+      "Esta corrente com dançarina eterna, defensora, da velocidade +4 se debate constantemente nas mãos do usuário, como se estivesse pronta para atacar ou (ou defender) por vontade própria. O portador da corrente de reflexos rápidos pode utilizá-la para realizar qualquer quantidade de ataques de oportunidade a cada rodada (ou se tivesse o talento Reflexos de Combate Aprimorados).",
+    page: 134,
+  },
+  {
+    id: "epic-item-devastadora-sagrada",
+    name: "Devastadora Sagrada",
+    category: "specific weapon",
+    casterLevel: "23º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, aura sagrada, destruição sagrada, palavra sagrada",
+    marketPrice: "4.620.315 PO; custo de criação: 2.310.315 PO + 56.200 XP",
+    description:
+      "Nas mãos de qualquer personagem, esta arma é uma espada longa sagrada +3. Nas mãos de um paladino, esta arma funciona como uma espada longa de poder sagrado +7 e concede +5 de bônus sagrado nos testes de resistência do portador contra magias que tenham o descritor [Mal] ou sejam conjuradas por personagens malignos. Se o paladino utilizar a habilidade destruir o mal com a devastadora sagrada, ele adiciona o dobro de seu nível de paladino ao dano (em vez de seu nível de paladino).",
+    page: 134,
+  },
+  {
+    id: "epic-item-maca-da-ruina",
+    name: "Maça da Ruína",
+    category: "specific weapon",
+    casterLevel: "21º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, desintegrar",
+    marketPrice: "1.000.312 PO; custo de criação: 500.312 PO + 20.000 XP",
+    description:
+      "Esta maça pesada +7 ignora a dureza ou a Redução de Dano de qualquer objeto ou criatura que atingir. Além disso, a maça é capaz de considerar os sucessos decisivos infligidos a objetos e construtos como se fossem criaturas vivas.",
+    page: 134,
+  },
+  {
+    id: "epic-item-morte-definitiva",
+    name: "Morte Definitiva",
+    category: "specific weapon",
+    casterLevel: "22º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, proteção contra energia negativa, viagem planar, o criador deve ser capaz de expulsar mortos-vivos",
+    marketPrice: "3.580.308 PO; custo de criação: 1.790.308 PO + 45.800 XP",
+    description:
+      "Esta maça estrela do toque espectral e aterradora dos mortos-vivos +5 concede ao usuário imunidade contra os efeitos de drenar energia. Além disso, ele adquire o talento Aura de Energia Positiva.",
+    page: 134,
+  },
+  {
+    id: "epic-item-lamina-da-tempestade",
+    name: "Lâmina da Tempestade",
+    category: "specific weapon",
+    casterLevel: "21º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, cegueira/surdez, convocar relâmpago ou relâmpago, controlar ventos, vôo, proteção contra elementos",
+    marketPrice: "235.350 PO; custo de criação: 117.850 PO + 12.350 XP",
+    description:
+      "Esta espada larga trovejante, de explosão elétrica +4 permite que seu usuário conjure vôo sem limite diário (idêntico à magia). Além disso, ele pode movimentar-se normalmente (incluindo o deslocamento de vôo) em meio a ventos de qualquer intensidade. Quando a arma estiver desembainhada, o usuário adquire resistência a eletricidade 30 e resistência sônica 30.",
+    page: 134,
+  },
+  {
+    id: "epic-item-espoliadora-profana",
+    name: "Espoliadora Profana",
+    category: "specific weapon",
+    casterLevel: "23º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, blasfêmia, aura profana, nuvem profana",
+    marketPrice: "4.650.315 PO; custo de criação: 2.325.315 PO + 56.500 XP",
+    description:
+      "Nas mãos de qualquer personagem, esta arma é uma espada longa profana +3. Nas mãos de um algoz, esta arma funciona como uma espada longa de poder profano +7 e concede +5 de bônus profano nos testes de resistência do portador contra magias que tenham o descritor [Bem] ou sejam conjuradas por personagens bondosos. Se o algoz utilizar a habilidade destruir o bem com uma espoliadora profana, ele adiciona o dobro do seu nível de algoz ao dano (em vez de seu nível de algoz).",
+    page: 134,
+  },
+  {
+    id: "epic-item-prisao-da-alma",
+    name: "Prisão da Alma",
+    category: "specific weapon",
+    casterLevel: "27º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, prisão",
+    marketPrice: "1.856.500 PO; custo de criação: 934.500 PO + 28.440 XP",
+    description:
+      "Esta arma terrível é inscrita com runas e símbolos verdes e brilhantes, e ostenta uma pérola preto azeviche em sua empunhadura. A prisão da alma é uma espada longa afiada +6; em vez de causar dano adicional em um sucesso decisivo, ela aprisiona a vítima em uma gema incrustada no cabo da espada, idêntico à magia prisão Elevada para 16º nível (CD 30). O mesmo ocorrerá em qualquer golpe que mataria ou deixaria um adversário inconsciente. Somente uma criatura pode ser aprisionada na arma simultaneamente e o usuário é capaz de libertar qualquer criatura aprisionada com uma palavra de comando.",
+    page: 134,
+  },
+  {
+    id: "epic-item-sorvedouro-de-almas",
+    name: "Sorvedouro de Almas",
+    category: "specific weapon",
+    casterLevel: "21º",
+    prerequisites: "Criar Armas e Armaduras Mágicas, Criar Armas e Armaduras Mágicas Épicas, Foco em Magia (necromancia), drenar energia",
+    marketPrice: "478.335 PO; custo de criação: 239.315 PO + 14.780 XP",
+    description:
+      "Esta espada bastarda +5 impõe 2d6 níveis negativos contra as vítimas que sofrerem dano proveniente de seus ataques, com efeitos similares a magia drenar energia. Cada nível negativo concede 5 pontos de vida temporários ao usuário. Um dia após ser atingido, o alvo deve realizar um teste de resistência de Fortitude (CD 25) para cada nível negativo ou perderá um nível de personagem. Caso a habilidade da espada aplique uma quantidade de níveis negativos igual ou superior ao nível atual da vítima, ela será instantaneamente destruída e o usuário adquire 10 pontos de vida temporários adicionais. Os pontos de vida temporários obtidos com esta habilidade continuam ativos durante 1 hora.",
+    page: 134,
+  },
+  {
+    id: "epic-item-anel-furia-caotica",
+    name: "Fúria Caótica",
+    category: "ring",
+    casterLevel: "15º",
+    prerequisites: "Forjar Anel, Forjar Anel Épico, manto do caos, o criador deve ser Caótico",
+    marketPrice: "250.000 PO; custo de criação: 125.000 PO + 12.500 XP",
+    description:
+      "O usuário deste anel de metal denteado está constantemente envolto em um efeito de manto do caos. Ele impõe um nível negativo a qualquer criatura Leal que utilizá-lo. Este nível negativo persiste enquanto o anel estiver sendo usado e desaparece quando o portador largá-lo. O nível negativo nunca reduz definitivamente o nível do personagem, mas não pode ser superado de qualquer maneira (incluindo magias de restauração) enquanto o anel estiver sendo usado.",
+    page: 135,
+  },
+  {
+    id: "epic-item-anel-psiquico-epico",
+    name: "Anel Psíquico Épico",
+    category: "ring",
+    casterLevel: "23º (psíquico épico V), 26º (psíquico épico VI), 29º (psíquico épico VII), 32º (psíquico épico VIII), 35º (psíquico épico IX)",
+    prerequisites: "Criar Item Universal, Criar Item Universal Psíquico, simulação maior",
+    marketPrice: "250.000 PO (V), 360.000 PO (VI), 490.000 PO (VII), 640.000 PO (VIII), 810.000 PO (IX)",
+    description:
+      "Este anel especial de cristal é encontrado em diversas categorias, úteis somente para personagens psíquicos (criaturas que tenham pontos de poder diários). O limite diário de pontos de poder do usuário é aumentado, conforme o anel. Os pontos fornecidos não são adicionais — enquanto o anel estiver sendo usado, ele realmente aumenta os pontos diários do usuário, mas é necessária uma noite de descanso antes de adquirir este acréscimo. Os pontos de poder não estão armazenados no anel, como seria o caso de um capacitor de cristal. Em vez disso, o item concede mais pontos de poder ampliando a capacidade psíquica do usuário. Um anel psíquico épico V aumenta os pontos de poder diários do usuário em 43, um anel psíquico épico VI concede 63 pontos, um anel psíquico épico VII fornece 87 pontos, um anel psíquico épico VIII fornece 115 pontos e um anel psíquico épico IX fornece 147 pontos de poder.",
+    page: 135,
+  },
+  {
+    id: "epic-item-bastao-anulacao-epica",
+    name: "Anulação Épica",
+    category: "staff",
+    casterLevel: "24º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, dissipar magias, desejo restrito ou milagre",
+    marketPrice: "446.000 PO",
+    description:
+      "Este bastão anula as funções mágicas ou similares a magias de itens mágicos, incluindo os itens mágicos épicos (mas não os artefatos). O usuário aponta o bastão para o item mágico e uma luz cinza pálida percorre o ar para tocar o dispositivo selecionado, atacando como um raio (um ataque de toque a distância). O raio anula qualquer função ativa do item e possui 75% de chance de anular quaisquer outras funções mágicas ou similares a magias do dispositivo, não importa o nível ou poder das funções, durante 2d4 rodadas. Para anular efeitos instantâneos, o usuário do bastão precisa ter uma ação preparada com esse propósito. O item visado não pode realizar um teste de resistência ou resistir a este efeito de qualquer forma. É possível ativar o bastão três vezes por dia.",
+    page: 137,
+  },
+  {
+    id: "epic-item-bastao-bravura-epica",
+    name: "Bravura Épica",
+    category: "staff",
+    casterLevel: "24º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, palavra de poder atordoar",
+    marketPrice: "não impresso nesta descrição (ver Tabela 4-19 para variantes de materiais específicos — não inventado)",
+    description:
+      "Este bastão é similar a um bastão de grande poder, embora seja mais poderoso. Ele é maior que o bastão normal e é fabricado de adamante em vez de aço. Ele possui seis botões, diversas funções similares à magia, e várias utilizações mundanas; ele também pode ser utilizado como arma mágica de diversos tipos. As seguintes habilidades similares a magia do bastão podem ser ativadas uma vez por dia: Dominar Pessoas: o adversário tocado será alvo da magia dominar pessoas, se o usuário proferir a palavra de comando (Vontade anula, CD 24). O usuário deve ativar essa habilidade e então obter sucesso em um ataque de toque corporal. Se o ataque fracassar, o efeito será perdido. Atordoar: com um único comando, todos os inimigos que estiverem enxergando o bastão ficarão atordoados, com efeitos similares à magia palavra de poder, atordoar (alcance máximo de 3 m, Vontade anula, CD 24). Ativar este poder exige uma ação padrão. Dano: com um único comando, o bastão causa 10d8 pontos de dano contra um adversário; é preciso obter sucesso em um ataque de toque corporal. O usuário recupera uma quantidade de PV equivalente ao dano causado (Vontade anula, CD 26). O usuário deve ativar essa habilidade e então obter sucesso em um ataque de toque corporal, idêntico a dominar pessoas (acima). As seguintes utilizações do bastão como arma não possuem um limite diário de ativações: em sua forma normal, o bastão pode ser utilizado como uma maça pesada +6. Quando o botão 1 for pressionado, o bastão torna-se uma espada longa da detonação ígnea +3. Quando o botão 2 for pressionado, o bastão torna-se um machado de combate +8. Quando o botão 3 for pressionado, o bastão torna-se uma lança curta +10 ou uma lança longa +10. As seguintes utilizações mundanas do bastão também não possuem um limite diário de ativações. Trave de escalada/escada: quando o botão 4 é pressionado, uma estaca capaz de perfurar granito é expelida do castão, enquanto a outra ponta libera três ganchos afiados. O bastão se estende em qualquer direção entre 1,5 m e 45 m, em uma única rodada, até o botão 4 ser pressionado novamente. Barras horizontais de 7,5 cm de comprimento surgem nas laterais da estaca, a 30 cm de distância entre si, em progressão escalonada. O bastão estará preso firmemente pela estaca e pelos ganchos e consegue aguentar até 5.000 kg. O usuário é capaz de retrair a estaca pressionando o botão 5.",
+    page: 137,
+  },
+  {
+    id: "epic-item-bastao-conjurador-epico",
+    name: "Conjurador Épico",
+    category: "staff",
+    casterLevel: "21º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico",
+    marketPrice: "245.400 PO",
+    description:
+      "Este magnífico bastão de adamante concede ao usuário +10 de bônus de intuição nos testes de Identificar Magia realizados para conjurar magias épicas; o bônus estará ativo enquanto o usuário empunhar ou carregar o bastão.",
+    page: 138,
+  },
+  {
+    id: "epic-item-bastao-o-caminho",
+    name: "O Caminho",
+    category: "staff",
+    casterLevel: "21º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, encontrar o caminho, movimentação livre, passos sem pegadas, muralha de pedra",
+    marketPrice: "306.870 PO",
+    description:
+      "O cabo do bastão é oco, funcionando como um telescópio. Quando o usuário observar através dele, o alcance da sua visão é triplicado (e as distâncias para o início de encontros são triplicadas). Além disso, o telescópio permite que o usuário enxergue o ambiente como se estivesse sob efeito da magia visão da verdade. O bastão também possui as seguintes habilidades: Mapa: três vezes por dia, uma seção do bastão se desenrola como um pergaminho saindo de um tubo, revelando um mapa dos arredores, centrada na localização do bastão. A área mostrada no mapa abrange uma área entre pequena (cerca de 15 m) e imensa (máximo de 36 km), aproximando e afastando o foco por meio de uma série de palavras de comando. O mapa revela a topografia natural e todos os tipos de estruturas (mesmo ocultas), mas não indica a localização de criaturas. Passagem: três vezes por dia, esta habilidade permite que o usuário e outras cinco criaturas em uma área de 6 m de raio se desloquem livremente através de plantas, matagais e estanques ou lagos (como a magia movimentação livre). Ponte: uma vez por dia, esta habilidade permite que o usuário crie uma ponte de pedra com 1,5 m de largura e 12 m de comprimento através de abismos e desfiladeiros. A ponte permanece ativa durante 1 hora. Passos sem Pegadas: uma vez por dia, esta habilidade é capaz de afetar o usuário e outras 21 criaturas durante 21 minutos. Em todos os aspectos, ela é idêntica à magia homônima (24º nível de conjurador).",
+    page: 139,
+  },
+  {
+    id: "epic-item-bastao-invulnerabilidade",
+    name: "Invulnerabilidade",
+    category: "staff",
+    casterLevel: "20º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, corpo de ferro, resistência",
+    marketPrice: "600.000 PO",
+    description:
+      "Quando é empunhado, este bastão sólido de adamante concede os seguintes poderes ao usuário: +3 de bônus de armadura natural. +5 de bônus de resistência em todos os testes de resistência. Redução de Dano 50/+3. Imunidade a sucessos decisivos.",
+    page: 139,
+  },
+  {
+    id: "epic-item-cajado-esferas",
+    name: "Esferas",
+    category: "rod",
+    casterLevel: "21º",
+    prerequisites: "Criar Cajado, Criar Cajado Épico, esfera gélida de Otiluke, esfera resiliente de Otiluke, esfera telecinética de Otiluke",
+    marketPrice: "228.375 PO",
+    description:
+      "Este cajado de madeira é revestido de ferro e possui uma bola de metal de 12 cm de diâmetro adornando seu castão. Ele permite o uso das seguintes magias: Esfera gélida de Otiluke (1 carga, CD 19); Esfera resiliente de Otiluke (1 carga, CD 16); Esfera telecinética de Otiluke (1 carga, CD 22).",
+    page: 142,
+  },
+  {
+    id: "epic-item-cajado-energia-poderosa",
+    name: "Energia Poderosa",
+    category: "rod",
+    casterLevel: "21º",
+    prerequisites: "Criar Cajado, Criar Cajado Épico, Acelerar Magia, mão esmagadora de Bigby, cubo de energia, escudo arcano",
+    marketPrice: "265.000 PO",
+    description:
+      "Este cajado de platina reforçado possui três poderes: Escudo arcano (acelerado, 1 carga, pode ser ativado uma vez por rodada); Cubo de energia (1 carga); Mão esmagadora de Bigby (1 carga).",
+    page: 142,
+  },
+  {
+    id: "epic-item-cajado-muralhas",
+    name: "Muralhas",
+    category: "rod",
+    casterLevel: "30º",
+    prerequisites: "Criar Cajado, Criar Cajado Épico, Estender Magia, muralha de ferro, muralha de pedra e muralha de energia estendidas",
+    marketPrice: "275.625 PO",
+    description:
+      "Este cajado não é circular, mas um pilar quadrado de 1,80 m de comprimento e 5 cm de aresta. Ele apresenta um castão quadrado com um diamante cristalino e polido em seu interior. Ele permite o uso das seguintes magias: Muralha de ferro (1 carga); Muralha de pedra (1 carga); Muralha de energia (1 carga).",
+    page: 143,
+  },
+  {
+    id: "epic-item-cajado-inverno",
+    name: "Inverno",
+    category: "rod",
+    casterLevel: "24º",
+    prerequisites: "Criar Cajado, Criar Cajado Épico, Estender Magia, Intensificar Magia, cone glacial, tempestade glacial, esfera gélida de Otiluke, muralha de gelo",
+    marketPrice: "292.500 PO",
+    description:
+      "Essa haste de aço é constantemente envolvida com uma fina camada de gelo. Ela possui um castão metálico e circular de 15 cm de diâmetro, onde é possível observar uma tempestade enfurecida de neve. O cajado permite o uso das seguintes magias: Cone glacial (intensificada, 2 cargas, CD 28); Tempestade glacial (intensificada, 2 cargas, CD 26); Esfera gélida de Otiluke (intensificada, 2 cargas, CD 29); Muralha de gelo (1 carga).",
+    page: 143,
+  },
+  {
+    id: "epic-item-cajado-prisma",
+    name: "Prisma",
+    category: "rod",
+    casterLevel: "21º",
+    prerequisites: "Criar Cajado, Criar Cajado Épico, Estender Magia, esfera prismática, rajada prismática, muralha prismática",
+    marketPrice: "326.812 PO",
+    description:
+      "Este cajado tem 1,80 m de comprimento, é feito de cristal, e possui três lados diversos em forma de cilindro padrão. Ele permite o uso das seguintes magias: Esfera prismática (estendida, 1 carga, CD 25); Rajada prismática (estendida, 1 carga, CD 22); Muralha prismática (estendida, 1 carga, CD 23).",
+    page: 144,
+  },
+  {
+    id: "epic-item-cajado-barragem-rapida",
+    name: "Barragem Rápida",
+    category: "rod",
+    casterLevel: "25º",
+    prerequisites: "Criar Cajado, Criar Cajado Épico, Aprimorar Magia, Elevar Magia, Intensificar Magia, Acelerar Magia, bola de fogo, mísseis mágicos",
+    marketPrice: "417.750 PO",
+    description:
+      "Os dois poderes deste cajado podem ser ativados como uma ação livre (embora o cajado somente possa ser utilizado uma vez por rodada): Mísseis mágicos (intensificada, acelerada, 1 carga, 5 mísseis que causam 10 pontos de dano cada); Bola de fogo (elevada para 6º nível, aprimorada, acelerada, 1 carga, 20d6 pontos de dano, CD 31).",
+    page: 142,
+  },
+  {
+    id: "epic-item-cajado-bravura-extra-planar",
+    name: "Bravura Extra-Planar",
+    category: "rod",
+    casterLevel: "21º",
+    prerequisites: "Criar Cajado, Criar Cajado Épico, portal, aliado extra-planar aprimorado, âncora extra-planar aprimorada, proteção contra elementos",
+    marketPrice: "460.000 PO",
+    description:
+      "O usuário deste poderoso cajado é imune aos efeitos de quaisquer características planares baseadas em tendência, assim como as características positivas e negativas dominantes (conforme descrito no Manual dos Planos). O cajado permite o uso das seguintes magias: Aliado extra-planar aprimorado (1 carga); Âncora extra-planar aprimorada (1 carga); Portal (1 carga). Quando utilizar o poder aliado extra-planar aprimorado, o portador ainda deve barganhar com a criatura invocada. Além dos poderes acima, um cajado de bravura extra-planar é um bordão anti-criatura (extra-planar) +5 (jogue 1d4 para determinar a tendência do extra-planar afetado: 1 = Caótico, 2 = Mau, 3 = Bom, 4 = Leal). Depois que todas as cargas do cajado de bravura extra-planar forem utilizadas, ele permanece como um bordão +5 sem habilidades especiais.",
+    page: 142,
+  },
+  {
+    id: "epic-item-cajado-dominacao",
+    name: "Dominação",
+    category: "rod",
+    casterLevel: "21º",
+    prerequisites: "Criar Cajado, Criar Cajado Épico, Elevar Magia, ordem, dominar monstros, tarefa/missão, enfeitiçar multidões",
+    marketPrice: "464.400 PO",
+    description:
+      "Este cajado é curto (cerca de 1,20 m de comprimento) e espesso (10 cm de espessura), com tiras de ferro circundando-o como algemas em intervalos regulares. Ele permite o uso das seguintes magias elevadas: Dominar monstros (1 carga, CD 33); Ordem (1 carga, CD 32); Enfeitiçar multidões (1 carga, CD 32); Tarefa (1 carga, CD 33).",
+    page: 142,
+  },
+  {
+    id: "epic-item-cajado-poder-flamejante",
+    name: "Poder Flamejante",
+    category: "rod",
+    casterLevel: "27º",
+    prerequisites: "não totalmente localizado neste recorte (lista de magias confirmada no corpo da descrição) — não inventado",
+    marketPrice: "500.000 PO",
+    description:
+      "Este bordão flamejante +5 fornece ao usuário resistência a fogo 30 sempre que empunhado. Também possui os seguintes poderes: Muralha de fogo (estendida, 1 carga, CD 17); Bola de fogo controlável (intensificada para 240 pontos de dano, 2 cargas, CD 31); Chuva de meteoros (elevada para 12º nível, 2 cargas, CD 28); Invocar criatura IX (estendida, 2 cargas, apenas elemental do fogo ancião). Um cajado de poder flamejante pode ser quebrado em um golpe de retribuição. A destruição do cajado deve ser proposital e declarada pelo usuário. Todas as cargas do cajado são instantaneamente liberadas em um globo de 9 m de raio. Qualquer criatura num raio de 3 m do cajado sofre uma quantidade de pontos de dano equivalente a oito vezes a quantidade de cargas remanescentes; as criaturas entre 3,10 m e 6 m sofrem seis vezes o número de cargas; as vítimas entre 6,10 m e 9 m de distância sofrem quatro vezes o número de cargas em pontos de dano. Um teste de resistência de Reflexos (CD 17) bem-sucedido reduz o dano à metade. O personagem que destruir o cajado terá 50% de chances de viajar para outro plano de existência; caso isso não aconteça, a liberação explosiva de energia o aniquilará. Depois que todas as cargas do cajado forem utilizadas, ele permanece como um bordão +5 sem habilidades especiais. Uma vez sem cargas, não será possível ativar o golpe de retribuição.",
+    page: 143,
+  },
+  {
+    id: "epic-item-cajado-furia-da-natureza",
+    name: "Fúria da Natureza",
+    category: "rod",
+    casterLevel: "21º",
+    prerequisites: "Criar Cajado, Criar Cajado Épico, Elevar Magia, Elevar Magia Aprimorado, terremoto, tempestade de fogo, invocar criatura I (ou invocar aliado da natureza I), ciclone",
+    marketPrice: "500.000 PO",
+    description:
+      "Este bordão anti-criatura (aberrações) +5 é fabricado a partir de um único galho retorcido de carvalho que foi atingido por um raio. Ele permite o uso das seguintes magias: Terremoto (1 carga); Ciclone (elevada para 10º nível, 1 carga, CD 25); Tempestade de fogo (elevada para 10º nível, 1 carga, CD 25). Depois que todas as cargas do cajado da fúria da natureza forem utilizadas, ele permanece como um bordão +5 sem habilidades especiais.",
+    page: 143,
+  },
+  {
+    id: "epic-item-cajado-hierofantes",
+    name: "Hierofantes",
+    category: "rod",
+    casterLevel: "27º",
+    prerequisites: "Criar Cajado, Criar Cajado Épico, Aumentar Magia, Estender Magia, Intensificar Magia, destruição rastejante, comandar plantas, grupo de elementais, homens vegetais",
+    marketPrice: "501.187 PO",
+    description:
+      "Esta bengala retorcida e escurecida pelo tempo é esculpida com vinhas e permite o uso das seguintes magias: Destruição rastejante (aumentada, estendida, 1 carga, CD 23); Comandar plantas (aumentada, estendida, 1 carga, CD 25); Grupo de elementais (intensificada, 2 cargas, CD 34); Homens vegetais (intensificada, 2 cargas, CD 34).",
+    page: 143,
+  },
+  {
+    id: "epic-item-cajado-cosmos",
+    name: "Cosmos",
+    category: "rod",
+    casterLevel: "27º",
+    prerequisites: "Criar Cajado, Criar Cajado Épico, Intensificar Magia, corrente de relâmpagos, chuva de meteoros, explosão solar",
+    marketPrice: "683.487 PO",
+    description:
+      "Este cajado liso é feito de uma pedra negro azeviche. Observar sua superfície revela um firmamento brilhante, em constante movimento, de estrelas e um cometa, uma nebulosa ou uma supernova ocasional. Ele permite o uso das seguintes magias: Corrente de relâmpagos (intensificada, 1 carga, CD 29); Chuva de meteoros (intensificada, 1 carga, CD 34); Explosão solar (intensificada, 1 carga, CD 32).",
+    page: 142,
+  },
+  {
+    id: "epic-item-cajado-necromancia",
+    name: "Necromancia",
+    category: "rod",
+    casterLevel: "27º",
+    prerequisites: "Criar Cajado, Criar Cajado Épico, Intensificar Magia, Elevar Magia, Elevar Magia Aprimorado, círculo da morte, criar mortos-vivos aprimorados, dedo da morte, prender a alma",
+    marketPrice: "1.505.312 PO; custo de criação: 1.290.156 PO + 14.303 XP",
+    description:
+      "Este cajado parece ser construído com uma série de ossos de dedos fundidos. Ele permite o uso das seguintes magias: Círculo da morte (intensificada, 2 cargas, CD 29); Criar mortos-vivos aprimorados (1 carga); Dedo da morte (aprimorada e elevada para 16º nível, 2 cargas, CD 34); Prender a alma (aprimorada e elevada para 16º nível, 2 cargas, CD 34). A alma ficará aprisionada no cajado, não em uma gema. Apenas a destruição do cajado pode libertar as almas presas.",
+    page: 143,
+  },
+  {
+    id: "epic-item-amuleto-armadura-natural-epica",
+    name: "Amuleto de Armadura Natural Épica",
+    category: "wondrous item",
+    casterLevel: "20º",
+    prerequisites: "Criar Item Maravilhoso Épico, pele de árvore; o nível de criador precisa ser o triplo do bônus de armadura natural do amuleto",
+    marketPrice: "720.000 PO (+7), 980.000 PO (+8), 1.280.000 PO (+9), 1.620.000 PO (+10)",
+    description:
+      "Este amuleto, geralmente fabricado com encaixes de dragão, endurece a pele do usuário, concedendo +6 ou mais de bônus de armadura natural à CA do usuário.",
+    page: 144,
+  },
+  {
+    id: "epic-item-armario-do-banquete",
+    name: "Armário do Banquete",
+    category: "wondrous item",
+    casterLevel: "40º",
+    prerequisites: "Criar Item Maravilhoso, Criar Item Maravilhoso Épico, banquete dos heróis",
+    marketPrice: "288.000 PO",
+    description:
+      "Este armário extraordinário possui a habilidade de produzir todo tipo de alimento saboroso que porta até 20 pessoas, três vezes por dia. Basta abrir as portas do armário e ele revelará bandejas de alimentos de diversos tipos e sabores, frescos e apetecíveis. A refeição possui todas as qualidades e benefícios possíveis de uma banqueta dos heróis.",
+    page: 144,
+  },
+  {
+    id: "epic-item-botas-da-rapidez",
+    name: "Botas da Rapidez",
+    category: "wondrous item",
+    casterLevel: "20º",
+    prerequisites: "Criar Item Maravilhoso, Criar Item Maravilhoso Épico, velocidade",
+    marketPrice: "256.000 PO",
+    description:
+      "Este sapato de couro e sola macia concede +6 de bônus de aprimoramento de Destreza. O deslocamento do usuário dobra em qualquer material mágico ou habilidade sobrenatural de deslocamento e adquire a habilidade de saltar e também recebe +20 de bônus nos testes de Equilíbrio, Escalar, Saltar e Acrobacia. Três vezes por dia, o usuário pode pronunciar uma palavra de comando e ativar uma velocidade mágica de bônus (como a magia velocidade, duração 20 rodadas).",
+    page: 144,
+  },
+  {
+    id: "epic-item-bracadeiras-da-bravura-implacavel",
+    name: "Braçadeiras da Bravura Implacável",
+    category: "wondrous item",
+    casterLevel: "20º",
+    prerequisites: "Criar Item Maravilhoso Épico, força do touro, vigor, armadura de ferro",
+    marketPrice: "4.384.000 PO",
+    description:
+      "Essas braçadeiras de adamante concedem +12 de bônus de aprimoramento à Força e à Constituição do usuário. O usuário também ignora todas as categorias de tamanho (até Colossal) ao determinar resultados de combate que utilizem resultados baseados em tamanho, como constrição, agarrar ou imobilização.",
+    page: 144,
+  },
+  {
+    id: "epic-item-bracadeiras-da-armadura-epica",
+    name: "Braçadeiras da Armadura Épica",
+    category: "wondrous item",
+    casterLevel: "20º",
+    prerequisites: "Criar Item Maravilhoso Épico, armadura arcana; o nível de criador precisa ser o triplo do bônus das braçadeiras",
+    marketPrice: "1.210.000 PO (+11), 1.690.000 PO (+12), impresso \"1.440.000 PO\" para (+13) — valor inconsistente com a escala crescente, preservado como impresso, não corrigido; 1.690.000 PO (+14), 2.250.000 PO (+15)",
+    description:
+      "Estas parecem protetores de pulso ou braço, mas criam uma armadura com campo invisível de energia, fornecendo +11 de bônus de armadura na CA ou mais, como se estivessem usando armadura mágica. As duas braçadeiras devem ser vestidas para obter o efeito.",
+    page: 144,
+  },
+  {
+    id: "epic-item-bracadeiras-da-saude-epica",
+    name: "Braçadeiras da Saúde Épica",
+    category: "wondrous item",
+    casterLevel: "20º",
+    prerequisites: "Criar Item Maravilhoso Épico, vigor; o nível de criador precisa ser o triplo do bônus das braçadeiras",
+    marketPrice: "640.000 PO (+12), 1.000.000 PO (+13), 1.440.000 PO (+14)",
+    description:
+      "Estas braçadeiras de platina ostentam um conjunto incrustado de outra pedra poderosa. Elas fornecem ao usuário +12 ou mais de bônus de aprimoramento de Constituição.",
+    page: 144,
+  },
+  {
+    id: "epic-item-chave-de-portal",
+    name: "Chave de Portal",
+    category: "wondrous item",
+    casterLevel: "21º",
+    prerequisites: "Criar Item Maravilhoso, Criar Item Maravilhoso Épico, portal",
+    marketPrice: "378.000 PO; Peso: 1/2 kg",
+    description:
+      "Esta pequena chave possui uma série de pequenos botões em seu comprimento, permitindo que o usuário sintonize o item com até 60 localidades previamente visitadas, surgindo um portal inter-dimensional em cada localidade sincronizada. Assim que todos os portais estiverem sintonizados, a chave não conseguirá gerar portais adicionais, mas ainda pode ser necessária para acessar um ou mais passagens. Os portais inter-dimensionais são invisíveis para qualquer criatura sem chave apropriada (embora a visão da verdade ou magias similares revelem sua presença).",
+    page: 144,
+  },
+  {
+    id: "epic-item-cinto-de-forca-epica",
+    name: "Cinto de Força Épica",
+    category: "wondrous item",
+    casterLevel: "20º",
+    prerequisites: "Criar Item Maravilhoso, Criar Item Maravilhoso Épico, força do touro",
+    marketPrice: "640.000 PO (+8), 1.000.000 PO (+10), 1.440.000 PO (+12); Peso: 1/2 kg",
+    description:
+      "Este grande cinto é fabricado com pele resistente e reforçado com adamante. O cinto concede +8 ou mais de bônus de aprimoramento para o valor de Força do usuário.",
+    page: 145,
+  },
+];

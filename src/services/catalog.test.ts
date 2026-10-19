@@ -707,7 +707,7 @@ describe("serviço de catálogo local", () => {
     const byId = new Map(items.map((item) => [item.id, item]));
 
     expect(source).toBe("local_snapshot");
-    expect(items).toHaveLength(106);
+    expect(items).toHaveLength(111);
     for (const power of DND35_FROSTBURN_POWERS.filter((entry) => entry.damage)) {
       expect(byId.get(`dnd35.frostburn.power.${power.id}`)?.data).toMatchObject({
         damage: power.damage,
@@ -1402,7 +1402,7 @@ describe("serviço de catálogo local", () => {
 
     expect(source).toBe("local_mixed");
     expect(coreSpells).toHaveLength(dnd35CoreCount);
-    expect(supplementSpells).toHaveLength(567);
+    expect(supplementSpells).toHaveLength(600);
     expect(pf1eSpells).toHaveLength(PF1E_BARD_CANTRIPS.length + PF1E_CLERIC_CANTRIPS.length + PF1E_DRUID_CANTRIPS.length + PF1E_SORCERER_WIZARD_CANTRIPS.length);
   });
 
@@ -2342,19 +2342,19 @@ describe("serviço de catálogo local", () => {
   it("calcula totais de tabelas pelo manifesto sem carregar registros", async () => {
     const counts = await fetchCatalogTableCounts();
     expect(counts.catalog_feats).toBe(3807);
-    expect(counts.catalog_spells).toBe(1567);
+    expect(counts.catalog_spells).toBe(1600);
     expect(counts.catalog_weapons).toBe(348);
     expect(counts.catalog_armors).toBe(79);
     expect(counts.catalog_shields).toBe(32);
-    expect(counts.catalog_items).toBe(1807);
+    expect(counts.catalog_items).toBe(1865);
   });
 
   it("calcula as métricas do compêndio pelos snapshots locais, incluindo perícias", async () => {
     const metrics = await fetchCatalogLocalMetrics();
     expect(metrics.counts.catalog_skills).toBe(195);
-    expect(metrics.counts.catalog_spells).toBe(2647);
-    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(10309);
-    expect(metrics.verifiedCount + metrics.reviewCount).toBe(10309);
+    expect(metrics.counts.catalog_spells).toBe(2680);
+    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(10400);
+    expect(metrics.verifiedCount + metrics.reviewCount).toBe(10400);
   }, 15_000);
 
   it("compartilha o cálculo das métricas locais entre chamadas concorrentes", async () => {

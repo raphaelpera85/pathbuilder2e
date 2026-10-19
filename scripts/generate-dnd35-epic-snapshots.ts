@@ -12,6 +12,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { DND35_EPIC_FEATS } from "../src/data/dnd35/dnd35EpicFeats";
 import { DND35_EPIC_SPELLS } from "../src/data/dnd35/dnd35EpicSpells";
+import { DND35_EPIC_ITEMS } from "../src/data/dnd35/dnd35EpicItems";
 
 const BOOK = "D&D — Livro dos Níveis Épicos";
 const RULESET = "v35-epic";
@@ -40,4 +41,14 @@ const spells = DND35_EPIC_SPELLS.map((s) => ({
 }));
 writeFileSync(join(dir, "spell.json"), `${JSON.stringify(spells, null, 2)}\n`, "utf8");
 
-console.log(`feat=${feats.length} spell=${spells.length}`);
+const items = DND35_EPIC_ITEMS.map((i) => ({
+  id: `dnd35.epic.magic-item.${i.id}`,
+  ...names(i.name, i.description),
+  item_category: "magic-item", level: 0,
+  price_gp: i.marketPrice ? Number(i.marketPrice.replace(/[^0-9]/g, "")) || null : null,
+  bulk: null, hands: null, traits: [i.category],
+  ...common(i.page), data: i,
+}));
+writeFileSync(join(dir, "item.json"), `${JSON.stringify(items, null, 2)}\n`, "utf8");
+
+console.log(`feat=${feats.length} spell=${spells.length} item=${items.length}`);
