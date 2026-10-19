@@ -5240,7 +5240,7 @@
       "file_type": "code",
       "norm_label": "dnd35planosrace",
       "source_file": "src/data/dnd35/dnd35PlanosRaces.ts",
-      "source_location": "L22"
+      "source_location": "L12"
     },
     {
       "id": "src_itempickermodal_itemcatalogrecord",
@@ -160541,7 +160541,7 @@
       "file_type": "code",
       "norm_label": "dnd35_planos_races",
       "source_file": "src/data/dnd35/dnd35PlanosRaces.ts",
-      "source_location": "L39"
+      "source_location": "L29"
     },
     {
       "id": "src_data_dnd35_dnd35planosraces_test",
@@ -389837,7 +389837,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/dnd35/dnd35PlanosRaces.ts",
-      "source_location": "L22",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -389848,7 +389848,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/dnd35/dnd35PlanosRaces.ts",
-      "source_location": "L39",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -425745,5 +425745,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d2f293b5417e1b9a058988108d4f3842a7045b3e"
+  "built_at_commit": "beb861c6b9e0f40ad53c51d8f7e4716f78030ec2"
 }
