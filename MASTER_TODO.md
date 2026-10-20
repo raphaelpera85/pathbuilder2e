@@ -154,8 +154,11 @@ tocados"** + 2 fora de escopo de PC.**
         **Raças planares jogáveis (Tabela 3-1 & Cap. 9) completas**
         em `dnd35PlanosRaces.ts`: Bariaur (stats p.159 resolvidos: +2 For, +2 Sab,
         -2 Car, RM 11+nível, Investida 2d6+1), Uridezu (p.163-164, LA +5, Ladino),
-        Spinagon (p.165-166, LA +4, Feiticeiro), Canolote (p.186-187, LA +5,
-        Guerreiro, sob Yugolote). 5 testes verdes, mutação testada/restaurada.
+        Spinagon (p.165-166, LA +4, Feiticeiro), Canolote (p.186-187, **LA +4**
+        — corrigido de +5 em 2026-10-19 após confirmação em alta resolução da
+        Tabela 3-1 oficial, p.24, que lista Aasimar+1/Bariaur+1/Canolote+4/
+        Githyanki+2/Githzerai+2/Spinagon+4/Tiefling+1/Uridezu+5, sob Yugolote).
+        5 testes verdes, mutação testada/restaurada.
   - [x] **Livro dos Monstros — COMPLETO para prioridade**: 4 raças
         jogáveis da Tabela 3-1 em `dnd35MonstrosRaces.ts` (Aasimar, Tiefling,
         Githyanki, Githzerai) + Cap. 6 "Perícias e Talentos para Monstros"

@@ -4,8 +4,8 @@ import { DND35_EPIC_ITEMS as I } from "./dnd35EpicItems";
 const g = (name: string) => I.find((i) => i.name === name)!;
 
 describe("D&D — Livro dos Níveis Épicos: Itens Mágicos Épicos (lote 14, pp.144-145, Itens Maravilhosos)", () => {
-  it("totaliza 58 entradas com IDs únicos e descrição não vazia", () => {
-    expect(I).toHaveLength(58);
+  it("totaliza 77 entradas com IDs únicos e descrição não vazia", () => {
+    expect(I).toHaveLength(77);
     const ids = I.map((i) => i.id);
     expect(new Set(ids).size).toBe(ids.length);
     for (const item of I) {
@@ -80,11 +80,23 @@ describe("D&D — Livro dos Níveis Épicos: Itens Mágicos Épicos (lote 14, pp
     expect(g("Anel Psíquico Épico").description).toMatch(/pontos de poder diários/);
   });
 
-  it("lote 9: bastões Anulação Épica/Bravura Épica corretos", () => {
+  it("lote 9 & 15: Tabela 4-19 fechada (16 bastões épicos com especificações completas)", () => {
     const n = (c: string) => I.filter((i) => i.category === c).length;
-    expect(n("staff")).toBe(5);
+    expect(n("staff")).toBe(16);
     expect(g("Anulação Épica").description).toMatch(/75% de chance/);
     expect(g("Bravura Épica").description).toMatch(/10d8 pontos de dano/);
+    expect(g("Bravura Épica").description).toMatch(/Bússola magnética/);
+    expect(g("Cancelamento Épico").marketPrice).toBe("330.000 PO");
+    expect(g("Cerco").marketPrice).toBe("447.745 PO");
+    expect(g("Comando Épico").marketPrice).toBe("575.000 PO");
+    expect(g("Esplendor Épico").marketPrice).toBe("297.000 PO");
+    expect(g("Fortificação").marketPrice).toBe("463.665 PO");
+    expect(g("Mortos Sem Descanso").marketPrice).toBe("625.000 PO");
+    expect(g("Paraíso").marketPrice).toBe("610.000 PO");
+    expect(g("Pesadelos").marketPrice).toBe("284.000 PO");
+    expect(g("Excelência em Magia").marketPrice).toBe("650.000 PO");
+    expect(g("Absorção Épica").marketPrice).toBe("1.500.000 PO");
+    expect(g("Ancião").marketPrice).toMatch(/1\.458\.200 a 1\.897\.400 PO/);
   });
 
   it("lote 10: Conjurador Épico correto", () => {
@@ -119,20 +131,23 @@ describe("D&D — Livro dos Níveis Épicos: Itens Mágicos Épicos (lote 14, pp
     expect(g("Poder Flamejante").description).toMatch(/golpe de retribuição/);
   });
 
-  it("lote 13: GAP Prisma fechado, Itens Maravilhosos iniciados corretos", () => {
+  it("lote 13-15: Itens Maravilhosos fechados (16 itens maravilhosos épicos com especificações completas)", () => {
     const n = (c: string) => I.filter((i) => i.category === c).length;
-    expect(n("wondrous item")).toBe(8);
+    expect(n("wondrous item")).toBe(16);
     expect(g("Prisma").casterLevel).toBe("21º");
     expect(g("Prisma").description).toMatch(/três lados diversos/);
     expect(g("Amuleto de Armadura Natural Épica").description).toMatch(/bônus de armadura natural/);
     expect(g("Braçadeiras da Bravura Implacável").description).toMatch(/\+12 de bônus de aprimoramento/);
     expect(g("Botas da Rapidez").description).toMatch(/duração 20 rodadas/);
-  });
-
-  it("lote 14: Chave de Portal/Cinto de Força Épica corretos", () => {
-    const n = (c: string) => I.filter((i) => i.category === c).length;
-    expect(n("wondrous item")).toBe(8);
     expect(g("Chave de Portal").description).toMatch(/60 localidades/);
     expect(g("Cinto de Força Épica").marketPrice).toMatch(/640\.000 PO \(\+8\)/);
+    expect(g("Ferraduras de Montaria Inigualável").marketPrice).toBe("217.000 PO");
+    expect(g("Luvas de Destreza Épica").marketPrice).toMatch(/640\.000 PO \(\+8\)/);
+    expect(g("Manto de Carisma Épico").marketPrice).toMatch(/640\.000 PO \(\+8\)/);
+    expect(g("Manto de Furtividade Maior").marketPrice).toBe("240.000 PO");
+    expect(g("Manto de Resistência Épica").marketPrice).toMatch(/360\.000 PO \(\+6\)/);
+    expect(g("Manto da Resistência à Magia Épica").marketPrice).toMatch(/290\.000 PO \(RM 23\)/);
+    expect(g("Periapto da Sabedoria Épica").marketPrice).toMatch(/640\.000 PO \(\+8\)/);
+    expect(g("Tiara do Intelecto Épico").marketPrice).toMatch(/640\.000 PO \(\+8\)/);
   });
 });

@@ -118,7 +118,7 @@ export const DND35_PLANOS_RACES: Dnd35PlanosRace[] = [
     automaticLanguages: "Abissal, Dracônico, Infernal, telepatia 30 m",
     bonusLanguages: "Comum",
     favoredClass: "Guerreiro",
-    levelAdjustment: 5,
+    levelAdjustment: 4,
     description:
       "Os canolotes assemelham-se a robustos buldogues blindados do tamanho de humanos, dotados de mandíbulas cruzadas horizontal e verticalmente, sem olhos. Atuam como batedores e guardas de Geena, farejando intrusos e capturando-os com línguas farpadas extensíveis.",
     page: 186,

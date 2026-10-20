@@ -43,9 +43,9 @@ describe("Manual dos Planos: Raças Jogáveis (Cap.9 Monstros & Tabela 3-1)", ()
     expect(r.page).toBe(165);
   });
 
-  it("Canolote: AN +5, classe favorecida Guerreiro, Percepção às Cegas 12 m, Língua farpada", () => {
+  it("Canolote: AN +4 (confirmado via Tabela 3-1, p.24), classe favorecida Guerreiro, Percepção às Cegas 12 m, Língua farpada", () => {
     const r = DND35_PLANOS_RACES.find((x) => x.id === "planos-race-canolote")!;
-    expect(r.levelAdjustment).toBe(5);
+    expect(r.levelAdjustment).toBe(4);
     expect(r.favoredClass).toBe("Guerreiro");
     expect(r.abilityAdjustments).toBe("+6 Força, +0 Destreza, +6 Constituição, −6 Inteligência, +6 Sabedoria, +2 Carisma");
     expect(r.specialQualities.join(" ")).toMatch(/Percepção às Cegas \(Ext\) 12 m/);

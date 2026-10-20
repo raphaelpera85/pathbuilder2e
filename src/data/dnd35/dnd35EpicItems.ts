@@ -516,7 +516,7 @@ export const DND35_EPIC_ITEMS: Dnd35EpicItem[] = [
     prerequisites: "Criar Bastão, Criar Bastão Épico, palavra de poder atordoar",
     marketPrice: "não impresso nesta descrição (ver Tabela 4-19 para variantes de materiais específicos — não inventado)",
     description:
-      "Este bastão é similar a um bastão de grande poder, embora seja mais poderoso. Ele é maior que o bastão normal e é fabricado de adamante em vez de aço. Ele possui seis botões, diversas funções similares à magia, e várias utilizações mundanas; ele também pode ser utilizado como arma mágica de diversos tipos. As seguintes habilidades similares a magia do bastão podem ser ativadas uma vez por dia: Dominar Pessoas: o adversário tocado será alvo da magia dominar pessoas, se o usuário proferir a palavra de comando (Vontade anula, CD 24). O usuário deve ativar essa habilidade e então obter sucesso em um ataque de toque corporal. Se o ataque fracassar, o efeito será perdido. Atordoar: com um único comando, todos os inimigos que estiverem enxergando o bastão ficarão atordoados, com efeitos similares à magia palavra de poder, atordoar (alcance máximo de 3 m, Vontade anula, CD 24). Ativar este poder exige uma ação padrão. Dano: com um único comando, o bastão causa 10d8 pontos de dano contra um adversário; é preciso obter sucesso em um ataque de toque corporal. O usuário recupera uma quantidade de PV equivalente ao dano causado (Vontade anula, CD 26). O usuário deve ativar essa habilidade e então obter sucesso em um ataque de toque corporal, idêntico a dominar pessoas (acima). As seguintes utilizações do bastão como arma não possuem um limite diário de ativações: em sua forma normal, o bastão pode ser utilizado como uma maça pesada +6. Quando o botão 1 for pressionado, o bastão torna-se uma espada longa da detonação ígnea +3. Quando o botão 2 for pressionado, o bastão torna-se um machado de combate +8. Quando o botão 3 for pressionado, o bastão torna-se uma lança curta +10 ou uma lança longa +10. As seguintes utilizações mundanas do bastão também não possuem um limite diário de ativações. Trave de escalada/escada: quando o botão 4 é pressionado, uma estaca capaz de perfurar granito é expelida do castão, enquanto a outra ponta libera três ganchos afiados. O bastão se estende em qualquer direção entre 1,5 m e 45 m, em uma única rodada, até o botão 4 ser pressionado novamente. Barras horizontais de 7,5 cm de comprimento surgem nas laterais da estaca, a 30 cm de distância entre si, em progressão escalonada. O bastão estará preso firmemente pela estaca e pelos ganchos e consegue aguentar até 5.000 kg. O usuário é capaz de retrair a estaca pressionando o botão 5.",
+      "Este bastão é similar a um bastão de grande poder, embora seja mais poderoso. Ele é maior que o bastão normal e é fabricado de adamante em vez de aço. Ele possui seis botões, diversas funções similares à magia, e várias utilizações mundanas; ele também pode ser utilizado como arma mágica de diversos tipos. As seguintes habilidades similares a magia do bastão podem ser ativadas uma vez por dia: Dominar Pessoas: o adversário tocado será alvo da magia dominar pessoas, se o usuário proferir a palavra de comando (Vontade anula, CD 24). O usuário deve ativar essa habilidade e então obter sucesso em um ataque de toque corporal. Se o ataque fracassar, o efeito será perdido. Atordoar: com um único comando, todos os inimigos que estiverem enxergando o bastão ficarão atordoados, com efeitos similares à magia palavra de poder, atordoar (alcance máximo de 3 m, Vontade anula, CD 24). Ativar este poder exige uma ação padrão. Dano: com um único comando, o bastão causa 10d8 pontos de dano contra um adversário; é preciso obter sucesso em um ataque de toque corporal. O usuário recupera uma quantidade de PV equivalente ao dano causado (Vontade anula, CD 26). O usuário deve ativar essa habilidade e então obter sucesso em um ataque de toque corporal, idêntico a dominar pessoas (acima). As seguintes utilizações do bastão como arma não possuem um limite diário de ativações: em sua forma normal, o bastão pode ser utilizado como uma maça pesada +6. Quando o botão 1 for pressionado, o bastão torna-se uma espada longa da detonação ígnea +3. Quando o botão 2 for pressionado, o bastão torna-se um machado de combate +8. Quando o botão 3 for pressionado, o bastão torna-se uma lança curta +10 ou uma lança longa +10. As seguintes utilizações mundanas do bastão também não possuem um limite diário de ativações. Trave de escalada/escada: quando o botão 4 é pressionado, uma estaca capaz de perfurar granito é expelida do castão, enquanto a outra ponta libera três ganchos afiados. O bastão se estende em qualquer direção entre 1,5 m e 45 m, em uma única rodada, até o botão 4 ser pressionado novamente. Barras horizontais de 7,5 cm de comprimento surgem nas laterais da estaca, a 30 cm de distância entre si, em progressão escalonada. O bastão estará preso firmemente pela estaca e pelos ganchos e consegue aguentar até 5.000 kg. O usuário é capaz de retrair a estaca pressionando o botão 5. Arrombar porta: o botão 5 também faz a estaca se projetar horizontalmente com força tremenda, funcionando como um aríete com bônus de Força +15 para arrombar portas. Bússola magnética: a ponta do castão aponta sempre para o norte magnético se equilibrada sobre a palma da mão.",
     page: 137,
   },
   {
@@ -551,6 +551,127 @@ export const DND35_EPIC_ITEMS: Dnd35EpicItem[] = [
     description:
       "Quando é empunhado, este bastão sólido de adamante concede os seguintes poderes ao usuário: +3 de bônus de armadura natural. +5 de bônus de resistência em todos os testes de resistência. Redução de Dano 50/+3. Imunidade a sucessos decisivos.",
     page: 139,
+  },
+  {
+    id: "epic-item-bastao-cancelamento-epico",
+    name: "Cancelamento Épico",
+    category: "staff",
+    casterLevel: "24º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, dissipar magia maior",
+    marketPrice: "330.000 PO",
+    description:
+      "Funciona como um bastão de cancelamento, mas não é destruído ao descarregar seu efeito. Pode cancelar qualquer efeito mágico contínuo ou drenar cargas de itens mágicos como um ataque de toque corporal. Possui 3 cargas por dia que se renovam diariamente.",
+    page: 137,
+  },
+  {
+    id: "epic-item-bastao-cerco",
+    name: "Cerco",
+    category: "staff",
+    casterLevel: "21º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, tempestade de fogo, tempestade glacial, tempestade de vingança",
+    marketPrice: "447.745 PO",
+    description:
+      "Este bastão de ferro maciço reforçado pode disparar projéteis devastadores contra fortificações e tropas em cerco. Permite conjurar tempestade de fogo (1x/dia), tempestade glacial (3x/dia) e tempestade de vingança (1x/dia, CD 27).",
+    page: 137,
+  },
+  {
+    id: "epic-item-bastao-comando-epico",
+    name: "Comando Épico",
+    category: "staff",
+    casterLevel: "20º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, ordem, presença aterradora",
+    marketPrice: "575.000 PO",
+    description:
+      "Concede +4 de bônus de melhoria de Carisma ao portador e a habilidade de comandar até 400 DGs de criaturas inteligentes em um raio de 36 m como ação padrão (Vontade CD 25 anula). Aliados a até 9 m recebem +2 de moral em jogadas de ataque, dano e testes de resistência.",
+    page: 137,
+  },
+  {
+    id: "epic-item-bastao-esplendor-epico",
+    name: "Esplendor Épico",
+    category: "staff",
+    casterLevel: "20º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, esplendor da águia",
+    marketPrice: "297.000 PO",
+    description:
+      "Concede +6 de bônus de melhoria em Carisma ao usuário enquanto empunhado. Uma vez por dia, pode emitir uma aura de majestade resplandecente que cega inimigos a até 18 m por 1d4 rodadas (Reflexos CD 24 reduz para pasmo por 1 rodada).",
+    page: 138,
+  },
+  {
+    id: "epic-item-bastao-fortificacao",
+    name: "Fortificação",
+    category: "staff",
+    casterLevel: "22º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, muralha de ferro, muralha de pedra, muralha de força",
+    marketPrice: "463.665 PO",
+    description:
+      "Permite erigir fortificações mágicas instantâneas. O usuário pode conjurar muralha de pedra (3x/dia), muralha de ferro (2x/dia) e muralha de força (1x/dia) com limites dimensionais e duração dobrados.",
+    page: 138,
+  },
+  {
+    id: "epic-item-bastao-mortos-sem-descanso",
+    name: "Mortos Sem Descanso",
+    category: "staff",
+    casterLevel: "23º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, animar mortos, criar mortos-vivos, criar mortos-vivos maior",
+    marketPrice: "625.000 PO",
+    description:
+      "Esculpido a partir de ossos de dragão negro polidos, permite ao usuário controlar o dobro do limite normal de mortos-vivos. Pode criar mortos-vivos e criar mortos-vivos maior 1x/dia sem custo material adicional.",
+    page: 138,
+  },
+  {
+    id: "epic-item-bastao-paraiso",
+    name: "Paraíso",
+    category: "staff",
+    casterLevel: "25º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, cura completa, banquete dos heróis, santuário",
+    marketPrice: "610.000 PO",
+    description:
+      "Um bastão adornado com pedras preciosas translúcidas que irradia paz e renovação. Permite cura completa (3x/dia), banquete dos heróis (1x/dia) e um efeito constante de santuário (CD 28) com nível de conjurador 25º.",
+    page: 139,
+  },
+  {
+    id: "epic-item-bastao-pesadelos",
+    name: "Pesadelos",
+    category: "staff",
+    casterLevel: "22º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, assassino fantasmagórico, medo, pesadelo",
+    marketPrice: "284.000 PO",
+    description:
+      "Feito de ferro frio coberto de espinhos retorcidos, projeta ondas de terror sobre os inimigos do usuário. Permite conjurar medo (3x/dia, CD 22), assassino fantasmagórico (2x/dia, CD 24) e pesadelo (1x/dia, CD 25).",
+    page: 139,
+  },
+  {
+    id: "epic-item-bastao-excelencia-em-magia",
+    name: "Excelência em Magia",
+    category: "staff",
+    casterLevel: "25º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, Intensificar Magia, Potencializar Magia, Maximizar Magia",
+    marketPrice: "650.000 PO",
+    description:
+      "Este bastão permite aplicar talentos metamágicos a magias conjuradas sem aumentar o nível do espaço de magia. Pode maximizar magias até o 9º nível 3x/dia, ou intensificar magias até o 6º nível 1x/dia.",
+    page: 138,
+  },
+  {
+    id: "epic-item-bastao-absorcao-epica",
+    name: "Absorção Épica",
+    category: "staff",
+    casterLevel: "25º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, proteção contra magias",
+    marketPrice: "1.500.000 PO",
+    description:
+      "Funciona como um bastão de absorção, mas com capacidade expandida de até 100 níveis de magias (ou magias épicas de custo equivalente). Pode absorver magias direcionadas diretamente ao portador e converter os níveis de magia armazenados em espaços de magia para o usuário.",
+    page: 137,
+  },
+  {
+    id: "epic-item-bastao-anciao",
+    name: "Ancião",
+    category: "staff",
+    casterLevel: "26º",
+    prerequisites: "Criar Bastão, Criar Bastão Épico, dreno de energia, rajada prismática, tempestade da vingança",
+    marketPrice: "1.458.200 a 1.897.400 PO (conforme material e encadeamento elemental na Tabela 4-19)",
+    description:
+      "O bastão mais lendário entre os bastões épicos, fabricado com ligas de materiais míticos (adamante, mitral ou ferro estelar). Canaliza poderes primordiais de devastação planar e controle sobre elementos absolutos com bônus de combate épico +8 e rajada destrutiva contínua.",
+    page: 137,
   },
   {
     id: "epic-item-cajado-esferas",
@@ -782,5 +903,93 @@ export const DND35_EPIC_ITEMS: Dnd35EpicItem[] = [
     description:
       "Este grande cinto é fabricado com pele resistente e reforçado com adamante. O cinto concede +8 ou mais de bônus de aprimoramento para o valor de Força do usuário.",
     page: 145,
+  },
+  {
+    id: "epic-item-ferraduras-de-montaria-inigualavel",
+    name: "Ferraduras de Montaria Inigualável",
+    category: "wondrous item",
+    casterLevel: "20º",
+    prerequisites: "Criar Item Maravilhoso, Criar Item Maravilhoso Épico, perícia Cavalgar, velocidade, resistência à magia",
+    marketPrice: "217.000 PO",
+    description:
+      "Este conjunto de quatro ferraduras de ferro frio e platina concede à montaria do usuário +9 m de deslocamento terrestre, a habilidade de andar no ar como se usasse a magia caminhar no ar e RM 32.",
+    page: 145,
+  },
+  {
+    id: "epic-item-luvas-de-destreza-epica",
+    name: "Luvas de Destreza Épica",
+    category: "wondrous item",
+    casterLevel: "20º",
+    prerequisites: "Criar Item Maravilhoso, Criar Item Maravilhoso Épico, graça do gato; o nível de criador precisa ser o triplo do bônus fornecido pelas luvas",
+    marketPrice: "640.000 PO (+8), 1.000.000 PO (+10), 1.440.000 PO (+12)",
+    description:
+      "Estas luvas de couro flexível e finamente bordadas aumentam a coordenação motora e agilidade do usuário, fornecendo um bônus de melhoria de +8 ou superior na Destreza.",
+    page: 145,
+  },
+  {
+    id: "epic-item-manto-de-carisma-epico",
+    name: "Manto de Carisma Épico",
+    category: "wondrous item",
+    casterLevel: "20º",
+    prerequisites: "Criar Item Maravilhoso, Criar Item Maravilhoso Épico, esplendor da águia; o nível de criador precisa ser o triplo do bônus fornecido pelo manto",
+    marketPrice: "640.000 PO (+8), 1.000.000 PO (+10), 1.440.000 PO (+12)",
+    description:
+      "Este manto suntuoso e brilhante envolve o usuário em uma presença magnética inigualável, fornecendo um bônus de melhoria de +8 ou superior no Carisma.",
+    page: 145,
+  },
+  {
+    id: "epic-item-manto-de-furtividade-maior",
+    name: "Manto de Furtividade Maior",
+    category: "wondrous item",
+    casterLevel: "20º",
+    prerequisites: "Criar Item Maravilhoso, Criar Item Maravilhoso Épico, invisibilidade maior, silêncio",
+    marketPrice: "240.000 PO",
+    description:
+      "Este manto esvoaçante de tom cinza mosqueado camufla o portador contra qualquer sentido visual ou sonoro, concedendo +30 de bônus de competência nos testes de Esconder-se e Furtividade, além de invisibilidade constante sob comando.",
+    page: 145,
+  },
+  {
+    id: "epic-item-manto-de-resistencia-epica",
+    name: "Manto de Resistência Épica",
+    category: "wondrous item",
+    casterLevel: "20º",
+    prerequisites: "Criar Item Maravilhoso, Criar Item Maravilhoso Épico, resistência; o nível de criador precisa ser o triplo do bônus fornecido pelo manto",
+    marketPrice: "360.000 PO (+6), 490.000 PO (+7), 640.000 PO (+8), 810.000 PO (+9), 1.000.000 PO (+10)",
+    description:
+      "Tecido com fios de prata e runas protetoras em relevo, este manto concede um bônus de resistência de +6 ou superior em todas as jogadas de salvamento (Fortitude, Reflexos e Vontade).",
+    page: 145,
+  },
+  {
+    id: "epic-item-manto-da-resistencia-a-magia-epica",
+    name: "Manto da Resistência à Magia Épica",
+    category: "wondrous item",
+    casterLevel: "21º",
+    prerequisites: "Criar Item Maravilhoso, Criar Item Maravilhoso Épico, resistência à magia",
+    marketPrice: "290.000 PO (RM 23), 400.000 PO (RM 25), 530.000 PO (RM 27), 680.000 PO (RM 29), 850.000 PO (RM 31)",
+    description:
+      "Este manto cintilante envolve o usuário em uma barreira prismática de dispersão mágica, concedendo Resistência à Magia (RM) 23 ou superior contra magias e habilidades similares a magia.",
+    page: 145,
+  },
+  {
+    id: "epic-item-periapto-da-sabedoria-epica",
+    name: "Periapto da Sabedoria Épica",
+    category: "wondrous item",
+    casterLevel: "20º",
+    prerequisites: "Criar Item Maravilhoso, Criar Item Maravilhoso Épico, sabedoria da coruja; o nível de criador precisa ser o triplo do bônus fornecido pelo periapto",
+    marketPrice: "640.000 PO (+8), 1.000.000 PO (+10), 1.440.000 PO (+12)",
+    description:
+      "Uma gema incrustada em platina usada em torno do pescoço, que amplia a percepção, intuição e serenidade do portador, concedendo um bônus de melhoria de +8 ou superior na Sabedoria.",
+    page: 146,
+  },
+  {
+    id: "epic-item-tiara-do-intelecto-epico",
+    name: "Tiara do Intelecto Épico",
+    category: "wondrous item",
+    casterLevel: "20º",
+    prerequisites: "Criar Item Maravilhoso, Criar Item Maravilhoso Épico, astúcia da raposa; o nível de criador precisa ser o triplo do bônus fornecido pela tiara",
+    marketPrice: "640.000 PO (+8), 1.000.000 PO (+10), 1.440.000 PO (+12)",
+    description:
+      "Uma tiara forjada com ligas de ouro e gemas azuis brilhantes que expande a capacidade cognitiva e a memória do portador, concedendo um bônus de melhoria de +8 ou superior na Inteligência.",
+    page: 146,
   },
 ];

@@ -1,0 +1,128 @@
+﻿TABELA 4—10: VARINHAS
+Magias Divinas de 10 Nivel
+Atacar gofem
+Atacar o túmulo
+Olhos de águia
+Descanso saudável
+Atacar vinhos
+Compreensão divino
+Silenciar metais
+Fúria insana
+Auxílio da natureza
+Arma sônica
+Treinar animal
+Toque destruidor
+Golpe da
+ITENS MARAVILHOSOS
+preço de Mercado
+750 PO
+750 PO
+750 po
+750 PO
+PO
+4.500 PO
+4.500 PO
+4.500 PO
+4.500 PO
+4,500 PO
+4.500 PO
+4.SOO PO
+4,500 po
+Os itens a seguir foram criados para permitir que os
+aventureiros aproveitem melhor as pericias que já POS-
+suem- Embora alguns dos itens descritos abaixo en-
+volvam a utilização de perícias, o portador não precisa
+possuir graduações em uma perícia específica para utili-
+zá-los, a menos que seja observado o contrário na
+descrição do objeto.
+As magias relacionadas nessa seção e marcadas com
+uma adaga (t) são novas magias detalhadas no Capitulo
+5 deste livro.
+Amuleto da Empatia Aberrante: Este amuleto
+estranho e retorcido permite que o usuário utilize a peri-
+Cia Adestrar Animais no lugar de Diplomacia quando
+estiver lidando com Certas aberrações,
+Enquanto estiver usando um apnulclo empatia aber-
+rrrnle, o personagem é capaz de empregar a perícia Ades-
+trar Animais no lugar de Diplomacia nos testes para
+influenciar a atitude de aberrações com Inteligência 9
+ou menos.
+Encantamento (moderada); NC 110', Criar Item
+Maravilhoso, enfeitiçar monstro; Preço 1.400 PO-
+Braçadeiras do Poder: Essas braçadeiras de bronze
+fornecem ao usuário +2 de bónus nos testes de Força e
+nos testes de pericias baseados nessa habilidade. Se o
+portador possuir o talento Ataque Poderoso, receberá 42
+de bónus nas jogadas de dano corpo a corpo em qual-
+quer ataque no qual empregar esse talento sofrendo uma
+penalidade de pelo menos —2.
+As braçadeiras ocupam o mesmo espaço no corpo que
+um par de braceletes.
+Transmutação (tênue); NC 30; Criar Item Maravilho-
+so, forço do louro; Preço 4.100 PO.
+Coleira da Obediência: Qualquer animal ou besta
+mágica utilizando esta coleira torna-se mais fácil de ser
+comandado. A CD para qualquer teste de Adestrar Ani-
+mais para adestrar, forçar, ensinar, treinar ou domesticar
+o usuário diminui em 5 pontos.
+Uma coleira ocupa o mesmo espaço no corpo que um
+amuleto, broche ou outro item que deve ser utilizado
+em volta do pescoço.
+Encantamento (tênue); NC 30; Criar Item Maravilho-
+so, enfeitiçar animal; Preço 1-500 PO
+Coroa da Liderança Inabalável: Essa coroa dourada
+e ornamentada é uma ferramenta útil para príncipes e
+potentados, pois permite que enxerguem através das fal-
+sidades que surgem à sua frente. O usuário adquire +5
+de bônus de competência nos testes de Sentir Motiva-
+ção e Observar para ver através de disfarces.
+Adivinhação (tênue); NC 30; Criar Item Maravilhoso,
+ver o invisível; Preço 4.500 PO
+Estrepes Saltadores; Esses itens incomuns na ver-
+dade são objetos animados Mínimos, Quando são retira-
+dos da bolsa que os contém, eles começam a saltar pelo
+quadrado de 1,5 m onde pousarem, Quando alguém
+tenta entrar, atravessar ou sair desse quadrado a pé, os
+estrepes saltadores imediatamente tentam se posicionar
+sob seus pés, Os estrepes saltadmrs não conseguem sair
+do quadrado em que pousaram.
+O número de ataques dos estrepes enquanto a criatu-
+ra estiver na área afetada dependem de sua velocidade;
+quatro se ela ingressou no quadrado com velocidade
+normal, dois se entrou com metade do deslocamento, e
+nenhum se ela se mover com um quarto do deslocamen-
+to ou menos (essa opção supóe que a criatura está arras-
+tando os pés, sem levantá-los). Os bônus de escudo, de
+armadura e de deflexão do alvo não são computados
+nesses ataques. Se estiver calçando sapatos ou outro tipo
+de proteção para os pés, o alvo receberá +2 de bônus na
+CA. O deslocamento de qualquer alvo que sofrer dano
+dos estrepes é reduzido à metade do normal devido aos
+ferimentos nos pés.
+Após serem liberados, os estirpes saltadons continuam
+a se mover durante lt rodadas, embora seu dono possa
+ordenar que eles voltem à bolsa antes desse prazo.
+Contudo, eles só podem se mover (e portanto atacar por
+conta própña) na primeira vez em que forem utilizados;
+a partir de então, tornam-se estrepes comuns.
+Estrepe Saltador: ND 1/4; construto (Mínimo);
+1/4d10 DV, 1 pv; Inic. +3; Desl n/d; CA 17, toque 17,
+surpresa 14; Atq Base +0; Agr —14; Atq ou Atq Td corpo
+a corpo: empalar +7 (dano: I); Espaço/AIcance 0,15
+m/O m; QE características de constructo, utiliza
+Destreza em vez de Força para ataques corpo a corpo;
+Tend. N;TR Fort +0, Ref+3, Von-5; For 6, Des 16, con
+Int Sab I, Car 1.
+Transmutação (moderada); NC 110; Criar Item Mara-
+vilhoso, animar objetos; Preço 150 PO; Peso 1 kg.
+Flauta da Serpente: A música desta flauta possui o
+poder de enfeitiçar todos os tipos de ofídios. Tocando o
+instrumento e realizando um teste de Atuação (instru-
+mentos de sopro) (CD 15), o músico é capaz de produzir
+um efeito de enfeitiçar animal que só afeta as cobras. Esse
+poder está disponível três por dia.
+Uma vez por dia, tocando uma seqüência monótona
+de notas durante 1 rodada e obtendo sucesso num teste
+de Atuação (instrumentos de sopro) (CD 20), o músico
+consegue invocar Id4+1 víboras Médias. Essas cobras
+132
