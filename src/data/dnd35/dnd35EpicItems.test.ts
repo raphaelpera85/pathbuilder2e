@@ -3,9 +3,9 @@ import { DND35_EPIC_ITEMS as I } from "./dnd35EpicItems";
 
 const g = (name: string) => I.find((i) => i.name === name)!;
 
-describe("D&D — Livro dos Níveis Épicos: Itens Mágicos Épicos (lote 14, pp.144-145, Itens Maravilhosos)", () => {
-  it("totaliza 77 entradas com IDs únicos e descrição não vazia", () => {
-    expect(I).toHaveLength(77);
+describe("D&D — Livro dos Níveis Épicos: Itens Mágicos Épicos (lote 16, pp.153-154, Artefatos Maiores)", () => {
+  it("totaliza 92 entradas com IDs únicos e descrição não vazia", () => {
+    expect(I).toHaveLength(92);
     const ids = I.map((i) => i.id);
     expect(new Set(ids).size).toBe(ids.length);
     for (const item of I) {
@@ -149,5 +149,35 @@ describe("D&D — Livro dos Níveis Épicos: Itens Mágicos Épicos (lote 14, pp
     expect(g("Manto da Resistência à Magia Épica").marketPrice).toMatch(/290\.000 PO \(RM 23\)/);
     expect(g("Periapto da Sabedoria Épica").marketPrice).toMatch(/640\.000 PO \(\+8\)/);
     expect(g("Tiara do Intelecto Épico").marketPrice).toMatch(/640\.000 PO \(\+8\)/);
+  });
+
+  it("5 Compêndios/Manuais (tome) com regra de +1 inerente e penalidade de alinhamento", () => {
+    const tomes = I.filter((i) => i.category === "tome");
+    expect(tomes).toHaveLength(5);
+    expect(g("Compêndio de Conjurações Benéficas").description).toMatch(/conjuradores arcanos Bons/);
+    expect(g("Compêndio de Danação Inefável").description).toMatch(/conjuradores arcanos malignos/);
+    expect(g("Compêndio de Magia Prateada").description).toMatch(/conjuradores arcanos Neutros/);
+    expect(g("Manual da Pujança Suprema em Combate").description).toMatch(/bárbaro, guerreiro, monge, paladino ou ranger/);
+    expect(g("Manual do Furto Sorrateiro").description).toMatch(/ladino/);
+  });
+
+  it("Artefatos menores e maiores catalogados com categoria correta", () => {
+    expect(g("Dados de Olidammara").category).toBe("minor artifact");
+    expect(g("Bolsa de Fartura").category).toBe("minor artifact");
+    expect(g("Bolsa de Fartura").description).toMatch(/25 peças de ouro na alvorada/);
+    expect(g("Machado dos Senhores Anões").category).toBe("major artifact");
+    expect(g("Machado dos Senhores Anões").description).toMatch(/invocar um elemental da terra/);
+  });
+
+  it("6 novos Artefatos Maiores catalogados", () => {
+    const majors = I.filter((i) => i.category === "major artifact");
+    expect(majors.length).toBeGreaterThanOrEqual(7);
+    expect(g("Códice dos Planos Infinitos").description).toMatch(/Tomo de Yagnus/);
+    expect(g("Taça e Talismã de Al'Akbar").description).toMatch(/\+6 de bônus de aprimoramento em Carisma/);
+    expect(g("Olho de Gruumsh").description).toMatch(/\+6 de bônus de aprimoramento de Força e Carisma/);
+    expect(g("Manopla de Ferro de Hextor").description).toMatch(/Int 13, Sab 18, Car 24, Ego 26/);
+    expect(g("Armadura do Golem").description).toMatch(/Redução de Dano 50\/\+3/);
+    expect(g("Capa Invulnerável de Arnd").description).toMatch(/fortificação pesada \+5/);
+    expect(g("Anel de Gaxx").description).toMatch(/2d6 pontos de dano por contusão/);
   });
 });

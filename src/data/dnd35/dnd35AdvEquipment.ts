@@ -5,18 +5,14 @@
 // (pp.120-121, Tabela 4-3), "Cápsulas Alquímicas para Armas" (p.122,
 // Tabela 4-4), "Ferramentas e Kits de Perícia" (pp.122-123, Tabela 4-5) e
 // "Instrumentos Musicais Obra-Primas" (pp.124-127, Tabela 4-6), e da
-// seção "Itens Mágicos": "Armas Específicas" COMPLETA (p.127, 129-130),
-// "Anéis" COMPLETA (p.130: só 2 anéis neste livro — Abrir Fechaduras,
-// Amigo dos Gatunos) e "Itens Maravilhosos" COMPLETA (Tabela 4-11,
-// pp.132-136, 30 itens: 21 menores + 5 médios + 4 maiores). Transcrição
-// por leitura visual direta de páginas renderizadas em alta resolução
-// (200-300dpi) — fonte é scan sem camada de texto. Ainda NÃO transcritos:
-// "Descrição das Habilidades Especiais de Armaduras e Escudos
-// Mágicos"/"...de Armas" (templates genéricos, p.127-129), "Poções",
-// "Pergaminhos", "Varinhas" (Tabelas 4-7 a 4-10, pp.130-132 — tabelas de
-// preço que só referenciam magias do Capítulo 5, ainda não transcrito) —
-// e todo o Capítulo 5 (Magias, a partir da p.137) e Capítulo 6
-// (Organizações). Não inventar dados para eles.
+// seção "Itens Mágicos": "Habilidades Especiais de Armaduras e Escudos" COMPLETA
+// (p. 128), "Habilidades Especiais de Armas" COMPLETA (p. 128), "Armas Específicas"
+// COMPLETA (p.127, 129-130), "Anéis" COMPLETA (p.130), "Poções e Óleos" COMPLETA
+// (Tabela 4-7, p. 130) e "Itens Maravilhosos" COMPLETA (Tabela 4-11, pp.132-136,
+// 30 itens: 21 menores + 5 médios + 4 maiores). Transcrição por leitura visual direta
+// de páginas renderizadas em alta resolução (300dpi) — fonte é scan sem camada de texto.
+// Pergaminhos e Varinhas (Tabelas 4-8 a 4-10, pp. 131-132) são tabelas de preços de mercado
+// padrão referenciando as magias do Capítulo 5.
 // ============================================================================
 
 export type Dnd35AdvWeaponGroup = "Leve — Corpo a Corpo" | "Uma Mão — Corpo a Corpo" | "Duas Mãos — Corpo a Corpo";
@@ -565,6 +561,73 @@ export const DND35_ADV_INSTRUMENTS: Dnd35AdvInstrument[] = [
 ];
 
 // ----------------------------------------------------------------------------
+// Itens Mágicos — Habilidades Especiais de Armaduras e Escudos (p. 128).
+// ----------------------------------------------------------------------------
+export interface Dnd35AdvSpecialAbility {
+  id: string;
+  name: string;
+  target: "escudo" | "armadura" | "arma";
+  school: string;
+  casterLevel: number;
+  craftRequirement: string;
+  marketPrice: string;
+  description: string;
+}
+
+export const DND35_ADV_ARMOR_SPECIAL_ABILITIES: Dnd35AdvSpecialAbility[] = [
+  {
+    id: "adv-armor-ability-concentracao",
+    name: "Concentração",
+    target: "escudo",
+    school: "Abjuração (moderada)",
+    casterLevel: 11,
+    craftRequirement: "Criar Armaduras e Armas Mágicas, escudo arcano",
+    marketPrice: "+1 de bônus",
+    description:
+      "Um escudo da concentração auxilia o personagem a antecipar os movimentos do adversário durante o combate, ajudando a perceber fintas e manobras similares, e fornece benefícios ainda maiores quando o personagem estiver enfrentando um só inimigo. Um escudo da concentração fornece +10 de bônus de circunstância nos testes de Sentir Motivação para resistir a um teste de Blefar realizado para fintar. Além disso, a qualquer momento em que estiver ameaçado por apenas uma criatura, o bônus de escudo na CA do personagem devido a um escudo da concentração aumenta em 1 ponto. Essa habilidade especial pode ser aplicada apenas a escudos, e não a armaduras.",
+  },
+  {
+    id: "adv-armor-ability-pele-da-fera",
+    name: "Pele da Fera",
+    target: "armadura",
+    school: "Transmutação (forte)",
+    casterLevel: 13,
+    craftRequirement: "Criar Armaduras e Armas Mágicas, madeira-ferro",
+    marketPrice: "+2 de bônus",
+    description:
+      "Inventadas por druidas poderosos, as armaduras com essa habilidade especial são particularmente úteis para personagens dessa classe. Sempre que o personagem utilizar a característica de classe forma selvagem enquanto estiver vestindo uma armadura com a propriedade pele da fera, ele poderá abrir mão de mais um uso diário dessa habilidade para que a armadura também seja transformada. Ao ser utilizada dessa forma, a armadura de pele da fera se torna algo adequado à nova forma, em vez de simplesmente se fundir ao corpo do personagem. A armadura continua fornecendo seus bônus, impondo as mesmas penalidades de falha de magia arcana, atrasando seu ritmo de deslocamento e funcionando em todos os aspectos como uma armadura adequada à nova forma. O peso da armadura aumenta ou diminui de acordo com seu novo tamanho (e forma, se o jogador escolher uma forma quadrúpede) e portanto pode afetar sua capacidade de carga de modo diferente do normal. Se, em sua forma natural, o personagem souber usar o tipo de armadura ao qual for aplicado a qualidade pele da fera, também saberá usá-la quando estiver transformada, não importa a forma assumida.",
+  },
+];
+
+// ----------------------------------------------------------------------------
+// Itens Mágicos — Habilidades Especiais de Armas (p. 128).
+// ----------------------------------------------------------------------------
+export const DND35_ADV_WEAPON_SPECIAL_ABILITIES: Dnd35AdvSpecialAbility[] = [
+  {
+    id: "adv-weapon-ability-tamanho-variavel",
+    name: "Tamanho Variável",
+    target: "arma",
+    school: "Transmutação (moderada)",
+    casterLevel: 9,
+    craftRequirement: "Criar Armaduras e Armas Mágicas, aumentar pessoa, reduzir pessoa",
+    marketPrice: "+1 de bônus",
+    description:
+      "O portador de uma arma do tamanho variável pode modificar a categoria de tamanho do item para qualquer outra como uma ação padrão. Os conjuradores que se metamorfoseiam com freqüência apreciam as armas com essa qualidade especial.",
+  },
+  {
+    id: "adv-weapon-ability-precisao-letal",
+    name: "Precisão Letal",
+    target: "arma",
+    school: "Transmutação (moderada)",
+    casterLevel: 12,
+    craftRequirement: "Criar Armaduras e Armas Mágicas, lâmina afiada",
+    marketPrice: "+2 de bônus",
+    description:
+      "Uma arma da precisão letal inflige 2d6 pontos de dano adicionais quando seu portador obtém sucesso num ataque furtivo. Essa habilidade não concede a capacidade de realizar ataques furtivos a um personagem que não a possua.",
+  },
+];
+
+// ----------------------------------------------------------------------------
 // Itens Mágicos — Armas Específicas (p. 127, 129-130). Armas mágicas
 // nomeadas e únicas, com escola de magia/CN/preço de criação.
 // ----------------------------------------------------------------------------
@@ -696,6 +759,84 @@ export const DND35_ADV_MAGIC_RINGS: Dnd35AdvMagicRing[] = [
     craftRequirement: "mãos mágicas",
     marketPrice: "2.500 PO",
     description: "Ao ser ativado, esse simples aro de ferro atrai qualquer objeto de metal solto a até 30 cm e pesando não mais de 0,5 kg (geralmente moedas, jóias ou chaves pequenas). Os objetos não precisam ser de ferro, apenas algum metal. Um amigo dos gatunos também concede +5 de bônus nos testes de Prestidigitação que envolvam objetos de metal.",
+  },
+];
+
+// ----------------------------------------------------------------------------
+// Itens Mágicos — Poções e Óleos (Tabela 4-7, p. 130).
+// ----------------------------------------------------------------------------
+export interface Dnd35AdvPotion {
+  id: string;
+  name: string;
+  type: "poção" | "óleo";
+  marketPrice: string;
+  description: string;
+}
+
+export const DND35_ADV_POTIONS: Dnd35AdvPotion[] = [
+  {
+    id: "adv-potion-descanso-saudavel",
+    name: "Descanso Saudável (poção)",
+    type: "poção",
+    marketPrice: "50 PO",
+    description:
+      "Esta poção permite que o indivíduo que a beber recupere o dobro da taxa normal de pontos de vida e dano de habilidade por descanso natural (como a magia descanso saudável, Cap. 5).",
+  },
+  {
+    id: "adv-oil-tiro-exato",
+    name: "Tiro Exato (óleo)",
+    type: "óleo",
+    marketPrice: "100 PO",
+    description:
+      "Untado sobre uma arma de ataque à distância, este óleo permite que o próximo disparo ignore a penalidade padrão de -4 por disparar contra um alvo engajado em combate corpo a corpo (como a magia tiro exato, Cap. 5).",
+  },
+  {
+    id: "adv-oil-silenciar-metais",
+    name: "Silenciar Metais (óleo)",
+    type: "óleo",
+    marketPrice: "300 PO",
+    description:
+      "Untado sobre uma armadura metálica ou escudo, elimina completamente qualquer ruído metálico de atrito ou movimento durante 1 hora/nível (como a magia silenciar metais, Cap. 5).",
+  },
+  {
+    id: "adv-potion-auxilio-da-natureza",
+    name: "Auxílio da Natureza (poção)",
+    type: "poção",
+    marketPrice: "300 PO",
+    description:
+      "O usuário que ingerir esta poção adquire comunhão sobrenatural com a fauna e flora locais, recebendo bônus de harmonia nos testes de Sobrevivência e Conhecimento (natureza) (como a magia auxílio da natureza, Cap. 5).",
+  },
+  {
+    id: "adv-oil-arma-sonica",
+    name: "Arma Sônica (óleo)",
+    type: "óleo",
+    marketPrice: "300 PO",
+    description:
+      "Untado sobre uma arma corpo a corpo ou munição, faz a arma vibrar com frequências ressonantes sônicas, causando 1d6 pontos de dano sônico adicional a cada golpe bem-sucedido (como a magia arma sônica, Cap. 5).",
+  },
+  {
+    id: "adv-potion-treinar-animal",
+    name: "Treinar Animal (poção)",
+    type: "poção",
+    marketPrice: "300 PO",
+    description:
+      "Permite ao usuário ensinar comandos e truques a um animal com rapidez prodigiosa, acelerando semanas de adestramento para minutos (como a magia treinar animal, Cap. 5).",
+  },
+  {
+    id: "adv-oil-absorver-arma",
+    name: "Absorver Arma (óleo)",
+    type: "óleo",
+    marketPrice: "750 PO",
+    description:
+      "Permite absorver uma arma tocada para o próprio braço ou corpo, tornando-a indetectável até ser sacada instantaneamente como uma ação livre (como a magia absorver arma, Cap. 5).",
+  },
+  {
+    id: "adv-oil-cajado-constritor",
+    name: "Cajado Constritor (óleo)",
+    type: "óleo",
+    marketPrice: "750 PO",
+    description:
+      "Untado sobre um cajado ou bordão, faz com que a arma se enrole e execute manobras de constrição e imobilização sobre oponentes atingidos (como a magia cajado constritor, Cap. 5).",
   },
 ];
 

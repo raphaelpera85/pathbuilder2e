@@ -232,8 +232,11 @@ tocados"** + 2 fora de escopo de PC.**
 > talentos/perícias/magias) estiverem razoavelmente fechados em todos os
 > livros já iniciados.
 
-- [~] **`v35-epic` Capítulo 4 (Itens Mágicos Épicos) — PAUSADO em 58 itens
-      catalogados** (ver detalhe no histórico do vault, sessão 2026-10-18):
+- [x] **`v35-epic` Capítulo 4 (Itens Mágicos Épicos) — ESSENCIALMENTE
+      COMPLETO em 2026-10-19 — 92 itens catalogados, fronteira do
+      capítulo confirmada (p.154→155 inicia Cap.5 "Monstros",
+      estatísticas de criatura, fora de escopo de PC)**
+      (progressão: 58→77→85→92):
   - [x] Tabela 4-6/4-7 (propriedades genéricas de armadura/escudo)
   - [~] Tabela 4-8 — armaduras/escudos específicos (5/6; falta "Peitoral do
         Ancião de Guerra" — gap, busca exaustiva já feita)
@@ -245,12 +248,44 @@ tocados"** + 2 fora de escopo de PC.**
         ocultos, não codificados)
   - [x] Pergaminhos Épicos — confirmado paramétrico, nada a catalogar
   - [x] Cajados Épicos (Tabela 4-24) — 13/13 completa
-  - [~] Itens Maravilhosos Épicos (Tabela 4-25) — 8 entradas (Amuleto de
-        Armadura Natural Épica, Armário do Banquete, Botas da Rapidez,
-        Braçadeiras da Bravura Implacável/Armadura Épica/Saúde Épica, Chave
-        de Portal, Cinto de Força Épica); tabela extensa ainda não lida
-        por completo (dezenas de itens de bônus de atributo); gap:
-        "Ferraduras de Montaria Inigualável" (NdC/preço cortados)
+  - [x] **Itens Maravilhosos Épicos (Tabela 4-25) — CONFIRMADA ENCERRADA
+        em "Manto da Resistência à Magia Épica" (p.146)** — todas as
+        entradas de bônus de atributo variável catalogadas (Cinto de
+        Força, Manto de Resistência/Carisma/RM, Braçadeiras de Saúde/
+        Armadura/Bravura Implacável, Luvas de Destreza, Tiara do
+        Intelecto, Periapto da Sabedoria, Amuleto de Armadura Natural,
+        Botas da Rapidez, Armário do Banquete, Chave de Portal, Manto
+        de Furtividade Maior). Gap: "Ferraduras de Montaria
+        Inigualável" preço/NdC cortados
+  - [x] **"Itens Inteligentes" (Tabelas 4-27 a 4-35, pp.147-149)
+        confirmado paramétrico** — geração aleatória de poderes/Ego/
+        propósito, não catalogável como item nomeado
+  - [~] **NOVA SEÇÃO "ARTEFATOS" (pp.150-152) iniciada**: 5 Compêndios/
+        Manuais (tipo "tome": Conjurações Benéficas, Danação Inefável,
+        Magia Prateada, Pujança Suprema em Combate, Furto Sorrateiro)
+        + Dados de Olidammara (artefato menor) + Bolsa de Fartura
+        (artefato menor) + Machado dos Senhores Anões (artefato maior,
+        primeira entrada). **Continuados (lote 16, pp.153-154): mais
+        6 Artefatos Maiores** — Códice dos Planos Infinitos (Tomo de
+        Yagnus, tabela de catástrofe 1d%), Taça e Talismã de Al'Akbar
+        (dissipa escuridão, +6 Carisma, cura/aliado extraplanar; gap:
+        1 parágrafo final obscurecido por ilustração), Olho de Gruumsh
+        (+6 For/Car para orcs, visão da verdade), Manopla de Ferro de
+        Hextor (item inteligente, Int13/Sab18/Car24/Ego26), Armadura
+        do Golem (RD 50/+3), Capa Invulnerável de Arnd (RD 10/+5),
+        Anel de Gaxx (9 faces de poder rotativas, tabela 1d10
+        completa). **7 Artefatos Maiores totais catalogados — CAPÍTULO
+        4 CONFIRMADO ENCERRADO na p.154** (p.155 inicia Capítulo 5
+        "Monstros"/Criaturas Épicas, fora de escopo de PC). Gaps
+        residuais não fechados (busca exaustiva já realizada
+        anteriormente, aceitos como permanentes): Bastões Cancelamento/
+        Comando/Esplendor Épico/Fortificação, entrada escada/bússola,
+        "Peitoral do Ancião de Guerra" (Tabela 4-8)
+  - 18 testes verdes (92 itens), mutação testada/restaurada (2
+    ciclos), manifesto regenerado (9320→9347→9354 registros),
+    catalog_items 1865→1892→1899, aggregate 10400→10427→10434,
+    catalog.test.ts/admin.test.ts recalibrados (6 asserts no total),
+    80 testes verdes nos 2 arquivos de serviço
 - [ ] Livro Completo do Aventureiro: Templates de Habilidades Especiais de
       Armaduras/Escudos/Armas Mágicas (pp.127-129), Poções/Pergaminhos/
       Varinhas (Tabelas 4-7 a 4-10, pp.130-132)

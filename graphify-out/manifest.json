@@ -15336,15 +15336,15 @@
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35EpicItems.test.ts": {
-    "mtime": 1792394314.5841775,
-    "seen": 1792439314.3915694,
-    "ast_hash": "53ea25f560320054be3349f65dbd7866",
+    "mtime": 1792454586.18469,
+    "seen": 1792454999.342855,
+    "ast_hash": "4791d02691f3970d1ebd99b030c2de98",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35EpicItems.ts": {
-    "mtime": 1792394147.5098495,
-    "seen": 1792439314.39157,
-    "ast_hash": "cb4ac1f4613f2d5124994745728453c9",
+    "mtime": 1792454623.5607717,
+    "seen": 1792454999.3428578,
+    "ast_hash": "4f32ed6f520ddeb764bd49266741ac5c",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35EpicSpells.test.ts": {
@@ -15432,21 +15432,21 @@
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35PlanosRaces.test.ts": {
-    "mtime": 1792439640.77356,
-    "seen": 1792439765.2221732,
-    "ast_hash": "9fabedd37a566219bfc675d2f9347a03",
+    "mtime": 1792454571.4766357,
+    "seen": 1792454999.3429742,
+    "ast_hash": "ae3d02e14080f9e0efd89bfd4e1e5e83",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35PlanosRaces.ts": {
-    "mtime": 1792439701.3062036,
-    "seen": 1792439765.222178,
-    "ast_hash": "8a89bef3ea5b0b120f234603719ca04f",
+    "mtime": 1792454533.3986528,
+    "seen": 1792454999.3429773,
+    "ast_hash": "9f49238f5275f9ee49d74c8dc700fadc",
     "semantic_hash": ""
   },
   "MASTER_TODO.md": {
-    "mtime": 1792441871.6222334,
-    "seen": 1792441967.1253653,
-    "ast_hash": "61d8fd333651c03b3cadb7b66964b8f7",
+    "mtime": 1792454612.8628528,
+    "seen": 1792454999.3451412,
+    "ast_hash": "eff7ced6270af3bbcfa0f16619e197c0",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35MonstrosFeats.test.ts": {
@@ -16845,6 +16845,276 @@
     "mtime": 1788493287.9142597,
     "seen": 1792454037.8396347,
     "ast_hash": "a831cf3669f1e6ab85d8a80ebe655f99",
+    "semantic_hash": ""
+  },
+  "scripts/ocr-images.ps1": {
+    "mtime": 1792454879.869245,
+    "seen": 1792454999.3418825,
+    "ast_hash": "258e836939ea17a060e262d14cf0f17b",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_121.txt": {
+    "mtime": 1792454826.1763666,
+    "seen": 1792454999.3451715,
+    "ast_hash": "b30ebaa5f2ce2e220945af2e3c171933",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_122.txt": {
+    "mtime": 1792454826.555339,
+    "seen": 1792454999.345174,
+    "ast_hash": "f3514850fac9675726eb8cb2664a3270",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_123.txt": {
+    "mtime": 1792454826.8761115,
+    "seen": 1792454999.345176,
+    "ast_hash": "a399397252837aba9d2ba39722c383d6",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_124.txt": {
+    "mtime": 1792454827.088635,
+    "seen": 1792454999.3451781,
+    "ast_hash": "ef65d0786f2fccf4aa3923743194ad18",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_125.txt": {
+    "mtime": 1792454827.5007765,
+    "seen": 1792454999.3451796,
+    "ast_hash": "0836bbe7c03eda1530ba651e28787f47",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_126.txt": {
+    "mtime": 1792454827.7184875,
+    "seen": 1792454999.3451817,
+    "ast_hash": "0178f17aa8f36448b9cd8b22eabfa879",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_127.txt": {
+    "mtime": 1792454828.0864153,
+    "seen": 1792454999.3451834,
+    "ast_hash": "891f0d530fa5b0fa5674357b193278f6",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_127_300.txt": {
+    "mtime": 1792454893.3904386,
+    "seen": 1792454999.345185,
+    "ast_hash": "bccb8eadb5875757ebb034bd545911e4",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_128.txt": {
+    "mtime": 1792454828.54583,
+    "seen": 1792454999.3451872,
+    "ast_hash": "83686171c5477d7e2d150ea3bf3f42ff",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_128_300.txt": {
+    "mtime": 1792454894.2214072,
+    "seen": 1792454999.345189,
+    "ast_hash": "09641ce69d4d7ec14b2119549e798e27",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_129.txt": {
+    "mtime": 1792454828.5959563,
+    "seen": 1792454999.3451912,
+    "ast_hash": "ecaa88f7fa0bf610a5a26cf545dcd3aa",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_129_300.txt": {
+    "mtime": 1792454894.5009007,
+    "seen": 1792454999.345193,
+    "ast_hash": "ecaa88f7fa0bf610a5a26cf545dcd3aa",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_130.txt": {
+    "mtime": 1792454828.856272,
+    "seen": 1792454999.3451948,
+    "ast_hash": "795bdb418c55a340aa72e6941700b12a",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_130_300.txt": {
+    "mtime": 1792454895.21825,
+    "seen": 1792454999.3451962,
+    "ast_hash": "8858628d5c9465ee0acd6418aefb2fa5",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_131.txt": {
+    "mtime": 1792454829.070224,
+    "seen": 1792454999.345198,
+    "ast_hash": "8e7d24ca7522a01bc09ac831d30086b6",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_131_300.txt": {
+    "mtime": 1792454895.8885152,
+    "seen": 1792454999.3451996,
+    "ast_hash": "d2c39c6418e8ed0f6d86e6cbd64e9a40",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_132.txt": {
+    "mtime": 1792454829.2210906,
+    "seen": 1792454999.3452015,
+    "ast_hash": "7fce3c86fc39fccec9ccce13470eff4d",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_132_300.txt": {
+    "mtime": 1792454896.6082592,
+    "seen": 1792454999.345203,
+    "ast_hash": "da64a51294db6d56aa13a5316b73eef9",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_133.txt": {
+    "mtime": 1792454829.63092,
+    "seen": 1792454999.345205,
+    "ast_hash": "ce2005354159b72ee85c883bd7283fd9",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_133_300.txt": {
+    "mtime": 1792454897.7887046,
+    "seen": 1792454999.345207,
+    "ast_hash": "fe9da1d33088d88b3c03589226356fec",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_134.txt": {
+    "mtime": 1792454829.9501526,
+    "seen": 1792454999.345209,
+    "ast_hash": "d1b63a08f8a2d87dfca99a0c8a7da497",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_135.txt": {
+    "mtime": 1792454830.2145972,
+    "seen": 1792454999.3452108,
+    "ast_hash": "3c440ad68565b0198451ce85b60064bd",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_121.png": {
+    "mtime": 1792454737.4192045,
+    "seen": 1792454999.3473287,
+    "ast_hash": "107ddfc3b972ee9befbbcf96f8444582",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_122.png": {
+    "mtime": 1792454737.6585042,
+    "seen": 1792454999.3473315,
+    "ast_hash": "122091f4224f34b153ec868d11d7ce16",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_123.png": {
+    "mtime": 1792454737.889253,
+    "seen": 1792454999.3473341,
+    "ast_hash": "f48063f38ec4272653bc6e337770d734",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_124.png": {
+    "mtime": 1792454738.1253915,
+    "seen": 1792454999.347336,
+    "ast_hash": "517267d938b67e089caab18a2a05c80d",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_125.png": {
+    "mtime": 1792454738.5365753,
+    "seen": 1792454999.3473375,
+    "ast_hash": "598d076bf5c5b4a7e142a92bda52d3c9",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_126.png": {
+    "mtime": 1792454738.8545773,
+    "seen": 1792454999.347339,
+    "ast_hash": "e6a7f63164db9782d28297c94fc301b9",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_127.png": {
+    "mtime": 1792454739.0893364,
+    "seen": 1792454999.3473406,
+    "ast_hash": "ff493db223b1433f2998dd62b42de857",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_127_300.png": {
+    "mtime": 1792454850.02778,
+    "seen": 1792454999.3473425,
+    "ast_hash": "4878ed96f80877356301e436d5395ed8",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_128.png": {
+    "mtime": 1792454739.4158168,
+    "seen": 1792454999.347345,
+    "ast_hash": "e6542b523bf6d60fa459a1d474b2d405",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_128_300.png": {
+    "mtime": 1792454850.5978422,
+    "seen": 1792454999.3473473,
+    "ast_hash": "c25ad665eaea11b4e75626ccb4850074",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_129.png": {
+    "mtime": 1792454739.6672523,
+    "seen": 1792454999.347349,
+    "ast_hash": "4b20dde1833932645cf98646858d12c7",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_129_300.png": {
+    "mtime": 1792454851.041585,
+    "seen": 1792454999.3473513,
+    "ast_hash": "2d903dfcf09be9d431ca2cdc6a2b134b",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_130.png": {
+    "mtime": 1792454739.9088748,
+    "seen": 1792454999.347353,
+    "ast_hash": "7095a360d3428032fea40670f72e2f34",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_130_300.png": {
+    "mtime": 1792454851.4511752,
+    "seen": 1792454999.347355,
+    "ast_hash": "1585123b14b53115049ce6f7a9d9916e",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_131.png": {
+    "mtime": 1792454740.1088903,
+    "seen": 1792454999.3473563,
+    "ast_hash": "dd441badf274767749b692204e0d3c7c",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_131_300.png": {
+    "mtime": 1792454851.7939966,
+    "seen": 1792454999.3473582,
+    "ast_hash": "639d1596da734e306c83c62e6aeaf8b9",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_132.png": {
+    "mtime": 1792454740.314488,
+    "seen": 1792454999.3473604,
+    "ast_hash": "dd02d144ee71bbe2f5887343ee2a9d33",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_132_300.png": {
+    "mtime": 1792454852.1402538,
+    "seen": 1792454999.3473628,
+    "ast_hash": "eff008f23b9bcd35f1a3ad30e5742332",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_133.png": {
+    "mtime": 1792454740.667097,
+    "seen": 1792454999.3473644,
+    "ast_hash": "fd46ffba670028ab0eb1ef6bb58ea267",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_133_300.png": {
+    "mtime": 1792454852.7017465,
+    "seen": 1792454999.3473659,
+    "ast_hash": "aba51e395a25bdda99974b75fedf3441",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_134.png": {
+    "mtime": 1792454740.9737887,
+    "seen": 1792454999.3473678,
+    "ast_hash": "2a06f3ef865823669ee5f26cff816da8",
+    "semantic_hash": ""
+  },
+  "temp_adv_ocr/p_135.png": {
+    "mtime": 1792454741.1676295,
+    "seen": 1792454999.3473692,
+    "ast_hash": "ee1707c2597eaaf12ccb702386d5db52",
     "semantic_hash": ""
   }
 }

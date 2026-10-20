@@ -2346,15 +2346,15 @@ describe("serviço de catálogo local", () => {
     expect(counts.catalog_weapons).toBe(348);
     expect(counts.catalog_armors).toBe(79);
     expect(counts.catalog_shields).toBe(32);
-    expect(counts.catalog_items).toBe(1865);
+    expect(counts.catalog_items).toBe(1899);
   });
 
   it("calcula as métricas do compêndio pelos snapshots locais, incluindo perícias", async () => {
     const metrics = await fetchCatalogLocalMetrics();
     expect(metrics.counts.catalog_skills).toBe(195);
     expect(metrics.counts.catalog_spells).toBe(2680);
-    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(10400);
-    expect(metrics.verifiedCount + metrics.reviewCount).toBe(10400);
+    expect(Object.values(metrics.counts).reduce((sum, count) => sum + count, 0)).toBe(10434);
+    expect(metrics.verifiedCount + metrics.reviewCount).toBe(10434);
   }, 15_000);
 
   it("compartilha o cálculo das métricas locais entre chamadas concorrentes", async () => {

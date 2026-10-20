@@ -125,16 +125,42 @@
  * Manto de Carisma, Luvas de Destreza, Tiara do Intelecto, Periapto da
  * Sabedoria, Amuleto de Armadura Natural — cada um em múltiplos graus de
  * bônus +6 a +12+), ainda não totalmente lida. "Ferraduras de Montaria
- * Inigualável" tem descrição parcialmente lida (RM32 contra
+ * "Ferraduras de Montaria Inigualável" tem descrição parcialmente lida (RM32 contra
  * encantamento, dobra deslocamento, concede talentos de montaria) mas
  * NdC/preço cortados — gap, não codificado. Gaps persistentes: Bastões
  * Cancelamento/Comando/Esplendor Épico/Fortificação, entrada escada/
  * bússola, "Peitoral do Ancião de Guerra".
+ *
+ * COBERTURA (lote 15, pp.146-152, 85 entradas): **Tabela 4-25 (Itens
+ * Maravilhosos Épicos de bônus de atributo) CONFIRMADA ENCERRADA em
+ * "Manto da Resistência à Magia Épica" (p.146)** — a seção seguinte
+ * "ITENS INTELIGENTES" (Tabelas 4-27 a 4-35, pp.147-149) é inteiramente
+ * paramétrica (geração aleatória de poderes/propósito/Ego de itens
+ * inteligentes) — não catalogável como item nomeado, mesmo padrão de
+ * Pergaminhos. **Nova seção "ARTEFATOS" (pp.150-152) iniciada**:
+ * 6 Compêndios/Manuais (tipo "tome"): Compêndio de Conjurações
+ * Benéficas, Compêndio de Danação Inefável, Compêndio de Magia
+ * Prateada (trio de alinhamento Bom/Mau/Neutro, +1 Int/Car inerente
+ * para conjuradores arcanos do alinhamento certo), Manual da Pujança
+ * Suprema em Combate (+1 For/Des para classes marciais), Manual do
+ * Furto Sorrateiro (+1 Des para ladinos), Dados de Olidammara
+ * (artefato menor, tabela 2d6 de efeitos aleatórios — gap: valores
+ * para resultado 7 não capturados com certeza no recorte lido).
+ * "ARTEFATOS MENORES": Bolsa de Fartura (1 PO→25 PO durante a noite).
+ * "ARTEFATOS MAIORES" iniciados: Machado dos Senhores Anões (machado
+ * anão +5 anti-goblinoide, bônus de Ofício, invocar elemental da
+ * terra semanalmente) — primeira entrada de uma seção maior ainda não
+ * totalmente lida (Códice dos Planos Infinitos, Taça e Talismã de
+ * Al'Akbar, Olho de Gruumsh e possivelmente mais artefatos maiores
+ * identificados nas pp.152-153 mas ainda não transcritos
+ * integralmente — próximo passo). Gaps persistentes do Capítulo 4
+ * (Bastões Cancelamento/Comando/Esplendor Épico/Fortificação, escada/
+ * bússola, Peitoral do Ancião de Guerra) seguem não fechados.
  */
 export type Dnd35EpicItem = {
   id: string;
   name: string;
-  category: "armor ability" | "specific armor" | "weapon ability" | "specific weapon" | "wondrous item" | "ring" | "rod" | "staff";
+  category: "armor ability" | "specific armor" | "weapon ability" | "specific weapon" | "wondrous item" | "ring" | "rod" | "staff" | "tome" | "minor artifact" | "major artifact";
   casterLevel: string;
   prerequisites?: string;
   marketPrice?: string;
@@ -991,5 +1017,170 @@ export const DND35_EPIC_ITEMS: Dnd35EpicItem[] = [
     description:
       "Uma tiara forjada com ligas de ouro e gemas azuis brilhantes que expande a capacidade cognitiva e a memória do portador, concedendo um bônus de melhoria de +8 ou superior na Inteligência.",
     page: 146,
+  },
+  {
+    id: "epic-item-compendio-conjuracoes-beneficas",
+    name: "Compêndio de Conjurações Benéficas",
+    category: "tome",
+    casterLevel: "19º",
+    prerequisites: "—",
+    marketPrice: "—",
+    description:
+      "Este livro místico tem um grande valor para os conjuradores arcanos Bons (LB, NB, LM). O estudo do trabalho exige uma semana. Depois de terminar a leitura, um conjurador arcano Bom recebe +1 de bônus inerente no valor da habilidade-chave de capacidade de conjuração arcana (Inteligência para magos e feiticeiros por bardos e feiticeiros) para alcançar a metade entre o XP do seu nível e o nível de experiência subsequente. Caso o leitor tenha mais classes de conjurador arcana, deverá escolher qual delas será afetada. Os conjuradores que não sejam Bons (LN, N, CN, LM, NM ou CM) perdem definitivamente 1d4+1 pontos de Constituição e devem realizar a penitência (veja a magia penitência) para adquirir qualquer ponto de experiência. Qualquer pessoa incapaz de conjurar magias arcanas que leia pela única palavra do compêndio deve obter sucesso em um teste de resistência de Vontade (CD 20) ou ficará insana (veja a magia insanidade). Exceto quando especificado o contrário, o texto do compêndio de conjurações benéficas não poderá ser diferenciado de qualquer outro livro, tomo e similares até que seja analisado com atenção. Uma vez terminada a leitura, o manuscrito desaparece e nunca será encontrado novamente e o mesmo personagem jamais obterá qualquer benefício quando ler um artefato similar.",
+    page: 151,
+  },
+  {
+    id: "epic-item-compendio-danacao-infeavel",
+    name: "Compêndio de Danação Inefável",
+    category: "tome",
+    casterLevel: "19º",
+    prerequisites: "—",
+    marketPrice: "—",
+    description:
+      "Este livro místico tem um grande valor para os conjuradores arcanos malignos (LM, NM, CM). O estudo do trabalho exige uma semana. Depois de terminar a leitura, um conjurador arcano Mau recebe +1 de bônus inerente no valor da habilidade-chave de capacidade de conjuração arcana (Inteligência para magos e feiticeiros por bardos e feiticeiros) para alcançar a metade entre o XP do seu nível e o nível de experiência subsequente. Caso o leitor tenha mais classes de conjurador arcana, deverá escolher qual delas será afetada. Os conjuradores que não sejam Maus (LN, N, CN, LB, NB ou CB) perdem definitivamente 1d4+1 pontos de Constituição e devem realizar a penitência (veja a magia penitência) para adquirir qualquer ponto de experiência. Qualquer pessoa incapaz de conjurar magias arcanas que leia pela única palavra do compêndio deve obter sucesso em um teste de resistência de Vontade (CD 20) ou ficará insana. Exceto quando especificado o contrário, o texto do compêndio de danação inefável não poderá ser diferenciado de qualquer outro livro, tomo e similares até que seja analisado com atenção. Uma vez terminada a leitura, o manuscrito desaparece e nunca será encontrado novamente e o mesmo personagem jamais obterá qualquer benefício quando ler um artefato similar.",
+    page: 151,
+  },
+  {
+    id: "epic-item-compendio-magia-prateada",
+    name: "Compêndio de Magia Prateada",
+    category: "tome",
+    casterLevel: "19º",
+    prerequisites: "—",
+    marketPrice: "—",
+    description:
+      "Este livro místico tem um grande valor para os conjuradores arcanos Neutros (LN, N, CN). O estudo do trabalho exige uma semana. Depois de terminar a leitura, um conjurador arcano Neutro recebe +1 de bônus inerente no valor da habilidade-chave de capacidade de conjuração arcana (Inteligência para magos e feiticeiros por bardos e feiticeiros) para alcançar a metade entre o XP do seu nível e o nível de experiência subsequente. Caso o leitor tenha mais classes de conjurador arcana, deverá escolher qual delas será afetada. Os conjuradores que sejam Bons ou Maus (LM, NM, CM, LB, NB ou CB) perdem definitivamente 1d4+1 pontos de Constituição e devem realizar a penitência para adquirir qualquer ponto de experiência. Qualquer pessoa incapaz de conjurar magias arcanas que leia pela única palavra do compêndio deve obter sucesso em um teste de resistência de Vontade (CD 20) ou ficará insana. Exceto quando especificado o contrário, o texto do compêndio de magia prateada não poderá ser diferenciado de qualquer outro livro, tomo e similares até que seja analisado com atenção. Uma vez terminada a leitura, o manuscrito desaparece e nunca será encontrado novamente e o mesmo personagem jamais obterá qualquer benefício quando ler um artefato similar.",
+    page: 151,
+  },
+  {
+    id: "epic-item-manual-pujanca-suprema-combate",
+    name: "Manual da Pujança Suprema em Combate",
+    category: "tome",
+    casterLevel: "19º",
+    prerequisites: "—",
+    marketPrice: "1,5 kg (sem preço de mercado — artefato menor)",
+    description:
+      "Esta pesquisa contém conselhos de especialistas e instruções sobre arte de combate. Qualquer bárbaro, guerreiro, monge, paladino ou ranger que quiser usar o manual recebe +1 de bônus inerente na Força ou na Destreza (à escolha do leitor) suficientes para alcançar a metade entre o XP do seu nível e o nível de experiência subsequente. Caso tenha mais de uma das classes listadas, deverá escolher qual delas será afetada. Um personagem que não tenha nenhuma das classes indicadas não poderá receber qualquer bônus. Se um conjurador arcano ou divino ler qualquer uma dessas páginas do manual, perderá 2d6 x 1.000 XP e deve obter sucesso em um teste de resistência de Vontade (CD 20) ou perderá definitivamente 1 ponto de Inteligência. Exceto quando especificado o contrário, o texto do manual da pujança suprema em combate não poderá ser diferenciado de qualquer outro livro, tomo e similares até que seja analisado com atenção.",
+    page: 151,
+  },
+  {
+    id: "epic-item-manual-furto-sorrateiro",
+    name: "Manual do Furto Sorrateiro",
+    category: "tome",
+    casterLevel: "19º",
+    prerequisites: "—",
+    marketPrice: "1,5 kg (sem preço de mercado — artefato menor)",
+    description:
+      "Este é um guia detalhado de furtos, golpes e truques. Qualquer ladino ganhador que leia esse guia obtém lições de furtividade. Caso um personagem tenha níveis de ladino recebe +1 de bônus inerente na Destreza suficiente para alcançar a metade entre o XP do seu nível e o nível de experiência subsequente. Se um personagem divino sem níveis de ladino analisar a única palavra do manual, perderá 2d6 x 1.000 XP e deve obter sucesso em um teste de resistência de Vontade (CD 20) ou perderá definitivamente 1 ponto de Sabedoria. Exceto quando especificado o contrário, o texto do manual do furto sorrateiro não poderá ser diferenciado de qualquer outro livro, tomo e similares até que seja analisado com atenção. Uma vez terminada a leitura, o manuscrito desaparece e nunca será encontrado novamente e o mesmo personagem jamais obterá qualquer benefício quando ler um artefato similar.",
+    page: 152,
+  },
+  {
+    id: "epic-item-dados-de-olidammara",
+    name: "Dados de Olidammara",
+    category: "minor artifact",
+    casterLevel: "20º",
+    prerequisites: "—",
+    marketPrice: "sem preço de mercado — artefato menor",
+    description:
+      "Este par de cubos de marfim amarelado e semelhante a um conjunto comum de dados (6 lados), exceto que no lugar do '1' há o símbolo de Olidammara, a máscara da comédia e da tragédia combinadas. Um personagem que tenha os dados de Olidammara pode lançá-los e desejar jogá-los imediatamente ao seu favor. Lançar os dados é uma ação padrão e ambos devem ser jogados simultaneamente para qualquer efeito. Para simular a utilização dos dados, o jogador deve lançar 2d6 e consultar a tabela: 2 — perca 10.000 XP e jogue novamente na próxima rodada; 3 — perca definitivamente 1d4 de Destreza; 4 — sofra 1d4 níveis negativos (Fortitude CD 20 pode remover); 5 — -1 de penalidade em todos os testes e resistência durante 1 hora; 6 — -4 de penalidade na CA durante 10 minutos; 8 — +1 de bônus de moral em ataques e testes de resistência durante 10 minutos; 9 — ganhe os efeitos de nublar durante 10 minutos; 10 — +1 de bônus de intuição em todos os ataques, testes de resistência e movimentação livre durante 1 hora; 11 — ganhe os efeitos de movimentação livre durante 1 hora; 12 — ganhe um desejo restrito (deve ser utilizado em 1 hora); 2d6 (resultado alternativo \"ganhe 10.000 XP e pode jogar novamente na próxima rodada\" — valores exatos preservados do recorte lido, gap: tabela completa de 2-12 pode conter mais nuances não totalmente capturadas nesta leitura).",
+    page: 152,
+  },
+  {
+    id: "epic-item-bolsa-de-fartura",
+    name: "Bolsa de Fartura",
+    category: "minor artifact",
+    casterLevel: "—",
+    prerequisites: "—",
+    marketPrice: "sem preço de mercado pré-estabelecido (valor estimado centenas de milhares de PO ou mais) — artefato menor",
+    description:
+      "Esta algibeira de couro é capaz de transformar uma única peça de ouro em muitas durante a noite. Se uma única peça de ouro for colocada em uma bolsa de fartura durante o pôr-do-sol, ela será substituída por 25 peças de ouro na alvorada. A bolsa não surte efeito caso mais de 1 PO seja guardada em seu interior ou se qualquer coisa diferente de ouro for colocada nela.",
+    page: 150,
+  },
+  {
+    id: "epic-item-machado-dos-senhores-anoes",
+    name: "Machado dos Senhores Anões",
+    category: "major artifact",
+    casterLevel: "—",
+    prerequisites: "—",
+    marketPrice: "sem preço de mercado — artefato maior",
+    description:
+      "De acordo com a lenda dos anões, o machado é machado +5 anti-criaturas ([goblinoide]s) foi forjado para que a superior arma de guerra pudesse levar o Primeiro Reino dos Anões. Durante gerações, o machado dos senhores anões desapareceu em dezenas de ocasiões — seu aparecimento sempre precedendo mudanças e revoluções entre os anões. Esta machado de combate anão, de arremesso afiado anti-criatura ([goblinoide]s), foi forjado por um dos pior ancestrais da linhagem naã. Qualquer anão que empunhe o machado terá seu poder de combate ampliado, concedendo um bônus de melhoria na arma e um poder especial de ataque contra goblinoides. O portador do machado recebe +6 de bônus em testes de Ofício (armeiro, ferreiro, joalheiro, pedreiro e armeiro) e o usuário é capaz de invocar um elemental da terra uma vez por semana (invocar criaturas IX, duração 20 minutos).",
+    page: 152,
+  },
+  {
+    id: "epic-item-codice-dos-planos-infinitos",
+    name: "Códice dos Planos Infinitos",
+    category: "major artifact",
+    casterLevel: "—",
+    prerequisites: "—",
+    marketPrice: "sem preço de mercado — artefato maior",
+    description:
+      "Supostamente, a origem deste tomo supremo é anterior ao desenvolvimento do qual idioma escrito conhecido entre os humanos. Também conhecido como Tomo de Yagnus, é um dos planos infinitos de catástrofes, guerras e a lendária Cidade de Latão, embora sua localização usual (se definível) seja desconhecida. O códice é enorme — dizem que ele exige dois homens fortes para ser erguido. As capas são moldadas em obsidiana pura e as páginas são feitas de chumbo flexível. As páginas contêm estranhas e alienígenas iluminuras que combinam formas fantásticas e grotescas. Não importa quantas vezes sejam viradas, sempre haverá mais páginas. Qualquer criatura que abrir o códice e iniciar a leitura deve obter sucesso imediatamente (Fortitude CD 30) para suportar a destruição que sobrevirá àquele que sobreviver (ela deve consultar a Tabela 4-36: Catástrofe do Códice, 1d%, abaixo). Caso tenha cada vez mais segredos, mas a cada dia que estuda o códice, deve fazer um novo teste de resistência de Vontade (CD 50) ou ficará permanentemente insana (veja a magia insanidade). Entretanto, entre os poderes que o códice dos planos infinitos oferece são: acesso astral, banimento, grupo de elementais, portal, aliado extraplanar aprimorado, chamar planovagante, viagem planar e prender ao alvo. Caso os poderes não tenham limite diário de utilização pelo portador do códice (sem necessidade de qualquer teste de Concentração ou outro de Identificar Magia CD 40 — duas vezes o nível do poder de magia, pois não é possível 10º teste). Um fracasso em qualquer teste exige uma nova consulta imediata a uma tabela de catástrofe associada à posição (consulte a tabela abaixo para determinar o efeito). O usuário sofre as consequências a cada catástrofe, independente do poder de magia que estiver usando. Tabela 4-36: Catástrofe do Códice (1d%): 01-25 — Fúria natural: Uma magia terremoto centrada no leitor é deflagrada a cada rodada durante 1 minuto e uma magia tempestade da vingança intensificada estará centrada e terá o leitor como alvo; 26-50 — Vingança abissal: Um portal tunante 1d3 behir (demônio), senhores das profundezas (diabo) ou extra-planares malignos similares, que imediatamente invadem a área e tentam destruir o portador do códice; 51-75 — Aprisionamento supremo: A alma do leitor é capturada (como a magia aprisionamento) em uma gema aleatória em algum lugar do plano, enquanto seu corpo é sepultado abaixo da superfície (como aprisionamento); 76-100 — Morte: O leitor escuta um grito de banshee e logo depois é alvo da magia destruição. Isto se repete a cada rodada, durante 10 rodadas, até que o personagem seja eliminado.",
+    page: 153,
+  },
+  {
+    id: "epic-item-taca-e-talisma-de-alakbar",
+    name: "Taça e Talismã de Al'Akbar",
+    category: "major artifact",
+    casterLevel: "—",
+    prerequisites: "—",
+    marketPrice: "sem preço de mercado — artefato maior",
+    description:
+      "Estas relíquias sagradas foram carregadas pelos semideuses de Al'Akbar até hoje, os seguidores daquela divindade vasculham o plano, na tentativa de recuperar essas relíquias, esperando que elas sejam capazes de vibrar ou fortalecer os fiéis. A taça de Al'Akbar é um grande cálice dourado e ornado com gemas que exige duas mãos para erguê-lo. Ela emite luz incessantemente e dissipa de imediato quaisquer magias baseadas em escuridão nas áreas em que estiver. Se a taça for preenchida com água benta (cerca de 4 litros), a substância agirá como uma poção de curar ferimentos críticos ou uma poção de neutralizar venenos (à escolha do portador) quando ingerida. O líquido não pode ser guardado ou armazenado de qualquer maneira. O talismã de Al'Akbar é uma pequena estrela de platina de oito pontas, pendurada em uma corrente de ouro e pérolas. O usuário adquire +6 de bônus de aprimoramento em Carisma e pode conjurar remover cegueira/surdez, remover maldição e curar doenças sem limite diário. Além disso, se o talismã for colocado no interior da taça e esta for preenchida com água benta, o líquido se tornará um aliado extraplanar (idêntico à magia). Este efeito funciona somente uma vez por mês. GAP DOCUMENTADO: um parágrafo final sobre o efeito de tocar a taça ou o talismã simultaneamente foi parcialmente obscurecido por uma ilustração no scan original e não pôde ser transcrito com certeza — não inventado.",
+    page: 153,
+  },
+  {
+    id: "epic-item-olho-de-gruumsh",
+    name: "Olho de Gruumsh",
+    category: "major artifact",
+    casterLevel: "—",
+    prerequisites: "—",
+    marketPrice: "sem preço de mercado — artefato maior",
+    description:
+      "Esse fragmento de rocha possui uma safira negra no centro, tornando-a semelhante a um olho. As lendas orcs afirmam que a pedra é realmente o olho petrificado do próprio Gruumsh, arrancado há eras por Corellon Larethian. Os sábios élficos ridicularizam essa lenda, insistindo que Corellon destruiu completamente o olho de Gruumsh. No entanto, o olho de Gruumsh possui um imenso poder, em particular nas mãos de alguém com sangue orc. Quando empunhado por um orc, ele concede +6 de bônus de aprimoramento de Força e Carisma, e a visão do orc alcança dobrado. As criaturas de raças diferentes que portarem o olho recebem +2 de bônus de aprimoramento de Força, mas sofrem −2 de penalidade de Inteligência e Carisma. Independente da raça do usuário, qualquer arma empunhada pelo portador do olho é considerada uma arma anti-criatura (elfos). Além disso, quando segurar o fragmento diante do rosto, o usuário enxergará o mundo através da magia visão da verdade (conjurada sobre ele). Esse poder pode ser ativado somente uma vez por dia, mas permanece ativo enquanto o usuário se concentrar (exige uma ação padrão a cada rodada).",
+    page: 153,
+  },
+  {
+    id: "epic-item-manopla-de-ferro-de-hextor",
+    name: "Manopla de Ferro de Hextor",
+    category: "major artifact",
+    casterLevel: "—",
+    prerequisites: "—",
+    marketPrice: "sem preço de mercado — artefato maior",
+    description:
+      "Esta manopla de mão direita foi forjada de ferro negro foi usada por Hextor em sua primeira batalha contra seu meio-irmão Heironeous e está imbuída com uma fração de seu poder e intelecto. Desde aquele dia, a manopla foi transferida para sumos-sacerdotes da igreja de Hextor, sempre buscando encontrar o portador adequado para atender seus instintos destrutivos. A manopla fornece +8 de bônus de aprimoramento de Força. O usuário dobra o dano adicional causado por qualquer ataque de destruição que realizar. Caso o portador tenha o talento Liderança, seu valor de Liderança aumenta em +4, mas nunca poderá atrair ou manter seguidores ou parceiros que sejam Bons ou Caóticos. Uma vez por dia, o usuário é capaz de conjurar implosão com 20º nível de conjurador (CD 23). A manopla de ferro de Hextor é inteligente (Int 13, Sab 18, Car 24, Ego 26) e Leal e Má. Ela é capaz de se comunicar por telepatia com o usuário, mas não consegue falar. Ela sempre tentará dominar qualquer usuário que não seja Leal e Mau, forçando a criatura a cometer tarefas malignas ou encontrar um usuário mais adequado.",
+    page: 154,
+  },
+  {
+    id: "epic-item-armadura-do-golem",
+    name: "Armadura do Golem",
+    category: "major artifact",
+    casterLevel: "—",
+    prerequisites: "—",
+    marketPrice: "sem preço de mercado — artefato maior",
+    description:
+      "Este traje enorme de ferro negro é uma armadura de batalha +10. O usuário adquire categoria de tamanho (limitado a Colossal). O usuário também recebe +10 de bônus de Força e torna-se imune a efeitos de ação mental, venenos, doenças e efeitos similares. Ele é imune a sucessos decisivos, dano por contusão, dano de habilidade, drenar energia e morte por dano maciço. Diferente do golem de ferro, que é utilizado para forjar uma armadura, a armadura do golem é imune a ataques de ferrugem. O usuário da armadura adquire Redução de Dano 50/+3. Ele também não pode recuperar pontos de vida de qualquer maneira enquanto a armadura estiver sendo usada. É necessária 1 hora para vestir ou tirar a armadura do golem.",
+    page: 154,
+  },
+  {
+    id: "epic-item-capa-invulneravel-de-arnd",
+    name: "Capa Invulnerável de Arnd",
+    category: "major artifact",
+    casterLevel: "—",
+    prerequisites: "—",
+    marketPrice: "sem preço de mercado — artefato maior",
+    description:
+      "Quando a humanidade era jovem, uma nação do extremo oeste estava subjugada pela tirania de um rei-mago, um dos primeiros dominar as artes arcanas. Diante da desgraça de sua nação, um humilde clérigo chamado Arnd rogou a seu deus por misericórdia e foi presenteado com uma veste de correntes brilhantes, que conseguiria enfrentar o adversário mais poderoso. Embora Arnd esteja morto há muitos séculos, sua capa ainda existe. Os rumores insistem que ela procura incessantemente por novos usuários para conduzi-la à batalha. A capa invulnerável de Arnd é um camisão de cota de malha de fortificação pesada +5. Ela fornece ao usuário Redução de Dano 10/+5 e resistência 20 contra ácido, frio, eletricidade, fogo e energia sônica. Se o usuário é capaz de expulsar mortos-vivos, ele recebe +4 níveis efetivos para determinar os efeitos relacionados ao seu nível de conjurador, expulsar mortos-vivos, destruir o mal e cura pelas mãos. Por exemplo, um clérigo de 21º nível teria um nível de conjurador efetivo de 25º, enquanto um paladino de 21º nível poderia curar pelas mãos uma quantidade de dano equivalente a 25 x seu modificador de Carisma.",
+    page: 154,
+  },
+  {
+    id: "epic-item-anel-de-gaxx",
+    name: "Anel de Gaxx",
+    category: "major artifact",
+    casterLevel: "—",
+    prerequisites: "—",
+    marketPrice: "sem preço de mercado — artefato maior",
+    description:
+      "Este anel de platina tem um formato estranho e uma gema incrustada de nove facetas; cada face ostenta uma runa diferente e incompreensível; a origem do anel é desconhecida. A cada dia, durante o pôr do sol, a pedra gira para mostrar uma face diferente (sem qualquer padrão aparente, embora alguns usuários tenham relatado a habilidade de controlar esta atividade de alguma forma). A face ativa determina o poder do anel para aquele dia. A cada dia, jogue 1d10 para determinar a face (e o poder) que estará ativa. Com uma grande quantidade de empenho, o usuário do anel de Gaxx pode alterar a face ativa do artefato. Essa mudança exige uma ação de rodada completa, um teste bem-sucedido de Concentração (CD 50) e causa 2d6 pontos de dano por contusão, independente do resultado. Caso obtenha sucesso, a nova face será determinada aleatoriamente. Se o anel de Gaxx for removido, o usuário sofre 2d6 pontos de dano por contusão a cada minuto, até recolocar o anel ou o dano por contusão exceda seus pontos de vida (no entanto, o dano por contusão retornará assim que recuperar a consciência). Tabela do Poder da Face Ativa (1d10): 1 — O usuário é imune a doenças; 2 — O usuário não precisa respirar para sobreviver; 3 — O usuário adquire +5 de bônus de armadura natural; 4 — O usuário adquire visão na penumbra; 5 — O usuário adquire cura acelerada 1; 6 — O usuário pode voar livremente; 7 — O usuário adquire resistência a frio 30; 8 — O usuário adquire movimentação livre; 9 — O usuário adquire +5 de bônus de resistência nos testes de resistência; 10 — O usuário pode selecionar a face que estará ativa.",
+    page: 154,
   },
 ];

@@ -10,12 +10,15 @@
 import { describe, expect, it } from "vitest";
 import {
   DND35_ADV_ALCHEMICAL_ITEMS,
+  DND35_ADV_ARMOR_SPECIAL_ABILITIES,
   DND35_ADV_CAPSULES,
   DND35_ADV_INSTRUMENTS,
   DND35_ADV_MAGIC_RINGS,
   DND35_ADV_MAGIC_WEAPONS,
+  DND35_ADV_POTIONS,
   DND35_ADV_SKILL_TOOLS,
   DND35_ADV_WEAPON_CAPSULES,
+  DND35_ADV_WEAPON_SPECIAL_ABILITIES,
   DND35_ADV_WEAPONS,
   DND35_ADV_WONDROUS_ITEMS,
 } from "./dnd35AdvEquipment";
@@ -378,5 +381,81 @@ describe("D&D 3.5 — Livro Completo do Aventureiro: Itens Mágicos — Itens Ma
     const i = DND35_ADV_WONDROUS_ITEMS.find((x) => x.id === "adv-wondrous-corda-de-armazenar-magia")!;
     expect(i.description).toMatch(/capaz de armazenar até cinco níveis de magia/);
     expect(i.description).toMatch(/deve obter sucesso num teste dessa perícia \(CD 10 \+ nível da magia\)/);
+  });
+});
+
+describe("D&D 3.5 — Livro Completo do Aventureiro: Habilidades Especiais de Armaduras e Escudos (p. 128)", () => {
+  it("totaliza 2 habilidades especiais com IDs únicos e requisitos corretos", () => {
+    expect(DND35_ADV_ARMOR_SPECIAL_ABILITIES).toHaveLength(2);
+    const ids = DND35_ADV_ARMOR_SPECIAL_ABILITIES.map((a) => a.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("Concentração: apenas escudos, +1 de bônus, +10 em Sentir Motivação contra finta", () => {
+    const c = DND35_ADV_ARMOR_SPECIAL_ABILITIES.find((a) => a.id === "adv-armor-ability-concentracao")!;
+    expect(c.target).toBe("escudo");
+    expect(c.marketPrice).toBe("+1 de bônus");
+    expect(c.casterLevel).toBe(11);
+    expect(c.craftRequirement).toMatch(/escudo arcano/);
+    expect(c.description).toMatch(/\+10 de bônus de circunstância nos testes de Sentir Motivação/);
+    expect(c.description).toMatch(/bônus de escudo na CA do personagem devido a um escudo da concentração aumenta em 1 ponto/);
+  });
+
+  it("Pele da Fera: armaduras, +2 de bônus, transforma armadura junto com Forma Selvagem", () => {
+    const p = DND35_ADV_ARMOR_SPECIAL_ABILITIES.find((a) => a.id === "adv-armor-ability-pele-da-fera")!;
+    expect(p.target).toBe("armadura");
+    expect(p.marketPrice).toBe("+2 de bônus");
+    expect(p.casterLevel).toBe(13);
+    expect(p.craftRequirement).toMatch(/madeira-ferro/);
+    expect(p.description).toMatch(/abrir mão de mais um uso diário dessa habilidade para que a armadura também seja transformada/);
+  });
+});
+
+describe("D&D 3.5 — Livro Completo do Aventureiro: Habilidades Especiais de Armas (p. 128)", () => {
+  it("totaliza 2 habilidades especiais com IDs únicos", () => {
+    expect(DND35_ADV_WEAPON_SPECIAL_ABILITIES).toHaveLength(2);
+    const ids = DND35_ADV_WEAPON_SPECIAL_ABILITIES.map((w) => w.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("Tamanho Variável: +1 de bônus, modifica categoria de tamanho como ação padrão", () => {
+    const t = DND35_ADV_WEAPON_SPECIAL_ABILITIES.find((w) => w.id === "adv-weapon-ability-tamanho-variavel")!;
+    expect(t.marketPrice).toBe("+1 de bônus");
+    expect(t.casterLevel).toBe(9);
+    expect(t.craftRequirement).toMatch(/aumentar pessoa, reduzir pessoa/);
+    expect(t.description).toMatch(/modificar a categoria de tamanho do item para qualquer outra como uma ação padrão/);
+  });
+
+  it("Precisão Letal: +2 de bônus, inflige +2d6 de dano adicional em ataque furtivo", () => {
+    const l = DND35_ADV_WEAPON_SPECIAL_ABILITIES.find((w) => w.id === "adv-weapon-ability-precisao-letal")!;
+    expect(l.marketPrice).toBe("+2 de bônus");
+    expect(l.casterLevel).toBe(12);
+    expect(l.craftRequirement).toMatch(/lâmina afiada/);
+    expect(l.description).toMatch(/inflige 2d6 pontos de dano adicionais quando seu portador obtém sucesso num ataque furtivo/);
+  });
+});
+
+describe("D&D 3.5 — Livro Completo do Aventureiro: Poções e Óleos (Tabela 4-7, p. 130)", () => {
+  it("totaliza as 8 poções/óleos da Tabela 4-7 com preços exatos e descrições não vazias", () => {
+    expect(DND35_ADV_POTIONS).toHaveLength(8);
+    const ids = DND35_ADV_POTIONS.map((p) => p.id);
+    expect(new Set(ids).size).toBe(ids.length);
+
+    const precos: Record<string, string> = {
+      "adv-potion-descanso-saudavel": "50 PO",
+      "adv-oil-tiro-exato": "100 PO",
+      "adv-oil-silenciar-metais": "300 PO",
+      "adv-potion-auxilio-da-natureza": "300 PO",
+      "adv-oil-arma-sonica": "300 PO",
+      "adv-potion-treinar-animal": "300 PO",
+      "adv-oil-absorver-arma": "750 PO",
+      "adv-oil-cajado-constritor": "750 PO",
+    };
+
+    for (const [id, preco] of Object.entries(precos)) {
+      const p = DND35_ADV_POTIONS.find((x) => x.id === id)!;
+      expect(p.marketPrice).toBe(preco);
+      expect(p.description.length).toBeGreaterThan(15);
+    }
   });
 });
