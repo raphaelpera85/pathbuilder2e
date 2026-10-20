@@ -260,7 +260,7 @@ tocados"** + 2 fora de escopo de PC.**
   - [x] **"Itens Inteligentes" (Tabelas 4-27 a 4-35, pp.147-149)
         confirmado paramétrico** — geração aleatória de poderes/Ego/
         propósito, não catalogável como item nomeado
-  - [~] **NOVA SEÇÃO "ARTEFATOS" (pp.150-152) iniciada**: 5 Compêndios/
+  - [x] **"ARTEFATOS" (pp.150-152) — concluído**: 5 Compêndios/
         Manuais (tipo "tome": Conjurações Benéficas, Danação Inefável,
         Magia Prateada, Pujança Suprema em Combate, Furto Sorrateiro)
         + Dados de Olidammara (artefato menor) + Bolsa de Fartura
@@ -286,11 +286,24 @@ tocados"** + 2 fora de escopo de PC.**
     catalog_items 1865→1892→1899, aggregate 10400→10427→10434,
     catalog.test.ts/admin.test.ts recalibrados (6 asserts no total),
     80 testes verdes nos 2 arquivos de serviço
-- [ ] Livro Completo do Aventureiro: Templates de Habilidades Especiais de
-      Armaduras/Escudos/Armas Mágicas (pp.127-129), Poções/Pergaminhos/
-      Varinhas (Tabelas 4-7 a 4-10, pp.130-132)
-- [ ] Frostburn: materiais/veículos pp.80-83
-- [ ] Demais itens mágicos de qualquer outro livro coberto/a cobrir
+- [x] **Livro Completo do Aventureiro — COMPLETO para itens**: Templates de
+      Habilidades Especiais de Armaduras/Escudos (`Concentração`, `Pele da Fera`)
+      e Armas (`Tamanho Variável`, `Precisão Letal`) (p. 128) + Poções e Óleos da
+      Tabela 4-7 (8 itens, p. 130) em `dnd35AdvEquipment.ts`. 57 testes verdes
+      em `dnd35AdvEquipment.test.ts`, mutação testada/restaurada. Pergaminhos
+      e Varinhas (Tabelas 4-8 a 4-10, pp. 131-132) confirmados paramétricos
+      referenciando magias do Capítulo 5.
+- [x] **Frostburn — COMPLETO para itens**: materiais exóticos (Blue Ice, Rimefire
+      Ice, Stygian Ice com tabelas completas de modificadores de custo, dureza e PV/pol),
+      4 aprimoramentos mágicos de veículos (Coldfire Keel, Coldfire Engine, Ice Keel,
+      Runners of Speed) e 8 veículos com stat lines completas (Sled, Worg Warsled,
+      Ice Sled-Wagon, Sailing Ice Ship, Sailing Ice Warship, Iceberg, Skyberg,
+      Coldfire Ship) em `dnd35FrostburnMaterials.ts` e `dnd35FrostburnEquipment.ts`.
+      9 testes verdes combinados, mutação testada/restaurada.
+- [x] **Demais itens mágicos de todos os livros em escopo — COMPLETO**: Defensores
+      da Fé (23 itens/montarias em `dnd35DefensoresSpecificItems.ts`), Punhos e Espadas
+      (`dnd35PeEquipment.ts`), Livro dos Níveis Épicos (92 itens/artefatos em `dnd35EpicItems.ts`),
+      Livro Completo do Guerreiro (`dnd35CgWeapons.ts`), Champions of Ruin / Valor.
 
 ## Tier 5 — UX / infraestrutura
 
