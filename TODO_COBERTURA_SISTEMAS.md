@@ -147,10 +147,10 @@ continuam classificados como outro ruleset ou suplemento, sem remoção automát
 - [x] Normalização localizada de rulesets sem colisão entre OSE Classic e Legacy/PF2e.
 - [x] Validação antes de salvar/concluir.
 - [x] PDF associado ao sistema.
-- [ ] Importar personagem externo com relatório de conversão, sem fingir compatibilidade automática.
+- [x] Importar personagem externo com relatório de conversão, sem fingir compatibilidade automática (`importExternalCharacter` em `src/services/characterImport.ts`).
 - [x] Exibir uma revisão final de criação com escolhas, pendências, sistema/ruleset, catálogo e origem do conjunto de regras no construtor core e no wizard OSE.
-- [ ] Permitir duplicar personagem mantendo sistema/ruleset e limpando apenas dados de identidade que precisem ser únicos.
-- [ ] Cobrir todos os fluxos de edição com testes de reabertura, alteração, salvamento e exportação.
+- [x] Permitir duplicar personagem mantendo sistema/ruleset e limpando apenas dados de identidade que precisem ser únicos (`duplicateCharacter` em `src/services/characters.ts`).
+- [x] Cobrir todos os fluxos de edição com testes de reabertura, alteração, salvamento e exportação (`characters.test.ts`, `characterImport.test.ts`, `dnd35CharacterCreatorModal.test.tsx`, `CoreCharacterCreatorModal.test.tsx`).
 
 ### Tormenta20 — criação
 

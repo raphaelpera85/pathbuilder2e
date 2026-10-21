@@ -2052,4 +2052,36 @@ describe("D&D 3.5 — descrições verificadas nas pp. 257–259", () => {
     expect(dnd35SpellListFor("druida", 7).find((spell) => spell.name === "Metal em Madeira")?.summary)
       .toContain("resultado natural 1 ou 2");
   });
+
+  it("mecânica verificada (lote novo, p.198/201): Adivinhação, Agilidade do Gato (+Massa), Ajuda, Alarme, Aliado Extra-Planar (Menor/Maior)", () => {
+    expect(dnd35SpellListFor("clerigo", 4).find((spell) => spell.name === "Adivinhação")?.mechanics)
+      .toMatchObject({ components: "V, G, M", castingTime: "10 minutos", range: "Pessoal" });
+    expect(dnd35SpellListFor("druida", 2).find((spell) => spell.name === "Agilidade do Gato")?.mechanics)
+      .toMatchObject({ duration: "1 min/nível", savingThrow: "Vontade anula (inofensiva)" });
+    expect(dnd35SpellListFor("druida", 6).find((spell) => spell.name === "Agilidade do Gato em Massa")?.mechanics)
+      .toMatchObject({ range: "Curto (7,5 m + 1,5 m/2 níveis)" });
+    expect(dnd35SpellListFor("clerigo", 2).find((spell) => spell.name === "Ajuda")?.mechanics)
+      .toMatchObject({ components: "V, G, F/D", duration: "1 minuto/nível" });
+    expect(dnd35SpellListFor("bardo", 1).find((spell) => spell.name === "Alarme")?.mechanics)
+      .toMatchObject({ duration: "2 horas/nível (D)" });
+    expect(dnd35SpellListFor("clerigo", 4).find((spell) => spell.name === "Aliado Extra-Planar Menor")?.mechanics)
+      .toMatchObject({ target: expect.stringContaining("6 DV"), components: "V, G, F/D, X", savingThrow: "Nenhum", spellResistance: "Não" });
+    expect(dnd35SpellListFor("clerigo", 6).find((spell) => spell.name === "Aliado Extra-Planar")?.detailsPage).toBe(198);
+    expect(dnd35SpellListFor("clerigo", 6).find((spell) => spell.name === "Aliado Extra-Planar")?.mechanics)
+      .toMatchObject({ savingThrow: "Nenhum", spellResistance: "Não" });
+    expect(dnd35SpellListFor("clerigo", 8).find((spell) => spell.name === "Aliado Extra-Planar Maior")?.mechanics)
+      .toMatchObject({ target: expect.stringContaining("18 DV"), savingThrow: "Nenhum", spellResistance: "Não" });
+    expect(dnd35SpellListFor("druida", 9).find((spell) => spell.name === "Alterar Forma")?.mechanics)
+      .toMatchObject({ components: "V, G, F", duration: "10 minutos/nível (D)" });
+    expect(dnd35SpellListFor("mago", 6).find((spell) => spell.name === "Analisar Encantamento")?.mechanics)
+      .toMatchObject({ duration: "1 rodada/nível (D)" });
+    expect(dnd35SpellListFor("clerigo", 4).find((spell) => spell.name === "Âncora Dimensional")?.mechanics)
+      .toMatchObject({ range: "Médio (30 m + 3 m/nível)", spellResistance: "Sim (objeto)" });
+    expect(dnd35SpellListFor("mago", 6).find((spell) => spell.name === "Âncora Planar")?.mechanics)
+      .toMatchObject({ target: expect.stringContaining("12 DV") });
+    expect(dnd35SpellListFor("mago", 8).find((spell) => spell.name === "Âncora Planar Maior")?.mechanics)
+      .toMatchObject({ target: expect.stringContaining("18 DV") });
+    expect(dnd35SpellListFor("mago", 5).find((spell) => spell.name === "Âncora Planar Menor")?.mechanics)
+      .toMatchObject({ target: expect.stringContaining("6 DV") });
+  });
 });

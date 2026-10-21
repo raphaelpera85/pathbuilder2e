@@ -722,7 +722,7 @@ export async function renameCharacter(
   return saveCharacter({ ...target.data, name: nextName }, activeUser);
 }
 
-/** Cria uma nova ficha preservando sistema, ruleset e todas as escolhas. */
+/** Cria uma nova ficha preservando sistema, ruleset e todas as escolhas, limpando identidades exclusivas. */
 export async function duplicateCharacter(
   characterKeyOrId: string,
   userOrSession?: { id: string; email?: string; username?: string },
@@ -736,6 +736,12 @@ export async function duplicateCharacter(
   source.id = `copy_${globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID().slice(0, 12) : `${Date.now()}_${Math.random().toString(36).slice(2, 8)}`}`;
   source.name = `${target.name} (cópia)`;
   delete source.history;
+  delete (source as any).gmEmail;
+  delete (source as any).gm_email;
+  delete (source as any).createdAt;
+  delete (source as any).updatedAt;
+  delete (source as any).created_at;
+  delete (source as any).updated_at;
   return saveCharacter(source, activeUser);
 }
 

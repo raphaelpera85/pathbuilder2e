@@ -165,13 +165,26 @@ describe("character cloud contract", () => {
     expect(renamed.data.variantRules).toEqual({ freeArchetype: true });
   });
 
-  it("duplica uma ficha mantendo sistema, ruleset e dados sem compartilhar o id", async () => {
+  it("duplica uma ficha mantendo sistema, ruleset e dados sem compartilhar o id ou metadados de identidade", async () => {
     const user = { id: "user-duplicate" } as never;
-    await saveCharacter({ id: "char-original", name: "Original", level: 3, system_id: "dnd5e", systemId: "dnd5e", ruleset: "standard", equipmentIds: ["dnd5e.arma.adaga"] }, user);
+    await saveCharacter({
+      id: "char-original",
+      name: "Original",
+      level: 3,
+      system_id: "dnd5e",
+      systemId: "dnd5e",
+      ruleset: "standard",
+      equipmentIds: ["dnd5e.arma.adaga"],
+      gmEmail: "mestre@exemplo.com",
+      created_at: "2026-01-01T00:00:00.000Z",
+    } as any, user);
     const copy = await duplicateCharacter("char-original", user);
     expect(copy.name).toBe("Original (cópia)");
-    expect(copy.character_key).not.toBe("char-original");
-    expect(copy.data).toMatchObject({ system_id: "dnd5e", ruleset: "standard", equipmentIds: ["dnd5e.arma.adaga"] });
+    expect(copy.data.history).toHaveLength(1);
+    expect(copy.data.history?.[0]?.name).toBe("Original (cópia)");
+    expect((copy.data as any).gmEmail).toBeUndefined();
+    expect((copy.data as any).gm_email).toBeUndefined();
+    expect(copy.gm_email).toBeNull();
   });
 
   it("acumula versões quando a mesma ficha é salva novamente", async () => {

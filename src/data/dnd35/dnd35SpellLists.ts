@@ -57,16 +57,101 @@ export interface Dnd35SpellList {
   entries: Dnd35SpellListEntry[];
 }
 
+/**
+ * Mecânica completa verificada individualmente nas páginas de descrição
+ * do Capítulo 11 (pp.198+, ordem alfabética). Aplicada automaticamente
+ * por `entry()` a qualquer lista que referencie o mesmo nome de magia —
+ * evita duplicar a transcrição por classe/nível. Adicionar aqui é o
+ * caminho recomendado para fechar o gap "mecânica completa" descrito no
+ * header: ler a página real, adicionar entrada, rodar testes, mutar.
+ */
+const VERIFIED_SPELL_MECHANICS: Record<string, { summary: string; detailsPage: number; detailsPageEnd?: number; mechanics: Dnd35SpellMechanics }> = {
+  "Adivinhação": {
+    summary: "Fornece conselhos de Mestre úteis quanto a uma ação, evento ou atividade planejada que ocorrerá dentro de uma semana; exige incenso e oferendas no valor mínimo de 25 PO.",
+    detailsPage: 198,
+    mechanics: { components: "V, G, M", castingTime: "10 minutos", range: "Pessoal", target: "Você", duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não" },
+  },
+  "Agilidade do Gato": {
+    summary: "A criatura transmutada se torna mais graciosa, ágil e adquire maior coordenação. Concede +4 de bônus de aprimoramento na Destreza, adicionando os benefícios normais na CA, testes de resistência de Reflexos e outros usos do modificador de Destreza.",
+    detailsPage: 198,
+    mechanics: { components: "V, G, M", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada", duration: "1 min/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)" },
+  },
+  "Agilidade do Gato em Massa": {
+    summary: "Essa magia funciona de forma idêntica à agilidade do gato, mas afeta diversas criaturas.",
+    detailsPage: 198,
+    mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "1 criatura/nível, todas a menos de 9 m entre si", duration: "1 min/nível", savingThrow: "Vontade anula (inofensiva)", spellResistance: "Sim (inofensiva)" },
+  },
+  "Ajuda": {
+    summary: "Concede ao alvo +1 de bônus de moral nas jogadas de ataque e testes de resistência contra efeitos de medo, além de 1d8 + nível do conjurador (máximo +10) pontos de vida temporários.",
+    detailsPage: 198,
+    mechanics: { components: "V, G, F/D", castingTime: "1 ação padrão", range: "Toque", target: "Criatura viva tocada", duration: "1 minuto/nível", savingThrow: "Nenhum", spellResistance: "Sim (inofensiva)" },
+  },
+  "Alarme": {
+    summary: "Essa magia emite um aviso mental ou audível sempre que uma criatura de tamanho Miúdo ou maior invadir ou tocar a área protegida. Alarme Mental: alerta o conjurador (e somente ele). Alarme Audível: produz o som de uma sineta, audível a até 18 m.",
+    detailsPage: 198,
+    mechanics: { components: "V, G, F/D", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "Área de 6 m de raio centrada num ponto no espaço", duration: "2 horas/nível (D)", savingThrow: "Nenhum", spellResistance: "Não" },
+  },
+  "Aliado Extra-Planar": {
+    summary: "Conjuração (Convocação) [veja o texto para aliado extra-planar menor]. Um ou dois elementais ou criaturas planares convocados, totalizando 12 DV no máximo, todos a menos de 9 metros entre si quando surgirem. Essa magia é semelhante à aliado extra-planar menor, exceto que o personagem é capaz de convocar uma única criatura de 12 DV (ou menos) ou duas criaturas do mesmo tipo cujos Dados de Vida totalizem 12 DV. As criaturas concordam em ajudar o personagem, mas em troca exigem um favor. Custo de XP: 250 XP.",
+    detailsPage: 198,
+    mechanics: { components: "V, G, F/D, X (idêntico a aliado extra-planar menor)", castingTime: "10 minutos", range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "Um ou dois elementais ou criaturas planares convocados, totalizando 12 DV no máximo, todos a menos de 9 metros entre si quando surgirem", duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não" },
+  },
+  "Aliado Extra-Planar Maior": {
+    summary: "Conjuração (Convocação) [veja o texto para aliado extra-planar menor]. Até três elementais ou criaturas planares convocados, totalizando 18 DV no máximo. Essa magia é semelhante à aliado extra-planar menor, exceto que o personagem é capaz de convocar uma única criatura de 18 DV (ou menos) ou até três criaturas do mesmo tipo cujos Dados de Vida totalizem 18 DV.",
+    detailsPage: 198,
+    mechanics: { components: "V, G, F/D, X (idêntico a aliado extra-planar menor)", castingTime: "10 minutos", range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "Até três elementais ou criaturas planares convocados, totalizando 18 DV no máximo, todos a menos de 9 metros entre si quando surgirem", duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não" },
+  },
+  "Aliado Extra-Planar Menor": {
+    summary: "Um elemental ou criatura planar convocado com até 6 DV concorda em ajudar o personagem, em troca de uma tarefa a ser realizada ou de pagamento. Através desta magia, o personagem solicita que sua divindade envie um elemental ou criatura planar (de 6 DV ou menos), à escolha da divindade. Se souber o nome de uma criatura específica, o personagem pode solicitá-la dizendo seu nome durante a magia (embora seja possível obter uma criatura diferente de qualquer forma). A criatura convocada requisita um pagamento por seus serviços.",
+    detailsPage: 199,
+    mechanics: { components: "V, G, F/D, X", castingTime: "10 minutos", range: "Curto (7,5 metros + 1,5 metro/2 níveis)", target: "Um elemental ou criatura planar convocado com até 6 DV", duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não" },
+  },
+  "Alterar Forma": {
+    summary: "Essa magia funciona como metamorfose, exceto que permite ao personagem assumir a forma de qualquer criatura única (de qualquer tipo) entre Miúsculo e Colossal. A forma assumida não pode ter mais que o dobro do seu Dados de Vida no conjurador (até o máximo de 50 DV). Ao contrário de metamorfose, essa magia permite assumir formas incorpóreas e gasosas. O personagem adquire todas as habilidades extraordinárias e sobrenaturais (de ataque e defesa) da forma selecionada, mas mantém suas próprias habilidades sobrenaturais. O personagem também adquire o tipo e subtipo da forma (por exemplo, dragão ou besta mágica) no lugar do seu próprio tipo. A nova forma não é desoriente. As partes do corpo e equipamento que sejam separadas ou decepadas da nova forma não retornam à forma original. Pode se transformar em qualquer coisa familiar uma vez a cada rodada, como uma ação livre.",
+    detailsPage: 199,
+    detailsPageEnd: 200,
+    mechanics: { components: "V, G, F", castingTime: "1 ação padrão", range: "Pessoal", target: "Você", duration: "10 minutos/nível (D)", savingThrow: "Nenhum", spellResistance: "Não" },
+  },
+  "Analisar Encantamento": {
+    summary: "O conjurador descobre magias e propriedades mágicas presentes num determinado número de objetos ou criaturas. A cada rodada, ele pode examinar uma única criatura ou objeto visível usando uma ação livre. No caso de itens mágicos, o personagem descobre como ele funciona e quantas cargas ainda restam (caso seja apropriado). Para objetos ou criaturas com magias ativas sobre si, ele determina cada magia, seu efeito e seu nível de conjurador. Um objeto portado por outra criatura pode realizar um teste de resistência de Vontade (se o portador desejar). Caso obtenha sucesso, o conjurador não descobre nada sobre o objeto além daquilo que seus olhos podem distinguir.",
+    detailsPage: 201,
+    mechanics: { components: "V, G, F", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "Um objeto ou criatura por nível de conjurador", duration: "1 rodada/nível (D)", savingThrow: "Nenhum ou Vontade anula (veja texto)", spellResistance: "Não" },
+  },
+  "Âncora Dimensional": {
+    summary: "Um raio esverdeado parte da mão do conjurador. Precisa realizar um ataque de toque à distância para atingir o alvo. Qualquer criatura ou objeto atingido é envolvido por um campo esmeralda brilhante que bloqueia completamente o movimento dimensional. As formas de movimento bloqueadas por âncora dimensional incluem projeção astral, piscar, porta dimensional, passeio etéreo, forma etérea, labirinto, viagem planar, andar nas sombras, teletransporte e as habilidades mágicas ou psíquicas similares. Ela também impede a utilização de um portal ou do círculo de teletransporte enquanto a magia permanece ativa.",
+    detailsPage: 201,
+    mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Raio", duration: "1 min./nível", savingThrow: "Nenhum", spellResistance: "Sim (objeto)" },
+  },
+  "Âncora Planar": {
+    summary: "Conjuração (Convocação) [veja texto para âncora planar menor]. Até três elementais ou criaturas planares, totalizando 12 DV no máximo, todos a menos de 9 metros entre si quando surgirem. Essa magia é semelhante a âncora planar menor, exceto que o personagem é capaz de convocar uma única criatura de 12 DV (ou menos) ou até três criaturas do mesmo tipo cujos Dados de Vida totalizem 12 DV. Cada criatura faz uma tentativa independente para escapar com um teste de resistência e deve ser individualmente persuadida a ajudar o personagem.",
+    detailsPage: 201,
+    mechanics: { components: "V, G", castingTime: "10 minutos", range: "Curto (7,5 metros + 1,5 metro/2 níveis)", target: "Até três elementais ou criaturas planares, totalizando 12 DV no máximo, todos a menos de 9 metros entre si quando surgirem", duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não" },
+  },
+  "Âncora Planar Maior": {
+    summary: "Conjuração (Convocação) [veja texto para âncora planar menor]. Até três elementais ou criaturas planares, totalizando 18 DV no máximo. Essa magia é semelhante a âncora planar menor, exceto que o personagem é capaz de convocar uma única criatura de 18 DV (ou menos) ou até três criaturas do mesmo tipo cujos Dados de Vida totalizem 18 DV. Cada criatura faz uma tentativa independente para escapar com um teste de resistência e deve ser individualmente persuadida a ajudar o personagem.",
+    detailsPage: 201,
+    mechanics: { components: "V, G", castingTime: "10 minutos", range: "Curto (7,5 metros + 1,5 metro/2 níveis)", target: "Até três elementais ou criaturas planares, totalizando 18 DV no máximo, todos a menos de 9 metros entre si quando surgirem", duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não" },
+  },
+  "Âncora Planar Menor": {
+    summary: "Essa magia é um ato perigoso: ela atrairá uma criatura de outro plano para uma armadilha especialmente preparada, que deve estar dentro do alcance. Para criar a armadilha, o personagem precisa usar a magia círculo mágico com o foco voltado para o interior. O tipo de criatura a ser capturado deve ser conhecido e declarado. Se o personagem desejar convocar uma criatura específica, ele deve usar o nome próprio dessa criatura quando estiver conjurando a magia. A criatura deve realizar um teste de resistência de Vontade. Se o conjurador obtiver sucesso, ela resiste à magia. Caso contrário, ela é imediatamente transportada à armadilha (a Resistência à Magia não impede a criatura de ser convocada).",
+    detailsPage: 201,
+    mechanics: { components: "V, G", castingTime: "10 minutos", range: "Curto (7,5 metros + 1,5 metro/2 níveis)", target: "Um elemental ou criatura planar convocado com até 6 DV", duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não" },
+  },
+};
+
 /** "Abençoar Água^M: Cria água benta" → nome, flags e resumo. */
 function entry(line: string, school?: Dnd35SpellSchool): Dnd35SpellListEntry {
   const sep = line.indexOf(": ");
   if (sep < 0) throw new Error(`Linha de magia sem ": " — ${line}`);
   const [rawName, flagText = ""] = line.slice(0, sep).split("^");
+  const name = rawName.trim();
+  const verified = VERIFIED_SPELL_MECHANICS[name];
   return {
-    name: rawName.trim(),
-    summary: line.slice(sep + 2).trim(),
+    name,
+    summary: verified ? verified.summary : line.slice(sep + 2).trim(),
     flags: flagText.split("").filter((f): f is Dnd35SpellComponentFlag => f === "M" || f === "F" || f === "X"),
     ...(school ? { school } : {}),
+    ...(verified ? { summaryOnly: false, detailsPage: verified.detailsPage, ...(verified.detailsPageEnd ? { detailsPageEnd: verified.detailsPageEnd } : {}), mechanics: verified.mechanics } : {}),
   };
 }
 

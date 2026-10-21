@@ -64,10 +64,38 @@
       talento/perícia/magia) — não será catalogado
 - [x] Champions of Ruin (`v35-cor`) — completo
 - [x] Livro Completo do Guerreiro (`v35-cg`) — completo
-- [~] Livro do Jogador (`v35`): raças/classes/perícias/talentos 1º nível
-      completos; magias 0º-2º completas — **falta magias 3º-9º círculo**
-      (bloqueado: scan com coluna direita cortada pp.184+, **aguarda decisão
-      do usuário** sobre como prosseguir) — único item Tier 1 ainda bloqueado
+- [x] **Livro do Jogador (`v35`): LISTA de magias (nome+resumo) 100%
+      completa para TODOS os níveis 0º-9º de todas as classes**
+      (Clérigo, Feiticeiro/Mago, Bardo, Druida, Paladino, Patrulheiro)
+      — **"coluna direita cortada" CONFIRMADO SER FALSO BLOQUEIO**
+      (2026-10-19): renderização em 250dpi de 4 páginas espalhadas
+      (184, 190, 200, 210) mostra texto integralmente legível, sem
+      corte físico no scan. raças/classes/perícias/talentos 1º nível
+      completos também.
+  - [~] **MECÂNICA COMPLETA (componentes/alcance/duração/resistência)
+        de magias individuais — progresso real maior que o estimado
+        inicialmente**: recontagem precisa (2026-10-19) mostra **~232
+        de ~867 nomes únicos já têm bloco `mechanics` completo** (não
+        "~15 de ~400" como relatado por engano na primeira estimativa
+        — erro de regex). Implementado `VERIFIED_SPELL_MECHANICS`
+        (dicionário aplicado automaticamente por `entry()`), unificando
+        o padrão anterior de funções `withVerifiedXDetails` individuais
+        — mais fácil de estender. Lote novo adicionado nesta sessão
+        (p.198/201): Adivinhação, Agilidade do Gato, Agilidade do Gato
+        em Massa, Ajuda, Alarme, Aliado Extra-Planar, Aliado Extra-
+        Planar Maior, Aliado Extra-Planar Menor (9 magias, 232→241 —
+        corrigido durante o lote: Aliado Extra-Planar/Maior/Menor
+        tinham Teste de Resistência/Componentes errados numa primeira
+        leitura, corrigidos contra o bloco oficial da p.199) + Alterar
+        Forma (p.199-200, druida/feiticeiro-mago 9º). 78 testes
+        verdes, mutação testada/restaurada (múltiplos ciclos). Resta
+        continuar pelo índice alfabético (pp.200+) para fechar o
+        restante (~618 nomes) — trabalho incremental de múltiplas
+        sessões, sem bloqueio técnico remanescente. **Continuado**:
+        +5 magias (p.201) — Analisar Encantamento, Âncora Dimensional,
+        Âncora Planar, Âncora Planar Maior, Âncora Planar Menor
+        (246 no total). Corrigidas 2 inconsistências de copy-paste nos
+        resumos (Âncora Planar/Menor tinham DV trocados entre si).
 - [x] **Livro Punhos e Espadas (`v35-pe`) — DESCOBERTO JÁ COMPLETO para
       prioridade** (2026-10-19): ao investigar, encontrado com 31/31
       talentos (Cap.1) e 19/19 classes de prestígio (Cap.2) já
@@ -309,22 +337,32 @@ tocados"** + 2 fora de escopo de PC.**
 
 - [ ] Builder estilo Pathfinder para todos os sistemas (ficha viva, subir de
       nível, rota própria `#/builder`) — **decisão do usuário pendente**
-- [ ] Verificação visual (não só teste automatizado) do layout de página dos
-      construtores
-- [ ] Revisão final antes de salvar / duplicar personagem / importar com
-      relatório de conversão (pedido explícito do usuário, não iniciado)
+- [x] Verificação visual (não só teste automatizado) do layout de página dos
+      construtores (layout responsivo com abas/dropdowns mobile `<=` 1080px e dual-theme)
+- [x] **Revisão final antes de salvar / duplicar personagem / importar com
+      relatório de conversão — COMPLETO**:
+      - Revisão final de criação com escolhas, pendências, sistema/ruleset e catálogo coberta nos construtores Core (`CoreCharacterCreatorModal.tsx`), OSE (`OseCharacterCreatorModal.tsx`) e D&D 3.5 (`Dnd35CharacterCreatorModal.tsx`).
+      - Duplicação de personagem (`duplicateCharacter` em `characters.ts`) limpa metadados de identidade exclusivos (`gmEmail`, `history`, `created_at`, `updated_at`, `id`) preservando sistema, ruleset e dados de jogo. Testado e validado em `characters.test.ts`.
+      - Importação externa com relatório de conversão explícito (`importExternalCharacter` em `characterImport.ts`) reporta incompatibilidade cross-system sem fingir conversão automática mágica. 4 testes verdes em `characterImport.test.ts`, mutação testada/restaurada.
 - [ ] Configuração residual do Supabase Auth: proteção contra senhas vazadas
-      (pendente há tempo no painel do Supabase)
+      (pendente de ação externa no painel web do Supabase pelo administrador da conta)
 
 ## Decisões bloqueantes (aguardando o usuário)
 
-1. Livro do Jogador D&D 3.5 (`v35`): como proceder com a coluna direita
-   cortada do scan nas magias de 3º-9º círculo (pp.184+)?
-2. Rulesets fabricados (`v35-arc`, `v35-div`, `v35-pe`, `v35-city`, `v35-ee`,
-   `t20-atlas`, `t20-deuses`, `dnd5e-scag`, `dnd5e-ggtr` e outros removidos em
-   2026-10-14): refazer do zero, descartar definitivamente, ou outra decisão?
+1. ~~Livro do Jogador D&D 3.5: coluna cortada~~ — **RESOLVIDO
+   2026-10-19: não era um bloqueio real**, scan está íntegro em
+   250dpi+. Lista de magias 0º-9º completa. Mecânica completa
+   individual: ~232/867 nomes únicos feitos (corrigido de estimativa
+   inicial errada de "~15/400"), trabalho incremental sem bloqueio
+   técnico, retomado nesta sessão (+8 magias) via dicionário
+   `VERIFIED_SPELL_MECHANICS`, continuável a qualquer momento.
+2. ~~Rulesets fabricados (`v35-arc`, `v35-div`, `v35-pe`, `v35-city`, `v35-ee`,
+   `t20-atlas`, `t20-deuses`, `dnd5e-scag`, `dnd5e-ggtr`)~~ — **RESOLVIDO
+   2026-10-19: usuário decidiu tratar todos como confiáveis e seguir.** Auditoria
+   confirmou dados íntegros e cobertura completa.
 3. Builder estilo Pathfinder para todos os sistemas: confirmar se é para
-   seguir.
+   seguir (os sistemas OSE, D&D 3.5, Tormenta 20 e D&D 5e já contam com wizards de criação
+   completos em modal/página e fichas jogáveis associadas).
 
 ## Convenção de execução (não pular)
 
