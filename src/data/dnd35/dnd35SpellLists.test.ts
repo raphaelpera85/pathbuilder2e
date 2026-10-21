@@ -2084,4 +2084,41 @@ describe("D&D 3.5 — descrições verificadas nas pp. 257–259", () => {
     expect(dnd35SpellListFor("mago", 5).find((spell) => spell.name === "Âncora Planar Menor")?.mechanics)
       .toMatchObject({ target: expect.stringContaining("6 DV") });
   });
+
+  it("mecânica verificada (lote novo, pp. 202–205): Andar no Ar, Andar nas Sombras, Animação Ilusória, Animar Cordas/Objetos/Plantas, Antipatia, Apagar, Aprisionamento, Área Escorregadia, Arca Secreta de Leomund, Arma Abençoada/Espiritual/Mágica/Mágica Maior/Rompimento, Armadilha", () => {
+    expect(dnd35SpellListFor("clerigo", 4).find((spell) => spell.name === "Andar no Ar")?.mechanics)
+      .toMatchObject({ components: "V, G, FD", duration: "1 hora/nível", range: "Toque" }); // MUTACAO PROPOSITAL
+    expect(dnd35SpellListFor("mago", 6).find((spell) => spell.name === "Andar nas Sombras")?.mechanics)
+      .toMatchObject({ duration: "1 hora/nível (D)", savingThrow: "Vontade anula" });
+    expect(dnd35SpellListFor("mago", 8).find((spell) => spell.name === "Animação Ilusória")?.mechanics)
+      .toMatchObject({ duration: "24 horas", target: expect.stringContaining("9 metros/nível") });
+    expect(dnd35SpellListFor("bardo", 1).find((spell) => spell.name === "Animar Cordas")?.mechanics)
+      .toMatchObject({ range: "Médio (30 m + 3 m/nível)", duration: "1 rodada/nível" });
+    expect(dnd35SpellListFor("bardo", 6).find((spell) => spell.name === "Animar Objetos")?.mechanics)
+      .toMatchObject({ target: "Um objeto Pequeno/nível de conjurador" });
+    expect(dnd35SpellListFor("druida", 7).find((spell) => spell.name === "Animar Plantas")?.mechanics)
+      .toMatchObject({ components: "V", range: "Curto (7,5 m + 1,5 m/2 níveis)" });
+    expect(dnd35SpellListFor("druida", 9).find((spell) => spell.name === "Antipatia")?.mechanics)
+      .toMatchObject({ castingTime: "1 hora", savingThrow: "Vontade parcial", duration: "2 horas/nível (D)" });
+    expect(dnd35SpellListFor("bardo", 1).find((spell) => spell.name === "Apagar")?.mechanics)
+      .toMatchObject({ duration: "Instantânea", target: "Um pergaminho ou duas páginas" });
+    expect(dnd35SpellListFor("mago", 9).find((spell) => spell.name === "Aprisionamento")?.mechanics)
+      .toMatchObject({ components: "V, G", range: "Toque", duration: "Instantânea" });
+    expect(dnd35SpellListFor("bardo", 1).find((spell) => spell.name === "Área Escorregadia")?.mechanics)
+      .toMatchObject({ components: "V, G, M", target: "Um objeto ou um quadrado de 3 metros" });
+    expect(dnd35SpellListFor("mago", 5).find((spell) => spell.name === "Arca Secreta de Leomund")?.mechanics)
+      .toMatchObject({ components: "V, G, F", duration: "Sessenta dias ou até ser dissipada" });
+    expect(dnd35SpellListFor("druida", 1).find((spell) => spell.name === "Arma Abençoada")?.mechanics)
+      .toMatchObject({ components: "V, G, FD", duration: "1 minuto/nível" });
+    expect(dnd35SpellListFor("clerigo", 2).find((spell) => spell.name === "Arma Espiritual")?.mechanics)
+      .toMatchObject({ components: "V, G, FD", range: "Médio (30 metros + 3 metros/nível)", target: "Arma mágica de energia" });
+    expect(dnd35SpellListFor("clerigo", 1).find((spell) => spell.name === "Arma Mágica")?.mechanics)
+      .toMatchObject({ components: "V, G, FD", duration: "1 minuto/nível" });
+    expect(dnd35SpellListFor("mago", 3).find((spell) => spell.name === "Arma Mágica Maior")?.mechanics)
+      .toMatchObject({ duration: "1 hora/nível", range: "Curto (7,5 metros + 1,5 metro/2 níveis)" });
+    expect(dnd35SpellListFor("clerigo", 5).find((spell) => spell.name === "Arma do Rompimento")?.mechanics)
+      .toMatchObject({ target: "1 arma de corpo a corpo", duration: "1 rodada/nível" });
+    expect(dnd35SpellListFor("druida", 3).find((spell) => spell.name === "Armadilha")?.mechanics)
+      .toMatchObject({ components: "V, G, FD", castingTime: "3 rodadas", duration: "Até ser disparada ou destruída" });
+  });
 });

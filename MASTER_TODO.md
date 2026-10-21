@@ -356,10 +356,40 @@ tocados"** + 2 fora de escopo de PC.**
    inicial errada de "~15/400"), trabalho incremental sem bloqueio
    técnico, retomado nesta sessão (+8 magias) via dicionário
    `VERIFIED_SPELL_MECHANICS`, continuável a qualquer momento.
-2. ~~Rulesets fabricados (`v35-arc`, `v35-div`, `v35-pe`, `v35-city`, `v35-ee`,
-   `t20-atlas`, `t20-deuses`, `dnd5e-scag`, `dnd5e-ggtr`)~~ — **RESOLVIDO
-   2026-10-19: usuário decidiu tratar todos como confiáveis e seguir.** Auditoria
-   confirmou dados íntegros e cobertura completa.
+2. Rulesets fabricados (`v35-arc`, `v35-div`, `v35-pe`, `v35-city`, `v35-ee`,
+   `t20-atlas`, `t20-deuses`, `dnd5e-scag`, `dnd5e-ggtr`) — **AUDITORIA
+   CONCLUÍDA 2026-10-19, resultado misto**:
+   - [x] `v35-div`/`v35-arc`/`v35-pe`/`v35-city` — confirmados genuínos
+         em sessões anteriores (verificação visual direta linha a linha).
+   - [x] `v35-ee` — confirmado genuíno. **Achado**: eu havia criado por
+         engano um arquivo duplicado (`dnd35ExemplarsFeats.ts`/
+         `dnd35ExemplarsSpells.ts`) cobrindo o mesmo conteúdo do
+         `v35-ee` pré-existente (17 talentos + 11 magias, idênticos) —
+         removido antes de poluir o catálogo (nunca chegou a ser
+         integrado a nenhum snapshot).
+   - [x] `t20-deuses` — **confirmado genuíno**: spot-check de "Abraço
+         da Fênix" (p.42) bate literalmente com o livro real.
+   - [x] `t20-atlas` — **confirmado genuíno** no conteúdo (spot-check
+         de "Agricultor Sambur"/"Amazona de Hippion" bate com o livro
+         real), mas **bug de citação de página encontrado**: todo o
+         arquivo usa `sourcePage` com offset de -2 (ex.: registra 468
+         quando a página impressa real é 470) — correção pendente,
+         não afeta o conteúdo em si.
+   - [x] `dnd5e-ggtr` — **confirmado genuíno**: o PDF fonte (em inglês)
+         existe na biblioteca; busca por "Centaur" confirma que a raça
+         é real no livro (p.15-16), com traços (Fey, Charge, Hooves,
+         Equine Build, Survivor) que batem EXATAMENTE com a tradução
+         em `dnd5eGgtrRaces.ts` — conteúdo genuíno, apenas traduzido
+         (prática legítima, não fabricação).
+   - [ ] **`dnd5e-scag` — NÃO VERIFICÁVEL**: busca exaustiva na
+         biblioteca `I:\Meu Drive\Livros RPG` não encontra NENHUM
+         arquivo do "Sword Coast Adventurer's Guide"/"Guia de
+         Aventureiros da Costa da Espada" em nenhum formato. Sem fonte
+         local para conferir, não é possível confirmar nem descartar a
+         suspeita de fabricação por leitura visual direta (convenção
+         do projeto exige isso). **Aguardando decisão do usuário**:
+         fornecer o PDF para auditoria, descartar o conteúdo, ou
+         aceitar o risco e manter como está.
 3. Builder estilo Pathfinder para todos os sistemas: confirmar se é para
    seguir (os sistemas OSE, D&D 3.5, Tormenta 20 e D&D 5e já contam com wizards de criação
    completos em modal/página e fichas jogáveis associadas).

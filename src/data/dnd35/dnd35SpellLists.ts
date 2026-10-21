@@ -137,6 +137,93 @@ const VERIFIED_SPELL_MECHANICS: Record<string, { summary: string; detailsPage: n
     detailsPage: 201,
     mechanics: { components: "V, G", castingTime: "10 minutos", range: "Curto (7,5 metros + 1,5 metro/2 níveis)", target: "Um elemental ou criatura planar convocado com até 6 DV", duration: "Instantânea", savingThrow: "Nenhum", spellResistance: "Não" },
   },
+  "Andar no Ar": {
+    summary: "A criatura afetada pode caminhar pelo ar como se estivesse em terreno sólido. O maior ângulo possível de subida ou descida é de 45°, usando metade do deslocamento normal. Um vento forte pode empurrar a criatura. Caso a magia termine enquanto suspensa, a criatura flutuará para baixo a 18 m/rodada durante 1d6 rodadas; se atingir o solo nesse período, aterrissará em segurança, caso contrário cairá a distância restante sofrendo dano normal. Pode ser conjurada sobre montaria treinada com Adestrar Animais (CD 25).",
+    detailsPage: 202,
+    mechanics: { components: "V, G, FD", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada (Imensa ou menor)", duration: "10 minutos/nível", savingThrow: "Nenhum", spellResistance: "Sim (inofensiva)" },
+  },
+  "Andar nas Sombras": {
+    summary: "Para utilizar a magia, o personagem deve estar em uma área bastante escura. Ele e qualquer criatura tocada são transportados através das sombras até o limite do Plano Material, onde este se encontra com o Plano das Sombras. Na região das sombras, o personagem pode se deslocar a 75 km por hora. Também pode ser usada para viajar até outros planos que se encontram com o Plano das Sombras, exigindo 1d4 horas de caminhada. Criaturas relutantes podem realizar teste de Vontade para não serem afetadas.",
+    detailsPage: 202,
+    mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Até uma criatura tocada/nível", duration: "1 hora/nível (D)", savingThrow: "Vontade anula", spellResistance: "Sim" },
+  },
+  "Animação Ilusória": {
+    summary: "Combina vários elementos para criar uma poderosa proteção contra espionagem mágica ou observação direta. O conjurador define o que pode ou não ser observado na área afetada. Uma observação direta permite um teste de resistência de Vontade (como qualquer ilusão normal) se existir uma causa para não se acreditar nela.",
+    detailsPage: 202,
+    mechanics: { components: "V, G", castingTime: "10 minutos", range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "Área: Um cubo de 9 metros/nível (M)", duration: "24 horas", savingThrow: "Nenhum ou Vontade desacredita (se interagir); veja texto", spellResistance: "Não" },
+  },
+  "Animar Cordas": {
+    summary: "O conjurador pode animar um objeto mundano similar a uma corda (cordões, fios, linhas e cabos até 2,5 cm de diâmetro). Os comandos possíveis são enrolar, enrolar e dar nó, laço, laço e nó, e os opostos (desenrolar). Pode enredar uma criatura a menos de 30 cm (ataque de toque à distância; corda possui 2 PV, CA 10, rompida com teste de Força CD 23 ou escapa com Arte da Fuga CD 20). Concede +2 em testes de Usar Cordas com a corda animada.",
+    detailsPage: 202,
+    detailsPageEnd: 203,
+    mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Objeto similar a uma corda, tamanho máximo 15 m + 1,5 m/nível", duration: "1 rodada/nível", savingThrow: "Nenhum", spellResistance: "Não" },
+  },
+  "Animar Objetos": {
+    summary: "Concede mobilidade e algo similar à vida aos objetos inanimados mundanos (madeira, metal, pedra, tecido, couro, cerâmica, vidro). O objeto ataca qualquer alvo indicado imediatamente. Um objeto Médio equivale a dois Pequenos, um Grande a quatro Pequenos, um Enorme a oito, um Imenso a dezesseis e um Colossal a trinta e dois. Pode se tornar permanente através de permanência.",
+    detailsPage: 203,
+    mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Médio (30 m + 3 m/nível)", target: "Um objeto Pequeno/nível de conjurador", duration: "1 rodada/nível", savingThrow: "Nenhum", spellResistance: "Não" },
+  },
+  "Animar Plantas": {
+    summary: "Concede mobilidade e algo similar à vida a plantas inanimadas mundanas, atacando alvos indicados como objetos animados de tamanho apropriado. Pode animar uma planta Grande a cada 3 níveis (ou equivalentes maiores). Como alternativa (Constrição), pode imbuir mobilidade a todas as plantas na área para se entrelaçarem nas criaturas (duplica constrição durante 1 hora/nível, sem resistência à magia).",
+    detailsPage: 203,
+    mechanics: { components: "V", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "Uma planta Grande/3 níveis de conjurador ou todas as plantas dentro do alcance", duration: "1 rodada/nível ou 1 hora/nível (veja texto)", savingThrow: "Nenhum", spellResistance: "Não" },
+  },
+  "Antipatia": {
+    summary: "Faz um objeto ou local emanar vibrações que repelem um tipo específico de criatura ou criaturas inteligentes de uma determinada tendência. Criaturas afetadas sentem uma ânsia desesperada para abandonar a área ou evitar o item afetado. Sucesso no teste de resistência permite permanecer, mas reduz a Destreza em 4 pontos enquanto na área ou segurando o objeto. Dissipa e serve de contramágica para simpatia.",
+    detailsPage: 203,
+    mechanics: { components: "V, G, M/FD", castingTime: "1 hora", range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "Um local (até um cubo de 3 m/nível) ou um objeto", duration: "2 horas/nível (D)", savingThrow: "Vontade parcial", spellResistance: "Sim" },
+  },
+  "Apagar": {
+    summary: "Remove um texto, mágico ou mundano, de um pergaminho ou de até duas páginas de papel, papiro ou superfícies similares. Remove runas explosivas, símbolo de proteção, selo da serpente sépia e marca arcana, mas não remove escrita ilusória ou símbolo. Escritas mágicas exigem sucesso num teste de nível de conjurador (1d20 + nível) contra CD 15; falha com 1 ou 2 natural ativa acidentalmente runas explosivas, símbolo de proteção ou selo da serpente sépia.",
+    detailsPage: 203,
+    mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "Um pergaminho ou duas páginas", duration: "Instantânea", savingThrow: "Veja texto", spellResistance: "Não" },
+  },
+  "Aprisionamento": {
+    summary: "Quando o personagem toca uma criatura, ela é enterrada num estado de animação suspensa (estase temporal) em uma pequena esfera abaixo da superfície da terra. Uma investigação com bola de cristal ou adivinhações similares não revelam o fato de estar aprisionada, mas discernir localização revela. Desejo ou milagre não libertam o alvo, mas indicam onde ele está enterrado. Se souber o nome e detalhes sobre a vida da vítima, o alvo sofre −4 no teste de resistência.",
+    detailsPage: 203,
+    mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "Criatura tocada", duration: "Instantânea", savingThrow: "Vontade anula; veja texto", spellResistance: "Sim" },
+  },
+  "Área Escorregadia": {
+    summary: "Recobre uma superfície com uma substância gordurosa e escorregadia. Criaturas na área quando conjurada ou que entrem nela devem ser bem-sucedidas em teste de Reflexos ou caem no chão; podem andar usando metade do deslocamento com teste de Equilíbrio CD 10. Também pode tornar um item escorregadio (criatura que o empunhe deve passar em Reflexos a cada rodada ou o derruba). Usada em armadura ou roupa, concede +10 de bônus de circunstância em testes de Arte da Fuga e para resistir ou escapar de manobras de Agarrar/Imobilização.",
+    detailsPage: 204,
+    mechanics: { components: "V, G, M", castingTime: "1 ação padrão", range: "Curto (7,5 m + 1,5 m/2 níveis)", target: "Um objeto ou um quadrado de 3 metros", duration: "1 rodada/nível (D)", savingThrow: "Veja texto", spellResistance: "Não" },
+  },
+  "Arca Secreta de Leomund": {
+    summary: "Esconde uma arca no Plano Etéreo e permite invocá-la conforme desejar durante sessenta dias. A arca comporta até 30 dm³ de material por nível de conjurador. Se houver uma criatura viva na arca, existe 75% de chance da magia simplesmente fracassar. Para esconder a arca, toca-se a arca e sua réplica miniatura (que custa 50 PO e deve ser uma cópia exata). Após sessenta dias, existe 5% de chance cumulativa por dia de a arca ser irrecuperavelmente perdida se não for invocada.",
+    detailsPage: 204,
+    mechanics: { components: "V, G, F", castingTime: "10 minutos", range: "Veja texto", target: "Um baú e até 30 dm³ de objetos/nível do conjurador", duration: "Sessenta dias ou até ser dissipada", savingThrow: "Nenhum", spellResistance: "Não" },
+  },
+  "Arma Abençoada": {
+    summary: "A própria clava de carvalho ou bordão de madeira do conjurador se torna uma arma com +1 de bônus de melhoria para jogadas de ataque e dano (um bordão recebe esse bônus em ambas as extremidades). Causa dano como se fosse duas categorias de tamanho maior (uma clava ou bordão Pequeno causa 1d8 pontos de dano; Médio causa 2d6; Grande causa 3d6), somando +1 de melhoria.",
+    detailsPage: 204,
+    mechanics: { components: "V, G, FD", castingTime: "1 ação padrão", range: "Toque", target: "Uma clava de carvalho ou bordão mundano tocado", duration: "1 minuto/nível", savingThrow: "Vontade anula (objeto)", spellResistance: "Sim (objeto)" },
+  },
+  "Arma Espiritual": {
+    summary: "Uma arma feita de energia surge e ataca os oponentes à distância da forma que o conjurador direcioná-la, causando 1d8 pontos de dano de energia por golpe +1 ponto a cada três níveis de conjurador (máximo +5 no 15º nível). Assume a forma da arma predileta da divindade do conjurador com mesma margem de ameaça e multiplicador de decisivo. Ataca usando o BBA do conjurador + modificador de Sabedoria. É um efeito de energia capaz de atingir criaturas incorpóreas normalmente.",
+    detailsPage: 204,
+    detailsPageEnd: 205,
+    mechanics: { components: "V, G, FD", castingTime: "1 ação padrão", range: "Médio (30 metros + 3 metros/nível)", target: "Arma mágica de energia", duration: "1 rodada/nível (D)", savingThrow: "Nenhum", spellResistance: "Sim" },
+  },
+  "Arma Mágica": {
+    summary: "Concede +1 de bônus de melhoria para uma arma nas jogadas de ataque e dano. Não se acumula com o bônus de uma arma obra-prima. Não pode ser conjurada sobre armas naturais como um ataque desarmado. Pode afetar até cinqüenta projéteis (flechas, virotes, balas de funda ou shurikens) que estejam na mesma aljava ou recipiente.",
+    detailsPage: 205,
+    mechanics: { components: "V, G, FD", castingTime: "1 ação padrão", range: "Toque", target: "Arma tocada", duration: "1 minuto/nível", savingThrow: "Vontade anula (inofensiva, objeto)", spellResistance: "Sim (inofensiva, objeto)" },
+  },
+  "Arma Mágica Maior": {
+    summary: "Similar a arma mágica, exceto pelo bônus de melhoria nas jogadas de ataque e dano, que será +1 a cada quatro níveis de conjurador (máximo +5 no 20º nível). Pode afetar até cinqüenta projéteis na mesma aljava ou bolsa.",
+    detailsPage: 205,
+    mechanics: { components: "V, G, M/FD", castingTime: "1 ação padrão", range: "Curto (7,5 metros + 1,5 metro/2 níveis)", target: "Uma arma ou cinqüenta projéteis (todos em contato no momento da conjuração)", duration: "1 hora/nível", savingThrow: "Vontade anula (inofensiva, objeto)", spellResistance: "Sim (inofensiva, objeto)" },
+  },
+  "Arma do Rompimento": {
+    summary: "Faz com que uma arma branca se torne letal contra os mortos-vivos. Qualquer morto-vivo com total de DV igual ou inferior ao nível do conjurador precisará obter sucesso em um teste de resistência de Vontade ou será completamente destruído quando for atingido em combate pela arma encantada. A RM não se aplica ao efeito de destruição.",
+    detailsPage: 205,
+    mechanics: { components: "V, G", castingTime: "1 ação padrão", range: "Toque", target: "1 arma de corpo a corpo", duration: "1 rodada/nível", savingThrow: "Vontade anula (inofensiva, objeto) (veja texto)", spellResistance: "Sim (inofensiva, objeto)" },
+  },
+  "Armadilha": {
+    summary: "Permite criar um laço mágico que funciona como uma armadilha mágica, feito de qualquer cipó, cordão ou tira de couro mundanos com 60 cm de diâmetro +60 cm/nível. O objeto se incorpora aos arredores (CD 23 de Procurar para personagens com Encontrar Armadilhas localizá-la). Uma ponta se enrola em torno de um ou mais membros da criatura que pisar no círculo.",
+    detailsPage: 205,
+    mechanics: { components: "V, G, FD", castingTime: "3 rodadas", range: "Toque", target: "Um círculo de cipó, corda e tira de couro mundanos com 60 cm de diâmetro +60 cm/nível", duration: "Até ser disparada ou destruída", savingThrow: "Nenhum", spellResistance: "Não" },
+  },
 };
 
 /** "Abençoar Água^M: Cria água benta" → nome, flags e resumo. */
