@@ -2087,7 +2087,7 @@ describe("D&D 3.5 — descrições verificadas nas pp. 257–259", () => {
 
   it("mecânica verificada (lote novo, pp. 202–205): Andar no Ar, Andar nas Sombras, Animação Ilusória, Animar Cordas/Objetos/Plantas, Antipatia, Apagar, Aprisionamento, Área Escorregadia, Arca Secreta de Leomund, Arma Abençoada/Espiritual/Mágica/Mágica Maior/Rompimento, Armadilha", () => {
     expect(dnd35SpellListFor("clerigo", 4).find((spell) => spell.name === "Andar no Ar")?.mechanics)
-      .toMatchObject({ components: "V, G, FD", duration: "1 hora/nível", range: "Toque" }); // MUTACAO PROPOSITAL
+      .toMatchObject({ components: "V, G, FD", duration: "10 minutos/nível", range: "Toque" });
     expect(dnd35SpellListFor("mago", 6).find((spell) => spell.name === "Andar nas Sombras")?.mechanics)
       .toMatchObject({ duration: "1 hora/nível (D)", savingThrow: "Vontade anula" });
     expect(dnd35SpellListFor("mago", 8).find((spell) => spell.name === "Animação Ilusória")?.mechanics)

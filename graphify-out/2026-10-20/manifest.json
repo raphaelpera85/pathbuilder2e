@@ -306,15 +306,15 @@
     "semantic_hash": ""
   },
   "src/services/characters.test.ts": {
-    "mtime": 1791254782.0875895,
-    "seen": 1791255663.6948235,
-    "ast_hash": "45549bb71ab2fcf7ca133b1ee09989c9",
+    "mtime": 1792503149.5291586,
+    "seen": 1792543165.8503401,
+    "ast_hash": "f0b6eba79f84521104f7bd6fa254cfd8",
     "semantic_hash": ""
   },
   "src/services/characters.ts": {
-    "mtime": 1790553084.3929696,
-    "seen": 1790565763.2278483,
-    "ast_hash": "c9edc798ed422aa90078c1f0cd5dfaa3",
+    "mtime": 1792503100.1677353,
+    "seen": 1792543165.850341,
+    "ast_hash": "219481382b2034a61ad75a4c7430f326",
     "semantic_hash": ""
   },
   "src/services/pdfFormExport.ts": {
@@ -1236,9 +1236,9 @@
     "semantic_hash": ""
   },
   "src/services/catalog.test.ts": {
-    "mtime": 1792455759.0668974,
-    "seen": 1792456336.7577136,
-    "ast_hash": "4c324ef12c795d8f63674360375bd4c2",
+    "mtime": 1792504444.2999842,
+    "seen": 1792543165.8503263,
+    "ast_hash": "433ddb39f307f683230e45c4404913e2",
     "semantic_hash": ""
   },
   "src/services/catalog.ts": {
@@ -11634,9 +11634,9 @@
     "semantic_hash": ""
   },
   "TODO_COBERTURA_SISTEMAS.md": {
-    "mtime": 1792097815.7187445,
-    "seen": 1792099154.478052,
-    "ast_hash": "2fc594f143c035c4aa675c7af8de4dde",
+    "mtime": 1792503292.2697742,
+    "seen": 1792543165.8520164,
+    "ast_hash": "73fba54586e16eebb91069c6720336c0",
     "semantic_hash": ""
   },
   "SITUACAO_PROJETO.md": {
@@ -12000,15 +12000,15 @@
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35SpellLists.test.ts": {
-    "mtime": 1791773924.0320642,
-    "seen": 1791966966.148673,
-    "ast_hash": "e9cd798882d90360d4a4806657cf719b",
+    "mtime": 1792504421.2161307,
+    "seen": 1792543165.850077,
+    "ast_hash": "0938146b16b3d5d8c9ab5a4e0e54573e",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35SpellLists.ts": {
-    "mtime": 1791773898.3807333,
-    "seen": 1791966966.1486754,
-    "ast_hash": "b2d8270c3cf82f65d5570fd783ae6a8a",
+    "mtime": 1792504300.7639852,
+    "seen": 1792543165.8500798,
+    "ast_hash": "d02e47837449a4c1065ce8d9c6189116",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35Spellcasting.test.ts": {
@@ -15444,9 +15444,9 @@
     "semantic_hash": ""
   },
   "MASTER_TODO.md": {
-    "mtime": 1792456854.3976388,
-    "seen": 1792485634.4955127,
-    "ast_hash": "4ae11bf95d017f3020b20032cb6d8e39",
+    "mtime": 1792504471.1943386,
+    "seen": 1792543165.852003,
+    "ast_hash": "fffc905cdf735bff3e8b8b299e5b0303",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35MonstrosFeats.test.ts": {
@@ -16845,6 +16845,18 @@
     "mtime": 1788493287.9142597,
     "seen": 1792485634.495503,
     "ast_hash": "a831cf3669f1e6ab85d8a80ebe655f99",
+    "semantic_hash": ""
+  },
+  "src/services/characterImport.test.ts": {
+    "mtime": 1792503239.0737143,
+    "seen": 1792543165.850332,
+    "ast_hash": "47f24d719996cd3fd2dbf9208d52aa1b",
+    "semantic_hash": ""
+  },
+  "src/services/characterImport.ts": {
+    "mtime": 1792503182.06963,
+    "seen": 1792543165.8503337,
+    "ast_hash": "aa9a3d6cd76b62205ecaa7ee4755a0c6",
     "semantic_hash": ""
   }
 }

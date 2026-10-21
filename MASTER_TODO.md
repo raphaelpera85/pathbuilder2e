@@ -92,10 +92,15 @@
         continuar pelo índice alfabético (pp.200+) para fechar o
         restante (~618 nomes) — trabalho incremental de múltiplas
         sessões, sem bloqueio técnico remanescente. **Continuado**:
-        +5 magias (p.201) — Analisar Encantamento, Âncora Dimensional,
-        Âncora Planar, Âncora Planar Maior, Âncora Planar Menor
         (246 no total). Corrigidas 2 inconsistências de copy-paste nos
         resumos (Âncora Planar/Menor tinham DV trocados entre si).
+        **Continuado (pp. 202–205)**: +17 magias auditadas visualmente contra os
+        scans originais do livro (Andar no Ar, Andar nas Sombras, Animação Ilusória,
+        Animar Cordas, Animar Objetos, Animar Plantas, Antipatia, Apagar,
+        Aprisionamento, Área Escorregadia, Arca Secreta de Leomund, Arma Abençoada,
+        Arma Espiritual, Arma Mágica, Arma Mágica Maior, Arma do Rompimento,
+        Armadilha) — totalizando **263 magias** com mecânica completa. 79 testes
+        verdes em `dnd35SpellLists.test.ts`, mutação testada/restaurada.
 - [x] **Livro Punhos e Espadas (`v35-pe`) — DESCOBERTO JÁ COMPLETO para
       prioridade** (2026-10-19): ao investigar, encontrado com 31/31
       talentos (Cap.1) e 19/19 classes de prestígio (Cap.2) já

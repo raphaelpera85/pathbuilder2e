@@ -12000,15 +12000,15 @@
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35SpellLists.test.ts": {
-    "mtime": 1792504421.2161307,
-    "seen": 1792543165.850077,
-    "ast_hash": "0938146b16b3d5d8c9ab5a4e0e54573e",
+    "mtime": 1792545129.2560298,
+    "seen": 1792545167.1340413,
+    "ast_hash": "83d3cc8d98cd507e91ea8171735b07af",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35SpellLists.ts": {
-    "mtime": 1792504300.7639852,
-    "seen": 1792543165.8500798,
-    "ast_hash": "d02e47837449a4c1065ce8d9c6189116",
+    "mtime": 1792544496.6259134,
+    "seen": 1792545167.1341014,
+    "ast_hash": "cf36099f296a409679c211bb487cab2f",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35Spellcasting.test.ts": {
@@ -15359,30 +15359,6 @@
     "ast_hash": "124e6ea98ec400bf0e9618aee953b4a4",
     "semantic_hash": ""
   },
-  "src/data/dnd35/dnd35ExemplarsFeats.test.ts": {
-    "mtime": 1792423325.3526578,
-    "seen": 1792439314.3915756,
-    "ast_hash": "4564a71f5d1e17f21b59e73599d01b48",
-    "semantic_hash": ""
-  },
-  "src/data/dnd35/dnd35ExemplarsFeats.ts": {
-    "mtime": 1792423268.6122458,
-    "seen": 1792439314.3915765,
-    "ast_hash": "187e935189d3196d0eae697a1a4deb04",
-    "semantic_hash": ""
-  },
-  "src/data/dnd35/dnd35ExemplarsSpells.test.ts": {
-    "mtime": 1792423446.7322462,
-    "seen": 1792439314.3915772,
-    "ast_hash": "7922e4f7101f250867e25df92909c847",
-    "semantic_hash": ""
-  },
-  "src/data/dnd35/dnd35ExemplarsSpells.ts": {
-    "mtime": 1792423407.3466089,
-    "seen": 1792439314.3915784,
-    "ast_hash": "3b1dfa9c133a005b0d79e70be3855858",
-    "semantic_hash": ""
-  },
   "src/data/dnd35/dnd35FrostburnEpicSpells.test.ts": {
     "mtime": 1792418219.050786,
     "seen": 1792439314.3915882,
@@ -15444,9 +15420,9 @@
     "semantic_hash": ""
   },
   "MASTER_TODO.md": {
-    "mtime": 1792504471.1943386,
-    "seen": 1792543165.852003,
-    "ast_hash": "fffc905cdf735bff3e8b8b299e5b0303",
+    "mtime": 1792544927.6582563,
+    "seen": 1792545167.1369689,
+    "ast_hash": "85cebe09ad5cc7c537a06734b3e8345f",
     "semantic_hash": ""
   },
   "src/data/dnd35/dnd35MonstrosFeats.test.ts": {
@@ -16857,6 +16833,30 @@
     "mtime": 1792503182.06963,
     "seen": 1792543165.8503337,
     "ast_hash": "aa9a3d6cd76b62205ecaa7ee4755a0c6",
+    "semantic_hash": ""
+  },
+  "scratch_page_201.jpg": {
+    "mtime": 1792543256.491223,
+    "seen": 1792545167.139276,
+    "ast_hash": "bcdfd4dc057d1ccdac176e447fb423a4",
+    "semantic_hash": ""
+  },
+  "scratch_page_202.jpg": {
+    "mtime": 1792543256.5346212,
+    "seen": 1792545167.1392798,
+    "ast_hash": "fe313f172532e8bb7a12e4afa72a5658",
+    "semantic_hash": ""
+  },
+  "scratch_page_203.jpg": {
+    "mtime": 1792543630.9701066,
+    "seen": 1792545167.1392844,
+    "ast_hash": "0865cbaba5f4b0b0bbae1561655d03c4",
+    "semantic_hash": ""
+  },
+  "scratch_page_204.jpg": {
+    "mtime": 1792543828.1554813,
+    "seen": 1792545167.139289,
+    "ast_hash": "0ebd318b48641e3e8eb5de6c65ece745",
     "semantic_hash": ""
   }
 }
